@@ -17,7 +17,7 @@ Plug 'Shougo/echodoc.vim'
 " 美化插件
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'liuchengxu/space-vim-theme'
+Plug 'liuchengxu/space-vim-theme'
 Plug 'taigacute/gruvbox9'
 Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'  " 图标
@@ -206,7 +206,7 @@ let g:vista_fzf_preview = ['right:50%']
 let g:ranger_map_keys = 0
 
 " ----- * vimviki * ----- "
-let g:vimwiki_list = [{'path': '~/Nutstore Files/Nutstore/VNOTEBOOK/',
+let g:vimwiki_list = [{'path': '~/Nutstore Files/Nutstore/MARKDOWN_NOTE/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " ----- * goyo * ----- "

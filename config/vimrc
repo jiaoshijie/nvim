@@ -11,8 +11,10 @@ set fileformats=unix,dos,mac
 set mouse=a
 
 set background=dark
-colorscheme gruvbox9
-let g:gruvbox_transp_bg = 1
+" colorscheme gruvbox9
+colorscheme space_vim_theme
+" let g:gruvbox_transp_bg = 1
+let g:space_vim_transp_bg = 1
 let &t_ut=''
 let t_Co=256
 
@@ -25,9 +27,9 @@ set hidden
 
 set confirm
 
-set undofile
-set undolevels=1000
-set undoreload=10000
+set noundofile
+" set undolevels=1000
+" set undoreload=10000
 set nobackup
 set noswapfile
 silent !mkdir -p ~/.config/nvim/tmp/{undo,swp,backup}
