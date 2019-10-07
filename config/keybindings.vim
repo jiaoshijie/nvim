@@ -67,7 +67,7 @@ nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
 " inster mode mapings
-inoremap jk <Esc>
+" inoremap jk <Esc>
 inoremap <C-j> <Esc>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>

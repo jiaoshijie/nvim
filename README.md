@@ -15,19 +15,19 @@
 
 | Command | Motion                 |
 | ----    | ----                   |
-| C-f     | Right                  |
-| C-b     | Left                   |
-| C-d     | delete                 |
+| `<C-f>` | Right                  |
+| `<C-b>` | Left                   |
+| `<C-d>` | delete                 |
 | `:w!!`  | 提权保存(nvim无法使用) |
 
 
 ### insert-mode
-| Command | Motion          |
-| ------- | ---             |
-| jk      | 进入normal-mode |
-| C-b     | left            |
-| C-f     | right           |
-| C-d     | delete          |
+| Command        | Motion          |
+| -------        | ---             |
+| `<C-j>` ~~jk~~ | 进入normal-mode |
+| `<C-b>`        | left            |
+| `<C-f>`        | right           |
+| `<C-d>`        | delete          |
 
 ### visual-mode
 | Command     | Motion                 |
@@ -86,18 +86,18 @@
 
 - 以下命令不需要leader键
 
-| Command  | Motion                                                 |
-| -------  | ---                                                    |
-| F2       | 打开init.vim                                           |
-| F5       | 重新建立ctags索引列表                                  |
-| 上下左右 | 调整分屏窗口的大小                                     |
-| C-n      | multi_cursor_start_word_key(vim-multiple-cursors)      |
-| A-n      | multi_cursor_select_all_word_key(vim-multiple-cursors) |
-| `g<C-n>` | start_key(vim-multiple-cursors)                        |
-| `g<A-n>` | select_all_key(vim-multiple-cursors)                   |
-| C-x      | skip_key(vim-multiple-cursors)                         |
-| T        | 打开Vista(Vista){类似tagbar}                           |
-| C-t或C-p | 打开FZF(vim-fzf)                                       |
+| Command          | Motion                                                 |
+| -------          | ---                                                    |
+| F2               | 打开init.vim                                           |
+| F5               | 重新建立ctags索引列表                                  |
+| 上下左右         | 调整分屏窗口的大小                                     |
+| `<C-n>`          | multi_cursor_start_word_key(vim-multiple-cursors)      |
+| `<A-n>`          | multi_cursor_select_all_word_key(vim-multiple-cursors) |
+| `g<C-n>`         | start_key(vim-multiple-cursors)                        |
+| `g<A-n>`         | select_all_key(vim-multiple-cursors)                   |
+| `<C-x>`          | skip_key(vim-multiple-cursors)                         |
+| T                | 打开Vista(Vista){类似tagbar}                           |
+| `<C-t>`或`<C-p>` | 打开FZF(vim-fzf)                                       |
 
 ## ctags使用(函数跳转)
 | command          | use                                      |
