@@ -1,7 +1,7 @@
 # My NeoVim Config
 
 ## 安装依赖
-1. install clang for c/c++ `sudo pacman -S clang`
+1. install ~~clang~~ ccls for c/c++ `sudo pacman -S ccls`
 2. install pynvim for python `pip3 install --user --no-binary :all: pynvim`
 3. install fzf for fzf `sudo pacman -S fzf`
 4. install ctags for jump function define list `sudo pacman -S ctags`
@@ -61,18 +61,14 @@
 | tn      | 下一个tab                             |
 | tp      | 上一个tab                             |
 | tD      | 关闭一个标签                          |
-| pat     | 打开或关闭代码检查(ale)               |
-| pad     | 查看代码错误的详细信息(ale)           |
 | R       | 打开文件管理器Ranger                  |
 | k       | 标记高亮一个单词(vim-interestingwors) |
 | K       | 取消标记(vim-interestingwors)         |
-| pn      | 格式化代码(Neoformat)                 |
 | pu      | 打开修改记录(undotree)                |
 | F       | 查找修改(far)                         |
 | pfd     | 执行修改(far)                         |
 | pp      | markdown预览(markdownpreview)         |
 | ps      | 关闭markdown预览(markdownpreview)     |
-| ~~pmt~~ | ~~markdown自动排版表格(tablemode)~~   |
 | cc      | 注释代码(NERDCommenter)               |
 | cu      | 取消注释(NERDCommenter)               |
 | c space | 智能注释(NERDCommenter)               |

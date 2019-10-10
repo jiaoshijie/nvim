@@ -83,17 +83,14 @@ vnoremap <silent> <leader>a di""<Esc>P
 
 
 if has('nvim')
-  "-----* ncm2 *------"
+  "-----* coc *------"
   inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
   inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+
   "-----* NERDTree *------"
   nnoremap tt :NERDTreeToggle<cr>
-
-  "------* ale *------"
-  nnoremap <Leader>pat :ALEToggle<CR>
-  nnoremap <Leader>pad :ALEDetail<CR>
 
   "------* TagBar *-----"
   " nnoremap <leader>pt :TagbarOpenAutoClose<CR>
@@ -103,9 +100,6 @@ if has('nvim')
   "------* vim-interestingwords *-----"
   nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
   nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
-
-  "------* neoformat *------"
-  nnoremap <leader>pn :Neoformat<CR>
 
   "------* FZF *------"
   nnoremap <C-p> :FZF<CR>
@@ -120,7 +114,6 @@ if has('nvim')
   "-----* Markdown *------"
   nnoremap <leader>pp :MarkdownPreview<CR>
   nnoremap <leader>ps :MarkdownPreviewStop<CR>
-  " nnoremap <leader>pmt :TableModeToggle<CR> 不再使用该插件
 
   "-----* Ranger-vim *-----"
   nnoremap <leader>R :Ranger<CR>

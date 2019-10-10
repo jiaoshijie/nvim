@@ -11,9 +11,7 @@ set fileformats=unix,dos,mac
 set mouse=a
 
 set background=dark
-" colorscheme gruvbox9
 colorscheme space_vim_theme
-" let g:gruvbox_transp_bg = 1
 let g:space_vim_transp_bg = 1
 let &t_ut=''
 let t_Co=256

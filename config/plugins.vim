@@ -2,23 +2,13 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " 代码补全插件
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'Shougo/deoplete-clangx'
-" Plug 'zchee/deoplete-jedi'
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-jedi'
-Plug 'ncm2/ncm2-pyclang'
-Plug 'Shougo/echodoc.vim'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 
 " 美化插件
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'liuchengxu/space-vim-theme'
-Plug 'taigacute/gruvbox9'
 Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'  " 图标
 
@@ -41,10 +31,10 @@ Plug 'liuchengxu/vista.vim'
 Plug 'lfv89/vim-interestingwords'
 
 " 格式化代码
-Plug 'sbdchd/neoformat'
+" Plug 'sbdchd/neoformat'
 
-" 静态检查代码，显示错误
-Plug 'w0rp/ale'
+" 静态检查代码 coc代替
+" Plug 'w0rp/ale'
 
 " 括号补全插件
 Plug 'Raimondi/delimitMate'
@@ -94,17 +84,11 @@ Plug 'junegunn/goyo.vim'
 call plug#end()
 
 
-" ----- * ncm2 * ----- "
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-" :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-let ncm2#popup_delay = 2
-let g:ncm2#matcher = "substrfuzzy"
-let g:ncm2#match_highlight = 'bold'
-let g:ncm2_jedi#python_version=3
+" ----- * coc * ----- "
+set updatetime=300
 set shortmess+=c
 set notimeout
+set signcolumn=yes
 
 " ----- * NERDTree * ----- "
 let NERDTreeMapToggleHidden = "zh"
@@ -131,24 +115,6 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.linenr = '¶'
 let g:airline_theme='light'
-
-" ----- * ale * ----- "
-let g:ale_linters = {'c': ['gcc'],
-      \ 'cpp': ['g++'],
-      \ 'python': ['flake8']}
-let g:ale_linters_explicit = 1
-let g:ale_completion_delay = 500
-let g:ale_echo_delay = 20
-let g:ale_lint_delay = 500
-let g:ale_echo_msg_format = '[%linter%] %code: %%s'
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-let g:airline#extensions#ale#enabled = 1
-
-let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
-let g:ale_c_cppcheck_options = ''
-let g:ale_cpp_cppcheck_options = ''
 
 " ----- * indentLine * ----- "
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -218,13 +184,3 @@ let g:vimwiki_list = [{'path': '~/Nutstore Files/Nutstore/MARKDOWN_NOTE/',
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-
-" ----- * echodoc.vim * ----- "
-" set cmdheight = 2
-let g:echodoc#enable_at_startup = 1
-" let g:echodoc#type = 'virtual'
-let g:echodoc#type = 'floating'
-let g:echodoc#events = ['CompleteDone']
-let g:echodoc#highlight_identifier = "Identifier"
-let g:echodoc#highlight_arguments = "Special"
-let g:echodoc#highlight_trailing = "Type"
