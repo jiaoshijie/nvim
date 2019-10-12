@@ -87,11 +87,6 @@
 | F2               | 打开init.vim                                           |
 | F5               | 重新建立ctags索引列表                                  |
 | 上下左右         | 调整分屏窗口的大小                                     |
-| `<C-n>`          | multi_cursor_start_word_key(vim-multiple-cursors)      |
-| `<A-n>`          | multi_cursor_select_all_word_key(vim-multiple-cursors) |
-| `g<C-n>`         | start_key(vim-multiple-cursors)                        |
-| `g<A-n>`         | select_all_key(vim-multiple-cursors)                   |
-| `<C-x>`          | skip_key(vim-multiple-cursors)                         |
 | T                | 打开Vista(Vista){类似tagbar}                           |
 | `<C-t>`或`<C-p>` | 打开FZF(vim-fzf)                                       |
 

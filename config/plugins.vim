@@ -78,7 +78,7 @@ Plug 'rbgrouleff/bclose.vim'
 
 " others
 " Plug 'gcmt/wildfire.vim'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/goyo.vim'
 
 call plug#end()
@@ -89,6 +89,7 @@ set updatetime=300
 set shortmess+=c
 set notimeout
 set signcolumn=yes
+let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver']
 
 " ----- * NERDTree * ----- "
 let NERDTreeMapToggleHidden = "zh"
@@ -147,9 +148,6 @@ let g:bullets_enabled_file_types = [
     \ 'markdown',
     \ 'text',
     \]
-
-" ----- * vim-multiple-cursor * ----- "
-let g:multi_cursor_use_default_mapping=0
 
 " ----- * tabular * ----- "
 "nnoremap <Leader>a= :Tabularize /=<CR>
