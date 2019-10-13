@@ -72,6 +72,7 @@ inoremap <C-j> <Esc>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-d> <del>
+inoremap <C-y> <C-r>+
 
 " visual mode mapings
 " vnoremap <silent> <leader>a <Esc>a"<Esc>gvo<Esc>i"<Esc>

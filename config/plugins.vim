@@ -82,10 +82,6 @@ call plug#end()
 
 
 " ----- * coc * ----- "
-set updatetime=300
-set shortmess+=c
-set notimeout
-set signcolumn=yes
 let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver']
 
 " ----- * NERDTree * ----- "

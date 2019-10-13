@@ -61,7 +61,7 @@ set belloff=all
 
 set autoread
 set autowrite
-set autowriteall
+" set autowriteall
 " set virtualedit=onemore  " used with caution of breaking plugins
 
 " indent
@@ -93,8 +93,10 @@ set laststatus=2
 set showcmd
 set autochdir
 set history=1000
-set timeoutlen=500
-set timeout
+" set timeoutlen=500
+" set timeout
+set notimeout
+set shortmess+=c
 
 " show commend meun
 set wildmenu
