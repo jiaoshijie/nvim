@@ -66,18 +66,15 @@ Plug 'vimwiki/vimwiki'
 Plug 'kshenoy/vim-signature'
 
 " HTML, CSS, JavaScript, JSON, etc.
-Plug 'elzr/vim-json'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'html', 'javascript', 'css', 'less'] }
 Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'  " html snippets
 
 " ranger
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
 " others
-" Plug 'gcmt/wildfire.vim'
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/goyo.vim'
 
