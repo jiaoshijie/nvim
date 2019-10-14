@@ -10,7 +10,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'liuchengxu/space-vim-theme'
 Plug 'mhinz/vim-startify'
-Plug 'ryanoasis/vim-devicons'  " 图标
 
 " 代码缩进提示
 Plug 'Yggdroot/indentLine'
@@ -18,20 +17,13 @@ Plug 'Yggdroot/indentLine'
 " 目录树
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" 代码跳转
-" Plug 'ludovicchabant/vim-gutentags'
-" Plug 'jsfaint/gen_tags.vim'
+Plug 'ryanoasis/vim-devicons'
 
 " 查看代码定义
-" Plug 'majutsushi/tagbar'
 Plug 'liuchengxu/vista.vim'
 
 " 高亮感兴趣的单词
 Plug 'lfv89/vim-interestingwords'
-
-" 格式化代码
-" Plug 'sbdchd/neoformat'
 
 " 静态检查代码 coc代替
 " Plug 'w0rp/ale'

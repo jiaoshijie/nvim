@@ -94,7 +94,6 @@ if has('nvim')
   nnoremap tt :NERDTreeToggle<cr>
 
   "------* TagBar *-----"
-  " nnoremap <leader>pt :TagbarOpenAutoClose<CR>
   nnoremap <silent> T :Vista!!<CR>
   nnoremap <silent> <C-t> :Vista finder<CR>
 
