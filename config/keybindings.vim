@@ -15,7 +15,7 @@ nnoremap <leader>s :w<cr>
 nnoremap <leader>S :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>qq :q<cr>
 nnoremap <leader><cr> :nohl<cr>
-nnoremap <leader>f /<++><cr>:nohlsearch<cr>"_c4l
+" nnoremap <leader>f /<++><cr>:nohlsearch<cr>"_c4l
 nnoremap <C-k> d$
 
 " window mapings
@@ -102,7 +102,12 @@ if has('nvim')
   nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
 
   "------* FZF *------"
-  nnoremap <C-p> :FZF<CR>
+  " nnoremap <C-p> :FZF<CR>
+  nnoremap <C-p> :Ag<CR>
+  nnoremap <leader>bb :Buffers<CR>
+  nnoremap <leader>fg :GFiles<CR>
+  nnoremap <leader>fr :Startify<CR>
+  nnoremap <leader>ff :FZF<CR>
 
   "------* Undo Tree *-----"
   nnoremap <leader>pu :UndotreeToggle<CR>

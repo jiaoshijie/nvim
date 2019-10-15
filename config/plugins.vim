@@ -18,9 +18,15 @@ Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
+" Plug 'Shougo/defx.nvim'
+" Plug 'kristijanhusak/defx-icons'
 
-" 查看代码定义
+" 查找
+Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vista.vim'
+" Plug 'majutsushi/tagbar'
+" Plug 'Yggdroot/LeaderF'
 
 " 高亮感兴趣的单词
 Plug 'lfv89/vim-interestingwords'
@@ -33,10 +39,6 @@ Plug 'Raimondi/delimitMate'
 
 " vim-surround
 Plug 'tpope/vim-surround'
-
-" 模糊查找
-Plug '/usr/bin/fzf'
-Plug 'junegunn/fzf.vim'
 
 " far
 Plug 'brooth/far.vim'

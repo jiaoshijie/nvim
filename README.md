@@ -44,7 +44,6 @@
 | S       | 重新加载init.vim                      |
 | qq      | 退出nvim                              |
 | enter   | 取消高亮                              |
-| f       | 查找<++>删除并进入insert-mode         |
 | w/      | 左右分屏                              |
 | w-      | 上下分屏                              |
 | wh      | 向左切换光标所在屏幕                  |
@@ -54,6 +53,7 @@
 | w=      | 平均调整屏幕                          |
 | wo      | 只剩下这一个窗口                      |
 | wc      | 关闭当前窗口                          |
+| bb      | 切换buffer(fzf)                       |
 | bp      | 上一个buffer                          |
 | bn      | 下一个buffer                          |
 | bD      | 删除当前buffer                        |
@@ -62,6 +62,9 @@
 | tp      | 上一个tab                             |
 | tD      | 关闭一个标签                          |
 | R       | 打开文件管理器Ranger                  |
+| ff      | 打开FZF(FZF)                          |
+| fg      | 打开当前文件夹git管理的文件(FZF)      |
+| fr      | 最近打开的文件(FZF)                   |
 | k       | 标记高亮一个单词(vim-interestingwors) |
 | K       | 取消标记(vim-interestingwors)         |
 | pu      | 打开修改记录(undotree)                |
@@ -82,13 +85,14 @@
 
 - 以下命令不需要leader键
 
-| Command          | Motion                                                 |
-| -------          | ---                                                    |
-| F2               | 打开init.vim                                           |
-| F5               | 重新建立ctags索引列表                                  |
-| 上下左右         | 调整分屏窗口的大小                                     |
-| T                | 打开Vista(Vista){类似tagbar}                           |
-| `<C-t>`或`<C-p>` | 打开FZF(vim-fzf)                                       |
+| Command  | Motion                       |
+| -------  | ---                          |
+| F2       | 打开init.vim                 |
+| F5       | 重新建立ctags索引列表        |
+| 上下左右 | 调整分屏窗口的大小           |
+| tt       | 打开nerdtree                 |
+| T        | 打开Vista(Vista){类似tagbar} |
+| `<C-t>`  | 打开ctags标签搜索(vista)     |
 
 ## ctags使用(函数跳转)
 | command          | use                                      |
