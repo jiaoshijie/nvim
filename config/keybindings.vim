@@ -130,4 +130,10 @@ if has('nvim')
   " :h vimwiki-commands
   " :h vimwiki
 
+  "-----* NERD-commenter *-----"
+  nmap <leader>cc <plug>NERDCommenterToggle
+  vmap <leader>cc <plug>NERDCommenterToggle
+  nmap <leader>ca <plug>NERDCommenterAltDelims
+  nmap <leader>cA <plug>NERDCommenterAppend
+
 endif

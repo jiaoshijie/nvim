@@ -166,6 +166,9 @@ let g:vimwiki_list = [{'path': '~/Nutstore Files/Nutstore/MARKDOWN_NOTE/',
 " g:goyo_linenr (default: 0)
 
 " ----- * nerdcommenter * ----- "
+let g:NERDCreateDefaultMappings=0
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
+let g:NERDCompactSexyComs = 1
+let g:NERDToggleCheckAllLines = 1
 let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }

@@ -72,9 +72,7 @@
 | pfd     | 执行修改(far)                         |
 | pp      | markdown预览(markdownpreview)         |
 | ps      | 关闭markdown预览(markdownpreview)     |
-| cc      | 注释代码(NERDCommenter)               |
-| cu      | 取消注释(NERDCommenter)               |
-| c space | 智能注释(NERDCommenter)               |
+| cc      | 注释和反注释代码(NERDCommenter)       |
 | cA      | 在代码后添加注释(NERDCommenter)       |
 | ca      | 改变注释符号(NERDCommenter)           |
 | G       | 打开Goyo模式(vim-Goyo)                |
