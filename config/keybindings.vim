@@ -69,8 +69,12 @@ nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 " inster mode mapings
 " inoremap jk <Esc>
 inoremap <C-j> <Esc>
+" inoremap <C-p> <Up>
+" inoremap <C-n> <Down>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
+inoremap <C-a> <Esc>I
+inoremap <C-e> <Esc>A
 inoremap <C-d> <del>
 inoremap <C-y> <C-r>+
 
@@ -85,55 +89,63 @@ vnoremap <silent> <leader>a di""<Esc>P
 
 if has('nvim')
   "-----* coc *------"
-  inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  inoremap <expr> <cr> (pumvisible() ? "\<c-y>\<cr>" : "\<cr>")
+  inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+  inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 
-  "-----* NERDTree *------"
-  nnoremap tt :NERDTreeToggle<cr>
+  "-----* nerdtree *------"
+  nnoremap tt :nerdtreetoggle<cr>
 
-  "------* TagBar *-----"
-  nnoremap <silent> T :Vista!!<CR>
-  nnoremap <silent> <C-t> :Vista finder<CR>
+  "------* tagbar *-----"
+  nnoremap <silent> t :vista!!<cr>
+  nnoremap <silent> <c-t> :vista finder<cr>
 
   "------* vim-interestingwords *-----"
-  nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
-  nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
+  nnoremap <silent> <leader>k :call interestingwords('n')<cr>
+  nnoremap <silent> <leader>k :call uncolorallwords()<cr>
 
-  "------* FZF *------"
-  " nnoremap <C-p> :FZF<CR>
-  nnoremap <C-p> :Ag<CR>
-  nnoremap <leader>bb :Buffers<CR>
-  nnoremap <leader>fg :GFiles<CR>
-  nnoremap <leader>fr :Startify<CR>
-  nnoremap <leader>ff :FZF<CR>
+  "------* fzf *------"
+  " nnoremap <c-p> :fzf<cr>
+  nnoremap <c-p> :ag<cr>
+  nnoremap <leader>bb :buffers<cr>
+  nnoremap <leader>fg :gfiles<cr>
+  nnoremap <leader>fr :startify<cr>
+  nnoremap <leader>ff :fzf<cr>
+  nnoremap <leader>fj :fzf ~<cr>
 
-  "------* Undo Tree *-----"
-  nnoremap <leader>pu :UndotreeToggle<CR>
+  "------* undo tree *-----"
+  nnoremap <leader>pu :undotreetoggle<cr>
 
   "------* far *-----"
-  nnoremap <leader>F :Far  %<left><left>
-  nnoremap <leader>pfd :Fardo<CR>
+  nnoremap <leader>f :far  %<left><left>
+  nnoremap <leader>pfd :fardo<cr>
 
-  "-----* Markdown *------"
-  nnoremap <leader>pp :MarkdownPreview<CR>
-  nnoremap <leader>ps :MarkdownPreviewStop<CR>
+  "-----* markdown *------"
+  nnoremap <leader>pp :markdownpreview<cr>
+  nnoremap <leader>ps :markdownpreviewstop<cr>
 
-  "-----* Ranger-vim *-----"
-  nnoremap <leader>R :Ranger<CR>
+  "-----* ranger-vim *-----"
+  nnoremap <leader>r :ranger<cr>
 
-  "-----* Goyo *-----"
-  nnoremap <leader>G :Goyo<CR>
+  "-----* goyo *-----"
+  nnoremap <leader>g :goyo<cr>
 
-  "-----* vimWiki *-----"
+  "-----* vimwiki *-----"
   " :h vimwiki-commands
   " :h vimwiki
 
-  "-----* NERD-commenter *-----"
-  nmap <leader>cc <plug>NERDCommenterToggle
-  vmap <leader>cc <plug>NERDCommenterToggle
-  nmap <leader>ca <plug>NERDCommenterAltDelims
-  nmap <leader>cA <plug>NERDCommenterAppend
+  "-----* nerd-commenter *-----"
+  nmap <leader>cc <plug>nerdcommentertoggle
+  vmap <leader>cc <plug>nerdcommentertoggle
+  nmap <leader>ca <plug>nerdcommenteraltdelims
+  nmap <leader>ca <plug>nerdcommenterappend
 
+  "-----* multi_cursor *-----"
+  let g:multi_cursor_start_word_key      = '<c-n>'
+  let g:multi_cursor_select_all_word_key = '<A-n>'
+  let g:multi_cursor_next_key            = '<C-n>'
+  let g:multi_cursor_prev_key            = '<C-p>'
+  let g:multi_cursor_skip_key            = '<C-x>'
+  let g:multi_cursor_quit_key            = '<Esc>'
 endif

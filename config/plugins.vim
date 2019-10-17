@@ -69,7 +69,7 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
 " others
-" Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/goyo.vim'
 
 call plug#end()
@@ -136,9 +136,6 @@ let g:bullets_enabled_file_types = [
     \ 'text',
     \]
 
-" ----- * tabular * ----- "
-"nnoremap <Leader>a= :Tabularize /=<CR>
-
 " ----- * vista * ----- "
 function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
@@ -166,9 +163,16 @@ let g:vimwiki_list = [{'path': '~/Nutstore Files/Nutstore/MARKDOWN_NOTE/',
 " g:goyo_linenr (default: 0)
 
 " ----- * nerdcommenter * ----- "
-let g:NERDCreateDefaultMappings=0
+let g:NERDCreateDefaultMappings = 0
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCompactSexyComs = 1
 let g:NERDToggleCheckAllLines = 1
 let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" ----- * multi_cursor * ----- "
+let g:multi_cursor_use_default_mapping = 0
+let g:multi_cursor_exit_from_insert_mode = 1
+let g:multi_cursor_exit_from_visual_mode = 1
+let g:multi_cursor_normal_maps = {'@': 1, 'F': 1, 'T': 1, '[': 1, '\': 1, ']': 1, '!': 1, '"': 1, 'c': 1, 'd': 1, 'f': 1, 'g': 1, 'm': 1, 'q': 1, 'r': 1, 't': 1, 'y': 1, 'z': 1, '<': 1, '=': 1, '>': 1}
+let g:multi_cursor_visual_maps = {'T': 1, 'a': 1, 't': 1, 'F': 1, 'f': 1, 'i': 1}

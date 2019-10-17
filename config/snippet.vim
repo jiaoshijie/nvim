@@ -1,6 +1,7 @@
 " set localleader
 let maplocalleader=','
 inoremap <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
+nnoremap <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
 " augroup filetype_c 自动组命令会导致语法高亮出错
 " augroup END
 " 使用if-endif 来解决重复导入的问题
@@ -59,7 +60,7 @@ endif
 " ---------------- "
 if !exists("jiaoshijie_html")
   let jiaoshijie_html = 1
-  autocmd Filetype html iabbrev <buffer> hhead <!DOCTYPE html><CR><html lang="en"><CR><head><CR><meta charset="UTF-8"><CR><title><++></title><CR></head><CR><body><CR><++><CR></body><CR></html><ESC>gg<space>f
+  autocmd Filetype html iabbrev <buffer> hhead <!DOCTYPE html><CR><html lang="en"><CR><head><CR><meta charset="UTF-8"><CR><title><++></title><CR></head><CR><body><CR><++><CR></body><CR></html><ESC>gg,f
   autocmd Filetype html iabbrev <buffer> ulli <ul><CR><li><++></li><Esc>yypo</ul><CR><++><Esc>4kA
   autocmd Filetype html iabbrev <buffer> olli <ol><CR><li><++></li><Esc>yypo</ol><CR><++><Esc>4kA
   autocmd Filetype html iabbrev <buffer> stylee <style><CR></style><Esc>ko
@@ -77,6 +78,7 @@ if !exists("jiaoshijie_html")
   autocmd Filetype html inoremap <buffer> <localleader>d <button></button><++><Esc>F/hi
   autocmd Filetype html inoremap <buffer> <localleader>l <a href=""><++></a><Esc>F"i
   autocmd Filetype html inoremap <buffer> <localleader>p <img src="" alt="<++>"><Esc>0f"a
+  autocmd Filetype html inoremap <buffer> <localleader>s <script src=""></script><Esc>0f"a
   " div
   " header section footer nav figure(figcaption)
 endif
