@@ -95,30 +95,30 @@ if has('nvim')
 
 
   "-----* nerdtree *------"
-  nnoremap tt :nerdtreetoggle<cr>
+  nnoremap tt :NERDTreeToggle<cr>
 
   "------* tagbar *-----"
-  nnoremap <silent> t :vista!!<cr>
-  nnoremap <silent> <c-t> :vista finder<cr>
+  nnoremap <silent> t :Vista!!<cr>
+  nnoremap <silent> <c-t> :Vista finder<cr>
 
   "------* vim-interestingwords *-----"
   nnoremap <silent> <leader>k :call interestingwords('n')<cr>
-  nnoremap <silent> <leader>k :call uncolorallwords()<cr>
+  nnoremap <silent> <leader>K :call uncolorallwords()<cr>
 
   "------* fzf *------"
   " nnoremap <c-p> :fzf<cr>
-  nnoremap <c-p> :ag<cr>
+  nnoremap <c-p> :Ag<cr>
   nnoremap <leader>bb :buffers<cr>
-  nnoremap <leader>fg :gfiles<cr>
-  nnoremap <leader>fr :startify<cr>
-  nnoremap <leader>ff :fzf<cr>
-  nnoremap <leader>fj :fzf ~<cr>
+  nnoremap <leader>fg :GFiles<cr>
+  nnoremap <leader>fr :Startify<cr>
+  nnoremap <leader>ff :FZF<cr>
+  nnoremap <leader>fj :FZF ~<cr>
 
   "------* undo tree *-----"
   nnoremap <leader>pu :undotreetoggle<cr>
 
   "------* far *-----"
-  nnoremap <leader>f :far  %<left><left>
+  nnoremap <leader>F :far  %<left><left>
   nnoremap <leader>pfd :fardo<cr>
 
   "-----* markdown *------"
@@ -126,20 +126,20 @@ if has('nvim')
   nnoremap <leader>ps :markdownpreviewstop<cr>
 
   "-----* ranger-vim *-----"
-  nnoremap <leader>r :ranger<cr>
+  nnoremap <leader>R :ranger<cr>
 
   "-----* goyo *-----"
-  nnoremap <leader>g :goyo<cr>
+  nnoremap <leader>G :goyo<cr>
 
   "-----* vimwiki *-----"
   " :h vimwiki-commands
   " :h vimwiki
 
   "-----* nerd-commenter *-----"
-  nmap <leader>cc <plug>nerdcommentertoggle
-  vmap <leader>cc <plug>nerdcommentertoggle
-  nmap <leader>ca <plug>nerdcommenteraltdelims
-  nmap <leader>ca <plug>nerdcommenterappend
+  nmap <leader>cc <plug>NERDCommenterToggle
+  vmap <leader>cc <plug>NERDCommenterToggle
+  nmap <leader>ca <plug>NERDCommenterAltDelims
+  nmap <leader>cA <plug>NERDCommenterAppend
 
   "-----* multi_cursor *-----"
   let g:multi_cursor_start_word_key      = '<c-n>'
@@ -148,4 +148,5 @@ if has('nvim')
   let g:multi_cursor_prev_key            = '<C-p>'
   let g:multi_cursor_skip_key            = '<C-x>'
   let g:multi_cursor_quit_key            = '<Esc>'
+
 endif
