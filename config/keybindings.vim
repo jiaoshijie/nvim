@@ -108,7 +108,7 @@ if has('nvim')
   "------* fzf *------"
   " nnoremap <c-p> :fzf<cr>
   nnoremap <c-p> :Ag<cr>
-  nnoremap <leader>bb :buffers<cr>
+  nnoremap <leader>bb :Buffers<cr>
   nnoremap <leader>fg :GFiles<cr>
   nnoremap <leader>fr :Startify<cr>
   nnoremap <leader>ff :FZF<cr>
