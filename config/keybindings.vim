@@ -122,8 +122,8 @@ if has('nvim')
   nnoremap <leader>pfd :fardo<cr>
 
   "-----* markdown *------"
-  nnoremap <leader>pp :markdownpreview<cr>
-  nnoremap <leader>ps :markdownpreviewstop<cr>
+  nnoremap <leader>pp :MarkdownPreview<cr>
+  nnoremap <leader>ps :MarkdownPreviewStop<cr>
 
   "-----* ranger-vim *-----"
   nnoremap <leader>R :ranger<cr>
