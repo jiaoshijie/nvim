@@ -98,7 +98,7 @@ if has('nvim')
   nnoremap tt :NERDTreeToggle<cr>
 
   "------* tagbar *-----"
-  nnoremap <silent> t :Vista!!<cr>
+  nnoremap <silent> T :Vista!!<cr>
   nnoremap <silent> <c-t> :Vista finder<cr>
 
   "------* vim-interestingwords *-----"
@@ -126,10 +126,10 @@ if has('nvim')
   nnoremap <leader>ps :MarkdownPreviewStop<cr>
 
   "-----* ranger-vim *-----"
-  nnoremap <leader>R :ranger<cr>
+  nnoremap <leader>R :Ranger<cr>
 
   "-----* goyo *-----"
-  nnoremap <leader>G :goyo<cr>
+  nnoremap <leader>G :Goyo<cr>
 
   "-----* vimwiki *-----"
   " :h vimwiki-commands

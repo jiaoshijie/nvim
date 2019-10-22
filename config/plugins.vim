@@ -71,6 +71,7 @@ Plug 'rbgrouleff/bclose.vim'
 " others
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/goyo.vim'
+Plug 'SirVer/ultisnips'
 
 call plug#end()
 
