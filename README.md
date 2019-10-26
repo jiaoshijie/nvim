@@ -3,8 +3,8 @@
 ## 安装依赖
 1. install ~~clang~~ ccls for c/c++ `sudo pacman -S ccls`
 2. install pynvim for python `pip3 install --user --no-binary :all: pynvim`
-3. install fzf for fzf `sudo pacman -S fzf`
-4. install ctags for jump function define list `sudo pacman -S ctags`
+3. install fzf for fzf-vim `sudo pacman -S fzf`
+4. install ctags and cscope for jump function define list `sudo pacman -S ctags cscope`
 5. install figlet for inputing text ASCII art `sudo pacman -S figlet`
 6. install xsel for use system clipboard `sudo pacman -S xsel`
 7. install live-server for html-preview `sudo pacman -S nodejs npm` and `sudo npm install -g live-server`
@@ -86,7 +86,6 @@
 | Command  | Motion                       |
 | -------  | ---                          |
 | F2       | 打开init.vim                 |
-| F5       | 重新建立ctags索引列表        |
 | 上下左右 | 调整分屏窗口的大小           |
 | tt       | 打开nerdtree                 |
 | T        | 打开Vista(Vista){类似tagbar} |

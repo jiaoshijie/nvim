@@ -146,9 +146,7 @@ set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 "let g:vista_default_executive = 'ctags'
-" To enable fzf's preview window set g:vista_fzf_preview.
 " The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
-" For example:
 let g:vista_fzf_preview = ['right:50%']
 
 " ----- * Ranger.vim * ----- "

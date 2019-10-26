@@ -10,6 +10,10 @@ set fileencodings=utf-8,gbk,utf-16le,cp1252,iso-8859-15,ucs-bom
 set fileformats=unix,dos,mac
 set mouse=a
 
+" set spell spellang=en_us
+" set dictionary+=~/.config/nvim/dict
+" display and register show register content
+
 set background=dark
 colorscheme space_vim_theme
 let g:space_vim_transp_bg = 1
@@ -48,7 +52,6 @@ set list
 set listchars=trail:▫,tab:,extends:≫,precedes:≪
 set scrolloff=6
 set viewoptions=folds,options,cursor,unix,slash  " Better Unix / Windows compatibility
-" set colorcolumn=+1  " color the 81 column for warning
 
 " open big file for fast
 set lazyredraw
@@ -56,13 +59,11 @@ set lazyredraw
 " cancel the annoying bell
 set visualbell
 set noerrorbells
-set noerrorbells novisualbell t_vb=
 set belloff=all
 
 set autoread
 set autowrite
 " set autowriteall
-" set virtualedit=onemore  " used with caution of breaking plugins
 
 " indent
 set autoindent
@@ -70,7 +71,6 @@ set indentexpr=
 set backspace=indent,eol,start
 set smartindent
 " set paste
-" set copyindent
 
 " search
 exec 'nohlsearch'
@@ -100,10 +100,10 @@ set shortmess+=c
 
 " show commend meun
 set wildmenu
-if has('nvim')  " Use floating windows to complete the commond, only neovim support
+if has('nvim')
   set wildoptions=pum
   " set termguicolors " 和一个插件冲突
-  set pumblend=30  " Let floatingwindow to be transparable
+  set pumblend=30
 else " for vim
   set wildmode=list:longest,full
 endif
@@ -114,27 +114,33 @@ set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,.git\*,.hg\*,.svn\*
 set splitright
 set splitbelow
 
-" set Universal CTags
+" ------* set Universal CTags *--------
+" ctags -R -f .tags
 set tags=./.tags;,.tags
-let gitroot = substitute(system('git rev-parse --show-toplevel'),'[\n\r]', '', 'g') " Make tags placed in .git/tags file available in all levels of a repository
-if gitroot != ''
-    let &tags = &tags . ',' . gitroot . '/.git/tags'
+
+
+" -------* cscope *--------
+" cscope -Rbq
+if has("cscope")
+  set csprg=/usr/bin/cscope
+  set csto=1
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+    set noautochdir
+    cs add cscope.out
+  endif
+  set csverb
 endif
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+set switchbuf=useopen
 
-" set whichwrap=b,s,h,l,<,>,~,[,] " Backspace and cursor keys wrap too
-" set iskeyword-=_,.,=,-,:,
-" set spell spellang=en_us
-" set dictionary+=~/.config/nvim/dict
-" display and register show register content
-
-set switchbuf=useopen  " quickfix window instead of opening new buffers
 
 " 打开自动定位到上次编辑的位置
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 if has('nvim')  " for nvim
-  " syntax enable
-  " syntax on
   set clipboard+=unnamedplus
   set inccommand=split
 
@@ -151,3 +157,63 @@ else   " for vim
   set guioptions-=r
   set guioptions-=m
 endif
+
+"##### auto fcitx  ###########
+let g:input_toggle = 1
+function! Fcitx2en()
+   let s:input_status = system("fcitx-remote")
+   if s:input_status == 2
+      let g:input_toggle = 1
+      let l:a = system("fcitx-remote -c")
+   endif
+endfunction
+
+function! Fcitx2zh()
+   let s:input_status = system("fcitx-remote")
+   if s:input_status != 2 && g:input_toggle == 1
+      let l:a = system("fcitx-remote -o")
+      let g:input_toggle = 0
+   endif
+endfunction
+
+set ttimeoutlen=150
+"退出插入模式
+autocmd InsertLeave * call Fcitx2en()
+"进入插入模式
+autocmd InsertEnter * call Fcitx2zh()
+"##### auto fcitx end ######
+
+" Compile function
+func! CompileRunGcc()
+	exec "w"
+	if &filetype == 'c'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		set splitbelow
+		exec "!g++ -std=c++11 % -Wall -o %<"
+		:sp
+		:res -15
+		:term ./%<
+	elseif &filetype == 'java'
+		exec "!javac %"
+		exec "!time java %<"
+	elseif &filetype == 'sh'
+		:!time bash %
+	elseif &filetype == 'python'
+		set splitbelow
+		:sp
+		:term python3 %
+	elseif &filetype == 'html'
+		silent! exec "!google-chrome-stable % &"
+	elseif &filetype == 'markdown'
+		exec "MarkdownPreview"
+	elseif &filetype == 'tex'
+		silent! exec "VimtexStop"
+		silent! exec "VimtexCompile"
+	elseif &filetype == 'go'
+		set splitbelow
+		:sp
+		:term go run %
+	endif
+endfunc

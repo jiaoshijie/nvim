@@ -1,4 +1,4 @@
-" set leader
+" set leader Space
 let mapleader=' '
 
 " vim useful mapings
@@ -8,7 +8,29 @@ cnoremap <C-f> <Right>
 cnoremap <C-d> <del>
 
 nnoremap <F2> :edit ~/.config/nvim/init.vim<CR>
-nnoremap <F5> :!ctags -R<CR>
+
+" -----* ctags *-------
+" nnoremap <F5> :!ctags -R -f .tags<CR><CR>
+" 查看函数定义的位置
+nnoremap <F12> g<C-]>
+
+" -----* QuickFix *-------
+nnoremap <F3> :cprevious<cr>
+nnoremap <F4> :cnext<cr>
+
+" 编译执行
+noremap <F5> :call CompileRunGcc()<CR>
+
+" -----* cscope *-------
+" F6: 类似ctags F7: egrep-mode匹配 F8: 查找字符串
+" F9: 查找c符号 F10: 查找本函数调用了谁 F11: 查找谁调用了本函数
+" nmap <silent> <F6> :cs find g <C-R>=expand("<cword>")<CR><CR>
+" nmap <silent> <F7> :cs find e <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+nnoremap <silent> <F8> :cs find t <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+nnoremap <silent> <F9> :cs find s <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+nmap <silent> <F10> :cs find d <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+nnoremap <silent> <F11> :cs find c <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+
 
 " normal mode mapings
 nnoremap <leader>s :w<cr>
@@ -62,10 +84,6 @@ nnoremap <leader>xr :%!xxd -r<CR>
 nnoremap <leader>eg :e ++enc=gbk<CR>
 nnoremap <leader>eu :e ++enc=utf8<CR>
 
-" use ]+space create spaceline
-nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
-nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
-
 " inster mode mapings
 " inoremap jk <Esc>
 inoremap <C-j> <Esc>
@@ -115,7 +133,7 @@ if has('nvim')
   nnoremap <leader>fj :FZF ~<cr>
 
   "------* undo tree *-----"
-  nnoremap <leader>pu :undotreetoggle<cr>
+  nnoremap <leader>pu :UndotreeToggle<cr>
 
   "------* far *-----"
   nnoremap <leader>F :far  %<left><left>
