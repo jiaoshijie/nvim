@@ -32,7 +32,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'lfv89/vim-interestingwords'
 
 " 静态检查代码 coc代替
-" Plug 'w0rp/ale'
+" Plug 'dense-analysis/ale'
 
 " 括号补全插件
 Plug 'Raimondi/delimitMate'
@@ -72,6 +72,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/goyo.vim'
 Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -175,3 +176,7 @@ let g:multi_cursor_exit_from_insert_mode = 1
 let g:multi_cursor_exit_from_visual_mode = 1
 let g:multi_cursor_normal_maps = {'@': 1, 'F': 1, 'T': 1, '[': 1, '\': 1, ']': 1, '!': 1, '"': 1, 'c': 1, 'd': 1, 'f': 1, 'g': 1, 'm': 1, 'q': 1, 'r': 1, 't': 1, 'y': 1, 'z': 1, '<': 1, '=': 1, '>': 1}
 let g:multi_cursor_visual_maps = {'T': 1, 'a': 1, 't': 1, 'F': 1, 'f': 1, 'i': 1}
+
+" ----- * UltiSnips * ----- "
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/']

@@ -167,4 +167,9 @@ if has('nvim')
   let g:multi_cursor_skip_key            = '<C-x>'
   let g:multi_cursor_quit_key            = '<Esc>'
 
+  " -----* UltiSnips *----- "
+  let g:UltiSnipsExpandTrigger="<C-l>"
+  let g:UltiSnipsJumpForwardTrigger="<C-l>"
+  let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+
 endif
