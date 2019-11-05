@@ -55,6 +55,7 @@ Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'dkarter/bullets.vim'
 Plug 'godlygeek/tabular' " 文本对齐
 Plug 'vimwiki/vimwiki'
+" Plug 'jceb/vim-orgmode'
 
 "Bookmakrs
 Plug 'kshenoy/vim-signature'
@@ -72,6 +73,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/goyo.vim'
 Plug 'SirVer/ultisnips'
+Plug 'easymotion/vim-easymotion'
 " Plug 'honza/vim-snippets'
 
 call plug#end()

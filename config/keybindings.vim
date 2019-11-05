@@ -172,4 +172,10 @@ if has('nvim')
   let g:UltiSnipsJumpForwardTrigger="<C-l>"
   let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
+  " -----* easymotion *----- "
+  " map <leader>ee <Plug>(easymotion-bd-f)
+  nmap <leader>ee <Plug>(easymotion-overwin-f)
+  nmap <leader>es <Plug>(easymotion-overwin-f2)
+  
+
 endif

@@ -36,13 +36,13 @@ endif
 if !exists("jiaoshijie_html")
   let jiaoshijie_html = 1
   autocmd Filetype html inoremap <buffer> <localleader>f <Esc>0f>a
-  autocmd Filetype html inoremap <buffer> <localleader>1 <h1></h1><Esc>0f>a
-  autocmd Filetype html inoremap <buffer> <localleader>2 <h2></h2><Esc>0f>a
-  autocmd Filetype html inoremap <buffer> <localleader>3 <h3></h3><Esc>0f>a
-  autocmd Filetype html inoremap <buffer> <localleader>4 <h4></h4><Esc>0f>a
-  autocmd Filetype html inoremap <buffer> <localleader>5 <h5></h5><Esc>0f>a
-  autocmd Filetype html inoremap <buffer> <localleader>6 <h6></h6><Esc>0f>a
   autocmd Filetype html inoremap <buffer> <localleader><CR> <br>
+  " autocmd Filetype html inoremap <buffer> <localleader>1 <h1></h1><Esc>0f>a
+  " autocmd Filetype html inoremap <buffer> <localleader>2 <h2></h2><Esc>0f>a
+  " autocmd Filetype html inoremap <buffer> <localleader>3 <h3></h3><Esc>0f>a
+  " autocmd Filetype html inoremap <buffer> <localleader>4 <h4></h4><Esc>0f>a
+  " autocmd Filetype html inoremap <buffer> <localleader>5 <h5></h5><Esc>0f>a
+  " autocmd Filetype html inoremap <buffer> <localleader>6 <h6></h6><Esc>0f>a
 "   autocmd Filetype html iabbrev <buffer> hhead <!DOCTYPE html><CR><html lang="en"><CR><head><CR><meta charset="UTF-8"><CR><title><++></title><CR></head><CR><body><CR><++><CR></body><CR></html><ESC>gg,f
 "   autocmd Filetype html iabbrev <buffer> ulli <ul><CR><li><++></li><Esc>yypo</ul><CR><++><Esc>4kA
 "   autocmd Filetype html iabbrev <buffer> olli <ol><CR><li><++></li><Esc>yypo</ol><CR><++><Esc>4kA
