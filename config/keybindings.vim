@@ -121,10 +121,9 @@ if has('nvim')
 
   "------* vim-interestingwords *-----"
   nnoremap <silent> <leader>k :call interestingwords('n')<cr>
-  nnoremap <silent> <leader>K :call uncolorallwords()<cr>
+  " nnoremap <silent> <leader>K :call uncolorallwords()<cr>
 
   "------* fzf *------"
-  " nnoremap <c-p> :fzf<cr>
   nnoremap <c-p> :Ag<cr>
   nnoremap <leader>bb :Buffers<cr>
   nnoremap <leader>fg :GFiles<cr>
@@ -176,6 +175,13 @@ if has('nvim')
   " map <leader>ee <Plug>(easymotion-bd-f)
   nmap <leader>ee <Plug>(easymotion-overwin-f)
   nmap <leader>es <Plug>(easymotion-overwin-f2)
+  
+  " -----* which key *----- "
+  nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+  nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
+  " -----* LeaderF *----- "
+  " let g:Lf_ShortcutF = '<C-p>'
   
 
 endif

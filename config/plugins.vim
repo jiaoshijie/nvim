@@ -75,6 +75,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'SirVer/ultisnips'
 Plug 'easymotion/vim-easymotion'
 " Plug 'honza/vim-snippets'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 call plug#end()
 
@@ -182,3 +184,8 @@ let g:multi_cursor_visual_maps = {'T': 1, 'a': 1, 't': 1, 'F': 1, 'f': 1, 'i': 1
 " ----- * UltiSnips * ----- "
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/']
+
+" -----* which key *----- "
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+let g:which_key_map = {}
