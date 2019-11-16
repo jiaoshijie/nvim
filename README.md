@@ -2,7 +2,7 @@
 
 ## 安装依赖
 1. install ~~clang~~ ccls for c/c++ `sudo pacman -S ccls`
-2. install pynvim for python `pip3 install --user --no-binary :all: pynvim`
+2. install pynvim for python plugs `pip3 install --user --no-binary :all: pynvim` or `python3 -m pip install --user --upgrade pynvim`
 3. install fzf for fzf-vim `sudo pacman -S fzf`
 4. install ctags and cscope for jump function define list `sudo pacman -S ctags cscope`
 5. install figlet for inputing text ASCII art `sudo pacman -S figlet`

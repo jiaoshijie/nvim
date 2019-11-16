@@ -75,7 +75,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'SirVer/ultisnips'
 Plug 'easymotion/vim-easymotion'
 " Plug 'honza/vim-snippets'
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 call plug#end()
