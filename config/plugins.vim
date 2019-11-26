@@ -10,6 +10,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'liuchengxu/space-vim-theme'
 Plug 'mhinz/vim-startify'
+Plug 'ajmwagar/vim-deus'
 
 " 代码缩进提示
 Plug 'Yggdroot/indentLine'
@@ -18,15 +19,11 @@ Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'Shougo/defx.nvim'
-" Plug 'kristijanhusak/defx-icons'
 
 " 查找
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vista.vim'
-" Plug 'majutsushi/tagbar'
-" Plug 'Yggdroot/LeaderF'
 
 " 高亮感兴趣的单词
 Plug 'lfv89/vim-interestingwords'
@@ -55,7 +52,7 @@ Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'dkarter/bullets.vim'
 Plug 'godlygeek/tabular' " 文本对齐
 Plug 'vimwiki/vimwiki'
-" Plug 'jceb/vim-orgmode'
+Plug 'lervag/vimtex'
 
 "Bookmakrs
 Plug 'kshenoy/vim-signature'
@@ -82,7 +79,7 @@ call plug#end()
 
 
 " ----- * coc * ----- "
-let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver', 'coc-texlab']
 
 " ----- * NERDTree * ----- "
 let NERDTreeMapToggleHidden = "zh"
@@ -108,7 +105,7 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_symbols.linenr = '¶'
-let g:airline_theme='light'
+let g:airline_theme='deus'
 
 " ----- * indentLine * ----- "
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
