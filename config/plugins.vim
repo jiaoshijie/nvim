@@ -79,7 +79,7 @@ call plug#end()
 
 
 " ----- * coc * ----- "
-let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver', 'coc-texlab']
+let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver']
 
 " ----- * NERDTree * ----- "
 let NERDTreeMapToggleHidden = "zh"
@@ -129,6 +129,7 @@ let g:undotree_HighlightChangedText = 1
 " set regexpengine=1
 
 " ----- * Markdown * ----- "
+let g:mkdp_path_to_chrome = "qutebrowser"
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_open = 0
 let g:mkdp_auto_close = 0
@@ -186,3 +187,7 @@ let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/']
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
 let g:which_key_map = {}
+
+" -----* New Section *----- "
+let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_view_general_viewer = 'zathura'

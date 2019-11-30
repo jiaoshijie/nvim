@@ -9,6 +9,7 @@
 6. install xsel for use system clipboard `sudo pacman -S xsel`
 7. install live-server for html-preview `sudo pacman -S nodejs npm` and `sudo npm install -g live-server`
 8. install flake8 and jedi for python linting and completion `sudo pip install flake8 jedi `
+9. install neovim-remote for tex `sudo pip3 install neovim-remote `
 
 ## Keyboard Shortcuts
 ### command-mode

@@ -93,7 +93,8 @@ set formatoptions-=tc
 " auto to dir
 set laststatus=2
 set showcmd
-set autochdir
+" set autochdir
+set noautochdir
 set history=1000
 " set notimeout
 set timeoutlen=500

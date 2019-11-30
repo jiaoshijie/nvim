@@ -28,8 +28,10 @@ noremap <F5> :call CompileRunGcc()<CR>
 " nmap <silent> <F7> :cs find e <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
 nnoremap <silent> <F8> :cs find t <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
 nnoremap <silent> <F9> :cs find s <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
-nmap <silent> <F10> :cs find d <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+nnoremap <silent> <F10> :cs find d <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
 nnoremap <silent> <F11> :cs find c <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+
+nnoremap <silent> <F6> :cclose<CR>
 
 
 " normal mode mapings
