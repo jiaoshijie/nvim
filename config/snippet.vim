@@ -26,6 +26,7 @@ if !exists("jiaoshijie_markdown")
   autocmd FileType markdown inoremap <buffer> <localleader>4 #### <CR><++><Esc>kA
   autocmd FileType markdown inoremap <buffer> <localleader>5 ##### <CR><++><Esc>kA
   autocmd FileType markdown inoremap <buffer> <localleader>6 ###### <CR><++><Esc>kA
+  autocmd Filetype markdown inoremap <buffer> <localleader><CR> <br>
 endif
 
 

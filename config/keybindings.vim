@@ -9,17 +9,11 @@ cnoremap <C-d> <del>
 
 nnoremap <F2> :edit ~/.config/nvim/init.vim<CR>
 
-" -----* ctags *-------
-" nnoremap <F5> :!ctags -R -f .tags<CR><CR>
-" 查看函数定义的位置
-nnoremap <F12> g<C-]>
 
 " -----* QuickFix *-------
-nnoremap <F3> :cprevious<cr>
-nnoremap <F4> :cnext<cr>
-
-" 编译执行
-noremap <F5> :call CompileRunGcc()<CR>
+nnoremap <F5> :cprevious<cr>
+nnoremap <F6> :cnext<cr>
+nnoremap <silent> <F7> :cclose<CR>
 
 " -----* cscope *-------
 " F6: 类似ctags F7: egrep-mode匹配 F8: 查找字符串
@@ -31,7 +25,10 @@ nnoremap <silent> <F9> :cs find s <C-R>=expand("<cword>")<CR><CR> :botright cope
 nnoremap <silent> <F10> :cs find d <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
 nnoremap <silent> <F11> :cs find c <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
 
-nnoremap <silent> <F6> :cclose<CR>
+" -----* ctags *-------
+" nnoremap <F5> :!ctags -R -f .tags<CR><CR>
+" 查看函数定义的位置
+nnoremap <F12> g<C-]>
 
 
 " normal mode mapings
@@ -178,13 +175,11 @@ if has('nvim')
   " map <leader>ee <Plug>(easymotion-bd-f)
   nmap <leader>ee <Plug>(easymotion-overwin-f)
   nmap <leader>es <Plug>(easymotion-overwin-f2)
-  
+
   " -----* which key *----- "
   nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
   nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
   " -----* LeaderF *----- "
   " let g:Lf_ShortcutF = '<C-p>'
-  
-
 endif
