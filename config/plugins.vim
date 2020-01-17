@@ -8,8 +8,9 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " 美化插件
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'liuchengxu/space-vim-theme'
 Plug 'mhinz/vim-startify'
+" Plug 'liuchengxu/space-vim-theme'
+" Plug 'joshdick/onedark.vim'
 Plug 'ajmwagar/vim-deus'
 
 " 代码缩进提示
@@ -73,7 +74,7 @@ Plug 'SirVer/ultisnips'
 Plug 'easymotion/vim-easymotion'
 " Plug 'honza/vim-snippets'
 " Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+" Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 call plug#end()
 
@@ -111,8 +112,7 @@ let g:airline_theme='deus'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " ----- * vim-interestingwords * ----- "
-let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
-" let g:interestingWordsRandomiseColors = 1
+let g:interestingWordsRandomiseColors = 1
 
 " ----- * Undo Tree * ----- "
 let g:undotree_CustomUndotreeCmd  = 'topleft vertical 40 new'
@@ -128,7 +128,8 @@ let g:undotree_HighlightChangedText = 1
 " set regexpengine=1
 
 " ----- * Markdown * ----- "
-let g:mkdp_path_to_chrome = "qutebrowser"
+" let g:mkdp_path_to_chrome = "qutebrowser"
+let g:mkdp_path_to_chrome = "surf"
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_open = 0
 let g:mkdp_auto_close = 0
@@ -148,7 +149,6 @@ set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 "let g:vista_default_executive = 'ctags'
-" The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
 let g:vista_fzf_preview = ['right:50%']
 
 " ----- * Ranger.vim * ----- "
@@ -165,11 +165,12 @@ let g:vimwiki_list = [{'path': '~/Nutstore Files/Nutstore/MARKDOWN_NOTE/',
 
 " ----- * nerdcommenter * ----- "
 let g:NERDCreateDefaultMappings = 0
+let g:NERDTreeShowHidden=1
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCompactSexyComs = 1
 let g:NERDToggleCheckAllLines = 1
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 
 " ----- * multi_cursor * ----- "
 let g:multi_cursor_use_default_mapping = 0
@@ -183,9 +184,9 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/']
 
 " -----* which key *----- "
-let g:mapleader = "\<Space>"
-let g:maplocalleader = ','
-let g:which_key_map = {}
+" let g:mapleader = "\<Space>"
+" let g:maplocalleader = ','
+" let g:which_key_map = {}
 
 " -----* New Section *----- "
 let g:vimtex_compiler_progname = 'nvr'

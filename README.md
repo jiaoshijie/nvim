@@ -10,6 +10,7 @@
 7. install live-server for html-preview `sudo pacman -S nodejs npm` and `sudo npm install -g live-server`
 8. install flake8 and jedi for python linting and completion `sudo pip install flake8 jedi `
 9. install neovim-remote for tex `sudo pip3 install neovim-remote `
+10. install ag seach for fzf some function `sudo pacman -S the_silver_searcher`
 
 ## Keyboard Shortcuts
 ### command-mode
@@ -87,6 +88,14 @@
 | Command  | Motion                       |
 | -------  | ---                          |
 | F2       | 打开init.vim                 |
+| F5       | quickfix表的上一项           |
+| F6       | quickfix表的下一项           |
+| F7       | 关闭quickfix表               |
+| F8       | 查找当前字符串               |
+| F9       | 查找c符号                    |
+| F10      | 查找本函数调用的函数         |
+| F11      | 查找调用本函数的函数         |
+| F12      | 跳转到函数定义的位置         |
 | 上下左右 | 调整分屏窗口的大小           |
 | tt       | 打开nerdtree                 |
 | T        | 打开Vista(Vista){类似tagbar} |

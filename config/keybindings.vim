@@ -177,8 +177,8 @@ if has('nvim')
   nmap <leader>es <Plug>(easymotion-overwin-f2)
 
   " -----* which key *----- "
-  nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-  nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+  " nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+  " nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
   " -----* LeaderF *----- "
   " let g:Lf_ShortcutF = '<C-p>'
