@@ -4,6 +4,8 @@
 
 " set localleader
 let maplocalleader=','
+inoremap <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
+nnoremap <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
 " autocmd FileType c,cpp,markdown,html,css nnoremap <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
 
 " ---------------- "
@@ -11,8 +13,8 @@ let maplocalleader=','
 " ---------------- "
 if !exists("jiaoshijie_markdown")
   let jiaoshijie_markdown = 1
-  autocmd FileType markdown inoremap <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
-  autocmd FileType markdown nnoremap <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
+  " autocmd FileType markdown inoremap <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
+  " autocmd FileType markdown nnoremap <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
   autocmd Filetype markdown iabbrev <buffer> tabb \|<++>\|<++>\|<CR>----<Esc>byw0pdwkyyjpp4k0
   autocmd Filetype markdown inoremap <buffer> <localleader>m ```{}<Enter><++><Enter>```<Enter><Enter><++><Esc>4k$i
   autocmd Filetype markdown inoremap <buffer> <localleader>b **** <++><Esc>F*hi

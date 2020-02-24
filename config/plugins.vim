@@ -76,6 +76,9 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
+" Gun-octave
+" Plug 'McSinyx/vim-octave'
+
 call plug#end()
 
 
@@ -188,6 +191,13 @@ let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/']
 " let g:maplocalleader = ','
 " let g:which_key_map = {}
 
-" -----* New Section *----- "
+" -----* vimtex *----- "
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_general_viewer = 'zathura'
+
+
+" -----* Gun octave *----- "
+" augroup gunoctave
+"   autocmd!
+"   autocmd BufRead,BufNewFile *.m,*.oct setlocal filetype=octave
+" augroup END
