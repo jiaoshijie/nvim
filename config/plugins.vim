@@ -9,8 +9,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
-" Plug 'liuchengxu/space-vim-theme'
-" Plug 'joshdick/onedark.vim'
+Plug 'liuchengxu/space-vim-theme'
 Plug 'ajmwagar/vim-deus'
 
 " 代码缩进提示
@@ -53,6 +52,8 @@ Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'dkarter/bullets.vim'
 Plug 'godlygeek/tabular' " 文本对齐
 Plug 'vimwiki/vimwiki'
+
+" latex
 Plug 'lervag/vimtex'
 
 "Bookmakrs
@@ -68,7 +69,6 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
 " others
-Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/goyo.vim'
 Plug 'SirVer/ultisnips'
 Plug 'easymotion/vim-easymotion'
@@ -76,14 +76,12 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
-" Gun-octave
-" Plug 'McSinyx/vim-octave'
-
 call plug#end()
 
 
 " ----- * coc * ----- "
-let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver', 'coc-vimtex']
+" 移除'coc-texlab'
 
 " ----- * NERDTree * ----- "
 let NERDTreeMapToggleHidden = "zh"
@@ -175,13 +173,6 @@ let g:NERDCompactSexyComs = 1
 let g:NERDToggleCheckAllLines = 1
 " let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 
-" ----- * multi_cursor * ----- "
-let g:multi_cursor_use_default_mapping = 0
-let g:multi_cursor_exit_from_insert_mode = 1
-let g:multi_cursor_exit_from_visual_mode = 1
-let g:multi_cursor_normal_maps = {'@': 1, 'F': 1, 'T': 1, '[': 1, '\': 1, ']': 1, '!': 1, '"': 1, 'c': 1, 'd': 1, 'f': 1, 'g': 1, 'm': 1, 'q': 1, 'r': 1, 't': 1, 'y': 1, 'z': 1, '<': 1, '=': 1, '>': 1}
-let g:multi_cursor_visual_maps = {'T': 1, 'a': 1, 't': 1, 'F': 1, 'f': 1, 'i': 1}
-
 " ----- * UltiSnips * ----- "
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/']
@@ -194,10 +185,13 @@ let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/']
 " -----* vimtex *----- "
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_general_viewer = 'zathura'
-
-
-" -----* Gun octave *----- "
-" augroup gunoctave
-"   autocmd!
-"   autocmd BufRead,BufNewFile *.m,*.oct setlocal filetype=octave
-" augroup END
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-xelatex',
+    \   '-shell-escape',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}

@@ -15,9 +15,9 @@ set mouse=a
 " display and register show register content
 
 set background=dark
-" colorscheme space_vim_theme
-" let g:space_vim_transp_bg = 1
-colorscheme deus
+colorscheme space_vim_theme
+let g:space_vim_transp_bg = 1
+" colorscheme deus
 
 set foldmethod=indent
 set nofoldenable
@@ -92,7 +92,7 @@ set showcmd
 set noautochdir
 set history=1000
 " set notimeout
-set timeoutlen=500
+set timeoutlen=1000
 set shortmess+=c
 
 " show commend meun

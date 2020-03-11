@@ -4,18 +4,15 @@
 
 " set localleader
 let maplocalleader=','
-inoremap <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
-nnoremap <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
-" autocmd FileType c,cpp,markdown,html,css nnoremap <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
 
 " ---------------- "
 " --* markdown *-- "
 " ---------------- "
 if !exists("jiaoshijie_markdown")
   let jiaoshijie_markdown = 1
-  " autocmd FileType markdown inoremap <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
-  " autocmd FileType markdown nnoremap <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
-  autocmd Filetype markdown iabbrev <buffer> tabb \|<++>\|<++>\|<CR>----<Esc>byw0pdwkyyjpp4k0
+  autocmd FileType markdown inoremap <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
+  autocmd FileType markdown nnoremap <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
+  autocmd Filetype markdown iabbrev <buffer> tabb \|<++>\|<++>\|<CR>----<Esc>bywbbpdwkyyjpp4k0
   autocmd Filetype markdown inoremap <buffer> <localleader>m ```{}<Enter><++><Enter>```<Enter><Enter><++><Esc>4k$i
   autocmd Filetype markdown inoremap <buffer> <localleader>b **** <++><Esc>F*hi
   autocmd Filetype markdown inoremap <buffer> <localleader>i ** <++><Esc>F*i
@@ -61,42 +58,3 @@ if !exists("jiaoshijie_html")
 "   autocmd Filetype html inoremap <buffer> <localleader>s <script src=""></script><Esc>0f"a
 "   " header section footer nav figure(figcaption) div
 endif
-
-
-" ---------------- "
-" -----* CSS *---- "
-" ---------------- "
-" if !exists("jiaoshijie_css")
-"   let jiaoshijie_css = 1
-"   autocmd Filetype css iabbrev <buffer> mediaa @media screen and () {<CR><++><CR>}<Esc>2k0f(a
-" endif
-
-
-" ---------------- "
-" -----* c *------ "
-" ---------------- "
-" if !exists("jiaoshijie_c")
-"   let jiaoshijie_c = 1
-"   autocmd FileType c inoremap <buffer> #ins #include <><Left>
-"   autocmd FileType c inoremap <buffer> #inl #include ""<Left>
-"   autocmd FileType c inoremap <buffer> #de #define 
-"   autocmd FileType c iabbrev <buffer> iff if()<cr>{<cr><tab><++><cr>}<esc>3k0f(a
-"   autocmd FileType c iabbrev <buffer> forr for(;<++>;<++>)<cr>{<cr><tab><++><cr>}<esc>3k0f(a
-"   autocmd FileType c iabbrev <buffer> whilee while()<cr>{<cr><tab><++><cr>}<esc>3k0f(a
-"   " autocmd FileType c iabbrev <buffer> funn (<++>)<cr>{<cr><tab><++><cr>}<esc>3k0f(i
-" endif
-
-
-" ---------------- "
-" --* cplusplus *- "
-" ---------------- "
-" if !exists("jiaoshijie_cpp")
-"   let jiaoshijie_cpp = 1
-"   autocmd FileType cpp inoremap <buffer> #ins #include <><Left>
-"   autocmd FileType cpp inoremap <buffer> #inl #include ""<Left>
-"   autocmd FileType cpp inoremap <buffer> #de #define 
-"   autocmd FileType cpp iabbrev <buffer> iff if()<cr>{<cr><tab><++><cr>}<esc>3k0f(a
-"   autocmd FileType cpp iabbrev <buffer> forr for(;<++>;<++>)<cr>{<cr><tab><++><cr>}<esc>3k0f(a
-"   autocmd FileType cpp iabbrev <buffer> whilee while()<cr>{<cr><tab><++><cr>}<esc>3k0f(a
-"   " autocmd FileType cpp iabbrev <buffer> funn (<++>)<cr>{<cr><tab><++><cr>}<esc>3k0f(i
-" endif

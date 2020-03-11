@@ -158,14 +158,6 @@ if has('nvim')
   nmap <leader>ca <plug>NERDCommenterAltDelims
   nmap <leader>cA <plug>NERDCommenterAppend
 
-  "-----* multi_cursor *-----"
-  let g:multi_cursor_start_word_key      = '<c-n>'
-  let g:multi_cursor_select_all_word_key = '<A-n>'
-  let g:multi_cursor_next_key            = '<C-n>'
-  let g:multi_cursor_prev_key            = '<C-p>'
-  let g:multi_cursor_skip_key            = '<C-x>'
-  let g:multi_cursor_quit_key            = '<Esc>'
-
   " -----* UltiSnips *----- "
   let g:UltiSnipsExpandTrigger="<C-l>"
   let g:UltiSnipsJumpForwardTrigger="<C-l>"
