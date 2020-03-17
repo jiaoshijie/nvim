@@ -38,7 +38,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 
 " far
-Plug 'brooth/far.vim'
+" Plug 'brooth/far.vim'
 
 " Undo Tree
 Plug 'mbbill/undotree/'
@@ -183,6 +183,7 @@ let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/']
 " let g:which_key_map = {}
 
 " -----* vimtex *----- "
+"  使用xelatex 需要在tex文件开头使用%!TEX program = xelatex
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_compiler_latexmk = {

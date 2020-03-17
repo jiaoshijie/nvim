@@ -1,4 +1,4 @@
-" set leader Space
+" set leader  = "Space"
 let mapleader=' '
 
 " vim useful mapings
@@ -135,8 +135,7 @@ if has('nvim')
   nnoremap <leader>pu :UndotreeToggle<cr>
 
   "------* far *-----"
-  nnoremap <leader>F :far  %<left><left>
-  nnoremap <leader>pfd :fardo<cr>
+  " nnoremap <leader>F :Far  %<left><left>
 
   "-----* markdown *------"
   nnoremap <leader>pp :MarkdownPreview<cr>
