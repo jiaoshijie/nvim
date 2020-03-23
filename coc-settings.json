@@ -8,6 +8,8 @@
   "python.linting.flake8Enabled": true,
   "python.linting.enabled": true,
 
+  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/Ultisnips"],
+
   "languageserver": {
     "ccls": {
       "command": "ccls",

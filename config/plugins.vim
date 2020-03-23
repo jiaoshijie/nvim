@@ -47,8 +47,7 @@ Plug 'mbbill/undotree/'
 Plug 'scrooloose/nerdcommenter'
 
 " Markdown
-Plug 'iamcco/markdown-preview.vim'
-Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'dkarter/bullets.vim'
 Plug 'godlygeek/tabular' " 文本对齐
 Plug 'vimwiki/vimwiki'
@@ -75,13 +74,16 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'honza/vim-snippets'
 " Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'Shirk/vim-gas'
 
 call plug#end()
 
 
 " ----- * coc * ----- "
-let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver', 'coc-vimtex']
+let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver', 'coc-vimtex', 'coc-snippets']
 " 移除'coc-texlab'
+" for coc-vimtex
+autocmd BufRead,BufNewFile *.tex set filetype=tex
 
 " ----- * NERDTree * ----- "
 let NERDTreeMapToggleHidden = "zh"
@@ -108,6 +110,7 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.linenr = '¶'
 let g:airline_theme='deus'
+" let g:airline_theme='simple'
 
 " ----- * indentLine * ----- "
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -129,13 +132,13 @@ let g:undotree_HighlightChangedText = 1
 " set regexpengine=1
 
 " ----- * Markdown * ----- "
-" let g:mkdp_path_to_chrome = "qutebrowser"
-let g:mkdp_path_to_chrome = "surf"
+" let g:mkdp_browser = "google-chrome-stable"
+" let g:mkdp_browser = "qutebrowser"
+let g:mkdp_browser = "surf"
 let g:mkdp_auto_start = 0
-let g:mkdp_auto_open = 0
-let g:mkdp_auto_close = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
 let g:mkdp_command_for_global = 0
-let g:table_mode_corner='|'
 let g:bullets_enabled_file_types = [
     \ 'markdown',
     \ 'text',
@@ -171,7 +174,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCompactSexyComs = 1
 let g:NERDToggleCheckAllLines = 1
-" let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 
 " ----- * UltiSnips * ----- "
 let g:UltiSnipsEditSplit="vertical"
@@ -196,3 +199,7 @@ let g:vimtex_compiler_latexmk = {
     \   '-interaction=nonstopmode',
     \ ],
     \}
+
+
+" ----* vim-gas *-----"
+autocmd BufRead,BufNewFile *.S,*.s set filetype=gas

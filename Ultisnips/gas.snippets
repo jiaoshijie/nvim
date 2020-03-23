@@ -1,0 +1,12 @@
+snippet text "text for code segment"
+.data # 已初始化全局数据段
+${1:# data...}
+
+.bss # 未初始化全局数据段(默认初始化为0)
+${2:# bss...}
+
+.text # 代码段
+.global _start # 程序入口
+_start:
+	${3:# coding}
+endsnippet

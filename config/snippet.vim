@@ -13,7 +13,7 @@ if !exists("jiaoshijie_markdown")
   autocmd FileType markdown inoremap <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
   autocmd FileType markdown nnoremap <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
   autocmd Filetype markdown iabbrev <buffer> tabb \|<++>\|<++>\|<CR>----<Esc>bywbbpdwkyyjpp4k0
-  autocmd Filetype markdown inoremap <buffer> <localleader>m ```{}<Enter><++><Enter>```<Enter><Enter><++><Esc>4k$i
+  autocmd Filetype markdown inoremap <buffer> <localleader>m ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4k$a
   autocmd Filetype markdown inoremap <buffer> <localleader>b **** <++><Esc>F*hi
   autocmd Filetype markdown inoremap <buffer> <localleader>i ** <++><Esc>F*i
   autocmd Filetype markdown inoremap <buffer> <localleader>e ***<CR><CR>

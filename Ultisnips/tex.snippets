@@ -1,0 +1,18 @@
+snippet head_cn "snippet for cn tex"
+%!TEX program = ${1:xelatex}
+\documentclass[UTF8, fontset=${2:adobe}]{ctexart}
+% \PassOptionsToPackage{quiet}{fontspec} % 使用fandol-font时加上这一条
+
+\begin{document}
+${3: 你好, 世界!}
+\end{document}
+endsnippet
+
+snippet head_en "snippet for en tex"
+%!TEX program = ${1:pdflatex}
+\documentclass[]{article}
+
+\begin{document}
+${3: Hello World!}
+\end{document}
+endsnippet
