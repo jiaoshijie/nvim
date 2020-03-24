@@ -11,6 +11,7 @@
 8. install flake8 and jedi for python linting and completion `sudo pip install flake8 jedi `
 9. install neovim-remote for tex `sudo pip3 install neovim-remote `
 10. install ag seach for fzf some function `sudo pacman -S the_silver_searcher`
+11. install trash for coc-explorer `sudo npm install -g trash`
 
 ## Keyboard Shortcuts
 ### command-mode
@@ -20,16 +21,16 @@
 | `<C-f>` | Right                  |
 | `<C-b>` | Left                   |
 | `<C-d>` | delete                 |
-| `:w!!`  | 提权保存(nvim无法使用) |
+| `:W`    | 提权保存(nvim无法使用) |
 
 
 ### insert-mode
-| Command        | Motion          |
-| -------        | ---             |
-| `<C-j>` ~~jk~~ | 进入normal-mode |
-| `<C-b>`        | left            |
-| `<C-f>`        | right           |
-| `<C-d>`        | delete          |
+| Command | Motion          |
+| ------- | ---             |
+| `<C-j>` | 进入normal-mode |
+| `<C-b>` | left            |
+| `<C-f>` | right           |
+| `<C-d>` | delete          |
 
 ### visual-mode
 | Command     | Motion                 |
@@ -68,7 +69,6 @@
 | fg      | 打开当前文件夹git管理的文件(FZF)      |
 | fr      | 最近打开的文件(FZF)                   |
 | k       | 标记高亮一个单词(vim-interestingwors) |
-| K       | 取消标记(vim-interestingwors)         |
 | pu      | 打开修改记录(undotree)                |
 | pp      | markdown预览(markdownpreview)         |
 | ps      | 关闭markdown预览(markdownpreview)     |
@@ -86,8 +86,9 @@
 | Command  | Motion                       |
 | -------  | ---                          |
 | F2       | 打开init.vim                 |
-| F5       | quickfix表的上一项           |
-| F6       | quickfix表的下一项           |
+| F3       | quickfix表的上一项           |
+| F4       | quickfix表的下一项           |
+| F6       | 打开quickfix窗口             |
 | F7       | 关闭quickfix表               |
 | F8       | 查找当前字符串               |
 | F9       | 查找c符号                    |
@@ -95,7 +96,7 @@
 | F11      | 查找调用本函数的函数         |
 | F12      | 跳转到函数定义的位置         |
 | 上下左右 | 调整分屏窗口的大小           |
-| tt       | 打开nerdtree                 |
+| tt       | 打开coc-explorer             |
 | T        | 打开Vista(Vista){类似tagbar} |
 | `<C-t>`  | 打开ctags标签搜索(vista)     |
 

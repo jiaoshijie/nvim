@@ -9,24 +9,29 @@ set termencoding=utf-8
 set fileencodings=utf-8,gbk
 set fileformats=unix,dos,mac
 set mouse=a
+set virtualedit=block
 
-" set spell spellang=en_us
+" set spell
+" set spellang=en_us
 " set dictionary+=~/.config/nvim/dict
-" display and register show register content
 
 set background=dark
 colorscheme space_vim_theme
 let g:space_vim_transp_bg = 1
 " colorscheme deus
 
+" h folding
 set foldmethod=indent
 set nofoldenable
 set foldlevel=99
 set foldlevelstart=99
+set foldcolumn=0
 
 set hidden
 
 set confirm
+
+set diffopt=vertical,algorithm:histogram,indent-heuristic
 
 set noundofile
 " set undolevels=1000
@@ -41,7 +46,6 @@ set directory=~/.config/nvim/tmp/swp//,.
 set number
 set relativenumber
 set textwidth=0
-" set textwidth=80
 set wrap
 set linebreak
 set wrapmargin=2
@@ -72,11 +76,16 @@ set smartindent
 
 " search
 exec 'nohlsearch'
-set showmatch
 set incsearch
 set ignorecase
 set smartcase
 set hlsearch
+
+set showmatch
+set matchtime=2
+
+" Define how to use the CTRL-A and CTRL-X commands for adding to and subtracting from a number respectively
+set nrformats=alpha,octal,hex
 
 " tab
 set tabstop=2
@@ -88,8 +97,8 @@ set formatoptions-=tc
 " auto to dir
 set laststatus=2
 set showcmd
-" set autochdir
-set noautochdir
+set autochdir
+" set noautochdir
 set history=1000
 " set notimeout
 set timeoutlen=1000
@@ -130,6 +139,7 @@ if has("cscope")
   endif
   set csverb
 endif
+
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 set switchbuf=useopen
 
@@ -142,6 +152,10 @@ if has('nvim')  " for nvim
   set inccommand=split
 
 else   " for vim
+  let g:netrw_liststyle = 3
+  let g:netrw_winsize = 30
+  autocmd FileType netrw setlocal bufhidden=delete
+
   syntax enable
   syntax on
   set clipboard=unnamedplus

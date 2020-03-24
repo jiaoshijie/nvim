@@ -1,4 +1,3 @@
-" 插件安装和配置
 call plug#begin('~/.config/nvim/plugged')
 
 " 代码补全插件
@@ -15,9 +14,6 @@ Plug 'ajmwagar/vim-deus'
 " 代码缩进提示
 Plug 'Yggdroot/indentLine'
 
-" 目录树
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 
 " 查找
@@ -28,28 +24,28 @@ Plug 'liuchengxu/vista.vim'
 " 高亮感兴趣的单词
 Plug 'lfv89/vim-interestingwords'
 
-" 静态检查代码 coc代替
+" 静态检查代码
 " Plug 'dense-analysis/ale'
 
 " 括号补全插件
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 
-" vim-surround
 Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
 
 " far
 " Plug 'brooth/far.vim'
 
+" for git TODO
+Plug 'tpope/vim-fugitive'
+
 " Undo Tree
 Plug 'mbbill/undotree/'
-
-" 代码注释
-Plug 'scrooloose/nerdcommenter'
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'dkarter/bullets.vim'
-Plug 'godlygeek/tabular' " 文本对齐
 Plug 'vimwiki/vimwiki'
 
 " latex
@@ -64,44 +60,27 @@ Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
 " Plug 'mattn/emmet-vim'  " html snippets
 
 " ranger
-Plug 'francoiscabrol/ranger.vim'
-Plug 'rbgrouleff/bclose.vim'
+" Plug 'francoiscabrol/ranger.vim'
+" Plug 'rbgrouleff/bclose.vim'
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 
 " others
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'SirVer/ultisnips'
 Plug 'easymotion/vim-easymotion'
+Plug 'godlygeek/tabular' " EXAMPLE: Tabularize /=
 " Plug 'honza/vim-snippets'
 " Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'Shirk/vim-gas'
+Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
 
 
 " ----- * coc * ----- "
-let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver', 'coc-vimtex', 'coc-snippets']
-" 移除'coc-texlab'
-" for coc-vimtex
-autocmd BufRead,BufNewFile *.tex set filetype=tex
-
-" ----- * NERDTree * ----- "
-let NERDTreeMapToggleHidden = "zh"
-let NERDTreeDirArrowExpandable=">"
-let NERDTreeDirArrowCollapsible="v"
-
-" ----- * NERDTree-git * ----- "
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
+let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver', 'coc-vimtex', 'coc-snippets', 'coc-translator', 'coc-explorer']
 
 " ----- * airline * ----- "
 let g:airline#extensions#tabline#enabled = 1
@@ -127,13 +106,8 @@ let g:undotree_ShortIndicators = 1
 " let g:undotree_SplitWidth = 40
 let g:undotree_HighlightChangedText = 1
 
-" ----- * far * ----- "
-" set lazyredraw
-" set regexpengine=1
-
 " ----- * Markdown * ----- "
 " let g:mkdp_browser = "google-chrome-stable"
-" let g:mkdp_browser = "qutebrowser"
 let g:mkdp_browser = "surf"
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
@@ -155,21 +129,30 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 "let g:vista_default_executive = 'ctags'
 let g:vista_fzf_preview = ['right:50%']
 
-" ----- * Ranger.vim * ----- "
-let g:ranger_map_keys = 0
+" ----- * rnvimr * ----- "
+let g:rnvimr_ex_enable = 1
+let g:rnvimr_pick_enable = 1
+let g:rnvimr_layout = { 'relative': 'editor',
+            \ 'width': &columns,
+            \ 'height': &lines,
+            \ 'col': 0,
+            \ 'row': 0,
+            \ 'style': 'minimal' }
+let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 
 " ----- * vimviki * ----- "
 let g:vimwiki_list = [{'path': '~/Nutstore Files/Nutstore/MARKDOWN_NOTE/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " ----- * goyo * ----- "
-" g:goyo_width (default: 80)
-" g:goyo_height (default: 85%)
-" g:goyo_linenr (default: 0)
+let g:goyo_width = 80
+let g:goyo_height = 85
+let g:goyo_linenr = 0
+let g:limelight_conceal_ctermfg = 250
+let g:limelight_default_coefficient = 0.8
 
 " ----- * nerdcommenter * ----- "
 let g:NERDCreateDefaultMappings = 0
-let g:NERDTreeShowHidden=1
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCompactSexyComs = 1
@@ -200,6 +183,5 @@ let g:vimtex_compiler_latexmk = {
     \ ],
     \}
 
-
-" ----* vim-gas *-----"
-autocmd BufRead,BufNewFile *.S,*.s set filetype=gas
+" -----* Async *----- "
+let g:asyncrun_open = 8
