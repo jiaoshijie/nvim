@@ -7,7 +7,7 @@ let maplocalleader=','
 augroup jsj_markdown
   autocmd!
   autocmd FileType markdown inoremap <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
-  autocmd FileType markdown nnoremap <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
+  autocmd FileType markdown nnoremap <silent> <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
   autocmd Filetype markdown iabbrev <buffer> tabb \|<++>\|<++>\|<CR>----<Esc>bywbbpdwkyyjpp4k0
   autocmd Filetype markdown inoremap <buffer> <localleader>m ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4k$a
   autocmd Filetype markdown inoremap <buffer> <localleader>b **** <++><Esc>F*hi
@@ -33,25 +33,9 @@ augroup jsj_html
   autocmd!
   autocmd Filetype html inoremap <buffer> <localleader>f <Esc>0f>a
   autocmd Filetype html inoremap <buffer> <localleader><CR> <br>
-  " autocmd Filetype html inoremap <buffer> <localleader>1 <h1></h1><Esc>0f>a
-  " autocmd Filetype html inoremap <buffer> <localleader>2 <h2></h2><Esc>0f>a
-  " autocmd Filetype html inoremap <buffer> <localleader>3 <h3></h3><Esc>0f>a
-  " autocmd Filetype html inoremap <buffer> <localleader>4 <h4></h4><Esc>0f>a
-  " autocmd Filetype html inoremap <buffer> <localleader>5 <h5></h5><Esc>0f>a
-  " autocmd Filetype html inoremap <buffer> <localleader>6 <h6></h6><Esc>0f>a
 "   autocmd Filetype html iabbrev <buffer> hhead <!DOCTYPE html><CR><html lang="en"><CR><head><CR><meta charset="UTF-8"><CR><title><++></title><CR></head><CR><body><CR><++><CR></body><CR></html><ESC>gg,f
 "   autocmd Filetype html iabbrev <buffer> ulli <ul><CR><li><++></li><Esc>yypo</ul><CR><++><Esc>4kA
 "   autocmd Filetype html iabbrev <buffer> olli <ol><CR><li><++></li><Esc>yypo</ol><CR><++><Esc>4kA
-"   autocmd Filetype html iabbrev <buffer> stylee <style><CR></style><Esc>ko
-"   autocmd Filetype html iabbrev <buffer> linksy <link rel="stylesheet" href=""><Esc>F"i
-"   autocmd Filetype html inoremap <buffer> <localleader>t <title></title><Esc>0f>a
-"   autocmd Filetype html inoremap <buffer> <localleader>c <p></p><Esc>0f>a
-"   autocmd Filetype html inoremap <buffer> <localleader>b <strong></strong><++><Esc>F/hi
-"   autocmd Filetype html inoremap <buffer> <localleader>i <em></em><++><Esc>F/hi
-"   autocmd Filetype html inoremap <buffer> <localleader>d <button></button><++><Esc>F/hi
-  " autocmd Filetype html inoremap <buffer> <localleader>l <a href=""><++></a><Esc>F"i
-"   autocmd Filetype html inoremap <buffer> <localleader>p <img src="" alt="<++>"><Esc>0f"a
-"   autocmd Filetype html inoremap <buffer> <localleader>s <script src=""></script><Esc>0f"a
 augroup end
 
 augroup jsj_ft_settings

@@ -5,7 +5,6 @@ let mapleader=' '
 cnoremap W w !sudo tee % > /dev/null
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
-cnoremap <C-d> <del>
 cnoremap <C-y> <C-r>+
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
@@ -29,10 +28,6 @@ function! Compile_Run()
 	elseif &filetype == 'python'
     let $PYTHONNUNBUFFERED=1
     exec "AsyncRun! -raw python3 %"
-	elseif &filetype == 'vimwiki'
-		exec "MarkdownPreview"
-	elseif &filetype == 'markdown'
-		exec "MarkdownPreview"
 	endif
 endfunction
 
@@ -62,8 +57,8 @@ nnoremap <silent> k gk
 nnoremap <leader>s :w<cr>
 nnoremap <leader>S :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>qq :q<cr>
-nnoremap <leader><cr> :nohl<cr>
-nnoremap <C-k> d$
+nnoremap <silent> <leader><cr> :nohl<cr>
+nnoremap <silent> <C-k> d$
 
 " Split management
 nnoremap <leader>w/ <C-w>v
@@ -87,29 +82,29 @@ nnoremap <silent> <Right> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 " nnoremap <leader>wtk <C-w>t<C-w>K
 
 " buffer mapings
-nnoremap <leader><Left> :bprevious<cr>
-nnoremap <leader><Right> :bnext<cr>
-nnoremap <leader>bp :bprevious<cr>
-nnoremap <leader>bn :bnext<cr>
-nnoremap <leader>bD :bdelete %<CR>
+nnoremap <silent> <leader><Left> :bprevious<cr>
+nnoremap <silent> <leader><Right> :bnext<cr>
+nnoremap <silent> <leader>bp :bprevious<cr>
+nnoremap <silent> <leader>bn :bnext<cr>
+nnoremap <silent> <leader>bD :bdelete %<CR>
 
 " Tab mapings
-nnoremap <leader>tN :tabe<CR>
-nnoremap <leader>tn :tabnext<CR>
-nnoremap <leader>tp :tabprevious<CR>
-nnoremap <leader>tC :tabclose<CR>
+nnoremap <silent> <leader>tN :tabe<CR>
+nnoremap <silent> <leader>tn :tabnext<CR>
+nnoremap <silent> <leader>tp :tabprevious<CR>
+nnoremap <silent> <leader>tC :tabclose<CR>
 
 if !has('nvim')
   nnoremap <silent> tt :Vexplore <C-r>=expand("%:p:h")<CR><CR>
 endif
 
 " show HEX and return
-nnoremap <leader>xd :%!xxd<CR>
-nnoremap <leader>xr :%!xxd -r<CR>
+nnoremap <silent> <leader>xd :%!xxd<CR>
+nnoremap <silent> <leader>xr :%!xxd -r<CR>
 
 " set coding gbk or utf-8
-nnoremap <leader>eg :e ++enc=gbk<CR>
-nnoremap <leader>eu :e ++enc=utf8<CR>
+nnoremap <silent> <leader>eg :e ++enc=gbk<CR>
+nnoremap <silent> <leader>eu :e ++enc=utf8<CR>
 
 " inster mode mapings
 inoremap <C-j> <Esc>
@@ -117,7 +112,6 @@ inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
-inoremap <C-d> <del>
 inoremap <C-y> <C-r>+
 " inoremap <C-h> <S-Left>
 " inoremap <C-l> <S-Right>
@@ -155,9 +149,9 @@ if has('nvim')
   nmap <silent> go :CocList outline<CR>
   nmap <silent> gs :CocList -I symbols<CR>
   " coc-explorer
-  nmap tt :CocCommand explorer<CR>
+  nmap <silent> tt :CocCommand explorer<CR>
   " coc-translator
-  nmap ts <Plug>(coc-translator-p)
+  nmap <silent> ts <Plug>(coc-translator-p)
 
   "------* Vista *-----"
   nnoremap <silent> T :Vista!!<cr>
@@ -167,35 +161,28 @@ if has('nvim')
   nnoremap <silent> <leader>k :call interestingwords('n')<cr>
 
   "------* fzf *------"
-  nnoremap <c-p> :Ag<cr>
-  nnoremap <leader>bb :Buffers<cr>
-  nnoremap <leader>fg :GFiles<cr>
-  nnoremap <leader>fr :Startify<cr>
-  nnoremap <leader>ff :FZF<cr>
-  nnoremap <leader>fj :FZF ~<cr>
+  nnoremap <silent> <c-p> :Ag<cr>
+  nnoremap <silent> <leader>bb :Buffers<cr>
+  nnoremap <silent> <leader>fg :GFiles<cr>
+  nnoremap <silent> <leader>fr :Startify<cr>
+  nnoremap <silent> <leader>ff :FZF<cr>
+  nnoremap <silent> <leader>fj :FZF ~<cr>
 
   "------* undo tree *-----"
-  nnoremap <leader>pu :UndotreeToggle<cr>
-
-  "------* far *-----"
-  " nnoremap <leader>F :Far  %<left><left>
+  nnoremap <silent> <leader>pu :UndotreeToggle<cr>
 
   "-----* Rnvimr *-----"
 nnoremap <silent> <leader>R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
 
   "-----* goyo *-----"
-  nnoremap <leader>gg :Goyo<cr>
-  nnoremap <leader>gl :Limelight!!<cr>
-
-  "-----* vimwiki *-----"
-  " :h vimwiki-commands
-  " :h vimwiki
+  nnoremap <silent> <leader>gg :Goyo<cr>
+  nnoremap <silent> <leader>gl :Limelight!!<cr>
 
   "-----* nerd-commenter *-----"
-  nmap <leader>cc <plug>NERDCommenterToggle
-  vmap <leader>cc <plug>NERDCommenterToggle
-  nmap <leader>ca <plug>NERDCommenterAltDelims
-  nmap <leader>cA <plug>NERDCommenterAppend
+  nmap <silent> <leader>cc <plug>NERDCommenterToggle
+  vmap <silent> <leader>cc <plug>NERDCommenterToggle
+  nmap <silent> <leader>ca <plug>NERDCommenterAltDelims
+  nmap <silent> <leader>cA <plug>NERDCommenterAppend
 
   " -----* UltiSnips *----- "
   let g:UltiSnipsExpandTrigger="<C-l>"
@@ -210,6 +197,15 @@ nnoremap <silent> <leader>R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrRes
   " nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
   " nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
-  " -----* LeaderF *----- "
-  " let g:Lf_ShortcutF = '<C-p>'
+  " -----* markdown *----- "
+  nnoremap <silent> <leader>pp :MarkdownPreview<cr>
+  nnoremap <silent> <leader>ps :MarkdownPreviewStop<cr>
+  nnoremap <silent> <leader>pg :GenTocGFM<cr>
+  nnoremap <silent> <leader>pu :UpdateToc<cr>
+  nnoremap <silent> <leader>pD :RemoveToc<cr>
+
+  " -----* vim-easy-align *----- "
+  xmap ga <Plug>(EasyAlign)
+  nmap ga <Plug>(EasyAlign)
+
 endif

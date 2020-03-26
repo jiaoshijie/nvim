@@ -1,17 +1,28 @@
 # My NeoVim Config
 
+<!-- vim-markdown-toc GFM -->
+
+* [安装依赖](#安装依赖)
+* [Keyboard Shortcuts](#keyboard-shortcuts)
+  * [command-mode](#command-mode)
+  * [insert-mode](#insert-mode)
+  * [visual-mode](#visual-mode)
+  * [normal-mode](#normal-mode)
+* [ctags使用(函数跳转)](#ctags使用函数跳转)
+* [Quickfix列表](#quickfix列表)
+
+<!-- vim-markdown-toc -->
+
 ## 安装依赖
-1. install ~~clang~~ ccls for c/c++ `sudo pacman -S ccls`
-2. install pynvim for python plugs `pip3 install --user --no-binary :all: pynvim` or `python3 -m pip install --user --upgrade pynvim`
-3. install fzf for fzf-vim `sudo pacman -S fzf`
-4. install ctags and cscope for jump function define list `sudo pacman -S ctags cscope`
-5. install figlet for inputing text ASCII art `sudo pacman -S figlet`
-6. install xsel for use system clipboard `sudo pacman -S xsel`
-7. install live-server for html-preview `sudo pacman -S nodejs npm` and `sudo npm install -g live-server`
-8. install flake8 and jedi for python linting and completion `sudo pip install flake8 jedi `
-9. install neovim-remote for tex `sudo pip3 install neovim-remote `
-10. install ag seach for fzf some function `sudo pacman -S the_silver_searcher`
-11. install trash for coc-explorer `sudo npm install -g trash`
+- [x] `sudo pacman -S ccls ctags cscope` for c/c++
+- [x] `sudo pacman -S fzf the_silver_searcher` for fzf-vim
+- [x] `sudo pacman -S xsel` for using system clipboard
+- [x] `sudo npm install -g trash` for coc-explorer
+- [x] `pip install --user flake8 jedi==0.15.2 ` for python linting and completion
+- [x] `pip install --user neovim-remote` for tex
+
+- `sudo pacman -S nodejs npm` and `sudo npm install -g live-server` for html-preview
+- `sudo pacman -S figlet` for ASCII art
 
 ## Keyboard Shortcuts
 ### command-mode
@@ -20,7 +31,6 @@
 | ----    | ----                   |
 | `<C-f>` | Right                  |
 | `<C-b>` | Left                   |
-| `<C-d>` | delete                 |
 | `:W`    | 提权保存(nvim无法使用) |
 
 
@@ -30,7 +40,6 @@
 | `<C-j>` | 进入normal-mode |
 | `<C-b>` | left            |
 | `<C-f>` | right           |
-| `<C-d>` | delete          |
 
 ### visual-mode
 | Command     | Motion                 |
@@ -88,6 +97,7 @@
 | F2       | 打开init.vim                 |
 | F3       | quickfix表的上一项           |
 | F4       | quickfix表的下一项           |
+| F5       | 编译运行一些小程序           |
 | F6       | 打开quickfix窗口             |
 | F7       | 关闭quickfix表               |
 | F8       | 查找当前字符串               |

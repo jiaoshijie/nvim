@@ -1,41 +1,24 @@
 call plug#begin('~/.config/nvim/plugged')
 
-" 代码补全插件
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" Plug 'dense-analysis/ale'
 
-
-" 美化插件
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
 Plug 'liuchengxu/space-vim-theme'
 Plug 'ajmwagar/vim-deus'
-
-" 代码缩进提示
-Plug 'Yggdroot/indentLine'
-
 Plug 'ryanoasis/vim-devicons'
 
-" 查找
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vista.vim'
 
-" 高亮感兴趣的单词
 Plug 'lfv89/vim-interestingwords'
-
-" 静态检查代码
-" Plug 'dense-analysis/ale'
-
-" 括号补全插件
-" Plug 'Raimondi/delimitMate'
+Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
-
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
-
-" far
-" Plug 'brooth/far.vim'
 
 " for git TODO
 Plug 'tpope/vim-fugitive'
@@ -45,6 +28,7 @@ Plug 'mbbill/undotree/'
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'mzlogin/vim-markdown-toc'
 Plug 'dkarter/bullets.vim'
 Plug 'vimwiki/vimwiki'
 
@@ -54,27 +38,23 @@ Plug 'lervag/vimtex'
 "Bookmakrs
 Plug 'kshenoy/vim-signature'
 
-" HTML, CSS, JavaScript, JSON, etc.
+" HTML, CSS, JS
 Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'html', 'javascript', 'css', 'less'] }
 Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
-" Plug 'mattn/emmet-vim'  " html snippets
+" Plug 'mattn/emmet-vim'
 
 " ranger
-" Plug 'francoiscabrol/ranger.vim'
-" Plug 'rbgrouleff/bclose.vim'
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 
-" others
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'SirVer/ultisnips'
 Plug 'easymotion/vim-easymotion'
-Plug 'godlygeek/tabular' " EXAMPLE: Tabularize /=
-" Plug 'honza/vim-snippets'
-" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-" Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'junegunn/vim-easy-align'
 Plug 'Shirk/vim-gas'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+" Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 call plug#end()
 
@@ -107,7 +87,7 @@ let g:undotree_ShortIndicators = 1
 let g:undotree_HighlightChangedText = 1
 
 " ----- * Markdown * ----- "
-" let g:mkdp_browser = "google-chrome-stable"
+" let g:mkdp_browser = "brave"
 let g:mkdp_browser = "surf"
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
