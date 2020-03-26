@@ -6,22 +6,22 @@ let maplocalleader=','
 " ---------------- "
 augroup jsj_markdown
   autocmd!
-  autocmd FileType markdown inoremap <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
-  autocmd FileType markdown nnoremap <silent> <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
+  autocmd FileType markdown inoremap <buffer> <silent> <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
+  autocmd FileType markdown nnoremap <buffer> <silent> <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
   autocmd Filetype markdown iabbrev <buffer> tabb \|<++>\|<++>\|<CR>----<Esc>bywbbpdwkyyjpp4k0
   autocmd Filetype markdown inoremap <buffer> <localleader>m ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4k$a
-  autocmd Filetype markdown inoremap <buffer> <localleader>b **** <++><Esc>F*hi
-  autocmd Filetype markdown inoremap <buffer> <localleader>i ** <++><Esc>F*i
+  autocmd Filetype markdown inoremap <buffer> <localleader>b ****<++><Esc>F*hi
+  autocmd Filetype markdown inoremap <buffer> <localleader>i **<++><Esc>F*i
   autocmd Filetype markdown inoremap <buffer> <localleader>e ***<CR><CR>
   autocmd Filetype markdown inoremap <buffer> <localleader>p ![](<++>)<Esc>F]i
   autocmd Filetype markdown inoremap <buffer> <localleader>l [](<++>)<Esc>F]i
-  autocmd FileType markdown inoremap <buffer> <localleader>1 # <CR><++><Esc>kA
-  autocmd FileType markdown inoremap <buffer> <localleader>2 ## <CR><++><Esc>kA
-  autocmd FileType markdown inoremap <buffer> <localleader>3 ### <CR><++><Esc>kA
-  autocmd FileType markdown inoremap <buffer> <localleader>4 #### <CR><++><Esc>kA
-  autocmd FileType markdown inoremap <buffer> <localleader>5 ##### <CR><++><Esc>kA
-  autocmd FileType markdown inoremap <buffer> <localleader>6 ###### <CR><++><Esc>kA
-  autocmd Filetype markdown inoremap <buffer> <localleader><CR> <br>
+  autocmd FileType markdown inoremap <buffer> <localleader>1 # <CR><CR><++><Esc>2kA
+  autocmd FileType markdown inoremap <buffer> <localleader>2 ## <CR><CR><++><Esc>2kA
+  autocmd FileType markdown inoremap <buffer> <localleader>3 ### <CR><CR><++><Esc>2kA
+  autocmd FileType markdown inoremap <buffer> <localleader>4 #### <CR><CR><++><Esc>2kA
+  autocmd FileType markdown inoremap <buffer> <localleader>5 ##### <CR><CR><++><Esc>2kA
+  autocmd FileType markdown inoremap <buffer> <localleader>6 ###### <CR><CR><++><Esc>2kA
+  autocmd Filetype markdown inoremap <buffer> <localleader>, <br>
 augroup end
 
 
@@ -31,11 +31,11 @@ augroup end
 " ---------------- "
 augroup jsj_html
   autocmd!
-  autocmd Filetype html inoremap <buffer> <localleader>f <Esc>0f>a
-  autocmd Filetype html inoremap <buffer> <localleader><CR> <br>
-"   autocmd Filetype html iabbrev <buffer> hhead <!DOCTYPE html><CR><html lang="en"><CR><head><CR><meta charset="UTF-8"><CR><title><++></title><CR></head><CR><body><CR><++><CR></body><CR></html><ESC>gg,f
-"   autocmd Filetype html iabbrev <buffer> ulli <ul><CR><li><++></li><Esc>yypo</ul><CR><++><Esc>4kA
-"   autocmd Filetype html iabbrev <buffer> olli <ol><CR><li><++></li><Esc>yypo</ol><CR><++><Esc>4kA
+  autocmd Filetype html iabbrev <buffer> hheadd <!DOCTYPE html><CR><html lang="en"><CR><head><CR><meta charset="UTF-8"><CR><title><++></title><CR></head><CR><body><CR><++><CR></body><CR></html><ESC>ggi,f
+  autocmd Filetype html nnoremap <buffer> <localleader>f 0f>
+  autocmd FileType html inoremap <buffer> <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
+  autocmd Filetype html inoremap <buffer> <localleader>, <br>
+  autocmd Filetype html inoremap <buffer> <localleader>l <li><++></li><Esc>0f>
 augroup end
 
 augroup jsj_ft_settings
