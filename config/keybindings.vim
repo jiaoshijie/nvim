@@ -169,7 +169,7 @@ if has('nvim')
   nnoremap <silent> <leader>fj :FZF ~<cr>
 
   "------* undo tree *-----"
-  nnoremap <silent> <leader>pu :UndotreeToggle<cr>
+  nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
   "-----* Rnvimr *-----"
 nnoremap <silent> <leader>R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>

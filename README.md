@@ -78,7 +78,7 @@
 | fg      | 打开当前文件夹git管理的文件(FZF)      |
 | fr      | 最近打开的文件(FZF)                   |
 | k       | 标记高亮一个单词(vim-interestingwors) |
-| pu      | 打开修改记录(undotree)                |
+| u       | 打开修改记录(undotree)                |
 | pp      | markdown预览(markdownpreview)         |
 | ps      | 关闭markdown预览(markdownpreview)     |
 | cc      | 注释和反注释代码(NERDCommenter)       |
