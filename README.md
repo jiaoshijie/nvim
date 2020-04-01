@@ -27,11 +27,11 @@
 ## Keyboard Shortcuts
 ### command-mode
 
-| Command | Motion                 |
-| ----    | ----                   |
-| `<C-f>` | Right                  |
-| `<C-b>` | Left                   |
-| `:W`    | 提权保存(nvim无法使用) |
+| Command | Motion   |
+| ----    | ----     |
+| `<C-f>` | Right    |
+| `<C-b>` | Left     |
+| `:w!!`  | 提权保存 |
 
 
 ### insert-mode

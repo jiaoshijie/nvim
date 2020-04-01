@@ -43,6 +43,8 @@ augroup jsj_ft_settings
   autocmd FileType python setlocal foldmethod=indent textwidth=80
   autocmd BufNewFile,BufRead *.tex setlocal filetype=tex
   autocmd BufRead,BufNewFile *.S,*.s setlocal filetype=gas
+  " Runs a script that cleans out tex build files whenever I close out of a .tex file.
+	autocmd VimLeave *.tex !texclear %
 augroup END
 
 " augroup! jsj_strip_wsbl 使用这个可以取消这个组
@@ -70,3 +72,9 @@ command! Seecolor echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
             \ "> trans<" . synIDattr(synID(line("."),col("."),0),"name") .
             \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
             \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")
+
+
+" Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
+if &diff
+    highlight! link DiffText MatchParen
+endif

@@ -46,7 +46,7 @@ set relativenumber
 set textwidth=0
 set wrap
 set linebreak
-set wrapmargin=2
+set wrapmargin=0
 set cursorline
 set ruler
 set list

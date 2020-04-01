@@ -21,7 +21,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 
-" for git TODO
+" for git
 Plug 'tpope/vim-fugitive'
 
 " Undo Tree
@@ -51,11 +51,14 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
-Plug 'Shirk/vim-gas'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 " Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
+Plug 'Shirk/vim-gas'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'kovetskiy/sxhkd-vim'
 
 call plug#end()
 
@@ -68,7 +71,7 @@ let g:airline#extensions#tabline#enabled = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_symbols.linenr = '¶'
+let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
 " let g:airline_theme='simple'
 
@@ -122,6 +125,7 @@ let g:rnvimr_layout = { 'relative': 'editor',
 let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 
 " ----- * vimviki * ----- "
+let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_list = [{'path': '~/Nutstore Files/Nutstore/MARKDOWN_NOTE/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 

@@ -2,7 +2,8 @@
 let mapleader=' '
 
 " vim useful mapings
-cnoremap W w !sudo tee % > /dev/null
+" cnoremap w!! w !sudo tee % > /dev/null
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-y> <C-r>+
@@ -28,6 +29,10 @@ function! Compile_Run()
 	elseif &filetype == 'python'
     let $PYTHONNUNBUFFERED=1
     exec "AsyncRun! -raw python3 %"
+  elseif &filetype == 'vimwiki'
+    exec "AsyncRun! pandoc % --pdf-engine=xelatex -o %<.pdf"
+  elseif &filetype == 'markdown'
+    exec "AsyncRun! pandoc % --pdf-engine=xelatex -o %<.pdf"
 	endif
 endfunction
 
@@ -93,6 +98,9 @@ nnoremap <silent> <leader>tN :tabe<CR>
 nnoremap <silent> <leader>tn :tabnext<CR>
 nnoremap <silent> <leader>tp :tabprevious<CR>
 nnoremap <silent> <leader>tC :tabclose<CR>
+
+" Spell-check set to <leader>o, 'o' for 'orthography':
+	map <leader>o :setlocal spell! spelllang=en_us<CR>
 
 if !has('nvim')
   nnoremap <silent> tt :Vexplore <C-r>=expand("%:p:h")<CR><CR>
