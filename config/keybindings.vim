@@ -3,7 +3,11 @@ let mapleader=' '
 
 " vim useful mapings
 " cnoremap w!! w !sudo tee % > /dev/null
-cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+if has('nvim')
+  cnoremap w!! execute 'silent! write suda://%'
+else
+  cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+endif
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-y> <C-r>+
@@ -15,25 +19,25 @@ cnoremap <C-e> <End>
 nnoremap <silent> <F2> :edit ~/.config/nvim/init.vim<CR>
 
 function! Compile_Run()
-	exec "w"
+  exec "w"
   if filereadable("Makefile")
     exec "AsyncRun! make"
   elseif &filetype == 'c'
-		" exec "AsyncRun! -mode=terminal gcc % -o %< & ./%<"
+    " exec "AsyncRun! -mode=terminal gcc % -o %< & ./%<"
     exec "AsyncRun! gcc % -o %< & ./%<"
-	elseif &filetype == 'cpp'
-		exec "AsyncRun! g++ -std=c++11 % -Wall -o %< & ./%<"
-	elseif &filetype == 'sh'
-		" :!time bash %
+  elseif &filetype == 'cpp'
+    exec "AsyncRun! g++ -std=c++11 % -Wall -o %< & ./%<"
+  elseif &filetype == 'sh'
+    " :!time bash %
     exec "AsyncRun! bash %"
-	elseif &filetype == 'python'
+  elseif &filetype == 'python'
     let $PYTHONNUNBUFFERED=1
     exec "AsyncRun! -raw python3 %"
   elseif &filetype == 'vimwiki'
     exec "AsyncRun! pandoc % --pdf-engine=xelatex -o %<.pdf"
   elseif &filetype == 'markdown'
     exec "AsyncRun! pandoc % --pdf-engine=xelatex -o %<.pdf"
-	endif
+  endif
 endfunction
 
 nnoremap <silent> <F5> :call Compile_Run()<cr>
@@ -100,7 +104,7 @@ nnoremap <silent> <leader>tp :tabprevious<CR>
 nnoremap <silent> <leader>tC :tabclose<CR>
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=en_us<CR>
+nnoremap <leader>o :setlocal spell! spelllang=en_us<CR>
 
 if !has('nvim')
   nnoremap <silent> tt :Vexplore <C-r>=expand("%:p:h")<CR><CR>
@@ -144,7 +148,9 @@ if has('nvim')
   " Remap keys for gotos
   nmap <silent> gd <Plug>(coc-definition)
   nmap <silent> gy <Plug>(coc-type-definition)
+  " 跳转到实现类而不是接口
   nmap <silent> gi <Plug>(coc-implementation)
+
   nmap <silent> gr <Plug>(coc-references)
   vmap <silent> gf <Plug>(coc-format-selected)
 
@@ -167,6 +173,8 @@ if has('nvim')
 
   "------* vim-interestingwords *-----"
   nnoremap <silent> <leader>k :call interestingwords('n')<cr>
+  " -----* coc-yank *----- "
+  nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
   "------* fzf *------"
   nnoremap <silent> <c-p> :Ag<cr>
@@ -180,7 +188,7 @@ if has('nvim')
   nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
   "-----* Rnvimr *-----"
-nnoremap <silent> <leader>R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+  nnoremap <silent> <leader>R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
 
   "-----* goyo *-----"
   nnoremap <silent> <leader>gg :Goyo<cr>

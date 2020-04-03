@@ -3,23 +3,29 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " Plug 'dense-analysis/ale'
 
+" Debuger
+" Plug 'puremourning/vimspector'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
 Plug 'liuchengxu/space-vim-theme'
 Plug 'ajmwagar/vim-deus'
 Plug 'ryanoasis/vim-devicons'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vista.vim'
 
+Plug 'RRethy/vim-illuminate'
 Plug 'lfv89/vim-interestingwords'
 Plug 'Yggdroot/indentLine'
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
 
 " for git
 Plug 'tpope/vim-fugitive'
@@ -47,24 +53,28 @@ Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
 " ranger
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
 Plug 'skywind3000/asyncrun.vim'
+" Plug 'fatih/vim-go'
+
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-" Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
+" Plug 'sheerun/vim-polyglot'
 Plug 'Shirk/vim-gas'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'kovetskiy/sxhkd-vim'
 
+" sudo for neovim
+Plug 'lambdalisue/suda.vim'
+
+" Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 call plug#end()
 
 
 " ----- * coc * ----- "
-let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver', 'coc-vimtex', 'coc-snippets', 'coc-translator', 'coc-explorer']
+let g:coc_global_extensions = ['coc-vimlsp', 'coc-lists', 'coc-yank','coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver', 'coc-vimtex', 'coc-snippets', 'coc-translator', 'coc-explorer', 'coc-stylelint', 'coc-tslint-plugin', 'coc-pairs']
 
 " ----- * airline * ----- "
 let g:airline#extensions#tabline#enabled = 1
@@ -73,7 +83,6 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
-" let g:airline_theme='simple'
 
 " ----- * indentLine * ----- "
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -91,12 +100,11 @@ let g:undotree_ShortIndicators = 1
 let g:undotree_HighlightChangedText = 1
 
 " ----- * Markdown * ----- "
-" let g:mkdp_browser = "brave"
-let g:mkdp_browser = "surf"
+let g:mkdp_browser = "brave"
+" let g:mkdp_browser = "surf"
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 0
-let g:mkdp_command_for_global = 0
 let g:bullets_enabled_file_types = [
     \ 'markdown',
     \ 'text',
@@ -142,7 +150,8 @@ let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCompactSexyComs = 1
 let g:NERDToggleCheckAllLines = 1
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+let g:NERDCustomDelimiters = { 'c': { 'left': '//' } }
 
 " ----- * UltiSnips * ----- "
 let g:UltiSnipsEditSplit="vertical"
@@ -172,27 +181,9 @@ let g:vimtex_compiler_latexmk = {
 let g:asyncrun_open = 8
 
 " -----* Rainbow *----- "
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-autocmd VimEnter * RainbowParenthesesToggle
-autocmd Syntax * RainbowParenthesesLoadRound
-autocmd Syntax * RainbowParenthesesLoadSquare
-autocmd Syntax * RainbowParenthesesLoadBraces
+let g:rainbow_active = 1
+
+" -----* illuminate *----- "
+let g:Illuminate_delay = 300
+let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python', 'c', 'cpp']
+highlight illuminatedWord cterm=underline gui=underline

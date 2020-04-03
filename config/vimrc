@@ -16,9 +16,9 @@ set virtualedit=block
 " set dictionary+=~/.config/nvim/dict
 
 set background=dark
-colorscheme space_vim_theme
+" colorscheme space_vim_theme
 let g:space_vim_transp_bg = 1
-" colorscheme deus
+colorscheme deus
 
 " h folding
 set foldmethod=indent
