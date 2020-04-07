@@ -17,7 +17,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'gko/vim-coloresque'
 
-Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vista.vim'
 
@@ -53,6 +52,7 @@ Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " Plug 'fatih/vim-go'
 
 Plug 'SirVer/ultisnips'
@@ -198,3 +198,7 @@ let g:rainbow_conf = {
 " -----* illuminate *----- "
 let g:Illuminate_delay = 300
 let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python', 'c', 'cpp']
+
+" -----* vim-visual-multi *----- "
+let g:VM_default_mappings = 0
+let g:VM_mouse_mappings = 1

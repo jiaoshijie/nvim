@@ -224,4 +224,11 @@ if has('nvim')
   xmap ga <Plug>(EasyAlign)
   nmap ga <Plug>(EasyAlign)
 
+  " -----* vim-visual-multi *----- "
+  let g:VM_maps = {}
+  let g:VM_maps['Find Under']         = '<C-n>'
+  let g:VM_maps['Find Subword Under'] = '<C-n>'
+  let g:VM_maps["Undo"] = 'u'
+  let g:VM_maps["Redo"] = '<C-r>'
+
 endif
