@@ -11,10 +11,6 @@ set fileformats=unix,dos,mac
 set mouse=a
 set virtualedit=block
 
-" set spell
-" set spellang=en_us
-" set dictionary+=~/.config/nvim/dict
-
 set background=dark
 " colorscheme space_vim_theme
 let g:space_vim_transp_bg = 1
@@ -31,15 +27,17 @@ set hidden
 
 set confirm
 
-set noundofile
-" set undolevels=1000
-" set undoreload=10000
 set nobackup
 set noswapfile
-silent !mkdir -p ~/.config/nvim/tmp/{undo,swp,backup}
-set undodir=~/.config/nvim/tmp/undo//,.
+" silent !mkdir -p ~/.config/nvim/tmp/{swp,backup}
 set backupdir=~/.config/nvim/tmp/backup//,.
 set directory=~/.config/nvim/tmp/swp//,.
+
+set undofile
+set undolevels=1000
+set undoreload=10000
+silent !mkdir -p /tmp/neovim_u/undodir
+set undodir=/tmp/neovim_u/undodir//,.
 
 set number
 set relativenumber

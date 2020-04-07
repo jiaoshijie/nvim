@@ -22,6 +22,7 @@ augroup jsj_markdown
   autocmd FileType markdown inoremap <buffer> <localleader>5 ##### <CR><CR><++><Esc>2kA
   autocmd FileType markdown inoremap <buffer> <localleader>6 ###### <CR><CR><++><Esc>2kA
   autocmd Filetype markdown inoremap <buffer> <localleader>, <br>
+  autocmd Filetype markdown inoremap <buffer> <localleader>z <font color=><++></font><Esc>F>;i
 augroup end
 
 

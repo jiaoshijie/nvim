@@ -15,6 +15,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'luochen1990/rainbow'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'gko/vim-coloresque'
 
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
@@ -38,17 +39,13 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'dkarter/bullets.vim'
 Plug 'vimwiki/vimwiki'
+Plug 'itchyny/calendar.vim'
 
 " latex
 Plug 'lervag/vimtex'
 
 "Bookmakrs
 Plug 'kshenoy/vim-signature'
-
-" HTML, CSS, JS
-Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'html', 'javascript', 'css', 'less'] }
-Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
-" Plug 'mattn/emmet-vim'
 
 " ranger
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
@@ -60,8 +57,10 @@ Plug 'skywind3000/asyncrun.vim'
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+" Plug 'mattn/emmet-vim'
 
 " Plug 'sheerun/vim-polyglot'
+Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
 Plug 'Shirk/vim-gas'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'kovetskiy/sxhkd-vim'
@@ -74,7 +73,8 @@ call plug#end()
 
 
 " ----- * coc * ----- "
-let g:coc_global_extensions = ['coc-vimlsp', 'coc-lists', 'coc-yank','coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver', 'coc-vimtex', 'coc-snippets', 'coc-translator', 'coc-explorer', 'coc-stylelint', 'coc-tslint-plugin', 'coc-pairs']
+let g:coc_global_extensions = ['coc-vimlsp', 'coc-lists', 'coc-yank','coc-json', 'coc-python', 'coc-html', 'coc-css', 'coc-tsserver', 'coc-vimtex', 'coc-snippets', 'coc-translator', 'coc-explorer', 'coc-stylelint', 'coc-tslint-plugin']
+" , 'coc-pairs'
 
 " ----- * airline * ----- "
 let g:airline#extensions#tabline#enabled = 1
@@ -86,6 +86,13 @@ let g:airline_theme='deus'
 
 " ----- * indentLine * ----- "
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" let g:indentLine_enabled = 0
+" let g:indentLine_fileType = ['c', 'cpp']    " 默认打开
+" let g:indentLine_fileTypeExclude = []       " 默认关闭
+" let g:indentLine_bufTypeExclude = []
+" let g:indentLine_bufNameExclude = []
+let g:indentLine_concealcursor = ''
+let g:indentLine_conceallevel = '2'
 
 " ----- * vim-interestingwords * ----- "
 let g:interestingWordsRandomiseColors = 1
@@ -101,7 +108,6 @@ let g:undotree_HighlightChangedText = 1
 
 " ----- * Markdown * ----- "
 let g:mkdp_browser = "brave"
-" let g:mkdp_browser = "surf"
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 0
@@ -182,8 +188,13 @@ let g:asyncrun_open = 8
 
 " -----* Rainbow *----- "
 let g:rainbow_active = 1
+let g:rainbow_conf = {
+\  'separately': {
+\    '*': "default",
+\    'vimwiki': 0,
+\  }
+\}
 
 " -----* illuminate *----- "
 let g:Illuminate_delay = 300
 let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python', 'c', 'cpp']
-highlight illuminatedWord cterm=underline gui=underline
