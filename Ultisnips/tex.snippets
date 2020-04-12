@@ -4,7 +4,7 @@ snippet head_cn "snippet for cn tex"
 % \PassOptionsToPackage{quiet}{fontspec} % 使用fandol-font时加上这一条
 
 \begin{document}
-${3: 你好, 世界!}
+${3:你好, 世界!}
 \end{document}
 endsnippet
 
@@ -13,6 +13,53 @@ snippet head_en "snippet for en tex"
 \documentclass[]{article}
 
 \begin{document}
-${3: Hello World!}
+${3:Hello World!}
 \end{document}
+endsnippet
+
+snippet head_beamer "中文beamer"
+%!TEX program = xelatex
+\documentclass[UTF8, fontset=adobe]{beamer}
+\usepackage[UTF8, fontset=${1:adobe}]{ctex}
+% \PassOptionsToPackage{quiet}{fontspec} % 使用fandol-font时加上这一条
+
+\begin{document}
+\begin{frame}{${2:你好}}
+${3:你好, 世界!}
+\end{frame}
+\end{document}
+endsnippet
+
+snippet title "title author date"
+\title{${1:LaTeX Notes}}
+\author{${2:ShiJie Jiao}}
+\date{${3:\today}}
+\maketitle
+${4}
+endsnippet
+
+snippet abstract "摘要"
+\begin{abstract}
+${1}
+\end{abstract}
+endsnippet
+
+snippet frame "beamer 一页"
+\begin{frame}{${1}}
+${2}
+\end{frame}
+endsnippet
+
+snippet content "目录"
+\setcounter{tocdepth}{${1:3}}
+\tableofcontents
+${2}
+endsnippet
+
+snippet emph "斜体"
+\emph{${1}}${2}
+endsnippet
+
+snippet underline "下划线"
+\underline{${1}}${2}
 endsnippet

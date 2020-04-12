@@ -91,8 +91,6 @@ nnoremap <silent> <Right> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 " nnoremap <leader>wtk <C-w>t<C-w>K
 
 " buffer mapings
-nnoremap <silent> <leader><Left> :bprevious<cr>
-nnoremap <silent> <leader><Right> :bnext<cr>
 nnoremap <silent> <leader>bp :bprevious<cr>
 nnoremap <silent> <leader>bn :bnext<cr>
 nnoremap <silent> <leader>bD :bdelete %<CR>
@@ -101,7 +99,7 @@ nnoremap <silent> <leader>bD :bdelete %<CR>
 nnoremap <silent> <leader>tN :tabe<CR>
 nnoremap <silent> <leader>tn :tabnext<CR>
 nnoremap <silent> <leader>tp :tabprevious<CR>
-nnoremap <silent> <leader>tC :tabclose<CR>
+nnoremap <silent> <leader>tD :tabclose<CR>
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
 nnoremap <leader>o :setlocal spell! spelllang=en_us<CR>
@@ -197,8 +195,8 @@ if has('nvim')
   "-----* nerd-commenter *-----"
   nmap <silent> <leader>cc <plug>NERDCommenterToggle
   vmap <silent> <leader>cc <plug>NERDCommenterToggle
-  nmap <silent> <leader>ca <plug>NERDCommenterAltDelims
-  nmap <silent> <leader>cA <plug>NERDCommenterAppend
+  nmap <silent> <leader>ca <plug>NERDCommenterAppend
+  nmap <silent> <leader>cA <plug>NERDCommenterAltDelims
 
   " -----* UltiSnips *----- "
   let g:UltiSnipsExpandTrigger="<C-l>"
@@ -206,8 +204,8 @@ if has('nvim')
   let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
   " -----* easymotion *----- "
-  nmap <leader>ee <Plug>(easymotion-overwin-f)
-  nmap <leader>es <Plug>(easymotion-overwin-f2)
+  nmap tf <Plug>(easymotion-overwin-f)
+  nmap tF <Plug>(easymotion-overwin-f2)
 
   " -----* which key *----- "
   " nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
