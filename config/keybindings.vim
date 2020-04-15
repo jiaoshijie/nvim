@@ -2,7 +2,6 @@
 let mapleader=' '
 
 " vim useful mapings
-" cnoremap w!! w !sudo tee % > /dev/null
 if has('nvim')
   cnoremap w!! execute 'silent! write suda://%'
 else
@@ -17,30 +16,6 @@ cnoremap <C-e> <End>
 " cnoremap <C-l> <S-Right>
 
 nnoremap <silent> <F2> :edit ~/.config/nvim/init.vim<CR>
-
-function! Compile_Run()
-  exec "w"
-  if filereadable("Makefile")
-    exec "AsyncRun! make"
-  elseif &filetype == 'c'
-    " exec "AsyncRun! -mode=terminal gcc % -o %< & ./%<"
-    exec "AsyncRun! gcc % -o %< & ./%<"
-  elseif &filetype == 'cpp'
-    exec "AsyncRun! g++ -std=c++11 % -Wall -o %< & ./%<"
-  elseif &filetype == 'sh'
-    " :!time bash %
-    exec "AsyncRun! bash %"
-  elseif &filetype == 'python'
-    let $PYTHONNUNBUFFERED=1
-    exec "AsyncRun! -raw python3 %"
-  elseif &filetype == 'vimwiki'
-    exec "AsyncRun! pandoc % --pdf-engine=xelatex -o %<.pdf"
-  elseif &filetype == 'markdown'
-    exec "AsyncRun! pandoc % --pdf-engine=xelatex -o %<.pdf"
-  endif
-endfunction
-
-nnoremap <silent> <F5> :call Compile_Run()<cr>
 
 " -----* QuickFix *-------
 nnoremap <silent> <F3> :cprevious<cr>
@@ -131,7 +106,9 @@ inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 
 " visual mode mapings
-vnoremap <silent> <leader>a di""<Esc>P
+xnoremap <silent> <leader>a di""<Esc>P
+xnoremap <  <gv
+xnoremap >  >gv
 
 "-------------------------------------"
 "--------------* end *----------------"
@@ -139,6 +116,31 @@ vnoremap <silent> <leader>a di""<Esc>P
 
 
 if has('nvim')
+
+  function! Compile_Run()
+    exec "w"
+    if filereadable("Makefile")
+      exec "AsyncRun! make"
+    elseif &filetype == 'c'
+      " exec "AsyncRun! -mode=terminal gcc % -o %< & ./%<"
+      exec "AsyncRun! gcc % -o %< & ./%<"
+    elseif &filetype == 'cpp'
+      exec "AsyncRun! g++ -std=c++11 % -Wall -o %< & ./%<"
+    elseif &filetype == 'sh'
+      " :!time bash %
+      exec "AsyncRun! bash %"
+    elseif &filetype == 'python'
+      let $PYTHONNUNBUFFERED=1
+      exec "AsyncRun! -raw python3 %"
+    elseif &filetype == 'vimwiki'
+      exec "AsyncRun! pandoc % --pdf-engine=xelatex -o %<.pdf"
+    elseif &filetype == 'markdown'
+      exec "AsyncRun! pandoc % --pdf-engine=xelatex -o %<.pdf"
+    endif
+  endfunction
+
+  nnoremap <silent> <F5> :call Compile_Run()<cr>
+
   "-----* coc *------"
   inoremap <expr> <cr> (pumvisible() ? "\<c-y>\<cr>" : "\<cr>")
   inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -164,6 +166,8 @@ if has('nvim')
   nmap <silent> tt :CocCommand explorer<CR>
   " coc-translator
   nmap <silent> ts <Plug>(coc-translator-p)
+  " -----* coc-yank *----- "
+  nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
   "------* Vista *-----"
   nnoremap <silent> T :Vista!!<cr>
@@ -171,8 +175,6 @@ if has('nvim')
 
   "------* vim-interestingwords *-----"
   nnoremap <silent> <leader>k :call interestingwords('n')<cr>
-  " -----* coc-yank *----- "
-  nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
   "------* fzf *------"
   nnoremap <silent> <c-p> :Ag<cr>
