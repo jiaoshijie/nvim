@@ -9,8 +9,9 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
-Plug 'liuchengxu/space-vim-theme'
 Plug 'ajmwagar/vim-deus'
+Plug 'joshdick/onedark.vim'
+" Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'luochen1990/rainbow'
 Plug 'junegunn/goyo.vim'
@@ -51,6 +52,7 @@ Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
+" Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " Plug 'fatih/vim-go'

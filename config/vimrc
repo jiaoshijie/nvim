@@ -10,11 +10,12 @@ set fileencodings=utf-8,gbk
 set fileformats=unix,dos,mac
 set mouse=a
 set virtualedit=block
+if has("termguicolors")
+  set termguicolors
+end
 
-set background=dark
-let g:space_vim_transp_bg = 1
-" colorscheme space_vim_theme
 colorscheme deus
+set background=dark
 
 " folding zA zM za
 set foldmethod=indent
@@ -104,7 +105,6 @@ set shortmess+=c
 set wildmenu
 if has('nvim')
   set wildoptions=pum
-  " set termguicolors " 和一个插件冲突
   set pumblend=30
 else " for vim
   set wildmode=list:longest,full
@@ -185,7 +185,6 @@ endfunction
 
 autocmd InsertLeave * call Fcitx2en()
 " autocmd InsertEnter * call Fcitx2zh()
-"----- auto fcitx end -----
 
 augroup jsj_ft_settings
   autocmd!
@@ -212,8 +211,7 @@ endfunction
 
 augroup jsj_color_warning
     autocmd!
-    " autocmd ColorScheme * call matchadd('cTodo', 'TODO')
-    autocmd FileType gas call matchadd('cTodo', 'TODO')
+    autocmd FileType gas call matchadd('Todo', 'TODO')
 augroup END
 
 " 查看高亮组

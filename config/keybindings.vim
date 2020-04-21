@@ -78,6 +78,17 @@ nnoremap <silent> <leader>tD :tabclose<CR>
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
 nnoremap <leader>o :setlocal spell! spelllang=en_us<CR>
+nnoremap <leader>ct :call Change_theme_alpha()<CR>
+
+function! Change_theme_alpha()
+  if !exists("g:jsj_change_theme_alpha") || g:jsj_change_theme_alpha == 0
+    let g:jsj_change_theme_alpha = 1
+    highlight Normal guibg=NONE ctermbg=None
+  else
+    let g:jsj_change_theme_alpha = 0
+    highlight Normal guibg=#282C34 ctermbg=235
+  end
+endfunction
 
 if !has('nvim')
   nnoremap <silent> tt :Vexplore <C-r>=expand("%:p:h")<CR><CR>
@@ -122,20 +133,19 @@ if has('nvim')
     if filereadable("Makefile")
       exec "AsyncRun! make"
     elseif &filetype == 'c'
-      " exec "AsyncRun! -mode=terminal gcc % -o %< & ./%<"
-      exec "AsyncRun! gcc % -o %< & ./%<"
+      exec "AsyncRun! -mode=term gcc % -o %< && ./%<"
     elseif &filetype == 'cpp'
-      exec "AsyncRun! g++ -std=c++11 % -Wall -o %< & ./%<"
+      exec "AsyncRun! -mode=term g++ -std=c++11 % -Wall -o %< && ./%<"
     elseif &filetype == 'sh'
       " :!time bash %
-      exec "AsyncRun! bash %"
+      exec "AsyncRun! -mode=term bash %"
     elseif &filetype == 'python'
       let $PYTHONNUNBUFFERED=1
-      exec "AsyncRun! -raw python3 %"
+      exec "AsyncRun! -mode=term -raw python3 %"
     elseif &filetype == 'vimwiki'
-      exec "AsyncRun! pandoc % --pdf-engine=xelatex -o %<.pdf"
+      exec "AsyncRun! -mode=term pandoc % --pdf-engine=xelatex -o %<.pdf"
     elseif &filetype == 'markdown'
-      exec "AsyncRun! pandoc % --pdf-engine=xelatex -o %<.pdf"
+      exec "AsyncRun! -mode=term pandoc % --pdf-engine=xelatex -o %<.pdf"
     endif
   endfunction
 
