@@ -120,7 +120,7 @@ if has("cscope")
   if filereadable("cscope.out")
     set noautochdir
     " 将数据库文件连接到vim, if don't have "silent", add database pointed to by environment
-    silent cs add cscope.out cscope.in.out cscope.po.out
+    silent cs add cscope.out
   elseif $CSCOPE_DB != ""
     silent cs add $CSCOPE_DB
   endif
