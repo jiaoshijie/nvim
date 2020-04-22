@@ -1,10 +1,8 @@
-" set localleader
-let maplocalleader=','
+"----------------------------------------------------------------------
+" markdown代码片段
+"----------------------------------------------------------------------
 
-" ---------------- "
-" --* markdown *-- "
-" ---------------- "
-augroup jsj_markdown
+augroup jsj_Markdown
   autocmd!
   autocmd FileType markdown inoremap <buffer> <silent> <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
   autocmd FileType markdown nnoremap <buffer> <silent> <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
@@ -25,12 +23,11 @@ augroup jsj_markdown
   autocmd Filetype markdown inoremap <buffer> <localleader>z <font color=><++></font><Esc>F>;i
 augroup end
 
+"----------------------------------------------------------------------
+" HTML代码片段
+"----------------------------------------------------------------------
 
-
-" ---------------- "
-" ----* HTML *---- "
-" ---------------- "
-augroup jsj_html
+augroup jsj_HTML
   autocmd!
   autocmd Filetype html iabbrev <buffer> hheadd <!DOCTYPE html><CR><html lang="en"><CR><head><CR><meta charset="UTF-8"><CR><title><++></title><CR></head><CR><body><CR><++><CR></body><CR></html><ESC>ggi,f
   autocmd Filetype html nnoremap <buffer> <localleader>f 0f>
