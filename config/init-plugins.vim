@@ -260,6 +260,7 @@ if index(g:bundle_group, 'search') >= 0
   Plug 'liuchengxu/vista.vim'
   " ----- * 快速搜索 * ----- "
   Plug 'junegunn/fzf.vim'
+  Plug 'Yggdroot/LeaderF'
 
   " =======
   " vista-config
@@ -269,7 +270,6 @@ if index(g:bundle_group, 'search') >= 0
   endfunction
   set statusline+=%{NearestMethodOrFunction()}
   autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-  let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
   let g:vista_fzf_preview = ['right:50%']
   " =======
   " vista-keymaps
@@ -278,13 +278,35 @@ if index(g:bundle_group, 'search') >= 0
   nnoremap <silent> <c-t> :Vista finder<cr>
 
   " =======
-  " fzf-keymaps
+  " LeaderF-config
   " =======
-  nnoremap <silent> <c-p> :Ag<cr>
-  nnoremap <silent> <leader>bb :Buffers<cr>
-  nnoremap <silent> <leader>fg :GFiles<cr>
-  nnoremap <silent> <leader>ff :FZF<cr>
-  nnoremap <silent> <leader>fj :FZF ~<cr>
+  " 隐藏帮助
+  let g:Lf_HideHelp = 1
+  " popup-mode
+  let g:Lf_WindowPosition = 'popup'
+  let g:Lf_PreviewInPopup = 1
+  let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+  " 如何识别项目目录，从当前文件目录向父目录递归知道碰到下面的文件/目录
+  let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+  let g:Lf_WorkingDirectoryMode = 'Ac'
+  let g:Lf_WindowHeight = 0.30
+  let g:Lf_CacheDirectory = expand('~/.config/nvim/tmp/cache')
+  " 模糊匹配忽略扩展名
+  let g:Lf_WildIgnore = {
+        \ 'dir': ['.svn','.git','.hg', 'obj', 'bin'],
+        \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]', '*.out']
+        \ }
+  " 最大历史文件保存
+  let g:Lf_MruMaxFiles = 0
+  " MRU 文件忽略扩展名
+  let g:Lf_MruFileExclude = ['*.so', '*.exe', '*.py[co]', '*.sw?', '~$*', '*.bak', '*.tmp', '*.dll']
+  " =======
+  " LeaderF-keymaps
+  " =======
+  nnoremap <silent> <c-p> :Leaderf rg --smart-case<cr>
+  nnoremap <silent> <leader>bb :LeaderfBuffer<cr>
+  nnoremap <silent> <leader>ff :LeaderfFile $HOME<cr>
+  nnoremap <silent> <leader>fg :LeaderfFile<cr>
 
 endif
 
