@@ -16,7 +16,7 @@ set modelines=0
 set nomodeline
 
 " 设置 Backspace 键模式
-set bs=eol,start,indent
+set bs=indent,eol,start
 
 " 自动缩进
 set autoindent
@@ -56,6 +56,8 @@ set ttimeoutlen=50
 " 鼠标支持
 set mouse=a
 
+" 总是显示左边的一列, 用于显示一些错误, 标签
+set signcolumn=yes
 
 "----------------------------------------------------------------------
 " 搜索设置

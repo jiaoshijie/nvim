@@ -113,13 +113,15 @@ endif
 if index(g:bundle_group, 'coc') >= 0
   " ----- * coc * ----- "
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+  " ----- * c cpp 语法语义 * ----- "
+  Plug 'jackguo380/vim-lsp-cxx-highlight'
   " ----- * 一些好用的代码片段 * ----- "
   Plug 'honza/vim-snippets'
 
   " =======
   " coc-config
   " =======
-  let g:coc_global_extensions = ['coc-vimlsp', 'coc-lists', 'coc-yank','coc-json', 'coc-python',
+  let g:coc_global_extensions = ['coc-clangd', 'coc-vimlsp', 'coc-lists', 'coc-yank','coc-json', 'coc-python',
         \ 'coc-html', 'coc-css', 'coc-tsserver', 'coc-vimtex', 'coc-snippets', 'coc-translator',
         \'coc-explorer', 'coc-stylelint', 'coc-tslint-plugin']
 
@@ -297,6 +299,10 @@ if index(g:bundle_group, 'search') >= 0
   " fzf-config
   " =======
   let g:fzf_preview_window = 'right:50%'
+  " =======
+  " fzf-keymaps
+  " =======
+  nnoremap <silent> <leader>ff :FZF<cr>
 
   " =======
   " LeaderF-config
@@ -326,7 +332,6 @@ if index(g:bundle_group, 'search') >= 0
   " =======
   nnoremap <silent> <c-p> :Leaderf rg --smart-case<cr>
   nnoremap <silent> <leader>bb :LeaderfBuffer<cr>
-  nnoremap <silent> <leader>ff :LeaderfFile $HOME<cr>
   nnoremap <silent> <leader>fg :LeaderfFile<cr>
 
 endif
@@ -377,6 +382,7 @@ if index(g:bundle_group, 'markdown') >= 0
   let g:bullets_enabled_file_types = [
       \ 'markdown',
       \ 'text',
+      \ 'vimwiki'
       \]
 
   " =======
@@ -437,8 +443,6 @@ endif
 " 增强代码语法
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'filetypes') >= 0
-  " ----- * C++ 语法高亮增强，支持 11/14/17 标准 * ----- "
-  Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
   " ----- * python 语法文件增强 * ----- "
   Plug 'vim-python/python-syntax', { 'for': ['python'] }
   " ----- * js语法 * ----- "

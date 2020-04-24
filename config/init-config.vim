@@ -56,7 +56,8 @@ augroup jsj_useful_settings
 
   " filetype
   autocmd BufRead,BufNewFile *.S,*.s setlocal filetype=gas
-  autocmd BufNewFile,BufRead *.tex setlocal filetype=tex
+  autocmd BufNewFile,BufRead *.tex setlocal filetype=tex nolinebreak
+  autocmd BufNewFile,BufRead *.md,*.rmd setlocal nolinebreak
 
   " Runs a script that cleans out tex build files whenever I close out of a .tex file.
   autocmd VimLeave *.tex !texclear %

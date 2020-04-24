@@ -4,24 +4,14 @@
   "suggest.enablePreview": true,
   "suggest.echodocSupport": true,
 
+  "clangd.semanticHighlighting": true,
+
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
   "python.linting.enabled": true,
 
   "explorer.icon.enableNerdfont": true,
 
-  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/Ultisnips"],
+  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/Ultisnips"]
 
-  "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-      "initializationOptions": {
-         "cache": {
-           "directory": "/tmp/ccls"
-         }
-       }
-    }
-  }
 }
