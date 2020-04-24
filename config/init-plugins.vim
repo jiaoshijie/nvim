@@ -186,7 +186,6 @@ if index(g:bundle_group, 'beautify') >= 0
   Plug 'morhetz/gruvbox'
   " ----- * 状态栏 * ----- "
   Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
   " ----- * 显示图标 * ----- "
   Plug 'ryanoasis/vim-devicons'
   " ----- * 启动菜单 * ----- "
@@ -211,7 +210,7 @@ if index(g:bundle_group, 'beautify') >= 0
       let g:airline_symbols = {}
   endif
   let g:airline_powerline_fonts = 1
-  let g:airline_theme='deus'
+  let g:airline_theme='onedark'
 
   " =======
   " vim-startify-keymaps
@@ -287,11 +286,17 @@ if index(g:bundle_group, 'search') >= 0
   set statusline+=%{NearestMethodOrFunction()}
   autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
   let g:vista_fzf_preview = ['right:50%']
+  let g:vista#renderer#enable_icon = 1
   " =======
   " vista-keymaps
   " =======
   nnoremap <silent> T :Vista!!<cr>
   nnoremap <silent> <c-t> :Vista finder<cr>
+
+  " =======
+  " fzf-config
+  " =======
+  let g:fzf_preview_window = 'right:50%'
 
   " =======
   " LeaderF-config
