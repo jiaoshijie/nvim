@@ -182,10 +182,9 @@ endif
 " 一些美化插件
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'beautify') >= 0
-  " ----- * 3款主题 * ----- "
-  Plug 'ajmwagar/vim-deus'
-  Plug 'joshdick/onedark.vim'
+  " ----- * 2款主题 * ----- "
   Plug 'morhetz/gruvbox'
+  Plug 'joshdick/onedark.vim'
   " ----- * 状态栏 * ----- "
   Plug 'vim-airline/vim-airline'
   " ----- * 显示图标 * ----- "
@@ -202,7 +201,6 @@ if index(g:bundle_group, 'beautify') >= 0
   Plug 'Yggdroot/indentLine'
   " ----- * 简洁模式 * ----- "
   Plug 'junegunn/goyo.vim'
-  Plug 'junegunn/limelight.vim'
 
   " =======
   " vim-airline-config
@@ -264,8 +262,7 @@ if index(g:bundle_group, 'beautify') >= 0
   " =======
   " goyo-keymaps
   " =======
-  nnoremap <silent> <leader>gg :Goyo<cr>
-  nnoremap <silent> <leader>gl :Limelight!!<cr>
+  nnoremap <silent> <leader>gy :Goyo<cr>
 
 endif
 

@@ -44,7 +44,9 @@ set t_Co=256
 
 if has('nvim')
   " 设置颜色主题
-  colorscheme deus
+  colorscheme gruvbox
+  highlight Normal guibg=#2C323B ctermbg=235
+  highlight SignColumn guibg=#242a32 ctermbg=239
 endif
 
 if has('gui_running')
