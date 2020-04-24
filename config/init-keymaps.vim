@@ -8,6 +8,7 @@ inoremap <C-f> <Right>
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
 inoremap <C-y> <C-r>+
+inoremap <C-d> <del>
 " Recover from accidental Ctrl-U
 " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
 inoremap <c-u> <c-g>u<c-u>
@@ -29,6 +30,7 @@ cnoremap <C-f> <Right>
 cnoremap <C-y> <C-r>+
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+cnoremap <C-d> <del>
 cnoremap <m-b> <S-Left>
 cnoremap <m-f> <S-Right>
 

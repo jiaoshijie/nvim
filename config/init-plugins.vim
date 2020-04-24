@@ -1,5 +1,5 @@
 if !exists('g:bundle_group')
-  let g:bundle_group = ['enhance', 'beautify', 'coc', 'filetypes', 'snippets']
+  let g:bundle_group = ['enhance', 'beautify', 'coc', 'filetypes']
   let g:bundle_group += ['search', 'git', 'markdown', 'manager', 'latex', 'textobj']
   let g:bundle_group += ['unix_sudo']
   " ['grammer', 'Debuger', 'which-key']
@@ -108,11 +108,13 @@ endif
 
 
 "----------------------------------------------------------------------
-" coc 代码补全, 错误检查等
+" coc 代码补全, 错误检查, 代码片段, 文件管理器, etc.
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'coc') >= 0
   " ----- * coc * ----- "
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+  " ----- * 一些好用的代码片段 * ----- "
+  Plug 'honza/vim-snippets'
 
   " =======
   " coc-config
@@ -132,9 +134,6 @@ if index(g:bundle_group, 'coc') >= 0
   nmap <silent> gy <Plug>(coc-type-definition)
   " 跳转到实现类而不是接口
   nmap <silent> gi <Plug>(coc-implementation)
-
-  nmap <silent> gr <Plug>(coc-references)
-  vmap <silent> gf <Plug>(coc-format-selected)
   " Remap for rename current word
   nmap gm <Plug>(coc-rename)
   " Show documentation in preview window
@@ -142,12 +141,29 @@ if index(g:bundle_group, 'coc') >= 0
   nmap <silent> gc :CocList diagnostics<CR>
   nmap <silent> go :CocList outline<CR>
   nmap <silent> gs :CocList -I symbols<CR>
-  " coc-explorer
+  nmap <silent> gr <Plug>(coc-references)
+  vmap <silent> gf <Plug>(coc-format-selected)
+
+  " >>>>> coc-explorer <<<<< "
   nmap <silent> tt :CocCommand explorer<CR>
-  " coc-translator
+
+  " >>>>> coc-translator <<<<< "
   nmap <silent> ts <Plug>(coc-translator-p)
-  " coc-yank
+
+  " >>>>> coc-yank <<<<< "
   nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
+  " >>>>> coc-snippets <<<<< "
+  " Use <C-l> for trigger snippet expand.
+  imap <C-l> <Plug>(coc-snippets-expand)
+  " Use <C-j> for select text for visual placeholder of snippet.
+  vmap <C-j> <Plug>(coc-snippets-select)
+  " Use <C-l> for jump to next placeholder, it's default of coc.nvim
+  let g:coc_snippet_next = '<c-l>'
+  " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+  let g:coc_snippet_prev = '<c-k>'
+  " Use <C-j> for both expand and jump (make expand higher priority.)
+  imap <C-l> <Plug>(coc-snippets-expand-jump)
 
 endif
 
@@ -409,30 +425,6 @@ if index(g:bundle_group, 'manager') >= 0
   " asyncrun-config
   " =======
   let g:asyncrun_open = 8
-
-endif
-
-"----------------------------------------------------------------------
-" 代码片段
-"----------------------------------------------------------------------
-if index(g:bundle_group, 'snippets') >= 0
-  " ----- * 代码片段使用 * ----- "
-  Plug 'SirVer/ultisnips'
-  " ----- * 一些好用的代码片段 * ----- "
-  Plug 'honza/vim-snippets'
-
-  " =======
-  " ultisnips-config
-  " =======
-  let g:UltiSnipsEditSplit="vertical"
-  let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/']
-  " =======
-  " ultisnips-keymaps
-  " =======
-  let g:UltiSnipsExpandTrigger="<C-l>"
-  let g:UltiSnipsJumpForwardTrigger="<C-l>"
-  let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-
 
 endif
 
