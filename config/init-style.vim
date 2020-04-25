@@ -31,7 +31,7 @@ set splitbelow
 " 设置颜色主题, 要在init-plugs.vim之后
 "----------------------------------------------------------------------
 
-" 设置终端vim支持gui的颜色
+" 设置终端vim支持256的颜色
 if has("termguicolors")
   set termguicolors
 end
@@ -45,13 +45,15 @@ set t_Co=256
 if has('nvim')
   " 设置颜色主题
   let g:onedark_terminal_italics=1
-  colorscheme gruvbox
+  " colorscheme gruvbox
+  " colorscheme onedark
+  colorscheme dracula
   highlight Normal guibg=#2C323B ctermbg=235
   highlight SignColumn guibg=#242a32 ctermbg=239
 endif
 
 if has('gui_running')
-  colorscheme evening
+  colorscheme elflord
   set guifont=Source\ Code\ Pro\ 14
   set guioptions-=T
   set guioptions-=r

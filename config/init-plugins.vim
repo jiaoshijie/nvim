@@ -1,8 +1,8 @@
 if !exists('g:bundle_group')
   let g:bundle_group = ['enhance', 'beautify', 'coc', 'filetypes']
   let g:bundle_group += ['search', 'git', 'markdown', 'manager', 'latex', 'textobj']
-  let g:bundle_group += ['unix_sudo']
-  " ['grammer', 'Debuger', 'which-key']
+  let g:bundle_group += ['grammar', 'unix_sudo']
+  " ['Debuger', 'which-key']
 endif
 
 call plug#begin('~/.config/nvim/plugged')
@@ -194,9 +194,10 @@ endif
 " 一些美化插件
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'beautify') >= 0
-  " ----- * 2款主题 * ----- "
+  " ----- * 3款主题 * ----- "
   Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
+  Plug 'dracula/vim'
   " ----- * 状态栏 * ----- "
   Plug 'vim-airline/vim-airline'
   " ----- * 显示图标 * ----- "
@@ -218,11 +219,10 @@ if index(g:bundle_group, 'beautify') >= 0
   " vim-airline-config
   " =======
   let g:airline#extensions#tabline#enabled = 1
-  if !exists('g:airline_symbols')
-      let g:airline_symbols = {}
-  endif
   let g:airline_powerline_fonts = 1
-  let g:airline_theme='onedark'
+  " let g:airline_theme='onedark'
+  " let g:airline_theme='gruvbox'
+  let g:airline_theme='dracula'
 
   " =======
   " vim-startify-keymaps
@@ -522,16 +522,16 @@ endif
 "----------------------------------------------------------------------
 " LanguageTool 语法检查
 "----------------------------------------------------------------------
-if index(g:bundle_group, 'grammer') >= 0
+if index(g:bundle_group, 'grammar') >= 0
   Plug 'rhysd/vim-grammarous'
-  noremap <space>rg :GrammarousCheck --lang=en-US --no-move-to-first-error --no-preview<cr>
-  map <space>rr <Plug>(grammarous-open-info-window)
-  map <space>rv <Plug>(grammarous-move-to-info-window)
-  map <space>rs <Plug>(grammarous-reset)
-  map <space>rx <Plug>(grammarous-close-info-window)
-  map <space>rm <Plug>(grammarous-remove-error)
-  map <space>rd <Plug>(grammarous-disable-rule)
-  map <space>rn <Plug>(grammarous-move-to-next-error)
-  map <space>rp <Plug>(grammarous-move-to-previous-error)
+  nnoremap <leader>rg :GrammarousCheck --lang=en-US --no-move-to-first-error --no-preview<cr>
+  nmap <leader>rr <Plug>(grammarous-open-info-window)
+  nmap <leader>rv <Plug>(grammarous-move-to-info-window)
+  nmap <leader>rs <Plug>(grammarous-reset)
+  nmap <leader>rx <Plug>(grammarous-close-info-window)
+  nmap <leader>rm <Plug>(grammarous-remove-error)
+  nmap <leader>rd <Plug>(grammarous-disable-rule)
+  nmap <leader>rn <Plug>(grammarous-move-to-next-error)
+  nmap <leader>rp <Plug>(grammarous-move-to-previous-error)
 endif
 call plug#end()
