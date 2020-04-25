@@ -133,12 +133,15 @@ if index(g:bundle_group, 'coc') >= 0
   inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
   " 调到类型的定义处
   nmap <silent> gd <Plug>(coc-definition)
-  " 跳转到实现类而不是接口
-  nmap <silent> gi <Plug>(coc-implementation)
-  " 获取一些变量和函数信息
-  nmap <silent> gh :call CocAction('doHover')<CR>
   " 查看变量函数使用的位置
   nmap <silent> gr <Plug>(coc-references)
+  " 跳转到错误的位置(包括警告)
+  nmap <silent> gep <Plug>(coc-diagnostic-prev)
+  nmap <silent> gen <Plug>(coc-diagnostic-next)
+  " 显示错误完整信息
+  nmap <silent> gs <Plug>(coc-diagnostic-info)
+  " 获取变量和函数的一些信息
+  nmap <silent> gh :call CocAction('doHover')<CR>
 
   " >>>>> coc-explorer <<<<< "
   " 打开文件管理器
@@ -169,7 +172,7 @@ if index(g:bundle_group, 'coc') >= 0
   nmap [g <Plug>(coc-git-prevchunk)
   nmap ]g <Plug>(coc-git-nextchunk)
   " show chunk diff at current position
-  nmap gs <Plug>(coc-git-chunkinfo)
+  nmap gp <Plug>(coc-git-chunkinfo)
   " create text object for git chunks
   omap ig <Plug>(coc-git-chunk-inner)
   xmap ig <Plug>(coc-git-chunk-inner)
