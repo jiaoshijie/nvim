@@ -18,6 +18,7 @@
 - [x] `sudo npm install -g trash` for coc-explorer
 - [x] `pip install --user flake8 jedi==0.15.2 ` for python linting and completion
 - [x] `pip install --user neovim-remote` for tex
+- [x] `pip install --user pynvim` for rnvimr
 
 - [ ] `sudo pacman -S nodejs npm` and `sudo npm install -g live-server` for html-preview
 - [ ] `sudo pacman -S figlet` for ASCII art

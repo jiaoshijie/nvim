@@ -72,11 +72,11 @@ if index(g:bundle_group, 'enhance') >= 0
               \ 'col': 0,
               \ 'row': 0,
               \ 'style': 'minimal' }
-  let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
+  let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}, {'width': 0.8, 'height': 0.8}]
   " =======
   " rnvimr-keymaps
   " =======
-  nnoremap <silent> <leader>R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+  nnoremap <silent> <leader>R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 1<CR>
 
   " =======
   " vim-visual-multi-config
@@ -123,7 +123,7 @@ if index(g:bundle_group, 'coc') >= 0
   " =======
   let g:coc_global_extensions = ['coc-clangd', 'coc-vimlsp', 'coc-lists', 'coc-yank','coc-json', 'coc-python',
         \ 'coc-html', 'coc-css', 'coc-tsserver', 'coc-vimtex', 'coc-snippets', 'coc-translator',
-        \'coc-explorer', 'coc-stylelint', 'coc-tslint-plugin']
+        \'coc-explorer', 'coc-stylelint', 'coc-tslint-plugin', 'coc-git']
 
   " =======
   " coc-keymaps
@@ -131,28 +131,25 @@ if index(g:bundle_group, 'coc') >= 0
   inoremap <expr> <cr> (pumvisible() ? "\<c-y>\<cr>" : "\<cr>")
   inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
   inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-  " Remap keys for gotos
+  " 调到类型的定义处
   nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
   " 跳转到实现类而不是接口
   nmap <silent> gi <Plug>(coc-implementation)
-  " Remap for rename current word
-  nmap gm <Plug>(coc-rename)
-  " Show documentation in preview window
+  " 获取一些变量和函数信息
   nmap <silent> gh :call CocAction('doHover')<CR>
-  nmap <silent> gc :CocList diagnostics<CR>
-  nmap <silent> go :CocList outline<CR>
-  nmap <silent> gs :CocList -I symbols<CR>
+  " 查看变量函数使用的位置
   nmap <silent> gr <Plug>(coc-references)
-  vmap <silent> gf <Plug>(coc-format-selected)
 
   " >>>>> coc-explorer <<<<< "
+  " 打开文件管理器
   nmap <silent> tt :CocCommand explorer<CR>
 
   " >>>>> coc-translator <<<<< "
+  " 翻译
   nmap <silent> ts <Plug>(coc-translator-p)
 
   " >>>>> coc-yank <<<<< "
+  " 复制历史
   nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
   " >>>>> coc-snippets <<<<< "
@@ -166,6 +163,18 @@ if index(g:bundle_group, 'coc') >= 0
   let g:coc_snippet_prev = '<c-k>'
   " Use <C-j> for both expand and jump (make expand higher priority.)
   imap <C-l> <Plug>(coc-snippets-expand-jump)
+
+  " >>>>> coc-git <<<<< "
+  " navigate chunks of current buffer
+  nmap [g <Plug>(coc-git-prevchunk)
+  nmap ]g <Plug>(coc-git-nextchunk)
+  " show chunk diff at current position
+  nmap gs <Plug>(coc-git-chunkinfo)
+  " create text object for git chunks
+  omap ig <Plug>(coc-git-chunk-inner)
+  xmap ig <Plug>(coc-git-chunk-inner)
+  omap ag <Plug>(coc-git-chunk-outer)
+  xmap ag <Plug>(coc-git-chunk-outer)
 
 endif
 

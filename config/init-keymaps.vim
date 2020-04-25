@@ -59,9 +59,7 @@ if has('nvim')
   " 编译运行
   function! Compile_Run()
     exec "w"
-    if filereadable("Makefile")
-      exec "AsyncRun! make"
-    elseif &filetype == 'c'
+    if &filetype == 'c'
       exec "AsyncRun! -mode=term gcc % -o %< && ./%<"
     elseif &filetype == 'cpp'
       exec "AsyncRun! -mode=term g++ -std=c++11 % -Wall -o %< && ./%<"

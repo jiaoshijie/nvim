@@ -44,6 +44,7 @@ set t_Co=256
 
 if has('nvim')
   " 设置颜色主题
+  let g:onedark_terminal_italics=1
   colorscheme gruvbox
   highlight Normal guibg=#2C323B ctermbg=235
   highlight SignColumn guibg=#242a32 ctermbg=239
