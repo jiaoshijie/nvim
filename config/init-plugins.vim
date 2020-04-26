@@ -117,6 +117,8 @@ if index(g:bundle_group, 'enhance') >= 0
   nmap F <Plug>(clever-f-F)
   xmap F <Plug>(clever-f-F)
   omap F <Plug>(clever-f-F)
+  nmap ; <Plug>(clever-f-repeat-forward)
+  nmap , <Plug>(clever-f-repeat-back)
 
 endif
 
