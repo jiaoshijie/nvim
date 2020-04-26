@@ -29,6 +29,8 @@ if index(g:bundle_group, 'enhance') >= 0
   Plug 'easymotion/vim-easymotion'
   " ----- * 对齐代码 * ----- "
   Plug 'junegunn/vim-easy-align'
+  " ----- * f,F,t,T * ----- "
+  Plug 'rhysd/clever-f.vim'
 
   " =======
   " nerdcommenter-config
@@ -101,8 +103,20 @@ if index(g:bundle_group, 'enhance') >= 0
   " =======
   " vim-easy-align-keymaps
   " =======
-  xmap ga <Plug>(EasyAlign)
-  nmap ga <Plug>(EasyAlign)
+  xmap ga <Plug>(LiveEasyAlign)
+  nmap ga <Plug>(LiveEasyAlign)
+
+  " =======
+  " clever-f
+  " =======
+  let g:clever_f_not_overwrites_standard_mappings=1
+  let g:clever_f_across_no_line=1
+  nmap f <Plug>(clever-f-f)
+  xmap f <Plug>(clever-f-f)
+  omap f <Plug>(clever-f-f)
+  nmap F <Plug>(clever-f-F)
+  xmap F <Plug>(clever-f-F)
+  omap F <Plug>(clever-f-F)
 
 endif
 
@@ -113,10 +127,8 @@ endif
 if index(g:bundle_group, 'coc') >= 0
   " ----- * coc * ----- "
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-  " ----- * c cpp 语法语义 * ----- "
+  " ----- * c cpp 语法语义 coc-clangd需要 * ----- "
   Plug 'jackguo380/vim-lsp-cxx-highlight'
-  " ----- * 一些好用的代码片段 * ----- "
-  Plug 'honza/vim-snippets'
 
   " =======
   " coc-config
@@ -187,6 +199,7 @@ endif
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'Debuger') >= 0
   Plug 'puremourning/vimspector'
+  Plug 'wakatime/vim-wakatime'
 endif
 
 
@@ -220,9 +233,6 @@ if index(g:bundle_group, 'beautify') >= 0
   " =======
   let g:airline#extensions#tabline#enabled = 1
   let g:airline_powerline_fonts = 1
-  " let g:airline_theme='onedark'
-  " let g:airline_theme='gruvbox'
-  let g:airline_theme='dracula'
 
   " =======
   " vim-startify-keymaps
@@ -269,8 +279,6 @@ if index(g:bundle_group, 'beautify') >= 0
   let g:goyo_width = 80
   let g:goyo_height = 85
   let g:goyo_linenr = 0
-  let g:limelight_conceal_ctermfg = 250
-  let g:limelight_default_coefficient = 0.8
   " =======
   " goyo-keymaps
   " =======
@@ -311,6 +319,7 @@ if index(g:bundle_group, 'search') >= 0
   " =======
   " fzf-keymaps
   " =======
+  " 搜索当前目录下的文件
   nnoremap <silent> <leader>ff :FZF<cr>
 
   " =======
@@ -339,9 +348,14 @@ if index(g:bundle_group, 'search') >= 0
   " =======
   " LeaderF-keymaps
   " =======
+  " 搜索目录下文件的内容
   nnoremap <silent> <c-p> :Leaderf rg --smart-case<cr>
+  " 切换buffer
   nnoremap <silent> <leader>bb :LeaderfBuffer<cr>
+  " 搜索当前目录下git管理的文件
   nnoremap <silent> <leader>fg :LeaderfFile<cr>
+  " 搜索当前buffer的内容
+  nnoremap <silent> <leader>bs :LeaderfLine<cr>
 
 endif
 

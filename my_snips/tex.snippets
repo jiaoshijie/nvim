@@ -1,7 +1,7 @@
 snippet head_cn "snippet for cn tex"
 %!TEX program = ${1:xelatex}
-\documentclass[UTF8, fontset=${2:adobe}]{ctexart}
 % \PassOptionsToPackage{quiet}{fontspec} % 使用fandol-font时加上这一条
+\documentclass[UTF8, fontset=${2:adobe}]{ctexart}
 
 \begin{document}
 ${3:你好, 世界!}
@@ -20,8 +20,8 @@ endsnippet
 snippet head_beamer "中文beamer"
 %!TEX program = xelatex
 \documentclass[UTF8, fontset=adobe]{beamer}
-\usepackage[UTF8, fontset=${1:adobe}]{ctex}
 % \PassOptionsToPackage{quiet}{fontspec} % 使用fandol-font时加上这一条
+\usepackage[UTF8, fontset=${1:adobe}]{ctex}
 
 \begin{document}
 \begin{frame}{${2:你好}}
@@ -56,10 +56,14 @@ snippet content "目录"
 ${2}
 endsnippet
 
-snippet emph "斜体"
-\emph{${1}}${2}
+snippet bold "粗体"
+\textbf{${1}}${0}
+endsnippet
+
+snippet italic "斜体"
+\emph{${1}}${0}
 endsnippet
 
 snippet underline "下划线"
-\underline{${1}}${2}
+\underline{${1}}${0}
 endsnippet
