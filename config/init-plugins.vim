@@ -273,7 +273,7 @@ if index(g:bundle_group, 'beautify') >= 0
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
   let g:indentLine_concealcursor = ''
   let g:indentLine_conceallevel = '2'
-  let g:indentLine_fileType = ['c', 'cpp', 'python', 'gas']  " 默认打开
+  let g:indentLine_fileType = ['c', 'cpp', 'python', 'gas', 'tex']  " 默认打开
 
   " =======
   " goyo-config

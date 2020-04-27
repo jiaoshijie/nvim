@@ -67,6 +67,9 @@ endif
 " 设置颜色主题, 要在init-plugs.vim之后
 "----------------------------------------------------------------------
 
+" 允许 256 色
+set t_Co=256
+
 " 设置终端vim支持gui的颜色
 if has("termguicolors")
   set termguicolors
@@ -75,9 +78,6 @@ end
 " 设置黑色背景
 set background=dark
 
-" 允许 256 色
-set t_Co=256
-
 if has('nvim')
   " 设置颜色主题
   let g:onedark_terminal_italics=1
@@ -85,8 +85,6 @@ if has('nvim')
   colorscheme gruvbox
   if exists("g:colors_name") && (g:colors_name=="gruvbox" || g:colors_name=="onedark" || g:colors_name=="dracula")
     let g:airline_theme=g:colors_name
-  else
-    let g:ariline_theme=dark  " or random
   endif
 endif
 
@@ -95,21 +93,9 @@ if has('gui_running')
   set guioptions-=T
   set guioptions-=r
   set guioptions-=m
-
-  colorscheme elflord
-  " 总是显示标签栏
   set showtabline=2
-  " 状态栏设置
-  set statusline=                                 " 清空状态
-  set statusline+=\ %F                            " 文件名
-  set statusline+=\ [%1*%M%*%n%R%H]               " buffer 编号和状态
-  set statusline+=%=                              " 向右对齐
-  set statusline+=\ %y                            " 文件类型
-  set statusline+=\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %v:%l/%L%)    " 最右边显示文件编码和行号等信息
-
-  " 修正补全目录的色彩
-  highlight! Pmenu guibg=gray guifg=black ctermbg=gray ctermfg=black
-  highlight! PmenuSel guibg=gray guifg=brown ctermbg=brown ctermfg=gray
+  colorscheme gruvbox
+  set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
 endif
 
 "----------------------------------------------------------------------
