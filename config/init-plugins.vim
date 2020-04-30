@@ -350,6 +350,9 @@ if index(g:bundle_group, 'search') >= 0
   " =======
   " LeaderF-keymaps
   " =======
+  " 清除默认快捷键
+  let g:Lf_ShortcutF = ''
+  let g:Lf_ShortcutB = ''
   " 搜索目录下文件的内容
   nnoremap <silent> <c-p> :Leaderf rg --smart-case<cr>
   " 切换buffer

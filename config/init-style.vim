@@ -73,6 +73,8 @@ set t_Co=256
 " 设置终端vim支持gui的颜色
 if has("termguicolors")
   set termguicolors
+  let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+  let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 end
 
 " 设置黑色背景

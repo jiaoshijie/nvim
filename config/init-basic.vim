@@ -45,13 +45,13 @@ set formatoptions-=tc
 " 显示光标位置
 set ruler
 
-" 等待命令键
-set timeout
-set timeoutlen=1000
-
 " 打开功能键超时检测(终端下功能键为一串 ESC 开头的字符串)
 set ttimeout
 set ttimeoutlen=50
+
+" 等待命令键
+set timeout
+set timeoutlen=1000
 
 " 鼠标支持
 set mouse=a
