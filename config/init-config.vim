@@ -11,26 +11,34 @@ let maplocalleader=','
 " 备份配置
 "----------------------------------------------------------------------
 
+let g:backup_dir=$HMOE
+
 " 禁止备份
 set nobackup
 " 如果允许, 保存时备份
 set writebackup
 " 如果允许, 备份文件扩展名
 set backupext=.bak
-set backupdir=~/.config/nvim/tmp/backup//,.
+set backupdir=$HOME/.config/nvim/tmp/backup//,.
 
 " 禁止交换文件
 set noswapfile
-set directory=~/.config/nvim/tmp/swp//,.
+set directory=$HOME/.config/nvim/tmp/swp//,.
 
 " 允许undofile
 set undofile
 set undodir=/tmp/neovim_u/undodir//,.
 
 " 创建各自的目录
-silent !mkdir -p ~/.config/nvim/tmp/{swp,backup}
-silent !mkdir -p /tmp/neovim_u/undodir
-
+if ! isdirectory(expand('$HOME/.config/nvim/tmp/swp'))
+  silent! call mkdir(expand('$HOME/.config/nvim/tmp/swp'), 'p', 0700)
+endif
+if ! isdirectory(expand('$HOME/.config/nvim/tmp/backup'))
+  silent! call mkdir(expand('$HOME/.config/nvim/tmp/backup'), 'p', 0700)
+endif
+if ! isdirectory(expand('/tmp/neovim_u/undodir'))
+  silent! call mkdir(expand('/tmp/neovim_u/undodir'), 'p', 0700)
+endif
 
 "----------------------------------------------------------------------
 " 配置微调
