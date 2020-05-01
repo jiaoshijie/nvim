@@ -152,17 +152,17 @@ elseif has('nvim')
 endif
 
 " 移动窗口的位置
-nnoremap <silent> <leader>wh <c-w>H
-nnoremap <silent> <leader>wj <c-w>J
-nnoremap <silent> <leader>wk <c-w>K
-nnoremap <silent> <leader>wl <c-w>L
+nnoremap <silent> <Up>    <c-w>K
+nnoremap <silent> <Down>  <c-w>J
+nnoremap <silent> <Left>  <c-w>H
+nnoremap <silent> <Right> <c-w>L
 
 " 调整窗口大小
 nnoremap <silent> <leader>w= <C-w>=
-nnoremap <silent> <Up>    :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Down>  :exe "resize " . (winheight(0) * 2/3)<CR>
-nnoremap <silent> <Left>  :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
-nnoremap <silent> <Right> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+nnoremap <silent> <S-Up>    :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <S-Down>  :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <S-Left>  :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <S-Right> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 "----------------------------------------------------------------------
 " buffer 相关
