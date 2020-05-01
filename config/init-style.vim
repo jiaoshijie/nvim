@@ -71,11 +71,13 @@ endif
 set t_Co=256
 
 " 设置终端vim支持gui的颜色
-if has("termguicolors")
+if has('termguicolors')
   set termguicolors
-  let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
-  let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
-end
+  if ! has('nvim')
+    let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+    let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+  endif
+endif
 
 " 设置黑色背景
 set background=dark
@@ -84,10 +86,13 @@ if has('nvim')
   " 设置颜色主题
   let g:onedark_terminal_italics=1
   " gruvbox onedark dracula
-  colorscheme gruvbox
+  colorscheme onedark
   if exists("g:colors_name") && (g:colors_name=="gruvbox" || g:colors_name=="onedark" || g:colors_name=="dracula")
     let g:airline_theme=g:colors_name
   endif
+else
+  colorscheme gruvbox
+  set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
 endif
 
 if has('gui_running')
@@ -96,8 +101,6 @@ if has('gui_running')
   set guioptions-=r
   set guioptions-=m
   set showtabline=2
-  colorscheme gruvbox
-  set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
 endif
 
 "----------------------------------------------------------------------

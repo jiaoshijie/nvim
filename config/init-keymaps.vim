@@ -15,7 +15,7 @@ inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 
 "----------------------------------------------------------------------
-" Commandline mode
+" Command mode
 "----------------------------------------------------------------------
 
 " 提权保存
@@ -98,14 +98,16 @@ nnoremap <leader>s :w<cr>
 nnoremap <leader>S :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>qq :q<cr>
 nnoremap <silent> <leader><cr> :nohl<cr>
-nnoremap <silent> <C-k> d$
+nnoremap <silent> <C-k> D
 
 " 打开语法检查
 nnoremap <silent> <leader>o :setlocal spell! spelllang=en_us<CR>
 
 " 透明背景和取消
-nnoremap <silent> <leader>ct :call Change_theme_alpha()<CR>
-
+if ! has('gui_running')
+  " 需要终端可以透明
+  nnoremap <silent> <leader>ct :call Change_theme_alpha()<CR>
+endif
 
 " 文本和16进制模式切换
 nnoremap <silent> <leader>xd :%!xxd<CR>
@@ -125,7 +127,7 @@ nnoremap <leader>w- <C-w>s
 
 " 关闭窗口
 nnoremap <leader>wo <C-w>o
-nnoremap <leader>wD <C-w>c
+nnoremap <leader>wd <C-w>c
 
 " 改变选中的窗口
 noremap <m-H> <c-w>h
@@ -149,6 +151,12 @@ elseif has('nvim')
   tnoremap <m-K> <c-\><c-n><c-w>k
 endif
 
+" 移动窗口的位置
+nnoremap <silent> <leader>wh <c-w>H
+nnoremap <silent> <leader>wj <c-w>J
+nnoremap <silent> <leader>wk <c-w>K
+nnoremap <silent> <leader>wl <c-w>L
+
 " 调整窗口大小
 nnoremap <silent> <leader>w= <C-w>=
 nnoremap <silent> <Up>    :exe "resize " . (winheight(0) * 3/2)<CR>
@@ -171,7 +179,7 @@ nnoremap <silent> <leader>bD :bdelete %<CR>
 nnoremap <silent> <leader>tc :tabnew<CR>
 nnoremap <silent> <leader>tn :tabnext<CR>
 nnoremap <silent> <leader>tp :tabprevious<CR>
-nnoremap <silent> <leader>tD :tabclose<CR>
+nnoremap <silent> <leader>td :tabclose<CR>
 nnoremap <silent> <leader>to :tabonly<cr>
 if has('gui_running')
   nnoremap <silent> <m-1> :tabn 1<cr>
