@@ -2,7 +2,7 @@ if !exists('g:bundle_group')
   let g:bundle_group = ['enhance', 'beautify', 'coc', 'filetypes']
   let g:bundle_group += ['search', 'git', 'markdown', 'manager', 'latex', 'textobj']
   let g:bundle_group += ['grammar', 'unix_sudo']
-  " ['Debuger', 'which-key']
+  " ['Debuger', 'golang', 'which-key']
 endif
 
 call plug#begin('~/.config/nvim/plugged')
@@ -193,6 +193,10 @@ if index(g:bundle_group, 'coc') >= 0
   omap ag <Plug>(coc-git-chunk-outer)
   xmap ag <Plug>(coc-git-chunk-outer)
 
+endif
+
+if index(g:bundle_group, 'golang') >= 0
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 endif
 
 
