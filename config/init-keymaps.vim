@@ -69,6 +69,8 @@ if has('nvim')
     elseif &filetype == 'python'
       let $PYTHONNUNBUFFERED=1
       exec "AsyncRun! -mode=term -raw python3 %"
+    elseif &filetype == 'go'
+      exec "GoRun"
     elseif &filetype == 'vimwiki'
       exec "AsyncRun! -mode=term pandoc % --pdf-engine=xelatex -o %<.pdf"
     elseif &filetype == 'markdown'

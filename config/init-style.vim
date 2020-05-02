@@ -37,9 +37,7 @@ function! Change_theme_alpha()
     highlight SignColumn guibg=NONE ctermbg=None
   else
     let g:jsj_change_theme_alpha = 0
-    if exists("g:colors_name") && g:colors_name=="dracula"
-      highlight Normal guibg=#282A36 ctermbg=236
-    elseif exists("g:colors_name") && g:colors_name=="gruvbox"
+    if exists("g:colors_name") && g:colors_name=="gruvbox"
       highlight Normal guibg=#282828 ctermbg=235
     elseif exists("g:colors_name") && g:colors_name=="onedark"
       highlight Normal guibg=#282C34 ctermbg=235
@@ -81,9 +79,9 @@ set background=dark
 if has('nvim')
   " 设置颜色主题
   let g:onedark_terminal_italics=1
-  " gruvbox onedark dracula
-  colorscheme dracula
-  if exists("g:colors_name") && (g:colors_name=="gruvbox" || g:colors_name=="onedark" || g:colors_name=="dracula")
+  " gruvbox onedark
+  colorscheme onedark
+  if exists("g:colors_name") && (g:colors_name=="gruvbox" || g:colors_name=="onedark")
     let g:airline_theme=g:colors_name
   endif
 else

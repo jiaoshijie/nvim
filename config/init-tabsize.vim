@@ -11,7 +11,8 @@ set expandtab
 set softtabstop=2
 
 
-augroup jsj_PythonTab
+augroup jsj_SpecialTab
   autocmd!
   autocmd FileType python setlocal shiftwidth=4 tabstop=4 noexpandtab foldmethod=indent textwidth=78
+  autocmd FileType go setlocal noexpandtab
 augroup END

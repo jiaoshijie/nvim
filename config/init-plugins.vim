@@ -1,8 +1,8 @@
 if !exists('g:bundle_group')
-  let g:bundle_group = ['enhance', 'beautify', 'coc', 'filetypes']
+  let g:bundle_group = ['enhance', 'beautify', 'coc', 'golang', 'filetypes']
   let g:bundle_group += ['search', 'git', 'markdown', 'manager', 'latex', 'textobj']
   let g:bundle_group += ['grammar', 'unix_sudo']
-  " ['Debuger', 'golang', 'which-key']
+  " ['Debuger', 'which-key']
 endif
 
 call plug#begin('~/.config/nvim/plugged')
@@ -197,6 +197,20 @@ endif
 
 if index(g:bundle_group, 'golang') >= 0
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+  " =======
+  " vim-go config
+  " =======
+  let g:go_doc_popup_window = 1
+  let g:go_def_mapping_enabled = 0
+  let g:go_template_autocreate = 0
+  let g:go_auto_type_info = 1
+  let g:go_doc_keywordprg_enabled = 0
+  let g:go_list_type = "quickfix"
+  let g:go_metalinter_autosave = 1
+  let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+  let g:go_metalinter_autosave_enabled = ['golint']
+
 endif
 
 
@@ -213,10 +227,9 @@ endif
 " 一些美化插件
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'beautify') >= 0
-  " ----- * 3款主题 * ----- "
+  " ----- * 2款主题 * ----- "
   Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
-  Plug 'dracula/vim'
   " ----- * 状态栏 * ----- "
   Plug 'vim-airline/vim-airline'
   " ----- * 显示图标 * ----- "
