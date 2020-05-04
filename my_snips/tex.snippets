@@ -1,31 +1,71 @@
 snippet head_cn "snippet for cn tex"
-%!TEX program = ${1:xelatex}
+%!TEX program = xelatex
 % \PassOptionsToPackage{quiet}{fontspec} % 使用fandol-font时加上这一条
-\documentclass[UTF8, fontset=${2:adobe}]{ctexart}
+\documentclass[11pt, a4paper, UTF8]{article}
+
+% 导包
+\usepackage[UTF8, fontset=none]{ctex}
+\usepackage[margin=0.5in]{geometry}  % 页边距设置
+
+% 重新设置字体
+\setmainfont{DejaVu Serif} % \rmfamily
+\setsansfont{DejaVu Sans} % \sffamily
+\setmonofont{Source Code Pro} % \ttfamily
+\setCJKmainfont{Source Han Serif CN}
+\setCJKsansfont{Source Han Sans CN}
+\setCJKmonofont{Source Han Mono SC}
+
+\newCJKfontfamily\heiti{Source Han Sans CN}
+\newCJKfontfamily\songti{Source Han Serif CN}
+% \newCJKfontfamily\fangsong{FandolFang}
+% \newCJKfontfamily\kaishu{FandolKai}
 
 \begin{document}
-${3:你好, 世界!}
+
+\pagestyle{empty} % 页眉页脚设置
+
+${1:你好, 世界!}
+${0}
 \end{document}
 endsnippet
 
 snippet head_en "snippet for en tex"
-%!TEX program = ${1:pdflatex}
-\documentclass[]{article}
+%!TEX program = pdflatex
+\documentclass[11pt, a4paper, UTF8]{article}
 
 \begin{document}
-${3:Hello World!}
+
+${1:Hello World!}
+${0}
 \end{document}
 endsnippet
 
 snippet head_beamer "中文beamer"
 %!TEX program = xelatex
-\documentclass[UTF8, fontset=adobe]{beamer}
 % \PassOptionsToPackage{quiet}{fontspec} % 使用fandol-font时加上这一条
-\usepackage[UTF8, fontset=${1:adobe}]{ctex}
+\documentclass[UTF8]{beamer}
+
+% 导包
+\usepackage[UTF8, fontset=none]{ctex}
+
+% 重新设置字体
+\setmainfont{DejaVu Serif} % \rmfamily
+\setsansfont{DejaVu Sans} % \sffamily
+\setmonofont{Source Code Pro} % \ttfamily
+\setCJKmainfont{Source Han Serif CN}
+\setCJKsansfont{Source Han Sans CN}
+\setCJKmonofont{Source Han Mono SC}
+
+\newCJKfontfamily\heiti{Source Han Sans CN}
+\newCJKfontfamily\songti{Source Han Serif CN}
+% \newCJKfontfamily\fangsong{FandolFang}
+% \newCJKfontfamily\kaishu{FandolKai}
 
 \begin{document}
-\begin{frame}{${2:你好}}
-${3:你好, 世界!}
+\begin{frame}{${1:你好}}
+
+${2:你好, 世界!}
+${0}
 \end{frame}
 \end{document}
 endsnippet
