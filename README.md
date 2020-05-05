@@ -25,6 +25,8 @@
 - [ ] `sudo pacman -S nodejs npm` and `sudo npm install -g live-server` for html-preview
 - [ ] `sudo pacman -S figlet` for ASCII art
 
+使用`:checkhealth`检查安装其他的依赖和设置一些环境变量
+
 ## Keyboard Shortcuts
 - `<leader>=space`
 

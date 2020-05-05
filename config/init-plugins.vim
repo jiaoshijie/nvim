@@ -2,7 +2,7 @@ if !exists('g:bundle_group')
   let g:bundle_group = ['enhance', 'beautify', 'coc', 'golang', 'filetypes']
   let g:bundle_group += ['search', 'git', 'markdown', 'manager', 'latex', 'textobj']
   let g:bundle_group += ['grammar', 'unix_sudo']
-  " ['Debuger', 'which-key']
+  " ['Debuger']
 endif
 
 call plug#begin('~/.config/nvim/plugged')
@@ -514,22 +514,6 @@ endif
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'unix_sudo') >= 0
   Plug 'lambdalisue/suda.vim'
-endif
-
-"----------------------------------------------------------------------
-" which-key 显示可用快捷键
-"----------------------------------------------------------------------
-if index(g:bundle_group, 'which-key') >= 0
-  Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-
-  " ----- * whichkey-config * ----- "
-  let g:mapleader = "\<Space>"
-  let g:maplocalleader = ','
-  let g:which_key_map = {}
-
-  " ----- * whichkey-keymaps * ----- "
-  nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-  nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 endif
 
 "----------------------------------------------------------------------
