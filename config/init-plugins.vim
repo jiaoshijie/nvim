@@ -2,7 +2,6 @@ if !exists('g:bundle_group')
   let g:bundle_group = ['enhance', 'beautify', 'coc', 'golang', 'filetypes']
   let g:bundle_group += ['search', 'git', 'markdown', 'manager', 'latex', 'textobj']
   let g:bundle_group += ['grammar', 'unix_sudo']
-  " ['Debuger']
 endif
 
 call plug#begin('~/.config/nvim/plugged')
@@ -212,16 +211,6 @@ if index(g:bundle_group, 'golang') >= 0
   let g:go_metalinter_autosave_enabled = ['golint']
 
 endif
-
-
-"----------------------------------------------------------------------
-" 可视化debug
-"----------------------------------------------------------------------
-if index(g:bundle_group, 'Debuger') >= 0
-  Plug 'puremourning/vimspector'
-  Plug 'wakatime/vim-wakatime'
-endif
-
 
 "----------------------------------------------------------------------
 " 一些美化插件
