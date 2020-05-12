@@ -105,11 +105,8 @@ nnoremap <silent> <C-k> D
 " 打开语法检查
 nnoremap <silent> <leader>o :setlocal spell! spelllang=en_us<CR>
 
-" 透明背景和取消
-if ! has('gui_running')
-  " 需要终端可以透明
-  nnoremap <silent> <leader>ct :call Change_theme_alpha()<CR>
-endif
+" 透明背景和取消, 需要终端可以透明
+nnoremap <silent> <leader>ct :call Change_theme_alpha()<CR>
 
 " 文本和16进制模式切换
 nnoremap <silent> <leader>xd :%!xxd<CR>
@@ -175,23 +172,8 @@ nnoremap <silent> <leader>bn :bnext<cr>
 nnoremap <silent> <leader>bD :bdelete %<CR>
 
 "----------------------------------------------------------------------
-" Tab 相关
+" Tab 相关(不喜欢用这玩意儿)
 "----------------------------------------------------------------------
 
-nnoremap <silent> <leader>tc :tabnew<CR>
-nnoremap <silent> <leader>tn :tabnext<CR>
-nnoremap <silent> <leader>tp :tabprevious<CR>
 nnoremap <silent> <leader>td :tabclose<CR>
 nnoremap <silent> <leader>to :tabonly<cr>
-if has('gui_running')
-  nnoremap <silent> <m-1> :tabn 1<cr>
-  nnoremap <silent> <m-2> :tabn 2<cr>
-  nnoremap <silent> <m-3> :tabn 3<cr>
-  nnoremap <silent> <m-4> :tabn 4<cr>
-  nnoremap <silent> <m-5> :tabn 5<cr>
-  nnoremap <silent> <m-6> :tabn 6<cr>
-  nnoremap <silent> <m-7> :tabn 7<cr>
-  nnoremap <silent> <m-8> :tabn 8<cr>
-  nnoremap <silent> <m-9> :tabn 9<cr>
-  nnoremap <silent> <m-0> :tabn 10<cr>
-endif

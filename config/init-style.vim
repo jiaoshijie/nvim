@@ -80,21 +80,12 @@ if has('nvim')
   " 设置颜色主题
   let g:onedark_terminal_italics=1
   " gruvbox onedark
-  colorscheme gruvbox
+  colorscheme onedark
   if exists("g:colors_name") && (g:colors_name=="gruvbox" || g:colors_name=="onedark")
     let g:airline_theme=g:colors_name
   endif
 else
-  colorscheme gruvbox
   set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
-endif
-
-if has('gui_running')
-  set guifont=Source\ Code\ Pro\ 14
-  set guioptions-=T
-  set guioptions-=r
-  set guioptions-=m
-  set showtabline=2
 endif
 
 "----------------------------------------------------------------------

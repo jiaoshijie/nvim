@@ -384,8 +384,6 @@ if index(g:bundle_group, 'search') >= 0
   nnoremap <silent> <leader>bb :LeaderfBuffer<cr>
   " 搜索当前目录下git管理的文件
   nnoremap <silent> <leader>fg :LeaderfFile<cr>
-  " 搜索当前buffer的内容
-  nnoremap <silent> <leader>bs :LeaderfLine<cr>
 
 endif
 
