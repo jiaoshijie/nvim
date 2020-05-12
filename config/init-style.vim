@@ -105,5 +105,6 @@ augroup jsj_color_warning
   autocmd!
   highlight! Todo cterm=bold,italic ctermfg=223 ctermbg=235 gui=bold,italic guifg=fg guibg=bg
   autocmd FileType * call matchadd('Todo', 'NOTICE')
+  autocmd FileType * call matchadd('Todo', '???...')
   autocmd FileType gas call matchadd('Todo', 'TODO')
 augroup END

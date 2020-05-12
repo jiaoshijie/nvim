@@ -194,6 +194,9 @@ if index(g:bundle_group, 'coc') >= 0
 
 endif
 
+"----------------------------------------------------------------------
+" golang
+"----------------------------------------------------------------------
 if index(g:bundle_group, 'golang') >= 0
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
@@ -250,7 +253,7 @@ if index(g:bundle_group, 'beautify') >= 0
         \ 'startify#center(startify#fortune#cowsay())'
 
   function! s:set_startify_left_padding() abort
-    let g:startify_padding_left = winwidth(0)/2 - 20
+    let g:startify_padding_left = winwidth(0)/2 - 30
   endfunction
 
   augroup jsj_startify
@@ -479,8 +482,6 @@ if index(g:bundle_group, 'manager') >= 0
   " ----- * 任务管理 * ----- "
   " https://github.com/skywind3000/asynctasks.vim/blob/master/README-cn.md
   Plug 'skywind3000/asynctasks.vim'
-  " ----- * 日历 * ----- "
-  Plug 'itchyny/calendar.vim'
 
   " =======
   " asyncrun-config
