@@ -12,11 +12,11 @@
 <!-- vim-markdown-toc -->
 
 ## 安装依赖
-- [x] `sudo pacman -S clangd ccls ctags cscope` for c/c++
-- [x] `sudo pacman -S fzf the_silver_searcher` for fzf-vim
-- [x] `sudo pacman -S xsel xclip` for using system clipboard
+- [x] `sudo pacman -S clangd(ccls) ctags cscope` for c/c++
+- [x] `sudo pacman -S fzf ripgrep(the_silver_searcher)` for fzf-vim
+- [x] `sudo pacman -S xclip(xsel)` for using system clipboard
 - [x] `sudo npm install -g trash` for coc-explorer
-- [x] `pip install --user flake8 jedi==0.15.2 ` for python linting and completion
+- [x] `pip install --user flake8 jedi>=0.17.0 ` for python linting and completion
 - [x] `pip install --user neovim-remote` for tex
 - [x] `pip install --user pynvim` for rnvimr
 - [x] `sudo pacman -S java8(+)-openjfx` for vim-grammarous

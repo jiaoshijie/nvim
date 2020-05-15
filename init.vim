@@ -6,28 +6,50 @@
 " |_|  |_|\__, | \_/  |___|_|  |_|_| \_\\____|
 "         |___/
 
+"----------------------------------------------------------------------
 " mkdir ~/.config/nvim/autoload
 " git clone https://github.com/junegunn/vim-plug --depth=1
+"----------------------------------------------------------------------
+
+" 防止重复加载
+if get(s:, 'loaded', 0) != 0
+  finish
+else
+  let s:loaded = 1
+endif
+
+" 取得本文件所在的目录
+let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+
+" 将 vim-init 目录加入 runtimepath
+exec 'set rtp+='.s:home
+
+" 将 ~/.vim 目录加入 runtimepath
+set rtp+=~/.vim
+
+"----------------------------------------------------------------------
+" 模块加载
+"----------------------------------------------------------------------
 
 " 加载基础配置
-source ~/.config/nvim/config/init-basic.vim
+runtime! config/init-basic.vim
 
 " 加载扩展配置
-source ~/.config/nvim/config/init-config.vim
+runtime! config/init-config.vim
 
 " 设定 tabsize
-source ~/.config/nvim/config/init-tabsize.vim
+runtime! config/init-tabsize.vim
 
 if has('nvim')
   " 插件加载
-  source ~/.config/nvim/config/init-plugins.vim
+  runtime! config/init-plugins.vim
 endif
 
 " 界面样式
-source ~/.config/nvim/config/init-style.vim
+runtime! config/init-style.vim
 
 " 自定义按键
-source ~/.config/nvim/config/init-keymaps.vim
+runtime! config/init-keymaps.vim
 
 " 代码片段
-source ~/.config/nvim/config/init-snippets.vim
+runtime! config/init-snippets.vim

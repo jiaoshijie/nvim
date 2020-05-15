@@ -85,6 +85,9 @@ if has('nvim')
     let g:airline_theme=g:colors_name
   endif
 else
+  highlight! SignColumn guibg=NONE ctermbg=NONE
+  highlight! Pmenu guibg=gray guifg=black ctermbg=gray ctermfg=black
+  highlight! PmenuSel guibg=gray guifg=brown ctermbg=brown ctermfg=gray
   set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
 endif
 
