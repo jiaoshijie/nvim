@@ -236,8 +236,6 @@ if index(g:bundle_group, 'beautify') >= 0
   Plug 'lfv89/vim-interestingwords'
   " ----- * 显示缩进线 * ----- "
   Plug 'Yggdroot/indentLine'
-  " ----- * 简洁模式 * ----- "
-  Plug 'junegunn/goyo.vim'
 
   " =======
   " vim-airline-config
@@ -246,24 +244,14 @@ if index(g:bundle_group, 'beautify') >= 0
   let g:airline_powerline_fonts = 1
 
   " =======
-  " vim-startify-keymaps
+  " vim-startify-config
   " =======
   let g:startify_change_to_dir = 1
   let g:startify_custom_header =
         \ 'startify#center(startify#fortune#cowsay())'
-
-  function! s:set_startify_left_padding() abort
-    let g:startify_padding_left = winwidth(0)/2 - 30
-  endfunction
-
-  augroup jsj_startify
-    autocmd!
-    autocmd  FileType startify set laststatus=0 showtabline=0
-      \| autocmd BufLeave <buffer> set laststatus=2 showtabline=2
-    autocmd User Startified setlocal buflisted
-    autocmd VimEnter * call s:set_startify_left_padding()
-  augroup end
-
+  " =======
+  " vim-startify-keymaps
+  " =======
   nnoremap <silent> <leader>fr :Startify<cr>
 
   " =======
@@ -299,17 +287,6 @@ if index(g:bundle_group, 'beautify') >= 0
   let g:indentLine_concealcursor = ''
   let g:indentLine_conceallevel = '2'
   let g:indentLine_fileType = ['c', 'cpp', 'python', 'gas', 'tex']  " 默认打开
-
-  " =======
-  " goyo-config
-  " =======
-  let g:goyo_width = 80
-  let g:goyo_height = 85
-  let g:goyo_linenr = 0
-  " =======
-  " goyo-keymaps
-  " =======
-  nnoremap <silent> <leader>gy :Goyo<cr>
 
 endif
 
@@ -477,9 +454,6 @@ endif
 if index(g:bundle_group, 'manager') >= 0
   " ----- * vim运行终端命令 * ----- "
   Plug 'skywind3000/asyncrun.vim'
-  " ----- * 任务管理 * ----- "
-  " https://github.com/skywind3000/asynctasks.vim/blob/master/README-cn.md
-  Plug 'skywind3000/asynctasks.vim'
 
   " =======
   " asyncrun-config

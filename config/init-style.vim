@@ -95,30 +95,25 @@ if has('nvim')
   " 设置颜色主题
   let g:onedark_terminal_italics=1
   " gruvbox onedark
-  colorscheme onedark
+  colorscheme gruvbox
   if exists("g:colors_name") && (g:colors_name=="gruvbox" || g:colors_name=="onedark")
     let g:airline_theme=g:colors_name
   endif
 else
-  highlight! SignColumn guibg=NONE ctermbg=NONE
-  highlight! Pmenu guibg=gray guifg=black ctermbg=gray ctermfg=black
-  highlight! PmenuSel guibg=gray guifg=brown ctermbg=brown ctermfg=gray
-  highlight! StatusLine ctermbg=darkgray cterm=NONE guibg=darkgray gui=NONE
+  let &t_SI.="\e[5 q" "SI(start insert)
+  let &t_SR.="\e[4 q" "SR(start replace)
+  let &t_EI.="\e[1 q" "EI(end insert/replace)
+
+  highlight SignColumn ctermbg=NONE
+  highlight Pmenu ctermbg=gray ctermfg=black
+  highlight PmenuSel ctermbg=brown ctermfg=gray
+  highlight StatusLine ctermbg=darkgray cterm=NONE
+  highlight MatchParen ctermbg=241 cterm=bold
+  highlight CursorLine cterm=NONE ctermbg=236
+  highlight CursorLineNr cterm=NONE
+  highlight Visual cterm=reverse
+
   set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
-
-  let &t_SI.="\e[5 q" "SI = INSERT mode
-  let &t_SR.="\e[4 q" "SR = REPLACE mode
-  let &t_EI.="\e[1 q" "EI = NORMAL mode(end insert or replace)
-
-  " if empty($TMUX)
-  "   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  "   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  "   let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-  " else
-  "   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  "   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-  "   let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-  " endif
 endif
 
 "----------------------------------------------------------------------
@@ -127,8 +122,7 @@ endif
 
 augroup jsj_color_warning
   autocmd!
-  highlight! Todo cterm=bold,italic ctermfg=223 ctermbg=235 gui=bold,italic guifg=fg guibg=bg
-  autocmd FileType * call matchadd('Todo', 'NOTICE')
+  highlight Todo cterm=bold,italic ctermfg=223 ctermbg=235 gui=bold,italic guifg=#e5b07b guibg=bg
   autocmd FileType * call matchadd('Todo', '???!!!')
   autocmd FileType gas call matchadd('Todo', 'TODO')
 augroup END
