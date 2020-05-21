@@ -100,6 +100,8 @@ if has('nvim')
     let g:airline_theme=g:colors_name
   endif
 else
+  " just vim have no gvim
+  let g:jsj_change_theme_alpha = 1
   let &t_SI.="\e[5 q" "SI(start insert)
   let &t_SR.="\e[4 q" "SR(start replace)
   let &t_EI.="\e[1 q" "EI(end insert/replace)

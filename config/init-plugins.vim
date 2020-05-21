@@ -472,6 +472,8 @@ if index(g:bundle_group, 'filetypes') >= 0
   Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
   " ----- * gas语法 * ----- "
   Plug 'Shirk/vim-gas'
+  " ----- * toml syntax * ----- "
+  Plug 'cespare/vim-toml'
   " ----- * i3语法 * ----- "
   Plug 'PotatoesMaster/i3-vim-syntax'
   " ----- * sxhkd语法 * ----- "
