@@ -298,7 +298,6 @@ if index(g:bundle_group, 'search') >= 0
   Plug 'liuchengxu/vista.vim'
   " ----- * 快速搜索 * ----- "
   Plug 'junegunn/fzf.vim'
-  Plug 'Yggdroot/LeaderF'
 
   " =======
   " vista-config
@@ -324,43 +323,14 @@ if index(g:bundle_group, 'search') >= 0
   " fzf-keymaps
   " =======
   " 搜索当前目录下的文件
+  nnoremap <silent> <leader>fh :FZF ~<cr>
   nnoremap <silent> <leader>ff :FZF<cr>
-
-  " =======
-  " LeaderF-config
-  " =======
-  " 隐藏帮助
-  let g:Lf_HideHelp = 1
-  " popup-mode
-  let g:Lf_WindowPosition = 'popup'
-  let g:Lf_PreviewInPopup = 1
-  let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
-  " 如何识别项目目录，从当前文件目录向父目录递归知道碰到下面的文件/目录
-  let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
-  let g:Lf_WorkingDirectoryMode = 'Ac'
-  let g:Lf_WindowHeight = 0.30
-  let g:Lf_CacheDirectory = expand('~/.config/nvim/tmp/cache')
-  " 模糊匹配忽略扩展名
-  let g:Lf_WildIgnore = {
-        \ 'dir': ['.svn','.git','.hg', 'obj', 'bin'],
-        \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]', '*.out']
-        \ }
-  " 最大历史文件保存
-  let g:Lf_MruMaxFiles = 0
-  " MRU 文件忽略扩展名
-  let g:Lf_MruFileExclude = ['*.so', '*.exe', '*.py[co]', '*.sw?', '~$*', '*.bak', '*.tmp', '*.dll']
-  " =======
-  " LeaderF-keymaps
-  " =======
-  " 清除默认快捷键
-  let g:Lf_ShortcutF = ''
-  let g:Lf_ShortcutB = ''
   " 搜索目录下文件的内容
-  nnoremap <silent> <c-p> :Leaderf rg --smart-case<cr>
+  nnoremap <silent> <c-p> :Rg<cr>
   " 切换buffer
-  nnoremap <silent> <leader>bb :LeaderfBuffer<cr>
+  nnoremap <silent> <leader>bb :Buffers<cr>
   " 搜索当前目录下git管理的文件
-  nnoremap <silent> <leader>fg :LeaderfFile<cr>
+  nnoremap <silent> <leader>fg :GitFiles<cr>
 
 endif
 
