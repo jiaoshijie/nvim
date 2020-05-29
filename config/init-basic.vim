@@ -176,8 +176,8 @@ set nrformats=alpha,hex,octal
 " 文件换行符，默认使用 unix 换行符
 set fileformats=unix,dos,mac
 
-" 自动改变文件夹
-set autochdir
+" 取消自动改变文件夹
+set noautochdir
 
 " 缩短一些message 如 将[NEW FILE]代替为[NEW]
 set shortmess+=c

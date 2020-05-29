@@ -95,7 +95,7 @@ if has('nvim')
   " 设置颜色主题
   let g:onedark_terminal_italics=1
   " gruvbox onedark
-  colorscheme gruvbox
+  colorscheme onedark
   if exists("g:colors_name") && (g:colors_name=="gruvbox" || g:colors_name=="onedark")
     let g:airline_theme=g:colors_name
   endif

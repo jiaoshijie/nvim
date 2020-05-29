@@ -323,7 +323,6 @@ if index(g:bundle_group, 'search') >= 0
   " fzf-keymaps
   " =======
   " 搜索当前目录下的文件
-  nnoremap <silent> <leader>fh :FZF ~<cr>
   nnoremap <silent> <leader>ff :FZF<cr>
   " 搜索目录下文件的内容
   nnoremap <silent> <c-p> :Rg<cr>

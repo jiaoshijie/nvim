@@ -13,29 +13,40 @@ endsnippet
 
 snippet ulli
 <ul>
-	<li>${1}</li>
-	<li>${2}</li>
-	<li>${3}</li>
+	<li>${0}</li>
+</ul>
+endsnippet
+
+
+snippet ullia
+<ul>
+	<li><a href="${1}">${0}</a></li>
 </ul>
 endsnippet
 
 snippet olli
 <ol>
-	<li>${1}</li>
-	<li>${2}</li>
-	<li>${3}</li>
+	<li>${0}</li>
+</ol>
+endsnippet
+
+snippet ollia
+<ol>
+	<li><a href="${1}">${0}</a></li>
 </ol>
 endsnippet
 
 snippet li "列表"
-<li>${1}</li>
-<li>${2}</li>
-<li>${3}</li>${0}
+<li>${0}</li>
+endsnippet
+
+snippet lia
+<li><a href="${1}">${0}</a></li>
 endsnippet
 
 snippet style "for css inline html"
 <style>
-${1}
+${0}
 </style>
 endsnippet
 
@@ -45,7 +56,7 @@ endsnippet
 
 snippet p "p"
 <p>
-${1}
+${0}
 </p>
 endsnippet
 
@@ -62,67 +73,66 @@ snippet button "button"
 endsnippet
 
 snippet a "a"
-<a href="${1}">${2}</a>
+<a href="${1}">${0}</a>
 endsnippet
 
 snippet img "img"
-<img src="${1}" alt="${2}">
+<img src="${1}" alt="${0}">
 endsnippet
 
 snippet figure "图片描述"
 <figure>
 	<img src="${1}" alt="${2}">
-	<figcaption>${3}</figcaption>
+	<figcaption>${0}</figcaption>
 </figure>
 endsnippet
 
 snippet script "script"
-<script src="${1}"></script>
+<script src="${0}"></script>
 endsnippet
 
 snippet div "div"
 <div class="${1}">
-${2}
+${0}
 </div>
 endsnippet
 
 snippet header "页眉"
 <header>
-${1}
+${0}
 </header>
 endsnippet
 
 snippet article "文章内容"
 <article>
-${1:article}
+${0:article}
 </article>
 endsnippet
 
 snippet footer "页脚"
 <footer>
-${1}
+${0}
 </footer>
 endsnippet
 
 snippet nav "导航栏"
 <nav>
-${1}
+${0}
 </nav>
 endsnippet
 
 snippet main "main"
 <main>
-${1}
+${0}
 </main>
 endsnippet
 
 snippet section "section"
 <section>
-${1}
+${0}
 </section>
 endsnippet
 
 snippet hh "h1-6"
-<h${1:1}>${2}</h$1>
-${0}
+<h${1:1}>${0}</h$1>
 endsnippet
