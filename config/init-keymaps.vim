@@ -1,8 +1,12 @@
+inoremap <C-j> <Esc>
+xnoremap <C-j> <Esc>
+snoremap <C-j> <Esc>
+onoremap <C-j> <Esc>
+
 "----------------------------------------------------------------------
 " Insert mode
 "----------------------------------------------------------------------
 
-inoremap <C-j> <Esc>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-a> <Home>

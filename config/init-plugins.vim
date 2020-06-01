@@ -1,5 +1,5 @@
 if !exists('g:bundle_group')
-  let g:bundle_group = ['enhance', 'beautify', 'coc', 'golang', 'filetypes']
+  let g:bundle_group = ['enhance', 'beautify', 'coc', 'golang', 'web', 'filetypes']
   let g:bundle_group += ['search', 'git', 'markdown', 'manager', 'latex', 'textobj']
   let g:bundle_group += ['grammar', 'unix_sudo']
 endif
@@ -172,12 +172,12 @@ if index(g:bundle_group, 'coc') >= 0
   " Use <C-l> for trigger snippet expand.
   imap <C-l> <Plug>(coc-snippets-expand)
   " Use <C-j> for select text for visual placeholder of snippet.
-  vmap <C-j> <Plug>(coc-snippets-select)
+  " vmap <C-j> <Plug>(coc-snippets-select)
   " Use <C-l> for jump to next placeholder, it's default of coc.nvim
   let g:coc_snippet_next = '<c-l>'
   " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
   let g:coc_snippet_prev = '<c-k>'
-  " Use <C-j> for both expand and jump (make expand higher priority.)
+  " Use <C-l> for both expand and jump (make expand higher priority.)
   imap <C-l> <Plug>(coc-snippets-expand-jump)
 
   " >>>>> coc-git <<<<< "
@@ -198,7 +198,7 @@ endif
 " golang
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'golang') >= 0
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'fatih/vim-go' " , { 'do': ':GoUpdateBinaries' }
 
   " =======
   " vim-go config
@@ -212,6 +212,51 @@ if index(g:bundle_group, 'golang') >= 0
   let g:go_metalinter_autosave = 1
   let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
   let g:go_metalinter_autosave_enabled = ['golint']
+
+endif
+
+"----------------------------------------------------------------------
+" web
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'web')
+  " ----- * vim-close * ----- "
+  Plug 'alvan/vim-closetag'
+
+  " =======
+  " close-config
+  " =======
+  " filenames like *.xml, *.html, *.xhtml, ...
+  " These are the file extensions where this plugin is enabled.
+  let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+
+  " filenames like *.xml, *.xhtml, ...
+  " This will make the list of non-closing tags self-closing in the specified files.
+  let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+
+  " filetypes like xml, html, xhtml, ...
+  " These are the file types where this plugin is enabled.
+  let g:closetag_filetypes = 'html,xhtml,phtml'
+
+  " filetypes like xml, xhtml, ...
+  " This will make the list of non-closing tags self-closing in the specified files.
+  let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+  " integer value [0|1]
+  " This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+  let g:closetag_emptyTags_caseSensitive = 1
+
+  " dict
+  " Disables auto-close if not in a "valid" region (based on filetype)
+  let g:closetag_regions = {
+      \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+      \ 'javascript.jsx': 'jsxRegion',
+      \ }
+
+  " Shortcut for closing tags, default is '>'
+  let g:closetag_shortcut = '>'
+
+  " Add > at current position without closing the current tag, default is ''
+  let g:closetag_close_shortcut = '<localleader>>'
 
 endif
 
