@@ -5,7 +5,7 @@
 augroup jsj_Markdown
   autocmd!
   autocmd FileType markdown nnoremap <buffer> <silent> <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
-  autocmd FileType markdown inoremap <buffer> <silent> <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
+  autocmd FileType markdown inoremap <buffer> <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
   autocmd Filetype markdown inoremap <buffer> <localleader>m ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4k$a
   autocmd Filetype markdown inoremap <buffer> <localleader>b ****<++><Esc>F*hi
   autocmd Filetype markdown inoremap <buffer> <localleader>i **<++><Esc>F*i

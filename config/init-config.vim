@@ -14,8 +14,6 @@ let g:python3_host_prog='/usr/bin/python3'
 " 备份配置
 "----------------------------------------------------------------------
 
-let g:backup_dir=$HMOE
-
 " 禁止备份
 set nobackup
 " 如果允许, 保存时备份

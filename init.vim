@@ -18,14 +18,14 @@ else
   let s:loaded = 1
 endif
 
-" 取得本文件所在的目录
-let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-
-" 将 vim-init 目录加入 runtimepath
-exec 'set rtp+='.s:home
-
-" 将 ~/.vim 目录加入 runtimepath
-set rtp+=~/.vim
+if !has('nvim')
+  " 取得本文件所在的目录
+  let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+  exec 'set rtp+='.s:home
+else
+  " 将 ~/.vim 目录加入 runtimepath
+  set rtp+=~/.vim
+endif
 
 "----------------------------------------------------------------------
 " 模块加载

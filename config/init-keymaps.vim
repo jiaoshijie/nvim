@@ -42,7 +42,7 @@ cnoremap <m-f> <S-Right>
 " Visual mode
 "----------------------------------------------------------------------
 
-xnoremap <silent> <leader>a di""<Esc>P
+xnoremap <silent> <leader>a s""<Esc>P
 xnoremap <  <gv
 xnoremap >  >gv
 
@@ -68,7 +68,6 @@ if has('nvim')
     elseif &filetype == 'cpp'
       exec "AsyncRun! -mode=term g++ -std=c++11 % -Wall -o %< && ./%<"
     elseif &filetype == 'sh'
-      " :!time bash %
       exec "AsyncRun! -mode=term bash %"
     elseif &filetype == 'python'
       let $PYTHONNUNBUFFERED=1
@@ -101,7 +100,6 @@ nnoremap <F12> g<C-]>
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <leader>s :w<cr>
-nnoremap <leader>S :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>qq :q<cr>
 nnoremap <silent> <leader><cr> :nohl<cr>
 nnoremap <silent> <C-k> D
