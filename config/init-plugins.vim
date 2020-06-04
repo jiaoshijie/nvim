@@ -2,6 +2,12 @@ if !exists('g:bundle_group')
   let g:bundle_group = ['enhance', 'beautify', 'coc', 'golang', 'web', 'filetypes']
   let g:bundle_group += ['search', 'git', 'markdown', 'manager', 'latex', 'textobj']
   let g:bundle_group += ['grammar', 'unix_sudo']
+
+endif
+
+if !exists('g:coc_global_extensions')
+  " for coc
+  let g:coc_global_extensions = []
 endif
 
 call plug#begin('~/.config/nvim/plugged')
@@ -132,11 +138,20 @@ if index(g:bundle_group, 'coc') >= 0
   Plug 'jackguo380/vim-lsp-cxx-highlight'
 
   " =======
-  " coc-config
+  " coc-misc-config
   " =======
-  let g:coc_global_extensions = ['coc-clangd', 'coc-vimlsp', 'coc-lists', 'coc-yank','coc-json', 'coc-python',
-        \ 'coc-html', 'coc-css', 'coc-tsserver', 'coc-vimtex', 'coc-snippets', 'coc-translator',
-        \'coc-explorer', 'coc-stylelint', 'coc-tslint-plugin', 'coc-git']
+  let g:coc_global_extensions += ['coc-json', 'coc-vimlsp', 'coc-lists', 'coc-yank',
+        \ 'coc-translator', 'coc-explorer', 'coc-snippets']
+
+  " =======
+  " coc-C Cpp-config
+  " =======
+  let g:coc_global_extensions += ['coc-clangd']
+
+  " =======
+  " coc-Python-config
+  " =======
+  let g:coc_global_extensions += ['coc-python']
 
   " =======
   " coc-keymaps
@@ -219,44 +234,38 @@ endif
 " web
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'web')
+
+  if index(g:bundle_group, 'coc')
+    let g:coc_global_extensions += ['coc-html', 'coc-css', 'coc-tsserver',
+          \ 'coc-tslint-plugin', 'coc-stylelint']
+  endif
+
   " ----- * vim-close * ----- "
   Plug 'alvan/vim-closetag'
+  " ----- * 显示颜色 * ----- "
+  Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
   " =======
   " close-config
   " =======
-  " filenames like *.xml, *.html, *.xhtml, ...
-  " These are the file extensions where this plugin is enabled.
   let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
-
-  " filenames like *.xml, *.xhtml, ...
-  " This will make the list of non-closing tags self-closing in the specified files.
   let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
-
-  " filetypes like xml, html, xhtml, ...
-  " These are the file types where this plugin is enabled.
   let g:closetag_filetypes = 'html,xhtml,phtml'
-
-  " filetypes like xml, xhtml, ...
-  " This will make the list of non-closing tags self-closing in the specified files.
   let g:closetag_xhtml_filetypes = 'xhtml,jsx'
-
-  " integer value [0|1]
-  " This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
   let g:closetag_emptyTags_caseSensitive = 1
-
-  " dict
-  " Disables auto-close if not in a "valid" region (based on filetype)
   let g:closetag_regions = {
       \ 'typescript.tsx': 'jsxRegion,tsxRegion',
       \ 'javascript.jsx': 'jsxRegion',
       \ }
-
   " Shortcut for closing tags, default is '>'
   let g:closetag_shortcut = '>'
-
-  " Add > at current position without closing the current tag, default is ''
   let g:closetag_close_shortcut = '<localleader>>'
+
+  " =======
+  " vim-hexokinase-config
+  " =======
+  let g:Hexokinase_highlighters = [ 'backgroundfull' ]
+  let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'vimwiki', 'markdown']
 
 endif
 
@@ -382,7 +391,13 @@ endif
 " vim 内使用git 功能
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'git') >= 0
+
+  if index(g:bundle_group, 'coc')
+    let g:coc_global_extensions += ['coc-git']
+  endif
+
   Plug 'tpope/vim-fugitive'
+
 endif
 
 "----------------------------------------------------------------------
@@ -441,6 +456,11 @@ endif
 " latex预览等
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'latex') >= 0
+
+  if index(g:bundle_group, 'coc')
+    let g:coc_global_extensions += ['coc-vimtex']
+  endif
+
   " ----- * latex * ----- "
   Plug 'lervag/vimtex'
 
@@ -480,6 +500,7 @@ endif
 " 增强代码语法
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'filetypes') >= 0
+
   " ----- * python 语法文件增强 * ----- "
   Plug 'vim-python/python-syntax', { 'for': ['python'] }
   " ----- * js语法 * ----- "
@@ -492,14 +513,6 @@ if index(g:bundle_group, 'filetypes') >= 0
   Plug 'PotatoesMaster/i3-vim-syntax'
   " ----- * sxhkd语法 * ----- "
   Plug 'kovetskiy/sxhkd-vim'
-  " ----- * 显示颜色 * ----- "
-  Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
-
-  " =======
-  " vim-hexokinase-config
-  " =======
-  let g:Hexokinase_highlighters = [ 'backgroundfull' ]
-  let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'vimwiki', 'markdown']
 
 endif
 
@@ -507,7 +520,9 @@ endif
 " sudo for neovim
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'unix_sudo') >= 0
+
   Plug 'lambdalisue/suda.vim'
+
 endif
 
 "----------------------------------------------------------------------
