@@ -384,6 +384,8 @@ if index(g:bundle_group, 'search') >= 0
   nnoremap <silent> <leader>bb :Buffers<cr>
   " 搜索当前目录下git管理的文件
   nnoremap <silent> <leader>fg :GitFiles<cr>
+  nnoremap <silent> <leader>ll :BLines<cr>
+  nnoremap <silent> <leader>lb :Lines<cr>
 
 endif
 
@@ -532,6 +534,8 @@ if index(g:bundle_group, 'textobj') >= 0
 
   " 基础插件：提供让用户方便的自定义文本对象的接口
   Plug 'kana/vim-textobj-user'
+  " 快速选择
+  Plug 'gcmt/wildfire.vim'
   " indent 文本对象：ii/ai 表示当前缩进，vii 选中当缩进，cii 改写缩进
   Plug 'kana/vim-textobj-indent'
   " 语法文本对象：iy/ay 基于语法的文本对象
@@ -544,6 +548,21 @@ if index(g:bundle_group, 'textobj') >= 0
   Plug 'sgur/vim-textobj-parameter'
   " 提供 uri/url 的文本对象，iu/au 表示
   Plug 'jceb/vim-textobj-uri'
+  " 提供html tag 中参数文本对象, ix/ax表示
+  Plug 'whatyouhide/vim-textobj-xmlattr'
+  " 提供css rule文本对象, ic/ac表示
+  Plug 'jasonlong/vim-textobj-css'
+  " saiw( --- snadwich add inner word (); for example: foo saiw( -> (foo)
+  " sa sd sr add delete replace
+  Plug 'machakann/vim-sandwich'
+
+  " =======
+  " wildfire-keymaps
+  " =======
+  " This selects the next closest text object.
+  map <C-l> <Plug>(wildfire-fuel)
+  " This selects the previous closest text object.
+  vmap <C-k> <Plug>(wildfire-water)
 
 endif
 
