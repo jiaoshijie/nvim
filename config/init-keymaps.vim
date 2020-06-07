@@ -3,6 +3,10 @@ xnoremap <C-j> <Esc>
 snoremap <C-j> <Esc>
 onoremap <C-j> <Esc>
 
+" do nothing(normal visual select operator-wait)
+noremap s <Nop>
+noremap S <Nop>
+
 "----------------------------------------------------------------------
 " Insert mode
 "----------------------------------------------------------------------
@@ -103,6 +107,7 @@ nnoremap <leader>s :w<cr>
 nnoremap <leader>qq :q<cr>
 nnoremap <silent> <leader><cr> :nohl<cr>
 nnoremap <silent> <C-k> D
+nnoremap <silent> <leader>= mIgg=G'ImI
 
 " 打开语法检查
 nnoremap <silent> <leader>o :setlocal spell! spelllang=en_us<CR>

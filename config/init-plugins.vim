@@ -25,7 +25,7 @@ if index(g:bundle_group, 'enhance') >= 0
   " ----- * undotree * ----- "
   Plug 'mbbill/undotree/'
   " ----- * 显示标签 * ----- "
-  Plug 'kshenoy/vim-signature'
+  Plug 'MattesGroeger/vim-bookmarks'
   " ----- * 调用ranger文件管理器 * ----- "
   Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
   " ----- * 多光标操作 * ----- "
@@ -386,6 +386,7 @@ if index(g:bundle_group, 'search') >= 0
   nnoremap <silent> <leader>fg :GitFiles<cr>
   nnoremap <silent> <leader>ll :BLines<cr>
   nnoremap <silent> <leader>lb :Lines<cr>
+  nnoremap <silent> <leader>mm :Marks<cr>
 
 endif
 
