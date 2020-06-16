@@ -17,7 +17,7 @@ call plug#begin('~/.config/nvim/plugged')
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'enhance') >= 0
   " ----- * 成对替换 * ----- "
-  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
   " ----- * 代码注释 * ----- "
   Plug 'scrooloose/nerdcommenter'
   " ----- * 括号补全 * ----- "
@@ -140,8 +140,8 @@ if index(g:bundle_group, 'coc') >= 0
   " =======
   " coc-misc-config
   " =======
-  let g:coc_global_extensions += ['coc-json', 'coc-vimlsp', 'coc-lists', 'coc-yank',
-        \ 'coc-translator', 'coc-explorer', 'coc-snippets']
+  let g:coc_global_extensions += ['coc-actions', 'coc-json', 'coc-vimlsp', 'coc-lists', 'coc-yank',
+        \ 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-yaml', 'coc-project']
 
   " =======
   " coc-C Cpp-config
@@ -206,6 +206,14 @@ if index(g:bundle_group, 'coc') >= 0
   xmap ig <Plug>(coc-git-chunk-inner)
   omap ag <Plug>(coc-git-chunk-outer)
   xmap ag <Plug>(coc-git-chunk-outer)
+
+  " >>>>> coc-actions <<<<< "
+  " Remap for do codeAction of selected region
+  function! s:cocActionsOpenFromSelected(type) abort
+    execute 'CocCommand actions.open ' . a:type
+  endfunction
+  xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+  nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 
 endif
 
@@ -507,7 +515,8 @@ if index(g:bundle_group, 'filetypes') >= 0
   " ----- * python 语法文件增强 * ----- "
   Plug 'vim-python/python-syntax', { 'for': ['python'] }
   " ----- * js语法 * ----- "
-  Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
+  Plug 'othree/yajs.vim' |  Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
+  Plug 'othree/javascript-libraries-syntax.vim'
   " ----- * gas语法 * ----- "
   Plug 'Shirk/vim-gas'
   " ----- * toml syntax * ----- "
@@ -516,6 +525,11 @@ if index(g:bundle_group, 'filetypes') >= 0
   Plug 'PotatoesMaster/i3-vim-syntax'
   " ----- * sxhkd语法 * ----- "
   Plug 'kovetskiy/sxhkd-vim'
+
+  " =======
+  " javascript-libraries-syntax-config
+  " =======
+  let g:used_javascript_libs = 'jquery,underscore,backbone,react'
 
 endif
 
@@ -533,10 +547,14 @@ endif
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'textobj') >= 0
 
-  " 基础插件：提供让用户方便的自定义文本对象的接口
-  Plug 'kana/vim-textobj-user'
   " 快速选择
   Plug 'gcmt/wildfire.vim'
+  " saiw( --- snadwich add inner word (); for example: foo saiw( -> (foo)
+  " sa sd sr add delete replace
+  Plug 'machakann/vim-sandwich'
+
+  " 基础插件：提供让用户方便的自定义文本对象的接口
+  Plug 'kana/vim-textobj-user'
   " indent 文本对象：ii/ai 表示当前缩进，vii 选中当缩进，cii 改写缩进
   Plug 'kana/vim-textobj-indent'
   " 语法文本对象：iy/ay 基于语法的文本对象
@@ -551,11 +569,10 @@ if index(g:bundle_group, 'textobj') >= 0
   Plug 'jceb/vim-textobj-uri'
   " 提供html tag 中参数文本对象, ix/ax表示
   Plug 'whatyouhide/vim-textobj-xmlattr'
-  " 提供css rule文本对象, ic/ac表示
-  Plug 'jasonlong/vim-textobj-css'
-  " saiw( --- snadwich add inner word (); for example: foo saiw( -> (foo)
-  " sa sd sr add delete replace
-  Plug 'machakann/vim-sandwich'
+  " 增加行文本对象: l   dal yal cil
+  Plug 'kana/vim-textobj-line'
+  " 增加文件文本对象: e   dae yae cie
+  Plug 'kana/vim-textobj-entire'
 
   " =======
   " wildfire-keymaps

@@ -115,7 +115,7 @@ endif
 " 设置代码折叠
 "----------------------------------------------------------------------
 if has('folding')
-  "  zA zM za
+  "  zA za zM zR
   " 允许代码折叠
   set foldenable
 
@@ -149,6 +149,9 @@ set hidden
 " 退出vim时显示友好的提示
 set confirm
 
+" 文件修改之后自动载入
+set autoread
+
 " 显示最后一行
 set display=lastline
 
@@ -180,7 +183,7 @@ set fileformats=unix,dos,mac
 set noautochdir
 
 " 缩短一些message 如 将[NEW FILE]代替为[NEW]
-set shortmess+=c
+set shortmess+=cI
 
 " nvim 实时展示 "substitute" 命令过程
 if has('nvim')

@@ -8,10 +8,11 @@ set relativenumber
 
 " 高亮光标所在行
 set cursorline
-augroup jsj_cursorline
+
+augroup jsj_miscSytle
   autocmd!
-  autocmd InsertLeave,WinEnter * set cursorline
-  autocmd InsertEnter,WinLeave * set nocursorline
+  autocmd InsertLeave,WinEnter * set cursorline relativenumber
+  autocmd InsertEnter,WinLeave * set nocursorline norelativenumber number
 augroup end
 
 " 光标在向下或向上移动时不会到达文件的最下方
@@ -95,7 +96,7 @@ if has('nvim')
   " 设置颜色主题
   let g:onedark_terminal_italics=1
   " gruvbox onedark
-  colorscheme onedark
+  colorscheme gruvbox
   if exists("g:colors_name") && (g:colors_name=="gruvbox" || g:colors_name=="onedark")
     let g:airline_theme=g:colors_name
   endif
@@ -114,9 +115,23 @@ else
   highlight CursorLine cterm=NONE ctermbg=236
   highlight CursorLineNr cterm=NONE
   highlight Visual cterm=reverse
+  " for error highlight，防止错误整行标红导致看不清
+  highlight clear SpellBad
+  highlight SpellBad ctermfg=1 cterm=underline
+  highlight clear SpellCap
+  highlight SpellCap cterm=underline
+  highlight clear SpellRare
+  highlight SpellRare cterm=underline
+  highlight clear SpellLocal
+  highlight SpellLocal cterm=underline
 
   set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
 endif
+
+" 设置标记一列的背景颜色和数字一行颜色一致
+hi! link SignColumn   LineNr
+hi! link ShowMarksHLl DiffAdd
+hi! link ShowMarksHLu DiffChange
 
 "----------------------------------------------------------------------
 " 设置TODO高亮组
@@ -125,6 +140,6 @@ endif
 augroup jsj_color_warning
   autocmd!
   highlight Todo cterm=bold,italic ctermfg=223 ctermbg=235 gui=bold,italic guifg=#e5b07b guibg=bg
-  autocmd FileType * call matchadd('Todo', '???!!!')
-  autocmd FileType gas call matchadd('Todo', 'TODO')
+  autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\|???!!!\)')
+  autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
 augroup END

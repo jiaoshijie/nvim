@@ -10,6 +10,10 @@ set expandtab
 " expandtab 展开 tab 为多少字符
 set softtabstop=2
 
+set smarttab
+
+" 缩进时取整 use multiple of shiftwidth when indenting with '<' and '>'
+set shiftround
 
 augroup jsj_SpecialTab
   autocmd!

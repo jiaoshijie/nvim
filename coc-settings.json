@@ -23,6 +23,8 @@
 
   "explorer.icon.enableNerdfont": true,
 
-  "snippets.ultisnips.directories": ["localsnips", "~/.config/nvim/my_snips"]
+  "snippets.ultisnips.directories": ["localsnips", "~/.config/nvim/my_snips"],
+
+  "yank.enableCompletion": false
 
 }
