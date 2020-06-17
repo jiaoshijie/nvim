@@ -141,7 +141,7 @@ if index(g:bundle_group, 'coc') >= 0
   " coc-misc-config
   " =======
   let g:coc_global_extensions += ['coc-actions', 'coc-json', 'coc-vimlsp', 'coc-lists', 'coc-yank',
-        \ 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-yaml', 'coc-project']
+        \ 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-yaml', 'coc-project', 'coc-marketplace']
 
   " =======
   " coc-C Cpp-config
