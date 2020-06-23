@@ -102,8 +102,8 @@ if index(g:bundle_group, 'enhance') >= 0
   " =======
   " vim-easymotion-keymaps
   " =======
-  nmap tf <Plug>(easymotion-overwin-f)
-  nmap tF <Plug>(easymotion-overwin-f2)
+  nmap <leader>n <Plug>(easymotion-overwin-f2)
+  nmap <leader>N <Plug>(easymotion-overwin-f)
 
   " =======
   " vim-easy-align-keymaps
@@ -140,8 +140,9 @@ if index(g:bundle_group, 'coc') >= 0
   " =======
   " coc-misc-config
   " =======
-  let g:coc_global_extensions += ['coc-actions', 'coc-json', 'coc-vimlsp', 'coc-lists', 'coc-yank',
-        \ 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-yaml', 'coc-project', 'coc-marketplace']
+  let g:coc_global_extensions += ['coc-actions', 'coc-json', 'coc-vimlsp', 'coc-lists',
+        \ 'coc-yank', 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-yaml',
+        \ 'coc-project', 'coc-marketplace', 'coc-rainbow-fart']
 
   " =======
   " coc-C Cpp-config
@@ -600,4 +601,5 @@ if index(g:bundle_group, 'grammar') >= 0
   nmap <leader>rn <Plug>(grammarous-move-to-next-error)
   nmap <leader>rp <Plug>(grammarous-move-to-previous-error)
 endif
+
 call plug#end()

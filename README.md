@@ -21,6 +21,7 @@
 - [x] `pip install --user pynvim` for rnvimr
 - [x] `sudo pacman -S java8(+)-openjfx` for vim-grammarous
 - [x] `sudo pacman -S golangci-lint` and `(GO111MODULE=on) go get golang.org/x/tools/gopls@latest` for vim-go
+- [x] `sudo pacman -S ffplay(ffmpeg)`
 
 - [ ] `sudo pacman -S nodejs npm` and `sudo npm install -g live-server` for html-preview
 - [ ] `sudo pacman -S figlet` for ASCII art

@@ -25,6 +25,8 @@
 
   "snippets.ultisnips.directories": ["localsnips", "~/.config/nvim/my_snips"],
 
+  "rainbow-fart.ffplay": "/usr/bin/ffplay",
+
   "yank.enableCompletion": false
 
 }
