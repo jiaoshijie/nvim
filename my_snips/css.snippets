@@ -1,5 +1,36 @@
+snippet defalut "默认"
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}
+endsnippet
+
 snippet media "media"
-@media screen and ()
-{
+@media screen and () {
+${1}
+}
+endsnippet
+
+snippet root ":root"
+:root {
+  --${1}: ${2};
+}
+endsnippet
+
+snippet keyfr "@keyframes"
+@keyframes ${1:Name} {
+	form {
+		${2}
+	}
+	to {
+		${3}
+	}
 }
 endsnippet

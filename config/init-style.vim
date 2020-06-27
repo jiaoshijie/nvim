@@ -40,17 +40,15 @@ function! Change_theme_alpha()
   if !exists("g:jsj_change_theme_alpha") || g:jsj_change_theme_alpha == 0
     let g:jsj_change_theme_alpha = 1
     highlight Normal guibg=NONE ctermbg=None
-    highlight SignColumn guibg=NONE ctermbg=None
   else
     let g:jsj_change_theme_alpha = 0
     if exists("g:colors_name") && g:colors_name=="gruvbox"
       highlight Normal guibg=#282828 ctermbg=235
-      highlight SignColumn ctermbg=237 guibg=#3c3836
     else
       highlight Normal guibg=#282C34 ctermbg=235
-      highlight SignColumn ctermbg=235 guibg=#282C34
     endif
   endif
+  hi! link SignColumn LineNr
 endfunction
 
 function! Hold_theme_alpha()

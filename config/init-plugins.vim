@@ -381,7 +381,11 @@ if index(g:bundle_group, 'search') >= 0
   " =======
   " fzf-config
   " =======
-  let g:fzf_preview_window = 'right:50%'
+  let g:fzf_preview_window = ''
+  command! -bang -nargs=* Rg
+    \ call fzf#vim#grep(
+    \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+    \   fzf#vim#with_preview(), <bang>0)
   " =======
   " fzf-keymaps
   " =======
@@ -430,7 +434,7 @@ if index(g:bundle_group, 'markdown') >= 0
   " =======
   let g:mkdp_browser = "brave"
   let g:mkdp_auto_start = 0
-  let g:mkdp_auto_close = 1
+  let g:mkdp_auto_close = 0
   let g:mkdp_refresh_slow = 0
   " =======
   " markdown-preview-keymaps

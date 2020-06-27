@@ -18,34 +18,22 @@ ${VISUAL}$0
 #endif
 endsnippet
 
-# snippet mark "#pragma mark (mark)"
-# #if 0
-# ${1:#pragma mark -
-# }#pragma mark $2
-# #endif
-
-# $0
-# endsnippet
-
 snippet main "main() (main)"
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	${VISUAL}$0
 	return 0;
 }
 endsnippet
 
 snippet mainv "main(void) (main)"
-int main(void)
-{
+int main(void) {
 	${VISUAL}$0
 	return 0;
 }
 endsnippet
 
 snippet for "for loop (for)"
-for (${1}; ${2}; ${3})
-{
+for (${1}; ${2}; ${3}) {
 	${VISUAL}$0
 }
 endsnippet
@@ -60,15 +48,13 @@ ${VISUAL}$0
 endsnippet
 
 snippet eli "else if .. (eli)"
-else if (${1:/* condition */})
-{
+else if (${1:/* condition */}) {
 	${VISUAL}$0
 }
 endsnippet
 
 snippet st "struct"
-struct ${1}
-{
+struct ${1} {
 	${0:/* data */}
 };
 endsnippet

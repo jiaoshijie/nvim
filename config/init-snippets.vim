@@ -10,6 +10,8 @@ augroup jsj_Markdown
   autocmd Filetype markdown inoremap <buffer> <localleader>b ****<++><Esc>F*hi
   autocmd Filetype markdown inoremap <buffer> <localleader>i **<++><Esc>F*i
   autocmd Filetype markdown inoremap <buffer> <localleader>e ***<CR><CR>
+  autocmd Filetype markdown inoremap <buffer> <localleader>a $$<left>
+  autocmd Filetype markdown inoremap <buffer> <localleader>A $$<CR><CR>$$<ESC>ki
   autocmd Filetype markdown inoremap <buffer> <localleader>p ![](<++>)<Esc>F]i
   autocmd Filetype markdown inoremap <buffer> <localleader>l [](<++>)<Esc>F]i
   autocmd FileType markdown inoremap <buffer> <localleader>1 # <CR><CR><++><Esc>2kA

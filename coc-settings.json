@@ -27,6 +27,8 @@
 
   "rainbow-fart.ffplay": "/usr/bin/ffplay",
 
-  "yank.enableCompletion": false
+  "yank.enableCompletion": false,
+  "rainbow-fart.disable-voice-packages": [],
 
+  "project.rootPatterns": [".git", ".root"]
 }
