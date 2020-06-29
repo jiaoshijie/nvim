@@ -142,7 +142,7 @@ if index(g:bundle_group, 'coc') >= 0
   " =======
   let g:coc_global_extensions += ['coc-actions', 'coc-json', 'coc-vimlsp', 'coc-lists',
         \ 'coc-yank', 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-yaml',
-        \ 'coc-project', 'coc-marketplace', 'coc-rainbow-fart']
+        \ 'coc-project', 'coc-marketplace', 'coc-rainbow-fart', 'coc-tabnine']
 
   " =======
   " coc-C Cpp-config
@@ -522,6 +522,7 @@ if index(g:bundle_group, 'filetypes') >= 0
   " ----- * js语法 * ----- "
   Plug 'othree/yajs.vim' |  Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
   Plug 'othree/javascript-libraries-syntax.vim'
+  Plug 'leafgarland/typescript-vim'
   " ----- * gas语法 * ----- "
   Plug 'Shirk/vim-gas'
   " ----- * toml syntax * ----- "
