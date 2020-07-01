@@ -30,8 +30,6 @@ if index(g:bundle_group, 'enhance') >= 0
   Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
   " ----- * 多光标操作 * ----- "
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-  " ----- * 快速移动 * ----- "
-  Plug 'easymotion/vim-easymotion'
   " ----- * 对齐代码 * ----- "
   Plug 'junegunn/vim-easy-align'
   " ----- * f,F,t,T * ----- "
@@ -98,12 +96,6 @@ if index(g:bundle_group, 'enhance') >= 0
   let g:VM_maps['Find Subword Under'] = '<C-n>'
   let g:VM_maps["Undo"] = 'u'
   let g:VM_maps["Redo"] = '<C-r>'
-
-  " =======
-  " vim-easymotion-keymaps
-  " =======
-  nmap <leader>n <Plug>(easymotion-overwin-f2)
-  nmap <leader>N <Plug>(easymotion-overwin-f)
 
   " =======
   " vim-easy-align-keymaps

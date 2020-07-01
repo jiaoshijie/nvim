@@ -95,9 +95,10 @@ if has('nvim')
   let g:onedark_terminal_italics=1
   " gruvbox onedark
   colorscheme gruvbox
-  if exists("g:colors_name") && (g:colors_name=="gruvbox" || g:colors_name=="onedark")
-    let g:airline_theme=g:colors_name
-  endif
+  " if exists("g:colors_name") && (g:colors_name=="gruvbox" || g:colors_name=="onedark")
+  "   let g:airline_theme=g:colors_name
+  " endif
+  let g:airline_theme="onedark"
 else
   " just vim have no gvim
   let g:jsj_change_theme_alpha = 1
