@@ -1,6 +1,6 @@
 if !exists('g:bundle_group')
   let g:bundle_group = ['enhance', 'beautify', 'coc', 'golang', 'web', 'filetypes']
-  let g:bundle_group += ['search', 'git', 'markdown', 'manager', 'latex', 'textobj']
+  let g:bundle_group += ['search', 'git', 'markdown', 'latex', 'textobj']
   let g:bundle_group += ['grammar', 'unix_sudo']
 
 endif
@@ -30,8 +30,6 @@ if index(g:bundle_group, 'enhance') >= 0
   Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
   " ----- * 多光标操作 * ----- "
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-  " ----- * 对齐代码 * ----- "
-  Plug 'junegunn/vim-easy-align'
   " ----- * f,F,t,T * ----- "
   Plug 'rhysd/clever-f.vim'
 
@@ -491,20 +489,6 @@ if index(g:bundle_group, 'latex') >= 0
 endif
 
 "----------------------------------------------------------------------
-" 编译管理
-"----------------------------------------------------------------------
-if index(g:bundle_group, 'manager') >= 0
-  " ----- * vim运行终端命令 * ----- "
-  Plug 'skywind3000/asyncrun.vim'
-
-  " =======
-  " asyncrun-config
-  " =======
-  let g:asyncrun_open = 8
-
-endif
-
-"----------------------------------------------------------------------
 " 增强代码语法
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'filetypes') >= 0
@@ -513,8 +497,6 @@ if index(g:bundle_group, 'filetypes') >= 0
   Plug 'vim-python/python-syntax', { 'for': ['python'] }
   " ----- * js语法 * ----- "
   Plug 'othree/yajs.vim' |  Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
-  Plug 'othree/javascript-libraries-syntax.vim'
-  Plug 'leafgarland/typescript-vim'
   " ----- * gas语法 * ----- "
   Plug 'Shirk/vim-gas'
   " ----- * toml syntax * ----- "
@@ -567,10 +549,6 @@ if index(g:bundle_group, 'textobj') >= 0
   Plug 'jceb/vim-textobj-uri'
   " 提供html tag 中参数文本对象, ix/ax表示
   Plug 'whatyouhide/vim-textobj-xmlattr'
-  " 增加行文本对象: l   dal yal cil
-  Plug 'kana/vim-textobj-line'
-  " 增加文件文本对象: e   dae yae cie
-  Plug 'kana/vim-textobj-entire'
 
   " =======
   " wildfire-keymaps

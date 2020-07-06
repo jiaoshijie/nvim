@@ -63,30 +63,7 @@ nnoremap <silent> <F4> :cnext<cr>
 nnoremap <silent> <F6> :copen<cr>
 nnoremap <silent> <F7> :cclose<CR>
 
-if has('nvim')
-  " 编译运行
-  function! Compile_Run()
-    exec "w"
-    if &filetype == 'c'
-      exec "AsyncRun! -mode=term gcc % -o %< && ./%<"
-    elseif &filetype == 'cpp'
-      exec "AsyncRun! -mode=term g++ -std=c++11 % -Wall -o %< && ./%<"
-    elseif &filetype == 'sh'
-      exec "AsyncRun! -mode=term bash %"
-    elseif &filetype == 'python'
-      let $PYTHONNUNBUFFERED=1
-      exec "AsyncRun! -mode=term -raw python3 %"
-    elseif &filetype == 'go'
-      exec "GoRun"
-    elseif &filetype == 'vimwiki'
-      exec "AsyncRun! -mode=term pandoc % --pdf-engine=xelatex -o %<.pdf"
-    elseif &filetype == 'markdown'
-      exec "AsyncRun! -mode=term pandoc % --pdf-engine=xelatex -o %<.pdf"
-    endif
-  endfunction
-
-  nnoremap <silent> <F5> :call Compile_Run()<cr>
-endif
+nnoremap <silent> <F5> :cd %:h<cr>
 
 " cscope: F8: 查找字符串 F9: 查找c符号 F10: 本函数调用了谁 F11: 谁调用了本函数
 nnoremap <silent> <F8> :cs find t <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>

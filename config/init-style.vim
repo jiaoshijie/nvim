@@ -42,11 +42,7 @@ function! Change_theme_alpha()
     highlight Normal guibg=NONE ctermbg=None
   else
     let g:jsj_change_theme_alpha = 0
-    if exists("g:colors_name") && g:colors_name=="gruvbox"
-      highlight Normal guibg=#282828 ctermbg=235
-    else
-      highlight Normal guibg=#282C34 ctermbg=235
-    endif
+    highlight Normal guibg=#282828 ctermbg=235
   endif
   hi! link SignColumn LineNr
 endfunction
@@ -93,11 +89,8 @@ set background=dark
 if has('nvim')
   " 设置颜色主题
   let g:onedark_terminal_italics=1
-  " gruvbox onedark
   colorscheme gruvbox
-  " if exists("g:colors_name") && (g:colors_name=="gruvbox" || g:colors_name=="onedark")
-  "   let g:airline_theme=g:colors_name
-  " endif
+  " let g:airline_theme=g:colors_name
   let g:airline_theme="onedark"
 else
   " just vim have no gvim
