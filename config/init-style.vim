@@ -88,7 +88,7 @@ set background=dark
 
 if has('nvim')
   " 设置颜色主题
-  let g:onedark_terminal_italics=1
+  " let g:onedark_terminal_italics=1
   colorscheme gruvbox
   " let g:airline_theme=g:colors_name
   let g:airline_theme="onedark"

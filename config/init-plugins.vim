@@ -18,6 +18,9 @@ call plug#begin('~/.config/nvim/plugged')
 if index(g:bundle_group, 'enhance') >= 0
   " ----- * 成对替换 * ----- "
   Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
+  " saiw( --- snadwich add inner word (); for example: foo saiw( -> (foo)
+  " sa sd sr add delete replace
+  Plug 'machakann/vim-sandwich'
   " ----- * 代码注释 * ----- "
   Plug 'scrooloose/nerdcommenter'
   " ----- * 括号补全 * ----- "
@@ -490,7 +493,7 @@ if index(g:bundle_group, 'filetypes') >= 0
   " ----- * python 语法文件增强 * ----- "
   Plug 'vim-python/python-syntax', { 'for': ['python'] }
   " ----- * js语法 * ----- "
-  Plug 'othree/yajs.vim' |  Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
+  Plug 'pangloss/vim-javascript', { 'for' :['javascript'] }
   " ----- * gas语法 * ----- "
   Plug 'Shirk/vim-gas'
   " ----- * toml syntax * ----- "
@@ -518,16 +521,11 @@ if index(g:bundle_group, 'textobj') >= 0
 
   " 快速选择
   Plug 'gcmt/wildfire.vim'
-  " saiw( --- snadwich add inner word (); for example: foo saiw( -> (foo)
-  " sa sd sr add delete replace
-  Plug 'machakann/vim-sandwich'
 
   " 基础插件：提供让用户方便的自定义文本对象的接口
   Plug 'kana/vim-textobj-user'
   " indent 文本对象：ii/ai 表示当前缩进，vii 选中当缩进，cii 改写缩进
   Plug 'kana/vim-textobj-indent'
-  " 语法文本对象：iy/ay 基于语法的文本对象
-  Plug 'kana/vim-textobj-syntax'
   " 函数文本对象：if/af 支持 c/c++/vim/java
   Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
   " 提供 python 相关文本对象，if/af 表示函数，ic/ac 表示类
