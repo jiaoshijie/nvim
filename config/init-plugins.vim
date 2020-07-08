@@ -1,7 +1,7 @@
 if !exists('g:bundle_group')
   let g:bundle_group = ['enhance', 'beautify', 'coc', 'golang', 'web', 'filetypes']
   let g:bundle_group += ['search', 'git', 'markdown', 'latex', 'textobj']
-  let g:bundle_group += ['grammar', 'unix_sudo']
+  let g:bundle_group += ['unix_sudo']
 
 endif
 
@@ -16,19 +16,14 @@ call plug#begin('~/.config/nvim/plugged')
 " 增强功能
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'enhance') >= 0
-  " ----- * 成对替换 * ----- "
-  Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
+  " ----- * 成对 * ----- "
   " saiw( --- snadwich add inner word (); for example: foo saiw( -> (foo)
   " sa sd sr add delete replace
   Plug 'machakann/vim-sandwich'
   " ----- * 代码注释 * ----- "
   Plug 'scrooloose/nerdcommenter'
-  " ----- * 括号补全 * ----- "
-  Plug 'jiangmiao/auto-pairs'
   " ----- * undotree * ----- "
   Plug 'mbbill/undotree/'
-  " ----- * 显示标签 * ----- "
-  Plug 'MattesGroeger/vim-bookmarks'
   " ----- * 调用ranger文件管理器 * ----- "
   Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
   " ----- * 多光标操作 * ----- "
@@ -73,11 +68,11 @@ if index(g:bundle_group, 'enhance') >= 0
   let g:rnvimr_ex_enable = 1
   let g:rnvimr_pick_enable = 1
   let g:rnvimr_layout = { 'relative': 'editor',
-              \ 'width': &columns,
-              \ 'height': &lines,
-              \ 'col': 0,
-              \ 'row': 0,
-              \ 'style': 'minimal' }
+        \ 'width': &columns,
+        \ 'height': &lines,
+        \ 'col': 0,
+        \ 'row': 0,
+        \ 'style': 'minimal' }
   let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}, {'width': 0.8, 'height': 0.8}]
   " =======
   " rnvimr-keymaps
@@ -127,9 +122,12 @@ if index(g:bundle_group, 'coc') >= 0
   " =======
   " coc-misc-config
   " =======
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+        \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
   let g:coc_global_extensions += ['coc-actions', 'coc-json', 'coc-vimlsp', 'coc-lists',
         \ 'coc-yank', 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-yaml',
-        \ 'coc-project', 'coc-marketplace', 'coc-rainbow-fart', 'coc-tabnine']
+        \ 'coc-project', 'coc-marketplace', 'coc-rainbow-fart', 'coc-tabnine',
+        \ 'coc-bookmark', 'coc-pairs']
 
   " =======
   " coc-C Cpp-config
@@ -203,6 +201,13 @@ if index(g:bundle_group, 'coc') >= 0
   xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
   nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 
+  " >>>>> coc-bookmark <<<<< "
+  nmap mm <Plug>(coc-bookmark-toggle)
+  nmap mn <Plug>(coc-bookmark-next)
+  nmap mp <Plug>(coc-bookmark-prev)
+  nmap <leader>me <Plug>(coc-bookmark-annotate)
+  nmap <leader>ml :CocList bookmark<CR>
+
 endif
 
 "----------------------------------------------------------------------
@@ -250,9 +255,9 @@ if index(g:bundle_group, 'web')
   let g:closetag_xhtml_filetypes = 'xhtml,jsx'
   let g:closetag_emptyTags_caseSensitive = 1
   let g:closetag_regions = {
-      \ 'typescript.tsx': 'jsxRegion,tsxRegion',
-      \ 'javascript.jsx': 'jsxRegion',
-      \ }
+        \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+        \ 'javascript.jsx': 'jsxRegion',
+        \ }
   " Shortcut for closing tags, default is '>'
   let g:closetag_shortcut = '>'
   let g:closetag_close_shortcut = '<localleader>>'
@@ -274,8 +279,6 @@ if index(g:bundle_group, 'beautify') >= 0
   Plug 'joshdick/onedark.vim'
   " ----- * 状态栏 * ----- "
   Plug 'vim-airline/vim-airline'
-  " ----- * 显示图标 * ----- "
-  Plug 'ryanoasis/vim-devicons'
   " ----- * 启动菜单 * ----- "
   Plug 'mhinz/vim-startify'
   " ----- * 彩虹括号 * ----- "
@@ -309,17 +312,17 @@ if index(g:bundle_group, 'beautify') >= 0
   " =======
   let g:rainbow_active = 1
   let g:rainbow_conf = {
-  \  'separately': {
-  \    '*': "default",
-  \    'vimwiki': 0,
-  \  }
-  \}
+        \  'separately': {
+        \    '*': "default",
+        \    'vimwiki': 0,
+        \  }
+        \}
 
   " =======
   " vim-illuminate-config
   " =======
   let g:Illuminate_delay = 300
-  let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python', 'c', 'cpp']
+  " let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python', 'c', 'cpp', 'js']
 
   " =======
   " vim-interestingwords-config
@@ -336,7 +339,7 @@ if index(g:bundle_group, 'beautify') >= 0
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
   let g:indentLine_concealcursor = ''
   let g:indentLine_conceallevel = '2'
-  let g:indentLine_fileType = ['c', 'cpp', 'python', 'gas', 'tex']  " 默认打开
+  let g:indentLine_fileType = ['c', 'cpp', 'python', 'gas', 'tex', 'javascript', 'html', 'css']  " 默认打开
 
 endif
 
@@ -370,9 +373,9 @@ if index(g:bundle_group, 'search') >= 0
   " =======
   let g:fzf_preview_window = ''
   command! -bang -nargs=* Rg
-    \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-    \   fzf#vim#with_preview(), <bang>0)
+        \ call fzf#vim#grep(
+        \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+        \   fzf#vim#with_preview(), <bang>0)
   " =======
   " fzf-keymaps
   " =======
@@ -440,10 +443,10 @@ if index(g:bundle_group, 'markdown') >= 0
   " bullets-config
   " =======
   let g:bullets_enabled_file_types = [
-      \ 'markdown',
-      \ 'text',
-      \ 'vimwiki'
-      \]
+        \ 'markdown',
+        \ 'text',
+        \ 'vimwiki'
+        \]
 
   " =======
   " vimwiki-config
@@ -451,7 +454,7 @@ if index(g:bundle_group, 'markdown') >= 0
   let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown',
         \ '.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
   let g:vimwiki_list = [{'path': '~/Nutstore Files/Nutstore/MARKDOWN_NOTE/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+        \ 'syntax': 'markdown', 'ext': '.md'}]
 
 endif
 
@@ -473,15 +476,15 @@ if index(g:bundle_group, 'latex') >= 0
   let g:vimtex_compiler_progname = 'nvr'
   let g:vimtex_view_general_viewer = 'zathura'
   let g:vimtex_compiler_latexmk = {
-      \ 'options' : [
-      \   '-xelatex',
-      \   '-shell-escape',
-      \   '-verbose',
-      \   '-file-line-error',
-      \   '-synctex=1',
-      \   '-interaction=nonstopmode',
-      \ ],
-      \}
+        \ 'options' : [
+        \   '-xelatex',
+        \   '-shell-escape',
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
 
 endif
 
@@ -490,10 +493,6 @@ endif
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'filetypes') >= 0
 
-  " ----- * python 语法文件增强 * ----- "
-  Plug 'vim-python/python-syntax', { 'for': ['python'] }
-  " ----- * js语法 * ----- "
-  Plug 'pangloss/vim-javascript', { 'for' :['javascript'] }
   " ----- * gas语法 * ----- "
   Plug 'Shirk/vim-gas'
   " ----- * toml syntax * ----- "
@@ -545,23 +544,6 @@ if index(g:bundle_group, 'textobj') >= 0
   " This selects the previous closest text object.
   vmap <C-k> <Plug>(wildfire-water)
 
-endif
-
-
-"----------------------------------------------------------------------
-" LanguageTool 语法检查
-"----------------------------------------------------------------------
-if index(g:bundle_group, 'grammar') >= 0
-  Plug 'rhysd/vim-grammarous'
-  nnoremap <leader>rg :GrammarousCheck --lang=en-US --no-move-to-first-error --no-preview<cr>
-  nmap <leader>rr <Plug>(grammarous-open-info-window)
-  nmap <leader>rv <Plug>(grammarous-move-to-info-window)
-  nmap <leader>rs <Plug>(grammarous-reset)
-  nmap <leader>rx <Plug>(grammarous-close-info-window)
-  nmap <leader>rm <Plug>(grammarous-remove-error)
-  nmap <leader>rd <Plug>(grammarous-disable-rule)
-  nmap <leader>rn <Plug>(grammarous-move-to-next-error)
-  nmap <leader>rp <Plug>(grammarous-move-to-previous-error)
 endif
 
 call plug#end()
