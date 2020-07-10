@@ -21,7 +21,7 @@ if index(g:bundle_group, 'enhance') >= 0
   " sa sd sr add delete replace
   Plug 'machakann/vim-sandwich'
   " ----- * 代码注释 * ----- "
-  Plug 'scrooloose/nerdcommenter'
+  Plug 'preservim/nerdcommenter'
   " ----- * undotree * ----- "
   Plug 'mbbill/undotree/'
   " ----- * 调用ranger文件管理器 * ----- "
@@ -122,12 +122,11 @@ if index(g:bundle_group, 'coc') >= 0
   " =======
   " coc-misc-config
   " =======
-  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-        \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
   let g:coc_global_extensions += ['coc-actions', 'coc-json', 'coc-vimlsp', 'coc-lists',
         \ 'coc-yank', 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-yaml',
         \ 'coc-project', 'coc-marketplace', 'coc-rainbow-fart', 'coc-tabnine',
         \ 'coc-bookmark', 'coc-pairs']
+
 
   " =======
   " coc-C Cpp-config
@@ -142,20 +141,85 @@ if index(g:bundle_group, 'coc') >= 0
   " =======
   " coc-keymaps
   " =======
-  inoremap <expr> <cr> (pumvisible() ? "\<c-y>\<cr>" : "\<cr>")
-  inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
-  inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+  " Use tab for trigger completion with characters ahead and navigate.
+  inoremap <silent><expr> <TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
+  " Use <c-space> to trigger completion.
+  inoremap <silent><expr> <c-space> coc#refresh()
+
+  " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+  " position. Coc only does snippet and additional edit on confirm.
+  " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+  if exists('*complete_info')
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+  else
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  endif
+  inoremap <silent><expr> <cr>
+        \ pumvisible() ? coc#_select_confirm()
+        \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
   " 调到类型的定义处
   nmap <silent> gd <Plug>(coc-definition)
   " 查看变量函数使用的位置
   nmap <silent> gr <Plug>(coc-references)
   " 跳转到错误的位置(包括警告)
+  nnoremap <silent><nowait> <space>gee  :<C-u>CocList diagnostics<cr>
   nmap <silent> gep <Plug>(coc-diagnostic-prev)
   nmap <silent> gen <Plug>(coc-diagnostic-next)
   " 显示错误完整信息
   nmap <silent> gs <Plug>(coc-diagnostic-info)
-  " 获取变量和函数的一些信息
-  nmap <silent> gh :call CocAction('doHover')<CR>
+  " GoTo code navigation.
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+
+  " Use K to show documentation in preview window.
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
+
+  " Highlight the symbol and its references when holding the cursor.
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+
+  " Symbol renaming.
+  nmap <leader>rn <Plug>(coc-rename)
+  nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+
+  " Formatting selected code.
+  xmap <leader>g=  <Plug>(coc-format-selected)
+
+  augroup mygroup
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  augroup end
+
+  " Add `:Format` command to format current buffer.
+  command! -nargs=0 Format :call CocAction('format')
+
+  " Add `:Fold` command to fold current buffer.
+  command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+  " Add `:OR` command for organize imports of the current buffer.
+  command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
 
   " >>>>> coc-explorer <<<<< "
   " 打开文件管理器

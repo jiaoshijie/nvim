@@ -57,7 +57,12 @@ set timeoutlen=1000
 set mouse=a
 
 " 总是显示左边的一列, 用于显示一些错误, 标签
-set signcolumn=yes
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 "----------------------------------------------------------------------
 " 搜索设置
@@ -184,6 +189,13 @@ set noautochdir
 
 " 缩短一些message 如 将[NEW FILE]代替为[NEW]
 set shortmess+=cI
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
 
 " nvim 实时展示 "substitute" 命令过程
 if has('nvim')
