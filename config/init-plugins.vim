@@ -125,7 +125,7 @@ if index(g:bundle_group, 'coc') >= 0
   let g:coc_global_extensions += ['coc-actions', 'coc-json', 'coc-vimlsp', 'coc-lists',
         \ 'coc-yank', 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-yaml',
         \ 'coc-project', 'coc-marketplace', 'coc-rainbow-fart', 'coc-tabnine',
-        \ 'coc-bookmark', 'coc-pairs']
+        \ 'coc-bookmark', 'coc-pairs', 'coc-highlight']
 
 
   " =======
@@ -181,6 +181,20 @@ if index(g:bundle_group, 'coc') >= 0
   " GoTo code navigation.
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
+
+  " Map function and class text objects
+  " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+  augroup jsj_Fileobject
+    autocmd!
+    autocmd FileType javascript,typescript xmap if <Plug>(coc-funcobj-i)
+    autocmd FileType javascript,typescript omap if <Plug>(coc-funcobj-i)
+    autocmd FileType javascript,typescript xmap af <Plug>(coc-funcobj-a)
+    autocmd FileType javascript,typescript omap af <Plug>(coc-funcobj-a)
+    autocmd FileType javascript,typescript xmap ic <Plug>(coc-classobj-i)
+    autocmd FileType javascript,typescript omap ic <Plug>(coc-classobj-i)
+    autocmd FileType javascript,typescript xmap ac <Plug>(coc-classobj-a)
+    autocmd FileType javascript,typescript omap ac <Plug>(coc-classobj-a)
+  augroup END
 
   " Use K to show documentation in preview window.
   nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -272,6 +286,9 @@ if index(g:bundle_group, 'coc') >= 0
   nmap <leader>me <Plug>(coc-bookmark-annotate)
   nmap <leader>ml :CocList bookmark<CR>
 
+  " >>>>> coc-highlight <<<<< "
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+
 endif
 
 "----------------------------------------------------------------------
@@ -307,8 +324,6 @@ if index(g:bundle_group, 'web')
 
   " ----- * vim-close * ----- "
   Plug 'alvan/vim-closetag'
-  " ----- * 显示颜色 * ----- "
-  Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
   " =======
   " close-config
@@ -326,12 +341,6 @@ if index(g:bundle_group, 'web')
   let g:closetag_shortcut = '>'
   let g:closetag_close_shortcut = '<localleader>>'
 
-  " =======
-  " vim-hexokinase-config
-  " =======
-  let g:Hexokinase_highlighters = [ 'backgroundfull' ]
-  let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'vimwiki', 'markdown']
-
 endif
 
 "----------------------------------------------------------------------
@@ -347,8 +356,6 @@ if index(g:bundle_group, 'beautify') >= 0
   Plug 'mhinz/vim-startify'
   " ----- * 彩虹括号 * ----- "
   Plug 'luochen1990/rainbow'
-  " ----- * 高亮光标下的单词 * ----- "
-  Plug 'RRethy/vim-illuminate'
   " ----- * 高亮感兴趣的单词 * ----- "
   Plug 'lfv89/vim-interestingwords'
   " ----- * 显示缩进线 * ----- "
@@ -381,12 +388,6 @@ if index(g:bundle_group, 'beautify') >= 0
         \    'vimwiki': 0,
         \  }
         \}
-
-  " =======
-  " vim-illuminate-config
-  " =======
-  let g:Illuminate_delay = 300
-  " let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python', 'c', 'cpp', 'js']
 
   " =======
   " vim-interestingwords-config
@@ -593,7 +594,7 @@ if index(g:bundle_group, 'textobj') >= 0
   Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
   " 提供 python 相关文本对象，if/af 表示函数，ic/ac 表示类
   Plug 'bps/vim-textobj-python', {'for': 'python'}
-  " 参数文本对象：i,/a, 包括参数或者列表元素
+  " 参数文本对象：i,/a, 包括参数或者列表元素 c cpp python
   Plug 'sgur/vim-textobj-parameter'
   " 提供 uri/url 的文本对象，iu/au 表示
   Plug 'jceb/vim-textobj-uri'
