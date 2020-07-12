@@ -207,9 +207,6 @@ if index(g:bundle_group, 'coc') >= 0
     endif
   endfunction
 
-  " Highlight the symbol and its references when holding the cursor.
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-
   " Symbol renaming.
   nmap <leader>rn <Plug>(coc-rename)
   nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
@@ -286,9 +283,6 @@ if index(g:bundle_group, 'coc') >= 0
   nmap <leader>me <Plug>(coc-bookmark-annotate)
   nmap <leader>ml :CocList bookmark<CR>
 
-  " >>>>> coc-highlight <<<<< "
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-
 endif
 
 "----------------------------------------------------------------------
@@ -352,8 +346,6 @@ if index(g:bundle_group, 'beautify') >= 0
   Plug 'joshdick/onedark.vim'
   " ----- * 状态栏 * ----- "
   Plug 'vim-airline/vim-airline'
-  " ----- * 启动菜单 * ----- "
-  Plug 'mhinz/vim-startify'
   " ----- * 彩虹括号 * ----- "
   Plug 'luochen1990/rainbow'
   " ----- * 高亮感兴趣的单词 * ----- "
@@ -366,17 +358,6 @@ if index(g:bundle_group, 'beautify') >= 0
   " =======
   let g:airline#extensions#tabline#enabled = 1
   let g:airline_powerline_fonts = 1
-
-  " =======
-  " vim-startify-config
-  " =======
-  let g:startify_change_to_dir = 1
-  let g:startify_custom_header =
-        \ 'startify#center(startify#fortune#cowsay())'
-  " =======
-  " vim-startify-keymaps
-  " =======
-  nnoremap <silent> <leader>fr :Startify<cr>
 
   " =======
   " rainbow-config
@@ -446,6 +427,7 @@ if index(g:bundle_group, 'search') >= 0
   " =======
   " 搜索当前目录下的文件
   nnoremap <silent> <leader>ff :FZF<cr>
+  nnoremap <silent> <leader>fr :History<cr>
   " 搜索目录下文件的内容
   nnoremap <silent> <c-p> :Rg<cr>
   " 切换buffer
@@ -588,18 +570,16 @@ if index(g:bundle_group, 'textobj') >= 0
 
   " 基础插件：提供让用户方便的自定义文本对象的接口
   Plug 'kana/vim-textobj-user'
-  " indent 文本对象：ii/ai 表示当前缩进，vii 选中当缩进，cii 改写缩进
-  Plug 'kana/vim-textobj-indent'
   " 函数文本对象：if/af 支持 c/c++/vim/java
   Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
   " 提供 python 相关文本对象，if/af 表示函数，ic/ac 表示类
   Plug 'bps/vim-textobj-python', {'for': 'python'}
   " 参数文本对象：i,/a, 包括参数或者列表元素 c cpp python
   Plug 'sgur/vim-textobj-parameter'
-  " 提供 uri/url 的文本对象，iu/au 表示
-  Plug 'jceb/vim-textobj-uri'
   " 提供html tag 中参数文本对象, ix/ax表示
   Plug 'whatyouhide/vim-textobj-xmlattr'
+  " 提供 uri/url 的文本对象，iu/au 表示
+  Plug 'jceb/vim-textobj-uri'
 
   " =======
   " wildfire-keymaps
