@@ -77,7 +77,7 @@ if index(g:bundle_group, 'enhance') >= 0
   " =======
   " rnvimr-keymaps
   " =======
-  nnoremap <silent> <leader>R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 1<CR>
+  nnoremap <silent> <leader>R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 1<CR>
 
   " =======
   " vim-visual-multi-config
@@ -159,11 +159,11 @@ if index(g:bundle_group, 'coc') >= 0
   " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
   " position. Coc only does snippet and additional edit on confirm.
   " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-  if exists('*complete_info')
-    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-  else
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-  endif
+  " if exists('*complete_info')
+  "   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+  " else
+  "   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  " endif
   inoremap <silent><expr> <cr>
         \ pumvisible() ? coc#_select_confirm()
         \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -313,7 +313,7 @@ if index(g:bundle_group, 'web')
 
   if index(g:bundle_group, 'coc')
     let g:coc_global_extensions += ['coc-html', 'coc-css', 'coc-tsserver',
-          \ 'coc-tslint-plugin', 'coc-stylelint']
+          \ 'coc-tslint-plugin', 'coc-stylelint', 'coc-style-helper']
   endif
 
   " ----- * vim-close * ----- "
