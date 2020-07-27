@@ -117,6 +117,12 @@ else
   highlight clear SpellLocal
   highlight SpellLocal cterm=underline
 
+  if isdirectory(expand('$HOME/.vim/pack/themes/start/dracula'))
+    " git clone https://github.com/dracula/vim.git ~/.vim/pack/themes/start/dracula --depth 1
+    packadd! dracula
+    colorscheme dracula
+  endif
+
   set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
 endif
 
