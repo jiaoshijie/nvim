@@ -1,5 +1,19 @@
 extends c
 
+snippet main "main"
+#include <iostream>
+#include <string>
+#include <vector>
+
+using std::cout;
+using std::endl;
+using std::string;
+
+int main(${1:int argc, char *argv[]}) {
+	${2:cout << "Hello World!" << endl;}
+	return 0;
+}
+endsnippet
 
 snippet beginend "$1.begin(), $1.end() (beginend)"
 ${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()

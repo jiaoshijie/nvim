@@ -30,6 +30,10 @@ if index(g:bundle_group, 'enhance') >= 0
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   " ----- * f,F,t,T * ----- "
   Plug 'rhysd/clever-f.vim'
+  " ----- * vim bookmark * ----- "
+  Plug 'MattesGroeger/vim-bookmarks'
+  " ----- * vim auto-pairs * ----- "
+  Plug 'jiangmiao/auto-pairs'
 
   " =======
   " nerdcommenter-config
@@ -107,6 +111,28 @@ if index(g:bundle_group, 'enhance') >= 0
   nmap ; <Plug>(clever-f-repeat-forward)
   nmap , <Plug>(clever-f-repeat-back)
 
+  " =======
+  " vim bookmark
+  " =======
+  let g:bookmark_no_default_key_mappings = 1
+  let g:bookmark_auto_save_file = $HOME.'/.cache/.vim-bookmarks'
+  highlight BookmarkSign ctermbg=NONE ctermfg=160
+  highlight BookmarkLine ctermbg=194 ctermfg=NONE
+  let g:bookmark_sign = '⚑'
+  let g:bookmark_highlight_lines = 1
+  nmap mm <Plug>BookmarkToggle
+  nmap mn <Plug>BookmarkNext
+  nmap mp <Plug>BookmarkPrev
+  nmap ma <Plug>BookmarkShowall
+  nmap mc <Plug>BookmarkClear
+  nmap mC <Plug>BookmarkClearAll
+
+  " =======
+  " vim auto-pairs
+  " =======
+  let g:AutoPairsFlyMode = 1
+  let g:AutoPairsShortcutBackInsert = '<M-b>'
+
 endif
 
 
@@ -124,8 +150,7 @@ if index(g:bundle_group, 'coc') >= 0
   " =======
   let g:coc_global_extensions += ['coc-actions', 'coc-json', 'coc-vimlsp', 'coc-lists',
         \ 'coc-yank', 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-yaml',
-        \ 'coc-project', 'coc-marketplace', 'coc-rainbow-fart', 'coc-tabnine',
-        \ 'coc-bookmark', 'coc-pairs', 'coc-highlight']
+        \ 'coc-project', 'coc-marketplace', 'coc-tabnine', 'coc-highlight']
 
 
   " =======
@@ -156,17 +181,14 @@ if index(g:bundle_group, 'coc') >= 0
   " Use <c-space> to trigger completion.
   inoremap <silent><expr> <c-space> coc#refresh()
 
-  " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-  " position. Coc only does snippet and additional edit on confirm.
-  " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-  " if exists('*complete_info')
-  "   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-  " else
-  "   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-  " endif
-  inoremap <silent><expr> <cr>
-        \ pumvisible() ? coc#_select_confirm()
-        \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  " Make <CR> auto-select the first completion item and notify coc.nvim to
+  " format on enter, <cr> could be remapped by other vim plugin
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+  " inoremap <silent><expr> <cr>
+  "       \ pumvisible() ? coc#_select_confirm()
+  "       \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
   " 调到类型的定义处
   nmap <silent> gd <Plug>(coc-definition)
@@ -275,13 +297,6 @@ if index(g:bundle_group, 'coc') >= 0
   endfunction
   xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
   nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
-
-  " >>>>> coc-bookmark <<<<< "
-  nmap mm <Plug>(coc-bookmark-toggle)
-  nmap mn <Plug>(coc-bookmark-next)
-  nmap mp <Plug>(coc-bookmark-prev)
-  nmap <leader>me <Plug>(coc-bookmark-annotate)
-  nmap <leader>ml :CocList bookmark<CR>
 
 endif
 
@@ -532,6 +547,7 @@ if index(g:bundle_group, 'latex') >= 0
         \   '-interaction=nonstopmode',
         \ ],
         \}
+  let g:tex_flavor = 'latex'
 
 endif
 
