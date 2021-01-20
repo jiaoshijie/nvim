@@ -32,8 +32,6 @@ if index(g:bundle_group, 'enhance') >= 0
   Plug 'rhysd/clever-f.vim'
   " ----- * vim bookmark * ----- "
   Plug 'MattesGroeger/vim-bookmarks'
-  " ----- * vim auto-pairs * ----- "
-  Plug 'jiangmiao/auto-pairs'
 
   " =======
   " nerdcommenter-config
@@ -123,15 +121,9 @@ if index(g:bundle_group, 'enhance') >= 0
   nmap mm <Plug>BookmarkToggle
   nmap mn <Plug>BookmarkNext
   nmap mp <Plug>BookmarkPrev
-  nmap ma <Plug>BookmarkShowall
+  nmap ma <Plug>BookmarkShowAll
   nmap mc <Plug>BookmarkClear
   nmap mC <Plug>BookmarkClearAll
-
-  " =======
-  " vim auto-pairs
-  " =======
-  let g:AutoPairsFlyMode = 1
-  let g:AutoPairsShortcutBackInsert = '<M-b>'
 
 endif
 
@@ -150,7 +142,7 @@ if index(g:bundle_group, 'coc') >= 0
   " =======
   let g:coc_global_extensions += ['coc-actions', 'coc-json', 'coc-vimlsp', 'coc-lists',
         \ 'coc-yank', 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-yaml',
-        \ 'coc-project', 'coc-marketplace', 'coc-tabnine', 'coc-highlight']
+        \ 'coc-project', 'coc-marketplace', 'coc-tabnine', 'coc-highlight', 'coc-pairs']
 
 
   " =======
@@ -184,11 +176,7 @@ if index(g:bundle_group, 'coc') >= 0
   " Make <CR> auto-select the first completion item and notify coc.nvim to
   " format on enter, <cr> could be remapped by other vim plugin
   inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-  " inoremap <silent><expr> <cr>
-  "       \ pumvisible() ? coc#_select_confirm()
-  "       \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
   " 调到类型的定义处
   nmap <silent> gd <Plug>(coc-definition)
