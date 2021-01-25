@@ -82,17 +82,25 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> gj j
 nnoremap <silent> gk k
-nnoremap <leader>s :w<cr>
-nnoremap <leader>qq :q<cr>
-nnoremap <silent> <leader><cr> :nohl<cr>
 nnoremap <silent> <C-k> D
+" 滚动Speed up scrolling of the viewport slightly
+nnoremap <C-e> 2<C-e>
+nnoremap <C-y> 2<C-y>
+
+" remap U to <C-r> for easier redo
+nnoremap U <C-r>
+
+nnoremap <silent> <leader><cr> :nohl<cr>
+nnoremap <leader>fs :w<cr>
+nnoremap <leader>qq :q<cr>
+nnoremap <leader>qa :qall<cr>
 nnoremap <silent> <leader>= mIgg=G'ImI
 
 " 打开语法检查
 nnoremap <silent> <leader>o :setlocal spell! spelllang=en_us<CR>
 
 " 透明背景和取消, 需要终端可以透明
-nnoremap <silent> <leader>ct :call Change_theme_alpha()<CR>
+nnoremap <silent> <leader>cT :call Change_theme_alpha()<CR>
 
 " 文本和16进制模式切换
 nnoremap <silent> <leader>xd :%!xxd<CR>
@@ -101,13 +109,6 @@ nnoremap <silent> <leader>xr :%!xxd -r<CR>
 " set coding gbk or utf-8
 nnoremap <silent> <leader>eu :e ++enc=utf8<CR>
 nnoremap <silent> <leader>eg :e ++enc=gbk<CR>
-
-" 滚动Speed up scrolling of the viewport slightly
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
-
-" remap U to <C-r> for easier redo
-nnoremap U <C-r>
 
 " 代码折叠自定义快捷键 <leader>zz
 let g:FoldMethod = 0
@@ -157,17 +158,18 @@ elseif has('nvim')
 endif
 
 " 移动窗口的位置
-nnoremap <silent> <Up>    <c-w>K
-nnoremap <silent> <Down>  <c-w>J
-nnoremap <silent> <Left>  <c-w>H
-nnoremap <silent> <Right> <c-w>L
+nnoremap <silent> <leader>wK <c-w>K
+nnoremap <silent> <leader>wJ <c-w>J
+nnoremap <silent> <leader>wH <c-w>H
+nnoremap <silent> <leader>wL <c-w>L
 
 " 调整窗口大小
 nnoremap <silent> <leader>w= <C-w>=
-nnoremap <silent> <S-Up>    :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <S-Down>  :exe "resize " . (winheight(0) * 2/3)<CR>
-nnoremap <silent> <S-Left>  :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
-nnoremap <silent> <S-Right> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+" nnoremap <silent> <S-Up>    :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Up> :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Down> :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Right> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <Left> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 "----------------------------------------------------------------------
 " buffer 相关
@@ -175,7 +177,7 @@ nnoremap <silent> <S-Right> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 nnoremap <silent> <leader>bp :bprevious<cr>
 nnoremap <silent> <leader>bn :bnext<cr>
-nnoremap <silent> <leader>bD :bdelete %<CR>
+nnoremap <silent> <leader>bd :bdelete %<CR>
 
 "----------------------------------------------------------------------
 " Tab 相关(不喜欢用这玩意儿)

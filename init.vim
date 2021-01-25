@@ -43,6 +43,7 @@ runtime! config/init-tabsize.vim
 if has('nvim')
   " 插件加载
   runtime! config/init-plugins.vim
+  runtime! config/init-whichkey.vim
 endif
 
 " 界面样式

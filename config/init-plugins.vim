@@ -32,6 +32,8 @@ if index(g:bundle_group, 'enhance') >= 0
   Plug 'rhysd/clever-f.vim'
   " ----- * vim bookmark * ----- "
   Plug 'MattesGroeger/vim-bookmarks'
+  " ----- * which key * ----- "
+  Plug 'liuchengxu/vim-which-key'
 
   " =======
   " nerdcommenter-config
@@ -118,12 +120,28 @@ if index(g:bundle_group, 'enhance') >= 0
   highlight BookmarkLine ctermbg=194 ctermfg=NONE
   let g:bookmark_sign = '⚑'
   let g:bookmark_highlight_lines = 1
-  nmap mm <Plug>BookmarkToggle
-  nmap mn <Plug>BookmarkNext
-  nmap mp <Plug>BookmarkPrev
-  nmap ma <Plug>BookmarkShowAll
-  nmap mc <Plug>BookmarkClear
-  nmap mC <Plug>BookmarkClearAll
+  nmap <leader>mm <Plug>BookmarkToggle
+  nmap <leader>mn <Plug>BookmarkNext
+  nmap <leader>mp <Plug>BookmarkPrev
+  nmap <leader>ma <Plug>BookmarkShowAll
+  nmap <leader>mc <Plug>BookmarkClear
+  nmap <leader>mC <Plug>BookmarkClearAll
+
+  " =======
+  " which key
+  " =======
+  " let g:mapleader = "\<Space>"
+  " let g:maplocalleader = ','
+  nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
+  vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+
+  autocmd! FileType which_key
+  autocmd  FileType which_key set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+  let g:which_key_use_floating_win = 0
+  let g:which_key_max_size = 0
+  let g:which_key_sep = '→'
+
 
 endif
 
@@ -179,18 +197,18 @@ if index(g:bundle_group, 'coc') >= 0
         \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
   " 调到类型的定义处
-  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> <leader>gd <Plug>(coc-definition)
   " 查看变量函数使用的位置
-  nmap <silent> gr <Plug>(coc-references)
+  nmap <silent> <leader>gr <Plug>(coc-references)
   " 跳转到错误的位置(包括警告)
-  nnoremap <silent><nowait> <space>gee  :<C-u>CocList diagnostics<cr>
-  nmap <silent> gep <Plug>(coc-diagnostic-prev)
-  nmap <silent> gen <Plug>(coc-diagnostic-next)
+  nnoremap <silent><nowait> <space>ges  :<C-u>CocList diagnostics<cr>
+  nmap <silent> <leader>gep <Plug>(coc-diagnostic-prev)
+  nmap <silent> <leader>gen <Plug>(coc-diagnostic-next)
   " 显示错误完整信息
-  nmap <silent> gs <Plug>(coc-diagnostic-info)
+  nmap <silent> <leader>gee <Plug>(coc-diagnostic-info)
   " GoTo code navigation.
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> <leader>gy <Plug>(coc-type-definition)
+  nmap <silent> <leader>gi <Plug>(coc-implementation)
 
   " Map function and class text objects
   " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -218,8 +236,8 @@ if index(g:bundle_group, 'coc') >= 0
   endfunction
 
   " Symbol renaming.
-  nmap <leader>rn <Plug>(coc-rename)
-  nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+  nnoremap <leader>gww :CocSearch <C-R>=expand("<cword>")<CR><CR>
+  nmap <leader>gwr <Plug>(coc-rename)
 
   " Formatting selected code.
   xmap <leader>g=  <Plug>(coc-format-selected)
@@ -236,10 +254,10 @@ if index(g:bundle_group, 'coc') >= 0
   command! -nargs=0 Format :call CocAction('format')
 
   " Add `:Fold` command to fold current buffer.
-  command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+  command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
   " Add `:OR` command for organize imports of the current buffer.
-  command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+  command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
 
 
   " >>>>> coc-explorer <<<<< "
@@ -252,7 +270,7 @@ if index(g:bundle_group, 'coc') >= 0
 
   " >>>>> coc-yank <<<<< "
   " 复制历史
-  nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+  nnoremap <silent> <leader>gh  :<C-u>CocList -A --normal yank<cr>
 
   " >>>>> coc-snippets <<<<< "
   " Use <C-l> for trigger snippet expand.
@@ -279,7 +297,7 @@ if index(g:bundle_group, 'coc') >= 0
   xmap ag <Plug>(coc-git-chunk-outer)
 
   " >>>>> coc-actions <<<<< "
-  " Remap for do codeAction of selected region
+  " Remap for do codeAction of selected region TODO
   function! s:cocActionsOpenFromSelected(type) abort
     execute 'CocCommand actions.open ' . a:type
   endfunction
@@ -414,8 +432,8 @@ if index(g:bundle_group, 'search') >= 0
   " =======
   " vista-keymaps
   " =======
-  nnoremap <silent> T :Vista!!<cr>
-  nnoremap <silent> <c-t> :Vista finder<cr>
+  nnoremap <silent> <leader>ct :Vista!!<cr>
+  nnoremap <silent> <leader>cf :Vista finder<cr>
 
   " =======
   " fzf-config
@@ -429,17 +447,17 @@ if index(g:bundle_group, 'search') >= 0
   " fzf-keymaps
   " =======
   " 搜索当前目录下的文件
-  nnoremap <silent> <leader>ff :FZF<cr>
+  nnoremap <silent> <leader>fd :FZF<cr>
   nnoremap <silent> <leader>fr :History<cr>
   " 搜索目录下文件的内容
-  nnoremap <silent> <c-p> :Rg<cr>
+  nnoremap <silent> <leader>ff :Rg<cr>
   " 切换buffer
   nnoremap <silent> <leader>bb :Buffers<cr>
+  nnoremap <silent> <leader>fl :BLines<cr>
+  nnoremap <silent> <leader>fa :Lines<cr>
+  nnoremap <silent> <leader>mM :Marks<cr>
   " 搜索当前目录下git管理的文件
   nnoremap <silent> <leader>fg :GitFiles<cr>
-  nnoremap <silent> <leader>ll :BLines<cr>
-  nnoremap <silent> <leader>lb :Lines<cr>
-  nnoremap <silent> <leader>mm :Marks<cr>
 
 endif
 

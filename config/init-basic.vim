@@ -51,7 +51,7 @@ set ttimeoutlen=50
 
 " 等待命令键
 set timeout
-set timeoutlen=1000
+set timeoutlen=500
 
 " 鼠标支持
 set mouse=a
