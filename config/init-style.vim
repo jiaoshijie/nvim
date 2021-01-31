@@ -99,7 +99,6 @@ else
   let &t_SR.="\e[4 q" "SR(start replace)
   let &t_EI.="\e[1 q" "EI(end insert/replace)
 
-  highlight Normal guibg=#556677
   highlight SignColumn ctermbg=NONE
   highlight Pmenu ctermbg=gray ctermfg=black
   highlight PmenuSel ctermbg=brown ctermfg=gray
@@ -119,10 +118,6 @@ else
   highlight SpellLocal cterm=underline
 
   set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
-
-  set guioptions-=m
-  set guioptions-=T
-  set guioptions-=r
 endif
 
 " 设置标记一列的背景颜色和数字一行颜色一致

@@ -4,37 +4,7 @@ snippet main "main"
 #include <string.h>
 
 int main(${1:int argc, char *argv[]}) {
-	${2:printf("Hello World!\n");}
+	${0:printf("Hello World!\n");}
 	return 0;
 }
-endsnippet
-
-snippet #ifndef "#ifndef ... #define ... #endif"
-#ifndef ${1/([A-Za-z0-9_]+).*/$1/}
-#define ${1:SYMBOL} ${2:value}
-#endif /* ifndef $1 */
-endsnippet
-
-snippet #if "#if #endif"
-#if ${1:0}
-${VISUAL}$0
-#endif
-endsnippet
-
-snippet for "for loop (for)"
-for (${1}; ${2}; ${3}) {
-	${VISUAL}$0
-}
-endsnippet
-
-snippet eli "else if .. (eli)"
-else if (${1:/* condition */}) {
-	${VISUAL}$0
-}
-endsnippet
-
-snippet st "struct"
-struct ${1} {
-	${0:/* data */}
-};
 endsnippet

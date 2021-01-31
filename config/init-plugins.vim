@@ -26,8 +26,6 @@ if index(g:bundle_group, 'enhance') >= 0
   Plug 'mbbill/undotree/'
   " ----- * 调用ranger文件管理器 * ----- "
   Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
-  " ----- * 多光标操作 * ----- "
-  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   " ----- * f,F,t,T * ----- "
   Plug 'rhysd/clever-f.vim'
   " ----- * vim bookmark * ----- "
@@ -82,20 +80,6 @@ if index(g:bundle_group, 'enhance') >= 0
   " rnvimr-keymaps
   " =======
   nnoremap <silent> <leader>R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 1<CR>
-
-  " =======
-  " vim-visual-multi-config
-  " =======
-  let g:VM_default_mappings = 0
-  let g:VM_mouse_mappings = 1
-  " =======
-  " vim-visual-multi-keymaps
-  " =======
-  let g:VM_maps = {}
-  let g:VM_maps['Find Under']         = '<C-n>'
-  let g:VM_maps['Find Subword Under'] = '<C-n>'
-  let g:VM_maps["Undo"] = 'u'
-  let g:VM_maps["Redo"] = '<C-r>'
 
   " =======
   " clever-f
@@ -362,6 +346,8 @@ endif
 " 一些美化插件
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'beautify') >= 0
+  " ----- * 欢迎界面 * ----- "
+  Plug 'mhinz/vim-startify'
   " ----- * 2款主题 * ----- "
   Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
