@@ -143,7 +143,7 @@ if index(g:bundle_group, 'coc') >= 0
   " coc-misc-config
   " =======
   let g:coc_global_extensions += ['coc-actions', 'coc-json', 'coc-vimlsp', 'coc-lists',
-        \ 'coc-yank', 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-yaml',
+        \ 'coc-yank', 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-kite',
         \ 'coc-project', 'coc-marketplace', 'coc-tabnine', 'coc-highlight', 'coc-pairs']
 
 
@@ -151,11 +151,6 @@ if index(g:bundle_group, 'coc') >= 0
   " coc-C Cpp-config
   " =======
   let g:coc_global_extensions += ['coc-clangd']
-
-  " =======
-  " coc-Python-config
-  " =======
-  let g:coc_global_extensions += ['coc-python']
 
   " =======
   " coc-keymaps
@@ -193,20 +188,6 @@ if index(g:bundle_group, 'coc') >= 0
   " GoTo code navigation.
   nmap <silent> <leader>gy <Plug>(coc-type-definition)
   nmap <silent> <leader>gi <Plug>(coc-implementation)
-
-  " Map function and class text objects
-  " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-  augroup jsj_Fileobject
-    autocmd!
-    autocmd FileType javascript,typescript xmap if <Plug>(coc-funcobj-i)
-    autocmd FileType javascript,typescript omap if <Plug>(coc-funcobj-i)
-    autocmd FileType javascript,typescript xmap af <Plug>(coc-funcobj-a)
-    autocmd FileType javascript,typescript omap af <Plug>(coc-funcobj-a)
-    autocmd FileType javascript,typescript xmap ic <Plug>(coc-classobj-i)
-    autocmd FileType javascript,typescript omap ic <Plug>(coc-classobj-i)
-    autocmd FileType javascript,typescript xmap ac <Plug>(coc-classobj-a)
-    autocmd FileType javascript,typescript omap ac <Plug>(coc-classobj-a)
-  augroup END
 
   " Use K to show documentation in preview window.
   nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -346,8 +327,6 @@ endif
 " 一些美化插件
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'beautify') >= 0
-  " ----- * 欢迎界面 * ----- "
-  Plug 'mhinz/vim-startify'
   " ----- * 2款主题 * ----- "
   Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
@@ -363,7 +342,7 @@ if index(g:bundle_group, 'beautify') >= 0
   " =======
   " vim-airline-config
   " =======
-  let g:airline#extensions#tabline#enabled = 1
+  let g:airline_extensions = ['branch', 'hunks', 'coc', 'tabline', 'fzf', 'vista']
   let g:airline_powerline_fonts = 1
 
   " =======
@@ -578,13 +557,7 @@ if index(g:bundle_group, 'textobj') >= 0
 
   " 基础插件：提供让用户方便的自定义文本对象的接口
   Plug 'kana/vim-textobj-user'
-  " 函数文本对象：if/af 支持 c/c++/vim/java
-  Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
-  " 提供 python 相关文本对象，if/af 表示函数，ic/ac 表示类
-  Plug 'bps/vim-textobj-python', {'for': 'python'}
   " 参数文本对象：i,/a, 包括参数或者列表元素 c cpp python
-  Plug 'sgur/vim-textobj-parameter'
-  " 提供html tag 中参数文本对象, ix/ax表示
   Plug 'whatyouhide/vim-textobj-xmlattr'
   " 提供 uri/url 的文本对象，iu/au 表示
   Plug 'jceb/vim-textobj-uri'

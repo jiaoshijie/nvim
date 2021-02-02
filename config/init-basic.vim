@@ -137,7 +137,7 @@ endif
 "----------------------------------------------------------------------
 
 " 补全选项, "menuone"只有一个时也展示一个菜单
-set completeopt=menuone,menu,preview
+set completeopt=menuone,menu,preview,noinsert
 
 " 设置使用系统剪切板
 " set clipboard+=unnamedplus
