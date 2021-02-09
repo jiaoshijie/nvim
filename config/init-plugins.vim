@@ -144,7 +144,7 @@ if index(g:bundle_group, 'coc') >= 0
   " =======
   let g:coc_global_extensions += ['coc-actions', 'coc-json', 'coc-vimlsp', 'coc-lists',
         \ 'coc-yank', 'coc-translator', 'coc-explorer', 'coc-snippets', 'coc-kite',
-        \ 'coc-project', 'coc-marketplace', 'coc-tabnine', 'coc-highlight', 'coc-pairs']
+        \ 'coc-project', 'coc-marketplace', 'coc-tabnine', 'coc-highlight', 'coc-pairs', 'coc-diagnostic']
 
 
   " =======
@@ -275,6 +275,10 @@ endif
 " golang
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'golang') >= 0
+
+  if index(g:bundle_group, 'coc')
+    let g:coc_global_extensions += ['coc-go']
+  endif
   Plug 'fatih/vim-go' " , { 'do': ':GoUpdateBinaries' }
 
   " =======
@@ -298,8 +302,8 @@ endif
 if index(g:bundle_group, 'web')
 
   if index(g:bundle_group, 'coc')
-    let g:coc_global_extensions += ['coc-html', 'coc-css', 'coc-tsserver',
-          \ 'coc-tslint-plugin', 'coc-stylelint', 'coc-style-helper']
+    let g:coc_global_extensions += ['coc-html', 'coc-css',
+          \ 'coc-tsserver', 'coc-tslint-plugin']
   endif
 
   " ----- * vim-close * ----- "
