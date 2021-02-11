@@ -1,9 +1,25 @@
+" =======
+" which key
+" =======
+" let g:mapleader = "\<Space>"
+" let g:maplocalleader = ','
+nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+let g:which_key_use_floating_win = 0
+let g:which_key_max_size = 0
+let g:which_key_sep = '→'
+
 let g:which_key_map = {}
 let g:which_key_map['='] = ["mIgg=G'ImI", 'format code']
 let g:which_key_map['o'] = [':setlocal spell! spelllang=en_us', 'using spellcheck']
 let g:which_key_map['u'] = [":UndotreeToggle", 'undo tree']
-let g:which_key_map['R'] = [":RnvimrToggle<CR><C-\><C-n>:RnvimrResize 1", 'ranger fm']
+let g:which_key_map['R'] = [":RnvimrToggle", 'ranger fm']
 let g:which_key_map['k'] = [":call interestingwords('n')", 'interestingwords']
+let g:which_key_map['S'] = ["<Plug>(easymotion-overwin-f2)", 'move to {char}{char}']
 
 " window
 let g:which_key_map.w = {
@@ -97,6 +113,14 @@ let g:which_key_map.e = {
       \ 'u': [':e ++enc=utf8', 'encode to utf-8'],
       \ 'g': [':e ++enc=gbk', 'encode to gbk'],
       \ }
+
+" easymotion
+let g:which_key_map.s = {
+  \ 'name': '+move cursor with easymotion',
+  \ 's': ['<Plug>(easymotion-overwin-f)', 'move to {char}'],
+  \ 'l': ['<Plug>(easymotion-overwin-line)', 'move to line'],
+  \ 'w': ['<Plug>(easymotion-overwin-w)', 'move to word'],
+  \ }
 
 " quit vim
 let g:which_key_map.q = {

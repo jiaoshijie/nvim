@@ -1,10 +1,9 @@
-"
-"  __  __     __     _____ __  __ ____   ____
-" |  \/  |_   \ \   / /_ _|  \/  |  _ \ / ___|
-" | |\/| | | | \ \ / / | || |\/| | |_) | |
-" | |  | | |_| |\ V /  | || |  | |  _ <| |___
-" |_|  |_|\__, | \_/  |___|_|  |_|_| \_\\____|
-"         |___/
+"  ___ _   _ ___ _______     _____ __  __
+" |_ _| \ | |_ _|_   _\ \   / /_ _|  \/  |
+"  | ||  \| || |  | |  \ \ / / | || |\/| |
+"  | || |\  || |  | |_  \ V /  | || |  | |
+" |___|_| \_|___| |_(_)  \_/  |___|_|  |_|
+
 
 "----------------------------------------------------------------------
 " mkdir ~/.config/nvim/autoload
@@ -24,33 +23,44 @@ if !has('nvim')
   exec 'set rtp+='.s:home
 else
   " 将 ~/.vim 目录加入 runtimepath
-  set rtp+=~/.vim
+  " set rtp+=~/.vim
 endif
 
 "----------------------------------------------------------------------
 " 模块加载
 "----------------------------------------------------------------------
 
-" 加载基础配置
 runtime! config/init-basic.vim
-
-" 加载扩展配置
 runtime! config/init-config.vim
-
-" 设定 tabsize
-runtime! config/init-tabsize.vim
-
-if has('nvim')
-  " 插件加载
-  runtime! config/init-plugins.vim
-  runtime! config/init-whichkey.vim
-endif
-
-" 界面样式
+runtime! config/init-tabsize.vim  " configure tabsize
+runtime! config/init-plugins.vim
 runtime! config/init-style.vim
-
-" 自定义按键
 runtime! config/init-keymaps.vim
-
-" 代码片段
 runtime! config/init-snippets.vim
+
+
+"----------------------------------------------------------------------
+" plug config
+"----------------------------------------------------------------------
+runtime! plug-config/init-vim-which-key.vim
+runtime! plug-config/init-coc-list.vim
+runtime! plug-config/init-coc-config.vim
+runtime! plug-config/init-bullets.vim
+runtime! plug-config/init-clever-f.vim
+runtime! plug-config/init-fzf.vim
+runtime! plug-config/init-markdown-preview.vim
+runtime! plug-config/init-nerdcommenter.vim
+runtime! plug-config/init-rainbow.vim
+runtime! plug-config/init-rnvimr.vim
+runtime! plug-config/init-undotree.vim
+runtime! plug-config/init-vim-airline.vim
+runtime! plug-config/init-vim-bookmarks.vim
+runtime! plug-config/init-vim-closetag.vim
+runtime! plug-config/init-vim-easymotion.vim
+runtime! plug-config/init-vim-indentLine.vim
+runtime! plug-config/init-vim-interestingwords.vim
+runtime! plug-config/init-vim-markdown-toc.vim
+runtime! plug-config/init-vimtex.vim
+runtime! plug-config/init-vimwiki.vim
+runtime! plug-config/init-vista.vim
+runtime! plug-config/init-wildfire.vim

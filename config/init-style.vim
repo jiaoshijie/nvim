@@ -86,39 +86,11 @@ endif
 " 设置黑色背景
 set background=dark
 
-if has('nvim')
-  " 设置颜色主题
-  " let g:onedark_terminal_italics=1
-  colorscheme gruvbox
-  " let g:airline_theme=g:colors_name
-  let g:airline_theme="onedark"
-else
-  " just vim have no gvim
-  let g:jsj_change_theme_alpha = 1
-  let &t_SI.="\e[5 q" "SI(start insert)
-  let &t_SR.="\e[4 q" "SR(start replace)
-  let &t_EI.="\e[1 q" "EI(end insert/replace)
-
-  highlight SignColumn ctermbg=NONE
-  highlight Pmenu ctermbg=gray ctermfg=black
-  highlight PmenuSel ctermbg=brown ctermfg=gray
-  highlight StatusLine ctermbg=darkgray cterm=NONE
-  highlight MatchParen ctermbg=241 cterm=bold
-  highlight CursorLine cterm=NONE ctermbg=236
-  highlight CursorLineNr cterm=NONE
-  highlight Visual cterm=reverse
-  " for error highlight，防止错误整行标红导致看不清
-  highlight clear SpellBad
-  highlight SpellBad ctermfg=1 cterm=underline
-  highlight clear SpellCap
-  highlight SpellCap cterm=underline
-  highlight clear SpellRare
-  highlight SpellRare cterm=underline
-  highlight clear SpellLocal
-  highlight SpellLocal cterm=underline
-
-  set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
-endif
+" 设置颜色主题
+" let g:onedark_terminal_italics=1
+colorscheme gruvbox
+" let g:airline_theme=g:colors_name
+let g:airline_theme="onedark"
 
 " 设置标记一列的背景颜色和数字一行颜色一致
 hi! link SignColumn   LineNr

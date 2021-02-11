@@ -1,4 +1,16 @@
 {
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": [],
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+  "coc.preferences.colorSupport": true,
+  "suggest.enablePreview": true,
+  "suggest.echodocSupport": true,
+  "suggest.completionItemKindLabels": {
+    "text": "t",
+    "method": "m",
+    "function": ""
+  },
+
   "diagnostic-languageserver.linters": {
     "flake8": {
       "command": "flake8",
@@ -26,27 +38,26 @@
       }
     }
   },
-  "diagnostic-languageserver.formatters": {
-    "autopep8": {
-      "command": "autopep8",
-      "args": ["-"]
-    }
-  },
   "diagnostic-languageserver.filetypes": {
     "python": "flake8"
   },
-  "diagnostic-languageserver.formatFiletypes": {
-    "python": "autopep8"
-  },
-  "coc.preferences.formatOnType": true,
-  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
-  "coc.preferences.colorSupport": true,
-  "suggest.enablePreview": true,
-  "suggest.echodocSupport": true,
+  "diagnostic.errorSign": " ",
+  "diagnostic.warningSign": " ",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": " ",
 
   "clangd.semanticHighlighting": true,
 
+  "explorer.width": 30,
+  "explorer.file.root.template": "[icon] [git] [hidden & 1][root]",
   "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.icon.enableVimDevicons": false,
+  "explorer.file.showHiddenFiles": false,
+  "explorer.keyMappings.global": {
+    "<cr>": ["expandable?", "expand", "open"],
+    "v": "open:vsplit"
+  },
 
   "snippets.ultisnips.directories": ["localsnips", "~/.config/nvim/my_snips"],
 
