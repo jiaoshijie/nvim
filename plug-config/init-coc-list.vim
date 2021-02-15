@@ -1,4 +1,4 @@
-let g:coc_global_extensions = ['coc-actions',
+let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-vimlsp',
       \ 'coc-lists',

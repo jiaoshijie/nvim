@@ -76,16 +76,19 @@ let g:which_key_map.m = {
 
 let g:which_key_map.g = {
       \ 'name': '+coc keybinding',
+      \ 'a': [':CocList extensions', 'Show Coc extensions'],
+      \ 'p': [':CocList project', 'open Project dir'],
+      \ 'c': [':CocList commands', 'using coc commands'],
       \ 'd': ['<Plug>(coc-definition)', 'Jump to definition'],
       \ 'r': ['<Plug>(coc-references)', 'Jump to references'],
       \ 'y': ['<Plug>(coc-type-definition)', 'Jump to type definition'],
       \ 'i': ['<Plug>(coc-implementation)', 'Jump to implementation'],
       \ '=': ['<Plug>(coc-format-selected)', 'Coc format code'],
-      \ 'h': [':<C-u>CocList -A --normal yank<cr>', 'show all yank history'],
+      \ 'h': [':CocList -A --normal yank', 'show all yank history'],
       \ 'e': {
       \       'name': '+coding error',
       \       'e': ['<Plug>(coc-diagnostic-info)', 'Show all coding error information'],
-      \       's': [':<C-u>CocList diagnostics', 'Show all coding error in CocList'],
+      \       's': [':CocList diagnostics', 'Show all coding error in CocList'],
       \       'p': ['<Plug>(coc-diagnostic-prev)', 'Jump to prev error'],
       \       'n': ['<Plug>(coc-diagnostic-next)', 'Jump to next error'],
       \       },
