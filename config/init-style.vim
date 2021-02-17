@@ -9,6 +9,11 @@ set relativenumber
 " 高亮光标所在行
 set cursorline
 
+" make the 81st column stand out
+" set colorcolumn=+1
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
 augroup jsj_miscSytle
   autocmd!
   autocmd InsertLeave,WinEnter * set cursorline relativenumber
