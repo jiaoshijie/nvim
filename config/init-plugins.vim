@@ -13,7 +13,7 @@ call plug#begin('~/.config/nvim/plugged')
     " ----- * undotree * ----- "
     Plug 'mbbill/undotree/'
     " ----- * 调用ranger文件管理器 * ----- "
-    Plug 'kevinhwang91/rnvimr'
+    " Plug 'kevinhwang91/rnvimr'
     " ----- * move * ----- "
     Plug 'rhysd/clever-f.vim'
     Plug 'easymotion/vim-easymotion'

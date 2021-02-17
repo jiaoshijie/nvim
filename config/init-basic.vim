@@ -163,6 +163,8 @@ set display=lastline
 " 在visual-mode下, 允许光标移动到最后一个字符后面
 set virtualedit=block
 
+set path+=**
+
 " 允许下方显示目录
 set wildmenu
 
@@ -196,6 +198,17 @@ set cmdheight=1
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
+
+" for netrw
+let g:netrw_banner=0  " disable annoying banner
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1  " open splits to the right
+let g:netrw_alto=0
+let g:netrw_liststyle=3  " tree view
+" let g:netrw_list_hide=netrw_gitignore#Hide()
+" let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_winsize=75
+let g:netrw_preview=1
 
 " nvim 实时展示 "substitute" 命令过程
 if has('nvim')

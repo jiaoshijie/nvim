@@ -51,7 +51,7 @@ runtime! plug-config/init-fzf.vim
 runtime! plug-config/init-markdown-preview.vim
 runtime! plug-config/init-nerdcommenter.vim
 runtime! plug-config/init-rainbow.vim
-runtime! plug-config/init-rnvimr.vim
+" runtime! plug-config/init-rnvimr.vim
 runtime! plug-config/init-undotree.vim
 runtime! plug-config/init-vim-airline.vim
 runtime! plug-config/init-vim-bookmarks.vim

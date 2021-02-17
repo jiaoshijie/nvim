@@ -17,7 +17,7 @@ let g:which_key_map = {}
 let g:which_key_map['='] = ["mIgg=G'ImI", 'format code']
 let g:which_key_map['o'] = [':setlocal spell! spelllang=en_us', 'using spellcheck']
 let g:which_key_map['u'] = [":UndotreeToggle", 'undo tree']
-let g:which_key_map['R'] = [":RnvimrToggle", 'ranger fm']
+" let g:which_key_map['R'] = [":RnvimrToggle", 'ranger fm']
 let g:which_key_map['k'] = [":call interestingwords('n')", 'interestingwords']
 let g:which_key_map['S'] = ["<Plug>(easymotion-overwin-f2)", 'move to {char}{char}']
 
