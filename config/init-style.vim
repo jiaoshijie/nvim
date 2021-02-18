@@ -91,7 +91,7 @@ endif
 " 设置黑色背景
 set background=dark
 " 设置颜色主题
-colorscheme default
+colorscheme delek
 " let g:jsj_change_theme_alpha = 1
 highlight Normal guibg=#282828 ctermbg=235
 let &t_SI.="\e[5 q" "SI(start insert)
