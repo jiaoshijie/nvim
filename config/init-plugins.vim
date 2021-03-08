@@ -115,4 +115,5 @@ call plug#begin('~/.config/nvim/plugged')
 
   endif
 
+  Plug 'ryanoasis/vim-devicons'
 call plug#end()

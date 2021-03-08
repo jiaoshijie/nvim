@@ -123,7 +123,7 @@ fun! ToggleFold()
     endif
 endfun
 
-nnoremap <silent> T :edit .<cr>
+" nnoremap <silent> T :edit .<cr>
 
 "----------------------------------------------------------------------
 " window(窗口) 相关

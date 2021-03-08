@@ -106,7 +106,14 @@ noremap <silent> <leader>gc :<C-u>CocList commands<Cr>
 
 " >>>>> coc-explorer <<<<< "
 " 打开文件管理器
+let g:coc_explorer_global_presets = {
+\   'floating': {
+\     'position': 'floating',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\ }
 nmap <silent> tt :CocCommand explorer<CR>
+nnoremap <space>fe :CocCommand explorer --preset floating<CR>
 
 " >>>>> coc-translator <<<<< "
 " 翻译

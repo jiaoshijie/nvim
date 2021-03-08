@@ -94,10 +94,10 @@ let g:which_key_map.g = {
       \       },
       \ 'w': {
       \       'name': '+search and rename variables',
-      \       'w': [':echo "<leader>gww"', 'search same name variables'],
       \       'r': ['<Plug>(coc-rename)', 'rename same name variables'],
       \ },
       \ }
+" 'gww': [':echo "<leader>gww"', 'search same name variables'],
 
 let g:which_key_map.z = {
       \ 'name': '+foldcode',
@@ -142,6 +142,7 @@ let g:which_key_map.f = {
       \ 'l': [':BLines', 'search curent buf line'],
       \ 'a': [':Lines', 'search all buf line'],
       \ 'g': [':GitFiles', 'search git file'],
+      \ 'e': [':CocCommand explorer --preset floating', 'Coc explorer with floating']
       \ }
 
 " Markdown
