@@ -4,21 +4,19 @@
 
 " 显示行号(相对行号)
 set number
-set relativenumber
+" set relativenumber
 
 " 高亮光标所在行
 set cursorline
 
 " make the 81st column stand out
 " set colorcolumn=+1
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
 
-augroup jsj_miscSytle
-  autocmd!
-  autocmd InsertLeave,WinEnter * set cursorline relativenumber
-  autocmd InsertEnter,WinLeave * set nocursorline norelativenumber number
-augroup end
+" augroup jsj_miscSytle
+"   autocmd!
+"   autocmd InsertLeave,WinEnter * set cursorline relativenumber
+"   autocmd InsertEnter,WinLeave * set nocursorline norelativenumber number
+" augroup end
 
 " 光标在向下或向上移动时不会到达文件的最下方
 set scrolloff=6
