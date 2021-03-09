@@ -4,16 +4,16 @@
 
 " 显示行号(相对行号)
 set number
-set relativenumber
+" set relativenumber
 
 " 高亮光标所在行
 set cursorline
 
-augroup jsj_miscSytle
-  autocmd!
-  autocmd InsertLeave,WinEnter * set cursorline relativenumber
-  autocmd InsertEnter,WinLeave * set nocursorline norelativenumber number
-augroup end
+" augroup jsj_miscSytle
+"   autocmd!
+"   autocmd InsertLeave,WinEnter * set cursorline relativenumber
+"   autocmd InsertEnter,WinLeave * set nocursorline norelativenumber number
+" augroup end
 
 " 光标在向下或向上移动时不会到达文件的最下方
 set scrolloff=6
