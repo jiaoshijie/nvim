@@ -6,9 +6,32 @@
   "suggest.enablePreview": true,
   "suggest.echodocSupport": true,
   "suggest.completionItemKindLabels": {
-    "text": "t",
-    "method": "m",
-    "function": ""
+    "method": "  ",
+    "function": "  ",
+    "variable": "[]",
+    "field": "  ",
+    "typeParameter": "<>",
+    "constant": "  ",
+    "class": "  ",
+    "interface": " 蘒",
+    "struct": "  ",
+    "event": "  ",
+    "operator": "  ",
+    "module": "  ",
+    "property": "  ",
+    "enum": " 練",
+    "reference": "  ",
+    "keyword": "  ",
+    "file": "  ",
+    "folder": " ﱮ ",
+    "color": "  ",
+    "unit": " 塞 ",
+    "snippet": "  ",
+    "text": "  ",
+    "constructor": "  ",
+    "value": "  ",
+    "enumMember": "  ",
+    "default": "  "
   },
 
   "diagnostic-languageserver.linters": {
@@ -45,6 +68,10 @@
   "diagnostic.warningSign": " ",
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": " ",
+
+  // list
+  "list.indicator": ">",
+  "list.selectedSignText": " ",
 
   "clangd.semanticHighlighting": true,
 
