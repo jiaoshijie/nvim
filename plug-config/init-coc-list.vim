@@ -6,12 +6,11 @@ let g:coc_global_extensions = [
       \ 'coc-translator',
       \ 'coc-explorer',
       \ 'coc-snippets',
-      \ 'coc-kite',
       \ 'coc-project',
       \ 'coc-marketplace',
-      \ 'coc-tabnine',
       \ 'coc-highlight',
       \ 'coc-pairs',
+      \ 'coc-pyright',
       \ 'coc-diagnostic',
       \ 'coc-clangd',
       \ 'coc-html',
@@ -21,3 +20,6 @@ let g:coc_global_extensions = [
       \ 'coc-git',
       \ 'coc-vimtex'
       \ ]
+
+      " \ 'coc-tabnine',
+      " \ 'coc-kite',

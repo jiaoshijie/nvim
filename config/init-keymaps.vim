@@ -63,7 +63,7 @@ nnoremap <silent> <F4> :cnext<cr>
 nnoremap <silent> <F6> :copen<cr>
 nnoremap <silent> <F7> :cclose<CR>
 
-nnoremap <silent> <F5> :cd %:h<cr>
+" nnoremap <silent> <F5> :cd %:p:h<cr>
 
 " cscope: F8: 查找字符串 F9: 查找c符号 F10: 本函数调用了谁 F11: 谁调用了本函数
 nnoremap <silent> <F8> :cs find t <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>

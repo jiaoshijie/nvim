@@ -60,7 +60,6 @@
 | `F2`         | 打开init.vim         |
 | `F3`         | quickfix表的上一项   |
 | `F4`         | quickfix表的下一项   |
-| `F5`         | 切换工作目录         |
 | `F6`         | 打开quickfix窗口     |
 | `F7`         | 关闭quickfix表       |
 | `F8`         | 查找当前字符串       |

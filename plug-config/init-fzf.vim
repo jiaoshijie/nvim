@@ -10,7 +10,7 @@ command! -bang -nargs=* Rg
 " fzf-keymaps
 " =======
 " 搜索当前目录下的文件
-nnoremap <silent> <leader>fd :FZF<cr>
+nnoremap <silent> <leader>fd :Files<cr>
 nnoremap <silent> <leader>fr :History<cr>
 " 搜索目录下文件的内容
 nnoremap <silent> <leader>ff :Rg<cr>
