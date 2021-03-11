@@ -104,7 +104,7 @@ highlight StatusLine ctermbg=darkgray cterm=NONE
 highlight MatchParen ctermbg=241 cterm=bold
 highlight CursorLine cterm=NONE ctermbg=236 guibg=#333343
 highlight CursorLineNr cterm=NONE
-highlight Visual cterm=reverse
+highlight Visual term=reverse cterm=reverse gui=reverse
 " for error highlight，防止错误整行标红导致看不清
 highlight clear SpellBad
 highlight SpellBad ctermfg=1 cterm=underline
