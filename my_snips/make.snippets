@@ -1,0 +1,33 @@
+snippet Makec "template"
+V := @
+
+Source := ${1:main.c}
+Bin := ${2:demo}
+# HEAD := -I./head -I/usr/include/...
+HEAD :=
+
+CC := ${3:cc}
+CCARGV := ${4: -W -Wall}
+GDB := ${5:gdb -q -x ./tools/gdbinit}
+
+runAndclean: run clean
+
+run: build
+	$(V)./$(Bin)
+
+build:
+	$(V)$(CC) $(CCARGV) $(HEAD) -o $(Bin)
+
+dbuild:
+	$(V)$(CC) $(CCARGV) $(HEAD) -o $(Bin) -g
+
+gdb: dbuild clean
+	$(V)$(GDB) $(Bin)
+
+externalCtags:
+	$(V)$(CC) -M $(HEAD) $(Source) | sed -e 's/[\\ ]/\n/g' | sed -e '/^$/d' -e '/\.o:[ \t]*$/d' | ctags -L - --c++-kinds=+p --fields=+iaS --extra=+q -f .rtags
+
+clean:
+	$(V)rm -rf $(Bin)
+
+endsnippet
