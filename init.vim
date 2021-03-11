@@ -64,3 +64,4 @@ runtime! plug-config/init-vimtex.vim
 runtime! plug-config/init-vimwiki.vim
 runtime! plug-config/init-vista.vim
 runtime! plug-config/init-wildfire.vim
+runtime! plug-config/init-vim-rooter.vim
