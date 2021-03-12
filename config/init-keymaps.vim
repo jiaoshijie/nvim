@@ -67,7 +67,7 @@ nnoremap <silent> <F7> :cs find t <C-R>=expand("<cword>")<CR><CR> :botright cope
 nnoremap <silent> <F8> :cs find s <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
 nnoremap <silent> <F9> :cs find d <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
 nnoremap <silent> <F10> :cs find c <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
-nnoremap <silent> <F11> :cs find g <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+nnoremap <silent> <F11> :cs find g <C-R>=expand("<cword>")<CR><CR>
 
 " ctags: 查看函数定义的位置
 nnoremap <F12> g<C-]>

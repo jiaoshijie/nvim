@@ -119,6 +119,7 @@ set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
+set guioptions-=L
 set guifont=Cascadia\ Mono\ 13
 
 
