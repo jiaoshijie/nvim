@@ -16,16 +16,16 @@ run: build
 	$(V)./$(Bin)
 
 build:
-	$(V)$(CC) $(CCARGV) $(HEAD) -o $(Bin)
+	$(V)$(CC) $(CCARGV) $(HEAD) -o $(Bin) $(Source)
 
 dbuild:
-	$(V)$(CC) $(CCARGV) $(HEAD) -o $(Bin) -g
+	$(V)$(CC) $(CCARGV) $(HEAD) -o $(Bin) -g $(Source)
 
 gdb: dbuild clean
 	$(V)$(GDB) $(Bin)
 
 externalCtags:
-	$(V)$(CC) -M $(HEAD) $(Source) | sed -e 's/[\\ ]/\n/g' | sed -e '/^$/d' -e '/\.o:[ \t]*$/d' | ctags -L - --c++-kinds=+p --fields=+iaS --extra=+q -f .rtags
+	$(V)$(CC) -M $(HEAD) $(Source) | sed -e 's/[\\\\ ]/\n/g' | sed -e '/^$$/d' -e '/\.o:[ \t]*$$/d' | ctags -L - --c++-kinds=+p --fields=+iaS --extra=+q -f .rtags
 
 clean:
 	$(V)rm -rf $(Bin)
