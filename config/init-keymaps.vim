@@ -122,7 +122,7 @@ fun! ToggleFold()
 endfun
 
 " open the file browser
-nnoremap <silent> tt :edit .<cr>
+nnoremap <silent> tt :E<cr>
 
 "----------------------------------------------------------------------
 " window(窗口) 相关
