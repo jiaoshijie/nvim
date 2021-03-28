@@ -53,24 +53,8 @@ xnoremap >  >gv
 
 nnoremap <silent> <F2> :edit ~/.vim/vimrc<CR>
 
-" QuickFix
-nnoremap <silent> <F3> :cprevious<cr>
-nnoremap <silent> <F4> :cnext<cr>
-nnoremap <silent> <F5> :copen<cr>
-nnoremap <silent> <F6> :cclose<CR>
-
-" nnoremap <silent> <F5> :cd %:p:h<cr>
-" nnoremap <silent> <F5> :mksession<cr>
-
-" cscope: F8: 查找字符串 F9: 查找c符号 F10: 本函数调用了谁 F11: 谁调用了本函数
-nnoremap <silent> <F7> :cs find t <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
-nnoremap <silent> <F8> :cs find s <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
-nnoremap <silent> <F9> :cs find d <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
-nnoremap <silent> <F10> :cs find c <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
-nnoremap <silent> <F11> :cs find g <C-R>=expand("<cword>")<CR><CR>
-
 " ctags: 查看函数定义的位置
-nnoremap <F12> g<C-]>
+nnoremap <F12> g]
 
 "----------------------------------------------------------------------
 " 基本 Normal mode
@@ -123,6 +107,25 @@ endfun
 
 " open the file browser
 nnoremap <silent> tt :E<cr>
+
+" QuickFix
+nnoremap <silent> <leader>cp :cprevious<cr>
+nnoremap <silent> <leader>cn :cnext<cr>
+nnoremap <silent> <leader>co :copen<cr>
+nnoremap <silent> <leader>cd :cclose<CR>
+
+" For more details using ":h cs"
+" Find functions called by this function
+nnoremap <silent> <leader>gc :cs find d <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+" find this C symbol
+nnoremap <silent> <leader>gC :cs find s <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+" Jump to references
+nnoremap <silent> <leader>gr :cs find c <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+" goto the function implementation
+nnoremap <silent> <leader>gi :cs find g <C-R>=expand("<cword>")<CR><CR>
+
+" ctags: 查看函数定义的位置
+nnoremap <leader>gd <C-]>
 
 "----------------------------------------------------------------------
 " window(窗口) 相关
