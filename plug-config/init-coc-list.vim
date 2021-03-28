@@ -11,7 +11,6 @@ let g:coc_global_extensions = [
       \ 'coc-highlight',
       \ 'coc-pairs',
       \ 'coc-pyright',
-      \ 'coc-diagnostic',
       \ 'coc-clangd',
       \ 'coc-html',
       \ 'coc-css',
@@ -21,5 +20,6 @@ let g:coc_global_extensions = [
       \ 'coc-vimtex'
       \ ]
 
+      " \ 'coc-diagnostic',
       " \ 'coc-tabnine',
       " \ 'coc-kite',
