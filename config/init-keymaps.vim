@@ -58,23 +58,19 @@ xnoremap >  >gv
 nnoremap <silent> <F2> :edit ~/.config/nvim/init.vim<CR>
 
 " QuickFix
-nnoremap <silent> <F3> :cprevious<cr>
-nnoremap <silent> <F4> :cnext<cr>
-nnoremap <silent> <F5> :copen<cr>
-nnoremap <silent> <F6> :cclose<CR>
+" nnoremap <silent> <F3> :cprevious<cr>
+" nnoremap <silent> <F4> :cnext<cr>
+" nnoremap <silent> <F5> :copen<cr>
+" nnoremap <silent> <F6> :cclose<CR>
 
-" nnoremap <silent> <F5> :cd %:p:h<cr>
-
-" cscope: F7: 查找文本 F8: 查找c symbol F9: 本函数调用了谁 F10: 谁调用了本函数
-" F11: 到函数定义出
-nnoremap <silent> <F7> :cs find t <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
-nnoremap <silent> <F8> :cs find s <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
-nnoremap <silent> <F9> :cs find d <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
-nnoremap <silent> <F10> :cs find c <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
-nnoremap <silent> <F11> :cs find g <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+" For more details using ":h cs"
+" nnoremap <silent> <F8> :cs find s <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+" nnoremap <silent> <F9> :cs find d <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+" nnoremap <silent> <F10> :cs find c <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+" nnoremap <silent> <F11> :cs find g <C-R>=expand("<cword>")<CR><CR>
 
 " ctags: 查看函数定义的位置
-nnoremap <F12> g<C-]>
+nnoremap <F12> <C-]>
 
 "----------------------------------------------------------------------
 " 基本 Normal mode
