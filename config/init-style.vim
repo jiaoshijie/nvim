@@ -81,18 +81,15 @@ endif
 " 允许 256 色
 set t_Co=256
 
-" 设置终端vim支持gui的颜色
-if has('termguicolors') && has('nvim')
-  set termguicolors
-endif
+" 设置终端vim支持24bit ture color
+" set termguicolors
 
 " 设置黑色背景
 set background=dark
 " 设置颜色主题
-let g:solarized_termcolors=256
-colorscheme solarized
+colorscheme default
 
-" let g:jsj_change_theme_alpha = 1
+let g:jsj_change_theme_alpha = 1
 let &t_SI.="\e[5 q" "SI(start insert)
 let &t_SR.="\e[4 q" "SR(start replace)
 let &t_EI.="\e[1 q" "EI(end insert/replace)
@@ -104,7 +101,8 @@ highlight StatusLine ctermbg=darkgray cterm=NONE
 highlight MatchParen ctermbg=241 cterm=bold
 highlight CursorLine cterm=NONE ctermbg=236 guibg=#333343
 highlight CursorLineNr cterm=NONE
-highlight Visual term=reverse cterm=reverse gui=reverse
+" highlight Visual term=reverse cterm=reverse gui=reverse
+highlight Visual ctermbg=237 gui=reverse
 " for error highlight，防止错误整行标红导致看不清
 highlight clear SpellBad
 highlight SpellBad ctermfg=1 cterm=underline
@@ -115,13 +113,6 @@ highlight SpellRare cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal cterm=underline
 set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
-
-set guioptions-=m
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
-set guifont=Cascadia\ Mono\ 13
-
 
 " 设置标记一列的背景颜色和数字一行颜色一致
 hi! link SignColumn   LineNr
