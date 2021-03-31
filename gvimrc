@@ -20,3 +20,11 @@ augroup jsj_Statusline
   autocmd BufEnter,WinEnter * :setlocal statusline=%(%5*\[%n\]%*%1*\ %<%F\ %*%2*%m%h%r%*%)\ %=\ %(%5*%y%*%3*\ %{&ff}\ %*%4*\ %p%%\ %v:%l/%L\ %*%)
   autocmd WinLeave * :setlocal statusline=%(%<%F\ %*%2*%m%*%h%r%)\ %=\ %(%y\ %{&ff}\ %p%%\ %v:%l/%L%)
 augroup end
+
+augroup jsj_color_warning
+  autocmd!
+  highlight Todo gui=bold,italic guifg=#e5b07b guibg=#D70000
+  highlight Debug gui=bold,italic guifg=#e5b07b guibg=#262626
+  autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\|???!!!\)')
+  autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
+augroup END

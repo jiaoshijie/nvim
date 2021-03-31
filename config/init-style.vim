@@ -107,8 +107,8 @@ augroup end
 
 augroup jsj_color_warning
   autocmd!
-  highlight Todo cterm=bold,italic ctermfg=223 ctermbg=160 gui=bold,italic guifg=#e5b07b guibg=bg
-  highlight Debug cterm=bold,italic ctermfg=223 ctermbg=235 gui=bold,italic guifg=#e5b07b guibg=bg
+  highlight Todo cterm=bold,italic ctermfg=223 ctermbg=160
+  highlight Debug cterm=bold,italic ctermfg=223 ctermbg=235
   autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\|???!!!\)')
   autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
 augroup END
