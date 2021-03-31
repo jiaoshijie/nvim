@@ -177,6 +177,12 @@ endif
 " ctags, cscope配置
 "----------------------------------------------------------------------
 
+" vim complete
+" for more detail ":h ins-completion", ":h 'complete'"
+set complete-=i
+set complete-=b
+set complete-=u
+
 " 设置 tags：当前文件所在目录往上向根目录搜索直到碰到.tags 文件
 " 或者 Vim 当前目录包含 .tags 文件
 set tags=./.tags;,.tags;./.rtags;,.rtags
