@@ -12,12 +12,6 @@ set cursorline
 " make the 81st column stand out
 " set colorcolumn=+1
 
-" augroup jsj_miscSytle
-"   autocmd!
-"   autocmd InsertLeave,WinEnter * set cursorline relativenumber
-"   autocmd InsertEnter,WinLeave * set nocursorline norelativenumber number
-" augroup end
-
 " 光标在向下或向上移动时不会到达文件的最下方
 set scrolloff=6
 
@@ -84,40 +78,16 @@ set t_Co=256
 " 设置终端vim支持24bit ture color
 " set termguicolors
 
-" 设置黑色背景
 set background=dark
-" 设置颜色主题
-colorscheme default
+colorscheme jietheme
 
 let g:jsj_change_theme_alpha = 1
+
 let &t_SI.="\e[5 q" "SI(start insert)
 let &t_SR.="\e[4 q" "SR(start replace)
 let &t_EI.="\e[1 q" "EI(end insert/replace)
 
-highlight SignColumn ctermbg=NONE
-highlight Pmenu ctermbg=gray ctermfg=black
-highlight PmenuSel ctermbg=brown ctermfg=gray
-highlight StatusLine ctermbg=darkgray cterm=NONE
-highlight MatchParen ctermbg=241 cterm=bold
-highlight CursorLine cterm=NONE ctermbg=236 guibg=#333343
-highlight CursorLineNr cterm=NONE
-" highlight Visual term=reverse cterm=reverse gui=reverse
-highlight Visual ctermbg=237 gui=reverse
-" for error highlight，防止错误整行标红导致看不清
-highlight clear SpellBad
-highlight SpellBad ctermfg=1 cterm=underline
-highlight clear SpellCap
-highlight SpellCap cterm=underline
-highlight clear SpellRare
-highlight SpellRare cterm=underline
-highlight clear SpellLocal
-highlight SpellLocal cterm=underline
 set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
-
-" 设置标记一列的背景颜色和数字一行颜色一致
-hi! link SignColumn   LineNr
-hi! link ShowMarksHLl DiffAdd
-hi! link ShowMarksHLu DiffChange
 
 "----------------------------------------------------------------------
 " 设置TODO高亮组
@@ -125,7 +95,8 @@ hi! link ShowMarksHLu DiffChange
 
 augroup jsj_color_warning
   autocmd!
-  highlight Todo cterm=bold,italic ctermfg=223 ctermbg=235 gui=bold,italic guifg=#e5b07b guibg=bg
+  highlight Todo cterm=bold,italic ctermfg=223 ctermbg=160 gui=bold,italic guifg=#e5b07b guibg=bg
+  highlight Debug cterm=bold,italic ctermfg=223 ctermbg=235 gui=bold,italic guifg=#e5b07b guibg=bg
   autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\|???!!!\)')
   autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
 augroup END

@@ -16,7 +16,7 @@ if !has('nvim')
   let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
   exec 'set rtp+='.s:home
 else
-  " 将 ~/.vim 目录加入 runtimepath
+  " 将~/.vim 目录加入runtimepath
   set rtp+=~/.vim
 endif
 
