@@ -17,15 +17,6 @@ else
   let s:loaded = 1
 endif
 
-if !has('nvim')
-  " 取得本文件所在的目录
-  let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-  exec 'set rtp+='.s:home
-else
-  " 将 ~/.vim 目录加入 runtimepath
-  " set rtp+=~/.vim
-endif
-
 "----------------------------------------------------------------------
 " 模块加载
 "----------------------------------------------------------------------
@@ -65,3 +56,4 @@ runtime! plug-config/init-vimwiki.vim
 runtime! plug-config/init-vista.vim
 runtime! plug-config/init-wildfire.vim
 runtime! plug-config/init-vim-rooter.vim
+runtime! plug-config/init-suda.vim

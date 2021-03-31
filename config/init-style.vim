@@ -9,12 +9,6 @@ set number
 " 高亮光标所在行
 set cursorline
 
-" augroup jsj_miscSytle
-"   autocmd!
-"   autocmd InsertLeave,WinEnter * set cursorline relativenumber
-"   autocmd InsertEnter,WinLeave * set nocursorline norelativenumber number
-" augroup end
-
 " 光标在向下或向上移动时不会到达文件的最下方
 set scrolloff=6
 
@@ -79,9 +73,7 @@ endif
 set t_Co=256
 
 " 设置终端vim支持gui的颜色
-if has('termguicolors') && has('nvim')
-  set termguicolors
-endif
+set termguicolors
 
 " 设置黑色背景
 set background=dark
@@ -103,7 +95,8 @@ hi! link ShowMarksHLu DiffChange
 
 augroup jsj_color_warning
   autocmd!
-  highlight Todo cterm=bold,italic ctermfg=223 ctermbg=235 gui=bold,italic guifg=#e5b07b guibg=bg
+  highlight Todo cterm=bold,italic ctermfg=223 ctermbg=160 gui=bold,italic guifg=#D70000 guibg=bg
+  highlight Debug cterm=bold,italic ctermfg=223 ctermbg=235 gui=bold,italic guifg=#e5b07b guibg=bg
   autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\|???!!!\)')
   autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
 augroup END

@@ -170,12 +170,10 @@ set wildmenu
 
 " 设置wildmenu的补全方式
 set wildmode=full
-if has('nvim')
-  " nvim 使用弹出窗口
-  set wildoptions=pum
-  " 设置pum的透明度 0为不透明 100全透明
-  set pumblend=20
-endif
+" nvim 使用弹出窗口
+set wildoptions=pum
+" 设置pum的透明度 0为不透明 100全透明
+set pumblend=20
 
 " 延迟绘制(提升性能)
 set lazyredraw
@@ -211,9 +209,7 @@ let g:netrw_winsize=75
 let g:netrw_preview=1
 
 " nvim 实时展示 "substitute" 命令过程
-if has('nvim')
-  set inccommand=split
-endif
+set inccommand=split
 
 " Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
 if &diff

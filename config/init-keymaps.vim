@@ -26,13 +26,6 @@ inoremap <c-w> <c-g>u<c-w>
 " Command mode
 "----------------------------------------------------------------------
 
-" 提权保存
-if has('nvim')
-  cnoremap w!! execute 'silent! write suda://%'
-else
-  cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-endif
-
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-y> <C-r>+
