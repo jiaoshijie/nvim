@@ -87,7 +87,19 @@ let &t_SI.="\e[5 q" "SI(start insert)
 let &t_SR.="\e[4 q" "SR(start replace)
 let &t_EI.="\e[1 q" "EI(end insert/replace)
 
-set statusline=%F\ \[%M%n%R%H\]%=\ %0(\ %y\ %{&fileformat}\ %v:%l/%L%)
+" https://blog.csdn.net/strategycn/article/details/7620261
+hi User1 cterm=bold,reverse ctermfg=155 ctermbg=232
+hi User2 cterm=bold,reverse ctermfg=red ctermbg=11
+hi User3 cterm=bold,reverse ctermfg=171 ctermbg=232
+hi User4 cterm=bold,reverse ctermfg=123 ctermbg=232
+hi User5 cterm=italic,reverse ctermfg=66 ctermbg=195
+set statusline=%(%<%F\ %*%2*%m%*%h%r%)\ %=\ %(%y\ %{&ff}\ %p%%\ %v:%l/%L%)
+
+augroup jsj_Statusline
+  autocmd!
+  autocmd BufEnter,WinEnter * :setlocal statusline=%(%5*\[%n\]%*%1*\ %<%F\ %*%2*%m%h%r%*%)\ %=\ %(%5*%y%*%3*\ %{&ff}\ %*%4*\ %p%%\ %v:%l/%L\ %*%)
+  autocmd WinLeave * :setlocal statusline=%(%<%F\ %*%2*%m%*%h%r%)\ %=\ %(%y\ %{&ff}\ %p%%\ %v:%l/%L%)
+augroup end
 
 "----------------------------------------------------------------------
 " 设置TODO高亮组

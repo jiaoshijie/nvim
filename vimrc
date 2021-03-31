@@ -11,15 +11,6 @@ else
   let s:loaded = 1
 endif
 
-if !has('nvim')
-  " 取得本文件所在的目录
-  let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-  exec 'set rtp+='.s:home
-else
-  " 将~/.vim 目录加入runtimepath
-  set rtp+=~/.vim
-endif
-
 runtime! config/init-basic.vim
 runtime! config/init-config.vim
 runtime! config/init-tabsize.vim
