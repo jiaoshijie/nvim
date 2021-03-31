@@ -75,9 +75,6 @@ endif
 " 允许 256 色
 set t_Co=256
 
-" 设置终端vim支持24bit ture color
-" set termguicolors
-
 set background=dark
 colorscheme jietheme
 
@@ -88,17 +85,44 @@ let &t_SR.="\e[4 q" "SR(start replace)
 let &t_EI.="\e[1 q" "EI(end insert/replace)
 
 " https://blog.csdn.net/strategycn/article/details/7620261
-hi User1 cterm=bold,reverse ctermfg=155 ctermbg=232
+" https://gabri.me/blog/diy-vim-statusline
+" https://shapeshed.com/vim-statuslines/
+" https://jdhao.github.io/2019/11/03/vim_custom_statusline/
+hi User1 cterm=bold ctermfg=155 ctermbg=232
 hi User2 cterm=bold,reverse ctermfg=red ctermbg=11
-hi User3 cterm=bold,reverse ctermfg=171 ctermbg=232
-hi User4 cterm=bold,reverse ctermfg=123 ctermbg=232
+hi User3 cterm=bold,reverse ctermfg=145 ctermbg=232
+hi User4 cterm=bold,reverse ctermfg=155 ctermbg=232
 hi User5 cterm=italic,reverse ctermfg=66 ctermbg=195
-set statusline=%(%<%F\ %*%2*%m%*%h%r%)\ %=\ %(%y\ %{&ff}\ %p%%\ %v:%l/%L%)
 
+let g:currentmode={
+       \ 'v'      : 'VISUAL',
+       \ 'V'      : 'V·Line',
+       \ "\<C-V>" : 'V·Block',
+       \ 'i'      : 'INSERT',
+       \ 'R'      : 'REPLACE',
+       \}
+
+function! ChangeStatuslineColor()
+  if (mode() =~# '\v(v|V|)')
+    exe 'hi! User4 ctermfg=171 guifg=#D75FFF'
+    return g:currentmode[mode()]
+  elseif (mode() =~# 'i')
+    exe 'hi! User4 ctermfg=75 guifg=#5FAFFF'
+    return g:currentmode[mode()]
+  elseif (mode() =~# 'R')
+    exe 'hi! User4 ctermfg=160 guifg=#D70000'
+    return g:currentmode[mode()]
+  else
+    exe 'hi! User4 ctermfg=155  guifg=#AFFF5F'
+  endif
+  return "NORMAL"
+endfunction
+
+set statusline=%(%<%F\ %*%2*%m%*%h%r%)\ %=\ %(%y\ %{&fenc?&fenc:&enc}\[%{&ff}\]\ %p%%\ %v:%l/%L%)
 augroup jsj_Statusline
   autocmd!
-  autocmd BufEnter,WinEnter * :setlocal statusline=%(%5*\[%n\]%*%1*\ %<%F\ %*%2*%m%h%r%*%)\ %=\ %(%5*%y%*%3*\ %{&ff}\ %*%4*\ %p%%\ %v:%l/%L\ %*%)
-  autocmd WinLeave * :setlocal statusline=%(%<%F\ %*%2*%m%*%h%r%)\ %=\ %(%y\ %{&ff}\ %p%%\ %v:%l/%L%)
+  autocmd BufEnter,WinEnter * :setlocal statusline=%(%4*\ %{ChangeStatuslineColor()}\ %*%1*\ %<%F\ %*%2*%m%h%r%*%)\ %=\ %(%5*%y%*%3*\ %{&fenc?&fenc:&enc}\[%{&ff}\]\ %*%4*\ %p%%\ %v:%l/%L\ %*%)
+  autocmd WinLeave * :setlocal statusline=%(%<%F\ %*%2*%m%*%h%r%)\ %=\ %(%y\ %{&fenc?&fenc:&enc}\[%{&ff}\]\ %p%%\ %v:%l/%L%)
 augroup end
 
 "----------------------------------------------------------------------
