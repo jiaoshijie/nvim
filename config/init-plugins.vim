@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
 
+  " Plug 'gruvbox-community/gruvbox'
   Plug 'morhetz/gruvbox'
   Plug 'vim-airline/vim-airline'
   Plug 'luochen1990/rainbow'

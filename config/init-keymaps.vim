@@ -39,7 +39,7 @@ cnoremap <m-f> <S-Right>
 " Visual mode
 "----------------------------------------------------------------------
 
-xnoremap <silent> <leader>a s""<Esc>P
+" xnoremap <silent> <leader>a s""<Esc>P
 xnoremap <  <gv
 xnoremap >  >gv
 
