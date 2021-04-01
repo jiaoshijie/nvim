@@ -115,10 +115,6 @@ let g:coc_explorer_global_presets = {
 nmap <silent> tt :CocCommand explorer<CR>
 nnoremap <space>fe :CocCommand explorer --preset floating<CR>
 
-" >>>>> coc-translator <<<<< "
-" 翻译
-nmap <silent> ts <Plug>(coc-translator-p)
-
 " >>>>> coc-yank <<<<< "
 " 复制历史
 nnoremap <silent> <leader>gh  :<C-u>CocList -A --normal yank<cr>

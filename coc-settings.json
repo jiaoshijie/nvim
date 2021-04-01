@@ -42,7 +42,7 @@
   "list.indicator": ">",
   "list.selectedSignText": " ",
 
-  "clangd.semanticHighlighting": true,
+  "clangd.semanticHighlighting": false,
 
   "explorer.width": 30,
   "explorer.file.root.template": "[icon] [git] [hidden & 1][root]",

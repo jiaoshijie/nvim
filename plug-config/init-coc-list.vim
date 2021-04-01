@@ -3,7 +3,6 @@ let g:coc_global_extensions = [
       \ 'coc-vimlsp',
       \ 'coc-lists',
       \ 'coc-yank',
-      \ 'coc-translator',
       \ 'coc-explorer',
       \ 'coc-snippets',
       \ 'coc-project',

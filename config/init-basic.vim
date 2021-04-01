@@ -120,7 +120,7 @@ endif
 " 设置代码折叠
 "----------------------------------------------------------------------
 if has('folding')
-  "  zA za zM zR
+  " for more ":h za zA zM zR zc zo zC zO"
   " 允许代码折叠
   set foldenable
 
