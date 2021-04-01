@@ -1,3 +1,4 @@
+highlight Normal guibg=#282828 ctermbg=235
 highlight SignColumn ctermbg=NONE
 
 highlight Visual ctermbg=59

@@ -75,15 +75,16 @@ endif
 " 允许 256 色
 set t_Co=256
 
-set background=dark
+set background=light
 colorscheme jietheme
 
-let g:jsj_change_theme_alpha = 1
+" let g:jsj_change_theme_alpha = 0
 
 let &t_SI.="\e[5 q" "SI(start insert)
 let &t_SR.="\e[4 q" "SR(start replace)
 let &t_EI.="\e[1 q" "EI(end insert/replace)
 
+" ------------ statusline ---------- "
 " https://blog.csdn.net/strategycn/article/details/7620261
 " https://gabri.me/blog/diy-vim-statusline
 " https://shapeshed.com/vim-statuslines/
@@ -124,6 +125,8 @@ augroup jsj_Statusline
   autocmd BufEnter,WinEnter * :setlocal statusline=%(%4*\ %{ChangeStatuslineColor()}\ %*%1*\ %<%F\ %*%2*%m%h%r%*%)\ %=\ %(%5*%y%*%3*\ %{&fenc?&fenc:&enc}\[%{&ff}\]\ %*%4*\ %p%%\ %v:%l/%L\ %*%)
   autocmd WinLeave * :setlocal statusline=%(%<%F\ %*%2*%m%*%h%r%)\ %=\ %(%y\ %{&fenc?&fenc:&enc}\[%{&ff}\]\ %p%%\ %v:%l/%L%)
 augroup end
+" ------------ statusline ---------- "
+
 
 "----------------------------------------------------------------------
 " 设置TODO高亮组
