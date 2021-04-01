@@ -3,7 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'morhetz/gruvbox'
   Plug 'vim-airline/vim-airline'
   Plug 'luochen1990/rainbow'
-  Plug 'Yggdroot/indentLine'
+  " Plug 'Yggdroot/indentLine'
 
   Plug 'liuchengxu/vim-which-key'
   Plug 'lambdalisue/suda.vim'
@@ -31,7 +31,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'preservim/nerdcommenter'
   Plug 'alvan/vim-closetag'
   Plug 'liuchengxu/vista.vim'
-  Plug 'dkarter/bullets.vim'
+  " Plug 'dkarter/bullets.vim'
 
   Plug 'PotatoesMaster/i3-vim-syntax'
   Plug 'kovetskiy/sxhkd-vim'

@@ -36,7 +36,7 @@ runtime! config/init-snippets.vim
 runtime! plug-config/init-vim-which-key.vim
 runtime! plug-config/init-coc-list.vim
 runtime! plug-config/init-coc-config.vim
-runtime! plug-config/init-bullets.vim
+" runtime! plug-config/init-bullets.vim
 runtime! plug-config/init-clever-f.vim
 runtime! plug-config/init-fzf.vim
 runtime! plug-config/init-markdown-preview.vim
@@ -48,7 +48,7 @@ runtime! plug-config/init-vim-airline.vim
 runtime! plug-config/init-vim-bookmarks.vim
 runtime! plug-config/init-vim-closetag.vim
 runtime! plug-config/init-vim-easymotion.vim
-runtime! plug-config/init-vim-indentLine.vim
+" runtime! plug-config/init-vim-indentLine.vim
 runtime! plug-config/init-vim-interestingwords.vim
 runtime! plug-config/init-vim-markdown-toc.vim
 runtime! plug-config/init-vimtex.vim
