@@ -10,7 +10,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'lambdalisue/suda.vim'
 
   Plug 'junegunn/fzf.vim'
-  Plug 'airblade/vim-rooter'
+  " Plug 'airblade/vim-rooter'
   Plug 'easymotion/vim-easymotion'
   Plug 'lfv89/vim-interestingwords'
   Plug 'mbbill/undotree/'
@@ -32,7 +32,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'preservim/nerdcommenter'
   Plug 'alvan/vim-closetag'
   Plug 'liuchengxu/vista.vim'
-  Plug 'dkarter/bullets.vim'
+  " Plug 'dkarter/bullets.vim'
 
   Plug 'PotatoesMaster/i3-vim-syntax'
   Plug 'kovetskiy/sxhkd-vim'

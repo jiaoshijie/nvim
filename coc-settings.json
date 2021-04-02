@@ -60,5 +60,5 @@
 
   "yank.enableCompletion": false,
 
-  "project.rootPatterns": [".git", ".root"]
+  "project.rootPatterns": [".git", "Makefile", "*.sln", "build/env.sh", ".root", ".coc-project"]
 }
