@@ -144,6 +144,9 @@ command! Wcolor echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
             \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
             \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")
 
+set grepprg=rg\ --no-heading\ --column\ -S\ $*
+set grepformat=%f:%l:%c:%m
+
 "----------------------------------------------------------------------
 " 自动切换fcitx
 "----------------------------------------------------------------------

@@ -25,3 +25,4 @@ highlight clear SpellLocal
 highlight SpellLocal cterm=underline
 
 highlight MatchParen ctermbg=241 cterm=bold
+let g:colors_name="Jsjsimple"

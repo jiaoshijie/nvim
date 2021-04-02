@@ -76,7 +76,7 @@ endif
 set t_Co=256
 
 set background=light
-colorscheme jietheme
+colorscheme Jsjsimple
 
 " let g:jsj_change_theme_alpha = 0
 

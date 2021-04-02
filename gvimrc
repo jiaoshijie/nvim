@@ -5,7 +5,9 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 set guioptions+=d
-set guifont=Cascadia\ Mono\ 13
+" set guifont=Source\ Code\ Pro\ 13
+set guifont=Hack\ 13
+
 
 set background=dark
 colorscheme solarized
