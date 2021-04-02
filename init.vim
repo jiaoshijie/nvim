@@ -36,7 +36,7 @@ runtime! config/init-snippets.vim
 runtime! plug-config/init-vim-which-key.vim
 runtime! plug-config/init-coc-list.vim
 runtime! plug-config/init-coc-config.vim
-" runtime! plug-config/init-bullets.vim
+runtime! plug-config/init-bullets.vim
 runtime! plug-config/init-clever-f.vim
 runtime! plug-config/init-fzf.vim
 runtime! plug-config/init-markdown-preview.vim

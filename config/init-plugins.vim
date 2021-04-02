@@ -25,14 +25,14 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vimwiki/vimwiki'
   Plug 'lervag/vimtex'
   Plug 'tpope/vim-fugitive'
-  " Plug 'fatih/vim-go'
+  Plug 'fatih/vim-go'
 
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
   Plug 'mzlogin/vim-markdown-toc'
   Plug 'preservim/nerdcommenter'
   Plug 'alvan/vim-closetag'
   Plug 'liuchengxu/vista.vim'
-  " Plug 'dkarter/bullets.vim'
+  Plug 'dkarter/bullets.vim'
 
   Plug 'PotatoesMaster/i3-vim-syntax'
   Plug 'kovetskiy/sxhkd-vim'
