@@ -10,6 +10,23 @@ let maplocalleader=','
 let g:python_host_prog='/usr/bin/python2'
 let g:python3_host_prog='/usr/bin/python3'
 
+" for netrw
+let g:netrw_banner=0  " disable annoying banner
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1  " open splits to the right
+let g:netrw_alto=0
+let g:netrw_liststyle=3  " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_winsize=75
+let g:netrw_preview=1
+
+" Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
+if &diff
+    highlight! link DiffText MatchParen
+    set diffopt=vertical,algorithm:histogram,indent-heuristic
+endif
+
 "----------------------------------------------------------------------
 " 备份配置
 "----------------------------------------------------------------------
@@ -40,16 +57,6 @@ endif
 if ! isdirectory(expand('/tmp/unpvim_u/undodir'))
   silent! call mkdir(expand('/tmp/unpvim_u/undodir'), 'p', 0700)
 endif
-
-"----------------------------------------------------------------------
-" 有 tmux 何没有的功能键超时（毫秒）
-"----------------------------------------------------------------------
-if $TMUX != ''
-  set ttimeoutlen=50
-elseif &ttimeoutlen > 80 || &ttimeoutlen <= 0
-  set ttimeoutlen=80
-endif
-
 
 "----------------------------------------------------------------------
 " 终端下允许 ALT，详见：http://www.skywind.me/blog/archives/2021
@@ -105,44 +112,16 @@ call s:key_escape('<S-F12>', '[24;2~')
 " 配置微调
 "----------------------------------------------------------------------
 
-" 定义一个 DiffOrig 命令用于查看文件改动
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-          \ | wincmd p | diffthis
-endif
-
-" 删除最后的空格和行
-function! RCStripWSBL()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//ge
-    %s/\(\n\)\+\%$//ge
-    call cursor(l, c)
-endfunction
-
 augroup jsj_useful_settings
   autocmd!
 
   " 打开到上次编辑的位置
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
-        \ | exe "normal! g'\"" | endif
-
-  autocmd BufWritePre * call RCStripWSBL()
-
-  " filetype
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  autocmd VimLeave *.tex !texclear %
   autocmd BufRead,BufNewFile *.S,*.s setlocal filetype=gas
   autocmd BufNewFile,BufRead *.tex setlocal filetype=tex nolinebreak
   autocmd BufNewFile,BufRead *.md,*.rmd setlocal nolinebreak
-
-  " Runs a script that cleans out tex build files whenever I close out of a .tex file.
-  autocmd VimLeave *.tex !texclear %
 augroup END
-
-" 查看高亮组
-command! Wcolor echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
-            \ "> trans<" . synIDattr(synID(line("."),col("."),0),"name") .
-            \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
-            \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")
 
 set grepprg=rg\ --no-heading\ --column\ -S\ $*
 set grepformat=%f:%l:%c:%m
@@ -151,20 +130,9 @@ set grepformat=%f:%l:%c:%m
 " 自动切换fcitx
 "----------------------------------------------------------------------
 
-let g:input_toggle = 1
 function! Fcitx2en()
-   let s:input_status = system("fcitx5-remote")
-   if s:input_status == 2
-      let g:input_toggle = 1
+   if system("fcitx5-remote") == 2
       let l:a = system("fcitx5-remote -c")
-   endif
-endfunction
-
-function! Fcitx2zh()
-   let s:input_status = system("fcitx5-remote")
-   if s:input_status != 2 && g:input_toggle == 1
-      let l:a = system("fcitx5-remote -o")
-      let g:input_toggle = 0
    endif
 endfunction
 
@@ -172,7 +140,6 @@ if has('unix')
   augroup jsj_Fcitx_toggle
     autocmd!
     autocmd InsertLeave * call Fcitx2en()
-    " autocmd InsertEnter * call Fcitx2zh()
   augroup END
 endif
 
@@ -186,33 +153,28 @@ set complete-=i
 set complete-=b
 set complete-=u
 
-" 设置 tags：当前文件所在目录往上向根目录搜索直到碰到.tags 文件
-" 或者 Vim 当前目录包含 .tags 文件
 set tags=./.tags;,.tags;./.rtags;,.rtags
 
-" cscope 配置
-if has("cscope")
-  " 指定cscope命令的路径
-  set csprg=/usr/bin/cscope
+" 指定cscope命令的路径
+set csprg=/usr/bin/cscope
 
-  " 为1会先搜索tags文件如果没有找到再搜索cscope.out数据库, 为0则相反
-  set csto=1
+" 为1会先搜索tags文件如果没有找到再搜索cscope.out数据库, 为0则相反
+set csto=1
 
-  " 使用cstag代替vim的默认行为
-  set cst
+" 使用cstag代替vim的默认行为
+set cst
 
-  " add any database in current directory
-  if filereadable("cscope.out")
-    set noautochdir
-    " 将数据库文件连接到vim, if don't have "silent", add database pointed to by environment
-    silent cs add cscope.out
-  elseif $CSCOPE_DB != ""
-    silent cs add $CSCOPE_DB
-  endif
+" add any database in current directory
+if filereadable("cscope.out")
+  set noautochdir
+  " 将数据库文件连接到vim, if don't have "silent", add database pointed to by environment
+  silent cs add cscope.out
+elseif $CSCOPE_DB != ""
+  silent cs add $CSCOPE_DB
 endif
 
 " + 将结果附加到quicklinst后面, - 清除quicklist上一次的结果, 0 不使用quicklist
-set cscopequickfix=t-,s-,d-,c-
+set cscopequickfix=s-,c-,d-,i-,t-,e-,a-
 
 " quicklist 配置, 跳到第一个搜索到的位置在当前窗口
 set switchbuf=useopen

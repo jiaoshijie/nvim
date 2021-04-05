@@ -30,9 +30,7 @@ set winaltkeys=no
 
 " 设置自动折行
 set wrap
-" 按单词折行
 set linebreak
-" 设置多少字符自动折行
 set textwidth=0
 " 如遇Unicode值大于255的文本，不必等到空格再折行
 set formatoptions+=m
@@ -57,19 +55,11 @@ set timeoutlen=500
 set mouse=a
 
 " 总是显示左边的一列, 用于显示一些错误, 标签
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+set signcolumn=auto
 
 "----------------------------------------------------------------------
 " 搜索设置
 "----------------------------------------------------------------------
-
-" 启动时关闭搜索高亮
-exec 'nohlsearch'
 
 " 搜索时忽略大小写
 set ignorecase
@@ -87,49 +77,40 @@ set incsearch
 "----------------------------------------------------------------------
 " 编码设置
 "----------------------------------------------------------------------
-if has('multi_byte')
-  " 内部工作编码
-  set encoding=utf-8
+" 内部工作编码
+set encoding=utf-8
 
-  " 文件默认编码
-  set fileencoding=utf-8
+" 文件默认编码
+set fileencoding=utf-8
 
-  " 打开文件时自动尝试下面顺序的编码
-  set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1
-endif
+" 打开文件时自动尝试下面顺序的编码
+set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1
 
 
 "----------------------------------------------------------------------
 " 允许 Vim 自带脚本根据文件类型自动设置缩进等
 "----------------------------------------------------------------------
-if has('autocmd')
-  filetype plugin indent on
-endif
+filetype plugin indent on
 
 
 "----------------------------------------------------------------------
 " 语法高亮设置
 "----------------------------------------------------------------------
-if has('syntax')
-  syntax enable
-  syntax on
-endif
+syntax on
 
 
 "----------------------------------------------------------------------
 " 设置代码折叠
 "----------------------------------------------------------------------
-if has('folding')
-  "  zA za zM zR
-  " 允许代码折叠
-  set foldenable
+"  zA za zM zR
+" 允许代码折叠
+set foldenable
 
-  " 代码折叠默认使用缩进
-  set fdm=indent
+" 代码折叠默认使用缩进
+set fdm=indent
 
-  " 默认打开所有缩进
-  set foldlevel=99
-endif
+" 默认打开所有缩进
+set foldlevel=99
 
 
 "----------------------------------------------------------------------
@@ -137,7 +118,7 @@ endif
 "----------------------------------------------------------------------
 
 " 补全选项, "menuone"只有一个时也展示一个菜单
-set completeopt=menuone,menu,preview,noinsert
+set completeopt=menuone,noselect
 
 " 设置使用系统剪切板
 " set clipboard+=unnamedplus
@@ -195,23 +176,6 @@ set cmdheight=1
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
-
-" for netrw
-let g:netrw_banner=0  " disable annoying banner
-let g:netrw_browse_split=4  " open in prior window
-let g:netrw_altv=1  " open splits to the right
-let g:netrw_alto=0
-let g:netrw_liststyle=3  " tree view
-let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-let g:netrw_winsize=75
-let g:netrw_preview=1
-
-" Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
-if &diff
-    highlight! link DiffText MatchParen
-    set diffopt=vertical,algorithm:histogram,indent-heuristic
-endif
 
 "----------------------------------------------------------------------
 " 文件搜索和补全时忽略下面扩展名

@@ -225,7 +225,7 @@ call s:SetOption("menu",1)
 "}}}
 " Colorscheme initialization "{{{
 " ---------------------------------------------------------------------
-" 不清除 "highlight group"
+" FIXME do not clear "highlight group"
 " hi clear
 if exists("syntax_on")
   syntax reset

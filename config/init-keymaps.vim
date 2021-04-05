@@ -78,6 +78,17 @@ nnoremap <leader>qq :q<cr>
 nnoremap <leader>qa :qall<cr>
 nnoremap <silent> <leader>= mIgg=G'ImI
 
+function! JsjClearSE()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//ge
+    %s/\(\n\)\+\%$//ge
+    call cursor(l, c)
+endfunction
+
+nnoremap <silent> <leader>fc :call JsjClearSE()<cr>
+
+
 " 打开语法检查
 nnoremap <silent> <leader>o :setlocal spell! spelllang=en_us<CR>
 
@@ -127,6 +138,8 @@ nnoremap <silent> <leader>gi :cs find g <C-R>=expand("<cword>")<CR><CR>
 " ctags: 查看函数定义的位置
 nnoremap <leader>gd <C-]>
 
+nnoremap <C-p> :grep <C-r><C-w><Cr>
+
 "----------------------------------------------------------------------
 " window(窗口) 相关
 "----------------------------------------------------------------------
@@ -144,22 +157,13 @@ noremap <m-H> <c-w>h
 noremap <m-L> <c-w>l
 noremap <m-J> <c-w>j
 noremap <m-K> <c-w>k
-if has('terminal') && exists(':terminal') == 2 && has('patch-8.1.1')
-  " vim 8.1 支持 termwinkey ，不需要把 terminal 切换成 normal 模式
-  " 设置 termwinkey 为 CTRL 加减号（GVIM），有些终端下是 CTRL+?
-  " 后面四个键位是搭配 termwinkey 的，如果 termwinkey 更改，也要改
-  set termwinkey=<c-_>
-  tnoremap <m-H> <c-_>h
-  tnoremap <m-L> <c-_>l
-  tnoremap <m-J> <c-_>j
-  tnoremap <m-K> <c-_>k
-elseif has('nvim')
-  " neovim 没有 termwinkey 支持，必须把 terminal 切换回 normal 模式
-  tnoremap <m-H> <c-\><c-n><c-w>h
-  tnoremap <m-L> <c-\><c-n><c-w>l
-  tnoremap <m-J> <c-\><c-n><c-w>j
-  tnoremap <m-K> <c-\><c-n><c-w>k
-endif
+
+set termwinkey=<c-_>
+tnoremap <m-H> <c-_>h
+tnoremap <m-L> <c-_>l
+tnoremap <m-J> <c-_>j
+tnoremap <m-K> <c-_>k
+tnoremap <Esc> <c-\><c-n>
 
 " 移动窗口的位置
 nnoremap <silent> <leader>wK <c-w>K
@@ -169,11 +173,10 @@ nnoremap <silent> <leader>wL <c-w>L
 
 " 调整窗口大小
 nnoremap <silent> <leader>w= <C-w>=
-" nnoremap <silent> <S-Up>    :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Up> :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Down> :exe "resize " . (winheight(0) * 2/3)<CR>
-nnoremap <silent> <Right> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
-nnoremap <silent> <Left> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+nnoremap <silent> <Up> <C-w>5+
+nnoremap <silent> <Down> <C-w>5-
+nnoremap <silent> <Right> <C-w>5>
+nnoremap <silent> <Left> <C-w>5<
 
 "----------------------------------------------------------------------
 " buffer 相关
