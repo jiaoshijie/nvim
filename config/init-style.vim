@@ -5,6 +5,7 @@
 " 显示行号(相对行号)
 set number
 " set relativenumber
+set signcolumn=yes
 
 " 高亮光标所在行
 set cursorline
@@ -52,18 +53,6 @@ augroup jsj_hold_theme_alpha
   autocmd!
   autocmd ColorScheme * exec Hold_theme_alpha()
 augroup end
-
-"----------------------------------------------------------------------
-" 防止tmux下vim的背景色显示异常
-" Refer: http://sunaku.github.io/vim-256color-bce.html
-"----------------------------------------------------------------------
-if &term =~ '256color' && $TMUX != ''
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
-  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
-endif
-
 
 "----------------------------------------------------------------------
 " 设置颜色主题, 要在init-plugs.vim之后
