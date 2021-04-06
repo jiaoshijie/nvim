@@ -123,6 +123,12 @@ augroup jsj_useful_settings
   autocmd BufNewFile,BufRead *.md,*.rmd setlocal nolinebreak
 augroup END
 
+command! Wcolor echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
+            \ "> trans<" . synIDattr(synID(line("."),col("."),0),"name") .
+            \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
+            \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")
+
+
 set grepprg=rg\ --no-heading\ --column\ -S\ $*
 set grepformat=%f:%l:%c:%m
 

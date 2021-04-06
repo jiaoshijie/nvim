@@ -43,4 +43,7 @@ highlight DiffText cterm=reverse ctermfg=214 ctermbg=235
 highlight! link ShowMarksHLl DiffAdd
 highlight! link ShowMarksHLu DiffChange
 
+" markdown
+highlight! markdownError ctermbg=235 ctermfg=red
+
 let g:colors_name="Jsjsimple"

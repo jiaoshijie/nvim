@@ -27,7 +27,7 @@ inoremap <c-w> <c-g>u<c-w>
 "----------------------------------------------------------------------
 
 " 提权保存
-cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+cnoremap w!! execute 'write !sudo tee % >/dev/null' <bar> edit!
 
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
@@ -74,6 +74,7 @@ nnoremap U <C-r>
 
 nnoremap <silent> <leader><cr> :nohl<cr>
 nnoremap <leader>fs :w<cr>
+nnoremap <silent> <leader>fm :e ~/Nutstore\ Files/Nutstore/MARKDOWN_NOTE/index.md<cr>
 nnoremap <leader>qq :q<cr>
 nnoremap <leader>qa :qall<cr>
 nnoremap <silent> <leader>= mIgg=G'ImI

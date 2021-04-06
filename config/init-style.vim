@@ -86,6 +86,7 @@ let g:currentmode={
        \ "\<C-V>" : 'V·Block',
        \ 'i'      : 'INSERT',
        \ 'R'      : 'REPLACE',
+       \ 't'      : 'TERMINAL',
        \}
 
 function! ChangeStatuslineColor()
@@ -97,6 +98,9 @@ function! ChangeStatuslineColor()
     return g:currentmode[mode()]
   elseif (mode() =~# 'R')
     exe 'hi! User4 ctermfg=160 guifg=#D70000'
+    return g:currentmode[mode()]
+  elseif (mode() =~# 't')
+    exe 'hi! User4 ctermfg=155  guifg=#AFFF5F'
     return g:currentmode[mode()]
   else
     exe 'hi! User4 ctermfg=155  guifg=#AFFF5F'
