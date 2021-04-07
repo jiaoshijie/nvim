@@ -75,6 +75,8 @@ function JsjClearSE()
 end
 map('n', '<leader>fc', ':lua JsjClearSE()<cr>', { noremap = true, silent = true })
 
+map('n', '<leader>fm', ':e ~/Nutstore Files/Nutstore/MARKDOWN_NOTE/index.md<cr>', { noremap = true, silent = true } )
+
 map('n', '<leader>qq', ':q<cr>', { noremap = true, silent = true })
 map('n', '<leader>qa', ':qall<cr>', { noremap = true, silent = true })
 map('n', '<leader>=', "mIgg=G'ImI", { noremap = true, silent = true })

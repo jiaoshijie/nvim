@@ -22,6 +22,7 @@ vim.cmd('colorscheme gruvbox')
 vim.cmd('hi! link SignColumn   LineNr')
 vim.cmd('hi! link ShowMarksHLl DiffAdd')
 vim.cmd('hi! link ShowMarksHLu DiffChange')
+vim.cmd('hi! markdownError ctermbg=bg ctermfg=red guibg=bg guifg=red')
 
 vim.api.nvim_exec([[
 augroup jsj_color_warning

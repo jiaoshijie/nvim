@@ -28,7 +28,7 @@ return require('packer').startup(function()
 
   use 'nvim-treesitter/nvim-treesitter'
   use 'p00f/nvim-ts-rainbow'
-  use 'windwp/nvim-ts-autotag'
+  -- use 'windwp/nvim-ts-autotag'
 
   use 'kyazdani42/nvim-tree.lua'
 
@@ -51,7 +51,7 @@ return require('packer').startup(function()
   use 'Shirk/vim-gas'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
-  -- use 'liuchengxu/vim-which-key'
+  use 'liuchengxu/vim-which-key'
 
   use 'airblade/vim-rooter'
   use 'terrortylor/nvim-comment'

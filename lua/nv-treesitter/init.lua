@@ -1,3 +1,4 @@
+-- sudo pacman -S tree-sitter
 require('nvim-treesitter.configs').setup {
   ensure_installed = { 'cpp', 'bash', 'css',
     'html', 'latex', 'toml', 'typescript', 'lua',
@@ -10,7 +11,7 @@ require('nvim-treesitter.configs').setup {
     enable = true,
     extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
   },
-  autotag = {
-    enable = true,
-  },
+  -- autotag = {
+  --   enable = true,
+  -- },
 }
