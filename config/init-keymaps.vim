@@ -140,6 +140,8 @@ nnoremap <silent> <leader>gi :cs find g <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>gd <C-]>
 
 nnoremap <C-p> :grep <C-r><C-w><Cr>
+nnoremap <leader>s :grep 
+nnoremap <leader>S :lgrep 
 
 "----------------------------------------------------------------------
 " window(窗口) 相关
