@@ -38,7 +38,7 @@ function! Change_theme_alpha()
     highlight Normal guibg=NONE ctermbg=None
   else
     let g:jsj_change_theme_alpha = 0
-    highlight Normal guibg=#282828 ctermbg=235
+    highlight Normal guibg=#282C34 ctermbg=235
   endif
   hi! link SignColumn LineNr
 endfunction
@@ -60,19 +60,20 @@ augroup end
 "----------------------------------------------------------------------
 
 " 允许 256 色
-set t_Co=256
-if (empty($TMUX))
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
 set background=dark
 let g:jsj_change_theme_alpha = 0
+" colorscheme Jsjsimple
+
 packadd! onedark.vim
 let g:onedark_hide_endofbuffer=1
 let g:onedark_termcolors=256
 let g:onedark_terminal_italics=1
+
+set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
+set t_8b=[48;2;%lu;%lu;%lum        " set background color
 colorscheme onedark
+set t_Co=256
+set termguicolors
 
 let &t_SI.="\e[5 q" "SI(start insert)
 let &t_SR.="\e[4 q" "SR(start replace)
