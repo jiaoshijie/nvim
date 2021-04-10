@@ -18,13 +18,14 @@ require'compe'.setup {
     calc = {kind = "  "},
     vsnip = {kind = "  "},
     nvim_lsp = {kind = "  "},
-    nvim_lua = true;
+    nvim_lua = true,
     spell = {kind = "  "},
     tags = false,
     vim_dadbod_completion = true,
-    snippets_nvim = true;
-    treesitter = {kind = "  "},
-    emoji = {kind = " ﲃ ", filetypes={"markdown"}}
+    snippets_nvim = true,
+    -- treesitter = {kind = "  "},
+    emoji = {kind = " ﲃ ", filetypes={"markdown"}},
+    omni = false,
   };
 }
 

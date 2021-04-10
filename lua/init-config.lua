@@ -1,6 +1,4 @@
 local o = vim.o
-local wo = vim.wo
-local bo = vim.bo
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','

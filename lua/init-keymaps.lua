@@ -106,7 +106,7 @@ function Change_theme_alpha()
     vim.cmd('highlight Normal guibg=NONE ctermbg=None')
   else
     JSJ_change_theme_alpha = false
-    vim.cmd('highlight Normal guibg=#282828 ctermbg=235')
+    vim.cmd('highlight Normal guibg=#0b1015 ctermbg=235')
   end
   vim.cmd('hi! link SignColumn LineNr')
 end

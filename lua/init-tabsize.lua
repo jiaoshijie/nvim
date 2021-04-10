@@ -1,5 +1,4 @@
 local o = vim.o
-local bo = vim.bo
 
 o.smarttab = true
 o.shiftround = true

@@ -1,6 +1,5 @@
 local o = vim.o
 local wo = vim.wo
-local bo = vim.bo
 
 -- [[
 -- 读取文件配置
@@ -55,6 +54,8 @@ o.nrformats = "alpha,hex,octal"
 vim.cmd('set shortmess+=cI')
 
 o.inccommand = "split"
+
+o.fsync = true
 
 o.suffixes = ".bak,~,.o,.h,.info,.swp,.obj,.pyc,.pyo,.egg-info,.class"
 
