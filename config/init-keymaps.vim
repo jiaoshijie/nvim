@@ -140,8 +140,9 @@ nnoremap <silent> <leader>gi :cs find g <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>gd <C-]>
 
 nnoremap <C-p> :grep <C-r><C-w><Cr>
+nnoremap <A-p> :vimgrep <C-r><C-w> %<Cr>
 nnoremap <leader>s :grep 
-nnoremap <leader>S :lgrep 
+nnoremap <leader>S :vimgrep  %<Left><Left>
 
 "----------------------------------------------------------------------
 " window(窗口) 相关

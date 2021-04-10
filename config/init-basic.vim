@@ -118,7 +118,7 @@ set foldlevel=99
 "----------------------------------------------------------------------
 
 " 补全选项, "menuone"只有一个时也展示一个菜单
-set completeopt=menuone,noselect
+set completeopt=menuone,noselect,preview
 
 " 设置使用系统剪切板
 " set clipboard+=unnamedplus
