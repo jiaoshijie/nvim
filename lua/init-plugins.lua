@@ -47,11 +47,11 @@ return require('packer').startup(function(use)
   use 'lfv89/vim-interestingwords'
   -- use 'metakirby5/codi.vim'  -- interactively with code
 
-  use 'kovetskiy/sxhkd-vim'
-  use 'Shirk/vim-gas'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'liuchengxu/vim-which-key'
   use 'airblade/vim-rooter'
   use 'lambdalisue/suda.vim'
+  use 'kovetskiy/sxhkd-vim'
+  use 'Shirk/vim-gas'
 end)
