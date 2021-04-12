@@ -117,9 +117,6 @@ fun! ToggleFold()
     endif
 endfun
 
-" open the file browser
-nnoremap <silent> tt :E<cr>
-
 " QuickFix
 nnoremap <silent> <leader>cp :cprevious<cr>
 nnoremap <silent> <leader>cn :cnext<cr>
@@ -127,17 +124,15 @@ nnoremap <silent> <leader>co :copen<cr>
 nnoremap <silent> <leader>cd :cclose<CR>
 
 " For more details using ":h cs"
-" Find functions called by this function
-nnoremap <silent> <leader>gc :cs find d <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
 " find this C symbol
-nnoremap <silent> <leader>gC :cs find s <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+nnoremap <silent> gC :cs find s <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
 " Jump to references
-nnoremap <silent> <leader>gr :cs find c <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
+nnoremap <silent> gr :cs find c <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
 " goto the function implementation
-nnoremap <silent> <leader>gi :cs find g <C-R>=expand("<cword>")<CR><CR>
+nnoremap <silent> gi :cs find g <C-R>=expand("<cword>")<CR><CR>
 
 " ctags: 查看函数定义的位置
-nnoremap <leader>gd <C-]>
+nnoremap gD <C-]>
 
 nnoremap <C-p> :grep <C-r><C-w><Cr>
 nnoremap <A-p> :vimgrep <C-r><C-w> %<Cr>

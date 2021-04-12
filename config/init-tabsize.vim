@@ -17,5 +17,5 @@ set shiftround
 
 augroup jsj_SpecialTab
   autocmd!
-  autocmd FileType python setlocal shiftwidth=4 tabstop=4 foldmethod=indent textwidth=78
+  autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
 augroup END

@@ -10,3 +10,4 @@ runtime! config/init-tabsize.vim
 runtime! config/init-style.vim
 runtime! config/init-keymaps.vim
 runtime! config/init-snippets.vim
+runtime! config/sCommenter.vim
