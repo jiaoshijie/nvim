@@ -14,7 +14,7 @@ vim.cmd('syntax on')
 
 o.smartindent = true
 
-wo.wrap = true
+wo.wrap = false
 wo.linebreak = true
 o.textwidth = 0
 vim.cmd('set formatoptions+=mB')

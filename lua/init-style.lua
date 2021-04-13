@@ -15,7 +15,7 @@ o.t_Co = "256" -- Support 256 colors
 o.termguicolors = true
 
 o.background = "dark"
-require('colorbuddy').colorscheme('nightbuddy')
+require('colorbuddy').colorscheme('onebuddy')
 
 vim.api.nvim_exec([[
 augroup jsj_color_warning

@@ -37,7 +37,6 @@ require('nv-comment')
 
 require('nv-bookmarks')
 require('nv-rooter')
-require('nv-suda')
 require('nv-markdown-preview')
 require('nv-vista')
 require('nv-interestingwords')

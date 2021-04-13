@@ -61,4 +61,4 @@ vim.g.nvim_tree_bindings = {
     ["q"] = tree_cb("close")
 }
 
-vim.api.nvim_set_keymap('n', 'tt', ':NvimTreeToggle<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fb', ':NvimTreeToggle<CR>', { noremap = true })

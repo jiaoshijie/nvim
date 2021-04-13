@@ -8,6 +8,7 @@ map('o', '<C-j>', '<Esc>', { noremap = true, silent = true })
 
 map('n', 's', '<Nop>', { noremap = true })
 map('n', 'S', '<Nop>', { noremap = true })
+map('n', 'cc', '<Nop>', { noremap = true })
 
 --[[
 -- F 区
@@ -22,10 +23,7 @@ map('n', '<F12>', '<C-]>', { noremap = true, silent = true })
 
 map('i', '<C-b>', '<Left>', { noremap = true, silent = true })
 map('i', '<C-f>', '<Right>', { noremap = true, silent = true })
-map('i', '<C-a>', '<Home>', { noremap = true, silent = true })
-map('i', '<C-e>', '<End>', { noremap = true, silent = true })
 map('i', '<C-y>', '<C-r>+', { noremap = true, silent = true })
-map('i', '<C-d>', '<del>', { noremap = true, silent = true })
 -- Recover from accidental Ctrl-U
 -- http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
 map('i', '<C-u>', '<C-g>u<C-u>', { noremap = true, silent = true })
@@ -40,7 +38,6 @@ map('c', '<C-f>', '<Right>', { noremap = true })
 map('c', '<C-a>', '<Home>', { noremap = true })
 map('c', '<C-e>', '<End>', { noremap = true })
 map('c', '<C-y>', '<C-r>+', { noremap = true })
-map('c', '<C-d>', '<del>', { noremap = true })
 map('c', '<m-b>', '<S-Left>', { noremap = true })
 map('c', '<m-f>', '<S-Right>', { noremap = true })
 
@@ -55,16 +52,9 @@ map('x', '>', '>gv', { noremap = true, silent = true })
 -- normal mode
 --]]
 
-map('n', 'j', 'gj', { noremap = true, silent = true })
-map('n', 'k', 'gk', { noremap = true, silent = true })
-map('n', 'gj', 'j', { noremap = true, silent = true })
-map('n', 'gk', 'k', { noremap = true, silent = true })
-map('n', '<C-k>', 'D', { noremap = true, silent = true })
 map('n', '<C-e>', '2<C-e>', { noremap = true, silent = true })
 map('n', '<C-y>', '2<C-y>', { noremap = true, silent = true })
-map('n', 'U', '<C-r>', { noremap = true, silent = true })
 map('n', '<leader><cr>', ':nohl<cr>', { noremap = true, silent = true })
-map('n', '<leader>fs', ':w<cr>', { noremap = true, silent = true })
 
 function JsjClearSE()
   local l = vim.fn.line('.')
@@ -77,8 +67,6 @@ map('n', '<leader>fc', ':lua JsjClearSE()<cr>', { noremap = true, silent = true 
 
 map('n', '<leader>fm', ':e ~/Nutstore Files/Nutstore/MARKDOWN_NOTE/index.md<cr>', { noremap = true, silent = true } )
 
-map('n', '<leader>qq', ':q<cr>', { noremap = true, silent = true })
-map('n', '<leader>qa', ':qall<cr>', { noremap = true, silent = true })
 map('n', '<leader>=', "mIgg=G'ImI", { noremap = true, silent = true })
 map('n', '<leader>o', ':setlocal spell! spelllang=en_us<CR>', { noremap = true, silent = true })
 map('n', '<leader>xd', ':%!xxd<CR>', { noremap = true, silent = true })
@@ -98,7 +86,7 @@ function ToggleFold()
   end
 end
 
-map('n', '<leader>cT', ':lua Change_theme_alpha()<cr>', { noremap = true, silent = true })
+map('n', '<leader>tt', ':lua Change_theme_alpha()<cr>', { noremap = true, silent = true })
 JSJ_change_theme_alpha = false
 function Change_theme_alpha()
   if not JSJ_change_theme_alpha then
@@ -106,7 +94,7 @@ function Change_theme_alpha()
     vim.cmd('highlight Normal guibg=NONE ctermbg=None')
   else
     JSJ_change_theme_alpha = false
-    vim.cmd('highlight Normal guibg=#0b1015 ctermbg=235')
+    vim.cmd('highlight Normal guibg=#282c34 ctermbg=235')
   end
   vim.cmd('hi! link SignColumn LineNr')
 end
@@ -141,8 +129,6 @@ map('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 --[[
 -- buffer
 --]]
-map('n', '<leader>bp', ':bprevious<cr>', { noremap = true, silent = true })
-map('n', '<leader>bn', ':bnext<cr>', { noremap = true, silent = true })
 map('n', '<leader>bd', ':bdelete %<cr>', { noremap = true, silent = true })
 
 

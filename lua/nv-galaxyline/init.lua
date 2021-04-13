@@ -1,8 +1,8 @@
 local gl = require('galaxyline')
 -- local colors = require('galaxyline.theme').default
 local colors = {
-    bg = '#504945',
     -- bg = '#292D38',
+    bg = '#4b5263',
     yellow = '#DCDCAA',
     dark_yellow = '#D7BA7D',
     cyan = '#4EC9B0',
@@ -88,7 +88,7 @@ gls.left[4] = {
         condition = condition.check_git_workspace,
         separator = ' ',
         separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
+        highlight = {colors.cyan, colors.bg}
     }
 }
 
@@ -154,7 +154,7 @@ gls.mid[1] = {
   GetLspClient = {
     provider = 'GetLspClient',
     icon = ' LSP: ',
-    highlight = {colors.cyan , colors.bg},
+    highlight = {colors.grey, colors.bg},
     condition = condition.hide_in_width,
   }
 }
