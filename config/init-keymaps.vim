@@ -6,6 +6,7 @@ onoremap <C-j> <Esc>
 " do nothing(normal visual select operator-wait)
 noremap s <Nop>
 noremap S <Nop>
+noremap cc <Nop>
 
 "----------------------------------------------------------------------
 " Insert mode
@@ -13,10 +14,7 @@ noremap S <Nop>
 
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
 inoremap <C-y> <C-r>+
-inoremap <C-d> <del>
 " Recover from accidental Ctrl-U
 " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
 inoremap <c-u> <c-g>u<c-u>
@@ -26,15 +24,11 @@ inoremap <c-w> <c-g>u<c-w>
 " Command mode
 "----------------------------------------------------------------------
 
-" 提权保存
-cnoremap w!! execute 'write !sudo tee % >/dev/null' <bar> edit!
-
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-y> <C-r>+
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
-cnoremap <C-d> <del>
 cnoremap <m-b> <S-Left>
 cnoremap <m-f> <S-Right>
 
@@ -42,7 +36,6 @@ cnoremap <m-f> <S-Right>
 " Visual mode
 "----------------------------------------------------------------------
 
-xnoremap <silent> <leader>a s""<Esc>P
 xnoremap <  <gv
 xnoremap >  >gv
 
@@ -60,23 +53,12 @@ nnoremap <F12> g]
 " 基本 Normal mode
 "----------------------------------------------------------------------
 
-nnoremap <silent> j gj
-nnoremap <silent> k gk
-nnoremap <silent> gj j
-nnoremap <silent> gk k
-nnoremap <silent> <C-k> D
 " 滚动Speed up scrolling of the viewport slightly
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
 
-" remap U to <C-r> for easier redo
-nnoremap U <C-r>
-
 nnoremap <silent> <leader><cr> :nohl<cr>
-nnoremap <leader>fs :w<cr>
 nnoremap <silent> <leader>fm :e ~/Nutstore\ Files/Nutstore/MARKDOWN_NOTE/index.md<cr>
-nnoremap <leader>qq :q<cr>
-nnoremap <leader>qa :qall<cr>
 nnoremap <silent> <leader>= mIgg=G'ImI
 
 function! JsjClearSE()
@@ -94,7 +76,7 @@ nnoremap <silent> <leader>fc :call JsjClearSE()<cr>
 nnoremap <silent> <leader>o :setlocal spell! spelllang=en_us<CR>
 
 " 透明背景和取消, 需要终端可以透明
-nnoremap <silent> <leader>cT :call Change_theme_alpha()<CR>
+nnoremap <silent> <leader>tt :call Change_theme_alpha()<CR>
 
 " 文本和16进制模式切换
 nnoremap <silent> <leader>xd :%!xxd<CR>
@@ -117,12 +99,6 @@ fun! ToggleFold()
     endif
 endfun
 
-" QuickFix
-nnoremap <silent> <leader>cp :cprevious<cr>
-nnoremap <silent> <leader>cn :cnext<cr>
-nnoremap <silent> <leader>co :copen<cr>
-nnoremap <silent> <leader>cd :cclose<CR>
-
 " For more details using ":h cs"
 " find this C symbol
 nnoremap <silent> gC :cs find s <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
@@ -135,7 +111,6 @@ nnoremap <silent> gi :cs find g <C-R>=expand("<cword>")<CR><CR>
 nnoremap gD <C-]>
 
 nnoremap <C-p> :grep <C-r><C-w><Cr>
-nnoremap <A-p> :vimgrep <C-r><C-w> %<Cr>
 nnoremap <leader>s :grep 
 nnoremap <leader>S :vimgrep  %<Left><Left>
 
@@ -165,10 +140,10 @@ tnoremap <m-K> <c-_>k
 tnoremap <Esc> <c-\><c-n>
 
 " 移动窗口的位置
-nnoremap <silent> <leader>wK <c-w>K
-nnoremap <silent> <leader>wJ <c-w>J
-nnoremap <silent> <leader>wH <c-w>H
-nnoremap <silent> <leader>wL <c-w>L
+nnoremap <silent> <leader>wk <c-w>K
+nnoremap <silent> <leader>wj <c-w>J
+nnoremap <silent> <leader>wh <c-w>H
+nnoremap <silent> <leader>wl <c-w>L
 
 " 调整窗口大小
 nnoremap <silent> <leader>w= <C-w>=
@@ -181,12 +156,10 @@ nnoremap <silent> <Left> <C-w>5<
 " buffer 相关
 "----------------------------------------------------------------------
 
-nnoremap <silent> <leader>bp :bprevious<cr>
-nnoremap <silent> <leader>bn :bnext<cr>
 nnoremap <silent> <leader>bd :bdelete %<CR>
 
 "----------------------------------------------------------------------
-" Tab 相关(不喜欢用这玩意儿)
+" Tab 相关
 "----------------------------------------------------------------------
 
 nnoremap <silent> <leader>td :tabclose<CR>

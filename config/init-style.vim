@@ -9,7 +9,7 @@ set number
 " 高亮光标所在行
 set cursorline
 
-" set colorcolumn=+1
+set colorcolumn=81
 
 " 光标在向下或向上移动时不会到达文件的最下方
 set scrolloff=6
@@ -43,17 +43,17 @@ function! Change_theme_alpha()
   hi! link SignColumn LineNr
 endfunction
 
-function! Hold_theme_alpha()
-  if g:jsj_change_theme_alpha == 1
-    highlight Normal guibg=NONE ctermbg=None
-    highlight SignColumn guibg=NONE ctermbg=None
-  endif
-endfunction
-
-augroup jsj_hold_theme_alpha
-  autocmd!
-  autocmd ColorScheme * exec Hold_theme_alpha()
-augroup end
+" function! Hold_theme_alpha()
+"   if g:jsj_change_theme_alpha == 1
+"     highlight Normal guibg=NONE ctermbg=None
+"     highlight SignColumn guibg=NONE ctermbg=None
+"   endif
+" endfunction
+" 
+" augroup jsj_hold_theme_alpha
+"   autocmd!
+"   autocmd ColorScheme * exec Hold_theme_alpha()
+" augroup end
 
 "----------------------------------------------------------------------
 " 设置颜色主题, 要在init-plugs.vim之后
@@ -62,6 +62,7 @@ augroup end
 " 允许 256 色
 set background=dark
 let g:jsj_change_theme_alpha = 0
+let &t_ut='' " 修复vim背景显示异常在kitty下
 " colorscheme Jsjsimple
 
 packadd! onedark.vim
@@ -83,12 +84,6 @@ let &t_EI.="\e[1 q" "EI(end insert/replace)
 " https://gabri.me/blog/diy-vim-statusline
 " https://shapeshed.com/vim-statuslines/
 " https://jdhao.github.io/2019/11/03/vim_custom_statusline/
-hi User1 cterm=bold ctermfg=155 ctermbg=232 gui=bold guifg=#AFFF5F guibg=#080808
-hi User2 cterm=bold,reverse ctermfg=red ctermbg=11 gui=bold,reverse guifg=red guibg=yellow
-hi User3 cterm=bold,reverse ctermfg=145 ctermbg=232 gui=bold,reverse guifg=#AFAFAF guibg=#080808
-hi User4 cterm=bold,reverse ctermfg=155 ctermbg=232 gui=bold,reverse guifg=#87FFFF guibg=#080808
-hi User5 cterm=bold,reverse ctermfg=66 ctermbg=195 gui=bold,reverse guifg=#5F8787 guibg=#B0B585
-
 let g:currentmode={
        \ 'v'      : 'VISUAL',
        \ 'V'      : 'V·Line',
@@ -100,28 +95,36 @@ let g:currentmode={
 
 function! ChangeStatuslineColor()
   if (mode() =~# '\v(v|V|)')
-    exe 'hi! User4 ctermfg=171 guifg=#D75FFF'
+    exe 'hi! User1 ctermbg=171 guibg=#D75FFF'
     return g:currentmode[mode()]
   elseif (mode() =~# 'i')
-    exe 'hi! User4 ctermfg=75 guifg=#5FAFFF'
+    exe 'hi! User1 ctermbg=75 guibg=#5FAFFF'
     return g:currentmode[mode()]
   elseif (mode() =~# 'R')
-    exe 'hi! User4 ctermfg=160 guifg=#D70000'
+    exe 'hi! User1 ctermbg=160 guibg=#D70000'
     return g:currentmode[mode()]
   elseif (mode() =~# 't')
-    exe 'hi! User4 ctermfg=155  guifg=#AFFF5F'
+    exe 'hi! User1 ctermbg=155  guibg=#AFFF5F'
     return g:currentmode[mode()]
   else
-    exe 'hi! User4 ctermfg=155  guifg=#AFFF5F'
+    exe 'hi! User1 ctermbg=155  guibg=#AFFF5F'
   endif
   return "NORMAL"
 endfunction
 
-set statusline=%(%<%f\ %*%2*%m%*%h%r%)\ %=\ %(%p%%\ %v:%l/%L%)
+hi! User1 cterm=bold ctermfg=232 ctermbg=155 gui=bold guifg=#080808 guibg=#AFFF5F
+hi! User2 cterm=italic ctermfg=208 ctermbg=236 gui=italic guifg=#FF8800 guibg=#2C323C
+hi! User3 cterm=bold ctermfg=yellow ctermbg=red gui=bold guifg=yellow guibg=red
+hi! User4 cterm=bold ctermfg=195 ctermbg=236 gui=bold guifg=#B0B585 guibg=#2C323C
+hi! User5 cterm=bold ctermfg=145 ctermbg=236 gui=bold guifg=#AFAFAF guibg=#2C323C
+
+set statusline=%(%<%f\ %*%3*%m%*%h%r%)\ %=\ %(%p%%\ %v:%l/%L%)
 augroup jsj_Statusline
   autocmd!
-  autocmd BufEnter,WinEnter * :setlocal statusline=%(%4*\ %{ChangeStatuslineColor()}\ %*%1*\ %<%t\ %*%2*%m%h%r%*%)\ %=\ %(%5*\ %Y\ %*%3*\ %{&fenc?&fenc:&enc}\[%{&ff}\]\ %*%4*\ %p%%\ %v:%l/%L\ %*%)
-  autocmd WinLeave * :setlocal statusline=%(%<%f\ %*%2*%m%*%h%r%)\ %=\ %(%p%%\ %v:%l/%L%)
+  autocmd BufEnter,WinEnter * :setlocal statusline=%(%1*\ %{ChangeStatuslineColor()}
+        \\ %*%2*\ %<%t\ %*%3*%m%h%r%*%)\ %=\ %(%4*%Y%*%5*\ %{&fenc?&fenc:&enc}\[%{&ff}\]
+        \\ %*%1*\ %p%%\ %v:%l/%L\ %*%)
+  autocmd WinLeave * :setlocal statusline=%(%<%f\ %*%3*%m%*%h%r%)\ %=\ %(%p%%\ %v:%l/%L%)
 augroup end
 " ------------ statusline ---------- "
 

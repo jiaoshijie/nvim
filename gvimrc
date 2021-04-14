@@ -1,4 +1,4 @@
-unmap <leader>cT
+unmap <leader>tt
 
 set guioptions-=m
 set guioptions-=T

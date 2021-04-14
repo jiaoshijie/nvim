@@ -128,6 +128,8 @@ command! Wcolor echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
             \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
             \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")
 
+" 提权保存
+command! SudoWrite execute 'write !sudo tee % >/dev/null' <bar> edit!
 
 set grepprg=rg\ --no-heading\ --column\ -S\ $*
 set grepformat=%f:%l:%c:%m

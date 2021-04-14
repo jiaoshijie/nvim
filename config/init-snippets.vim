@@ -26,12 +26,3 @@ augroup jsj_Markdown
   autocmd Filetype markdown inoremap <buffer> <localleader>t3 \|<++>\|<++>\|<++>\|<cr>\|----\|----\|----\|<cr><Esc>2kyyj2p2ki<Esc>
   autocmd Filetype markdown inoremap <buffer> <localleader>t4 \|<++>\|<++>\|<++>\|<++>\|<cr>\|----\|----\|----\|----\|<cr><Esc>2kyyj2p2ki<Esc>
 augroup end
-
-"----------------------------------------------------------------------
-" HTML代码片段
-"----------------------------------------------------------------------
-
-augroup jsj_HTML
-  autocmd!
-  autocmd Filetype html inoremap <buffer> <localleader>, <br>
-augroup end

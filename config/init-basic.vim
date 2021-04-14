@@ -29,7 +29,7 @@ set cindent
 set winaltkeys=no
 
 " 设置自动折行
-set wrap
+set nowrap
 set linebreak
 set textwidth=0
 " 如遇Unicode值大于255的文本，不必等到空格再折行
