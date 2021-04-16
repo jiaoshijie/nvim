@@ -17,7 +17,7 @@ o.termguicolors = true
 
 o.background = "dark"
 vim.g.onebuddy_disable_italics = false
-require('colorbuddy').colorscheme('onebuddy')
+require('colorbuddy').colorscheme('onedark')
 
 vim.api.nvim_exec([[
 augroup jsj_color_warning

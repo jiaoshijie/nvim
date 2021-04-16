@@ -6,7 +6,6 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use 'tjdevries/colorbuddy.nvim'
-  use 'Th3Whit3Wolf/onebuddy'
   use 'kyazdani42/nvim-web-devicons'
   use { 'glepnir/galaxyline.nvim', branch = 'main', config = my('nv-galaxyline') }
   use 'romgrk/barbar.nvim'

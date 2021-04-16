@@ -1,8 +1,7 @@
 local gl = require('galaxyline')
 -- local colors = require('galaxyline.theme').default
 local colors = {
-    -- bg = '#292D38',
-    bg = '#4b5263',
+    bg = '#2c323c',
     yellow = '#DCDCAA',
     dark_yellow = '#D7BA7D',
     cyan = '#4EC9B0',
