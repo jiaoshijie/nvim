@@ -1,2 +1,4 @@
 -- npm install -g vscode-css-languageserver-bin
-require'lspconfig'.cssls.setup{}
+require'lspconfig'.cssls.setup{
+  on_attach = Lsp_on_attach,
+}

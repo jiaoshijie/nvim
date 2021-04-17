@@ -4,4 +4,5 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require'lspconfig'.html.setup {
   capabilities = capabilities,
+  on_attach = Lsp_on_attach,
 }

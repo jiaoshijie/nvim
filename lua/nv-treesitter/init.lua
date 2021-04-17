@@ -17,9 +17,6 @@ require('nvim-treesitter.configs').setup {
     enable = true,
     extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
   },
-  -- matchup = {
-  --   enable = true,
-  -- },
   -- indent = {
   --   enable = false,
   -- },
@@ -28,7 +25,7 @@ require('nvim-treesitter.configs').setup {
   --   set foldexpr=nvim_treesitter#foldexpr()
   -- ]], false)
 
-  -- autotag = {
-    --   enable = true,
-    -- },
+  autotag = {
+      enable = true,
+  },
 }

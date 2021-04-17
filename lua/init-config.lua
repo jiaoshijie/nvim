@@ -17,10 +17,17 @@ vim.g.netrw_preview=1
 
 vim.cmd([[
 if &diff
-  highlight! link DiffText MatchParen
   set diffopt=vertical,algorithm:histogram,indent-heuristic
 endif
 ]])
+
+vim.api.nvim_exec([[
+augroup jsj_code_warning
+  autocmd!
+  autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\|???!!!\)')
+  autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
+augroup END
+]], false)
 
 o.backup = false
 o.writebackup = true
@@ -73,7 +80,7 @@ endif
 ]], false)
 
 --[[ ctags, cscope --]]
-o.tags = "./.tags;,.tags;./.rtags;,.rtags"
+o.tags = "./tags,tags"
 o.csprg = "/usr/bin/cscope"
 o.csto = 1
 o.cst = true

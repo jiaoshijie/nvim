@@ -5,17 +5,17 @@ local colors = {
     yellow = '#DCDCAA',
     dark_yellow = '#D7BA7D',
     cyan = '#4EC9B0',
-    green = '#608B4E',
+    green = '#AFFF5F',
     light_green = '#B5CEA8',
     string_orange = '#CE9178',
     orange = '#FF8800',
-    purple = '#C586C0',
+    purple = '#D75FFF',
     magenta = '#D16D9E',
     grey = '#858585',
     blue = '#569CD6',
     vivid_blue = '#4FC1FF',
     light_blue = '#9CDCFE',
-    red = '#D16969',
+    red = '#D70000',
     error_red = '#F44747',
     info_yellow = '#FFCC66'
 }
@@ -194,15 +194,6 @@ gls.short_line_left[1] = {
       provider = 'FileName',
       condition = condition.buffer_not_empty,
       highlight = {colors.grey, colors.bg}
-    }
-}
-
-gls.short_line_left[2] = {
-    SBufferTypeName = {
-        provider = 'FileTypeName',
-        separator = ' ',
-        separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
     }
 }
 
