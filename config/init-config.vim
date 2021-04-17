@@ -161,7 +161,7 @@ set complete-=i
 set complete-=b
 set complete-=u
 
-set tags=./.tags;,.tags;./.rtags;,.rtags
+set tags=./tags,tags
 
 " 指定cscope命令的路径
 set csprg=/usr/bin/cscope

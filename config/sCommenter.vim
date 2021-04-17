@@ -57,6 +57,7 @@ autocmd filetype make let b:Jsj_Comment = { "prefix": '# ', "suffix": '' }
 autocmd filetype sh let b:Jsj_Comment = { "prefix": '# ', "suffix": '' }
 autocmd filetype conf let b:Jsj_Comment = { "prefix": '# ', "suffix": '' }
 autocmd filetype tex let b:Jsj_Comment = { "prefix": '% ', "suffix": '' }
+autocmd filetype lua let b:Jsj_Comment = { "prefix": '-- ', "suffix": '' }
 
 nnoremap <silent> gc :<C-u>call sCommenter#Toggle_Comment(v:count1)<cr>
 vnoremap <silent> gc :<C-u>call sCommenter#Toggle_Comment(line("'>") - line("'<") + 1)<cr>
