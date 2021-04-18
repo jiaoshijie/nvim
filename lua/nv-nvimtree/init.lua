@@ -1,9 +1,7 @@
--- vim.g.nvim_tree_disable_netrw = 0 -- 1 by default, disables netrw
-vim.cmd([[let g:nvim_tree_disable_netrw = 0]])
--- vim.g.nvim_tree_hijack_netrw = 0 -- 1 by default, prevents netrw from automatically opening when opening directories (but lets you keep its other utilities)
-vim.cmd([[let g:nvim_tree_hijack_netrw = 0]])
+vim.g.nvim_tree_disable_netrw = 1 -- 1 by default, disables netrw
+vim.g.nvim_tree_hijack_netrw = 1 -- 1 by default, prevents netrw from automatically opening when opening directories (but lets you keep its other utilities)
 vim.g.nvim_tree_ignore = { '.git', 'node_modules' }
-vim.g.nvim_tree_auto_open = 0
+vim.g.nvim_tree_auto_open = 1
 vim.g.nvim_tree_auto_close = 0  -- 0 by default, closes the tree when it's the last window
 vim.g.nvim_tree_indent_markers = 1  -- 0 by default, this option shows indent markers when folders are open
 vim.g.nvim_tree_width_allow_resize  = 1  -- 0 by default, will not resize the tree when opening a file
