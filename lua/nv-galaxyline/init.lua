@@ -95,7 +95,7 @@ gls.right[1] = {
   FileEncode = {
     provider = 'FileEncode',
     separator = ' ',
-    highlight = {colors.grey, colors.bg, 'bold'},
+    highlight = {colors.magenta, colors.bg, 'bold'},
     condition = condition.hide_in_width,
     separator_highlight = {'None', colors.bg}
   }
@@ -105,7 +105,7 @@ gls.right[2] = {
   FileFormat = {
     provider = 'FileFormat',
     separator = ' ',
-    highlight = {colors.grey, colors.bg, 'bold'},
+    highlight = {colors.magenta, colors.bg, 'bold'},
     condition = condition.hide_in_width,
     separator_highlight = {'None', colors.bg}
   }
@@ -174,8 +174,8 @@ gls.mid[3] = {
 
 gls.mid[4] = {
     DiagnosticHint = {
-      provider = 'DiagnosticHint', 
-      icon = '   ', 
+      provider = 'DiagnosticHint',
+      icon = '   ',
       highlight = {colors.vivid_blue, colors.bg}
     }
 }

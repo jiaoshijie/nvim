@@ -23,11 +23,10 @@ require('nv-compe')
 
 require('nv-telescope')
 
-require('nv-treesitter')  -- 影响性能的插件，当打开大文件时
+require('nv-treesitter')
 
 require('nv-nvimtree')
 require('nv-gitsigns')
-require('nv-autopairs')
 require('nv-colorizer')
 require('nv-comment')
 require('nv-galaxyline')

@@ -11,15 +11,13 @@ return require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
 
-  -- Autocomplete
-  use 'hrsh7th/nvim-compe'
-  use 'hrsh7th/vim-vsnip'
-  use 'rafamadriz/friendly-snippets'
-
   -- Treesitter
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
   use 'p00f/nvim-ts-rainbow'
   use "windwp/nvim-ts-autotag"
+
+  -- Autocomplete
+  use 'hrsh7th/nvim-compe'
 
   -- Eplorer
   use 'kyazdani42/nvim-tree.lua'
@@ -27,12 +25,13 @@ return require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'  -- requires = 'nvim-lua/plenary.nvim'
   use 'terrortylor/nvim-comment'
   use 'norcalli/nvim-colorizer.lua'
-  use 'windwp/nvim-autopairs'
   use 'kevinhwang91/nvim-bqf'  -- quickfix list
 
   use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install'}
   use 'lambdalisue/suda.vim'
   use 'godlygeek/tabular'
+  use 'hrsh7th/vim-vsnip'
+  use 'rafamadriz/friendly-snippets'
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'

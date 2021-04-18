@@ -19,3 +19,9 @@ o.background = "dark"
 vim.g.onebuddy_disable_italics = false
 require('colorbuddy').colorscheme('onedark')
 
+vim.api.nvim_exec([[
+augroup Jsj_highlight_yank
+  autocmd!
+  autocmd TextYankPost * silent! lua vim.highlight.on_yank{higourp="IncSearch", timeout=200}
+augroup END
+]], false)
