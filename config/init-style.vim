@@ -65,11 +65,6 @@ let g:jsj_change_theme_alpha = 0
 let &t_ut='' " 修复vim背景显示异常在kitty下
 " colorscheme Jsjsimple
 
-packadd! onedark.vim
-let g:onedark_hide_endofbuffer=0
-let g:onedark_termcolors=256
-let g:onedark_terminal_italics=1
-
 set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
 set t_8b=[48;2;%lu;%lu;%lum        " set background color
 colorscheme onedark
@@ -137,6 +132,6 @@ augroup jsj_color_warning
   autocmd!
   highlight Todo cterm=bold,italic ctermfg=223 ctermbg=160 gui=bold,italic guifg=#e5b07b guibg=#D70000
   highlight Debug cterm=bold,italic ctermfg=223 ctermbg=235 gui=bold,italic guifg=#e5b07b guibg=#262626
-  autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|BUG\)')
+  autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|BUG\|XXX\)')
   autocmd Syntax * call matchadd('Debug', '\W\zs\(INFO\|DONE\|NOTICE\)')
 augroup END
