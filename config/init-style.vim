@@ -22,7 +22,7 @@ set showcmd
 
 " 显示一些不可见字符
 set list
-set listchars=trail:␣,tab:,extends:»,precedes:«,eol:↲,conceal:┊
+set listchars=trail:␣,tab:•,extends:»,precedes:«,eol:↲
 
 " 分屏后光标到右或下窗口
 set splitright

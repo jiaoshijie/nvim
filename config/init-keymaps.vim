@@ -6,7 +6,7 @@ onoremap <C-j> <Esc>
 " do nothing(normal visual select operator-wait)
 noremap s <Nop>
 noremap S <Nop>
-noremap cc <Nop>
+nnoremap cc <Nop>
 
 "----------------------------------------------------------------------
 " Insert mode
@@ -139,14 +139,7 @@ tnoremap <m-J> <c-_>j
 tnoremap <m-K> <c-_>k
 tnoremap <Esc> <c-\><c-n>
 
-" 移动窗口的位置
-nnoremap <silent> <leader>wk <c-w>K
-nnoremap <silent> <leader>wj <c-w>J
-nnoremap <silent> <leader>wh <c-w>H
-nnoremap <silent> <leader>wl <c-w>L
-
 " 调整窗口大小
-nnoremap <silent> <leader>w= <C-w>=
 nnoremap <silent> <Up> <C-w>5+
 nnoremap <silent> <Down> <C-w>5-
 nnoremap <silent> <Right> <C-w>5>

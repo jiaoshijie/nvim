@@ -53,6 +53,11 @@ set timeoutlen=500
 
 " 鼠标支持
 set mouse=a
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
 
 " 总是显示左边的一列, 用于显示一些错误, 标签
 set signcolumn=auto
