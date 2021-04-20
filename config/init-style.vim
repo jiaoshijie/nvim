@@ -63,11 +63,11 @@ endfunction
 set background=dark
 let g:jsj_change_theme_alpha = 0
 let &t_ut='' " 修复vim背景显示异常在kitty下
-" colorscheme Jsjsimple
 
 set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
 set t_8b=[48;2;%lu;%lu;%lum        " set background color
 colorscheme onedark
+" colorscheme Jsjsimple
 set t_Co=256
 set termguicolors
 

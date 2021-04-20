@@ -1,5 +1,7 @@
 unmap <leader>tt
 
+set nolist
+
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
