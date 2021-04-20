@@ -8,5 +8,5 @@ require'lspconfig'.jsonls.setup {
     }
   },
   root_dir = vim.loop.cwd,
-  on_attach = Lsp_on_attach,
+  on_attach = require'lsp.on_attach',
 }

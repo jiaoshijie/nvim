@@ -7,7 +7,6 @@ vim.g.python_host_prog = '/usr/bin/python2'
 vim.g.python3_host_prog = '/usr/bin/python3'
 
 -- for netrw
-
 vim.g.loaded_netrw             = 1
 vim.g.loaded_netrwPlugin       = 1
 vim.g.loaded_netrwSettings     = 1
@@ -22,8 +21,8 @@ endif
 vim.api.nvim_exec([[
 augroup jsj_code_warning
   autocmd!
-  autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\|???!!!\)')
-  autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
+  autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|BUG\)')
+  autocmd Syntax * call matchadd('Debug', '\W\zs\(INFO\|DONE\|NOTICE\)')
 augroup END
 ]], false)
 

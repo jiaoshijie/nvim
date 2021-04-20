@@ -14,7 +14,7 @@ map('n', 'cc', '<Nop>', { noremap = true })
 -- F 区
 --]]
 
-map('n', '<F2>', ':edit ~/.config/nvim/init.lua<CR>', { noremap = true, silent = true })
+map('n', '<F2>', ':edit ~/.config/nvim/init.lua<CR>', { noremap = true })
 map('n', '<F12>', '<C-]>', { noremap = true, silent = true })
 
 --[[
@@ -42,7 +42,7 @@ map('c', '<m-b>', '<S-Left>', { noremap = true })
 map('c', '<m-f>', '<S-Right>', { noremap = true })
 
 --[[
--- command mode
+-- visual mode
 --]]
 
 map('x', '<', '<gv', { noremap = true, silent = true })
@@ -107,11 +107,6 @@ map('n', '<leader>w/', '<C-w>v', { noremap = true, silent = true })
 map('n', '<leader>w-', '<C-w>s', { noremap = true, silent = true })
 map('n', '<leader>wo', '<C-w>o', { noremap = true, silent = true })
 map('n', '<leader>wd', '<C-w>c', { noremap = true, silent = true })
-map('n', '<leader>wk', '<C-w>K', { noremap = true, silent = true })
-map('n', '<leader>wj', '<C-w>J', { noremap = true, silent = true })
-map('n', '<leader>wh', '<C-w>H', { noremap = true, silent = true })
-map('n', '<leader>wl', '<C-w>L', { noremap = true, silent = true })
-map('n', '<leader>w=', '<C-w>=', { noremap = true, silent = true })
 map('n', '<Down>', '<C-w>5-', { noremap = true, silent = true })
 map('n', '<Up>', '<C-w>5+', { noremap = true, silent = true })
 map('n', '<Right>', '<C-w>5>', { noremap = true, silent = true })

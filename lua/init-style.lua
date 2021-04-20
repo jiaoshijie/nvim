@@ -8,7 +8,7 @@ wo.colorcolumn = "81"
 o.scrolloff = 6
 o.laststatus = 2
 wo.list = true
-o.listchars = "trail:␣,tab:,extends:»,precedes:«,eol:↲,conceal:┊"
+o.listchars = "trail:␣,tab:•,extends:»,precedes:«,eol:↲"
 o.splitright = true
 o.splitbelow = true
 
