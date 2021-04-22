@@ -9,6 +9,7 @@ return require('packer').startup(function(use)
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
+  use 'nvim-telescope/telescope-fzy-native.nvim'
 
   -- Treesitter
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}

@@ -14,7 +14,6 @@ map('n', 'cc', '<Nop>', { noremap = true })
 -- F 区
 --]]
 
-map('n', '<F2>', ':edit ~/.config/nvim/init.lua<CR>', { noremap = true })
 map('n', '<F12>', '<C-]>', { noremap = true, silent = true })
 
 --[[
@@ -64,8 +63,6 @@ function JsjClearSE()
   vim.fn.cursor(l, c)
 end
 map('n', '<leader>fc', ':lua JsjClearSE()<cr>', { noremap = true, silent = true })
-
-map('n', '<leader>fm', ':e ~/Nutstore Files/Nutstore/MARKDOWN_NOTE/index.md<cr>', { noremap = true, silent = true } )
 
 map('n', '<leader>=', "mIgg=G'ImI", { noremap = true, silent = true })
 map('n', '<leader>o', ':setlocal spell! spelllang=en_us<CR>', { noremap = true, silent = true })

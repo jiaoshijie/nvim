@@ -1,4 +1,4 @@
--- require('telescope').load_extension('media_files')
+local actions = require('telescope.actions')
 require('telescope').setup{
   defaults = {
     vimgrep_arguments = {
@@ -45,11 +45,59 @@ require('telescope').setup{
     qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
 
     -- Developer configurations: Not meant for general override
-    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker,
+    mappings = {
+      i = {
+        -- ["<C-x>"] = false,
+        ["<esc>"] = actions.close,
+      },
+    },
+  },
+  extensions = {
+    fzy_native = {
+      override_generic_sorter = false,
+      override_file_sorter = true,
+    }
   },
 }
 
-vim.api.nvim_set_keymap('n', '<leader>ff', ':lua require("telescope.builtin").find_files()<cr>', {noremap = true, silent = true})
+require('telescope').load_extension('fzy_native')
+
+function Jsj_search_all_files()
+  require('telescope.builtin').find_files {
+    find_command = { 'rg', '--no-ignore', '--files' },
+  }
+end
+
+function Jsj_neovim_config()
+  require('telescope.builtin').find_files {
+    prompt_title = "~ neovim config ~",
+    prompt_prefix = "Nvim> ",
+    shorten_path = false,
+    cwd = "~/.config/nvim",
+  }
+end
+
+function Jsj_open_Code()
+  require('telescope.builtin').find_files {
+    prompt_title = "~ Code ~",
+    prompt_prefix = "Code> ",
+    shorten_path = false,
+    cwd = '~/Downloads/Code',
+  }
+end
+
+function Jsj_open_Notes()
+  require('telescope.builtin').find_files {
+    prompt_title = "~ Notes ~",
+    prompt_prefix = "Notes> ",
+    shorten_path = false,
+    cwd = '~/Nutstore Files/Nutstore/MARKDOWN_NOTE',
+  }
+end
+
+vim.api.nvim_set_keymap('n', '<F2>', ':lua Jsj_neovim_config()<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>ff', ':lua Jsj_search_all_files()<cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>fr', ':lua require("telescope.builtin").oldfiles()<cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>fg', ':lua require("telescope.builtin").git_files()<cr>', {noremap = true, silent = true})
 
@@ -61,3 +109,6 @@ vim.api.nvim_set_keymap('n', '<leader>bb', ':lua require("telescope.builtin").bu
 vim.api.nvim_set_keymap('n', '<leader>cf', ':lua require("telescope.builtin").lsp_document_symbols()<cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>ct', ':lua require("telescope.builtin").tags()<cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', 'gea', ':lua require("telescope.builtin").lsp_document_diagnostics()<cr>', {noremap = true, silent = true})
+
+vim.api.nvim_set_keymap('n', '<leader>fm', ':lua Jsj_open_Notes()<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>pc', ':lua Jsj_open_Code()<cr>', {noremap = true, silent = true})
