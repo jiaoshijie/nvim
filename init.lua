@@ -25,7 +25,6 @@ require('nv-telescope')
 
 require('nv-treesitter')
 
-require('nv-nvimtree')
 require('nv-gitsigns')
 require('nv-colorizer')
 require('nv-comment')

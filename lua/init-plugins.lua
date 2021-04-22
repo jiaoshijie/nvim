@@ -18,9 +18,6 @@ return require('packer').startup(function(use)
   -- Autocomplete
   use 'hrsh7th/nvim-compe'
 
-  -- Eplorer
-  use 'kyazdani42/nvim-tree.lua'
-
   use 'lewis6991/gitsigns.nvim'  -- requires = 'nvim-lua/plenary.nvim'
   use 'terrortylor/nvim-comment'
   use 'norcalli/nvim-colorizer.lua'
@@ -29,6 +26,7 @@ return require('packer').startup(function(use)
   use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install'}
   use 'lambdalisue/suda.vim'
   use 'godlygeek/tabular'
+  use 'tpope/vim-surround'
   use 'hrsh7th/vim-vsnip'
   use 'rafamadriz/friendly-snippets'
 

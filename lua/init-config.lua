@@ -7,10 +7,27 @@ vim.g.python_host_prog = '/usr/bin/python2'
 vim.g.python3_host_prog = '/usr/bin/python3'
 
 -- for netrw
-vim.g.loaded_netrw             = 1
-vim.g.loaded_netrwPlugin       = 1
-vim.g.loaded_netrwSettings     = 1
-vim.g.loaded_netrwFileHandlers = 1
+-- vim.g.loaded_netrw             = 1
+-- vim.g.loaded_netrwPlugin       = 1
+-- vim.g.loaded_netrwSettings     = 1
+-- vim.g.loaded_netrwFileHandlers = 1
+vim.g.netrw_banner = 0  -- disable annoying banner
+vim.g.netrw_browse_split = 0
+vim.g.netrw_altv=1  -- open splits to the right
+vim.g.netrw_alto=0
+vim.g.netrw_liststyle=3  -- tree view
+vim.g.netrw_winsize=25
+vim.g.netrw_preview=1
+vim.g.netrw_localrmdir='rm -r'
+vim.g.netrw_hide=0
+vim.cmd[[let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+']]
+vim.api.nvim_exec([[
+  augroup Jsj_netrw_delete
+    au!
+    autocmd FileType netrw setl bufhidden=delete " or use :qa!
+  augroup END
+]], false)
+-- vim.cmd[[let g:netrw_list_hide.=netrw_gitignore#Hide()]]
 
 vim.cmd([[
 if &diff
@@ -21,7 +38,7 @@ endif
 vim.api.nvim_exec([[
 augroup jsj_code_warning
   autocmd!
-  autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|BUG\)')
+  autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|BUG\|XXX\)')
   autocmd Syntax * call matchadd('Debug', '\W\zs\(INFO\|DONE\|NOTICE\)')
 augroup END
 ]], false)
