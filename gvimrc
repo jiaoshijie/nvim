@@ -1,10 +1,8 @@
 unmap <leader>tt
 
-set nolist
-
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 set guioptions+=d
-set guifont=Ubuntu\ Mono\ 15
+set guifont=Hack\ 15
