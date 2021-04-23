@@ -5,8 +5,6 @@
 " License:    The MIT License (MIT)
 " Based On:   https://github.com/MaxSt/FlatColor/
 
-" A companion [vim-airline](https://github.com/bling/vim-airline) theme is available at: https://github.com/joshdick/airline-onedark.vim
-
 " Color Reference {{{
 
 " The following colors were measured inside Atom using its built-in inspector.
@@ -49,78 +47,20 @@ if exists("syntax_on")
   syntax reset
 endif
 
-set t_Co=256
-
 let g:colors_name="onedark"
 
-" Set to "256" for 256-color terminals, or
-" set to "16" to use your terminal emulator's native colors
-" (a 16-color palette for this color scheme is available; see
-" < https://github.com/joshdick/onedark.vim/blob/master/README.md >
-" for more information.)
-let g:onedark_termcolors = 256
-
-" Not all terminals support italics properly. If yours does, opt-in.
-let g:onedark_terminal_italics = 1
-
-" This function is based on one from FlatColor: https://github.com/MaxSt/FlatColor/
-" Which in turn was based on one found in hemisu: https://github.com/noahfrederick/vim-hemisu/
-let s:group_colors = {} " Cache of default highlight group settings, for later reference via `onedark#extend_highlight`
-function! s:h(group, style, ...)
-  if (a:0 > 0) " Will be true if we got here from onedark#extend_highlight
-    let s:highlight = s:group_colors[a:group]
-    for style_type in ["fg", "bg", "sp"]
-      if (has_key(a:style, style_type))
-        let l:default_style = (has_key(s:highlight, style_type) ? copy(s:highlight[style_type]) : { "cterm16": "NONE", "cterm": "NONE", "gui": "NONE" })
-        let s:highlight[style_type] = extend(l:default_style, a:style[style_type])
-      endif
-    endfor
-    if (has_key(a:style, "gui"))
-      let s:highlight.gui = a:style.gui
-    endif
-  else
-    let s:highlight = a:style
-    let s:group_colors[a:group] = s:highlight " Cache default highlight group settings
-  endif
-
-  if g:onedark_terminal_italics == 0
-    if has_key(s:highlight, "cterm") && s:highlight["cterm"] == "italic"
-      unlet s:highlight.cterm
-    endif
-    if has_key(s:highlight, "gui") && s:highlight["gui"] == "italic"
-      unlet s:highlight.gui
-    endif
-  endif
-
-  if g:onedark_termcolors == 16
-    let l:ctermfg = (has_key(s:highlight, "fg") ? s:highlight.fg.cterm16 : "NONE")
-    let l:ctermbg = (has_key(s:highlight, "bg") ? s:highlight.bg.cterm16 : "NONE")
-  else
-    let l:ctermfg = (has_key(s:highlight, "fg") ? s:highlight.fg.cterm : "NONE")
-    let l:ctermbg = (has_key(s:highlight, "bg") ? s:highlight.bg.cterm : "NONE")
-  endif
+function! s:h(group, style)
+  let s:highlight = a:style
 
   execute "highlight" a:group
     \ "guifg="   (has_key(s:highlight, "fg")    ? s:highlight.fg.gui   : "NONE")
     \ "guibg="   (has_key(s:highlight, "bg")    ? s:highlight.bg.gui   : "NONE")
     \ "guisp="   (has_key(s:highlight, "sp")    ? s:highlight.sp.gui   : "NONE")
     \ "gui="     (has_key(s:highlight, "gui")   ? s:highlight.gui      : "NONE")
-    \ "ctermfg=" . l:ctermfg
-    \ "ctermbg=" . l:ctermbg
+    \ "ctermfg=" (has_key(s:highlight, "fg")    ? s:highlight.fg.cterm : "NONE")
+    \ "ctermbg=" (has_key(s:highlight, "bg")    ? s:highlight.bg.cterm : "NONE")
     \ "cterm="   (has_key(s:highlight, "cterm") ? s:highlight.cterm    : "NONE")
 endfunction
-
-" public {{{
-
-function! onedark#set_highlight(group, style)
-  call s:h(a:group, a:style)
-endfunction
-
-function! onedark#extend_highlight(group, style)
-  call s:h(a:group, a:style, 1)
-endfunction
-
-" }}}
 
 " }}}
 
@@ -138,7 +78,7 @@ let s:purple = s:colors.purple
 let s:cyan = s:colors.cyan
 let s:white = s:colors.white
 let s:black = s:colors.black
-let s:visual_black = s:colors.visual_black " Black out selected text in 16-color visual mode
+let s:visual_black = s:colors.visual_black
 let s:comment_grey = s:colors.comment_grey
 let s:gutter_fg_grey = s:colors.gutter_fg_grey
 let s:cursor_grey = s:colors.cursor_grey
@@ -192,11 +132,11 @@ call s:h("SpecialChar", { "fg": s:dark_yellow }) " special character in a consta
 call s:h("Tag", {}) " you can use CTRL-] on this
 call s:h("Delimiter", {}) " character that needs attention
 call s:h("SpecialComment", { "fg": s:comment_grey }) " special things inside a comment
-call s:h("Debug", {}) " debugging statements
+call s:h("Debug", { "fg": s:yellow, "gui": "bold,italic", "cterm": "bold,italic" }) " debugging statements
 call s:h("Underlined", { "gui": "underline", "cterm": "underline" }) " text that stands out, HTML links
 call s:h("Ignore", {}) " left blank, hidden
 call s:h("Error", { "fg": s:red }) " any erroneous construct
-call s:h("Todo", { "fg": s:purple }) " anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+call s:h("Todo", { "fg": s:yellow, "bg": s:dark_red, "gui": "bold,italic", "cterm": "bold,italic" }) " anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
 " }}}
 
@@ -224,8 +164,8 @@ call s:h("Folded", { "fg": s:comment_grey }) " line used for closed folds
 call s:h("FoldColumn", {}) " 'foldcolumn'
 call s:h("SignColumn", {}) " column where signs are displayed
 call s:h("IncSearch", { "fg": s:yellow, "bg": s:comment_grey }) " 'incsearch' highlighting; also used for the text replaced with ":s///c"
-call s:h("LineNr", { "fg": s:gutter_fg_grey }) " Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-call s:h("CursorLineNr", {}) " Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+call s:h("LineNr", { "fg": s:gutter_fg_grey, "gui": "bold", "cterm": "bold" }) " Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+call s:h("CursorLineNr", { "fg": s:yellow, "gui": "bold", "cterm": "bold", "bg": s:cursor_grey }) " Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 call s:h("MatchParen", { "fg": s:blue, "gui": "underline", "cterm": "underline" }) " The character under the cursor or just before it, if it is a paired bracket, and its match.
 call s:h("ModeMsg", {}) " 'showmode' message (e.g., "-- INSERT --")
 call s:h("MoreMsg", {}) " more-prompt
@@ -244,7 +184,7 @@ call s:h("SpellCap", { "fg": s:dark_yellow }) " Word that should start with a ca
 call s:h("SpellLocal", { "fg": s:dark_yellow }) " Word that is recognized by the spellchecker as one that is used in another region. This will be combined with the highlighting used otherwise.
 call s:h("SpellRare", { "fg": s:dark_yellow }) " Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
 call s:h("StatusLine", { "fg": s:white, "bg": s:cursor_grey }) " status line of current window
-call s:h("StatusLineNC", { "fg": s:comment_grey }) " status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+call s:h("StatusLineNC", { "fg": s:comment_grey, "bg": s:cursor_grey }) " status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 call s:h("StatusLineTerm", { "fg": s:white, "bg": s:cursor_grey }) " status line of current :terminal window
 call s:h("StatusLineTermNC", { "fg": s:comment_grey }) " status line of non-current :terminal window
 call s:h("TabLine", { "fg": s:comment_grey }) " tab pages line, not active tab page label
@@ -376,7 +316,7 @@ call s:h("markdownLinkText", { "fg": s:blue })
 call s:h("markdownListMarker", { "fg": s:red })
 call s:h("markdownOrderedListMarker", { "fg": s:red })
 call s:h("markdownRule", { "fg": s:comment_grey })
-call s:h("markdownUrl", { "fg": s:cyan, "gui": "underline", "cterm": "underline" })
+call s:h("markdownUrl", { "fg": s:comment_grey, "gui": "underline", "cterm": "underline" })
 
 " Perl
 call s:h("perlFiledescRead", { "fg": s:green })

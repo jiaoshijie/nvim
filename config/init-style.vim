@@ -43,18 +43,6 @@ function! Change_theme_alpha()
   hi! link SignColumn LineNr
 endfunction
 
-" function! Hold_theme_alpha()
-"   if g:jsj_change_theme_alpha == 1
-"     highlight Normal guibg=NONE ctermbg=None
-"     highlight SignColumn guibg=NONE ctermbg=None
-"   endif
-" endfunction
-" 
-" augroup jsj_hold_theme_alpha
-"   autocmd!
-"   autocmd ColorScheme * exec Hold_theme_alpha()
-" augroup end
-
 "----------------------------------------------------------------------
 " 设置颜色主题, 要在init-plugs.vim之后
 "----------------------------------------------------------------------
@@ -66,9 +54,8 @@ let &t_ut='' " 修复vim背景显示异常在kitty下
 
 set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
 set t_8b=[48;2;%lu;%lu;%lum        " set background color
-colorscheme onedark
-" colorscheme Jsjsimple
 set t_Co=256
+colorscheme onedark
 set termguicolors
 
 let &t_SI.="\e[5 q" "SI(start insert)
@@ -113,25 +100,11 @@ hi! User3 cterm=bold ctermfg=yellow ctermbg=red gui=bold guifg=yellow guibg=red
 hi! User4 cterm=bold ctermfg=195 ctermbg=236 gui=bold guifg=#B0B585 guibg=#2C323C
 hi! User5 cterm=bold ctermfg=145 ctermbg=236 gui=bold guifg=#AFAFAF guibg=#2C323C
 
-set statusline=%(%<%f\ %*%3*%m%*%h%r%)\ %=\ %(%p%%\ %v:%l/%L%)
+set statusline=%(%<%f\ %*%3*%m%*%h%r%)\ %=\ %(%v:%l/%L%)
 augroup jsj_Statusline
   autocmd!
   autocmd BufEnter,WinEnter * :setlocal statusline=%(%1*\ %{ChangeStatuslineColor()}
         \\ %*%2*\ %<%t\ %*%3*%m%h%r%*%)\ %=\ %(%4*%Y%*%5*\ %{&fenc?&fenc:&enc}\[%{&ff}\]
         \\ %*%1*\ %p%%\ %v:%l/%L\ %*%)
-  autocmd WinLeave * :setlocal statusline=%(%<%f\ %*%3*%m%*%h%r%)\ %=\ %(%p%%\ %v:%l/%L%)
+  autocmd WinLeave * :setlocal statusline=%(%<%f\ %*%3*%m%*%h%r%)\ %=\ %(%v:%l/%L%)
 augroup end
-" ------------ statusline ---------- "
-
-
-"----------------------------------------------------------------------
-" 设置TODO高亮组
-"----------------------------------------------------------------------
-
-augroup jsj_color_warning
-  autocmd!
-  highlight Todo cterm=bold,italic ctermfg=223 ctermbg=160 gui=bold,italic guifg=#e5b07b guibg=#D70000
-  highlight Debug cterm=bold,italic ctermfg=223 ctermbg=235 gui=bold,italic guifg=#e5b07b guibg=#262626
-  autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|BUG\|XXX\)')
-  autocmd Syntax * call matchadd('Debug', '\W\zs\(INFO\|DONE\|NOTICE\)')
-augroup END

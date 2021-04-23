@@ -33,6 +33,12 @@ if &diff
     set diffopt=vertical,algorithm:histogram,indent-heuristic
 endif
 
+augroup jsj_color_warning
+  autocmd!
+  autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|BUG\|XXX\)')
+  autocmd Syntax * call matchadd('Debug', '\W\zs\(INFO\|DONE\|NOTICE\)')
+augroup END
+
 "----------------------------------------------------------------------
 " 备份配置
 "----------------------------------------------------------------------
