@@ -56,6 +56,7 @@ nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
 
 nnoremap <silent> <leader><cr> :nohl<cr>
+nnoremap <leader>/ /\<\><left><left>
 nnoremap <silent> <leader>fm :e ~/Nutstore\ Files/Nutstore/MARKDOWN_NOTE/index.md<cr>
 nnoremap <silent> <leader>= mIgg=G'ImI
 
