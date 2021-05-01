@@ -24,10 +24,9 @@ return require('packer').startup(function(use)
   use 'norcalli/nvim-colorizer.lua'
   use 'kevinhwang91/nvim-bqf'  -- quickfix list
 
+  use 'folke/which-key.nvim'
+
   use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install'}
-  use 'lambdalisue/suda.vim'
-  use 'godlygeek/tabular'
-  use 'tpope/vim-surround'
   use 'hrsh7th/vim-vsnip'
   use 'rafamadriz/friendly-snippets'
 

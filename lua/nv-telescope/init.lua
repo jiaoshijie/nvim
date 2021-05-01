@@ -108,7 +108,7 @@ vim.api.nvim_set_keymap('n', '<leader>S', ':lua require("telescope.builtin").cur
 vim.api.nvim_set_keymap('n', '<leader>bb', ':lua require("telescope.builtin").buffers()<cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>cf', ':lua require("telescope.builtin").lsp_document_symbols()<cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>ct', ':lua require("telescope.builtin").tags()<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'gea', ':lua require("telescope.builtin").lsp_document_diagnostics()<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>cea', ':lua require("telescope.builtin").lsp_document_diagnostics()<cr>', {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap('n', '<leader>fm', ':lua Jsj_open_Notes()<cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>pc', ':lua Jsj_open_Code()<cr>', {noremap = true, silent = true})

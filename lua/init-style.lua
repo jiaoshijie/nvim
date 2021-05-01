@@ -22,6 +22,6 @@ require('colorbuddy').colorscheme('onedark')
 vim.api.nvim_exec([[
 augroup Jsj_highlight_yank
   autocmd!
-  autocmd TextYankPost * silent! lua vim.highlight.on_yank{higourp="IncSearch", timeout=200}
+  autocmd TextYankPost * silent! lua vim.highlight.on_yank{higourp="IncSearch", timeout=300}
 augroup END
 ]], false)

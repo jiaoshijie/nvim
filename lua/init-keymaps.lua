@@ -9,6 +9,7 @@ map('o', '<C-j>', '<Esc>', { noremap = true, silent = true })
 map('n', 's', '<Nop>', { noremap = true })
 map('n', 'S', '<Nop>', { noremap = true })
 map('n', 'cc', '<Nop>', { noremap = true })
+map('n', '<Space>', '<NOP>', {noremap = true, silent = true})
 
 --[[
 -- F 区
@@ -22,7 +23,6 @@ map('n', '<F12>', '<C-]>', { noremap = true, silent = true })
 
 map('i', '<C-b>', '<Left>', { noremap = true, silent = true })
 map('i', '<C-f>', '<Right>', { noremap = true, silent = true })
-map('i', '<C-y>', '<C-r>+', { noremap = true, silent = true })
 -- Recover from accidental Ctrl-U
 -- http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
 map('i', '<C-u>', '<C-g>u<C-u>', { noremap = true, silent = true })
@@ -36,7 +36,6 @@ map('c', '<C-b>', '<Left>', { noremap = true })
 map('c', '<C-f>', '<Right>', { noremap = true })
 map('c', '<C-a>', '<Home>', { noremap = true })
 map('c', '<C-e>', '<End>', { noremap = true })
-map('c', '<C-y>', '<C-r>+', { noremap = true })
 map('c', '<m-b>', '<S-Left>', { noremap = true })
 map('c', '<m-f>', '<S-Right>', { noremap = true })
 
@@ -54,6 +53,7 @@ map('x', '>', '>gv', { noremap = true, silent = true })
 map('n', '<C-e>', '2<C-e>', { noremap = true, silent = true })
 map('n', '<C-y>', '2<C-y>', { noremap = true, silent = true })
 map('n', '<leader><cr>', ':nohl<cr>', { noremap = true, silent = true })
+map('n', '<leader>/', '/\\<\\><left><left>', { noremap = true })
 
 function JsjClearSE()
   local l = vim.fn.line('.')
@@ -70,7 +70,7 @@ map('n', '<leader>xd', ':%!xxd<CR>', { noremap = true, silent = true })
 map('n', '<leader>xr', ':%!xxd -r<CR>', { noremap = true, silent = true })
 map('n', '<leader>eu', ':e ++enc=utf8<CR>', { noremap = true, silent = true })
 map('n', '<leader>eg', ':e ++enc=gbk<CR>', { noremap = true, silent = true })
-map('n', '<leader>zz', ':lua ToggleFold()<CR>', { noremap = true, silent = true })
+map('n', '<leader>cz', ':lua ToggleFold()<CR>', { noremap = true, silent = true })
 
 FoldMethod = false
 function ToggleFold()
