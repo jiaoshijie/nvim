@@ -7,6 +7,7 @@ onoremap <C-j> <Esc>
 noremap s <Nop>
 noremap S <Nop>
 nnoremap cc <Nop>
+nnoremap <Space> <Nop>
 
 "----------------------------------------------------------------------
 " Insert mode
@@ -87,7 +88,7 @@ nnoremap <silent> <leader>eg :e ++enc=gbk<CR>
 
 " 代码折叠自定义快捷键 <leader>zz for more ":h za zc zo zA zC zO"
 let g:FoldMethod = 0
-map <leader>zz :call ToggleFold()<cr>
+map <leader>cz :call ToggleFold()<cr>
 fun! ToggleFold()
     if g:FoldMethod == 0
         exe "normal! zM"
