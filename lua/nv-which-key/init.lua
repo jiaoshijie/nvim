@@ -68,6 +68,7 @@ local mappings = {
       ["e"] = "Show error info under cursor",
       ["l"] = "Show error info in line",
       ["a"] = "Search all error in the file",
+      ["A"] = "Search all error in the workspace",
       ["p"] = "Jump to prev error",
       ["n"] = "Jump to next error",
     },
@@ -87,7 +88,10 @@ local mappings = {
   },
   p = {
     name = "+Project",
-    ["c"]  = "Open Code dir",
+    ["c"] = "Open Code dir",
+    ["a"] = "Lsp add workspace folder",
+    ["r"] = "Lsp remove workspace folder",
+    ["l"] = "Lsp print workspace folder",
   },
   t = {
     name = "+Tab&Theme",

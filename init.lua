@@ -19,6 +19,8 @@ require('lsp.python-lsp')
 require('lsp.tsserver-lsp')
 require('lsp.lua-lsp')
 
+require('nv-symbols-outline')
+
 require('nv-compe')
 
 require('nv-telescope')

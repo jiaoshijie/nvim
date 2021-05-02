@@ -1,9 +1,13 @@
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
+  -- Icons
+  use 'kyazdani42/nvim-web-devicons'
+
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
+  use 'simrat39/symbols-outline.nvim'
 
   -- Telescope
   use 'nvim-lua/popup.nvim'
@@ -29,9 +33,6 @@ return require('packer').startup(function(use)
   use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install'}
   use 'hrsh7th/vim-vsnip'
   use 'rafamadriz/friendly-snippets'
-
-  -- Icons
-  use 'kyazdani42/nvim-web-devicons'
 
   -- Color
   use 'tjdevries/colorbuddy.nvim'
