@@ -29,13 +29,12 @@ return require('packer').startup(function(use)
   use 'kevinhwang91/nvim-bqf'  -- quickfix list
 
   use 'folke/which-key.nvim'
-
-  use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install'}
-  use 'hrsh7th/vim-vsnip'
-  use 'rafamadriz/friendly-snippets'
+  use 'npxbr/glow.nvim'  -- `paru -S glow-bin` simple markdown preview in terminal
 
   -- Color
   use 'tjdevries/colorbuddy.nvim'
   use 'glepnir/galaxyline.nvim'
 
+  use 'hrsh7th/vim-vsnip'
+  use 'rafamadriz/friendly-snippets'
 end)

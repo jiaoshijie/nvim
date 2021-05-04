@@ -32,7 +32,6 @@ require('nv-colorizer')
 require('nv-comment')
 require('nv-galaxyline')
 
-require('nv-markdown-preview')
 vim.cmd([[source ~/.config/nvim/vimscript/vim-vsnip.vim]])
 vim.cmd([[source ~/.config/nvim/vimscript/vim-md-snippets.vim]])
 require('nv-which-key')
