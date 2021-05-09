@@ -29,9 +29,9 @@ require('nv-treesitter')
 
 require('nv-gitsigns')
 require('nv-colorizer')
-require('nv-comment')
 require('nv-galaxyline')
 
-vim.cmd([[source ~/.config/nvim/vimscript/vim-vsnip.vim]])
-vim.cmd([[source ~/.config/nvim/vimscript/vim-md-snippets.vim]])
+vim.cmd([[source ~/.config/nvim/vimscript/vsnip.vim]])
+vim.cmd([[source ~/.config/nvim/vimscript/mdSnippets.vim]])
+vim.cmd([[source ~/.config/nvim/vimscript/sCommenter.vim]])
 require('nv-which-key')

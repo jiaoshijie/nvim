@@ -1,8 +1,9 @@
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  -- Icons
   use 'kyazdani42/nvim-web-devicons'
+  use 'nvim-lua/popup.nvim'
+  use 'nvim-lua/plenary.nvim'
 
   -- LSP
   use 'neovim/nvim-lspconfig'
@@ -10,8 +11,6 @@ return require('packer').startup(function(use)
   use 'simrat39/symbols-outline.nvim'
 
   -- Telescope
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
 
@@ -24,9 +23,8 @@ return require('packer').startup(function(use)
   use 'hrsh7th/nvim-compe'
 
   use 'lewis6991/gitsigns.nvim'  -- requires = 'nvim-lua/plenary.nvim'
-  use 'terrortylor/nvim-comment'
-  use 'norcalli/nvim-colorizer.lua'
   use 'kevinhwang91/nvim-bqf'  -- quickfix list
+  use 'norcalli/nvim-colorizer.lua'
 
   use 'folke/which-key.nvim'
   use 'npxbr/glow.nvim'  -- `paru -S glow-bin` simple markdown preview in terminal

@@ -40,7 +40,7 @@ local on_attach = function(client, bufnr)
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
-      set updatetime=1000
+      set updatetime=500
       hi LspReferenceRead guibg=#5C6370
       hi LspReferenceText guibg=#5C6370
       hi LspReferenceWrite guibg=#5C6370
