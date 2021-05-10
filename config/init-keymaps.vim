@@ -112,7 +112,7 @@ nnoremap gD <C-]>
 
 nnoremap <C-p> :grep <C-r><C-w><Cr>
 nnoremap <leader>s :grep 
-nnoremap <leader>S :vimgrep  %<Left><Left>
+nnoremap <leader>S :lvimgrep  %<Left><Left>
 
 "----------------------------------------------------------------------
 " window(窗口) 相关
@@ -157,3 +157,10 @@ nnoremap <silent> <leader>bd :bdelete %<CR>
 
 nnoremap <silent> <leader>td :tabclose<CR>
 nnoremap <silent> <leader>to :tabonly<cr>
+
+"----------------------------------------------------------------------
+" Quickfix&localist
+"----------------------------------------------------------------------
+
+nnoremap <silent> <leader>qq :copen<cr>
+nnoremap <silent> <leader>ql :lopen<cr>
