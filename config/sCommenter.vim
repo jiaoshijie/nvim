@@ -42,7 +42,9 @@ function! g:sCommenter#Toggle_Comment(count)
     let l:is_insert = 1
   endif
   for l:line in l:lines
-    call g:sCommenter#InsertOrRemoveComment(l:start, l:line, l:indent, l:is_insert)
+    if len(l:line) > 0
+      call g:sCommenter#InsertOrRemoveComment(l:start, l:line, l:indent, l:is_insert)
+    endif
     let l:start += 1
   endfor
 endfunction
