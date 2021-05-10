@@ -1,6 +1,8 @@
 local map = vim.api.nvim_set_keymap
 
 local actions = require('telescope.actions')
+-- local trouble = require("trouble.providers.telescope")
+
 require('telescope').setup{
   defaults = {
     vimgrep_arguments = {
@@ -52,6 +54,10 @@ require('telescope').setup{
       i = {
         -- ["<C-x>"] = false,
         ["<esc>"] = actions.close,
+        -- ["<c-t>"] = trouble.open_with_trouble,
+      },
+      n = {
+        -- ["<c-t>"] = trouble.open_with_trouble,
       },
     },
   },
@@ -98,21 +104,19 @@ function Jsj_open_Notes()
   }
 end
 
-map('n', '<F2>', ':lua Jsj_neovim_config()<cr>', {noremap = true, silent = true})
-map('n', '<leader>ff', ':lua Jsj_search_all_files()<cr>', {noremap = true, silent = true})
-map('n', '<leader>fr', ':lua require("telescope.builtin").oldfiles()<cr>', {noremap = true, silent = true})
-map('n', '<leader>fg', ':lua require("telescope.builtin").git_files()<cr>', {noremap = true, silent = true})
+local opts = { noremap = true, silent = true }
 
-map('n', '<C-p>', ':lua require("telescope.builtin").grep_string()<cr>', {noremap = true, silent = true})
-map('n', '<leader>s', ':lua require("telescope.builtin").live_grep()<cr>', {noremap = true, silent = true})
+map('n', '<F2>', ':lua Jsj_neovim_config()<cr>', opts)
+map('n', '<leader>ff', ':lua Jsj_search_all_files()<cr>', opts)
+map('n', '<leader>fr', ':lua require("telescope.builtin").oldfiles()<cr>', opts)
+map('n', '<leader>fg', ':lua require("telescope.builtin").git_files()<cr>', opts)
+
+map('n', '<C-p>', ':lua require("telescope.builtin").grep_string()<cr>', opts)
+map('n', '<leader>s', ':lua require("telescope.builtin").live_grep()<cr>', opts)
 map('n', '<leader>S', ':lua require("telescope.builtin").current_buffer_fuzzy_find()<cr>', {noremap = true, silent = true})
 
-map('n', '<leader>bb', ':lua require("telescope.builtin").buffers()<cr>', {noremap = true, silent = true})
-map('n', '<leader>cf', ':lua require("telescope.builtin").lsp_document_symbols()<cr>', {noremap = true, silent = true})
--- map('n', '<leader>cF', ':lua require("telescope.builtin").lsp_workspace_symbols()<cr>', {noremap = true, silent = true})
-map('n', '<leader>ct', ':lua require("telescope.builtin").tags()<cr>', {noremap = true, silent = true})
-map('n', '<leader>cea', ':lua require("telescope.builtin").lsp_document_diagnostics()<cr>', {noremap = true, silent = true})
-map('n', '<leader>ceA', ':lua require("telescope.builtin").lsp_workspace_diagnostics()<cr>', {noremap = true, silent = true})
+map('n', '<leader>bb', ':lua require("telescope.builtin").buffers()<cr>', opts)
+map('n', '<leader>cT', ':lua require("telescope.builtin").tags()<cr>', opts)
 
-map('n', '<leader>fm', ':lua Jsj_open_Notes()<cr>', {noremap = true, silent = true})
-map('n', '<leader>pc', ':lua Jsj_open_Code()<cr>', {noremap = true, silent = true})
+map('n', '<leader>fm', ':lua Jsj_open_Notes()<cr>', opts)
+map('n', '<leader>pc', ':lua Jsj_open_Code()<cr>', opts)

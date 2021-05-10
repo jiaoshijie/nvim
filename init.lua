@@ -9,6 +9,11 @@ require('init-style')
 require('init-keymaps')
 
 require('lsp')
+require('nv-symbols-outline')
+require('nv-lsp-trouble')
+require('nv-telescope')
+require('nv-treesitter')
+
 require('lsp.bash-lsp')
 require('lsp.clangd-lsp')
 require('lsp.css-lsp')
@@ -19,13 +24,7 @@ require('lsp.python-lsp')
 require('lsp.tsserver-lsp')
 require('lsp.lua-lsp')
 
-require('nv-symbols-outline')
-
 require('nv-compe')
-
-require('nv-telescope')
-
-require('nv-treesitter')
 
 require('nv-gitsigns')
 require('nv-colorizer')

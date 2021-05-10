@@ -58,7 +58,7 @@ local mappings = {
   c = {
     name = "+Code",
     ["f"] = "Lsp tags",
-    ["t"] = "Ctags",
+    ["T"] = "Ctags",
     ["r"] = "Lsp rename",
     ["z"] = "Fold code",
     ["="] = "Lsp format code",
@@ -111,6 +111,11 @@ local mappings = {
     ["d"] = "Change to hex mode",
     ["r"] = "Change to Text mode",
   },
+  q = {
+    name = "+Quickfix&Localist",
+    ["q"] = "Toggle Quickfix",
+    ["l"] = "Toggle Localist",
+  }
 }
 
 local wk = require("which-key")

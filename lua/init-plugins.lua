@@ -9,6 +9,7 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
   use 'simrat39/symbols-outline.nvim'
+  use 'folke/lsp-trouble.nvim'
 
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
@@ -23,7 +24,6 @@ return require('packer').startup(function(use)
   use 'hrsh7th/nvim-compe'
 
   use 'lewis6991/gitsigns.nvim'  -- requires = 'nvim-lua/plenary.nvim'
-  use 'kevinhwang91/nvim-bqf'  -- quickfix list
   use 'norcalli/nvim-colorizer.lua'
 
   use 'folke/which-key.nvim'

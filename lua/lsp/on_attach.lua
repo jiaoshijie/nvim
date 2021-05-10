@@ -10,15 +10,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<C-k>', ':Lspsaga hover_doc<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>ca', ':Lspsaga code_action<CR>', opts)
   -- buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cr', ':Lspsaga rename<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cee', ':Lspsaga show_cursor_diagnostics<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cel', ':Lspsaga show_line_diagnostics<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cep', ':Lspsaga diagnostic_jump_prev<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cen', ':Lspsaga diagnostic_jump_next<CR>', opts)
   -- buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>pa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>pr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
@@ -51,6 +44,26 @@ local on_attach = function(client, bufnr)
       augroup END
     ]], false)
   end
+  -- NOTICE: Lspsaga plugin
+  buf_set_keymap(bufnr, 'n', '<C-k>', ':Lspsaga hover_doc<CR>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>ca', ':Lspsaga code_action<CR>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>cr', ':Lspsaga rename<CR>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>cee', ':Lspsaga show_cursor_diagnostics<CR>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>cel', ':Lspsaga show_line_diagnostics<CR>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>cep', ':Lspsaga diagnostic_jump_prev<CR>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>cen', ':Lspsaga diagnostic_jump_next<CR>', opts)
+
+  -- NOTICE: lsp-trouble plugin
+  buf_set_keymap(bufnr, 'n', '<leader>cea', '<cmd>LspTroubleToggle lsp_document_diagnostics<cr>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>ceA', '<cmd>LspTroubleToggle lsp_workspace_diagnostics<cr>', opts)
+  buf_set_keymap(bufnr, 'n', 'gr', '<cmd>LspTrouble lsp_references<cr>', opts)
+
+  -- NOTICE: Telescope plugin
+  buf_set_keymap(bufnr, 'n', '<leader>cf', ':lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
+  -- buf_set_map(bufnr, 'n', '<leader>cF', ':lua require("telescope.builtin").lsp_workspace_symbols()<cr>', opts)
+
+  -- NOTICE: symbols_outline plugin
+  buf_set_keymap(bufnr, 'n', '<leader>ct', ':SymbolsOutline<cr>', opts)
 end
 
 return on_attach
