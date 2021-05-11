@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
   use 'simrat39/symbols-outline.nvim'
-  use 'folke/lsp-trouble.nvim'
+  use 'folke/trouble.nvim'
 
   -- Telescope
   use 'nvim-telescope/telescope.nvim'

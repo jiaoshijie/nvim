@@ -86,6 +86,22 @@ local mappings = {
     ["m"] = "Open My Own Notes",
     ["r"] = "Search history files",
   },
+  g = {
+    name = "+Git",
+    ["a"] = "Stage this hunk",
+    ["n"] = "Next hunk",
+    ["p"] = "Prev hunk",
+    ["s"] = "Select hunk",
+    ["P"] = "Perview hunk",
+    ["B"] = "Stage all hunk in this buffer",
+    ["b"] = "Toggle blame line",
+    ["h"] = "Toggle highlight hunk line",
+    u = {
+      name = "+Git UnStage",
+      ['a'] = "undo stage hunk",
+      ['b'] = "undo all stage hunk in this buffer",
+    }
+  },
   p = {
     name = "+Project",
     ["c"] = "Open Code dir",

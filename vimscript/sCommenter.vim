@@ -28,7 +28,7 @@ endfunction
 function! g:sCommenter#Toggle_Comment(count)
   if !exists('b:Jsj_Comment')
     echohl ErrorMsg
-    echomsg "simpleCommenter doesn't work for filetype " . &ft . " yet."
+    echo "simpleCommenter doesn't work for filetype `" . &ft . "` yet."
     echohl None
     return
   endif
