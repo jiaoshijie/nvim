@@ -162,5 +162,20 @@ nnoremap <silent> <leader>to :tabonly<cr>
 " Quickfix&localist
 "----------------------------------------------------------------------
 
-nnoremap <silent> <leader>qq :copen<cr>
-nnoremap <silent> <leader>ql :lopen<cr>
+function! Jsj_ToggleList(listname, perfix)
+  if empty(filter(getwininfo(), 'v:val.' . a:listname))
+    try
+      execute a:perfix . 'open'
+    catch /E776/
+        echohl ErrorMsg 
+        echo "Location List is Empty."
+        echohl None
+        return
+    endtry
+  else
+    execute a:perfix . 'close'
+  endif
+endfunction
+
+nnoremap <silent> <leader>qq :call Jsj_ToggleList('quickfix', 'c')<cr>
+nnoremap <silent> <leader>ql :call Jsj_ToggleList('loclist', 'l')<cr>
