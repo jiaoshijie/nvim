@@ -187,9 +187,9 @@ call s:h("StatusLine", { "fg": s:white, "bg": s:cursor_grey }) " status line of 
 call s:h("StatusLineNC", { "fg": s:comment_grey, "bg": s:cursor_grey }) " status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 call s:h("StatusLineTerm", { "fg": s:white, "bg": s:cursor_grey }) " status line of current :terminal window
 call s:h("StatusLineTermNC", { "fg": s:comment_grey }) " status line of non-current :terminal window
-call s:h("TabLine", { "fg": s:comment_grey }) " tab pages line, not active tab page label
-call s:h("TabLineFill", {}) " tab pages line, where there are no labels
-call s:h("TabLineSel", { "fg": s:white }) " tab pages line, active tab page label
+call s:h("TabLine", { "fg": s:white, "bg": s:menu_grey }) " tab pages line, not active tab page label
+call s:h("TabLineFill", { "bg": s:vertsplit }) " tab pages line, where there are no labels
+call s:h("TabLineSel", { "fg": s:yellow }) " tab pages line, active tab page label
 call s:h("Terminal", { "fg": s:white, "bg": s:black }) " terminal window (see terminal-size-color)
 call s:h("Title", { "fg": s:green }) " titles for output from ":set all", ":autocmd" etc.
 call s:h("Visual", { "fg": s:visual_black, "bg": s:visual_grey }) " Visual mode selection
