@@ -131,6 +131,9 @@ local mappings = {
     name = "+Quickfix&Localist",
     ["q"] = "Toggle Quickfix",
     ["l"] = "Toggle Localist",
+  },
+  n = {
+    name = "+treesitter"
   }
 }
 

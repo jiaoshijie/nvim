@@ -4,28 +4,19 @@ require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,
   },
-  -- incremental_selection = {
-  --   enable = true,
-  --   keymaps = {
-  --     init_selection = "gnn",
-  --     node_incremental = "grn",
-  --     scope_incremental = "grc",
-  --     node_decremental = "grm",
-  --   },
-  -- },
-  rainbow = {
+  incremental_selection = {
     enable = true,
-    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+    keymaps = {
+      init_selection = "<leader>nn",
+      node_incremental = "<leader>nn",
+      scope_incremental = "<leader>nc",
+      node_decremental = "<leader>N",
+    },
   },
-  -- indent = {
-  --   enable = false,
-  -- },
-  -- vim.api.nvim_exec([[
-  --   set foldmethod=expr
-  --   set foldexpr=nvim_treesitter#foldexpr()
-  -- ]], false)
-
   autotag = {
       enable = true,
   },
+  -- indent = {
+  --   enable = true,
+  -- },
 }

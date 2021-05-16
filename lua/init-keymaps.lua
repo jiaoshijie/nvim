@@ -1,32 +1,33 @@
 local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
 
 -- I hate escape
-map('i', '<C-j>', '<Esc>', { noremap = true, silent = true })
-map('x', '<C-j>', '<Esc>', { noremap = true, silent = true })
-map('s', '<C-j>', '<Esc>', { noremap = true, silent = true })
-map('o', '<C-j>', '<Esc>', { noremap = true, silent = true })
+map('i', '<C-j>', '<Esc>', opts)
+map('x', '<C-j>', '<Esc>', opts)
+map('s', '<C-j>', '<Esc>', opts)
+map('o', '<C-j>', '<Esc>', opts)
 
 map('n', 's', '<Nop>', { noremap = true })
 map('n', 'S', '<Nop>', { noremap = true })
 map('n', 'cc', '<Nop>', { noremap = true })
-map('n', '<Space>', '<NOP>', {noremap = true, silent = true})
+map('n', '<Space>', '<NOP>', opts)
 
 --[[
 -- F 区
 --]]
 
-map('n', '<F12>', '<C-]>', { noremap = true, silent = true })
+map('n', '<F12>', '<C-]>', opts)
 
 --[[
 -- insert mode
 --]]
 
-map('i', '<C-b>', '<Left>', { noremap = true, silent = true })
-map('i', '<C-f>', '<Right>', { noremap = true, silent = true })
+map('i', '<C-b>', '<Left>', opts)
+map('i', '<C-f>', '<Right>', opts)
 -- Recover from accidental Ctrl-U
 -- http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
-map('i', '<C-u>', '<C-g>u<C-u>', { noremap = true, silent = true })
-map('i', '<C-w>', '<C-g>u<C-w>', { noremap = true, silent = true })
+map('i', '<C-u>', '<C-g>u<C-u>', opts)
+map('i', '<C-w>', '<C-g>u<C-w>', opts)
 
 --[[
 -- command mode
@@ -43,16 +44,16 @@ map('c', '<m-f>', '<S-Right>', { noremap = true })
 -- visual mode
 --]]
 
-map('x', '<', '<gv', { noremap = true, silent = true })
-map('x', '>', '>gv', { noremap = true, silent = true })
+map('x', '<', '<gv', opts)
+map('x', '>', '>gv', opts)
 
 --[[
 -- normal mode
 --]]
 
-map('n', '<C-e>', '2<C-e>', { noremap = true, silent = true })
-map('n', '<C-y>', '2<C-y>', { noremap = true, silent = true })
-map('n', '<leader><cr>', ':nohl<cr>', { noremap = true, silent = true })
+map('n', '<C-e>', '2<C-e>', opts)
+map('n', '<C-y>', '2<C-y>', opts)
+map('n', '<leader><cr>', ':nohl<cr>', opts)
 map('n', '<leader>/', '/\\<\\><left><left>', { noremap = true })
 
 function JsjClearSE()
@@ -62,15 +63,16 @@ function JsjClearSE()
   vim.cmd([[%s/\(\n\)\+\%$//ge]])
   vim.fn.cursor(l, c)
 end
-map('n', '<leader>fc', ':lua JsjClearSE()<cr>', { noremap = true, silent = true })
+map('n', '<leader>fc', ':lua JsjClearSE()<cr>', opts)
 
-map('n', '<leader>=', "mIgg=G'ImI", { noremap = true, silent = true })
-map('n', '<leader>o', ':setlocal spell! spelllang=en_us<CR>', { noremap = true, silent = true })
-map('n', '<leader>xd', ':%!xxd<CR>', { noremap = true, silent = true })
-map('n', '<leader>xr', ':%!xxd -r<CR>', { noremap = true, silent = true })
-map('n', '<leader>eu', ':e ++enc=utf8<CR>', { noremap = true, silent = true })
-map('n', '<leader>eg', ':e ++enc=gbk<CR>', { noremap = true, silent = true })
-map('n', '<leader>cz', ':lua ToggleFold()<CR>', { noremap = true, silent = true })
+map('n', '<leader>=', "mIgg=G'ImI", opts)
+map('n', '<leader>o', ':setlocal spell! spelllang=en_us<CR>', opts)
+map('n', '<leader>xd', ':%!xxd<CR>', opts)
+map('n', '<leader>xr', ':%!xxd -r<CR>', opts)
+map('n', '<leader>eu', ':e ++enc=utf8<CR>', opts)
+map('n', '<leader>eg', ':e ++enc=gbk<CR>', opts)
+map('n', '<leader>cz', ':lua ToggleFold()<CR>', opts)
+map('n', 'Q', 'q:', opts)
 
 FoldMethod = false
 function ToggleFold()
@@ -83,7 +85,7 @@ function ToggleFold()
   end
 end
 
-map('n', '<leader>tt', ':lua Change_theme_alpha()<cr>', { noremap = true, silent = true })
+map('n', '<leader>tt', ':lua Change_theme_alpha()<cr>', opts)
 JSJ_change_theme_alpha = false
 function Change_theme_alpha()
   if not JSJ_change_theme_alpha then
@@ -100,32 +102,32 @@ end
 --[[
 -- window
 --]]
-map('n', '<leader>w/', '<C-w>v', { noremap = true, silent = true })
-map('n', '<leader>w-', '<C-w>s', { noremap = true, silent = true })
-map('n', '<leader>wo', '<C-w>o', { noremap = true, silent = true })
-map('n', '<leader>wd', '<C-w>c', { noremap = true, silent = true })
-map('n', '<Down>', '<C-w>5-', { noremap = true, silent = true })
-map('n', '<Up>', '<C-w>5+', { noremap = true, silent = true })
-map('n', '<Right>', '<C-w>5>', { noremap = true, silent = true })
-map('n', '<Left>', '<C-w>5<', { noremap = true, silent = true })
-map('n', '<m-H>', '<C-w>h', { noremap = true, silent = true })
-map('n', '<m-L>', '<C-w>l', { noremap = true, silent = true })
-map('n', '<m-J>', '<C-w>j', { noremap = true, silent = true })
-map('n', '<m-K>', '<C-w>k', { noremap = true, silent = true })
-map('t', '<m-H>', '<C-\\><C-n><C-w>h', { noremap = true, silent = true })
-map('t', '<m-J>', '<C-\\><C-n><C-w>j', { noremap = true, silent = true })
-map('t', '<m-K>', '<C-\\><C-n><C-w>k', { noremap = true, silent = true })
-map('t', '<m-L>', '<C-\\><C-n><C-w>l', { noremap = true, silent = true })
-map('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
+map('n', '<leader>w/', '<C-w>v', opts)
+map('n', '<leader>w-', '<C-w>s', opts)
+map('n', '<leader>wo', '<C-w>o', opts)
+map('n', '<leader>wd', '<C-w>c', opts)
+map('n', '<Down>', '<C-w>5-', opts)
+map('n', '<Up>', '<C-w>5+', opts)
+map('n', '<Right>', '<C-w>5>', opts)
+map('n', '<Left>', '<C-w>5<', opts)
+map('n', '<m-H>', '<C-w>h', opts)
+map('n', '<m-L>', '<C-w>l', opts)
+map('n', '<m-J>', '<C-w>j', opts)
+map('n', '<m-K>', '<C-w>k', opts)
+map('t', '<m-H>', '<C-\\><C-n><C-w>h', opts)
+map('t', '<m-J>', '<C-\\><C-n><C-w>j', opts)
+map('t', '<m-K>', '<C-\\><C-n><C-w>k', opts)
+map('t', '<m-L>', '<C-\\><C-n><C-w>l', opts)
+map('t', '<Esc>', '<C-\\><C-n>', opts)
 
 --[[
 -- buffer
 --]]
-map('n', '<leader>bd', ':bdelete %<cr>', { noremap = true, silent = true })
+map('n', '<leader>bd', ':bdelete %<cr>', opts)
 
 
 --[[
 -- tab
 --]]
-map('n', '<leader>td', ':tabclose<cr>', { noremap = true, silent = true })
-map('n', '<leader>to', ':tabonly<cr>', { noremap = true, silent = true })
+map('n', '<leader>td', ':tabclose<cr>', opts)
+map('n', '<leader>to', ':tabonly<cr>', opts)
