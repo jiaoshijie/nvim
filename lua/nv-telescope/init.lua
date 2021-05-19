@@ -116,7 +116,7 @@ map('n', '<leader>s', ':lua require("telescope.builtin").live_grep()<cr>', opts)
 map('n', '<leader>S', ':lua require("telescope.builtin").current_buffer_fuzzy_find()<cr>', {noremap = true, silent = true})
 
 map('n', '<leader>bb', ':lua require("telescope.builtin").buffers()<cr>', opts)
-map('n', '<leader>cT', ':lua require("telescope.builtin").tags()<cr>', opts)
+map('n', '<leader>ct', ':lua require("telescope.builtin").tags()<cr>', opts)
 
 map('n', '<leader>fm', ':lua Jsj_open_Notes()<cr>', opts)
 map('n', '<leader>pc', ':lua Jsj_open_Code()<cr>', opts)

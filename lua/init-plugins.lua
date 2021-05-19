@@ -8,7 +8,6 @@ return require('packer').startup(function(use)
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
-  use 'simrat39/symbols-outline.nvim'
   use 'folke/trouble.nvim'
 
   -- Telescope
@@ -17,7 +16,6 @@ return require('packer').startup(function(use)
 
   -- Treesitter
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-  use "windwp/nvim-ts-autotag"
 
   -- Autocomplete
   use 'hrsh7th/nvim-compe'

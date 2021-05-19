@@ -58,7 +58,7 @@ local mappings = {
   c = {
     name = "+Code",
     ["f"] = "Lsp tags",
-    ["T"] = "Ctags",
+    ["t"] = "Ctags",
     ["r"] = "Lsp rename",
     ["z"] = "Fold code",
     ["="] = "Lsp format code",

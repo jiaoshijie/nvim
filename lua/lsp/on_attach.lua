@@ -8,7 +8,7 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  -- buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   -- buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -62,8 +62,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap(bufnr, 'n', '<leader>cf', ':lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
   -- buf_set_map(bufnr, 'n', '<leader>cF', ':lua require("telescope.builtin").lsp_workspace_symbols()<cr>', opts)
 
-  -- NOTICE: symbols_outline plugin
-  buf_set_keymap(bufnr, 'n', '<leader>ct', ':SymbolsOutline<cr>', opts)
 end
 
 return on_attach

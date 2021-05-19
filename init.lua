@@ -9,7 +9,6 @@ require('init-style')
 require('init-keymaps')
 
 require('lsp')
-require('nv-symbols-outline')
 require('nv-lsp-trouble')
 require('nv-telescope')
 require('nv-treesitter')

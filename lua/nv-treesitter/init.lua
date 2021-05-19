@@ -13,9 +13,6 @@ require('nvim-treesitter.configs').setup {
       node_decremental = "<leader>N",
     },
   },
-  autotag = {
-      enable = true,
-  },
   -- indent = {
   --   enable = true,
   -- },
