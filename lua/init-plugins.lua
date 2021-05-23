@@ -9,6 +9,7 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
   use 'folke/trouble.nvim'
+  use 'folke/lua-dev.nvim'
 
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
