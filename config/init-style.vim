@@ -54,7 +54,6 @@ let &t_ut='' " 修复vim背景显示异常在kitty下
 
 set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
 set t_8b=[48;2;%lu;%lu;%lum        " set background color
-set t_Co=256
 colorscheme onedark
 set termguicolors
 
