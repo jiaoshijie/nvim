@@ -12,11 +12,9 @@ o.listchars = "trail:␣,tab:•,extends:»,precedes:«,eol:↲"
 o.splitright = true
 o.splitbelow = true
 
-o.t_Co = "256" -- Support 256 colors
 o.termguicolors = true
 
 o.background = "dark"
-vim.g.onebuddy_disable_italics = false
 require('colorbuddy').colorscheme('onedark')
 
 vim.api.nvim_exec([[
