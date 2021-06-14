@@ -1,7 +1,7 @@
 local map = vim.api.nvim_set_keymap
 
 local actions = require('telescope.actions')
--- local trouble = require("trouble.providers.telescope")
+local trouble = require("trouble.providers.telescope")
 
 require('telescope').setup{
   defaults = {
@@ -54,10 +54,10 @@ require('telescope').setup{
       i = {
         -- ["<C-x>"] = false,
         ["<esc>"] = actions.close,
-        -- ["<c-t>"] = trouble.open_with_trouble,
+        ["<c-t>"] = trouble.open_with_trouble,
       },
       n = {
-        -- ["<c-t>"] = trouble.open_with_trouble,
+        ["<c-t>"] = trouble.open_with_trouble,
       },
     },
   },
@@ -73,6 +73,7 @@ require('telescope').load_extension('fzy_native')
 
 function Jsj_search_all_files()
   require('telescope.builtin').find_files {
+    prompt_prefix = '🔍 ',
     find_command = { 'rg', '--no-ignore', '--files' },
   }
 end
@@ -120,3 +121,4 @@ map('n', '<leader>ct', ':lua require("telescope.builtin").tags()<cr>', opts)
 
 map('n', '<leader>fm', ':lua Jsj_open_Notes()<cr>', opts)
 map('n', '<leader>pc', ':lua Jsj_open_Code()<cr>', opts)
+map('n', '<leader>F', ':Telescope find_files cwd=', { noremap = true } )

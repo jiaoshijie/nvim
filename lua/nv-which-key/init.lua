@@ -86,6 +86,7 @@ local mappings = {
     ["m"] = "Open My Own Notes",
     ["r"] = "Search history files",
   },
+  ["F"] = "Find files with telescope",
   g = {
     name = "+Git",
     ["a"] = "Stage this hunk",
@@ -109,6 +110,7 @@ local mappings = {
     ["r"] = "Lsp remove workspace folder",
     ["l"] = "Lsp print workspace folder",
   },
+  ["P"] = "Preview image under the cursor",
   t = {
     name = "+Tab&Theme",
     ["o"] = "Close other tabs",
