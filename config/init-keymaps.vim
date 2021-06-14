@@ -62,22 +62,13 @@ nnoremap <silent> <leader>fm :e ~/Nutstore\ Files/Nutstore/MARKDOWN_NOTE/index.m
 nnoremap <silent> <leader>= mIgg=G'ImI
 nnoremap <silent> Q q:
 
-function! JsjClearSE()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//ge
-    %s/\(\n\)\+\%$//ge
-    call cursor(l, c)
-endfunction
-
-nnoremap <silent> <leader>fc :call JsjClearSE()<cr>
-
+nnoremap <silent> <leader>fc :call utils#JsjClearSE()<cr>
 
 " 打开语法检查
 nnoremap <silent> <leader>o :setlocal spell! spelllang=en_us<CR>
 
 " 透明背景和取消, 需要终端可以透明
-nnoremap <silent> <leader>tt :call Change_theme_alpha()<CR>
+nnoremap <silent> <leader>tt :call utils#Change_theme_alpha()<CR>
 
 " 文本和16进制模式切换
 nnoremap <silent> <leader>xd :%!xxd<CR>
@@ -88,17 +79,7 @@ nnoremap <silent> <leader>eu :e ++enc=utf8<CR>
 nnoremap <silent> <leader>eg :e ++enc=gbk<CR>
 
 " 代码折叠自定义快捷键 <leader>zz for more ":h za zc zo zA zC zO"
-let g:FoldMethod = 0
-map <leader>cz :call ToggleFold()<cr>
-fun! ToggleFold()
-    if g:FoldMethod == 0
-        exe "normal! zM"
-        let g:FoldMethod = 1
-    else
-        exe "normal! zR"
-        let g:FoldMethod = 0
-    endif
-endfun
+map <leader>cz :call utils#ToggleFold()<cr>
 
 " For more details using ":h cs"
 " find this C symbol
@@ -114,6 +95,9 @@ nnoremap gD <C-]>
 nnoremap <C-p> :grep <C-r><C-w><Cr>
 nnoremap <leader>s :grep 
 nnoremap <leader>S :lvimgrep  %<Left><Left>
+
+nnoremap <silent> gc :<C-u>call sCommenter#Toggle_Comment(v:count1)<cr>
+vnoremap <silent> gc :<C-u>call sCommenter#Toggle_Comment(line("'>") - line("'<") + 1)<cr>
 
 "----------------------------------------------------------------------
 " window(窗口) 相关
@@ -163,20 +147,5 @@ nnoremap <silent> <leader>to :tabonly<cr>
 " Quickfix&localist
 "----------------------------------------------------------------------
 
-function! Jsj_ToggleList(listname, perfix)
-  if empty(filter(getwininfo(), 'v:val.' . a:listname))
-    try
-      execute a:perfix . 'open'
-    catch /E776/
-        echohl ErrorMsg 
-        echo "Location List is Empty."
-        echohl None
-        return
-    endtry
-  else
-    execute a:perfix . 'close'
-  endif
-endfunction
-
-nnoremap <silent> <leader>qq :call Jsj_ToggleList('quickfix', 'c')<cr>
-nnoremap <silent> <leader>ql :call Jsj_ToggleList('loclist', 'l')<cr>
+nnoremap <silent> <leader>qq :call utils#Jsj_ToggleList('quickfix', 'c')<cr>
+nnoremap <silent> <leader>ql :call utils#Jsj_ToggleList('loclist', 'l')<cr>

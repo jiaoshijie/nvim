@@ -150,16 +150,10 @@ set grepformat=%f:%l:%c:%m
 " 自动切换fcitx
 "----------------------------------------------------------------------
 
-function! Fcitx2en()
-   if system("fcitx5-remote") == 2
-      let l:a = system("fcitx5-remote -c")
-   endif
-endfunction
-
 if has('unix')
   augroup jsj_Fcitx_toggle
     autocmd!
-    autocmd InsertLeave * call Fcitx2en()
+    autocmd InsertLeave * call utils#Fcitx2en()
   augroup END
 endif
 

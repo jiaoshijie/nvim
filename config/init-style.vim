@@ -29,21 +29,6 @@ set splitright
 set splitbelow
 
 "----------------------------------------------------------------------
-" 透明背景和取消
-"----------------------------------------------------------------------
-
-function! Change_theme_alpha()
-  if g:jsj_change_theme_alpha == 0
-    let g:jsj_change_theme_alpha = 1
-    highlight Normal guibg=NONE ctermbg=None
-  else
-    let g:jsj_change_theme_alpha = 0
-    highlight Normal guibg=#282C34 ctermbg=235
-  endif
-  hi! link SignColumn LineNr
-endfunction
-
-"----------------------------------------------------------------------
 " 设置颜色主题, 要在init-plugs.vim之后
 "----------------------------------------------------------------------
 
