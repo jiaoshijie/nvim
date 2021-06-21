@@ -29,5 +29,4 @@ return require('packer').startup(function(use)
 
   -- Color
   use 'tjdevries/colorbuddy.nvim'
-  use 'glepnir/galaxyline.nvim'
 end)

@@ -8,6 +8,7 @@ vim.cmd('set nomodeline')
 o.modelines = 0
 
 o.mouse = "a"
+o.title = true
 
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')

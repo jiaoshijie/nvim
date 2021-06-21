@@ -29,5 +29,5 @@ require('nv-compe')
 
 require('nv-gitsigns')
 require('nv-colorizer')
-require('nv-galaxyline')
+require('nv-statusline')
 require('nv-which-key')
