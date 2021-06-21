@@ -48,3 +48,22 @@ function! utils#Fcitx2en()
       let l:a = system("fcitx5-remote -c")
    endif
 endfunction
+
+function! utils#ChangeStatuslineColor()
+  if (mode() =~# '\v(v|V|)')
+    exe 'hi! User1 ctermbg=171 guibg=#D75FFF'
+    return g:currentmode[mode()]
+  elseif (mode() =~# 'i')
+    exe 'hi! User1 ctermbg=75 guibg=#5FAFFF'
+    return g:currentmode[mode()]
+  elseif (mode() =~# 'R')
+    exe 'hi! User1 ctermbg=160 guibg=#D70000'
+    return g:currentmode[mode()]
+  elseif (mode() =~# '\v(c|t)')
+    exe 'hi! User1 ctermbg=155 guibg=#AFFF5F'
+    return g:currentmode[mode()]
+  else
+    exe 'hi! User1 ctermbg=155 guibg=#AFFF5F'
+  endif
+  return "NORMAL"
+endfunction

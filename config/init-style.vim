@@ -50,6 +50,7 @@ let &t_EI.="\e[1 q" "EI(end insert/replace)
 " https://gabri.me/blog/diy-vim-statusline
 " https://shapeshed.com/vim-statuslines/
 " https://jdhao.github.io/2019/11/03/vim_custom_statusline/
+set noshowmode
 let g:currentmode={
        \ 'v'      : 'VISUAL',
        \ 'V'      : 'V·Line',
@@ -57,26 +58,8 @@ let g:currentmode={
        \ 'i'      : 'INSERT',
        \ 'R'      : 'REPLACE',
        \ 't'      : 'TERMINAL',
+       \ 'c'      : 'COMMAND',
        \}
-
-function! ChangeStatuslineColor()
-  if (mode() =~# '\v(v|V|)')
-    exe 'hi! User1 ctermbg=171 guibg=#D75FFF'
-    return g:currentmode[mode()]
-  elseif (mode() =~# 'i')
-    exe 'hi! User1 ctermbg=75 guibg=#5FAFFF'
-    return g:currentmode[mode()]
-  elseif (mode() =~# 'R')
-    exe 'hi! User1 ctermbg=160 guibg=#D70000'
-    return g:currentmode[mode()]
-  elseif (mode() =~# 't')
-    exe 'hi! User1 ctermbg=155  guibg=#AFFF5F'
-    return g:currentmode[mode()]
-  else
-    exe 'hi! User1 ctermbg=155  guibg=#AFFF5F'
-  endif
-  return "NORMAL"
-endfunction
 
 hi! User1 cterm=bold ctermfg=232 ctermbg=155 gui=bold guifg=#080808 guibg=#AFFF5F
 hi! User2 cterm=italic ctermfg=208 ctermbg=236 gui=italic guifg=#FF8800 guibg=#2C323C
@@ -87,7 +70,7 @@ hi! User5 cterm=bold ctermfg=145 ctermbg=236 gui=bold guifg=#AFAFAF guibg=#2C323
 set statusline=%(%<%f\ %*%3*%m%*%h%r%)\ %=\ %(%v:%l/%L%)
 augroup jsj_Statusline
   autocmd!
-  autocmd BufEnter,WinEnter * :setlocal statusline=%(%1*\ %{ChangeStatuslineColor()}
+  autocmd BufEnter,WinEnter * :setlocal statusline=%(%1*\ %{utils#ChangeStatuslineColor()}
         \\ %*%2*\ %<%t\ %*%3*%m%h%r%*%)\ %=\ %(%4*%Y%*%5*\ %{&fenc?&fenc:&enc}\[%{&ff}\]
         \\ %*%1*\ %p%%\ %v:%l/%L\ %*%)
   autocmd WinLeave * :setlocal statusline=%(%<%f\ %*%3*%m%*%h%r%)\ %=\ %(%v:%l/%L%)
