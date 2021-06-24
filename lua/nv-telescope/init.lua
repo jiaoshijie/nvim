@@ -121,4 +121,5 @@ map('n', '<leader>ct', ':lua require("telescope.builtin").tags()<cr>', opts)
 
 map('n', '<leader>fm', ':lua Jsj_open_Notes()<cr>', opts)
 map('n', '<leader>pc', ':lua Jsj_open_Code()<cr>', opts)
-map('n', '<leader>F', ':Telescope find_files cwd=', { noremap = true } )
+vim.cmd([[command! -nargs=1 -complete=file TF :Telescope find_files cwd=<args>]])
+-- map('n', '<leader>F', ':Telescope find_files cwd=', { noremap = true } )
