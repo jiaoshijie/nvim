@@ -60,6 +60,8 @@ nnoremap <silent> <leader><cr> :nohl<cr>
 nnoremap <leader>/ /\<\><left><left>
 nnoremap <silent> <leader>fm :e ~/Nutstore\ Files/Nutstore/MARKDOWN_NOTE/index.md<cr>
 nnoremap <silent> <leader>= mIgg=G'ImI
+nnoremap <silent> <leader><Space> @:
+xnoremap <silent> <leader><Space> @:
 nnoremap <silent> Q q:
 
 nnoremap <silent> <leader>fc :call utils#JsjClearSE()<cr>
