@@ -66,6 +66,8 @@ end
 map('n', '<leader>fc', ':lua JsjClearSE()<cr>', opts)
 
 map('n', '<leader>=', "mIgg=G'ImI", opts)
+map('n', '<leader><Space>', "@:", opts)
+map('v', '<leader><Space>', "@:", opts)
 map('n', '<leader>o', ':setlocal spell! spelllang=en_us<CR>', opts)
 map('n', '<leader>xd', ':%!xxd<CR>', opts)
 map('n', '<leader>xr', ':%!xxd -r<CR>', opts)
