@@ -1,5 +1,5 @@
--- pip install --user python-language-server
-require('lspconfig').pyls.setup{
+-- pip install --user python-lsp-server
+require('lspconfig').pylsp.setup{
   on_attach = require'lsp.on_attach',
   autostart = true,
 }
