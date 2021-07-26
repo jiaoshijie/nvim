@@ -71,7 +71,7 @@ set statusline=%(%<%f\ %*%3*%m%*%h%r%)\ %=\ %(%v:%l/%L%)
 augroup jsj_Statusline
   autocmd!
   autocmd BufEnter,WinEnter * :setlocal statusline=%(%1*\ %{utils#ChangeStatuslineColor()}
-        \\ %*%2*\ %<%t\ %*%3*%m%h%r%*%)\ %=\ %(%4*%Y%*%5*\ %{&fenc?&fenc:&enc}\[%{&ff}\]
+        \\ %*%2*\ %<%t\ %*%3*%m%h%r%*%)\ %=\ %(%4*%{&ft}%*%5*\ %{&fenc?&fenc:&enc}\[%{&ff}\]
         \\ %*%1*\ %p%%\ %v:%l/%L\ %*%)
   autocmd WinLeave * :setlocal statusline=%(%<%f\ %*%3*%m%*%h%r%)\ %=\ %(%v:%l/%L%)
 augroup end

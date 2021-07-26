@@ -5,6 +5,7 @@ let s:Jsj_Comments = {
       \ 'lua': { 'prefix': '-- ', 'suffix': '' },
       \ 'c': { 'prefix': '// ', 'suffix': '' },
       \ 'cpp': { 'prefix': '// ', 'suffix': '' },
+      \ 'go': { 'prefix': '// ', 'suffix': '' },
       \ 'html': { 'prefix': '<!-- ', 'suffix': ' -->' },
       \ 'css': { 'prefix': '/* ', 'suffix': ' */' },
       \ 'javascript': { 'prefix': '// ', 'suffix': '' },
