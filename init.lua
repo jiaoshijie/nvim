@@ -24,6 +24,7 @@ require('lsp.python-lsp')
 require('lsp.tsserver-lsp')
 require('lsp.lua-lsp')
 require('lsp.vim-lsp')
+require('lsp.go-lsp')
 
 require('nv-compe')
 

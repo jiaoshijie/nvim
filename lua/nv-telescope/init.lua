@@ -15,7 +15,7 @@ require('telescope').setup{
       width = 0.95,
       height = 0.85,
       -- preview_cutoff = 120,
-      prompt_position = "top",
+      prompt_position = "bottom",
 
       horizontal = {
         -- width_padding = 0.1,

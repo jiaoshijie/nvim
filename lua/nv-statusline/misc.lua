@@ -72,7 +72,8 @@ end
 _M.get_filetype = function()
   return {
     state = is_active() and 'filetype' or 'inactive',
-    text = is_active() and ' %Y ' or '',
+    -- text = is_active() and ' %Y ' or '',
+    text = is_active() and ' %{&ft} ' or '',
   }
 end
 
