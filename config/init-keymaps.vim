@@ -43,7 +43,7 @@ xnoremap >  >gv
 " "F" 区功能键
 "----------------------------------------------------------------------
 
-nnoremap <silent> <F2> :edit ~/.vim/vimrc<CR>
+nnoremap <silent> <F2> :call utils#Jsj_openFile('~/.vim', 'vimrc')<CR>
 
 " ctags: 查看函数定义的位置
 nnoremap <F12> g]
@@ -58,7 +58,8 @@ nnoremap <C-y> 2<C-y>
 
 nnoremap <silent> <leader><cr> :nohl<cr>
 nnoremap <leader>/ /\<\><left><left>
-nnoremap <silent> <leader>fm :e ~/Nutstore\ Files/Nutstore/MARKDOWN_NOTE/index.md<cr>
+nnoremap <silent> <leader>fm :call utils#Jsj_openFile(
+      \ '~/Nutstore\ Files/Nutstore/MARKDOWN_NOTE', 'index.md')<cr>
 nnoremap <silent> <leader>= mIgg=G'ImI
 nnoremap <silent> <leader><Space> @:
 xnoremap <silent> <leader><Space> @:

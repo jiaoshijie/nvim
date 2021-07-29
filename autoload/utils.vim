@@ -67,3 +67,11 @@ function! utils#ChangeStatuslineColor()
   endif
   return "NORMAL"
 endfunction
+
+function! utils#Jsj_openFile(dir, targetFile)
+  if exists('g:loaded_fzf')
+    execute 'FZF ' . a:dir
+  else
+    execute 'edit ' . a:dir . '/' . a:targetFile
+  endif
+endfunction
