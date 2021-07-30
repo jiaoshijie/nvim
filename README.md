@@ -14,13 +14,18 @@
 ## plugins
 
 - nvim-lspconfig
+  - `sudo pacman -S bash-language-server lua-language-server clang gopls texlab pyright`
+  - `npm install -g typescript typescript-language-server vim-language-server vscode-langservers-extracted(html css json)`
+  - ~~pip install --user python-lsp-server~~
 - lspsaga
 - trouble
 - lua-dev
 - telescope
 - nvim-treesitter
+  - `sudo pcaman -S tree-sitter`
 - nvim-compe
 - gitsigns
 - nvim-colorizer
 - which-key
 - glow
+  - `paru -S glow-bin`

@@ -1,6 +1,7 @@
 -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
-local sumneko_root_path = vim.fn.stdpath('cache') .. '/lua-language-server'
-local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
+-- use `sudo pacman -S lua-language-server`
+local sumneko_root_path = '/usr/share/lua-language-server'
+local sumneko_binary = '/usr/bin/lua-language-server'
 
 local luadev = require'lua-dev'.setup{
   lspconfig = {
