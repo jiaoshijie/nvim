@@ -75,6 +75,10 @@ map('n', '<leader>eu', ':e ++enc=utf8<CR>', opts)
 map('n', '<leader>eg', ':e ++enc=gbk<CR>', opts)
 map('n', '<leader>cz', ':lua ToggleFold()<CR>', opts)
 map('n', 'Q', 'q:', opts)
+map('n', 'Y', 'y$', opts)
+map('n', 'n', 'nzzzv', opts)
+map('n', 'N', 'Nzzzv', opts)
+map('n', 'J', 'mJJ`JmJ', opts)
 
 FoldMethod = false
 function ToggleFold()
@@ -133,3 +137,19 @@ map('n', '<leader>bd', ':bdelete %<cr>', opts)
 --]]
 map('n', '<leader>td', ':tabclose<cr>', opts)
 map('n', '<leader>to', ':tabonly<cr>', opts)
+
+
+--[[
+--  utils
+--]]
+-- move text
+map('n', '<leader>j', ':m .+1<cr>==', opts)
+map('n', '<leader>k', ':m .-2<cr>==', opts)
+map('v', 'J', ":m '>+1<cr>gv=gv", opts)
+map('v', 'K', ":m '<-2<cr>gv=gv", opts)
+
+-- undo break points
+map('i', ',', ',<c-g>u', opts)
+map('i', '.', '.<c-g>u', opts)
+map('i', '!', '!<c-g>u', opts)
+map('i', '?', '?<c-g>u', opts)
