@@ -19,6 +19,10 @@ inoremap <C-f> <Right>
 " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
 
 "----------------------------------------------------------------------
 " Command mode
@@ -64,6 +68,10 @@ nnoremap <silent> <leader>= mIgg=G'ImI
 nnoremap <silent> <leader><Space> @:
 xnoremap <silent> <leader><Space> @:
 nnoremap <silent> Q q:
+nnoremap <silent> Y y$
+nnoremap <silent> n nzzzv
+nnoremap <silent> N Nzzzv
+nnoremap <silent> J mJJ`JmJ
 
 nnoremap <silent> <leader>fc :call utils#JsjClearSE()<cr>
 
@@ -152,3 +160,13 @@ nnoremap <silent> <leader>to :tabonly<cr>
 
 nnoremap <silent> <leader>qq :call utils#Jsj_ToggleList('quickfix', 'c')<cr>
 nnoremap <silent> <leader>ql :call utils#Jsj_ToggleList('loclist', 'l')<cr>
+
+
+"----------------------------------------------------------------------
+" utils
+"----------------------------------------------------------------------
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+nnoremap <leader>j :m .+1<cr>==
+nnoremap <leader>k :m .-2<cr>==
