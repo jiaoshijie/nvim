@@ -10,7 +10,6 @@ require('init-keymaps')
 require('mdSnippets')
 
 require('lsp')
-require('nv-lsp-trouble')
 require('nv-telescope')
 require('nv-treesitter')
 

@@ -6,10 +6,10 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
-  buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  -- buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   -- buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  -- buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   -- buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   -- buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
@@ -53,14 +53,15 @@ local on_attach = function(client, bufnr)
   buf_set_keymap(bufnr, 'n', '<leader>cep', ':Lspsaga diagnostic_jump_prev<CR>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>cen', ':Lspsaga diagnostic_jump_next<CR>', opts)
 
-  -- NOTICE: lsp-trouble plugin
-  buf_set_keymap(bufnr, 'n', '<leader>cea', '<cmd>LspTroubleToggle lsp_document_diagnostics<cr>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>ceA', '<cmd>LspTroubleToggle lsp_workspace_diagnostics<cr>', opts)
-  buf_set_keymap(bufnr, 'n', 'gr', '<cmd>LspTrouble lsp_references<cr>', opts)
-
   -- NOTICE: Telescope plugin
   buf_set_keymap(bufnr, 'n', '<leader>cf', ':lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
   -- buf_set_map(bufnr, 'n', '<leader>cF', ':lua require("telescope.builtin").lsp_workspace_symbols()<cr>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>cea', ':Telescope lsp_document_diagnostics<cr>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>ceA', ':Telescope lsp_workspace_diagnostics<cr>', opts)
+  buf_set_keymap(bufnr, 'n', 'gr', ':Telescope lsp_references<cr>', opts)
+  buf_set_keymap(bufnr, 'n', 'gd', ':Telescope lsp_definitions<cr>', opts)
+  buf_set_keymap(bufnr, 'n', 'gi', ':Telescope lsp_implementations<cr>', opts)
+
 
 end
 

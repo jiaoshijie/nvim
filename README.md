@@ -18,7 +18,6 @@
   - `npm install -g typescript typescript-language-server vim-language-server vscode-langservers-extracted(html css json)`
   - ~~pip install --user python-lsp-server~~
 - lspsaga
-- trouble
 - lua-dev
 - telescope
 - nvim-treesitter

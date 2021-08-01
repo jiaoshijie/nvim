@@ -61,7 +61,7 @@ function JsjClearSE()
   local c = vim.fn.col('.')
   vim.cmd([[%s/\s\+$//ge]])
   vim.cmd([[%s/\(\n\)\+\%$//ge]])
-  vim.fn.cursor(l, c)
+  vim.fn.cursor({l, c})
 end
 map('n', '<leader>fc', ':lua JsjClearSE()<cr>', opts)
 
@@ -153,3 +153,17 @@ map('i', ',', ',<c-g>u', opts)
 map('i', '.', '.<c-g>u', opts)
 map('i', '!', '!<c-g>u', opts)
 map('i', '?', '?<c-g>u', opts)
+
+-- quickfix list
+function Jsj_ToggleList(listname, perfix)
+  if #vim.fn.filter(vim.fn.getwininfo(), 'v:val.' .. listname) == 0 then
+    xpcall(vim.cmd,
+          function() vim.api.nvim_err_writeln("Location List is Empty.") end,
+          perfix .. 'open')
+  else
+    vim.cmd(perfix .. 'close')
+  end
+end
+
+map('n', '<leader>qq', ':lua Jsj_ToggleList("quickfix", "c")<cr>', opts)
+map('n', '<leader>ql', ':lua Jsj_ToggleList("loclist", "l")<cr>', opts)
