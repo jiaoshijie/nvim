@@ -14,8 +14,16 @@ o.splitbelow = true
 
 o.termguicolors = true
 
-o.background = "dark"
-require('colorbuddy').colorscheme('onedark')
+-- o.background = "dark"
+require('colorbuddy').colorscheme('theme/solarized', false, { disable_defaults = false })
+vim.cmd[[command! -nargs=* -complete=color Colorbuddy :lua Jsj_colorbuddy(<f-args>)]]
+function Jsj_colorbuddy(name, bg)
+  if bg == nil then
+    bg = 'dark'
+  end
+  vim.api.nvim_command(string.format("set background=%s", bg))
+  vim.api.nvim_command(string.format("luafile %s", vim.fn.expand('$HOME') .. '/.config/nvim/lua/theme/' .. name .. '.lua'))
+end
 
 vim.api.nvim_exec([[
 augroup Jsj_highlight_yank
