@@ -23,6 +23,9 @@ function Jsj_colorbuddy(name, bg)
   end
   vim.api.nvim_command(string.format("set background=%s", bg))
   vim.api.nvim_command(string.format("luafile %s", vim.fn.expand('$HOME') .. '/.config/nvim/lua/theme/' .. name .. '.lua'))
+  if JSJ_change_theme_alpha then  -- lua/init-style.lua
+    vim.api.nvim_command('highlight Normal guibg=NONE ctermbg=None')
+  end
 end
 
 vim.api.nvim_exec([[
