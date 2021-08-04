@@ -52,6 +52,9 @@ require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     config = require('nv-treesitter'),
     run = ':TSUpdate',
+    requires = {
+      { 'nvim-treesitter/playground' },
+    },
   }
   -- }}}
 
