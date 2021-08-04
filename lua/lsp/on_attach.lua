@@ -60,7 +60,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap(bufnr, 'n', '<leader>ceA', ':Telescope lsp_workspace_diagnostics<cr>', opts)
   buf_set_keymap(bufnr, 'n', 'gr', ':Telescope lsp_references<cr>', opts)
   buf_set_keymap(bufnr, 'n', 'gd', ':Telescope lsp_definitions<cr>', opts)
-  buf_set_keymap(bufnr, 'n', 'gi', ':Telescope lsp_implementations<cr>', opts)
+  buf_set_keymap(bufnr, 'n', 'gI', ':Telescope lsp_implementations<cr>', opts)
 
 
 end

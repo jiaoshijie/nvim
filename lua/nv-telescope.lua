@@ -80,6 +80,13 @@ function Jsj_search_all_files()
   require('telescope.builtin').find_files {
     prompt_prefix = '🔍 ',
     find_command = { 'rg', '--no-ignore', '--files' },
+    file_ignore_patterns = {
+      "%.bmp", "%.png", "%.jpg", "%.gif", "%.tga", "%.pcx", "%.ppm", "%.img", "%.iso",
+      "%.zip", "%.7z", "%.rar", "%.gz", "%.tar", "%.gzip", "%.bz2", "%.tgz", "%.xz",
+      "%.wav", "%.mp3", "%.ogg", "%.pcm",
+      "%.chm", "%.epub", "%.pdf", "%.mobi", "%.ttf",
+      "%.mp4", "%.avi", "%.flv", "%.mov", "%.mkv", "%.swf", "%.swc"
+    },
   }
 end
 
@@ -104,6 +111,9 @@ function Jsj_open_Notes()
     prompt_title = "~ Notes ~",
     prompt_prefix = "Notes> ",
     cwd = '~/Nutstore Files/Nutstore/MARKDOWN_NOTE',
+    file_ignore_patterns = {
+      "%.bmp", "%.png", "%.jpg", "%.gif", "%.tga", "%.pcx", "%.ppm", "%.img", "%.iso",
+    },
   }
 end
 
@@ -113,6 +123,7 @@ map('n', '<F2>', ':lua Jsj_neovim_config()<cr>', opts)
 map('n', '<leader>ff', ':lua Jsj_search_all_files()<cr>', opts)
 map('n', '<leader>fr', ':lua require("telescope.builtin").oldfiles()<cr>', opts)
 map('n', '<leader>fg', ':lua require("telescope.builtin").git_files()<cr>', opts)
+map('n', '<leader>fb', ':lua require("telescope.builtin").file_browser()<cr>', opts)
 
 map('n', '<C-p>', ':lua require("telescope.builtin").grep_string()<cr>', opts)
 map('n', '<leader>s', ':lua require("telescope.builtin").live_grep()<cr>', opts)

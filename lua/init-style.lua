@@ -16,6 +16,8 @@ o.termguicolors = true
 
 -- o.background = "dark"
 require('colorbuddy').colorscheme('theme/solarized', false, { disable_defaults = false })
+require('nv-statusline')
+
 vim.cmd[[command! -nargs=* -complete=color Colorbuddy :lua Jsj_colorbuddy(<f-args>)]]
 function Jsj_colorbuddy(name, bg)
   if bg == nil then
@@ -25,6 +27,7 @@ function Jsj_colorbuddy(name, bg)
   vim.api.nvim_command(string.format("luafile %s", vim.fn.expand('$HOME') .. '/.config/nvim/lua/theme/' .. name .. '.lua'))
   if JSJ_change_theme_alpha then  -- lua/init-style.lua
     vim.api.nvim_command('highlight Normal guibg=NONE ctermbg=None')
+    vim.api.nvim_command('hi! link SignColumn LineNr')
   end
 end
 

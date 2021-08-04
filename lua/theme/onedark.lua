@@ -19,12 +19,12 @@ Color.new('purple', '#C678DD')
 Color.new('cyan', '#56B6C2')
 Color.new('white', '#ABB2BF')
 Color.new('black', '#282C34')
-Color.new('comment_grey', '#5C6370')
-Color.new('gutter_fg_grey', '#4B5263')
-Color.new('cursor_grey', '#2C323C')
-Color.new('visual_grey', '#3E4452')
-Color.new('menu_grey', '#3E4452')
-Color.new('special_grey', '#3B4048')
+Color.new('comment_gray', '#5C6370')
+Color.new('gutter_fg_gray', '#4B5263')
+Color.new('cursor_gray', '#2C323C')
+Color.new('visual_gray', '#3E4452')
+Color.new('menu_gray', '#3E4452')
+Color.new('special_gray', '#3B4048')
 Color.new('vertsplit', '#181A1F')
 
 Color.new('statusline', '#2c323c')
@@ -58,7 +58,7 @@ vim.g.terminal_color_15 = "#e3e5e9"
 -------------------------
 
 -- used for the columns set with 'colorcolumn'
-Group.new('ColorColumn'      , c.none           , c.cursor_grey  , no)
+Group.new('ColorColumn'      , c.none           , c.cursor_gray  , no)
 -- placeholder characters substituted for concealed text (see 'conceallevel')
 Group.new('Conceal'          , c.none           , c.none         , no)
 -- the character under the cursor
@@ -66,29 +66,29 @@ Group.new('Cursor'           , c.black          , c.blue         , no)
 -- like Cursor, but used when in IME mode
 Group.new('CursorIM'         , c.none           , c.none         , no)
 -- the screen column that the cursor is in when 'cursorcolumn' is set
-Group.new('CursorColumn'     , c.none           , c.cursor_grey  , no)
+Group.new('CursorColumn'     , c.none           , c.cursor_gray  , no)
 -- directory names (and other special names in listings)
-Group.new('CursorLine'       , c.none           , c.cursor_grey  , no)
+Group.new('CursorLine'       , c.none           , c.cursor_gray  , no)
 -- directory names (and other special names in listings)
 Group.new('Directory'        , c.blue           , c.none         , no)
 -- end-of-buffer ~
-Group.new('EndOfBuffer'      , c.special_grey   , c.none         , no)
+Group.new('EndOfBuffer'      , c.special_gray   , c.none         , no)
 -- error messages on the command line
 Group.new('ErrorMsg'         , c.red            , c.none         , no)
 -- the column separating vertically split windows
 Group.new('VertSplit'        , c.vertsplit      , c.none         , no)
 -- line used for closed folds
-Group.new('Folded'           , c.comment_grey   , c.none         , no)
+Group.new('Folded'           , c.comment_gray   , c.none         , no)
 -- foldcolumn'
 Group.new('FoldColumn'       , c.none           , c.none         , no)
 -- column where signs are displayed
 Group.new('SignColumn'       , c.none           , c.none         , no)
 -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-Group.new('IncSearch'        , c.yellow         , c.comment_grey , no)
+Group.new('IncSearch'        , c.yellow         , c.comment_gray , no)
 -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-Group.new('LineNr'           , c.gutter_fg_grey , c.none         , b)
+Group.new('LineNr'           , c.gutter_fg_gray , c.none         , b)
 -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-Group.new('CursorLineNr'     , c.yellow         , c.cursor_grey  , b)
+Group.new('CursorLineNr'     , c.yellow         , c.cursor_gray  , b)
 -- The character under the cursor or just before it, if it is a paired bracket, and its match.
 Group.new('MatchParen'       , c.blue           , c.none         , ul + b)
 -- 'showmode' message (e.g., "-- INSERT --")
@@ -96,16 +96,16 @@ Group.new('ModeMsg'          , c.none           , c.none         , no)
 -- more-prompt
 Group.new('MoreMsg'          , c.none           , c.none         , no)
 -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
-Group.new('NonText'          , c.special_grey   , c.none         , no)
+Group.new('NonText'          , c.special_gray   , c.none         , no)
 Group.new('Whitespace'       , c.cyan           , c.none         , no)
 -- normal text
 Group.new('Normal'           , c.white          , c.black        , no)
 -- Popup menu: normal item.
-Group.new('Pmenu'            , c.none           , c.menu_grey    , no)
+Group.new('Pmenu'            , c.none           , c.menu_gray    , no)
 -- Popup menu: selected item.
 Group.new('PmenuSel'         , c.black          , c.blue         , no)
 -- Popup menu: scrollbar.
-Group.new('PmenuSbar'        , c.none           , c.special_grey , no)
+Group.new('PmenuSbar'        , c.none           , c.special_gray , no)
 -- Popup menu: Thumb of the scrollbar.
 Group.new('PmenuThumb'       , c.none           , c.white        , no)
 -- hit-enter prompt and yes/no questions
@@ -115,7 +115,7 @@ Group.new('QuickFixLine'     , c.black          , c.yellow       , no)
 -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
 Group.new('Search'           , c.black          , c.yellow       , no)
 -- Meta and special keys listed with ":map", also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
-Group.new('SpecialKey'       , c.special_grey   , c.none         , no)
+Group.new('SpecialKey'       , c.special_gray   , c.none         , no)
 -- Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
 Group.new('SpellBad'         , c.red            , c.none         , ul)
 -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
@@ -133,19 +133,19 @@ Group.new('StatusLineTerm'   , c.none          , c.statusline   , no)
 -- status line of non-current :terminal window
 Group.new('StatusLineTermNC' , c.none         , c.statuslineNC  , no)
 -- tab pages line, not active tab page label
-Group.new('TabLine'          , c.white          , c.menu_grey    , no)
+Group.new('TabLine'          , c.white          , c.menu_gray    , no)
 -- tab pages line, where there are no labels
 Group.new('TabLineFill'      , c.none           , c.vertsplit    , no)
 -- tab pages line, active tab page label
-Group.new('TabLineSel'       , c.yellow         , c.special_grey , b)
+Group.new('TabLineSel'       , c.yellow         , c.special_gray , b)
 -- terminal window (see terminal-size-color)
 Group.new('Terminal'         , c.white          , c.black        , no)
 -- titles for output from ":set all", ":autocmd" etc.
 Group.new('Title'            , c.green          , c.none         , no)
 -- Visual mode selection
-Group.new('Visual'           , c.none           , c.visual_grey  , no)
+Group.new('Visual'           , c.none           , c.visual_gray  , no)
 -- Visual mode selection when vim is "Not Owning the Selection". Only X11 Gui's gui-x11 and xterm-clipboard supports this.
-Group.new('VisualNOS'        , c.none           , c.visual_grey  , no)
+Group.new('VisualNOS'        , c.none           , c.visual_gray  , no)
 -- warning messages
 Group.new('WarningMsg'       , c.yellow         , c.none         , no)
 -- current match in 'wildmenu' completion
@@ -159,7 +159,7 @@ Group.new('NormalFloat'      , g.Normal         , g.Normal       , g.Normal)
 Group.new('helpCommand'      , c.yellow       , c.none , no)
 Group.new('helpExample'      , c.yellow       , c.none , no)
 Group.new('helpHeader'       , c.white        , c.none , b)
-Group.new('helpSectionDelim' , c.comment_grey , c.none , no)
+Group.new('helpSectionDelim' , c.comment_gray , c.none , no)
 
 
 -----------------------
@@ -178,17 +178,17 @@ Group.new('DiffChange'  , c.yellow , c.none      , ul)
 Group.new('DiffDelete'  , c.black  , c.red       , no)
 -- diff mode: Changed text within a changed line
 Group.new('DiffText'    , c.black  , c.yellow    , no)
-Group.new('DiffAdded'   , c.green  , c.menu_grey , no)
-Group.new('DiffFile'    , c.red    , c.menu_grey , no)
-Group.new('DiffNewFile' , c.green  , c.menu_grey , no)
-Group.new('DiffLine'    , c.blue   , c.menu_grey , no)
-Group.new('DiffRemoved' , c.red    , c.menu_grey , no)
+Group.new('DiffAdded'   , c.green  , c.menu_gray , no)
+Group.new('DiffFile'    , c.red    , c.menu_gray , no)
+Group.new('DiffNewFile' , c.green  , c.menu_gray , no)
+Group.new('DiffLine'    , c.blue   , c.menu_gray , no)
+Group.new('DiffRemoved' , c.red    , c.menu_gray , no)
 
 -------------------------
 --  Vim Syntax Colors  --
 -------------------------
 -- any comment
-Group.new('Comment'        , c.comment_grey , c.none , i)
+Group.new('Comment'        , c.comment_gray , c.none , i)
 -- any constant
 Group.new('Constant'       , c.cyan         , c.none , no)
 -- a string constant: "this is a string"
@@ -246,7 +246,7 @@ Group.new('Tag'            , c.none         , c.none , no)
 -- character that needs attention
 Group.new('Delimiter'      , c.none         , c.none , no)
 -- special things inside a comment
-Group.new('SpecialComment' , c.comment_grey , c.none , no)
+Group.new('SpecialComment' , c.comment_gray , c.none , no)
 -- debugging statements
 Group.new('Debug'          , c.yellow       , c.none , b + i)
 -- text that stands out, HTML links
@@ -262,7 +262,7 @@ Group.new('Todo'           , c.yellow       , c.dark_red, b + i)
 --  Vim Termdebug Colors  --
 ----------------------------
 -- the current position
-Group.new('dubugPC'         , c.none  , c.special_grey , no)
+Group.new('dubugPC'         , c.none  , c.special_gray , no)
 -- a breakpoint
 Group.new('debugBreakpoint' , c.black , c.red          , no)
 
@@ -295,24 +295,24 @@ Group.new('cppConstant'       , c.red         , c.none , no)
 Group.new('cCppString'        , c.green       , c.none , no)
 
 -- CSS
-Group.new('cssAttrComma'         , c.comment_grey , c.none , no)
+Group.new('cssAttrComma'         , c.comment_gray , c.none , no)
 Group.new('cssAttributeSelector' , c.green        , c.none , no)
-Group.new('cssBraces'            , c.comment_grey , c.none , no)
+Group.new('cssBraces'            , c.comment_gray , c.none , no)
 Group.new('cssClassName'         , c.dark_yellow  , c.none , no)
 Group.new('cssClassNameDot'      , c.dark_yellow  , c.none , no)
-Group.new('cssDefinition'        , c.comment_grey , c.none , no)
+Group.new('cssDefinition'        , c.comment_gray , c.none , no)
 Group.new('cssFontAttr'          , c.dark_yellow  , c.none , no)
-Group.new('cssFontDescriptor'    , c.comment_grey , c.none , no)
+Group.new('cssFontDescriptor'    , c.comment_gray , c.none , no)
 Group.new('cssFunctionName'      , c.blue         , c.none , no)
 Group.new('cssIdentifier'        , c.blue         , c.none , no)
-Group.new('cssImportant'         , c.comment_grey , c.none , no)
+Group.new('cssImportant'         , c.comment_gray , c.none , no)
 Group.new('cssInclude'           , c.white        , c.none , no)
-Group.new('cssIncludeKeyword'    , c.comment_grey , c.none , no)
+Group.new('cssIncludeKeyword'    , c.comment_gray , c.none , no)
 Group.new('cssMediaType'         , c.dark_yellow  , c.none , no)
 Group.new('cssProp'              , c.cyan         , c.none , no)
 Group.new('cssPseudoClassId'     , c.dark_yellow  , c.none , no)
-Group.new('cssSelectorOp'        , c.comment_grey , c.none , no)
-Group.new('cssSelectorOp2'       , c.comment_grey , c.none , no)
+Group.new('cssSelectorOp'        , c.comment_gray , c.none , no)
+Group.new('cssSelectorOp2'       , c.comment_gray , c.none , no)
 Group.new('cssStringQ'           , c.green        , c.none , no)
 Group.new('cssStringQQ'          , c.green        , c.none , no)
 Group.new('cssTagName'           , c.red          , c.none , no)
@@ -339,9 +339,9 @@ Group.new('htmlArg'            , c.dark_yellow  , c.none        , no)
 Group.new('htmlTagName'        , c.red          , c.none        , no)
 Group.new('htmlTagN'           , c.red          , c.none        , no)
 Group.new('htmlSpecialTagName' , c.red          , c.none        , no)
-Group.new('htmlTag'            , c.comment_grey , c.none        , no)
-Group.new('htmlEndTag'         , c.comment_grey , c.none        , no)
-Group.new('MatchTag'           , c.red          , c.cursor_grey , ul + b)
+Group.new('htmlTag'            , c.comment_gray , c.none        , no)
+Group.new('htmlEndTag'         , c.comment_gray , c.none        , no)
+Group.new('MatchTag'           , c.red          , c.cursor_gray , ul + b)
 Group.new("htmlBold"           , c.dark_yellow  , c.none        , b)
 Group.new("htmlH1"             , c.red          , c.none        , no)
 Group.new("htmlH2"             , c.red          , c.none        , no)
@@ -356,7 +356,7 @@ Group.new("htmlTitle"          , c.white        , c.none        , no)
 
 -- JavaScript
 Group.new('coffeeString'         , c.green        , c.none , no)
-Group.new('javaScriptBraces'     , c.comment_grey , c.none , no)
+Group.new('javaScriptBraces'     , c.comment_gray , c.none , no)
 Group.new('javaScriptFunction'   , c.purple       , c.none , no)
 Group.new('javaScriptIdentifier' , c.purple       , c.none , no)
 Group.new('javaScriptNull'       , c.dark_yellow  , c.none , no)
@@ -370,7 +370,7 @@ Group.new("typescriptBraces"    , c.white  , c.none , no)
 -- JSON
 Group.new('jsonCommentError'       , c.white        , c.none , no)
 Group.new('jsonKeyword'            , c.red          , c.none , no)
-Group.new('jsonQuote'              , c.comment_grey , c.none , no)
+Group.new('jsonQuote'              , c.comment_gray , c.none , no)
 Group.new('jsonTrailingCommaError' , c.red          , c.none , r)
 Group.new('jsonMissingCommaError'  , c.red          , c.none , r)
 Group.new('jsonNoQuotesError'      , c.red          , c.none , r)
@@ -382,7 +382,7 @@ Group.new('jsonStringSQError'      , c.red          , c.none , r)
 Group.new('jsonSemicolonError'     , c.red          , c.none , r)
 
 -- Markdown
-Group.new('markdownUrl'               , c.comment_grey , c.none , ul)
+Group.new('markdownUrl'               , c.comment_gray , c.none , ul)
 Group.new('markdownBold'              , c.dark_yellow  , c.none , b)
 Group.new('markdownItalic'            , c.purple       , c.none , i)
 Group.new('markdownCode'              , c.green        , c.none , no)
@@ -397,15 +397,15 @@ Group.new('markdownH4'                , c.red          , c.none , no)
 Group.new('markdownH5'                , c.red          , c.none , no)
 Group.new('markdownH6'                , c.red          , c.none , no)
 Group.new('markdownListMarker'        , c.red          , c.none , no)
-Group.new("markdownBlockquote"        , c.comment_grey , c.none , no)
-Group.new("markdownHeadingRule"       , c.comment_grey , c.none , no)
+Group.new("markdownBlockquote"        , c.comment_gray , c.none , no)
+Group.new("markdownHeadingRule"       , c.comment_gray , c.none , no)
 Group.new("markdownId"                , c.purple       , c.none , no)
 Group.new("markdownIdDeclaration"     , c.blue         , c.none , no)
 Group.new("markdownIdDelimiter"       , c.purple       , c.none , no)
 Group.new("markdownLinkDelimiter"     , c.purple       , c.none , no)
 Group.new("markdownLinkText"          , c.blue         , c.none , no)
 Group.new("markdownOrderedListMarker" , c.red          , c.none , no)
-Group.new("markdownRule"              , c.comment_grey , c.none , no)
+Group.new("markdownRule"              , c.comment_gray , c.none , no)
 
 -- Python
 Group.new('pythonImport'          , c.purple       , c.none , no)
@@ -413,7 +413,7 @@ Group.new('pythonBuiltin'         , c.cyan         , c.none , no)
 Group.new('pythonStatement'       , c.purple       , c.none , no)
 Group.new('pythonParam'           , c.dark_yellow  , c.none , no)
 Group.new('pythonEscape'          , c.red          , c.none , no)
-Group.new('pythonSelf'            , c.comment_grey , c.none , i)
+Group.new('pythonSelf'            , c.comment_gray , c.none , i)
 Group.new('pythonClass'           , c.blue         , c.none , no)
 Group.new('pythonOperator'        , c.purple       , c.none , no)
 Group.new('pythonEscape'          , c.red          , c.none , no)
@@ -450,13 +450,13 @@ Group.new('rubySymbol'                    , c.cyan   , c.none , no)
 
 -- Vim
 Group.new('vimCommand'      , c.purple       , c.none , no)
-Group.new('vimCommentTitle' , c.comment_grey , c.none , b)
+Group.new('vimCommentTitle' , c.comment_gray , c.none , b)
 Group.new('vimFunction'     , c.cyan         , c.none , no)
 Group.new('vimFuncName'     , c.purple       , c.none , no)
 Group.new('vimHighlight'    , c.blue         , c.none , no)
-Group.new('vimLineComment'  , c.comment_grey , c.none , i)
-Group.new('vimParenSep'     , c.comment_grey , c.none , no)
-Group.new('vimSep'          , c.comment_grey , c.none , no)
+Group.new('vimLineComment'  , c.comment_gray , c.none , i)
+Group.new('vimParenSep'     , c.comment_gray , c.none , no)
+Group.new('vimSep'          , c.comment_gray , c.none , no)
 Group.new('vimUserFunc'     , c.cyan         , c.none , no)
 Group.new('vimVar'          , c.red          , c.none , no)
 
@@ -473,7 +473,7 @@ Group.new('zshShortDeref'  , c.red          , c.none , no)
 Group.new('zshFunction'    , c.cyan         , c.none , no)
 Group.new('zshKeyword'     , c.purple       , c.none , no)
 Group.new('zshSubst'       , c.red          , c.none , no)
-Group.new('zshSubstDelim'  , c.comment_grey , c.none , no)
+Group.new('zshSubstDelim'  , c.comment_gray , c.none , no)
 Group.new('zshTypes'       , c.purple       , c.none , no)
 Group.new('zshVariableDef' , c.dark_yellow  , c.none , no)
 
@@ -481,13 +481,13 @@ Group.new('zshVariableDef' , c.dark_yellow  , c.none , no)
 Group.new('rustExternCrate'          , c.red          , c.none , b)
 Group.new('rustIdentifier'           , c.blue         , c.none , no)
 Group.new('rustDeriveTrait'          , c.green        , c.none , no)
-Group.new('SpecialComment'           , c.comment_grey , c.none , no)
-Group.new('rustCommentLine'          , c.comment_grey , c.none , no)
-Group.new('rustCommentLineDoc'       , c.comment_grey , c.none , no)
-Group.new('rustCommentLineDocError'  , c.comment_grey , c.none , no)
-Group.new('rustCommentBlock'         , c.comment_grey , c.none , no)
-Group.new('rustCommentBlockDoc'      , c.comment_grey , c.none , no)
-Group.new('rustCommentBlockDocError' , c.comment_grey , c.none , no)
+Group.new('SpecialComment'           , c.comment_gray , c.none , no)
+Group.new('rustCommentLine'          , c.comment_gray , c.none , no)
+Group.new('rustCommentLineDoc'       , c.comment_gray , c.none , no)
+Group.new('rustCommentLineDocError'  , c.comment_gray , c.none , no)
+Group.new('rustCommentBlock'         , c.comment_gray , c.none , no)
+Group.new('rustCommentBlockDoc'      , c.comment_gray , c.none , no)
+Group.new('rustCommentBlockDocError' , c.comment_gray , c.none , no)
 
 -- Tex
 
@@ -506,7 +506,7 @@ Group.new("texRefZone"      , c.blue        , c.none , no)
 
 -- Man
 Group.new('manTitle'  , g.String       , g.String , g.String)
-Group.new('manFooter' , c.comment_grey , c.none   , no)
+Group.new('manFooter' , c.comment_gray , c.none   , no)
 
 -----------------------------
 --     LSP Highlighting    --
@@ -517,8 +517,8 @@ Group.new('LspDiagnosticsDefaultInformation'     , c.cyan   , c.none          , 
 Group.new('LspDiagnosticsDefaultHint'            , c.green  , c.none          , no)
 Group.new('LspDiagnosticsVirtualTextError'       , c.red    , c.visual_red    , i)
 Group.new('LspDiagnosticsVirtualTextWarning'     , c.yellow , c.visual_yellow , i)
-Group.new('LspDiagnosticsVirtualTextInformation' , c.cyan   , c.visual_grey   , i)
-Group.new('LspDiagnosticsVirtualTextHint'        , c.green  , c.visual_grey   , i)
+Group.new('LspDiagnosticsVirtualTextInformation' , c.cyan   , c.visual_gray   , i)
+Group.new('LspDiagnosticsVirtualTextHint'        , c.green  , c.visual_gray   , i)
 Group.new('LspDiagnosticsUnderlineError'         , c.none   , c.none          , uc  , c.red)
 Group.new('LspDiagnosticsUnderlineWarning'       , c.none   , c.none          , uc  , c.yellow)
 Group.new('LspDiagnosticsUnderlineInformation'   , c.none   , c.none          , uc  , c.cyan)
@@ -531,7 +531,7 @@ Group.new('LspDiagnosticsSignError'              , c.red    , c.none          , 
 Group.new('LspDiagnosticsSignWarning'            , c.yellow , c.none          , no)
 Group.new('LspDiagnosticsSignInformation'        , c.cyan   , c.none          , no)
 Group.new('LspDiagnosticsSignHint'               , c.green  , c.none          , no)
-Group.new('Jsj_LspDochighlight'                  , c.none   , c.comment_grey  , no)
+Group.new('Jsj_LspDochighlight'                  , c.none   , c.comment_gray  , no)
 
 -----------------------------
 -- TreeSitter Highlighting --
@@ -576,10 +576,10 @@ Group.new('TSStringRegex'        , c.green        , c.none , no)
 Group.new('TSStrong'             , c.yellow       , c.none , no)
 Group.new('TSStructure'          , c.yellow       , c.none , no)
 Group.new('TSTag'                , c.red          , c.none , no)
-Group.new('TSTagDelimiter'       , c.comment_grey , c.none , no)
+Group.new('TSTagDelimiter'       , c.comment_gray , c.none , no)
 Group.new('TSText'               , c.yellow       , c.none , no)
 Group.new('TSTitle'              , c.yellow       , c.none , no)
-Group.new('TSType'               , c.purple       , c.none , no)
+Group.new('TSType'               , c.purple       , c.none , b)
 Group.new('TSTypeBuiltin'        , c.purple       , c.none , no)
 Group.new('TSUnderline'          , c.yellow       , c.none , no)
 Group.new('TSURI'                , c.yellow       , c.none , no)
@@ -590,9 +590,9 @@ Group.new('TSVariableBuiltin'    , c.yellow       , c.none , no)
 -- telescope --
 ---------------
 Group.new('TelescopeNormal'         , c.white       , c.none        , no)
-Group.new('TelescopeSelection'      , c.none        , c.cursor_grey , b)
+Group.new('TelescopeSelection'      , c.none        , c.cursor_gray , b)
 Group.new('TelescopeSlectionCaret'  , c.red         , c.none        , no)
-Group.new('TelescopeMultiSelection' , c.visual_grey , c.none        , no)
+Group.new('TelescopeMultiSelection' , c.visual_gray , c.none        , no)
 Group.new('TelescopeBorder'         , c.dark_yellow , c.none        , no)
 Group.new('TelescopePromptBorder'   , c.blue        , c.none        , no)
 Group.new('TelescopeResultsBorder'  , c.yellow      , c.none        , no)
@@ -606,7 +606,7 @@ Group.new('TelescopePromptPrefix'   , c.red         , c.none        , no)
 -- https://github.com/folke/which-key.nvim
 Group.new('WhichKey'          , g.Function   , g.Function    , g.Function)
 Group.new('WhichKeyGroup'     , g.Keyword    , g.Keyword     , g.Keyword)
-Group.new('WhichKeySeparator' , g.DiffAdded  , c.cursor_grey , g.DiffAdded)
+Group.new('WhichKeySeparator' , g.DiffAdded  , c.cursor_gray , g.DiffAdded)
 Group.new('WhichKeyDesc'      , g.Identifier , g.Identifier  , g.Identifier)
-Group.new('WhichKeyFloat'     , c.none       , c.cursor_grey , no)
+Group.new('WhichKeyFloat'     , c.none       , c.cursor_gray , no)
 Group.new('WhichKeyValue'     , g.Comment    , g.Comment     , g.Comment)

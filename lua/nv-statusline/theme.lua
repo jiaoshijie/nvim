@@ -1,4 +1,4 @@
-local colors = {
+local colors = {  -- onedark theme
   black        = { gui = '#282C34', cterm = '235' },
   blue         = { gui = '#61AFEF', cterm = '39' },
   cyan         = { gui = '#56B6C2', cterm = '38' },
