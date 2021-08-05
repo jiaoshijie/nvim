@@ -2,10 +2,10 @@ local _M = {}
 local fmt = string.format
 local fn, cmd = vim.fn, vim.cmd
 local o, wo = vim.o, vim.wo
-local misc = require('nv-statusline.misc')
+local misc = require('jsj-statusline.misc')
 
 local options = {
-  colors = require('nv-statusline.theme'),
+  colors = require('jsj-statusline.theme'),
   sections = {
     { class = 'ArchIcon', item = misc.get_ArchIcon },
     { class = 'mode', item = misc.get_mode },
@@ -60,7 +60,7 @@ end
 
 local set_statusline = function()
   o.showmode = false
-  o.statusline = [[%!luaeval('require("nv-statusline.statusline").update_statusline()')]]
+  o.statusline = [[%!luaeval('require("jsj-statusline.statusline").update_statusline()')]]
   wo.statusline = o.statusline
 end
 

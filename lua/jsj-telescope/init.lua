@@ -1,6 +1,7 @@
 local map = vim.api.nvim_set_keymap
 
 local actions = require('telescope.actions')
+require('telescope').load_extension('fzy_native')
 
 require('telescope').setup{
   defaults = {
@@ -9,7 +10,7 @@ require('telescope').setup{
 
     winblend = 0,
 
-    layout_strategy = "horizontal",
+    layout_strategy = "flex",
     layout_config = {
       width = 0.95,
       height = 0.85,
@@ -39,6 +40,9 @@ require('telescope').setup{
       flex = {
         horizontal = {
           preview_width = 0.9,
+        },
+        vertical = {
+          preview_height = 0.5,
         },
       },
     },
@@ -74,53 +78,8 @@ require('telescope').setup{
   },
 }
 
-require('telescope').load_extension('fzy_native')
-
-function Jsj_search_all_files()
-  require('telescope.builtin').find_files {
-    prompt_prefix = '🔍 ',
-    find_command = { 'rg', '--no-ignore', '--files' },
-    file_ignore_patterns = {
-      "%.bmp", "%.png", "%.jpg", "%.gif", "%.tga", "%.pcx", "%.ppm", "%.img", "%.iso",
-      "%.zip", "%.7z", "%.rar", "%.gz", "%.tar", "%.gzip", "%.bz2", "%.tgz", "%.xz",
-      "%.wav", "%.mp3", "%.ogg", "%.pcm",
-      "%.chm", "%.epub", "%.pdf", "%.mobi", "%.ttf",
-      "%.mp4", "%.avi", "%.flv", "%.mov", "%.mkv", "%.swf", "%.swc"
-    },
-  }
-end
-
-function Jsj_neovim_config()
-  require('telescope.builtin').find_files {
-    prompt_title = "~ neovim config ~",
-    prompt_prefix = "Nvim> ",
-    cwd = "~/.config/nvim",
-  }
-end
-
-function Jsj_open_Code()
-  require('telescope.builtin').find_files {
-    prompt_title = "~ Code ~",
-    prompt_prefix = "Code> ",
-    cwd = '~/Downloads/Code',
-  }
-end
-
-function Jsj_open_Notes()
-  require('telescope.builtin').find_files {
-    prompt_title = "~ Notes ~",
-    prompt_prefix = "Notes> ",
-    cwd = '~/Nutstore Files/Nutstore/MARKDOWN_NOTE',
-    file_ignore_patterns = {
-      "%.bmp", "%.png", "%.jpg", "%.gif", "%.tga", "%.pcx", "%.ppm", "%.img", "%.iso",
-    },
-  }
-end
-
 local opts = { noremap = true, silent = true }
 
-map('n', '<F2>', ':lua Jsj_neovim_config()<cr>', opts)
-map('n', '<leader>ff', ':lua Jsj_search_all_files()<cr>', opts)
 map('n', '<leader>fr', ':lua require("telescope.builtin").oldfiles()<cr>', opts)
 map('n', '<leader>fg', ':lua require("telescope.builtin").git_files()<cr>', opts)
 map('n', '<leader>fb', ':lua require("telescope.builtin").file_browser()<cr>', opts)
@@ -132,7 +91,10 @@ map('n', '<leader>S', ':lua require("telescope.builtin").current_buffer_fuzzy_fi
 map('n', '<leader>bb', ':lua require("telescope.builtin").buffers()<cr>', opts)
 map('n', '<leader>ct', ':lua require("telescope.builtin").tags()<cr>', opts)
 
-map('n', '<leader>fm', ':lua Jsj_open_Notes()<cr>', opts)
-map('n', '<leader>pc', ':lua Jsj_open_Code()<cr>', opts)
 vim.cmd([[command! -nargs=1 -complete=file TF :Telescope find_files cwd=<args>]])
 -- map('n', '<leader>F', ':Telescope find_files cwd=', { noremap = true } )
+
+map('n', '<F2>', ':lua require("jsj-telescope.functions").Jsj_neovim_config()<cr>', opts)
+map('n', '<leader>ff', ':lua require("jsj-telescope.functions").Jsj_search_all_files()<cr>', opts)
+map('n', '<leader>fm', ':lua require("jsj-telescope.functions").Jsj_open_Notes()<cr>', opts)
+map('n', '<leader>pc', ':lua require("jsj-telescope.functions").Jsj_open_Code()<cr>', opts)

@@ -9,7 +9,7 @@
 
 ## Requirement
 
-- Neovim 0.5
+- Neovim version 0.5.0 or above.
 
 ## plugins
 

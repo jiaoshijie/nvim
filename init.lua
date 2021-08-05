@@ -37,7 +37,7 @@ require('packer').startup(function(use)
   -- {{{ Telescope
   use {
     'nvim-telescope/telescope.nvim',
-    config = require("nv-telescope"),
+    config = require("jsj-telescope"),
     requires = {
       { 'nvim-lua/popup.nvim' },
       { 'nvim-lua/plenary.nvim' },
@@ -50,7 +50,7 @@ require('packer').startup(function(use)
   -- {{{ Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
-    config = require('nv-treesitter'),
+    config = require('jsj-treesitter'),
     run = ':TSUpdate',
     requires = {
       { 'nvim-treesitter/playground' },
@@ -61,14 +61,14 @@ require('packer').startup(function(use)
   -- {{{ Autocomplete
   use {
     'hrsh7th/nvim-compe',
-    config = require('nv-compe'),
+    config = require('jsj-compe'),
   }
   -- }}}
 
   -- {{{ Git
   use {
     'lewis6991/gitsigns.nvim',
-    config = require('nv-gitsigns'),
+    config = require('jsj-gitsigns'),
     requires = {
       { 'nvim-lua/plenary.nvim' }
     },
@@ -84,6 +84,10 @@ require('packer').startup(function(use)
     },
   }
   use {
+    'yamatsum/nvim-nonicons',  -- Need to install `nonicons.ttf` font. https://github.com/yamatsum/nonicons.git
+    requires = {'kyazdani42/nvim-web-devicons'}
+  }
+  use {
     'norcalli/nvim-colorizer.lua',
     config = require('colorizer').setup()
   }
@@ -92,10 +96,10 @@ require('packer').startup(function(use)
   -- {{{ MapKeys
   use {
     'folke/which-key.nvim',
-    config = require('nv-which-key'),
+    config = require('jsj-which-key'),
   }
   require('init-keymaps')
-  require('mdSnippets')
+  require('init-mdSnippets')
   -- }}}
 
   -- {{{ Markdown

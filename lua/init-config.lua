@@ -79,9 +79,21 @@ augroup END
 ]], false)
 
 vim.api.nvim_exec([[
+augroup neovim_terminal
+    autocmd!
+    " Enter Terminal-mode (insert) automatically
+    autocmd TermOpen * startinsert
+    " Disables number lines on terminal buffers
+    autocmd TermOpen * :set nonumber norelativenumber
+    " allows you to use Ctrl-c on terminal window
+    autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
+augroup END
+]], false)
+
+vim.api.nvim_exec([[
 function! Fcitx2en()
    if system("fcitx5-remote") == 2
-      let l:a = system("fcitx5-remote -c")
+      call system("fcitx5-remote -c")
    endif
 endfunction
 
@@ -92,6 +104,8 @@ if has('unix')
   augroup END
 endif
 ]], false)
+
+vim.cmd[[command! -nargs=0 CheckHlGroupUnderCursor :lua require("utils").Jsj_CheckHlGroup()]]
 
 --[[ ctags, cscope --]]
 o.tags = "./tags,tags"

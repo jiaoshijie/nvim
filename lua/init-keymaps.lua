@@ -56,14 +56,7 @@ map('n', '<C-y>', '2<C-y>', opts)
 map('n', '<leader><cr>', ':nohl<cr>', opts)
 map('n', '<leader>/', '/\\<\\><left><left>', { noremap = true })
 
-function JsjClearSE()
-  local l = vim.fn.line('.')
-  local c = vim.fn.col('.')
-  vim.cmd([[%s/\s\+$//ge]])
-  vim.cmd([[%s/\(\n\)\+\%$//ge]])
-  vim.fn.cursor({l, c})
-end
-map('n', '<leader>fc', ':lua JsjClearSE()<cr>', opts)
+map('n', '<leader>fc', ':lua require("utils").JsjClearSE()<cr>', opts)
 
 map('n', '<leader>=', "mIgg=G'ImI", opts)
 map('n', '<leader><Space>', "@:", opts)
@@ -73,43 +66,17 @@ map('n', '<leader>xd', ':%!xxd<CR>', opts)
 map('n', '<leader>xr', ':%!xxd -r<CR>', opts)
 map('n', '<leader>eu', ':e ++enc=utf8<CR>', opts)
 map('n', '<leader>eg', ':e ++enc=gbk<CR>', opts)
-map('n', '<leader>cz', ':lua ToggleFold()<CR>', opts)
 map('n', 'Q', 'q:', opts)
 map('n', 'Y', 'y$', opts)
 map('n', 'n', 'nzzzv', opts)
 map('n', 'N', 'Nzzzv', opts)
 map('n', 'J', 'mJJ`JmJ', opts)
 
-FoldMethod = false
-function ToggleFold()
-  if not FoldMethod then
-    vim.cmd('normal! zM')
-    FoldMethod = true
-  else
-    vim.cmd('normal! zR')
-    FoldMethod = false
-  end
-end
+Jsj_FoldMethod = false
+map('n', '<leader>cz', ':lua require("utils").ToggleFold()<CR>', opts)
 
-map('n', '<leader>tt', ':lua Change_theme_alpha()<cr>', opts)
 JSJ_change_theme_alpha = false
-function Change_theme_alpha()
-  if not JSJ_change_theme_alpha then
-    JSJ_change_theme_alpha = true
-    vim.cmd('highlight Normal guibg=NONE ctermbg=None')
-  else
-    local color = '#282c34'  -- onedark bg color
-    if vim.g.colors_name == 'gruvbox' then
-      color = vim.o.background == 'dark' and '#282828' or '#fbf1c7'
-    elseif vim.g.colors_name == 'solarized' then
-      color = vim.o.background == 'dark' and '#002b36' or '#fdf6e3'
-    end
-    JSJ_change_theme_alpha = false
-    vim.cmd('highlight! Normal guibg=' .. color)
-  end
-  vim.cmd('hi! link SignColumn LineNr')
-end
-
+map('n', '<leader>tt', ':lua require("utils").Change_theme_alpha()<cr>', opts)
 
 --[[
 -- window
@@ -161,15 +128,5 @@ map('i', '!', '!<c-g>u', opts)
 map('i', '?', '?<c-g>u', opts)
 
 -- quickfix list
-function Jsj_ToggleList(listname, perfix)
-  if #vim.fn.filter(vim.fn.getwininfo(), 'v:val.' .. listname) == 0 then
-    xpcall(vim.cmd,
-          function() vim.api.nvim_err_writeln("Location List is Empty.") end,
-          perfix .. 'open')
-  else
-    vim.cmd(perfix .. 'close')
-  end
-end
-
-map('n', '<leader>qq', ':lua Jsj_ToggleList("quickfix", "c")<cr>', opts)
-map('n', '<leader>ql', ':lua Jsj_ToggleList("loclist", "l")<cr>', opts)
+map('n', '<leader>qq', ':lua require("utils").Jsj_ToggleList("quickfix", "c")<cr>', opts)
+map('n', '<leader>ql', ':lua require("utils").Jsj_ToggleList("loclist", "l")<cr>', opts)
