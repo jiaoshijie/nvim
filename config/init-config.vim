@@ -15,7 +15,7 @@ let g:netrw_banner       = 0  " disable annoying banner
 let g:netrw_browse_split = 0  " open in prior window
 let g:netrw_altv         = 1  " open splits to the right
 let g:netrw_alto         = 0
-let g:netrw_liststyle    = 3  " tree view
+let g:netrw_liststyle    = 0  " tree view
 let g:netrw_winsize      = 25
 let g:netrw_preview      = 1
 let g:netrw_localrmdir   = 'rm -r'
@@ -135,10 +135,7 @@ augroup jsj_useful_settings
   autocmd BufNewFile,BufRead *.md,*.rmd setlocal nolinebreak
 augroup END
 
-command! Wcolor echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
-            \ "> trans<" . synIDattr(synID(line("."),col("."),0),"name") .
-            \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
-            \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")
+command! -nargs=0 CheckHlGroup call utils#Jsj_CheckHlGroup()
 
 " 提权保存
 command! SudoWrite execute 'write !sudo tee % >/dev/null' <bar> edit!
