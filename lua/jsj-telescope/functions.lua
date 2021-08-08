@@ -9,7 +9,8 @@ _M.Jsj_search_all_files = function()
       "%.zip", "%.7z", "%.rar", "%.gz", "%.tar", "%.gzip", "%.bz2", "%.tgz", "%.xz",
       "%.wav", "%.mp3", "%.ogg", "%.pcm",
       "%.chm", "%.epub", "%.pdf", "%.mobi", "%.ttf",
-      "%.mp4", "%.avi", "%.flv", "%.mov", "%.mkv", "%.swf", "%.swc"
+      "%.mp4", "%.avi", "%.flv", "%.mov", "%.mkv", "%.swf", "%.swc", "%.srt",
+      "%.mdd", "%.mdx"
     },
   }
 end

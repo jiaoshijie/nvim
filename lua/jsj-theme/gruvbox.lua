@@ -91,6 +91,7 @@ Group.new('VisualNOS', g.Visual, g.Visual, g.Visual)
 Group.new('Search', c.yellow, c.bg0, r)
 Group.new('IncSearch', c.orange, c.bg0, r)
 Group.new('Underlined', c.blue, c.none, ul)
+Group.new('NormalFloat', g.Normal, g.Normal, g.Normal)
 
 Group.new('StatusLine', c.none, c.statusline, no)
 Group.new('StatusLineNC', c.none, c.statuslineNC, no)

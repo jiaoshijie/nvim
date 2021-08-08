@@ -1,5 +1,5 @@
 ---------------
--- markdown片段
+-- markdown snippets
 ---------------
 vim.api.nvim_exec([[
   augroup jsj_Markdown

@@ -50,7 +50,7 @@ end
 _M.get_filename = function()
   local icon = get_icon(fn.expand('%:t:r'), fn.expand('%:e'), { default = true })
   return {
-    text = is_active() and ' ' .. icon .. ' %t ' or ' %f ',
+    text = is_active() and ' ' .. icon .. ' %t ' or ' %F ',
     state = is_active() and 'filename' or 'inactive',
   }
 end

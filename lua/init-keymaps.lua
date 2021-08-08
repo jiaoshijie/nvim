@@ -56,7 +56,8 @@ map('n', '<C-y>', '2<C-y>', opts)
 map('n', '<leader><cr>', ':nohl<cr>', opts)
 map('n', '<leader>/', '/\\<\\><left><left>', { noremap = true })
 
-map('n', '<leader>fc', ':lua require("utils").JsjClearSE()<cr>', opts)
+map('n', '<leader>ft', ':%s/\t/  /ge', opts)
+map('n', '<leader>fc', ':lua require("init-utils").JsjClearSE()<cr>', opts)
 
 map('n', '<leader>=', "mIgg=G'ImI", opts)
 map('n', '<leader><Space>', "@:", opts)
@@ -73,10 +74,10 @@ map('n', 'N', 'Nzzzv', opts)
 map('n', 'J', 'mJJ`JmJ', opts)
 
 Jsj_FoldMethod = false
-map('n', '<leader>cz', ':lua require("utils").ToggleFold()<CR>', opts)
+map('n', '<leader>cz', ':lua require("init-utils").ToggleFold()<CR>', opts)
 
 JSJ_change_theme_alpha = false
-map('n', '<leader>tt', ':lua require("utils").Change_theme_alpha()<cr>', opts)
+map('n', '<leader>tt', ':lua require("init-utils").Change_theme_alpha()<cr>', opts)
 
 --[[
 -- window
@@ -128,5 +129,5 @@ map('i', '!', '!<c-g>u', opts)
 map('i', '?', '?<c-g>u', opts)
 
 -- quickfix list
-map('n', '<leader>qq', ':lua require("utils").Jsj_ToggleList("quickfix", "c")<cr>', opts)
-map('n', '<leader>ql', ':lua require("utils").Jsj_ToggleList("loclist", "l")<cr>', opts)
+map('n', '<leader>qq', ':lua require("init-utils").Jsj_ToggleList("quickfix", "c")<cr>', opts)
+map('n', '<leader>ql', ':lua require("init-utils").Jsj_ToggleList("loclist", "l")<cr>', opts)

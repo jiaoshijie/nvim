@@ -15,7 +15,7 @@ vim.g.netrw_banner = 0  -- disable annoying banner
 vim.g.netrw_browse_split = 0
 vim.g.netrw_altv=1  -- open splits to the right
 vim.g.netrw_alto=0
-vim.g.netrw_liststyle=3  -- tree view
+vim.g.netrw_liststyle=0  -- tree view
 vim.g.netrw_winsize=25
 vim.g.netrw_preview=1
 vim.g.netrw_localrmdir='rm -r'
@@ -105,7 +105,7 @@ if has('unix')
 endif
 ]], false)
 
-vim.cmd[[command! -nargs=0 CheckHlGroupUnderCursor :lua require("utils").Jsj_CheckHlGroup()]]
+vim.cmd[[command! -nargs=0 CheckHlGroupUnderCursor :lua require("init-utils").Jsj_CheckHlGroup()]]
 
 --[[ ctags, cscope --]]
 o.tags = "./tags,tags"
