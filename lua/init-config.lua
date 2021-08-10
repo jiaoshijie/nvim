@@ -11,23 +11,26 @@ vim.g.python3_host_prog = '/usr/bin/python3'
 -- vim.g.loaded_netrwPlugin       = 1
 -- vim.g.loaded_netrwSettings     = 1
 -- vim.g.loaded_netrwFileHandlers = 1
-vim.g.netrw_banner = 0  -- disable annoying banner
+-- https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
+vim.g.netrw_banner       = 0  -- disable annoying banner
 vim.g.netrw_browse_split = 0
-vim.g.netrw_altv=1  -- open splits to the right
-vim.g.netrw_alto=0
-vim.g.netrw_liststyle=0  -- tree view
-vim.g.netrw_winsize=25
-vim.g.netrw_preview=1
-vim.g.netrw_localrmdir='rm -r'
-vim.g.netrw_hide=0
+vim.g.netrw_altv         = 1  -- open splits to the right
+vim.g.netrw_alto         = 0
+vim.g.netrw_liststyle    = 0  -- tree view
+vim.g.netrw_winsize      = 25
+vim.g.netrw_preview      = 1
+vim.g.netrw_localrmdir   = 'rm -r'
+vim.g.netrw_hide         = 1
+vim.g.netrw_keepdir      = 0
+vim.g.netrw_localcopydircmd = 'cp -r'
 vim.cmd[[let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+']]
+-- vim.cmd[[let g:netrw_list_hide=netrw_gitignore#Hide()]]
 vim.api.nvim_exec([[
   augroup Jsj_netrw_delete
     au!
     autocmd FileType netrw setl bufhidden=delete " or use :qa!
   augroup END
 ]], false)
--- vim.cmd[[let g:netrw_list_hide.=netrw_gitignore#Hide()]]
 
 vim.cmd([[
 if &diff
