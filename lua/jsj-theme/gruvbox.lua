@@ -364,6 +364,7 @@ Group.new('markdownUrlTitleDelimiter', c.green, c.none, no)
 
 Group.new('markdownLinkText', c.gray, c.none, ul)
 Group.new('markdownIdDeclaration', g.markdownLinkText, g.markdownLinkText, g.markdownLinkText)
+Group.new('markdownError', c.red, c.none, no)
 
 -- Json
 Group.new('jsonKeyword', c.green, c.none, no)

@@ -56,7 +56,7 @@ map('n', '<C-y>', '2<C-y>', opts)
 map('n', '<leader><cr>', ':nohl<cr>', opts)
 map('n', '<leader>/', '/\\<\\><left><left>', { noremap = true })
 
-map('n', '<leader>ft', ':%s/\t/  /ge', opts)
+map('n', '<leader>ft', ':%s/\t/  /ge<cr>', opts)
 map('n', '<leader>fc', ':lua require("init-utils").JsjClearSE()<cr>', opts)
 
 map('n', '<leader>=', "mIgg=G'ImI", opts)
