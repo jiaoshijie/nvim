@@ -26,6 +26,7 @@ require'compe'.setup {
     -- treesitter = {kind = "  "},
     emoji = {kind = " ﲃ ", filetypes={"markdown"}},
     omni = false,
+    orgmode = true,
   };
 }
 

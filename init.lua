@@ -104,6 +104,10 @@ require('packer').startup(function(use)
 
   -- {{{ Markdown
   use {
+    'kristijanhusak/orgmode.nvim',
+    config = require('jsj-orgmode'),
+  }
+  use {
     'npxbr/glow.nvim',  -- `paru -S glow-bin`
   }
   use {

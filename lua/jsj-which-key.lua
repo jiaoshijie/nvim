@@ -47,7 +47,7 @@ local mappings = {
   ["/"] = "Search single word",
   ["="] = "Format Code",
   ["<CR>"] = "Cancel search highlight",
-  ["o"] = "Toggle English syntax check",
+  -- ["o"] = "Toggle English syntax check",
   ["s"] = "Search current dir",
   ["S"] = "Search current file",
   b = {
@@ -102,6 +102,12 @@ local mappings = {
       ['a'] = "undo stage hunk",
       ['b'] = "undo all stage hunk in this buffer",
     }
+  },
+  o = {
+    name = "+Spell and OrgMode",
+    ['o'] = "Toggle English syntax check",
+    ['a'] = "orgmode agenda",
+    ['c'] = "orgmode capture",
   },
   p = {
     name = "+Project",

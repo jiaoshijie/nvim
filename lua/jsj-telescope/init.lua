@@ -97,4 +97,5 @@ vim.cmd([[command! -nargs=1 -complete=file TF :Telescope find_files cwd=<args>]]
 map('n', '<F2>', ':lua require("jsj-telescope.functions").Jsj_neovim_config()<cr>', opts)
 map('n', '<leader>ff', ':lua require("jsj-telescope.functions").Jsj_search_all_files()<cr>', opts)
 map('n', '<leader>fm', ':lua require("jsj-telescope.functions").Jsj_open_Notes()<cr>', opts)
+map('n', '<leader>fo', ':lua require("jsj-telescope.functions").Jsj_open_Org()<cr>', opts)
 map('n', '<leader>pc', ':lua require("jsj-telescope.functions").Jsj_open_Code()<cr>', opts)

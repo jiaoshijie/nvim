@@ -109,6 +109,7 @@ endif
 ]], false)
 
 vim.cmd[[command! -nargs=0 CheckHlGroupUnderCursor :lua require("init-utils").Jsj_CheckHlGroup()]]
+vim.cmd[[command! -nargs=0 Today :read !date '+<\%Y-\%m-\%d \%a \%H:\%M>'<cr> ]]
 
 --[[ ctags, cscope --]]
 o.tags = "./tags,tags"
