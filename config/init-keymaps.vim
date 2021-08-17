@@ -76,7 +76,7 @@ nnoremap <silent> J mJJ`JmJ
 nnoremap <silent> <leader>fc :call utils#JsjClearSE()<cr>
 
 " 打开语法检查
-nnoremap <silent> <leader>o :setlocal spell! spelllang=en_us<CR>
+nnoremap <silent> <leader>ps :setlocal spell! spelllang=en_us<CR>
 
 " 透明背景和取消, 需要终端可以透明
 nnoremap <silent> <leader>tt :call utils#Change_theme_alpha()<CR>
