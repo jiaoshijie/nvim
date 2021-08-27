@@ -59,9 +59,29 @@ require('packer').startup(function(use)
   -- }}}
 
   -- {{{ Autocomplete
+  -- use {
+  --   'hrsh7th/nvim-compe',
+  --   config = require('jsj-compe'),
+  -- }
   use {
-    'hrsh7th/nvim-compe',
-    config = require('jsj-compe'),
+    'L3MON4D3/LuaSnip',
+    config = require('jsj-luasnip'),
+  }
+  use {
+    'hrsh7th/nvim-cmp',
+    config = require('jsj-comp'),
+    requires = {
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-nvim-lua' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-path' },
+
+      { 'kdheepak/cmp-latex-symbols' },
+      { 'f3fora/cmp-spell' },
+      -- { 'quangnguyen30192/cmp-nvim-tags' },
+
+      { 'saadparwaiz1/cmp_luasnip' },
+    },
   }
   -- }}}
 
