@@ -64,7 +64,7 @@ local mappings = {
     ["="] = "Lsp format code",
     ["a"] = "Lsp action",
     e = {
-      name = "+Error&Warning",
+      name = "+Error & Warning",
       ["e"] = "Show error info under cursor",
       ["l"] = "Show error info in line",
       ["a"] = "Search all error in the file",
@@ -86,7 +86,6 @@ local mappings = {
     ["m"] = "Open My Own Notes",
     ["r"] = "Search history files",
   },
-  ["F"] = "Find files with telescope",
   g = {
     name = "+Git",
     ["a"] = "Stage this hunk",
@@ -104,21 +103,21 @@ local mappings = {
     }
   },
   o = {
-    name = "+Spell and OrgMode",
-    ['o'] = "Toggle English syntax check",
+    name = "+OrgMode",
     ['a'] = "orgmode agenda",
     ['c'] = "orgmode capture",
   },
   p = {
-    name = "+Project",
+    name = "+Spell & Project",
     ["c"] = "Open Code dir",
     ["a"] = "Lsp add workspace folder",
     ["r"] = "Lsp remove workspace folder",
     ["l"] = "Lsp print workspace folder",
+    ['s'] = "Toggle English syntax check",
   },
   ["P"] = "Preview image under the cursor",
   t = {
-    name = "+Tab&Theme",
+    name = "+Tab & Theme",
     ["o"] = "Close other tabs",
     ["d"] = "Close current tab",
     ["t"] = "Toggle background Color",
@@ -131,12 +130,12 @@ local mappings = {
     ["-"] = "split current window",
   },
   x = {
-    name = "+Hex&Text",
+    name = "+Hex & Text",
     ["d"] = "Change to hex mode",
     ["r"] = "Change to Text mode",
   },
   q = {
-    name = "+Quickfix&Localist",
+    name = "+Quickfix & Localist",
     ["q"] = "Toggle Quickfix",
     ["l"] = "Toggle Localist",
   },
