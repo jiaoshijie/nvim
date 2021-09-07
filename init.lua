@@ -73,6 +73,9 @@ require('packer').startup(function(use)
   use {
     'L3MON4D3/LuaSnip',
     config = require('jsj-luasnip'),
+    requires = {
+      { 'rafamadriz/friendly-snippets' },
+    },
   }
   use {
     'hrsh7th/nvim-cmp',
