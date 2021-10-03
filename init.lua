@@ -66,10 +66,6 @@ require('packer').startup(function(use)
   -- }}}
 
   -- {{{ Autocomplete
-  -- use {
-  --   'hrsh7th/nvim-compe',
-  --   config = require('jsj-compe'),
-  -- }
   use {
     'L3MON4D3/LuaSnip',
     config = require('jsj-luasnip'),
@@ -115,8 +111,12 @@ require('packer').startup(function(use)
   }
   use {
     'yamatsum/nvim-nonicons',  -- Need to install `nonicons.ttf` font. https://github.com/yamatsum/nonicons.git
-    requires = {'kyazdani42/nvim-web-devicons'}
+    requires = {'kyazdani42/nvim-web-devicons'},
+    opt = true,
   }
+  if fn.expand('$TERM') == 'xterm-kitty' then
+    vim.cmd 'packadd nvim-nonicons'
+  end
   use {
     'norcalli/nvim-colorizer.lua',
     config = require('colorizer').setup()
