@@ -9,7 +9,7 @@ set number
 " 高亮光标所在行
 set cursorline
 
-set colorcolumn=81
+set colorcolumn=79
 
 " 光标在向下或向上移动时不会到达文件的最下方
 set scrolloff=6
