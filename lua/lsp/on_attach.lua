@@ -46,13 +46,13 @@ local on_attach = function(client, bufnr)
   end
 
   -- code action
-  vim.api.nvim_exec([[
-    augroup lsp_code_action
-      autocmd! * <buffer>
-      autocmd CursorHold,CursorHoldI <buffer> lua require('lsp.lsp-utils').code_action_listener()
-      autocmd CursorMoved <buffer> lua require('lsp.lsp-utils').remove_code_action()
-    augroup END
-  ]], false)
+  -- vim.api.nvim_exec([[
+  --   augroup lsp_code_action
+  --     autocmd! * <buffer>
+  --     autocmd CursorHold,CursorHoldI <buffer> lua require('lsp.lsp-utils').code_action_listener()
+  --     autocmd CursorMoved <buffer> lua require('lsp.lsp-utils').remove_code_action()
+  --   augroup END
+  -- ]], false)
 
   -- NOTICE: Lspsaga plugin
   buf_set_keymap(bufnr, 'n', '<C-k>', ':Lspsaga hover_doc<CR>', opts)
