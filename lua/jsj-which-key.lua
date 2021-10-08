@@ -63,10 +63,10 @@ local mappings = {
     ["z"] = "Fold code",
     ["="] = "Lsp format code",
     ["a"] = "Lsp action",
+    ["k"] = "show signature_help",
     e = {
       name = "+Error & Warning",
-      ["e"] = "Show error info under cursor",
-      ["l"] = "Show error info in line",
+      ["e"] = "Show error info in line",
       ["a"] = "Search all error in the file",
       ["A"] = "Search all error in the workspace",
       ["p"] = "Jump to prev error",

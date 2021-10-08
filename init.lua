@@ -23,10 +23,6 @@ require('packer').startup(function(use)
   use {
     'neovim/nvim-lspconfig',
     config = require('lsp'),
-    requires = {
-      { 'glepnir/lspsaga.nvim' },
-      { 'folke/lua-dev.nvim' },
-    },
   }
   require('lsp.bash-lsp')
   require('lsp.clangd-lsp')
