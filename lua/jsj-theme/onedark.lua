@@ -610,3 +610,13 @@ Group.new('WhichKeySeparator' , g.DiffAdded  , c.cursor_gray , g.DiffAdded)
 Group.new('WhichKeyDesc'      , g.Identifier , g.Identifier  , g.Identifier)
 Group.new('WhichKeyFloat'     , c.none       , c.cursor_gray , no)
 Group.new('WhichKeyValue'     , g.Comment    , g.Comment     , g.Comment)
+
+--------------
+-- nvim-cmp --
+--------------
+Group.new('CmpItemAbbr', c.white, c.none, no)
+Group.new('CmpItemAbbrDeprecated', g.CmpItemAbbr, c.none, i)
+Group.new('CmpItemAbbrMatch', c.yellow, c.none, b)
+Group.new('CmpItemAbbrMatchFuzzy', c.yellow, c.none, b)
+Group.new('CmpItemMenu', c.cyan, c.none, no)
+Group.new('CmpItemKind', c.dark_yellow, c.none, no)
