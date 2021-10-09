@@ -117,6 +117,7 @@ vnoremap <silent> gc :<C-u>call sCommenter#Toggle_Comment(line("'>") - line("'<"
 " 窗口分屏
 nnoremap <leader>w/ <C-w>v
 nnoremap <leader>w- <C-w>s
+nnoremap <leader>w= <C-w>=
 
 " 关闭窗口
 nnoremap <leader>wo <C-w>o
