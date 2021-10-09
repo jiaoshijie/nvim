@@ -63,7 +63,6 @@ local mappings = {
     ["z"] = "Fold code",
     ["="] = "Lsp format code",
     ["a"] = "Lsp action",
-    ["k"] = "show signature_help",
     e = {
       name = "+Error & Warning",
       ["e"] = "Show error info in line",
