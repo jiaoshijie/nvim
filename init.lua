@@ -147,4 +147,9 @@ require('packer').startup(function(use)
   }
   -- }}}
 
+  use {
+    'liuchengxu/vista.vim',
+    config = require('jsj-vista')
+  }
+
 end)
