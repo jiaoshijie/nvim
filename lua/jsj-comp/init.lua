@@ -26,6 +26,7 @@ cmp.setup {
     { name = 'nvim_lua' },
     { name = 'latex_symbols' },
     { name = 'spell' },
+    { name = 'luasnip' },
   },
   formatting = {
     format = function(entry, vim_item)
@@ -38,6 +39,7 @@ cmp.setup {
         latex_symbols = "[Latex]",
         spell = "[Spell]",
         path = "[Path]",
+        luasnip = "[Snip]",
       })[entry.source.name]
       return vim_item
     end,

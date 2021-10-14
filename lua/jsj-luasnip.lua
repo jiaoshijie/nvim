@@ -102,4 +102,5 @@ vim.api.nvim_exec([[
   smap <silent> <C-l> <Plug>luasnip-expand-or-jump
   imap <silent> <C-k> <Plug>luasnip-jump-prev
   smap <silent> <C-k> <Plug>luasnip-jump-prev
+  nnoremap <silent> <leader>u :LuaSnipUnlinkCurrent<cr>
 ]], false)

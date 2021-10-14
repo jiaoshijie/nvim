@@ -50,6 +50,7 @@ local mappings = {
   -- ["o"] = "Toggle English syntax check",
   ["s"] = "Search current dir",
   ["S"] = "Search current file",
+  ["u"] = "Unlink LuaSnip",
   b = {
     name = "+Buffer",
     ["d"] = "Delete current buffer",
