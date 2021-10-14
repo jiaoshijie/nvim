@@ -46,6 +46,7 @@ require('packer').startup(function(use)
       { 'nvim-lua/plenary.nvim' },
       { 'kyazdani42/nvim-web-devicons' },
       { 'nvim-telescope/telescope-fzy-native.nvim' },  -- extension
+      { 'liuchengxu/vista.vim' },
     },
   }
   -- }}}
@@ -79,10 +80,7 @@ require('packer').startup(function(use)
       { 'hrsh7th/cmp-path' },
 
       { 'kdheepak/cmp-latex-symbols' },
-      { 'f3fora/cmp-spell' },
-      -- { 'quangnguyen30192/cmp-nvim-tags' },
-
-      { 'saadparwaiz1/cmp_luasnip' },
+      { 'f3fora/cmp-spell' },  -- set spell
     },
   }
   -- }}}
@@ -130,10 +128,6 @@ require('packer').startup(function(use)
 
   -- {{{ Markdown
   use {
-    'kristijanhusak/orgmode.nvim',
-    config = require('jsj-orgmode'),
-  }
-  use {
     'npxbr/glow.nvim',  -- `paru -S glow-bin`
   }
   use {
@@ -143,13 +137,19 @@ require('packer').startup(function(use)
 
   -- {{{ TextObject
   use {
-    'tpope/vim-surround'
+    'tpope/vim-surround',
+    requires = { 'tpope/vim-repeat' },
   }
   -- }}}
 
+  -- undotree
   use {
-    'liuchengxu/vista.vim',
-    config = require('jsj-vista')
+    'mbbill/undotree',
+  }
+
+  use {
+    'windwp/nvim-spectre',
+    config = require('jsj-nvim-spectre')
   }
 
 end)

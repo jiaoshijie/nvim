@@ -92,6 +92,10 @@ map('n', '<leader>bb', ':lua require("telescope.builtin").buffers()<cr>', opts)
 map('n', '<leader>ct', ':lua require("telescope.builtin").tags()<cr>', opts)
 map('n', '<leader>mm', ':lua require("telescope.builtin").marks()<cr>', opts)
 
+-- Vista
+map('n', '<leader>vl', ':Vista finder<cr>', opts)
+map('n', '<leader>vv', ':Vista finder!<cr>', opts)
+
 vim.cmd([[command! -nargs=1 -complete=file TF :Telescope find_files cwd=<args>]])
 -- map('n', '<leader>F', ':Telescope find_files cwd=', { noremap = true } )
 

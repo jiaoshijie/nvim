@@ -101,11 +101,6 @@ local mappings = {
       ['b'] = "undo all stage hunk in this buffer",
     }
   },
-  o = {
-    name = "+OrgMode",
-    ['a'] = "orgmode agenda",
-    ['c'] = "orgmode capture",
-  },
   p = {
     name = "+Spell & Project",
     ["c"] = "Open Code dir",
@@ -139,8 +134,23 @@ local mappings = {
     ["l"] = "Toggle Localist",
   },
   n = {
-    name = "+treesitter"
-  }
+    name = "+Treesitter"
+  },
+  v = {
+    name = "+Vista",
+    ["v"] = "find workspace symbols",
+    ["l"] = "find local flie symbols",
+  },
+  m = {
+    name = "+Mark",
+    ["m"] = "show all marks",
+  },
+  r = {
+    name = "+Replace",
+    ["r"] = "open replace buffer",
+    ["w"] = "open replace buffer with word under the curosr",
+    ["l"] = "open replace buffer in current file",
+  },
 }
 
 local wk = require("which-key")
