@@ -23,6 +23,9 @@ require('packer').startup(function(use)
   use {
     'neovim/nvim-lspconfig',
     config = require('lsp'),
+    requires = {
+      { 'kosayoda/nvim-lightbulb' },
+    },
   }
   require('lsp.bash-lsp')
   require('lsp.clangd-lsp')

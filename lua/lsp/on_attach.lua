@@ -25,7 +25,7 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   -- buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap(bufnr, 'i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  -- buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>cr', ':<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -69,6 +69,8 @@ local on_attach = function(client, bufnr)
   --   augroup END
   -- ]], false)
 
+  vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb{sign={enabled=true, priority=10,},float={enabled=false}, virtual_text={enabled=false}, status_text={enabled=false}}]]
+
   -- NOTICE: Telescope plugin
   buf_set_keymap(bufnr, 'n', '<leader>cf', ':lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
   -- buf_set_map(bufnr, 'n', '<leader>cF', ':lua require("telescope.builtin").lsp_workspace_symbols()<cr>', opts)
@@ -77,6 +79,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap(bufnr, 'n', 'gr', ':Telescope lsp_references<cr>', opts)
   buf_set_keymap(bufnr, 'n', 'gd', ':Telescope lsp_definitions<cr>', opts)
   buf_set_keymap(bufnr, 'n', 'gI', ':Telescope lsp_implementations<cr>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>ca', ':Telescope lsp_code_actions<cr>', opts)
+  -- buf_set_keymap(bufnr, 'n', '<leader>cA', ':Telescope lsp_range_code_actions<cr>', opts)
 
 
 end

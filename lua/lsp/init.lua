@@ -37,4 +37,5 @@ vim.fn.sign_define("LspDiagnosticsSignHint",
 vim.fn.sign_define("LspDiagnosticsSignInformation",
                    {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"})
 
-vim.fn.sign_define("Jsj_codeAction", {text="", linehl=false, numhl=false, texthl="MoreMsg"})
+-- vim.fn.sign_define("Jsj_codeAction", {text="", linehl=false, numhl=false, texthl="MoreMsg"})
+vim.fn.sign_define('LightBulbSign', { text = "💡", texthl = false, linehl=false, numhl=false })
