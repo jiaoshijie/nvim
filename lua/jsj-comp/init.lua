@@ -27,6 +27,7 @@ cmp.setup {
     { name = 'latex_symbols' },
     { name = 'spell' },
     { name = 'luasnip' },
+    { name = 'cmp_tabnine' },
   },
   formatting = {
     format = function(entry, vim_item)
@@ -40,6 +41,7 @@ cmp.setup {
         spell = "[Spell]",
         path = "[Path]",
         luasnip = "[Snip]",
+        cmp_tabnine = "[TN]",
       })[entry.source.name]
       return vim_item
     end,
@@ -50,3 +52,12 @@ cmp.setup {
     cusom_menu = true,
   },
 }
+
+local tabnine = require('cmp_tabnine.config')
+tabnine:setup({
+  max_lines = 1000;
+  max_num_results = 20;
+  sort = true;
+  run_on_every_keystroke = true;
+  snippet_placeholder = '..';
+})
