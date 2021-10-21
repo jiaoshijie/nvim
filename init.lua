@@ -22,7 +22,7 @@ require('packer').startup(function(use)
   -- {{{ Lsp
   use {
     'neovim/nvim-lspconfig',
-    config = require('lsp'),
+    config = function() require('lsp') end,
     requires = {
       { 'kosayoda/nvim-lightbulb' },
     },
@@ -43,7 +43,7 @@ require('packer').startup(function(use)
   -- {{{ Telescope
   use {
     'nvim-telescope/telescope.nvim',
-    config = require("jsj-telescope"),
+    config = function() require("jsj-telescope") end,
     requires = {
       { 'nvim-lua/popup.nvim' },
       { 'nvim-lua/plenary.nvim' },
@@ -57,7 +57,7 @@ require('packer').startup(function(use)
   -- {{{ Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
-    config = require('jsj-treesitter'),
+    config = function() require('jsj-treesitter') end,
     run = ':TSUpdate',
     requires = {
       { 'nvim-treesitter/playground' },
@@ -68,14 +68,14 @@ require('packer').startup(function(use)
   -- {{{ Autocomplete
   use {
     'L3MON4D3/LuaSnip',
-    config = require('jsj-luasnip'),
+    config = function() require('jsj-luasnip') end,
     requires = {
       { 'rafamadriz/friendly-snippets' },
     },
   }
   use {
     'hrsh7th/nvim-cmp',
-    config = require('jsj-comp'),
+    config = function() require('jsj-comp') end,
     requires = {
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-nvim-lua' },
@@ -93,7 +93,7 @@ require('packer').startup(function(use)
   -- {{{ Git
   use {
     'lewis6991/gitsigns.nvim',
-    config = require('jsj-gitsigns'),
+    config = function() require('jsj-gitsigns') end,
     requires = {
       { 'nvim-lua/plenary.nvim' }
     },
@@ -103,7 +103,7 @@ require('packer').startup(function(use)
   -- {{{ Themes and Colors
   use {
     'tjdevries/colorbuddy.nvim',
-    config = require('init-style'),
+    config = function() require('init-style') end,
     requires = {
       { 'kyazdani42/nvim-web-devicons' },
     },
@@ -118,14 +118,14 @@ require('packer').startup(function(use)
   end
   use {
     'norcalli/nvim-colorizer.lua',
-    config = require('colorizer').setup()
+    config = function() require('colorizer').setup() end,
   }
   -- }}}
 
   -- {{{ MapKeys
   use {
     'folke/which-key.nvim',
-    config = require('jsj-which-key'),
+    config = function() require('jsj-which-key') end,
   }
   require('init-keymaps')
   require('init-mdSnippets')
@@ -154,7 +154,7 @@ require('packer').startup(function(use)
 
   use {
     'windwp/nvim-spectre',
-    config = require('jsj-nvim-spectre')
+    config = function() require('jsj-nvim-spectre') end,
   }
 
 end)
