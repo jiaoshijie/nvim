@@ -103,11 +103,12 @@ require('packer').startup(function(use)
   -- {{{ Themes and Colors
   use {
     'tjdevries/colorbuddy.nvim',
-    config = function() require('init-style') end,
+    -- config = function() require('init-style') end,
     requires = {
       { 'kyazdani42/nvim-web-devicons' },
     },
   }
+  require('init-style')
   use {
     'yamatsum/nvim-nonicons',  -- Need to install `nonicons.ttf` font. https://github.com/yamatsum/nonicons.git
     requires = {'kyazdani42/nvim-web-devicons'},
@@ -155,6 +156,17 @@ require('packer').startup(function(use)
   use {
     'windwp/nvim-spectre',
     config = function() require('jsj-nvim-spectre') end,
+  }
+
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require("indent_blankline").setup {
+        filetype = { 'python' },
+        show_first_indent_level = false,
+        space_char_blankline = " ",
+      }
+    end,
   }
 
 end)

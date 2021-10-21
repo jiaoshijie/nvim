@@ -620,3 +620,6 @@ Group.new('CmpItemAbbrMatch', c.yellow, c.none, b)
 Group.new('CmpItemAbbrMatchFuzzy', c.yellow, c.none, b)
 Group.new('CmpItemMenu', c.cyan, c.none, no)
 Group.new('CmpItemKind', c.dark_yellow, c.none, no)
+
+-- lukas-reineke/indent-blankline.nvim
+Group.new('IndentBlanklineChar', g.NonText, g.NonText, g.NonText)

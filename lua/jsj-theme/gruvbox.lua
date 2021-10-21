@@ -85,6 +85,7 @@ Group.new('ColorColumn', c.none, c.bg1)
 Group.new('Conceal', c.blue, c.none)
 Group.new('CursorLineNr', c.yellow, c.bg1, b)
 Group.new('NonText', c.bg2, c.none, no)
+Group.new('Whitespace', c.purple, c.none, no)
 Group.new('SpecialKey', c.bg2, c.none, no)
 Group.new('Visual', c.none, c.bg3, r)
 Group.new('VisualNOS', g.Visual, g.Visual, g.Visual)
@@ -482,3 +483,7 @@ Group.new('CmpItemAbbrMatch', c.yellow, c.none, b)
 Group.new('CmpItemAbbrMatchFuzzy', c.fg0, c.none, b)
 Group.new('CmpItemMenu', c.aqua, c.none, no)
 Group.new('CmpItemKind', c.orange, c.none, no)
+
+
+-- lukas-reineke/indent-blankline.nvim
+Group.new('IndentBlanklineChar', g.NonText, g.NonText, g.NonText)
