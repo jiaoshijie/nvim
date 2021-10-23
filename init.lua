@@ -72,7 +72,7 @@ require('packer').startup(function(use)
   }
   use {
     'hrsh7th/nvim-cmp',
-    config = function() require('jsj-comp') end,
+    config = function() require('jsj-cmp') end,
     requires = {
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-nvim-lua' },

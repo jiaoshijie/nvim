@@ -20,18 +20,18 @@ cmp.setup {
   },
 
   sources = {
-    { name = 'buffer'},
-    { name = 'path' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
-    { name = 'latex_symbols' },
-    { name = 'spell' },
     { name = 'luasnip' },
     { name = 'cmp_tabnine' },
+    { name = 'latex_symbols' },
+    { name = 'path' },
+    { name = 'buffer', keyword_length = 5, },
+    { name = 'spell'},
   },
   formatting = {
     format = function(entry, vim_item)
-      vim_item.kind = require('jsj-comp.lsp_symbols')[vim_item.kind] and require('jsj-comp.lsp_symbols')[vim_item.kind] or vim_item.kind
+      vim_item.kind = require('jsj-cmp.lsp_symbols')[vim_item.kind] and require('jsj-cmp.lsp_symbols')[vim_item.kind] or vim_item.kind
       -- set a name for each source
       vim_item.menu = ({
         buffer = "[Buffer]",
@@ -48,7 +48,7 @@ cmp.setup {
   },
   experimental = {
     native_menu = false,
-    ghost_text = false,
+    ghost_text = true,
     cusom_menu = true,
   },
 }
