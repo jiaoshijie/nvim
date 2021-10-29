@@ -103,7 +103,7 @@ Group.new('Normal'           , c.white          , c.black        , no)
 -- Popup menu: normal item.
 Group.new('Pmenu'            , c.none           , c.menu_gray    , no)
 -- Popup menu: selected item.
-Group.new('PmenuSel'         , c.black          , c.blue         , no)
+Group.new('PmenuSel'         , c.black          , c.blue         , b + i)
 -- Popup menu: scrollbar.
 Group.new('PmenuSbar'        , c.none           , c.special_gray , no)
 -- Popup menu: Thumb of the scrollbar.

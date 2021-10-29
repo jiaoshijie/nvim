@@ -148,7 +148,7 @@ Group.new('Structure', c.aqua, c.none, no)
 Group.new('Typedef', c.yellow, c.none, no)
 --[[ Completion Menu ]]
 Group.new('Pmenu', c.fg1, c.bg2, no)
-Group.new('PmenuSel', c.bg2, c.blue, b)
+Group.new('PmenuSel', c.bg2, c.blue, b + i)
 Group.new('PmenuSbar', c.none, c.bg2, no)
 Group.new('PmenuThumb', c.none, c.bg4, no)
 -- [[ Diffs ]]
