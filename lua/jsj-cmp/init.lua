@@ -30,7 +30,8 @@ cmp.setup {
     { name = 'spell'},
   },
   formatting = {
-    fields = { 'kind', 'abbr', 'menu' },
+    -- fields = { 'kind', 'abbr', 'menu' },
+    fields = { 'abbr', 'kind', 'menu' },
     format = function(entry, vim_item)
       vim_item.kind = require('jsj-cmp.lsp_symbols')[vim_item.kind] and require('jsj-cmp.lsp_symbols')[vim_item.kind] or vim_item.kind
       -- set a name for each source
