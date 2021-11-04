@@ -4,12 +4,12 @@
 
 | Command        | Motion                       |
 | -------        | ---                          |
-| `F2`           | 打开vimrc                    |
+| `<leader>fo`   | 打开vimrc                    |
 | `<leader><cr>` | 取消搜索高亮                 |
 | `<leader>/`    | 搜索单词                     |
 | `<leader>fm`   | 打开笔记                     |
 | `<leader>fc`   | 清除行尾空格和文件尾部的空行 |
-| `<leader>ps`    | 打开语法检查                 |
+| `<leader>ps`   | 打开语法检查                 |
 | `<leader>tt`   | 背景透明                     |
 | `<leader>=`    | 格式化代码                   |
 | `<leader>cz`   | 折叠代码                     |
