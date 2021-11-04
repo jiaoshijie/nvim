@@ -42,15 +42,4 @@ _M.Jsj_open_Notes = function()
   }
 end
 
-_M.Jsj_open_Org = function()
-  require('telescope.builtin').find_files {
-    prompt_title = "~ Org ~",
-    prompt_prefix = "Org > ",
-    cwd = '~/Nutstore Files/Nutstore/Org',
-    file_ignore_patterns = {
-      "%.bmp", "%.png", "%.jpg", "%.gif", "%.tga", "%.pcx", "%.ppm", "%.img", "%.iso",
-    },
-  }
-end
-
 return _M

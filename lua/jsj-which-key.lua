@@ -64,6 +64,7 @@ local mappings = {
     ["z"] = "Fold code",
     ["="] = "Lsp format code",
     ["a"] = "Lsp action",
+    ["c"] = "Add quick running keymap(F5 to run)",
     e = {
       name = "+Error & Warning",
       ["e"] = "Show error info in line",
@@ -85,6 +86,8 @@ local mappings = {
     ["g"] = "Git files",
     ["m"] = "Open My Own Notes",
     ["r"] = "Search history files",
+    ["b"] = "File browser",
+    ["o"] = "Open nvim config file",
   },
   g = {
     name = "+Git",

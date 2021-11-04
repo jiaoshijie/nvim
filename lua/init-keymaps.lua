@@ -132,3 +132,5 @@ map('i', '?', '?<c-g>u', opts)
 -- quickfix list
 map('n', '<leader>qq', ':lua require("init-utils").Jsj_ToggleList("quickfix", "c")<cr>', opts)
 map('n', '<leader>ql', ':lua require("init-utils").Jsj_ToggleList("loclist", "l")<cr>', opts)
+
+map('n', '<leader>cc', ':nnoremap <F5> :! %<left><left>', { noremap = true })
