@@ -9,6 +9,8 @@ noremap S <Nop>
 nnoremap cc <Nop>
 nnoremap <Space> <Nop>
 
+nnoremap <silent> <leader>fo :call utils#Jsj_openFile('~/.vim', 'vimrc')<CR>
+
 "----------------------------------------------------------------------
 " Insert mode
 "----------------------------------------------------------------------
@@ -46,8 +48,6 @@ xnoremap >  >gv
 "----------------------------------------------------------------------
 " "F" 区功能键
 "----------------------------------------------------------------------
-
-nnoremap <silent> <F2> :call utils#Jsj_openFile('~/.vim', 'vimrc')<CR>
 
 " ctags: 查看函数定义的位置
 nnoremap <F12> g]
@@ -171,3 +171,5 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 nnoremap <leader>j :m .+1<cr>==
 nnoremap <leader>k :m .-2<cr>==
+
+nnoremap <leader>cc :nnoremap <F5> :! %<left><left>
