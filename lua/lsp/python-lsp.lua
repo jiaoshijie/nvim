@@ -1,6 +1,6 @@
 require('lspconfig').pylsp.setup{
   -- cmd = { "pyls" },  -- sudo pacman -S python-language-server
-  -- sudo pacman -S python-lsp-server
+  -- sudo pacman -S python-lsp-server python-lsp-black(for formatting)
   on_attach = require'lsp.on_attach',
   autostart = true,
 }

@@ -62,7 +62,7 @@ local mappings = {
     ["t"] = "Ctags",
     ["r"] = "Lsp rename",
     ["z"] = "Fold code",
-    ["="] = "Lsp format code",
+    -- ["="] = "Lsp format code",
     ["a"] = "Lsp action",
     ["c"] = "Add quick running keymap(F5 to run)",
     e = {
