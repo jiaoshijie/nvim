@@ -2,6 +2,7 @@ local map = vim.api.nvim_set_keymap
 
 local actions = require('telescope.actions')
 require('telescope').load_extension('fzy_native')
+require('telescope').load_extension('notify')
 
 require('telescope').setup{
   defaults = {
