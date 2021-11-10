@@ -85,7 +85,7 @@ vim.api.nvim_exec([[
 augroup neovim_terminal
     autocmd!
     " Enter Terminal-mode (insert) automatically
-    autocmd TermOpen * startinsert
+    " autocmd TermOpen * startinsert
     " Disables number lines on terminal buffers
     autocmd TermOpen * :set nonumber norelativenumber
     " allows you to use Ctrl-c on terminal window
