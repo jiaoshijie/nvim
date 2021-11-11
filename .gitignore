@@ -3,3 +3,4 @@ tmp/
 spell/
 pack/
 plugin/
+!after/plugin
