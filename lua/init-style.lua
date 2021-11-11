@@ -1,14 +1,13 @@
-local o = vim.o
-local wo = vim.wo
+local o = vim.opt
 
-wo.number = true
-wo.signcolumn = "yes"
-wo.cursorline = true
-wo.colorcolumn = "79"
+o.number = true
+o.signcolumn = "yes"
+o.cursorline = true
+o.colorcolumn = "79"
 o.scrolloff = 6
 o.laststatus = 2
-wo.list = true
-o.listchars = "trail:␣,tab:•,extends:»,precedes:«,eol:↲"
+o.list = true
+o.listchars = {trail = '␣', tab = '•', eol = '↲', extends = '»', precedes = '«'}
 o.splitright = true
 o.splitbelow = true
 

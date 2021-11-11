@@ -93,4 +93,10 @@ _M.Jsj_CheckHlGroup = function()
   end
 end
 
+_M.fcitx2en = function()
+  if tonumber(vim.fn.system('fcitx5-remote')) == 2 then
+    vim.fn.system('fcitx5-remote -c')
+  end
+end
+
 return _M

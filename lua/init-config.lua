@@ -1,4 +1,4 @@
-local o = vim.o
+local o = vim.opt
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
@@ -23,8 +23,10 @@ vim.g.netrw_localrmdir   = 'rm -r'
 vim.g.netrw_hide         = 1
 vim.g.netrw_keepdir      = 0
 vim.g.netrw_localcopydircmd = 'cp -r'
-vim.cmd[[let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+']]
+vim.g.netrw_list_hide    = "\\(^\\|\\s\\s\\)\\zs\\.\\S\\+"
+-- vim.cmd[[let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+']]
 -- vim.cmd[[let g:netrw_list_hide=netrw_gitignore#Hide()]]
+
 vim.api.nvim_exec([[
   augroup Jsj_netrw_delete
     au!
@@ -32,11 +34,9 @@ vim.api.nvim_exec([[
   augroup END
 ]], false)
 
-vim.cmd([[
-if &diff
-  set diffopt=vertical,algorithm:histogram,indent-heuristic
-endif
-]])
+if vim.wo.diff then
+  o.diffopt:append('vertical,algorithm:histogram,indent-heuristic')
+end
 
 vim.api.nvim_exec([[
 augroup jsj_code_warning
@@ -51,65 +51,51 @@ o.writebackup = true
 o.backupext = ".bak"
 o.backupdir = "~/.config/nvim/tmp/backup//,."
 
-vim.cmd('set noswapfile')
+o.swapfile = false
 o.directory = "~/.config/nvim/tmp/swp//,."
 
-vim.cmd('set undofile')
+o.undofile = true
 o.undodir = "/tmp/neovim_u/undodir//,."
 
-vim.api.nvim_exec([[
-if ! isdirectory(expand('$HOME/.config/nvim/tmp/swp'))
-  silent! call mkdir(expand('$HOME/.config/nvim/tmp/swp'), 'p', 0700)
-endif
-if ! isdirectory(expand('$HOME/.config/nvim/tmp/backup'))
-  silent! call mkdir(expand('$HOME/.config/nvim/tmp/backup'), 'p', 0700)
-endif
-if ! isdirectory(expand('/tmp/neovim_u/undodir'))
-  silent! call mkdir(expand('/tmp/neovim_u/undodir'), 'p', 0700)
-endif
-]], false)
+if vim.fn.isdirectory(vim.fn.expand('$HOME/.config/nvim/tmp/swp')) ~= 1 then
+  vim.cmd [[silent! call mkdir(expand('$HOME/.config/nvim/tmp/swp'), 'p', 0700)]]
+end
+if vim.fn.isdirectory(vim.fn.expand('$HOME/.config/nvim/tmp/backup')) ~= 1 then
+  vim.cmd [[silent! call mkdir(expand('$HOME/.config/nvim/tmp/backup'), 'p', 0700)]]
+end
+if vim.fn.isdirectory(vim.fn.expand('/tmp/neovim_u/undodir')) ~= 1 then
+  vim.cmd [[silent! call mkdir(expand('/tmp/neovim_u/undodir'), 'p', 0700)]]
+end
 
 vim.api.nvim_exec([[
 augroup jsj_useful_settings
   autocmd!
-  " 打开到上次编辑的位置
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   autocmd VimLeave *.tex !texclear %
-  autocmd BufRead,BufNewFile *.S,*.s setlocal filetype=gas
-  autocmd BufNewFile,BufRead *.tex setlocal filetype=tex nolinebreak
-  autocmd BufNewFile,BufRead *.md,*.rmd setlocal nolinebreak
 augroup END
 ]], false)
 
 vim.api.nvim_exec([[
 augroup neovim_terminal
     autocmd!
-    " Enter Terminal-mode (insert) automatically
     " autocmd TermOpen * startinsert
-    " Disables number lines on terminal buffers
     autocmd TermOpen * :set nonumber norelativenumber
-    " allows you to use Ctrl-c on terminal window
+
+    " NOTICE: allows you to use Ctrl-c on terminal window
     autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
 augroup END
 ]], false)
 
-vim.api.nvim_exec([[
-function! Fcitx2en()
-   if system("fcitx5-remote") == 2
-      call system("fcitx5-remote -c")
-   endif
-endfunction
-
-if has('unix')
-  augroup jsj_Fcitx_toggle
-    autocmd!
-    autocmd InsertLeave * call Fcitx2en()
-  augroup END
-endif
-]], false)
+if vim.fn.has('unix') then
+  vim.api.nvim_exec([[
+    augroup jsj_Fcitx_toggle
+      autocmd!
+      autocmd InsertLeave * lua require('init-utils').fcitx2en()
+    augroup END
+  ]], false)
+end
 
 vim.cmd[[command! -nargs=0 CheckHlGroupUnderCursor :lua require("init-utils").Jsj_CheckHlGroup()]]
-vim.cmd[[command! -nargs=0 Today :read !date '+<\%Y-\%m-\%d \%a \%H:\%M>'<cr> ]]
 
 --[[ ctags, cscope --]]
 o.tags = "./tags,tags"
@@ -118,12 +104,10 @@ o.csto = 1
 o.cst = true
 o.switchbuf = "useopen"
 o.cscopequickfix = "s-,c-,d-,i-,t-,e-,a-"
-vim.api.nvim_exec([[
-if filereadable("cscope.out")
-  set noautochdir
-  " 将数据库文件连接到vim, if don't have "silent", add database pointed to by environment
-  silent cs add cscope.out
-elseif $CSCOPE_DB != ""
-  silent cs add $CSCOPE_DB
-endif
-]], false)
+
+if vim.fn.filereadable('cscope.out') ~= 0 then
+  o.autochdir = false
+  vim.cmd [[silent cs add cscope.out]]
+elseif vim.fn.expand('$CSCOPE_DB') ~= '$CSCOPE_DB' then
+  vim.cmd [[silent cs add $CSCOPE_DB]]
+end

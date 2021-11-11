@@ -7,8 +7,9 @@ local ul = s.underline
 local r = s.reverse
 local no = s.NONE
 
+vim.opt.background = 'dark'
 vim.g.colors_name = 'onedark'
--- vim.o.background == dark
+
 Color.new('red', '#E06C75')
 Color.new('dark_red', '#BE5046')
 Color.new('green', '#98C379')

@@ -111,9 +111,6 @@ require('packer').startup(function(use)
     requires = {'kyazdani42/nvim-web-devicons'},
     opt = true,
   }
-  if fn.expand('$TERM') == 'xterm-kitty' then
-    vim.cmd 'packadd nvim-nonicons'
-  end
   use {
     'norcalli/nvim-colorizer.lua',
     config = function() require('colorizer').setup() end,

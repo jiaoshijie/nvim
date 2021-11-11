@@ -6,6 +6,7 @@
 |_| \_| \_/ |_|_| |_| |_|  \____\___/|_| |_|_| |_|\__, |
                                                   |___/
 ```
+- My personal nvim configuration.
 
 ## Requirement
 
