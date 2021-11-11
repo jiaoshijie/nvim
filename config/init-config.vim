@@ -132,9 +132,6 @@ augroup jsj_useful_settings
   " 打开到上次编辑的位置
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   autocmd VimLeave *.tex !texclear %
-  autocmd BufRead,BufNewFile *.S,*.s setlocal filetype=gas
-  autocmd BufNewFile,BufRead *.tex setlocal filetype=tex nolinebreak
-  autocmd BufNewFile,BufRead *.md,*.rmd setlocal nolinebreak
 augroup END
 
 command! -nargs=0 CheckHlGroup call utils#Jsj_CheckHlGroup()
