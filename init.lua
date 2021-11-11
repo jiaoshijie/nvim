@@ -167,4 +167,12 @@ require('packer').startup(function(use)
     end,
   }
 
+  use {
+    'nathom/filetype.nvim',
+    config = function()
+      -- Do not source the default filetype.vim
+      vim.g.did_load_filetypes = 1
+    end
+  }
+
 end)
