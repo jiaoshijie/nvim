@@ -79,7 +79,7 @@ vim.api.nvim_exec([[
 augroup neovim_terminal
     autocmd!
     " autocmd TermOpen * startinsert
-    autocmd TermOpen * :set nonumber norelativenumber
+    autocmd TermOpen * :setlocal nonumber norelativenumber
 
     " NOTICE: allows you to use Ctrl-c on terminal window
     autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
