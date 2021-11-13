@@ -104,3 +104,7 @@ function! utils#Jsj_CheckHlGroup()
     echo l:info
   endif
 endfunction
+
+function! utils#showFilePath()
+  echo expand('%:p')
+endfunction

@@ -135,6 +135,7 @@ augroup jsj_useful_settings
 augroup END
 
 command! -nargs=0 CheckHlGroup call utils#Jsj_CheckHlGroup()
+command! -nargs=0 SF call utils#showFilePath()
 
 " 提权保存
 command! SudoWrite execute 'write !sudo tee % >/dev/null' <bar> edit!
