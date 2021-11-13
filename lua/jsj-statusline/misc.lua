@@ -118,4 +118,35 @@ _M.get_lsp_error = function()
   }
 end
 
+_M.get_gitb = function()
+  return {
+    text = (is_active() and vim.b.gitsigns_head) and '  ' .. vim.b.gitsigns_head .. ' ' or '',
+    state = is_active() and 'branch' or 'inactive',
+  }
+end
+
+_M.get_gitadd = function()
+  local a = (is_active() and vim.b.gitsigns_status_dict) and vim.b.gitsigns_status_dict['added'] or 0
+  return {
+    text = a == 0 and '' or '+' .. a .. ' ',
+    state = is_active() and 'added' or 'inactive',
+  }
+end
+
+_M.get_gitchange = function()
+  local c = (is_active() and vim.b.gitsigns_status_dict) and vim.b.gitsigns_status_dict['changed'] or 0
+  return {
+    text = c == 0 and '' or '~' .. c .. ' ',
+    state = is_active() and 'changed' or 'inactive',
+  }
+end
+
+_M.get_gitdel = function()
+  local d = (is_active() and vim.b.gitsigns_status_dict) and vim.b.gitsigns_status_dict['removed'] or 0
+  return {
+    text = d == 0 and '' or '-' .. d .. ' ',
+    state = is_active() and 'removed' or 'inactive',
+  }
+end
+
 return _M

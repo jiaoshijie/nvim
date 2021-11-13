@@ -99,4 +99,8 @@ _M.fcitx2en = function()
   end
 end
 
+_M.showFilePath = function()
+  print(vim.fn.expand('%:p'))
+end
+
 return _M

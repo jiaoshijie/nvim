@@ -96,6 +96,7 @@ if vim.fn.has('unix') then
 end
 
 vim.cmd[[command! -nargs=0 CheckHlGroupUnderCursor :lua require("init-utils").Jsj_CheckHlGroup()]]
+vim.cmd[[command! -nargs=0 SF :lua require("init-utils").showFilePath()]]
 
 --[[ ctags, cscope --]]
 o.tags = "./tags,tags"

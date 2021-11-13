@@ -12,6 +12,10 @@ local colors = {  -- onedark theme
   white        = { gui = '#ABB2BF', cterm = '145' },
   yellow       = { gui = '#E5C07B', cterm = '180' },
   dark_yellow  = { gui = '#D19A66', cterm = '172' },
+  light_yellow = { gui = '#FAFF00', cterm = '3' },
+  light_green  = { gui = '#00FF00', cterm = '154' },
+  light_red    = { gui = '#FF0009', cterm = '196' },
+  orange       = { gui = '#7E3300', cterm = '202'}
 }
 
 local inactive = {
@@ -156,4 +160,33 @@ return {
       ctermbg = colors.dark_yellow.cterm,
     },
   },
+  git = {
+    inactive = inactive,
+    branch = {
+      guifg = colors.black.gui,
+      guibg = colors.orange.gui,
+      ctermfg = colors.black.cterm,
+      ctermbg = colors.orange.cterm,
+      gui = 'bold,italic',
+      cterm = 'bold,italic',
+    },
+    added = {
+      guifg = colors.light_green.gui,
+      guibg = colors.orange.gui,
+      ctermfg = colors.light_green.cterm,
+      ctermbg = colors.orange.cterm,
+    },
+    changed = {
+      guifg = colors.light_yellow.gui,
+      guibg = colors.orange.gui,
+      ctermfg = colors.light_yellow.cterm,
+      ctermbg = colors.orange.cterm,
+    },
+    removed = {
+      guifg = colors.light_red.gui,
+      guibg = colors.orange.gui,
+      ctermfg = colors.light_red.cterm,
+      ctermbg = colors.orange.cterm,
+    },
+  }
 }
