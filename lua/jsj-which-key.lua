@@ -137,9 +137,6 @@ local mappings = {
     ["q"] = "Toggle Quickfix",
     ["l"] = "Toggle Localist",
   },
-  n = {
-    name = "+Treesitter"
-  },
   v = {
     name = "+Vista",
     ["v"] = "find workspace symbols",
