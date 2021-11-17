@@ -3,6 +3,7 @@ local map = vim.api.nvim_set_keymap
 local actions = require('telescope.actions')
 require('telescope').load_extension('fzy_native')
 require('telescope').load_extension('notify')
+require('telescope').load_extension('zoxide')
 
 require('telescope').setup{
   defaults = {
@@ -104,3 +105,4 @@ map('n', '<leader>fo', ':lua require("jsj-telescope.functions").Jsj_neovim_confi
 map('n', '<leader>ff', ':lua require("jsj-telescope.functions").Jsj_search_all_files()<cr>', opts)
 map('n', '<leader>fm', ':lua require("jsj-telescope.functions").Jsj_open_Notes()<cr>', opts)
 map('n', '<leader>pc', ':lua require("jsj-telescope.functions").Jsj_open_Code()<cr>', opts)
+map('n', '<leader>fj', ":lua require'telescope'.extensions.zoxide.list{}<cr>", opts)

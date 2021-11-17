@@ -49,6 +49,7 @@ require('packer').startup(function(use)
       { 'nvim-lua/plenary.nvim' },
       { 'kyazdani42/nvim-web-devicons' },
       { 'nvim-telescope/telescope-fzy-native.nvim' },  -- extension
+      { 'jvgrootveld/telescope-zoxide' },
       { 'liuchengxu/vista.vim' },
     },
   }
