@@ -28,6 +28,7 @@ cmp.setup {
     { name = 'path' },
     { name = 'buffer', keyword_length = 5, },
     { name = 'spell'},
+    { name = 'look', keyword_length = 2, opts = {convert_case = true, loud = true} },
   },
   formatting = {
     -- fields = { 'kind', 'abbr', 'menu' },
@@ -44,6 +45,7 @@ cmp.setup {
         path = "[Path]",
         luasnip = "[Snip]",
         cmp_tabnine = "[TN]",
+        look = "[look]",
       })[entry.source.name]
       return vim_item
     end,

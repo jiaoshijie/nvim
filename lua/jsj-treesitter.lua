@@ -9,7 +9,7 @@ require('nvim-treesitter.configs').setup {
     keymaps = {
       init_selection = "<C-n>",
       node_incremental = "<C-n>",
-      scope_incremental = "<C-m>",
+      -- scope_incremental = "<C-m>",
       node_decremental = "<C-p>",
     },
   },
@@ -33,5 +33,20 @@ require('nvim-treesitter.configs').setup {
       goto_node = '<cr>',
       show_help = '?',
     },
-  }
+  },
+  textobjects = {
+    select = {
+      enable = true,
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+      },
+    },
+  },
 }
