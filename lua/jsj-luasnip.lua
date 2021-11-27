@@ -4,7 +4,7 @@ local s = ls.snippet
 -- local sn = ls.snippet_node
 local t = ls.text_node
 local i = ls.insert_node
--- local f = ls.function_node
+local f = ls.function_node
 -- local c = ls.choice_node
 -- local d = ls.dynamic_node
 -- local l = require("luasnip.extras").lambda
@@ -13,19 +13,13 @@ local i = ls.insert_node
 -- local m = require("luasnip.extras").match
 -- local n = require("luasnip.extras").nonempty
 -- local dl = require("luasnip.extras").dynamic_lambda
-local types = require("luasnip.util.types")
+-- local types = require("luasnip.util.types")
 
 ls.config.set_config{
   history = false,
   -- updateevents = "InsertLeave,TextChanged,TextChangedI"
   -- region_check_events =
-  ext_opts = {
-    [types.choiceNode] = {
-      active = {
-        virt_text = { { "choiceNode", "Comment" } },
-      },
-    },
-  },
+  ext_opts = nil,
   -- treesitter-hl has 100, use something higher (default is 200).
   ext_base_prio = 300,
   -- minimal increase in priority.
@@ -37,6 +31,11 @@ ls.snippets = {
   all = {
     s("jiao1", {
       t({"jiao1751959040@gmail.com"}),
+    }),
+    s("date", {
+      f(function()
+        return os.date()
+      end, {})
     }),
   },
   c = {
@@ -100,7 +99,7 @@ ls.snippets = {
 vim.api.nvim_exec([[
   imap <silent> <C-l> <Plug>luasnip-expand-or-jump
   smap <silent> <C-l> <Plug>luasnip-expand-or-jump
-  imap <silent> <C-k> <Plug>luasnip-jump-prev
-  smap <silent> <C-k> <Plug>luasnip-jump-prev
+  imap <silent> <C-a> <Plug>luasnip-jump-prev
+  smap <silent> <C-a> <Plug>luasnip-jump-prev
   nnoremap <silent> <leader>u :LuaSnipUnlinkCurrent<cr>
 ]], false)

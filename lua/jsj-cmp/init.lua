@@ -28,7 +28,7 @@ cmp.setup {
     { name = 'path' },
     { name = 'buffer', keyword_length = 5, },
     { name = 'spell'},
-    { name = 'look', keyword_length = 2, opts = {convert_case = true, loud = true} },
+    { name = 'look', keyword_length = 2, option = {convert_case = true, loud = true} },
   },
   formatting = {
     -- fields = { 'kind', 'abbr', 'menu' },

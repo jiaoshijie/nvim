@@ -63,6 +63,7 @@ require('packer').startup(function(use)
     requires = {
       { 'nvim-treesitter/playground' },
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
+      { 'windwp/nvim-ts-autotag' },
     },
   }
   -- }}}
