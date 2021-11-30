@@ -3,7 +3,10 @@ local o = vim.opt
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
-vim.g.python_host_prog = '/usr/bin/python2'
+
+vim.g.loaded_python_provider = 0  -- To disable Python2 support
+vim.g.loaded_perl_provider = 0  -- To disable Perl support
+-- vim.g.python_host_prog = '/usr/bin/python2'
 vim.g.python3_host_prog = '/usr/bin/python3'
 
 -- for netrw
