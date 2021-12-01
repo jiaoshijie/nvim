@@ -8,10 +8,6 @@
 ```
 - My personal nvim configuration.
 
-## Requirement
-
-- Neovim version 0.5.0 or above.
-
 ## plugins
 
 - nvim-lspconfig
@@ -21,3 +17,5 @@
   - `sudo pcaman -S tree-sitter`
 - glow
   - `paru -S glow-bin`
+- null-ls
+  - `cargo install stylua`

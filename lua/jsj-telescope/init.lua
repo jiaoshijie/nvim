@@ -1,10 +1,6 @@
 local map = vim.api.nvim_set_keymap
 
 local actions = require('telescope.actions')
-require('telescope').load_extension('fzy_native')
-require('telescope').load_extension('notify')
-require('telescope').load_extension('zoxide')
-
 require('telescope').setup{
   defaults = {
     prompt_prefix = "❯ ",
@@ -73,18 +69,29 @@ require('telescope').setup{
   qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 
   extensions = {
-    fzy_native = {
-      override_generic_sorter = false,
-      override_file_sorter = true,
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    },
+    file_browser = {
+      -- theme = 'ivy',
     },
   },
 }
+
+require('telescope').load_extension('fzf')
+require('telescope').load_extension('notify')
+require('telescope').load_extension('zoxide')
+require("telescope").load_extension('file_browser')
 
 local opts = { noremap = true, silent = true }
 
 map('n', '<leader>fr', ':lua require("telescope.builtin").oldfiles()<cr>', opts)
 map('n', '<leader>fg', ':lua require("telescope.builtin").git_files()<cr>', opts)
-map('n', '<leader>fb', ':lua require("telescope.builtin").file_browser()<cr>', opts)
+-- map('n', '<leader>fb', ':lua require("telescope.builtin").file_browser()<cr>', opts)
 
 map('n', '<C-p>', ':lua require("telescope.builtin").grep_string()<cr>', opts)
 map('n', '<leader>s', ':lua require("telescope.builtin").live_grep()<cr>', opts)
@@ -106,3 +113,4 @@ map('n', '<leader>ff', ':lua require("jsj-telescope.functions").Jsj_search_all_f
 map('n', '<leader>fm', ':lua require("jsj-telescope.functions").Jsj_open_Notes()<cr>', opts)
 map('n', '<leader>pc', ':lua require("jsj-telescope.functions").Jsj_open_Code()<cr>', opts)
 map('n', '<leader>fj', ":lua require'telescope'.extensions.zoxide.list{}<cr>", opts)
+map('n', '<leader>fb', "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>", opts)

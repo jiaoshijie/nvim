@@ -25,6 +25,7 @@ require('packer').startup(function(use)
     config = function() require('lsp') end,
     requires = {
       { 'kosayoda/nvim-lightbulb' },
+      { 'jose-elias-alvarez/null-ls.nvim' },
     },
   }
   require('lsp.bash-lsp')
@@ -38,6 +39,7 @@ require('packer').startup(function(use)
   require('lsp.lua-lsp')
   require('lsp.vim-lsp')
   require('lsp.go-lsp')
+  require('lsp.null-ls')
   -- }}}
 
   -- {{{ Telescope
@@ -48,9 +50,10 @@ require('packer').startup(function(use)
       { 'nvim-lua/popup.nvim' },
       { 'nvim-lua/plenary.nvim' },
       { 'kyazdani42/nvim-web-devicons' },
-      { 'nvim-telescope/telescope-fzy-native.nvim' },  -- extension
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       { 'jvgrootveld/telescope-zoxide' },
       { 'liuchengxu/vista.vim' },
+      { 'nvim-telescope/telescope-file-browser.nvim'},
     },
   }
   -- }}}
