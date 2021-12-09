@@ -129,6 +129,14 @@ require('packer').startup(function(use)
     'rcarriga/nvim-notify',
     config = function() require("jsj-notify") end,
   }
+  use {
+    'chentau/marks.nvim',
+    config = function()
+      require('marks').setup {
+        default_mappings = true,
+      }
+    end,
+  }
   -- }}}
 
   -- {{{ MapKeys
@@ -176,4 +184,9 @@ require('packer').startup(function(use)
       }
     end,
   }
+
+  -- use {
+  --   'github/copilot.vim'
+  -- }
+
 end)

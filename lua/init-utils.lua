@@ -26,8 +26,6 @@ _M.Change_theme_alpha = function()
     local color = '#282c34'  -- onedark bg color
     if vim.g.colors_name == 'gruvbox' then
       color = vim.o.background == 'dark' and '#282828' or '#fbf1c7'
-    elseif vim.g.colors_name == 'solarized' then
-      color = vim.o.background == 'dark' and '#002b36' or '#fdf6e3'
     end
     JSJ_change_theme_alpha = false
     vim.cmd('highlight! Normal guibg=' .. color)
