@@ -29,13 +29,13 @@ local on_attach = function(client, bufnr)
   buf_set_keymap(bufnr, 'n', '<leader>cr', ':<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  -- buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  -- buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>pa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>pr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>pl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cee', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cep', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cen', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>cee', '<cmd>lua vim.diagnostic.open_float(nil, {source="always"})<CR>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>cep', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>cen', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then

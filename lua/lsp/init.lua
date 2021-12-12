@@ -28,14 +28,14 @@ vim.lsp.protocol.CompletionItemKind = {
     "  (TypeParameter)"
 }
 
-vim.fn.sign_define("LspDiagnosticsSignError",
-                   {texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"})
-vim.fn.sign_define("LspDiagnosticsSignWarning",
-                   {texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning"})
-vim.fn.sign_define("LspDiagnosticsSignHint",
-                   {texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"})
-vim.fn.sign_define("LspDiagnosticsSignInformation",
-                   {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"})
+vim.fn.sign_define("DiagnosticSignError",
+                   {texthl = "DiagnosticSignError", text = "✗", numhl = "DiagnosticSignError"})
+vim.fn.sign_define("DiagnosticSignWarn",
+                   {texthl = "DiagnosticSignWarn", text = "", numhl = "DiagnosticSignWarn"})
+vim.fn.sign_define("DiagnosticSignHint",
+                   {texthl = "DiagnosticSignHint", text = "", numhl = "DiagnosticSignHint"})
+vim.fn.sign_define("DiagnosticSignInfo",
+                   {texthl = "DiagnosticSignInfo", text = "", numhl = "DiagnosticSignInfo"})
 
 -- vim.fn.sign_define("Jsj_codeAction", {text="", linehl=false, numhl=false, texthl="MoreMsg"})
 vim.fn.sign_define('LightBulbSign', { text = "💡", texthl = false, linehl=false, numhl=false })
