@@ -28,7 +28,15 @@ cmp.setup {
     { name = 'path' },
     { name = 'buffer', keyword_length = 5, },
     { name = 'spell'},
-    { name = 'look', keyword_length = 2, option = {convert_case = true, loud = true} },
+    { name = 'dictionary', keyword_length = 2, },
+    -- {  -- TODO: having some bugs
+    --   name = 'look',
+    --   keyword_length = 3,
+    --   option = {
+    --     convert_case = true,
+    --     loud = true,
+    --   },
+    -- },
   },
   formatting = {
     -- fields = { 'kind', 'abbr', 'menu' },
@@ -46,6 +54,7 @@ cmp.setup {
         luasnip = "[Snip]",
         cmp_tabnine = "[TN]",
         look = "[look]",
+        dictionary = "[Dict]",
       })[entry.source.name]
       return vim_item
     end,
@@ -65,3 +74,16 @@ tabnine:setup({
   run_on_every_keystroke = true;
   snippet_placeholder = '..';
 })
+
+require("cmp_dictionary").setup{
+    dic = {
+        ["*"] = "/usr/share/dict/words",
+        -- ["markdown"] = { "path/to/mddict", "path/to/mddict2" },
+        -- ["javascript,typescript"] = { "path/to/jsdict" },
+    },
+    -- The following are default values, so you don't need to write them if you don't want to change them
+    exact = 2,
+    async = false,
+    capacity = 5,
+    debug = false,
+}

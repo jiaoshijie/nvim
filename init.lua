@@ -89,7 +89,8 @@ require('packer').startup(function(use)
       { 'saadparwaiz1/cmp_luasnip' },  -- for L3MON4D3/LuaSnip
       { 'f3fora/cmp-spell' },  -- set spell
       { 'tzachar/cmp-tabnine', run='./install.sh' },
-      { 'octaltree/cmp-look' },  -- pacman -S words
+      -- { 'octaltree/cmp-look' },  -- pacman -S words
+      { 'uga-rosa/cmp-dictionary' },
     },
   }
   -- }}}
