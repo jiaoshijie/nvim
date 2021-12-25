@@ -1,4 +1,9 @@
--- https://github.com/nanotee/nvim-lua-guide
+--             _                                  __ _
+--  _ ____   _(_)_ __ ___         ___ ___  _ __  / _(_) __ _
+-- | '_ \ \ / / | '_ ` _ \ _____ / __/ _ \| '_ \| |_| |/ _` |
+-- | | | \ V /| | | | | | |_____| (_| (_) | | | |  _| | (_| |
+-- |_| |_|\_/ |_|_| |_| |_|      \___\___/|_| |_|_| |_|\__, |
+--                                                     |___/
 
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -7,7 +12,20 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd 'packadd packer.nvim'
 end
 
-require('packer').startup(function(use)
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+
+packer.init {
+  display = {
+    open_fn = function()
+      return require('packer.util').float{ border = "rounded" }
+    end
+  }
+}
+
+packer.startup(function(use)
 
   -- {{{ Installer
   use { 'wbthomason/packer.nvim' }
@@ -28,17 +46,6 @@ require('packer').startup(function(use)
       { 'jose-elias-alvarez/null-ls.nvim' },
     },
   }
-  require('lsp.bash-lsp')
-  require('lsp.clangd-lsp')
-  require('lsp.css-lsp')
-  require('lsp.html-lsp')
-  require('lsp.json-lsp')
-  require('lsp.tsserver-lsp')
-  require('lsp.latex-lsp')
-  require('lsp.python-lsp')
-  require('lsp.lua-lsp')
-  require('lsp.vim-lsp')
-  require('lsp.go-lsp')
   require('lsp.null-ls')
   -- }}}
 
@@ -111,7 +118,6 @@ require('packer').startup(function(use)
   -- {{{ Themes and Colors
   use {
     'tjdevries/colorbuddy.nvim',
-    -- config = function() require('init-style') end,
     requires = {
       { 'kyazdani42/nvim-web-devicons' },
     },
@@ -129,14 +135,6 @@ require('packer').startup(function(use)
   use {
     'rcarriga/nvim-notify',
     config = function() require("jsj-notify") end,
-  }
-  use {
-    'chentau/marks.nvim',
-    config = function()
-      require('marks').setup {
-        default_mappings = true,
-      }
-    end,
   }
   -- }}}
 
@@ -177,6 +175,7 @@ require('packer').startup(function(use)
 
   use {
     'lukas-reineke/indent-blankline.nvim',
+    ft = {'python'},
     config = function()
       require("indent_blankline").setup {
         filetype = { 'python' },

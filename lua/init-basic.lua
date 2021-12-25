@@ -47,6 +47,7 @@ o.virtualedit = "block"
 o.path:append('**')
 
 o.pumblend = 10
+o.ph = 15
 
 o.lazyredraw = true
 

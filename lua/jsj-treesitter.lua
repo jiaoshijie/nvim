@@ -3,6 +3,7 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = "maintained",
   highlight = {
     enable = true,
+    additional_vim_regex_highlighting = true,
   },
   incremental_selection = {
     enable = true,
@@ -13,9 +14,10 @@ require('nvim-treesitter.configs').setup {
       node_decremental = "<C-p>",
     },
   },
-  -- indent = {
-  --   enable = true,
-  -- },
+  indent = {
+    enable = true,
+    disable = {'yaml'},
+  },
   playground = {
     enable = true,
     disable = {},

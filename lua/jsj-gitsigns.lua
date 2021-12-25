@@ -29,13 +29,13 @@ require('gitsigns').setup {
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-map('n', '<leader>ga', ':Gitsigns stage_hunk<cr>', opts)
-map('n', '<leader>gn', ':Gitsigns next_hunk<cr>', opts)
-map('n', '<leader>gp', ':Gitsigns prev_hunk<cr>', opts)
-map('n', '<leader>gs', ':Gitsigns select_hunk<cr>', opts)
-map('n', '<leader>gua', ':Gitsigns undo_stage_hunk<cr>', opts)
-map('n', '<leader>gP', ':Gitsigns preview_hunk<cr>', opts)
-map('n', '<leader>gB', ':Gitsigns stage_buffer<cr>', opts)
-map('n', '<leader>gub', ':Gitsigns reset_buffer_index<cr>', opts)
-map('n', '<leader>gb', ':Gitsigns toggle_current_line_blame<cr>', opts)
-map('n', '<leader>gh', ':Gitsigns toggle_linehl<cr>', opts)
+map('n', '<leader>ga', '<cmd>Gitsigns stage_hunk<cr>', opts)
+map('n', '<leader>gn', '<cmd>Gitsigns next_hunk<cr>', opts)
+map('n', '<leader>gp', '<cmd>Gitsigns prev_hunk<cr>', opts)
+map('n', '<leader>gs', '<cmd>Gitsigns select_hunk<cr>', opts)
+map('n', '<leader>gua', '<cmd>Gitsigns undo_stage_hunk<cr>', opts)
+map('n', '<leader>gP', '<cmd>Gitsigns preview_hunk<cr>', opts)
+map('n', '<leader>gB', '<cmd>Gitsigns stage_buffer<cr>', opts)
+map('n', '<leader>gub', '<cmd>Gitsigns reset_buffer_index<cr>', opts)
+map('n', '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<cr>', opts)
+map('n', '<leader>gh', '<cmd>Gitsigns toggle_linehl<cr>', opts)

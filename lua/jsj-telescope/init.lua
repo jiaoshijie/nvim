@@ -3,8 +3,9 @@ local map = vim.api.nvim_set_keymap
 local actions = require('telescope.actions')
 require('telescope').setup{
   defaults = {
-    prompt_prefix = "❯ ",
-    selection_caret = "❯ ",
+    prompt_prefix = " ",
+    selection_caret = " ",
+    path_display = { "smart" },
 
     winblend = 0,
 
@@ -89,28 +90,28 @@ require("telescope").load_extension('file_browser')
 
 local opts = { noremap = true, silent = true }
 
-map('n', '<leader>fr', ':lua require("telescope.builtin").oldfiles()<cr>', opts)
-map('n', '<leader>fg', ':lua require("telescope.builtin").git_files()<cr>', opts)
--- map('n', '<leader>fb', ':lua require("telescope.builtin").file_browser()<cr>', opts)
+map('n', '<leader>fr', '<cmd>lua require("telescope.builtin").oldfiles()<cr>', opts)
+map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").git_files()<cr>', opts)
+-- map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").file_browser()<cr>', opts)
 
-map('n', '<C-p>', ':lua require("telescope.builtin").grep_string()<cr>', opts)
-map('n', '<leader>s', ':lua require("telescope.builtin").live_grep()<cr>', opts)
-map('n', '<leader>S', ':lua require("telescope.builtin").current_buffer_fuzzy_find()<cr>', {noremap = true, silent = true})
+map('n', '<C-p>', '<cmd>lua require("telescope.builtin").grep_string()<cr>', opts)
+map('n', '<leader>s', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
+map('n', '<leader>S', '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<cr>', {noremap = true, silent = true})
 
-map('n', '<leader>bb', ':lua require("telescope.builtin").buffers()<cr>', opts)
-map('n', '<leader>ct', ':lua require("telescope.builtin").tags()<cr>', opts)
-map('n', '<leader>mm', ':lua require("telescope.builtin").marks()<cr>', opts)
+map('n', '<leader>bb', '<cmd>lua require("telescope.builtin").buffers()<cr>', opts)
+map('n', '<leader>ct', '<cmd>lua require("telescope.builtin").tags()<cr>', opts)
+map('n', '<leader>mm', '<cmd>lua require("telescope.builtin").marks()<cr>', opts)
 
 -- Vista
-map('n', '<leader>vl', ':Vista finder<cr>', opts)
-map('n', '<leader>vv', ':Vista finder!<cr>', opts)
+map('n', '<leader>vl', '<cmd>Vista finder<cr>', opts)
+map('n', '<leader>vv', '<cmd>Vista finder!<cr>', opts)
 
 vim.cmd([[command! -nargs=1 -complete=file TF :Telescope find_files cwd=<args>]])
--- map('n', '<leader>F', ':Telescope find_files cwd=', { noremap = true } )
+-- map('n', '<leader>F', '<cmd>Telescope find_files cwd=', { noremap = true } )
 
-map('n', '<leader>fo', ':lua require("jsj-telescope.functions").Jsj_neovim_config()<cr>', opts)
-map('n', '<leader>ff', ':lua require("jsj-telescope.functions").Jsj_search_all_files()<cr>', opts)
-map('n', '<leader>fm', ':lua require("jsj-telescope.functions").Jsj_open_Notes()<cr>', opts)
-map('n', '<leader>pc', ':lua require("jsj-telescope.functions").Jsj_open_Code()<cr>', opts)
-map('n', '<leader>fj', ":lua require'telescope'.extensions.zoxide.list{}<cr>", opts)
+map('n', '<leader>fo', '<cmd>lua require("jsj-telescope.functions").Jsj_neovim_config()<cr>', opts)
+map('n', '<leader>ff', '<cmd>lua require("jsj-telescope.functions").Jsj_search_all_files()<cr>', opts)
+map('n', '<leader>fm', '<cmd>lua require("jsj-telescope.functions").Jsj_open_Notes()<cr>', opts)
+map('n', '<leader>pc', '<cmd>lua require("jsj-telescope.functions").Jsj_open_Code()<cr>', opts)
+map('n', '<leader>fj', "<cmd>lua require'telescope'.extensions.zoxide.list{}<cr>", opts)
 map('n', '<leader>fb', "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>", opts)

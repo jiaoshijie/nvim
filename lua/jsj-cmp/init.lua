@@ -59,6 +59,13 @@ cmp.setup {
       return vim_item
     end,
   },
+  confirm_opts = {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false,
+  },
+  documentation = {
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  },
   experimental = {
     native_menu = false,
     ghost_text = true,

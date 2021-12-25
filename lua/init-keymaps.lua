@@ -46,6 +46,7 @@ map('c', '<m-f>', '<S-Right>', { noremap = true })
 
 map('x', '<', '<gv', opts)
 map('x', '>', '>gv', opts)
+map('v', 'p', '"_dP', opts)
 
 --[[
 -- normal mode
@@ -73,10 +74,10 @@ map('n', 'N', 'Nzzzv', opts)
 map('n', 'J', 'mJJ`JmJ', opts)
 
 Jsj_FoldMethod = false
-map('n', '<leader>cz', ':lua require("init-utils").ToggleFold()<CR>', opts)
+map('n', '<leader>cz', '<cmd>lua require("init-utils").ToggleFold()<CR>', opts)
 
 JSJ_change_theme_alpha = false
-map('n', '<leader>tt', ':lua require("init-utils").Change_theme_alpha()<cr>', opts)
+map('n', '<leader>tt', '<cmd>lua require("init-utils").Change_theme_alpha()<cr>', opts)
 
 --[[
 -- window
@@ -129,7 +130,7 @@ map('i', '!', '!<c-g>u', opts)
 map('i', '?', '?<c-g>u', opts)
 
 -- quickfix list
-map('n', '<leader>qq', ':lua require("init-utils").Jsj_ToggleList("quickfix", "c")<cr>', opts)
-map('n', '<leader>ql', ':lua require("init-utils").Jsj_ToggleList("loclist", "l")<cr>', opts)
+map('n', '<leader>qq', '<cmd>lua require("init-utils").Jsj_ToggleList("quickfix", "c")<cr>', opts)
+map('n', '<leader>ql', '<cmd>lua require("init-utils").Jsj_ToggleList("loclist", "l")<cr>', opts)
 
 map('n', '<leader>cc', ':nnoremap <F5> :! %<left><left>', { noremap = true })

@@ -1,17 +1,76 @@
 local on_attach = function(client, bufnr)
+  vim.lsp.protocol.CompletionItemKind = {
+      "  (Text) ",
+      "  (Method)",
+      "  (Function)",
+      "  (Constructor)",
+      " ﴲ (Field)",
+      "[](Variable)",
+      "  (Class)",
+      " ﰮ (Interface)",
+      "  (Module)",
+      " 襁(Property)",
+      "  (Unit)",
+      "  (Value)",
+      " 練(Enum)",
+      "  (Keyword)",
+      " ﬌ (Snippet)",
+      "  (Color)",
+      "  (File)",
+      "  (Reference)",
+      "  (Folder)",
+      "  (EnumMember)",
+      " ﲀ (Constant)",
+      " ﳤ (Struct)",
+      "  (Event)",
+      "  (Operator)",
+      "  (TypeParameter)"
+  }
+
+  local signs = {
+    {name = "DiagnosticSignError", text = "✗"},
+    {name = "DiagnosticSignWarn", text = ""},
+    {name = "DiagnosticSignHint", text = ""},
+    {name = "DiagnosticSignInfo", text = ""},
+  }
+  for _, sign in ipairs(signs) do
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+  end
+
+  -- vim.fn.sign_define("Jsj_codeAction", {text="", linehl=false, numhl=false, texthl="MoreMsg"})
+  vim.fn.sign_define('LightBulbSign', { text = "💡", texthl = false, linehl=false, numhl=false })
+
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   vim.lsp.handlers.hover, {
     -- Use a sharp border with `FloatBorder` highlights
-    border = "single"
+    border = "rounded"
   }
   )
 
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
   vim.lsp.handlers.signature_help, {
     -- Use a sharp border with `FloatBorder` highlights
-    border = "single"
+    border = "rounded"
   }
   )
+
+  vim.diagnostic.config{
+    virtual_text = true,
+    signs = {
+      active = signs,
+    },
+    -- update_in_insert = true,
+    underline = true,
+    severity_sort = true,
+    float = {
+      -- focusable = false,
+      -- style = "minimal",
+      border = "rounded",
+      -- source = "always",
+      -- header = "",
+      -- prefix = "",
+    },
+  }
 
   local buf_set_keymap = vim.api.nvim_buf_set_keymap
   local buf_set_option = vim.api.nvim_buf_set_option
@@ -72,17 +131,15 @@ local on_attach = function(client, bufnr)
   vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb{sign={enabled=true, priority=10,},float={enabled=false}, virtual_text={enabled=false}, status_text={enabled=false}}]]
 
   -- NOTICE: Telescope plugin
-  buf_set_keymap(bufnr, 'n', '<leader>cf', ':lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
-  -- buf_set_map(bufnr, 'n', '<leader>cF', ':lua require("telescope.builtin").lsp_workspace_symbols()<cr>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cea', ':Telescope lsp_document_diagnostics<cr>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>ceA', ':Telescope lsp_workspace_diagnostics<cr>', opts)
-  buf_set_keymap(bufnr, 'n', 'gr', ':Telescope lsp_references<cr>', opts)
-  buf_set_keymap(bufnr, 'n', 'gd', ':Telescope lsp_definitions<cr>', opts)
-  buf_set_keymap(bufnr, 'n', 'gI', ':Telescope lsp_implementations<cr>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>ca', ':Telescope lsp_code_actions<cr>', opts)
-  -- buf_set_keymap(bufnr, 'n', '<leader>cA', ':Telescope lsp_range_code_actions<cr>', opts)
-
-
+  buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
+  -- buf_set_map(bufnr, 'n', '<leader>cF', '<cmd>lua require("telescope.builtin").lsp_workspace_symbols()<cr>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>cea', '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>ceA', '<cmd>lua require("telescope.builtin").lsp_workspace_diagnostics()<cr>', opts)
+  buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>', opts)
+  buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>', opts)
+  buf_set_keymap(bufnr, 'n', 'gI', '<cmd>lua require("telescope.builtin").lsp_implementations()<cr>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor({ previewer = false }))<cr>', opts)
+  -- buf_set_keymap(bufnr, 'n', '<leader>cA', '<cmd>lua require("telescope.builtin").lsp_range_code_actions()<cr>', opts)
 end
 
 return on_attach

@@ -1,4 +1,4 @@
-require'lspconfig'.jsonls.setup {
+return {
   commands = {
     Format = {
       function()
@@ -7,5 +7,4 @@ require'lspconfig'.jsonls.setup {
     }
   },
   root_dir = vim.loop.cwd,
-  on_attach = require'lsp.on_attach',
 }

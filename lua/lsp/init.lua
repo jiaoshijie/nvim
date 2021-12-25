@@ -1,41 +1,32 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 -- local nvim_lsp = require('lspconfig')
-vim.lsp.protocol.CompletionItemKind = {
-    "  (Text) ",
-    "  (Method)",
-    "  (Function)",
-    "  (Constructor)",
-    " ﴲ (Field)",
-    "[](Variable)",
-    "  (Class)",
-    " ﰮ (Interface)",
-    "  (Module)",
-    " 襁(Property)",
-    "  (Unit)",
-    "  (Value)",
-    " 練(Enum)",
-    "  (Keyword)",
-    " ﬌ (Snippet)",
-    "  (Color)",
-    "  (File)",
-    "  (Reference)",
-    "  (Folder)",
-    "  (EnumMember)",
-    " ﲀ (Constant)",
-    " ﳤ (Struct)",
-    "  (Event)",
-    "  (Operator)",
-    "  (TypeParameter)"
+local lsp_using_list = {
+  clangd = "clangd-lsp",
+  bashls = "bash-lsp",
+  cssls = "css-lsp",
+  gopls = "go-lsp",
+  html = "html-lsp",
+  jsonls = "json-lsp",
+  ltex = "latex-lsp",
+  -- texlab = "latex-lsp",
+  sumneko_lua = "lua-lsp",
+  pylsp = "python-lsp",
+  -- pyright = "python-lsp",
+  -- jedi_language_server = "python-lsp",
+  tsserver = "tsserver-lsp",
+  vimls = "vim-lsp",
 }
 
-vim.fn.sign_define("DiagnosticSignError",
-                   {texthl = "DiagnosticSignError", text = "✗", numhl = "DiagnosticSignError"})
-vim.fn.sign_define("DiagnosticSignWarn",
-                   {texthl = "DiagnosticSignWarn", text = "", numhl = "DiagnosticSignWarn"})
-vim.fn.sign_define("DiagnosticSignHint",
-                   {texthl = "DiagnosticSignHint", text = "", numhl = "DiagnosticSignHint"})
-vim.fn.sign_define("DiagnosticSignInfo",
-                   {texthl = "DiagnosticSignInfo", text = "", numhl = "DiagnosticSignInfo"})
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
--- vim.fn.sign_define("Jsj_codeAction", {text="", linehl=false, numhl=false, texthl="MoreMsg"})
-vim.fn.sign_define('LightBulbSign', { text = "💡", texthl = false, linehl=false, numhl=false })
+for lsp_name, file_name in pairs(lsp_using_list) do
+  local lspPconf = require('lsp.' .. file_name)
+  lspPconf.on_attach = require('lsp.on_attach')
+  -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+  if lspPconf.capabilities then
+    lspPconf.capabilities = require('cmp_nvim_lsp').update_capabilities(lspPconf.capabilities)
+  else
+    lspPconf.capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+  end
+  require'lspconfig'[lsp_name].setup(lspPconf)
+end
