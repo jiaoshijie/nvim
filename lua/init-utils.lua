@@ -15,6 +15,7 @@ _M.JsjClearSE = function(var)
     vim.cmd(s)
   end
   vim.fn.cursor({l, c})
+  vim.cmd([[execute ":nohl"]])
 end
 
 _M.ToggleFold = function()
