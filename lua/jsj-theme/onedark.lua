@@ -30,8 +30,10 @@ Color.new('vertsplit', '#181A1F')
 
 Color.new('statusline', '#2c323c')
 Color.new('statuslineNC', '#5c6370')
-Color.new('visual_red', '#382B3E')  -- lsp virual text
-Color.new('visual_yellow', '#373641')  -- lsp virual text
+Color.new('visual_red', '#342828')  -- lsp virual text
+Color.new('visual_yellow', '#343428')  -- lsp virual text
+Color.new('visual_green', '#2A3428')  -- lsp virual text
+Color.new('visual_cyan', '#282E34')  -- lsp virual text
 
 -------------------------
 -- Vim Terminal Colors --

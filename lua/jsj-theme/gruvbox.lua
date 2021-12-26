@@ -27,6 +27,10 @@ if vim.o.background == 'dark' then
   Color.new('purple', '#d3869b')
   Color.new('aqua', '#8ec07c')
   Color.new('orange', '#f38019')
+  Color.new('visual_red', '#5D120A')  -- lsp virual text
+  Color.new('visual_yellow', '#565303')  -- lsp virual text
+  Color.new('visual_green', '#165603')  -- lsp virual text
+  Color.new('visual_aqua', '#032C56')  -- lsp virual text
 else
   Color.new('bg0', '#fbf1c7')  -- hard: #f9f5d7, normal: #fbf1c7, soft: #f2e5bc
   Color.new('bg1', '#ebdbb2')
@@ -46,12 +50,14 @@ else
   Color.new('purple', '#8f3f71')
   Color.new('aqua', '#427b58')
   Color.new('orange', '#af3a03')
+  Color.new('visual_red', '#FBD1C7')  -- lsp virual text
+  Color.new('visual_yellow', '#FBFBC7')  -- lsp virual text
+  Color.new('visual_green', '#C7FBD9')  -- lsp virual text
+  Color.new('visual_aqua', '#C7E9FB')  -- lsp virual text
 end
 
 Color.new('statusline', '#2c323c')
 Color.new('statuslineNC', '#5c6370')
-Color.new('visual_red', '#382B3E')  -- lsp virual text
-Color.new('visual_yellow', '#373641')  -- lsp virual text
 
 -------------------------
 -- Vim Terminal Colors --
@@ -386,8 +392,8 @@ Group.new('DiagnosticInfo'             , c.aqua   , c.none          , no)
 Group.new('DiagnosticHint'             , c.green  , c.none          , no)
 Group.new('DiagnosticVirtualTextError' , c.red    , c.visual_red    , i)
 Group.new('DiagnosticVirtualTextWarn'  , c.yellow , c.visual_yellow , i)
-Group.new('DiagnosticVirtualTextInfo'  , c.aqua   , c.bg2           , i)
-Group.new('DiagnosticVirtualTextHint'  , c.green  , c.bg2           , i)
+Group.new('DiagnosticVirtualTextInfo'  , c.aqua   , c.visual_aqua   , i)
+Group.new('DiagnosticVirtualTextHint'  , c.green  , c.visual_green  , i)
 Group.new('DiagnosticUnderlineError'   , c.none   , c.none          , uc  , c.red)
 Group.new('DiagnosticUnderlineWarn'    , c.none   , c.none          , uc  , c.yellow)
 Group.new('DiagnosticUnderlineInfo'    , c.none   , c.none          , uc  , c.aqua)
