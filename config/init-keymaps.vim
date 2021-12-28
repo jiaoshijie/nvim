@@ -74,7 +74,8 @@ nnoremap <silent> n nzzzv
 nnoremap <silent> N Nzzzv
 nnoremap <silent> J mJJ`JmJ
 
-nnoremap <silent> <leader>fc :call utils#JsjClearSE()<cr>
+nnoremap <silent> <leader>fc :call utils#JsjClearSE(0)<cr>
+nnoremap <silent> <leader>ft :call utils#JsjClearSE(1)<cr>
 
 " 打开语法检查
 nnoremap <silent> <leader>ps :setlocal spell! spelllang=en_us<CR>
