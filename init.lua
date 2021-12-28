@@ -147,15 +147,6 @@ packer.startup(function(use)
   require('init-mdSnippets')
   -- }}}
 
-  -- {{{ Markdown
-  use {
-    'npxbr/glow.nvim',  -- `paru -S glow-bin`
-  }
-  use {
-    'godlygeek/tabular'
-  }
-  -- }}}
-
   -- {{{ TextObject
   use {
     'tpope/vim-surround',
@@ -183,6 +174,10 @@ packer.startup(function(use)
         space_char_blankline = " ",
       }
     end,
+  }
+
+  use {
+    'godlygeek/tabular'
   }
 
   -- use {

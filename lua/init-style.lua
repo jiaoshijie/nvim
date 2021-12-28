@@ -7,17 +7,17 @@ o.colorcolumn = "79"
 o.scrolloff = 6
 o.laststatus = 2
 o.list = true
-o.listchars = {trail = '␣', tab = '•', eol = '↲', extends = '»', precedes = '«'}
+o.listchars = {trail = '␣', tab = '•', --[[ eol = '↲',--]] extends = '»', precedes = '«'}
 o.splitright = true
 o.splitbelow = true
 
 o.termguicolors = true
 
 -- o.background = "dark"
-require('colorbuddy').colorscheme('jsj-theme/gruvbox', false, { disable_defaults = false })
+require('colorbuddy').colorscheme('jsj-theme/onedark', false, { disable_defaults = false })
 require('jsj-statusline')
 
-vim.cmd[[command! -nargs=* -complete=color Colorbuddy :lua require("init-utils").Jsj_colorbuddy(<f-args>)]]
+-- vim.cmd[[command! -nargs=* -complete=color Colorbuddy :lua require("init-utils").Jsj_colorbuddy(<f-args>)]]
 
 vim.api.nvim_exec([[
 augroup Jsj_highlight_yank

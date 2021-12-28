@@ -117,8 +117,6 @@ Group.new('SignColumn', g.LineNr, g.LineNr, g.LineNr)
 Group.new('Folded', c.gray, c.bg1, i)
 Group.new('FoldColumn', c.gray, c.bg1)
 Group.new('Cursor', c.none, c.none, r)
-Group.new('vCursor', g.Cursor, g.Cursor, g.Cursor)
-Group.new('iCursor', g.Cursor, g.Cursor, g.Cursor)
 Group.new('lCursor', g.Cursor, g.Cursor, g.Cursor)
 
 
