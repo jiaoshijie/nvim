@@ -47,6 +47,10 @@ packer.startup(function(use)
     },
   }
   require('lsp.null-ls')
+  use {
+    'antoinemadec/FixCursorHold.nvim',
+    config = function() vim.g.cursorhold_updatetime = 100 end,
+  }
   -- }}}
 
   -- {{{ Telescope
