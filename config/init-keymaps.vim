@@ -65,6 +65,7 @@ nnoremap <silent> <leader><cr> :nohl<cr>
 nnoremap <leader>/ /\<\><left><left>
 nnoremap <silent> <leader>fm :call utils#Jsj_openFile(
       \ '~/Nutstore\ Files/Nutstore/MARKDOWN_NOTE', 'index.md')<cr>
+nnoremap <silent> <leader>ff :call utils#Jsj_openFile('.', '')<cr>
 nnoremap <silent> <leader>= mIgg=G'ImI
 nnoremap <silent> <leader><Space> @:
 xnoremap <silent> <leader><Space> @:
