@@ -1,7 +1,8 @@
-local fn, lsp = vim.fn, vim.lsp
+local _M = {}
+local fn = vim.fn
+local dia, dia_s = vim.diagnostic, vim.diagnostic.severity
 local fmt = string.format
 local get_icon = require('nvim-web-devicons').get_icon
-local _M = {}
 
 local modes = {
   ['?']  = {text = '', state           = 'inactive'},
@@ -85,35 +86,35 @@ _M.get_fileformat = function()
 end
 
 local get_diagnostic = function(prefix, severity)
-  local count = lsp.diagnostic.get_count(0, severity)
+  local count = #dia.get(0, {severity = severity})
   if count < 1 then return '' end
   return fmt(' %s:%d ', prefix, count)
 end
 
 _M.get_lsp_information = function()
   return {
-    text = get_diagnostic('', 'Information'),
+    text = get_diagnostic('', dia_s.INFO),
     state = 'information',
   }
 end
 
 _M.get_lsp_hint = function()
   return {
-    text = get_diagnostic('', 'Hint'),
+    text = get_diagnostic('', dia_s.HINT),
     state = 'hint',
   }
 end
 
 _M.get_lsp_warning = function()
   return {
-    text = get_diagnostic('', 'Warning'),
+    text = get_diagnostic('', dia_s.WARN),
     state = 'warning',
   }
 end
 
 _M.get_lsp_error = function()
   return {
-    text = get_diagnostic('', 'Error'),
+    text = get_diagnostic('✗', dia_s.ERROR),
     state = 'error',
   }
 end
