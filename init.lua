@@ -148,7 +148,7 @@ packer.startup(function(use)
     config = function() require('jsj-which-key') end,
   }
   require('init-keymaps')
-  require('init-mdSnippets')
+  require('init-mdSnippets').mkmdsnip()
   -- }}}
 
   -- {{{ TextObject

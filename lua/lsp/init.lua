@@ -28,5 +28,5 @@ for lsp_name, file_name in pairs(lsp_using_list) do
   else
     lspPconf.capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
   end
-  require'lspconfig'[lsp_name].setup(lspPconf)
+  require('lspconfig')[lsp_name].setup(lspPconf)
 end
