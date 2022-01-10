@@ -85,7 +85,6 @@ require('telescope').setup{
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('notify')
-require('telescope').load_extension('zoxide')
 require("telescope").load_extension('file_browser')
 
 local opts = { noremap = true, silent = true }
@@ -102,10 +101,6 @@ map('n', '<leader>bb', '<cmd>lua require("telescope.builtin").buffers()<cr>', op
 map('n', '<leader>ct', '<cmd>lua require("telescope.builtin").tags()<cr>', opts)
 map('n', '<leader>mm', '<cmd>lua require("telescope.builtin").marks()<cr>', opts)
 
--- Vista
-map('n', '<leader>vl', '<cmd>Vista finder<cr>', opts)
-map('n', '<leader>vv', '<cmd>Vista finder!<cr>', opts)
-
 vim.cmd([[command! -nargs=1 -complete=file TF :Telescope find_files cwd=<args>]])
 -- map('n', '<leader>F', '<cmd>Telescope find_files cwd=', { noremap = true } )
 
@@ -113,5 +108,4 @@ map('n', '<leader>fo', '<cmd>lua require("jsj-telescope.functions").Jsj_neovim_c
 map('n', '<leader>ff', '<cmd>lua require("jsj-telescope.functions").Jsj_search_all_files()<cr>', opts)
 map('n', '<leader>fm', '<cmd>lua require("jsj-telescope.functions").Jsj_open_Notes()<cr>', opts)
 map('n', '<leader>pc', '<cmd>lua require("jsj-telescope.functions").Jsj_open_Code()<cr>', opts)
-map('n', '<leader>fj', "<cmd>lua require'telescope'.extensions.zoxide.list{}<cr>", opts)
 map('n', '<leader>fb', "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>", opts)

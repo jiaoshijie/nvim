@@ -10,30 +10,30 @@ local no = s.NONE
 vim.opt.background = 'dark'
 vim.g.colors_name = 'onedark'
 
-Color.new('red', '#E06C75')
-Color.new('dark_red', '#BE5046')
-Color.new('green', '#98C379')
-Color.new('yellow', '#E5C07B')
-Color.new('dark_yellow', '#D19A66')
-Color.new('blue', '#61AFEF')
-Color.new('purple', '#C678DD')
-Color.new('cyan', '#56B6C2')
-Color.new('white', '#ABB2BF')
-Color.new('black', '#282C34')
-Color.new('comment_gray', '#5C6370')
+Color.new('red'           , '#E06C75')
+Color.new('dark_red'      , '#BE5046')
+Color.new('green'         , '#98C379')
+Color.new('yellow'        , '#E5C07B')
+Color.new('dark_yellow'   , '#D19A66')
+Color.new('blue'          , '#61AFEF')
+Color.new('purple'        , '#C678DD')
+Color.new('cyan'          , '#56B6C2')
+Color.new('white'         , '#ABB2BF')
+Color.new('black'         , '#282C34')
+Color.new('comment_gray'  , '#5C6370')
 Color.new('gutter_fg_gray', '#4B5263')
-Color.new('cursor_gray', '#2C323C')
-Color.new('visual_gray', '#3E4452')
-Color.new('menu_gray', '#3E4452')
-Color.new('special_gray', '#3B4048')
-Color.new('vertsplit', '#181A1F')
+Color.new('cursor_gray'   , '#2C323C')
+Color.new('visual_gray'   , '#3E4452')
+Color.new('menu_gray'     , '#3E4452')
+Color.new('special_gray'  , '#3B4048')
+Color.new('vertsplit'     , '#181A1F')
 
-Color.new('statusline', '#2c323c')
-Color.new('statuslineNC', '#5c6370')
-Color.new('visual_red', '#342828')  -- lsp virual text
-Color.new('visual_yellow', '#343428')  -- lsp virual text
-Color.new('visual_green', '#2A3428')  -- lsp virual text
-Color.new('visual_cyan', '#282E34')  -- lsp virual text
+Color.new('statusline'    , '#2c323c')
+Color.new('statuslineNC'  , '#5c6370')
+Color.new('visual_red'    , '#342828')  -- lsp virual text
+Color.new('visual_yellow' , '#343428')  -- lsp virual text
+Color.new('visual_green'  , '#2A3428')  -- lsp virual text
+Color.new('visual_cyan'   , '#282E34')  -- lsp virual text
 
 -------------------------
 -- Vim Terminal Colors --

@@ -137,11 +137,6 @@ local mappings = {
     ["q"] = "Toggle Quickfix",
     ["l"] = "Toggle Localist",
   },
-  v = {
-    name = "+Vista",
-    ["v"] = "find workspace symbols",
-    ["l"] = "find local flie symbols",
-  },
   m = {
     name = "+Mark",
     ["m"] = "show all marks",

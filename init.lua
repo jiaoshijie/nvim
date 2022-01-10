@@ -40,13 +40,15 @@ packer.startup(function(use)
   -- {{{ Lsp
   use {
     'neovim/nvim-lspconfig',
-    config = function() require('lsp') end,
+    config = function()
+      require('lsp')
+      require('lsp.null-ls')
+    end,
     requires = {
-      { 'kosayoda/nvim-lightbulb' },
       { 'jose-elias-alvarez/null-ls.nvim' },
+      { 'kosayoda/nvim-lightbulb' },
     },
   }
-  require('lsp.null-ls')
   use {
     'antoinemadec/FixCursorHold.nvim',
     config = function() vim.g.cursorhold_updatetime = 100 end,
@@ -62,8 +64,6 @@ packer.startup(function(use)
       { 'nvim-lua/plenary.nvim' },
       { 'kyazdani42/nvim-web-devicons' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-      { 'jvgrootveld/telescope-zoxide' },
-      { 'liuchengxu/vista.vim' },
       { 'nvim-telescope/telescope-file-browser.nvim'},
     },
   }
@@ -79,6 +79,12 @@ packer.startup(function(use)
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
       { 'windwp/nvim-ts-autotag' },
     },
+  }
+  use {
+    "blackCauldron7/surround.nvim",
+    config = function()
+      require"surround".setup {mappings_style = "surround"}
+    end
   }
   -- }}}
 
@@ -114,9 +120,6 @@ packer.startup(function(use)
       { 'nvim-lua/plenary.nvim' }
     },
   }
-  use {
-    'tpope/vim-fugitive',
-  }
   -- }}}
 
   -- {{{ Themes and Colors
@@ -151,18 +154,6 @@ packer.startup(function(use)
   require('init-mdSnippets').mkmdsnip()
   -- }}}
 
-  -- {{{ TextObject
-  use {
-    'tpope/vim-surround',
-    requires = { 'tpope/vim-repeat' },
-  }
-  -- }}}
-
-  -- undotree
-  use {
-    'mbbill/undotree',
-  }
-
   use {
     'windwp/nvim-spectre',
     config = function() require('jsj-nvim-spectre') end,
@@ -181,11 +172,21 @@ packer.startup(function(use)
   }
 
   use {
-    'godlygeek/tabular'
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v1.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim"
+      -- TODO: undotree
+    },
   }
 
-  -- use {
-  --   'github/copilot.vim'
-  -- }
+  use {
+    'RRethy/nvim-align',
+    config = function()
+      vim.cmd[[command! -range=% -nargs=1 Align lua require'align'.align(<f-args>)]]
+    end
+  }
 
 end)
