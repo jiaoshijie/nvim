@@ -172,7 +172,5 @@ nnoremap <silent> <leader>ql :call utils#Jsj_ToggleList('loclist', 'l')<cr>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-nnoremap <leader>j :m .+1<cr>==
-nnoremap <leader>k :m .-2<cr>==
 
 nnoremap <leader>cc :nnoremap <F5> :! %<left><left>

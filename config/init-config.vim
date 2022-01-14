@@ -78,33 +78,33 @@ endif
 " 终端下允许 ALT，详见：http://www.skywind.me/blog/archives/2021
 " 记得设置 ttimeout （见 init-basic.vim） 和 ttimeoutlen （上面）
 "----------------------------------------------------------------------
-if !has('nvim')
-  function! s:metacode(key)
-    exec "set <M-".a:key.">=\e".a:key
-  endfunc
-  for i in range(10)
-    call s:metacode(nr2char(char2nr('0') + i))
-  endfor
-  for i in range(26)
-    call s:metacode(nr2char(char2nr('a') + i))
-    call s:metacode(nr2char(char2nr('A') + i))
-  endfor
-  for c in [',', '.', '/', ';', '{', '}']
-    call s:metacode(c)
-  endfor
-  for c in ['?', ':', '-', '_', '+', '=', "'"]
-    call s:metacode(c)
-  endfor
-endif
+function! s:metacode(key)
+  exec "set <M-".a:key.">=\e".a:key
+endfunc
+
+for i in range(10)
+  call s:metacode(nr2char(char2nr('0') + i))
+endfor
+
+for i in range(26)
+  call s:metacode(nr2char(char2nr('a') + i))
+  call s:metacode(nr2char(char2nr('A') + i))
+endfor
+
+for c in [',', '.', '/', ';', '{', '}']
+  call s:metacode(c)
+endfor
+
+for c in ['?', ':', '-', '_', '+', '=', "'"]
+  call s:metacode(c)
+endfor
 
 
 "----------------------------------------------------------------------
 " 终端下功能键设置, 及功能键终端码矫正
 "----------------------------------------------------------------------
 function! s:key_escape(name, code)
-  if !has('nvim')
-    exec "set ".a:name."=\e".a:code
-  endif
+  exec "set ".a:name."=\e".a:code
 endfunc
 
 call s:key_escape('<F1>', 'OP')
