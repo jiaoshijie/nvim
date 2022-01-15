@@ -4,9 +4,9 @@
 "   \ V /  | || |  | |  _ <| |___
 "    \_/  |___|_|  |_|_| \_\\____|
 
-runtime! config/init-basic.vim
-runtime! config/init-config.vim
-runtime! config/init-tabsize.vim
-runtime! config/init-style.vim
-runtime! config/init-keymaps.vim
-runtime! config/init-snippets.vim
+runtime! config/init_basic.vim
+runtime! config/init_config.vim
+runtime! config/init_tabsize.vim
+runtime! config/init_style.vim
+runtime! config/init_keymaps.vim
+runtime! config/init_snippets.vim
