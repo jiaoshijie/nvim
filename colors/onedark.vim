@@ -17,8 +17,6 @@ function! s:h(group, style)
     \ "guibg="   (has_key(s:highlight, "bg")    ? s:highlight.bg.gui   : "NONE")
     \ "guisp="   (has_key(s:highlight, "sp")    ? s:highlight.sp.gui   : "NONE")
     \ "gui="     (has_key(s:highlight, "gui")   ? s:highlight.gui      : "NONE")
-    \ "ctermfg=NONE"
-    \ "ctermbg=NONE"
     \ "cterm=NONE"
 endfunction
 

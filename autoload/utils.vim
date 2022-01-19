@@ -36,6 +36,15 @@ fun! utils#ToggleFold()
     endif
 endfun
 
+let g:currentmode={
+      \ 'v'      : 'VISUAL',
+      \ 'V'      : 'V·Line',
+      \ "\<C-V>" : 'V·Block',
+      \ 'i'      : 'INSERT',
+      \ 'R'      : 'REPLACE',
+      \ 't'      : 'TERMINAL',
+      \ 'c'      : 'COMMAND',
+      \}
 function! utils#Jsj_ToggleList(listname, perfix)
   if empty(filter(getwininfo(), 'v:val.' . a:listname))
     try

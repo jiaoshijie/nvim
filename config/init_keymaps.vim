@@ -43,7 +43,6 @@ cnoremap <m-f> <S-Right>
 
 xnoremap <  <gv
 xnoremap >  >gv
-vnoremap p  "_dP
 
 
 "----------------------------------------------------------------------
