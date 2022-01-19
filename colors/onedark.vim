@@ -1,44 +1,4 @@
 " vim:fdm=marker
-" Vim Color File
-" Name:       onedark.vim
-" Maintainer: https://github.com/joshdick/onedark.vim/
-" License:    The MIT License (MIT)
-" Based On:   https://github.com/MaxSt/FlatColor/
-
-" Color Reference {{{
-
-" The following colors were measured inside Atom using its built-in inspector.
-
-" +---------------------------------------------+
-" |  Color Name  |         RGB        |   Hex   |
-" |--------------+--------------------+---------|
-" | Black        | rgb(40, 44, 52)    | #282c34 |
-" |--------------+--------------------+---------|
-" | White        | rgb(171, 178, 191) | #abb2bf |
-" |--------------+--------------------+---------|
-" | Light Red    | rgb(224, 108, 117) | #e06c75 |
-" |--------------+--------------------+---------|
-" | Dark Red     | rgb(190, 80, 70)   | #be5046 |
-" |--------------+--------------------+---------|
-" | Green        | rgb(152, 195, 121) | #98c379 |
-" |--------------+--------------------+---------|
-" | Light Yellow | rgb(229, 192, 123) | #e5c07b |
-" |--------------+--------------------+---------|
-" | Dark Yellow  | rgb(209, 154, 102) | #d19a66 |
-" |--------------+--------------------+---------|
-" | Blue         | rgb(97, 175, 239)  | #61afef |
-" |--------------+--------------------+---------|
-" | Magenta      | rgb(198, 120, 221) | #c678dd |
-" |--------------+--------------------+---------|
-" | Cyan         | rgb(86, 182, 194)  | #56b6c2 |
-" |--------------+--------------------+---------|
-" | Gutter Grey  | rgb(76, 82, 99)    | #4b5263 |
-" |--------------+--------------------+---------|
-" | Comment Grey | rgb(92, 99, 112)   | #5c6370 |
-" +---------------------------------------------+
-
-" }}}
-
 " Initialization {{{
 
 highlight clear
@@ -57,9 +17,9 @@ function! s:h(group, style)
     \ "guibg="   (has_key(s:highlight, "bg")    ? s:highlight.bg.gui   : "NONE")
     \ "guisp="   (has_key(s:highlight, "sp")    ? s:highlight.sp.gui   : "NONE")
     \ "gui="     (has_key(s:highlight, "gui")   ? s:highlight.gui      : "NONE")
-    \ "ctermfg=" (has_key(s:highlight, "fg")    ? s:highlight.fg.cterm : "NONE")
-    \ "ctermbg=" (has_key(s:highlight, "bg")    ? s:highlight.bg.cterm : "NONE")
-    \ "cterm="   (has_key(s:highlight, "cterm") ? s:highlight.cterm    : "NONE")
+    \ "ctermfg=NONE"
+    \ "ctermbg=NONE"
+    \ "cterm=NONE"
 endfunction
 
 " }}}
@@ -183,10 +143,10 @@ call s:h("SpellBad", { "fg": s:red, "gui": "underline", "cterm": "underline" }) 
 call s:h("SpellCap", { "fg": s:dark_yellow }) " Word that should start with a capital. This will be combined with the highlighting used otherwise.
 call s:h("SpellLocal", { "fg": s:dark_yellow }) " Word that is recognized by the spellchecker as one that is used in another region. This will be combined with the highlighting used otherwise.
 call s:h("SpellRare", { "fg": s:dark_yellow }) " Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
-call s:h("StatusLine", { "fg": s:white, "bg": s:cursor_grey }) " status line of current window
-call s:h("StatusLineNC", { "fg": s:cursor_grey, "bg": s:comment_grey }) " status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-call s:h("StatusLineTerm", { "fg": s:white, "bg": s:cursor_grey }) " status line of current :terminal window
-call s:h("StatusLineTermNC", { "fg": s:comment_grey }) " status line of non-current :terminal window
+" call s:h("StatusLine", { "fg": s:white, "bg": s:cursor_grey }) " status line of current window
+" call s:h("StatusLineNC", { "fg": s:cursor_grey, "bg": s:comment_grey }) " status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+" call s:h("StatusLineTerm", { "fg": s:white, "bg": s:cursor_grey }) " status line of current :terminal window
+" call s:h("StatusLineTermNC", { "fg": s:comment_grey }) " status line of non-current :terminal window
 call s:h("TabLine", { "fg": s:white, "bg": s:menu_grey }) " tab pages line, not active tab page label
 call s:h("TabLineFill", { "bg": s:vertsplit }) " tab pages line, where there are no labels
 call s:h("TabLineSel", { "fg": s:yellow }) " tab pages line, active tab page label
