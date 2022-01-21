@@ -80,12 +80,6 @@ packer.startup(function(use)
       { 'windwp/nvim-ts-autotag' },
     },
   }
-  use {
-    "blackCauldron7/surround.nvim",
-    config = function()
-      require"surround".setup {mappings_style = "surround"}
-    end
-  }
   -- }}}
 
   -- {{{ Autocomplete
@@ -183,10 +177,11 @@ packer.startup(function(use)
   }
 
   use {
-    'RRethy/nvim-align',
-    config = function()
-      vim.cmd[[command! -range=% -nargs=1 Align lua require'align'.align(<f-args>)]]
-    end
+    'tpope/vim-surround',
+    requires = { 'tpope/vim-repeat' },
+  }
+  use {
+    'godlygeek/tabular'
   }
 
 end)

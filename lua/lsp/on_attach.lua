@@ -132,7 +132,7 @@ local on_attach = function(client, bufnr)
 
   -- NOTICE: Telescope plugin
   buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
-  -- buf_set_map(bufnr, 'n', '<leader>cF', '<cmd>lua require("telescope.builtin").lsp_workspace_symbols()<cr>', opts)
+  buf_set_keymap(bufnr, 'n', '<leader>cF', '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<cr>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>cea', '<cmd>lua require("telescope.builtin").diagnostics({bufnr = 0})<cr>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>ceA', '<cmd>lua require("telescope.builtin").diagnostics()<cr>', opts)
   buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>', opts)

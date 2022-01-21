@@ -9,7 +9,7 @@ local no = s.NONE
 
 vim.g.colors_name = 'gruvbox'
 if vim.o.background == 'dark' then
-  Color.new('bg0', '#282828')  -- hard: #1d2021, normal: #282828, soft: #32302f
+  Color.new('bg0', '#1d2021')  -- hard: #1d2021, normal: #282828, soft: #32302f
   Color.new('bg1', '#3c3836')
   Color.new('bg2', '#504945')
   Color.new('bg3', '#665c54')
@@ -32,7 +32,7 @@ if vim.o.background == 'dark' then
   Color.new('visual_green', '#165603')  -- lsp virual text
   Color.new('visual_aqua', '#032C56')  -- lsp virual text
 else
-  Color.new('bg0', '#fbf1c7')  -- hard: #f9f5d7, normal: #fbf1c7, soft: #f2e5bc
+  Color.new('bg0', '#ffffff')  -- hard: #f9f5d7, normal: #fbf1c7, soft: #f2e5bc
   Color.new('bg1', '#ebdbb2')
   Color.new('bg2', '#d5c4a1')
   Color.new('bg3', '#bdae93')

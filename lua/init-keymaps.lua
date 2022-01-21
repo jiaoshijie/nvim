@@ -46,7 +46,6 @@ map('c', '<m-f>', '<S-Right>', { noremap = true })
 
 map('x', '<', '<gv', opts)
 map('x', '>', '>gv', opts)
-map('v', 'p', '"_dP', opts)
 
 --[[
 -- normal mode
@@ -118,8 +117,8 @@ map('n', '<leader>to', ':tabonly<cr>', opts)
 --  utils
 --]]
 -- move text
-map('n', '<leader>j', ':m .+1<cr>==', opts)
-map('n', '<leader>k', ':m .-2<cr>==', opts)
+-- map('n', '<leader>j', ':m .+1<cr>==', opts)
+-- map('n', '<leader>k', ':m .-2<cr>==', opts)
 map('v', 'J', ":m '>+1<cr>gv=gv", opts)
 map('v', 'K', ":m '<-2<cr>gv=gv", opts)
 
