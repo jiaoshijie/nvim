@@ -177,6 +177,10 @@ packer.startup(function(use)
   }
 
   use {
+    'github/copilot.vim'
+  }
+
+  use {
     'tpope/vim-surround',
     requires = { 'tpope/vim-repeat' },
   }

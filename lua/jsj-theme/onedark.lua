@@ -626,3 +626,6 @@ Group.new('CmpItemKind', c.dark_yellow, c.none, no)
 
 -- lukas-reineke/indent-blankline.nvim
 Group.new('IndentBlanklineChar', g.NonText, g.NonText, g.NonText)
+
+-- github/Copilot
+Group.new('CopilotSuggestion', c.white, c.none, no)
