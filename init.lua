@@ -176,12 +176,13 @@ packer.startup(function(use)
     },
   }
 
-  use {
-    'github/copilot.vim',
-    config = function()
-      vim.cmd[[let g:copilot_filetypes = {'*': v:false}]]
-    end
-  }
+  -- NOTICE: do not use it anymore
+  -- use {
+  --   'github/copilot.vim',
+  --   config = function()
+  --     vim.cmd[[let g:copilot_filetypes = {'*': v:false}]]
+  --   end
+  -- }
 
   use {
     'tpope/vim-surround',
