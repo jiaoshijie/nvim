@@ -3,6 +3,7 @@
 let s:Jsj_Comments = {
       \ 'vim': { 'prefix': '" ', 'suffix': '' },
       \ 'lua': { 'prefix': '-- ', 'suffix': '' },
+      \ 'haskell': { 'prefix': '-- ', 'suffix': '' },
       \ 'c': { 'prefix': '// ', 'suffix': '' },
       \ 'cpp': { 'prefix': '// ', 'suffix': '' },
       \ 'go': { 'prefix': '// ', 'suffix': '' },
