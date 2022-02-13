@@ -167,6 +167,7 @@ packer.startup(function(use)
 
   use {
     "nvim-neo-tree/neo-tree.nvim",
+    config = function() require('jsj-neo-tree') end,
     branch = "v1.x",
     requires = {
       "nvim-lua/plenary.nvim",

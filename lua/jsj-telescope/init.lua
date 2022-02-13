@@ -55,6 +55,7 @@ require('telescope').setup{
       i = {
         -- ["<C-x>"] = false,
         ["<esc>"] = actions.close,
+        ["<C-g>"] = actions.close,
       },
       n = {
       },
