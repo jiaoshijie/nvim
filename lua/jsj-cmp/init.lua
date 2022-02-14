@@ -29,6 +29,7 @@ cmp.setup {
     { name = 'buffer', keyword_length = 5, },
     { name = 'spell'},
     { name = 'dictionary', keyword_length = 2, },
+    -- { name = 'nvim_lsp_signature_help' },
     -- {  -- TODO: having some bugs
     --   name = 'look',
     --   keyword_length = 3,
@@ -94,3 +95,15 @@ require("cmp_dictionary").setup{
     capacity = 5,
     debug = false,
 }
+
+require'cmp'.setup.cmdline(':', {
+  sources = {
+    { name = 'cmdline' }
+  }
+})
+
+-- require'cmp'.setup.cmdline('/', {
+--   sources = {
+--     { name = 'buffer' }
+--   }
+-- })

@@ -95,6 +95,7 @@ packer.startup(function(use)
       { 'hrsh7th/cmp-nvim-lua' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-path' },
+      -- { 'hrsh7th/cmp-nvim-lsp-signature-help' },
 
       { 'kdheepak/cmp-latex-symbols' },
       { 'saadparwaiz1/cmp_luasnip' },  -- for L3MON4D3/LuaSnip
@@ -102,6 +103,8 @@ packer.startup(function(use)
       { 'tzachar/cmp-tabnine', run='./install.sh' },
       -- { 'octaltree/cmp-look' },  -- pacman -S words
       { 'uga-rosa/cmp-dictionary' },
+
+      { 'hrsh7th/cmp-cmdline' },
     },
   }
   -- }}}

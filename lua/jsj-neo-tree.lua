@@ -10,7 +10,7 @@ require('neo-tree').setup{
     icon = {
       folder_closed = "",
       folder_open = "",
-      folder_empty = "",
+      folder_empty = "",
       default = "*",
     },
     name = {
