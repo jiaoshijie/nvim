@@ -95,15 +95,3 @@ require("cmp_dictionary").setup{
     capacity = 5,
     debug = false,
 }
-
-require'cmp'.setup.cmdline(':', {
-  sources = {
-    { name = 'cmdline' }
-  }
-})
-
--- require'cmp'.setup.cmdline('/', {
---   sources = {
---     { name = 'buffer' }
---   }
--- })
