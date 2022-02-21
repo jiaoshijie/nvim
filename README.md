@@ -1,4 +1,4 @@
-# Simple vim config(non-plugin)
+# REALLY SIMPLE Vim CONFIG
 
 ### normal-mode
 
