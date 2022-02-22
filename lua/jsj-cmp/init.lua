@@ -24,20 +24,10 @@ cmp.setup {
     { name = 'nvim_lua' },
     { name = 'luasnip' },
     { name = 'cmp_tabnine' },
-    { name = 'latex_symbols' },
     { name = 'path' },
     { name = 'buffer', keyword_length = 5, },
     { name = 'spell'},
     { name = 'dictionary', keyword_length = 2, },
-    -- { name = 'nvim_lsp_signature_help' },
-    -- {  -- TODO: having some bugs
-    --   name = 'look',
-    --   keyword_length = 3,
-    --   option = {
-    --     convert_case = true,
-    --     loud = true,
-    --   },
-    -- },
   },
   formatting = {
     -- fields = { 'kind', 'abbr', 'menu' },
@@ -49,12 +39,10 @@ cmp.setup {
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         nvim_lua = "[Lua]",
-        latex_symbols = "[Latex]",
         spell = "[Spell]",
         path = "[Path]",
         luasnip = "[Snip]",
         cmp_tabnine = "[TN]",
-        look = "[look]",
         dictionary = "[Dict]",
       })[entry.source.name]
       return vim_item
@@ -69,7 +57,7 @@ cmp.setup {
   },
   experimental = {
     native_menu = false,
-    ghost_text = false,
+    ghost_text = true,
     cusom_menu = true,
   },
 }

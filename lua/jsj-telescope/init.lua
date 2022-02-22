@@ -3,7 +3,7 @@ local map = vim.api.nvim_set_keymap
 local actions = require('telescope.actions')
 require('telescope').setup{
   defaults = {
-    prompt_prefix = " ",
+    prompt_prefix = "🔭 ",
     selection_caret = " ",
     path_display = { "smart" },
 
@@ -78,29 +78,25 @@ require('telescope').setup{
       case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
                                        -- the default case_mode is "smart_case"
     },
-    file_browser = {
-      -- theme = 'ivy',
-    },
   },
 }
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('notify')
-require("telescope").load_extension('file_browser')
 
 local opts = { noremap = true, silent = true }
 
 map('n', '<leader>fr', '<cmd>lua require("telescope.builtin").oldfiles()<cr>', opts)
 map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").git_files()<cr>', opts)
--- map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").file_browser()<cr>', opts)
 
 map('n', '<C-p>', '<cmd>lua require("telescope.builtin").grep_string()<cr>', opts)
-map('n', '<leader>s', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
-map('n', '<leader>S', '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<cr>', {noremap = true, silent = true})
+map('n', '<leader>s', '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<cr>', {noremap = true, silent = true})
+map('n', '<leader>S', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
 
 map('n', '<leader>bb', '<cmd>lua require("telescope.builtin").buffers()<cr>', opts)
 map('n', '<leader>ct', '<cmd>lua require("telescope.builtin").tags()<cr>', opts)
-map('n', '<leader>mm', '<cmd>lua require("telescope.builtin").marks()<cr>', opts)
+map('n', '<leader>m', '<cmd>lua require("telescope.builtin").marks()<cr>', opts)
+map('n', '<leader>h', '<cmd>lua require("telescope.builtin").help_tags()<cr>', opts)
 
 vim.cmd([[command! -nargs=1 -complete=file TF :Telescope find_files cwd=<args>]])
 -- map('n', '<leader>F', '<cmd>Telescope find_files cwd=', { noremap = true } )
@@ -109,4 +105,3 @@ map('n', '<leader>fo', '<cmd>lua require("jsj-telescope.functions").Jsj_neovim_c
 map('n', '<leader>ff', '<cmd>lua require("jsj-telescope.functions").Jsj_search_all_files()<cr>', opts)
 map('n', '<leader>fm', '<cmd>lua require("jsj-telescope.functions").Jsj_open_Notes()<cr>', opts)
 map('n', '<leader>pc', '<cmd>lua require("jsj-telescope.functions").Jsj_open_Code()<cr>', opts)
-map('n', '<leader>fb', "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>", opts)

@@ -47,13 +47,13 @@ local mappings = {
   ["/"] = "Search single word",
   ["="] = "Format Code",
   ["<CR>"] = "Cancel search highlight",
-  -- ["o"] = "Toggle English syntax check",
-  ["s"] = "Search current dir",
-  ["S"] = "Search current file",
+  ["s"] = "Search current file",
+  ["S"] = "Search current dir",
   ["u"] = "Unlink LuaSnip",
+  ["m"] = "Show all marks",
+  ["h"] = "Show all help tags",
   b = {
     name = "+Buffer",
-    ["d"] = "Delete current buffer",
     ["b"] = "Chanage buffer",
   },
   c = {
@@ -61,10 +61,8 @@ local mappings = {
     ["f"] = "Lsp tags",
     ["t"] = "Ctags",
     ["r"] = "Lsp rename",
-    ["z"] = "Fold code",
     -- ["="] = "Lsp format code",
     ["a"] = "Lsp action",
-    ["c"] = "Add quick running keymap(F5 to run)",
     e = {
       name = "+Error & Warning",
       ["e"] = "Show error info in line",
@@ -86,7 +84,6 @@ local mappings = {
     ["g"] = "Git files",
     ["m"] = "Open My Own Notes",
     ["r"] = "Search history files",
-    ["b"] = "File browser",
     ["o"] = "Open nvim config file",
   },
   g = {
@@ -115,15 +112,11 @@ local mappings = {
   },
   ["P"] = "Preview image under the cursor",
   t = {
-    name = "+Tab & Theme",
-    ["o"] = "Close other tabs",
-    ["d"] = "Close current tab",
+    name = "+Theme",
     ["t"] = "Toggle background Color",
   },
   w = {
     name = "+Window",
-    ["o"] = "Close other windows",
-    ["d"] = "Close current window",
     ["/"] = "split current window vertically",
     ["-"] = "split current window",
   },
@@ -136,10 +129,6 @@ local mappings = {
     name = "+Quickfix & Localist",
     ["q"] = "Toggle Quickfix",
     ["l"] = "Toggle Localist",
-  },
-  m = {
-    name = "+Mark",
-    ["m"] = "show all marks",
   },
   r = {
     name = "+Replace",

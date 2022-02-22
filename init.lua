@@ -46,12 +46,7 @@ packer.startup(function(use)
     end,
     requires = {
       { 'jose-elias-alvarez/null-ls.nvim' },
-      { 'kosayoda/nvim-lightbulb' },
     },
-  }
-  use {
-    'antoinemadec/FixCursorHold.nvim',
-    config = function() vim.g.cursorhold_updatetime = 100 end,
   }
   -- }}}
 
@@ -64,7 +59,6 @@ packer.startup(function(use)
       { 'nvim-lua/plenary.nvim' },
       { 'kyazdani42/nvim-web-devicons' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-      { 'nvim-telescope/telescope-file-browser.nvim'},
     },
   }
   -- }}}
@@ -75,9 +69,7 @@ packer.startup(function(use)
     config = function() require('jsj-treesitter') end,
     run = ':TSUpdate',
     requires = {
-      { 'nvim-treesitter/playground' },
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
-      { 'windwp/nvim-ts-autotag' },
     },
   }
   -- }}}
@@ -96,12 +88,10 @@ packer.startup(function(use)
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-path' },
 
-      { 'kdheepak/cmp-latex-symbols' },
       { 'saadparwaiz1/cmp_luasnip' },  -- for L3MON4D3/LuaSnip
       { 'f3fora/cmp-spell' },  -- set spell
       { 'tzachar/cmp-tabnine', run='./install.sh' },
-      -- { 'octaltree/cmp-look' },  -- pacman -S words
-      { 'uga-rosa/cmp-dictionary' },
+      { 'uga-rosa/cmp-dictionary' },  -- pacman -S words
     },
   }
   -- }}}
@@ -151,30 +141,6 @@ packer.startup(function(use)
   use {
     'windwp/nvim-spectre',
     config = function() require('jsj-nvim-spectre') end,
-  }
-
-  use {
-    'lukas-reineke/indent-blankline.nvim',
-    ft = {'python'},
-    config = function()
-      require("indent_blankline").setup {
-        filetype = { 'python' },
-        show_first_indent_level = false,
-        space_char_blankline = " ",
-      }
-    end,
-  }
-
-  use {
-    "nvim-neo-tree/neo-tree.nvim",
-    config = function() require('jsj-neo-tree') end,
-    branch = "v1.x",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim"
-      -- TODO: undotree
-    },
   }
 
   -- NOTICE: do not use it anymore

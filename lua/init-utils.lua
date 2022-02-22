@@ -18,16 +18,6 @@ _M.JsjClearSE = function(var)
   vim.cmd([[execute ":nohl"]])
 end
 
-_M.ToggleFold = function()
-  if not Jsj_FoldMethod then
-    vim.cmd('normal! zM')
-    Jsj_FoldMethod = true
-  else
-    vim.cmd('normal! zR')
-    Jsj_FoldMethod = false
-  end
-end
-
 _M.Change_theme_alpha = function()
   if not JSJ_change_theme_alpha then
     JSJ_change_theme_alpha = true

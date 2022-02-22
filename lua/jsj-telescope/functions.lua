@@ -2,7 +2,6 @@ local _M = {}
 
 _M.Jsj_search_all_files = function()
   require('telescope.builtin').find_files {
-    prompt_prefix = '🔍 ',
     find_command = { 'rg', '--no-ignore', '--files' },
     file_ignore_patterns = {
       "%.bmp", "%.png", "%.jpg", "%.gif", "%.tga", "%.pcx", "%.ppm", "%.img", "%.iso",
@@ -10,7 +9,7 @@ _M.Jsj_search_all_files = function()
       "%.wav", "%.mp3", "%.ogg", "%.pcm",
       "%.chm", "%.epub", "%.pdf", "%.mobi", "%.ttf",
       "%.mp4", "%.avi", "%.flv", "%.mov", "%.mkv", "%.swf", "%.swc", "%.srt",
-      "%.mdd", "%.mdx"
+      "%.mdd", "%.mdx", "venv", "__pycache__"
     },
   }
 end

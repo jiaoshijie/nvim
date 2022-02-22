@@ -37,8 +37,7 @@ local on_attach = function(client, bufnr)
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
 
-  -- vim.fn.sign_define("Jsj_codeAction", {text="", linehl=false, numhl=false, texthl="MoreMsg"})
-  vim.fn.sign_define('LightBulbSign', { text = "💡", texthl = false, linehl=false, numhl=false })
+  -- vim.fn.sign_define("Jsj_codeAction", {text="💡", linehl=false, numhl=false, texthl="MoreMsg"})
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   vim.lsp.handlers.hover, {
@@ -127,8 +126,6 @@ local on_attach = function(client, bufnr)
   --     autocmd CursorMoved <buffer> lua require('lsp.lsp-utils').remove_code_action()
   --   augroup END
   -- ]], false)
-
-  vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb{sign={enabled=true, priority=10,},float={enabled=false}, virtual_text={enabled=false}, status_text={enabled=false}}]]
 
   -- NOTICE: Telescope plugin
   buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
