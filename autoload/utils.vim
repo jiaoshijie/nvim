@@ -25,17 +25,6 @@ function! utils#JsjClearSE(handle)
     call cursor(l, c)
 endfunction
 
-let g:FoldMethod = 0
-fun! utils#ToggleFold()
-    if g:FoldMethod == 0
-        exe "normal! zM"
-        let g:FoldMethod = 1
-    else
-        exe "normal! zR"
-        let g:FoldMethod = 0
-    endif
-endfun
-
 let g:currentmode={
       \ 'v'      : 'VISUAL',
       \ 'V'      : 'V·Line',

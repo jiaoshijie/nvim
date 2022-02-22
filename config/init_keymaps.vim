@@ -1,12 +1,9 @@
 inoremap <C-j> <Esc>
-xnoremap <C-j> <Esc>
-snoremap <C-j> <Esc>
-onoremap <C-j> <Esc>
+noremap <C-j> <Esc>
 
 " do nothing(normal visual select operator-wait)
 noremap s <Nop>
 noremap S <Nop>
-nnoremap cc <Nop>
 nnoremap <Space> <Nop>
 
 nnoremap <silent> <leader>fo :call utils#Jsj_openFile('~/.vim', 'vimrc')<CR>
@@ -14,9 +11,6 @@ nnoremap <silent> <leader>fo :call utils#Jsj_openFile('~/.vim', 'vimrc')<CR>
 "----------------------------------------------------------------------
 " Insert mode
 "----------------------------------------------------------------------
-
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
 " Recover from accidental Ctrl-U
 " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
 inoremap <c-u> <c-g>u<c-u>
@@ -25,7 +19,6 @@ inoremap , ,<c-g>u
 inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
-
 "----------------------------------------------------------------------
 " Command mode
 "----------------------------------------------------------------------
@@ -33,7 +26,6 @@ inoremap ? ?<c-g>u
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
 cnoremap <m-b> <S-Left>
 cnoremap <m-f> <S-Right>
 
@@ -66,8 +58,6 @@ nnoremap <silent> <leader>fm :call utils#Jsj_openFile(
       \ '~/Nutstore\ Files/Nutstore/MARKDOWN_NOTE', 'index.md')<cr>
 nnoremap <silent> <leader>ff :call utils#Jsj_openFile('.', '')<cr>
 nnoremap <silent> <leader>= mIgg=G'ImI
-nnoremap <silent> <leader><Space> @:
-xnoremap <silent> <leader><Space> @:
 nnoremap <silent> Q q:
 nnoremap <silent> Y y$
 nnoremap <silent> n nzzzv
@@ -91,8 +81,7 @@ nnoremap <silent> <leader>xr :%!xxd -r<CR>
 nnoremap <silent> <leader>eu :e ++enc=utf8<CR>
 nnoremap <silent> <leader>eg :e ++enc=gbk<CR>
 
-" 代码折叠自定义快捷键 <leader>zz for more ":h za zc zo zA zC zO"
-map <leader>cz :call utils#ToggleFold()<cr>
+" 代码折叠自定义快捷键 for more ":h za zc zo zA zC zO zM zR"
 
 " For more details using ":h cs"
 " find this C symbol
@@ -106,8 +95,8 @@ nnoremap <silent> gi :cs find g <C-R>=expand("<cword>")<CR><CR>
 nnoremap gD <C-]>
 
 nnoremap <C-p> :grep <C-r><C-w><Cr>
-nnoremap <leader>s :grep 
-nnoremap <leader>S :lvimgrep  %<Left><Left>
+nnoremap <leader>s :lvimgrep  %<Left><Left>
+nnoremap <leader>S :grep 
 
 nnoremap <silent> gc :<C-u>call sCommenter#Toggle_Comment(v:count1)<cr>
 vnoremap <silent> gc :<C-u>call sCommenter#Toggle_Comment(line("'>") - line("'<") + 1)<cr>
@@ -119,11 +108,6 @@ vnoremap <silent> gc :<C-u>call sCommenter#Toggle_Comment(line("'>") - line("'<"
 " 窗口分屏
 nnoremap <leader>w/ <C-w>v
 nnoremap <leader>w- <C-w>s
-nnoremap <leader>w= <C-w>=
-
-" 关闭窗口
-nnoremap <leader>wo <C-w>o
-nnoremap <leader>wd <C-w>c
 
 " 改变选中的窗口
 noremap <m-H> <c-w>h
@@ -138,25 +122,6 @@ tnoremap <m-J> <c-_>j
 tnoremap <m-K> <c-_>k
 tnoremap <Esc> <c-\><c-n>
 
-" 调整窗口大小
-nnoremap <silent> <Up> <C-w>5+
-nnoremap <silent> <Down> <C-w>5-
-nnoremap <silent> <Right> <C-w>5>
-nnoremap <silent> <Left> <C-w>5<
-
-"----------------------------------------------------------------------
-" buffer 相关
-"----------------------------------------------------------------------
-
-nnoremap <silent> <leader>bd :bdelete %<CR>
-
-"----------------------------------------------------------------------
-" Tab 相关
-"----------------------------------------------------------------------
-
-nnoremap <silent> <leader>td :tabclose<CR>
-nnoremap <silent> <leader>to :tabonly<cr>
-
 "----------------------------------------------------------------------
 " Quickfix&localist
 "----------------------------------------------------------------------
@@ -164,12 +129,11 @@ nnoremap <silent> <leader>to :tabonly<cr>
 nnoremap <silent> <leader>qq :call utils#Jsj_ToggleList('quickfix', 'c')<cr>
 nnoremap <silent> <leader>ql :call utils#Jsj_ToggleList('loclist', 'l')<cr>
 
-
 "----------------------------------------------------------------------
 " utils
 "----------------------------------------------------------------------
 
+nnoremap <m-j> :m .+1<cr>==
+nnoremap <m-k> :m .-2<cr>==
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-
-nnoremap <leader>cc :nnoremap <F5> :! %<left><left>
