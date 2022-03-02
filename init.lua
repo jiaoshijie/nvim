@@ -48,6 +48,12 @@ packer.startup(function(use)
       { 'jose-elias-alvarez/null-ls.nvim' },
     },
   }
+  use {
+    'j-hui/fidget.nvim',
+    config = function ()
+      require('fidget').setup()
+    end
+  }
   -- }}}
 
   -- {{{ Telescope
@@ -55,7 +61,6 @@ packer.startup(function(use)
     'nvim-telescope/telescope.nvim',
     config = function() require("jsj-telescope") end,
     requires = {
-      { 'nvim-lua/popup.nvim' },
       { 'nvim-lua/plenary.nvim' },
       { 'kyazdani42/nvim-web-devicons' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
