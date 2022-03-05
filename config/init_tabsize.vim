@@ -14,8 +14,3 @@ set smarttab
 
 " 缩进时取整 use multiple of shiftwidth when indenting with '<' and '>'
 set shiftround
-
-augroup jsj_SpecialTab
-  autocmd!
-  autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
-augroup END
