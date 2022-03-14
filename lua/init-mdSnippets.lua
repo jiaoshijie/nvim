@@ -1,11 +1,9 @@
 ---------------
 -- markdown snippets
 ---------------
-local _M = {}
-local s = ' '
 local l = '<localleader>'
 local mdlist = {
-  {m = 'nnoremap', b = '<buffer> <silent>', k = 'f', e = '/<++><cr>:nohl<cr>"_c4l'},
+  {m = 'n', slient = true, k = 'f', e = '/<++><cr>:nohl<cr>"_c4l'},
   {k = 'f', e = '<Esc>/<++><cr>:nohl<cr>"_c4l'},
   {k = 'm', e = '```<Enter><++><Enter>```<Enter><Enter><++><Esc>4k$a'},
   {k = 'b', e = '****<++><Esc>F*hi'},
@@ -28,16 +26,17 @@ local mdlist = {
   {k = 't4', e = [[\|<++>\|<++>\|<++>\|<++>\|<cr>\|----\|----\|----\|----\|<cr><Esc>2kyyj2p2ki<Esc>]]},
 }
 
-_M.mkmdsnip = function()
-  vim.cmd('augroup jsj_Markdown')
-  vim.cmd('autocmd!')
-  for _, i in pairs(mdlist) do
-    local m = i.m == nil and 'inoremap' or i.m
-    local b = i.b == nil and '<buffer>' or i.b
-    local k = l .. i.k
-    vim.cmd('autocmd Filetype markdown ' .. m .. s .. b .. s .. k .. s .. i.e)
+local group = vim.api.nvim_create_augroup('jsj_Markdown', {clear = true})
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = 'markdown',
+  group = group,
+  callback = function()
+    for _, i in ipairs(mdlist) do
+      local m = i.m == nil and 'i' or i.m
+      local k = l .. i.k
+      local opts = { noremap = true }
+      if i.slient then opts.silent = true end
+      vim.api.nvim_buf_set_keymap(0, m, k, i.e, opts)
+    end
   end
-  vim.cmd('augroup END')
-end
-
-return _M
+})

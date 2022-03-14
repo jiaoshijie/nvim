@@ -1,4 +1,6 @@
 local o = vim.opt
+local api = vim.api
+local autocmd = api.nvim_create_autocmd
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
@@ -31,24 +33,41 @@ vim.g.netrw_list_hide    = "\\(^\\|\\s\\s\\)\\zs\\.\\S\\+"
 -- vim.cmd[[let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+']]
 -- vim.cmd[[let g:netrw_list_hide=netrw_gitignore#Hide()]]
 
-vim.api.nvim_exec([[
-  augroup Jsj_netrw_delete
-    au!
-    autocmd FileType netrw setl bufhidden=delete " or use :qa!
-  augroup END
-]], false)
+local group = api.nvim_create_augroup("Jsj_neovim_autocmd_misc", {clear = true})
+autocmd("FileType", {
+  pattern = 'netrw',
+  group = group,
+  command = "setl bufhidden=delete",
+})
+autocmd("Syntax", {
+  pattern = '*',
+  group = group,
+  callback = function()
+    vim.fn.matchadd('Todo', '\\W\\zs\\(TODO\\|FIXME\\|BUG\\|XXX\\)')
+    vim.fn.matchadd('Debug', '\\W\\zs\\(INFO\\|DONE\\|NOTICE\\)')
+  end
+})
+autocmd("BufReadPost", {
+  pattern = '*',
+  group = group,
+  command = [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]
+})
+autocmd("TermOpen", {
+  pattern = '*',
+  group = group,
+  command = "setlocal nonumber norelativenumber"
+})
+if vim.fn.has('unix') then
+  autocmd("InsertLeave", {
+    pattern = '*',
+    group = group,
+    callback = require('init-utils').fcitx2en,
+  })
+end
 
 if vim.wo.diff then
   o.diffopt:append('vertical,algorithm:histogram,indent-heuristic')
 end
-
-vim.api.nvim_exec([[
-augroup jsj_code_warning
-  autocmd!
-  autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|BUG\|XXX\)')
-  autocmd Syntax * call matchadd('Debug', '\W\zs\(INFO\|DONE\|NOTICE\)')
-augroup END
-]], false)
 
 o.backup = false
 o.writebackup = true
@@ -69,34 +88,6 @@ if vim.fn.isdirectory(vim.fn.expand('$HOME/.config/nvim/tmp/backup')) ~= 1 then
 end
 if vim.fn.isdirectory(vim.fn.expand('/tmp/neovim_u/undodir')) ~= 1 then
   vim.cmd [[silent! call mkdir(expand('/tmp/neovim_u/undodir'), 'p', 0700)]]
-end
-
-vim.api.nvim_exec([[
-augroup jsj_useful_settings
-  autocmd!
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-  autocmd VimLeave *.tex !texclear %
-augroup END
-]], false)
-
-vim.api.nvim_exec([[
-augroup neovim_terminal
-    autocmd!
-    " autocmd TermOpen * startinsert
-    autocmd TermOpen * :setlocal nonumber norelativenumber
-
-    " NOTICE: allows you to use Ctrl-c on terminal window
-    autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
-augroup END
-]], false)
-
-if vim.fn.has('unix') then
-  vim.api.nvim_exec([[
-    augroup jsj_Fcitx_toggle
-      autocmd!
-      autocmd InsertLeave * lua require('init-utils').fcitx2en()
-    augroup END
-  ]], false)
 end
 
 vim.cmd[[command! -nargs=0 CheckHlGroupUnderCursor :lua require("init-utils").Jsj_CheckHlGroup()]]

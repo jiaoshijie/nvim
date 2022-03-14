@@ -406,6 +406,11 @@ Group.new('DiagnosticSignInfo'         , c.aqua   , c.none          , no)
 Group.new('DiagnosticSignHint'         , c.green  , c.none          , no)
 Group.new('Jsj_LspDochighlight'        , c.none   , c.bg2           , no)
 
+-- lsp document_highlight
+Group.new('LspReferenceRead', g.Jsj_LspDochighlight, g.Jsj_LspDochighlight, g.Jsj_LspDochighlight)
+Group.new('LspReferenceText', g.Jsj_LspDochighlight, g.Jsj_LspDochighlight, g.Jsj_LspDochighlight)
+Group.new('LspReferenceWrite', g.Jsj_LspDochighlight, g.Jsj_LspDochighlight, g.Jsj_LspDochighlight)
+
 -- TreeSitter Highlighting
 
 Group.new('TSAnnotation'        , c.yellow, c.none, no)
@@ -494,3 +499,8 @@ Group.new('IndentBlanklineChar', g.NonText, g.NonText, g.NonText)
 
 -- github/Copilot
 Group.new('CopilotSuggestion', c.gray, c.none, i)
+
+-- Undotree
+Group.new('UndotreeDiffLine', c.aqua, c.bg0, no)
+Group.new('UndotreeDiffAdded', c.green, c.bg0, r)
+Group.new('UndotreeDiffRemoved', c.red, c.bg0, r)

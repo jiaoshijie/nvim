@@ -6,9 +6,8 @@ local o = vim.opt
 o.modeline = false
 o.modelines = 0
 
--- TODO
-vim.cmd('filetype plugin indent on')
-vim.cmd('syntax on')
+-- vim.cmd('filetype plugin indent on')
+-- vim.cmd('syntax on')
 
 o.mouse = "a"
 o.title = true
@@ -22,6 +21,7 @@ o.formatoptions:append('mB')
 o.formatoptions:remove({'c', 't'})
 
 o.timeoutlen=500
+o.updatetime = 500
 
 o.ignorecase = true
 o.smartcase = true

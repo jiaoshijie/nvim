@@ -15,7 +15,11 @@ return {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'}
+        globals = {
+          'vim',  -- nvim stuff
+          'describe', 'it', 'pending', 'before_each', 'after_each', 'clear', 'assert',  -- plenary test stuff
+          'Jsj_undotree'  -- my plugin global variable
+        }
       },
       workspace = {
         -- Make the server aware of Neovim runtime files

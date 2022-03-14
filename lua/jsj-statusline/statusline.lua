@@ -1,6 +1,6 @@
 local _M = {}
 local fmt = string.format
-local fn, cmd = vim.fn, vim.cmd
+local cmd = vim.cmd
 local o, wo = vim.o, vim.wo
 local misc = require('jsj-statusline.misc')
 
@@ -30,8 +30,7 @@ local options = {
 }
 
 local sethlgroups = function()
-  cmd('augroup Jsj_Statusline_Colors')
-  cmd('autocmd!')
+  local group = vim.api.nvim_create_augroup("Jsj_Statusline_Colors", {clear = true})
   for class, attr in pairs(options.colors) do
     for state, args in pairs(attr) do
       local hlgroup = fmt('Statusline_%s_%s', class, state)
@@ -40,10 +39,13 @@ local sethlgroups = function()
         table.insert(temp, fmt('%s=%s', i, j))
       end
       temp = table.concat(temp, ' ')
-      cmd(fmt('autocmd VimEnter,ColorScheme * hi %s %s', hlgroup, temp))
+      vim.api.nvim_create_autocmd({"VimEnter", "ColorScheme"}, {
+        pattern = '*',
+        group = group,
+        command = string.format("hi %s %s", hlgroup, temp)
+      })
     end
   end
-  cmd('augroup END')
 end
 
 local highlight_section = function(section)

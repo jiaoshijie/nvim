@@ -61,7 +61,12 @@ packer.startup(function(use)
     'nvim-telescope/telescope.nvim',
     config = function() require("jsj-telescope") end,
     requires = {
-      { 'nvim-lua/plenary.nvim' },
+      {
+        'nvim-lua/plenary.nvim',
+        config = function()
+          vim.api.nvim_set_keymap('n', '<leader>T', '<Plug>PlenaryTestFile', {noremap=true, silent=true})
+        end,
+      },
       { 'kyazdani42/nvim-web-devicons' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     },
@@ -140,7 +145,7 @@ packer.startup(function(use)
     config = function() require('jsj-which-key') end,
   }
   require('init-keymaps')
-  require('init-mdSnippets').mkmdsnip()
+  require('init-mdSnippets')
   -- }}}
 
   use {

@@ -67,6 +67,7 @@ map('n', 'Q', 'q:', opts)
 map('n', 'n', 'nzzzv', opts)
 map('n', 'N', 'Nzzzv', opts)
 map('n', 'J', 'mJJ`JmJ', opts)
+map('n', 'gp', '`[v`]', opts)
 
 JSJ_change_theme_alpha = false
 map('n', '<leader>tt', '<cmd>lua require("init-utils").Change_theme_alpha()<cr>', opts)

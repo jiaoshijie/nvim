@@ -105,27 +105,18 @@ local on_attach = function(client, bufnr)
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-      set updatetime=500
-      hi! link LspReferenceRead Jsj_LspDochighlight
-      hi! link LspReferenceText Jsj_LspDochighlight
-      hi! link LspReferenceWrite Jsj_LspDochighlight
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], false)
+    local group = vim.api.nvim_create_augroup("lsp_document_highlight", {clear = true})
+    vim.api.nvim_create_autocmd("CursorHold", {
+      group = group,
+      buffer = 0,
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd("CursorMoved", {
+      group = group,
+      buffer = 0,
+      callback = vim.lsp.buf.clear_references,
+    })
   end
-
-  -- code action
-  -- vim.api.nvim_exec([[
-  --   augroup lsp_code_action
-  --     autocmd! * <buffer>
-  --     autocmd CursorHold,CursorHoldI <buffer> lua require('lsp.lsp-utils').code_action_listener()
-  --     autocmd CursorMoved <buffer> lua require('lsp.lsp-utils').remove_code_action()
-  --   augroup END
-  -- ]], false)
 
   -- NOTICE: Telescope plugin
   buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
@@ -136,7 +127,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>', opts)
   buf_set_keymap(bufnr, 'n', 'gI', '<cmd>lua require("telescope.builtin").lsp_implementations()<cr>', opts)
   buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor({ previewer = false }))<cr>', opts)
-  -- buf_set_keymap(bufnr, 'n', '<leader>cA', '<cmd>lua require("telescope.builtin").lsp_range_code_actions()<cr>', opts)
 end
 
 return on_attach

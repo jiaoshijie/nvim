@@ -19,9 +19,9 @@ require('jsj-statusline')
 
 -- vim.cmd[[command! -nargs=* -complete=color Colorbuddy :lua require("init-utils").Jsj_colorbuddy(<f-args>)]]
 
-vim.api.nvim_exec([[
-augroup Jsj_highlight_yank
-  autocmd!
-  autocmd TextYankPost * silent! lua vim.highlight.on_yank{higourp="IncSearch", timeout=300}
-augroup END
-]], false)
+local group = vim.api.nvim_create_augroup("Jsj_neovim_autocmd_misc", {clear = true})
+vim.api.nvim_create_autocmd('TextYankPost', {
+  pattern = '*',
+  group = group,
+  callback = function() vim.highlight.on_yank{higourp="IncSearch", timeout=300} end
+})
