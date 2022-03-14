@@ -63,6 +63,7 @@ nnoremap <silent> Y y$
 nnoremap <silent> n nzzzv
 nnoremap <silent> N Nzzzv
 nnoremap <silent> J mJJ`JmJ
+nnoremap <silent> gp `[v`]
 
 nnoremap <silent> <leader>fc :call utils#JsjClearSE(0)<cr>
 nnoremap <silent> <leader>ft :call utils#JsjClearSE(1)<cr>
