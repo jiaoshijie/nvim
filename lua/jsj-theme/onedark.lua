@@ -80,6 +80,7 @@ Group.new('EndOfBuffer'      , c.special_gray   , c.none         , no)
 Group.new('ErrorMsg'         , c.red            , c.none         , no)
 -- the column separating vertically split windows
 Group.new('VertSplit'        , c.vertsplit      , c.none         , no)
+Group.new('WinSeparator'     , c.vertsplit      , c.none         , no)
 -- line used for closed folds
 Group.new('Folded'           , c.comment_gray   , c.none         , no)
 -- foldcolumn'
@@ -89,7 +90,7 @@ Group.new('SignColumn'       , c.none           , c.none         , no)
 -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 Group.new('IncSearch'        , c.yellow         , c.comment_gray , no)
 -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-Group.new('LineNr'           , c.gutter_fg_gray , c.none         , b)
+Group.new('LineNr'           , c.gutter_fg_gray , c.none         , no)
 -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 Group.new('CursorLineNr'     , c.yellow         , c.cursor_gray  , b)
 -- The character under the cursor or just before it, if it is a paired bracket, and its match.
@@ -629,3 +630,8 @@ Group.new('IndentBlanklineChar', g.NonText, g.NonText, g.NonText)
 
 -- github/Copilot
 Group.new('CopilotSuggestion', c.white, c.none, no)
+
+-- Undotree
+Group.new('UndotreeDiffLine', c.cyan, c.black, no)
+Group.new('UndotreeDiffAdded', c.green, c.black, r)
+Group.new('UndotreeDiffRemoved', c.red, c.black, r)

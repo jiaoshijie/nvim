@@ -57,6 +57,11 @@ autocmd("TermOpen", {
   group = group,
   command = "setlocal nonumber norelativenumber"
 })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  pattern = '*',
+  group = group,
+  callback = function() vim.highlight.on_yank{higourp="IncSearch", timeout=300} end
+})
 if vim.fn.has('unix') then
   autocmd("InsertLeave", {
     pattern = '*',
