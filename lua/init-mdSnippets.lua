@@ -21,9 +21,9 @@ local mdlist = {
   {k = '6', e = '###### <CR><CR><++><Esc>2kA'},
   {k = ',', e = '<br>'},
   {k = 'z', e = '<font color=><++></font><Esc>F>;i'},
-  {k = 't2', e = [[\|<++>\|<++>\|<cr>\|----\|----\|<cr><Esc>2kyyj2p2ki<Esc>]]},
-  {k = 't3', e = [[\|<++>\|<++>\|<++>\|<cr>\|----\|----\|----\|<cr><Esc>2kyyj2p2ki<Esc>]]},
-  {k = 't4', e = [[\|<++>\|<++>\|<++>\|<++>\|<cr>\|----\|----\|----\|----\|<cr><Esc>2kyyj2p2ki<Esc>]]},
+  {k = 't2', e = [[|<++>|<++>|<cr>|----|----|<cr><Esc>2kyyj2p2ki<Esc>]]},
+  {k = 't3', e = [[|<++>|<++>|<++>|<cr>|----|----|----|<cr><Esc>2kyyj2p2ki<Esc>]]},
+  {k = 't4', e = [[|<++>|<++>|<++>|<++>|<cr>|----|----|----|----|<cr><Esc>2kyyj2p2ki<Esc>]]},
 }
 
 local group = vim.api.nvim_create_augroup('jsj_Markdown', {clear = true})

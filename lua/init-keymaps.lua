@@ -99,3 +99,6 @@ map('v', 'K', ":m '<-2<cr>gv=gv", opts)
 -- quickfix list
 map('n', '<leader>qq', '<cmd>lua require("init-utils").Jsj_ToggleList("quickfix", "c")<cr>', opts)
 map('n', '<leader>ql', '<cmd>lua require("init-utils").Jsj_ToggleList("loclist", "l")<cr>', opts)
+
+-- my plugins
+map('n', '<leader>u', ':UndotreeToggle<cr>', opts)
