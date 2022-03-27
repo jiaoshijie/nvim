@@ -48,12 +48,6 @@ packer.startup(function(use)
       { 'jose-elias-alvarez/null-ls.nvim' },
     },
   }
-  use {
-    'j-hui/fidget.nvim',
-    config = function ()
-      require('fidget').setup()
-    end
-  }
   -- }}}
 
   -- {{{ Telescope
@@ -124,11 +118,6 @@ packer.startup(function(use)
     },
   }
   require('init-style')
-  -- use {
-  --   'yamatsum/nvim-nonicons',  -- Need to install `nonicons.ttf` font. https://github.com/yamatsum/nonicons.git
-  --   requires = {'kyazdani42/nvim-web-devicons'},
-  --   opt = true,
-  -- }
   use {
     'norcalli/nvim-colorizer.lua',
     config = function() require('colorizer').setup() end,
