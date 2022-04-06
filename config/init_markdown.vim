@@ -2,6 +2,8 @@
 " markdown代码片段
 "----------------------------------------------------------------------
 
+let g:markdown_fenced_languages=['c', 'cpp']
+
 augroup jsj_Markdown
   autocmd!
   autocmd FileType markdown nnoremap <buffer> <silent> <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
