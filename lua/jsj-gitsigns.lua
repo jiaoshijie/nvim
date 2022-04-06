@@ -26,7 +26,7 @@ require('gitsigns').setup {
   status_formatter = nil, -- Use default
 }
 
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 map('n', '<leader>ga', '<cmd>Gitsigns stage_hunk<cr>', opts)

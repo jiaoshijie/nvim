@@ -71,36 +71,35 @@ local on_attach = function(client, bufnr)
     },
   }
 
-  local buf_set_keymap = vim.api.nvim_buf_set_keymap
   local buf_set_option = vim.api.nvim_buf_set_option
 
   buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
-  -- buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  -- buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  -- buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap(bufnr, 'i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  -- buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  -- buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>pa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>pr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>pl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cee', '<cmd>lua vim.diagnostic.open_float(nil, {source="always"})<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cep', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cen', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  local opts = { noremap=true, silent=true, buffer=bufnr }
+  -- vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
+  -- vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts)
+  -- vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
+  vim.keymap.set('i', '<C-k>', function() vim.lsp.buf.signature_help() end, opts)
+  -- vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set('n', '<leader>cr', function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set('n', '<C-k>', function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set('n', '<leader>D', function() vim.lsp.buf.type_definition() end, opts)
+  -- vim.keymap.set('n', '<leader>q', function() vim.diagnostic.setloclist() end, opts)
+  vim.keymap.set('n', '<leader>pa', function() vim.lsp.buf.add_workspace_folder() end, opts)
+  vim.keymap.set('n', '<leader>pr', function() vim.lsp.buf.remove_workspace_folder() end, opts)
+  vim.keymap.set('n', '<leader>pl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
+  vim.keymap.set('n', '<leader>cee', function() vim.diagnostic.open_float(nil, {source="always"}) end, opts)
+  vim.keymap.set('n', '<leader>cep', function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set('n', '<leader>cen', function() vim.diagnostic.goto_next() end, opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    buf_set_keymap(bufnr, "n", "<leader>c=", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    vim.keymap.set("n", "<leader>c=", function() vim.lsp.buf.formatting() end, opts)
   end
   if client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap(bufnr, "v", "<leader>c=", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    vim.keymap.set("v", "<leader>c=", function() vim.lsp.buf.range_formatting() end, opts)
   end
 
   -- Set autocommands conditional on server_capabilities
@@ -108,25 +107,23 @@ local on_attach = function(client, bufnr)
     local group = vim.api.nvim_create_augroup("lsp_document_highlight", {clear = true})
     vim.api.nvim_create_autocmd("CursorHold", {
       group = group,
-      buffer = 0,
       callback = vim.lsp.buf.document_highlight,
     })
     vim.api.nvim_create_autocmd("CursorMoved", {
       group = group,
-      buffer = 0,
       callback = vim.lsp.buf.clear_references,
     })
   end
 
   -- NOTICE: Telescope plugin
-  buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cF', '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<cr>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>cea', '<cmd>lua require("telescope.builtin").diagnostics({bufnr = 0})<cr>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>ceA', '<cmd>lua require("telescope.builtin").diagnostics()<cr>', opts)
-  buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>', opts)
-  buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>', opts)
-  buf_set_keymap(bufnr, 'n', 'gI', '<cmd>lua require("telescope.builtin").lsp_implementations()<cr>', opts)
-  buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor({ previewer = false }))<cr>', opts)
+  vim.keymap.set('n', '<leader>cf', function() require("telescope.builtin").lsp_document_symbols() end, opts)
+  vim.keymap.set('n', '<leader>cF', function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end, opts)
+  vim.keymap.set('n', '<leader>cea', function() require("telescope.builtin").diagnostics({bufnr = 0}) end, opts)
+  vim.keymap.set('n', '<leader>ceA', function() require("telescope.builtin").diagnostics() end, opts)
+  vim.keymap.set('n', 'gr', function() require("telescope.builtin").lsp_references() end, opts)
+  vim.keymap.set('n', 'gd', function() require("telescope.builtin").lsp_definitions() end, opts)
+  vim.keymap.set('n', 'gI', function() require("telescope.builtin").lsp_implementations() end, opts)
+  vim.keymap.set('n', '<leader>ca', function() require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor({ previewer = false })) end, opts)
 end
 
 return on_attach

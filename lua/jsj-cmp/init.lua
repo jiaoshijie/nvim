@@ -26,7 +26,6 @@ cmp.setup {
     { name = 'cmp_tabnine' },
     { name = 'path' },
     { name = 'buffer', keyword_length = 5, },
-    { name = 'spell'},
     { name = 'dictionary', keyword_length = 2, },
   },
   formatting = {
@@ -39,7 +38,6 @@ cmp.setup {
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         nvim_lua = "[Lua]",
-        spell = "[Spell]",
         path = "[Path]",
         luasnip = "[Snip]",
         cmp_tabnine = "[TN]",

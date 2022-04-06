@@ -58,7 +58,7 @@ packer.startup(function(use)
       {
         'nvim-lua/plenary.nvim',
         config = function()
-          vim.api.nvim_set_keymap('n', '<leader>T', '<Plug>PlenaryTestFile', {noremap=true, silent=true})
+          vim.keymap.set('n', '<leader>T', '<Plug>PlenaryTestFile', {noremap=true, silent=true})
         end,
       },
       { 'kyazdani42/nvim-web-devicons' },
@@ -87,13 +87,12 @@ packer.startup(function(use)
     'hrsh7th/nvim-cmp',
     config = function() require('jsj-cmp') end,
     requires = {
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-nvim-lua' },
       { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lua' },
       { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-buffer' },
 
       { 'saadparwaiz1/cmp_luasnip' },  -- for L3MON4D3/LuaSnip
-      { 'f3fora/cmp-spell' },  -- set spell
       { 'tzachar/cmp-tabnine', run='./install.sh' },
       { 'uga-rosa/cmp-dictionary' },  -- pacman -S words
     },
