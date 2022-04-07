@@ -1,3 +1,17 @@
+function! utils#warn(message)
+  echohl WarningMsg
+  echom a:message
+  echohl None
+  return 0
+endfunction
+
+function! utils#error(message)
+  echohl ErrorMsg
+  echom a:message
+  echohl None
+  return 0
+endfunction
+
 function! utils#Change_theme_alpha()
   if g:jsj_change_theme_alpha == 0
     let g:jsj_change_theme_alpha = 1
@@ -39,10 +53,7 @@ function! utils#Jsj_ToggleList(listname, perfix)
     try
       execute a:perfix . 'open'
     catch /E776/
-        echohl ErrorMsg
-        echo "Location List is Empty."
-        echohl None
-        return
+      return utils#error("Location List is Empty.")
     endtry
   else
     execute a:perfix . 'close'
@@ -103,9 +114,7 @@ function! utils#Jsj_CheckHlGroup()
     let l:info = printf("%s\nbg=`%s`", l:info, l:bg)
   endif
   if l:info == "synName=``"
-    echohl ErrorMsg
-    echo "There is no syntex item."
-    echohl None
+    return utils#error("There is no syntex item.")
   else
     echo l:info
   endif
@@ -113,4 +122,11 @@ endfunction
 
 function! utils#showFilePath()
   echo expand('%:p')
+endfunction
+
+function! utils#fzfGit(args)
+  if exists('g:loaded_fzf')
+    return fzfGit#gitfiles(a:args)
+  endif
+  return utils#error("`fzf` is not installed!!!")
 endfunction

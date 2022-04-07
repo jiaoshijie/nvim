@@ -139,6 +139,7 @@ augroup END
 
 command! -nargs=0 CheckHlGroup call utils#Jsj_CheckHlGroup()
 command! -nargs=0 SF call utils#showFilePath()
+command! -nargs=? -complete=dir GF call utils#fzfGit(<q-args>)
 
 " 提权保存
 command! SudoWrite execute 'write !sudo tee % >/dev/null' <bar> edit!
