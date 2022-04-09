@@ -158,7 +158,7 @@ set wildmenu
 
 " 设置wildmenu的补全方式
 set wildmode=full
-set wildoptions="df"
+set wildoptions=pum
 
 " 延迟绘制(提升性能)
 set lazyredraw
