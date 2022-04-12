@@ -60,7 +60,7 @@ let g:terminal_ansi_colors = [
 
 " Syntax Groups (descriptions and ordering from `:h w18`) {{{
 
-call s:h("Comment", { "fg": s:comment_grey, "gui": "italic", "cterm": "italic" }) " any comment
+call s:h("Comment", { "fg": s:comment_grey, "gui": "italic" }) " any comment
 call s:h("Constant", { "fg": s:cyan }) " any constant
 call s:h("String", { "fg": s:green }) " a string constant: "this is a string"
 call s:h("Character", { "fg": s:green }) " a character constant: 'c', '\n'
@@ -90,11 +90,11 @@ call s:h("SpecialChar", { "fg": s:dark_yellow }) " special character in a consta
 call s:h("Tag", {}) " you can use CTRL-] on this
 call s:h("Delimiter", {}) " character that needs attention
 call s:h("SpecialComment", { "fg": s:comment_grey }) " special things inside a comment
-call s:h("Debug", { "fg": s:yellow, "gui": "bold,italic", "cterm": "bold,italic" }) " debugging statements
-call s:h("Underlined", { "gui": "underline", "cterm": "underline" }) " text that stands out, HTML links
+call s:h("Debug", { "fg": s:yellow, "gui": "bold,italic" }) " debugging statements
+call s:h("Underlined", { "gui": "underline" }) " text that stands out, HTML links
 call s:h("Ignore", {}) " left blank, hidden
 call s:h("Error", { "fg": s:red }) " any erroneous construct
-call s:h("Todo", { "fg": s:yellow, "bg": s:dark_red, "gui": "bold,italic", "cterm": "bold,italic" }) " anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+call s:h("Todo", { "fg": s:yellow, "bg": s:dark_red, "gui": "bold,italic" }) " anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
 " }}}
 
@@ -112,7 +112,7 @@ else
 endif
 call s:h("Directory", { "fg": s:blue }) " directory names (and other special names in listings)
 call s:h("DiffAdd", { "bg": s:green, "fg": s:black }) " diff mode: Added line
-call s:h("DiffChange", { "fg": s:yellow, "gui": "underline", "cterm": "underline" }) " diff mode: Changed line
+call s:h("DiffChange", { "fg": s:yellow, "gui": "underline" }) " diff mode: Changed line
 call s:h("DiffDelete", { "bg": s:red, "fg": s:black }) " diff mode: Deleted line
 call s:h("DiffText", { "bg": s:yellow, "fg": s:black }) " diff mode: Changed text within a changed line
 " call s:h("EndOfBuffer", { "fg": s:black }) " filler lines (~) after the last line in the buffer
@@ -122,9 +122,9 @@ call s:h("Folded", { "fg": s:comment_grey }) " line used for closed folds
 call s:h("FoldColumn", {}) " 'foldcolumn'
 call s:h("SignColumn", {}) " column where signs are displayed
 call s:h("IncSearch", { "fg": s:yellow, "bg": s:comment_grey }) " 'incsearch' highlighting; also used for the text replaced with ":s///c"
-call s:h("LineNr", { "fg": s:gutter_fg_grey, "gui": "bold", "cterm": "bold" }) " Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-call s:h("CursorLineNr", { "fg": s:yellow, "gui": "bold", "cterm": "bold", "bg": s:cursor_grey }) " Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-call s:h("MatchParen", { "fg": s:blue, "gui": "underline,bold", "cterm": "underline,bold" }) " The character under the cursor or just before it, if it is a paired bracket, and its match.
+call s:h("LineNr", { "fg": s:gutter_fg_grey, "gui": "bold" }) " Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+call s:h("CursorLineNr", { "fg": s:yellow, "gui": "bold", "bg": s:cursor_grey }) " Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+call s:h("MatchParen", { "fg": s:blue, "gui": "underline,bold" }) " The character under the cursor or just before it, if it is a paired bracket, and its match.
 call s:h("ModeMsg", {}) " 'showmode' message (e.g., "-- INSERT --")
 call s:h("MoreMsg", {}) " more-prompt
 call s:h("NonText", { "fg": s:special_grey }) " '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
@@ -137,7 +137,7 @@ call s:h("Question", { "fg": s:purple }) " hit-enter prompt and yes/no questions
 call s:h("QuickFixLine", { "fg": s:black, "bg": s:yellow }) " Current quickfix item in the quickfix window.
 call s:h("Search", { "fg": s:black, "bg": s:yellow }) " Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
 call s:h("SpecialKey", { "fg": s:cyan }) " Meta and special keys listed with ":map", also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
-call s:h("SpellBad", { "fg": s:red, "gui": "underline", "cterm": "underline" }) " Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
+call s:h("SpellBad", { "fg": s:red, "gui": "underline" }) " Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
 call s:h("SpellCap", { "fg": s:dark_yellow }) " Word that should start with a capital. This will be combined with the highlighting used otherwise.
 call s:h("SpellLocal", { "fg": s:dark_yellow }) " Word that is recognized by the spellchecker as one that is used in another region. This will be combined with the highlighting used otherwise.
 call s:h("SpellRare", { "fg": s:dark_yellow }) " Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
@@ -207,7 +207,7 @@ call s:h("goTypeDecl", { "fg": s:purple })
 
 " HTML (keep consistent with Markdown, below)
 call s:h("htmlArg", { "fg": s:dark_yellow })
-call s:h("htmlBold", { "fg": s:dark_yellow, "gui": "bold", "cterm": "bold" })
+call s:h("htmlBold", { "fg": s:dark_yellow, "gui": "bold" })
 call s:h("htmlEndTag", { "fg": s:white })
 call s:h("htmlH1", { "fg": s:red })
 call s:h("htmlH2", { "fg": s:red })
@@ -215,8 +215,8 @@ call s:h("htmlH3", { "fg": s:red })
 call s:h("htmlH4", { "fg": s:red })
 call s:h("htmlH5", { "fg": s:red })
 call s:h("htmlH6", { "fg": s:red })
-call s:h("htmlItalic", { "fg": s:purple, "gui": "italic", "cterm": "italic" })
-call s:h("htmlLink", { "fg": s:cyan, "gui": "underline", "cterm": "underline" })
+call s:h("htmlItalic", { "fg": s:purple, "gui": "italic" })
+call s:h("htmlLink", { "fg": s:cyan, "gui": "underline" })
 call s:h("htmlSpecialChar", { "fg": s:dark_yellow })
 call s:h("htmlSpecialTagName", { "fg": s:red })
 call s:h("htmlTag", { "fg": s:white })
@@ -253,7 +253,7 @@ call s:h("lessClass", { "fg": s:dark_yellow })
 
 " Markdown (keep consistent with HTML, above)
 call s:h("markdownBlockquote", { "fg": s:comment_grey })
-call s:h("markdownBold", { "fg": s:dark_yellow, "gui": "bold", "cterm": "bold" })
+call s:h("markdownBold", { "fg": s:dark_yellow, "gui": "bold" })
 call s:h("markdownCode", { "fg": s:green })
 call s:h("markdownCodeBlock", { "fg": s:green })
 call s:h("markdownCodeDelimiter", { "fg": s:green })
@@ -268,13 +268,13 @@ call s:h("markdownHeadingRule", { "fg": s:comment_grey })
 call s:h("markdownId", { "fg": s:purple })
 call s:h("markdownIdDeclaration", { "fg": s:blue })
 call s:h("markdownIdDelimiter", { "fg": s:purple })
-call s:h("markdownItalic", { "fg": s:purple, "gui": "italic", "cterm": "italic" })
+call s:h("markdownItalic", { "fg": s:purple, "gui": "italic" })
 call s:h("markdownLinkDelimiter", { "fg": s:purple })
 call s:h("markdownLinkText", { "fg": s:blue })
 call s:h("markdownListMarker", { "fg": s:red })
 call s:h("markdownOrderedListMarker", { "fg": s:red })
 call s:h("markdownRule", { "fg": s:comment_grey })
-call s:h("markdownUrl", { "fg": s:comment_grey, "gui": "underline", "cterm": "underline" })
+call s:h("markdownUrl", { "fg": s:comment_grey, "gui": "underline" })
 
 " Perl
 call s:h("perlFiledescRead", { "fg": s:green })

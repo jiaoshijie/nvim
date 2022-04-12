@@ -12,12 +12,14 @@ function! utils#error(message)
   return 0
 endfunction
 
+
+let s:jsj_change_theme_alpha = 0
 function! utils#Change_theme_alpha()
-  if g:jsj_change_theme_alpha == 0
-    let g:jsj_change_theme_alpha = 1
+  if s:jsj_change_theme_alpha == 0
+    let s:jsj_change_theme_alpha = 1
     highlight Normal guibg=NONE ctermbg=None
   else
-    let g:jsj_change_theme_alpha = 0
+    let s:jsj_change_theme_alpha = 0
     highlight Normal guibg=#282C34 ctermbg=235
   endif
   hi! link SignColumn LineNr
@@ -39,7 +41,7 @@ function! utils#JsjClearSE(handle)
     call cursor(l, c)
 endfunction
 
-let g:currentmode={
+let s:currentmode={
       \ 'v'      : 'VISUAL',
       \ 'V'      : 'V·Line',
       \ "\<C-V>" : 'V·Block',
@@ -69,16 +71,16 @@ endfunction
 function! utils#ChangeStatuslineColor()
   if (mode() =~# '\v(v|V|)')
     exe 'hi! Jsj_SH_1 ctermbg=171 guibg=#D75FFF'
-    return g:currentmode[mode()]
+    return s:currentmode[mode()]
   elseif (mode() =~# 'i')
     exe 'hi! Jsj_SH_1 ctermbg=75 guibg=#5FAFFF'
-    return g:currentmode[mode()]
+    return s:currentmode[mode()]
   elseif (mode() =~# 'R')
     exe 'hi! Jsj_SH_1 ctermbg=160 guibg=#D70000'
-    return g:currentmode[mode()]
+    return s:currentmode[mode()]
   elseif (mode() =~# '\v(c|t)')
     exe 'hi! Jsj_SH_1 ctermbg=155 guibg=#AFFF5F'
-    return g:currentmode[mode()]
+    return s:currentmode[mode()]
   else
     exe 'hi! Jsj_SH_1 ctermbg=155 guibg=#AFFF5F'
   endif

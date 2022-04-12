@@ -43,6 +43,12 @@ augroup jsj_color_warning
   autocmd Syntax * call matchadd('Debug', '\W\zs\(INFO\|DONE\|NOTICE\)')
 augroup END
 
+augroup jsj_HLYnakedText
+  au!
+  au TextYankPost * call hlyankedtext#HLYankedText()
+augroup END
+
+
 "----------------------------------------------------------------------
 " 备份配置
 "----------------------------------------------------------------------
