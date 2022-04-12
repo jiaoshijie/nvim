@@ -9,7 +9,7 @@ function! hlyankedtext#HLYankedText()
     let l:pattern = '\v%\V'
   else
     let l:pos = [line("'["), col("'["), line("']"), col("']")]
-    if v:event.inclusive == v:false || l:pos[0] == l:pos[2]
+    if l:pos[0] == l:pos[2] || v:event.inclusive == v:false
       let l:pattern = printf('\v%%%dl%%%dc\_.{%d}', l:pos[0], l:pos[1], strchars(v:event.regcontents[0]))
     else
       let l:pattern = printf('\v%%%dl%%%dc\_.{-}%%%dl%%%dc.=', l:pos[0], l:pos[1], l:pos[2], l:pos[3])
@@ -20,4 +20,4 @@ function! hlyankedtext#HLYankedText()
   call timer_start(300, {-> matchdelete(l:id, l:winid)})
 endfunction
 
-" au TextYankPost * let g:foo = deepcopy(v:event)
+au TextYankPost * let g:foo = deepcopy(v:event)
