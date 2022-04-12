@@ -1,6 +1,8 @@
 " https://www.statox.fr/posts/2020/07/vim_flash_yanked_text/
 " https://github.com/markonm/hlyank.vim
 
+" au TextYankPost * let g:foo = deepcopy(v:event)
+
 function! hlyankedtext#HLYankedText()
   if v:event.operator isnot 'y'
     return
@@ -19,5 +21,3 @@ function! hlyankedtext#HLYankedText()
   let l:id = matchadd('IncSearch', l:pattern, 11)
   call timer_start(300, {-> matchdelete(l:id, l:winid)})
 endfunction
-
-au TextYankPost * let g:foo = deepcopy(v:event)
