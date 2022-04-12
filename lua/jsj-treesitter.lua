@@ -1,6 +1,6 @@
 -- sudo pacman -S tree-sitter
 require('nvim-treesitter.configs').setup {
-  ensure_installed = "maintained",
+  ensure_installed = {"c", "cpp", "python", "lua", "go"},
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = true,
