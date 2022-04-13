@@ -1,13 +1,13 @@
 # REALLY SIMPLE Vim CONFIG
 
-### 3 plugins are highly recommended
+## 3 plugins are highly recommended
 
 - `mkdir -p ~/.vim/pack/github/start`
 - vim-surround: `git clone https://github.com/tpope/vim-surround.git ~/.vim/pack/github/start/vim-surround`
 - vim-repeat: `git clone https://github.com/tpope/vim-repeat.git ~/.vim/pack/github/start/vim-repeat`
 - tabular: `git clone https://github.com/godlygeek/tabular.git ~/.vim/pack/github/start/tabular`
 
-### normal-mode
+## some shortcuts
 
 | Command        | Motion                       |
 | -------        | ---                          |
@@ -20,3 +20,7 @@
 | `<leader>xr`   | 切换回文本模式               |
 | `<leader>eu`   | 切换编码为utf-8              |
 | `<leader>eg`   | 切换编码为gbk                |
+
+## LICENSE
+
+**MIT**
