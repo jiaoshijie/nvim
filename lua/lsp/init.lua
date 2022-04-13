@@ -1,5 +1,4 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
--- local nvim_lsp = require('lspconfig')
 local lsp_using_list = {
   clangd = "clangd-lsp",  -- pacman: clang
   bashls = "bash-lsp",  -- pacman: bash-language-server
@@ -14,7 +13,8 @@ local lsp_using_list = {
   -- pyright = "python-lsp",  -- npm: pyright
   -- jedi_language_server = "python-lsp",
   tsserver = "tsserver-lsp",  -- npm: typescript typescript-language-server
-  vimls = "vim-lsp",  -- npm: vim-language-server
+  -- vimls = "vim-lsp",  -- npm: vim-language-server
+  rust_analyzer = "rust-lsp",  -- pacman: rust_analyzer
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
