@@ -16,6 +16,7 @@ let s:Jsj_Comments = {
       \ 'sh': { 'prefix': '# ', 'suffix': '' },
       \ 'conf': { 'prefix': '# ', 'suffix': '' },
       \ 'tex': { 'prefix': '% ', 'suffix': '' },
+      \ 'rust': { 'prefix': '// ', 'suffix': '' },
       \ }
 
 function! s:DetectMinIndent(start, end)
