@@ -88,11 +88,9 @@ packer.startup(function(use)
     config = function() require('jsj-cmp') end,
     requires = {
       { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-nvim-lua' },
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-buffer' },
 
-      { 'saadparwaiz1/cmp_luasnip' },  -- for L3MON4D3/LuaSnip
       { 'tzachar/cmp-tabnine', run='./install.sh' },
       { 'uga-rosa/cmp-dictionary' },  -- pacman -S words
     },
@@ -140,14 +138,6 @@ packer.startup(function(use)
     'windwp/nvim-spectre',
     config = function() require('jsj-nvim-spectre') end,
   }
-
-  -- NOTICE: do not use it anymore
-  -- use {
-  --   'github/copilot.vim',
-  --   config = function()
-  --     vim.cmd[[let g:copilot_filetypes = {'*': v:false}]]
-  --   end
-  -- }
 
   use {
     'tpope/vim-surround',
