@@ -23,10 +23,10 @@ for lsp_name, file_name in pairs(lsp_using_list) do
   local lspPconf = require('lsp.' .. file_name)
   lspPconf.on_attach = require('lsp.on_attach')
   -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-  if lspPconf.capabilities then
-    lspPconf.capabilities = require('cmp_nvim_lsp').update_capabilities(lspPconf.capabilities)
-  else
-    lspPconf.capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-  end
+  -- if lspPconf.capabilities then
+  --   lspPconf.capabilities = require('cmp_nvim_lsp').update_capabilities(lspPconf.capabilities)
+  -- else
+  --   lspPconf.capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+  -- end
   require('lspconfig')[lsp_name].setup(lspPconf)
 end

@@ -83,18 +83,18 @@ packer.startup(function(use)
     'L3MON4D3/LuaSnip',
     config = function() require('jsj-luasnip') end,
   }
-  use {
-    'hrsh7th/nvim-cmp',
-    config = function() require('jsj-cmp') end,
-    requires = {
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-buffer' },
+  -- use {
+  --   'hrsh7th/nvim-cmp',
+  --   config = function() require('jsj-cmp') end,
+  --   requires = {
+  --     { 'hrsh7th/cmp-nvim-lsp' },
+  --     { 'hrsh7th/cmp-path' },
+  --     { 'hrsh7th/cmp-buffer' },
 
-      { 'tzachar/cmp-tabnine', run='./install.sh' },
-      { 'uga-rosa/cmp-dictionary' },  -- pacman -S words
-    },
-  }
+  --     { 'tzachar/cmp-tabnine', run='./install.sh' },
+  --     { 'uga-rosa/cmp-dictionary' },  -- pacman -S words
+  --   },
+  -- }
   -- }}}
 
   -- {{{ Git
@@ -135,7 +135,7 @@ packer.startup(function(use)
   -- }}}
 
   use {
-    'windwp/nvim-spectre',
+    'nvim-pack/nvim-spectre',
     config = function() require('jsj-nvim-spectre') end,
   }
 

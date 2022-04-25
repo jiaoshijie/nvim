@@ -14,7 +14,7 @@ o.splitbelow = true
 o.termguicolors = true
 
 -- o.background = "dark"
-require('colorbuddy').colorscheme('jsj-theme/onedark', false, { disable_defaults = false })
+require('colorbuddy').colorscheme('jsj-theme/gruvbox', false, { disable_defaults = false })
 require('jsj-statusline')
 
 -- vim.cmd[[command! -nargs=* -complete=color Colorbuddy :lua require("init-utils").Jsj_colorbuddy(<f-args>)]]

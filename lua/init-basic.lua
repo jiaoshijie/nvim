@@ -53,7 +53,7 @@ o.lazyredraw = true
 
 o.nrformats = "alpha,hex,octal"
 
-o.shortmess:append('cI')
+o.shortmess:append('c')
 
 o.inccommand = "split"
 
