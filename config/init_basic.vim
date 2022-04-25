@@ -173,7 +173,8 @@ set fileformats=unix,dos,mac
 set noautochdir
 
 " 缩短一些message 如 将[NEW FILE]代替为[NEW]
-set shortmess+=cI
+set shortmess+=c
+set shortmess-=S
 
 " Give more space for displaying messages.
 set cmdheight=1
