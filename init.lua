@@ -79,10 +79,11 @@ packer.startup(function(use)
   -- }}}
 
   -- {{{ Autocomplete
-  use {
-    'L3MON4D3/LuaSnip',
-    config = function() require('jsj-luasnip') end,
-  }
+  -- use {
+  --   'L3MON4D3/LuaSnip',
+  --   config = function() require('jsj-luasnip') end,
+  -- }
+
   -- use {
   --   'hrsh7th/nvim-cmp',
   --   config = function() require('jsj-cmp') end,
@@ -126,18 +127,18 @@ packer.startup(function(use)
   -- }}}
 
   -- {{{ MapKeys
-  use {
-    'folke/which-key.nvim',
-    config = function() require('jsj-which-key') end,
-  }
+  -- use {
+  --   'folke/which-key.nvim',
+  --   config = function() require('jsj-which-key') end,
+  -- }
   require('init-keymaps')
   require('init-mdSnippets')
   -- }}}
 
-  use {
-    'nvim-pack/nvim-spectre',
-    config = function() require('jsj-nvim-spectre') end,
-  }
+  -- use {
+  --   'nvim-pack/nvim-spectre',
+  --   config = function() require('jsj-nvim-spectre') end,
+  -- }
 
   use {
     'tpope/vim-surround',
