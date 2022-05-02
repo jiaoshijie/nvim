@@ -95,15 +95,15 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>cen', function() vim.diagnostic.goto_next() end, opts)
 
   -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.documentFormattingProvider then
     vim.keymap.set("n", "<leader>c=", function() vim.lsp.buf.formatting() end, opts)
   end
-  if client.resolved_capabilities.document_range_formatting then
+  if client.server_capabilities.documentRangeFormattingProvider then
     vim.keymap.set("v", "<leader>c=", function() vim.lsp.buf.range_formatting() end, opts)
   end
 
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     local group = vim.api.nvim_create_augroup("lsp_document_highlight", {clear = true})
     vim.api.nvim_create_autocmd("CursorHold", {
       group = group,

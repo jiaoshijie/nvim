@@ -7,7 +7,7 @@ local lsp_using_list = {
   jsonls = "json-lsp",
   gopls = "go-lsp",  -- pacman: gopls
   -- ltex = "latex-lsp",
-  texlab = "latex-lsp",  -- pacman: texlab
+  -- texlab = "latex-lsp",  -- pacman: texlab
   sumneko_lua = "lua-lsp",  -- pacman: lua-language-server
   pylsp = "python-lsp",  -- pipx install 'python-lsp-server[all]'
   -- pyright = "python-lsp",  -- npm: pyright
@@ -17,7 +17,7 @@ local lsp_using_list = {
   rust_analyzer = "rust-lsp",  -- pacman: rust_analyzer
 }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 for lsp_name, file_name in pairs(lsp_using_list) do
   local lspPconf = require('lsp.' .. file_name)
