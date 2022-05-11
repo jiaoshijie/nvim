@@ -1,20 +1,24 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 local lsp_using_list = {
+  sumneko_lua = "lua-lsp",  -- pacman: lua-language-server
   clangd = "clangd-lsp",  -- pacman: clang
-  bashls = "bash-lsp",  -- pacman: bash-language-server
-  html = "html-lsp",  -- npm: vscode-langservers-extracted(html css json)
-  cssls = "css-lsp",
-  jsonls = "json-lsp",
   gopls = "go-lsp",  -- pacman: gopls
+  rust_analyzer = "rust-lsp",  -- pacman: rust_analyzer
+
+  -- bashls = "bash-lsp",  -- pacman: bash-language-server
+  -- vimls = "vim-lsp",  -- npm: vim-language-server
+
+  -- html = "html-lsp",  -- npm: vscode-langservers-extracted(html css json)
+  -- cssls = "css-lsp",
+  -- jsonls = "json-lsp",
+  -- tsserver = "tsserver-lsp",  -- npm: typescript typescript-language-server
+
   -- ltex = "latex-lsp",
   -- texlab = "latex-lsp",  -- pacman: texlab
-  sumneko_lua = "lua-lsp",  -- pacman: lua-language-server
+
   pylsp = "python-lsp",  -- pipx install 'python-lsp-server[all]'
   -- pyright = "python-lsp",  -- npm: pyright
   -- jedi_language_server = "python-lsp",
-  tsserver = "tsserver-lsp",  -- npm: typescript typescript-language-server
-  -- vimls = "vim-lsp",  -- npm: vim-language-server
-  rust_analyzer = "rust-lsp",  -- pacman: rust_analyzer
 }
 
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
