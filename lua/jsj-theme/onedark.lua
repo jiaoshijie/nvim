@@ -132,6 +132,8 @@ Group.new('SpellRare'        , c.dark_yellow    , c.none         , no)
 Group.new('StatusLine'       , c.none           , c.statusline  , no)
 -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 Group.new('StatusLineNC'     , c.none           , c.statuslineNC, no)
+Group.new('WinBar', c.yellow, c.statusline, no)
+Group.new('WinBarNC', c.comment_gray, c.statuslineNC, no)
 -- status line of current :terminal window
 Group.new('StatusLineTerm'   , c.none          , c.statusline   , no)
 -- status line of non-current :terminal window

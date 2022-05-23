@@ -5,11 +5,13 @@ o.signcolumn = "yes"
 o.cursorline = true
 o.colorcolumn = "79"
 o.scrolloff = 6
-o.laststatus = 3
 o.list = true
 o.listchars = {trail = '␣', tab = '•', --[[ eol = '↲',--]] extends = '»', precedes = '«'}
 o.splitright = true
 o.splitbelow = true
+
+o.winbar="▊ %f"
+o.laststatus = 3
 
 o.termguicolors = true
 
