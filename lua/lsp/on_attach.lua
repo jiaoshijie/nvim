@@ -82,21 +82,21 @@ local on_attach = function(client, bufnr)
   -- vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts)
   -- vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
   vim.keymap.set('i', '<C-k>', function() vim.lsp.buf.signature_help() end, opts)
-  -- vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set('n', '<leader>cr', function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set('n', '<C-k>', function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set('n', '<leader>D', function() vim.lsp.buf.type_definition() end, opts)
   -- vim.keymap.set('n', '<leader>q', function() vim.diagnostic.setloclist() end, opts)
-  vim.keymap.set('n', '<leader>pa', function() vim.lsp.buf.add_workspace_folder() end, opts)
-  vim.keymap.set('n', '<leader>pr', function() vim.lsp.buf.remove_workspace_folder() end, opts)
-  vim.keymap.set('n', '<leader>pl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
+  -- vim.keymap.set('n', '<leader>pa', function() vim.lsp.buf.add_workspace_folder() end, opts)
+  -- vim.keymap.set('n', '<leader>pr', function() vim.lsp.buf.remove_workspace_folder() end, opts)
+  -- vim.keymap.set('n', '<leader>pl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
   vim.keymap.set('n', '<leader>cee', function() vim.diagnostic.open_float(nil, {source="always"}) end, opts)
   vim.keymap.set('n', '<leader>cep', function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set('n', '<leader>cen', function() vim.diagnostic.goto_next() end, opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.server_capabilities.documentFormattingProvider then
-    vim.keymap.set("n", "<leader>c=", function() vim.lsp.buf.formatting() end, opts)
+    vim.keymap.set("n", "<leader>c=", function() vim.lsp.buf.format({async = true}) end, opts)
   end
   if client.server_capabilities.documentRangeFormattingProvider then
     vim.keymap.set("v", "<leader>c=", function() vim.lsp.buf.range_formatting() end, opts)
@@ -123,7 +123,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', function() require("telescope.builtin").lsp_references() end, opts)
   vim.keymap.set('n', 'gd', function() require("telescope.builtin").lsp_definitions() end, opts)
   vim.keymap.set('n', 'gI', function() require("telescope.builtin").lsp_implementations() end, opts)
-  vim.keymap.set('n', '<leader>ca', function() require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor({ previewer = false })) end, opts)
 end
 
 return on_attach
