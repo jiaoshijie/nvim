@@ -75,3 +75,5 @@ for lsp_name, file_name in pairs(lsp_using_list) do
   lspPconf.on_attach = require("lsp.on_attach")
   require("lspconfig")[lsp_name].setup(lspPconf)
 end
+
+require('lsp.codeAction').setup()

@@ -44,11 +44,7 @@ packer.startup(function(use)
     "neovim/nvim-lspconfig",
     config = function()
       require("lsp")
-      require("lsp.null-ls")
     end,
-    requires = {
-      { "jose-elias-alvarez/null-ls.nvim" },
-    },
   })
   -- }}}
 

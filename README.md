@@ -7,7 +7,7 @@
                                                   |___/
 ```
 
-- nvim configuration(as minimal as possiable).
+- nvim configuration(as small as possiable).
 
 ## Requirements
 
