@@ -1,6 +1,15 @@
 -- https://github.com/doodleEsc/lightbulb.nvim
 local _M = {}
 
+local contains = function(tbl, val)
+    for _, value in ipairs(tbl) do
+        if value == val then
+            return true
+        end
+    end
+    return false
+end
+
 local update_sign = function(old_line, new_line, bufnr)
   bufnr = bufnr or "%"
   if old_line and (old_line ~= new_line) then
@@ -54,7 +63,7 @@ local check = function()
   local active_clients = vim.lsp.get_active_clients()
   for _, client in pairs(active_clients) do
     if client then
-      if client.supports_method("textDocument/codeAction") then
+      if client.supports_method("textDocument/codeAction") and contains(client.config.filetypes, vim.bo.filetype) then
         code_action_cap_found = true
       end
     end

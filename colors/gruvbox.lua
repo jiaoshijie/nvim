@@ -313,6 +313,7 @@ h("TSTypeBuiltin", { fg = c.purple })
 
 h("TSInclude", { fg = c.aqua, gui=s.b })
 
+h("TSVariable", { fg = c.fg1 })
 h("TSVariableBuiltin", { fg = c.yellow })
 
 h("TSText", { fg = c.yellow })
