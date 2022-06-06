@@ -8,6 +8,7 @@ o.scrolloff = 6
 o.list = true
 o.listchars = {
   trail = "␣",
+  tab = "•",
   extends = "»",
   precedes = "«",
   -- eol = '↲',

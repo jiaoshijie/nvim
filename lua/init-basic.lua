@@ -32,6 +32,7 @@ o.fileencodings = "ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1"
 o.fdm = "indent"
 o.fdl = 99
 
+-- o.completeopt = "menuone,noselect,preview"
 o.completeopt = "menuone,noselect"
 
 o.clipboard = "unnamedplus"
