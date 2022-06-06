@@ -6,11 +6,10 @@
 |_| \_| \_/ |_|_| |_| |_|  \____\___/|_| |_|_| |_|\__, |
                                                   |___/
 ```
-- My personal nvim configuration.
 
-## plugins
+- nvim configuration(as minimal as possiable).
 
-- nvim-treesitter
-  - `sudo pcaman -S tree-sitter`
-- null-ls
-  - `cargo install stylua`
+## Requirements
+
+- nvim 0.8(nightly) or above
+- `sudo pcaman -S tree-sitter stylua`

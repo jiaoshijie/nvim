@@ -1,13 +1,13 @@
 local map = vim.keymap.set
 
-local actions = require('telescope.actions')
-local action_layout = require "telescope.actions.layout"
+local actions = require("telescope.actions")
+local action_layout = require("telescope.actions.layout")
 
-require('telescope').setup{
+require("telescope").setup({
   defaults = {
     prompt_prefix = "🔭 ",
     selection_caret = " ",
-    path_display = { "smart" },
+    path_display = { "shorten" },
 
     winblend = 0,
 
@@ -67,48 +67,45 @@ require('telescope').setup{
         ["<C-y>"] = actions.results_scrolling_up,
       },
     },
+    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+
+    file_previewer = require("telescope.previewers").cat.new,
+    grep_previewer = require("telescope.previewers").vimgrep.new,
+    qflist_previewer = require("telescope.previewers").qflist.new,
+
+    file_ignore_patterns = {},
   },
-
-  borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-
-  file_ignore_patterns = {},
-
-  file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-  grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-  qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 
   extensions = {
     fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
+      fuzzy = true, -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true, -- override the file sorter
+      case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+      -- the default case_mode is "smart_case"
     },
   },
-}
+})
 
-require('telescope').load_extension('fzf')
--- require('telescope').load_extension('notify')
+require("telescope").load_extension("fzf")
 
 local opts = { noremap = true, silent = true }
 
-map('n', '<leader>fr', function() require("telescope.builtin").oldfiles() end, opts)
-map('n', '<leader>fg', function() require("telescope.builtin").git_files() end, opts)
+map("n", "<leader>fr", require("telescope.builtin").oldfiles, opts)
+map("n", "<leader>fg", require("telescope.builtin").git_files, opts)
 
-map('n', '<C-p>', function() require("telescope.builtin").grep_string() end, opts)
-map('n', '<leader>s', function() require("telescope.builtin").current_buffer_fuzzy_find() end, {noremap = true, silent = true})
-map('n', '<leader>S', function() require("telescope.builtin").live_grep() end, opts)
+map("n", "<C-p>", require("telescope.builtin").grep_string, opts)
+map("n", "<leader>s", require("telescope.builtin").current_buffer_fuzzy_find, { noremap = true, silent = true })
+map("n", "<leader>S", require("telescope.builtin").live_grep, opts)
 
-map('n', '<leader>bb', function() require("telescope.builtin").buffers() end, opts)
-map('n', '<leader>ct', function() require("telescope.builtin").tags() end, opts)
-map('n', '<leader>m', function() require("telescope.builtin").marks() end, opts)
-map('n', '<leader>h', function() require("telescope.builtin").help_tags() end, opts)
+map("n", "<leader>bb", require("telescope.builtin").buffers, opts)
+map("n", "<leader>ct", require("telescope.builtin").tags, opts)
+map("n", "<leader>m", require("telescope.builtin").marks, opts)
+map("n", "<leader>h", require("telescope.builtin").help_tags, opts)
 
 vim.cmd([[command! -nargs=1 -complete=file TF :Telescope find_files cwd=<args>]])
--- map('n', '<leader>F', '<cmd>Telescope find_files cwd=', { noremap = true } )
 
-map('n', '<leader>fo', function() require("jsj-telescope.functions").Jsj_neovim_config() end, opts)
-map('n', '<leader>ff', function() require("jsj-telescope.functions").Jsj_search_all_files() end, opts)
-map('n', '<leader>fm', function() require("jsj-telescope.functions").Jsj_open_Notes() end, opts)
-map('n', '<leader>pc', function() require("jsj-telescope.functions").Jsj_open_Code() end, opts)
+map("n", "<leader>fo", require("jsj-telescope.functions").Jsj_neovim_config, opts)
+map("n", "<leader>ff", require("jsj-telescope.functions").Jsj_search_all_files, opts)
+map("n", "<leader>fm", require("jsj-telescope.functions").Jsj_open_Notes, opts)
+map("n", "<leader>pc", require("jsj-telescope.functions").Jsj_open_Code, opts)

@@ -1,1 +1,1 @@
-require('jsj-statusline.statusline').setup()
+require("jsj-statusline.statusline").setup()

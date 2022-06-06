@@ -1,9 +1,8 @@
--- sudo pacman -S tree-sitter
-require('nvim-treesitter.configs').setup {
-  ensure_installed = {"c", "cpp", "python", "lua", "go", "rust"},
+require("nvim-treesitter.configs").setup({
+  ensure_installed = { "c", "cpp", "python", "lua", "go", "rust" },
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = true,
+    additional_vim_regex_highlighting = false,
   },
   incremental_selection = {
     enable = true,
@@ -16,7 +15,6 @@ require('nvim-treesitter.configs').setup {
   },
   indent = {
     enable = false,
-    -- disable = {'yaml'},
   },
   textobjects = {
     select = {
@@ -33,4 +31,4 @@ require('nvim-treesitter.configs').setup {
       },
     },
   },
-}
+})
