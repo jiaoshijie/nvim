@@ -76,7 +76,6 @@ packer.startup(function(use)
     run = ":TSUpdate",
     requires = {
       { "nvim-treesitter/playground" },
-      { "nvim-treesitter/nvim-treesitter-textobjects" },
     },
   })
   -- }}}
@@ -107,12 +106,12 @@ packer.startup(function(use)
     },
     config = function()
       local opt = { silent=true, noremap=true }
-      vim.keymap.set('n', '<leader>vv', require('spectre').open, opt)
-      vim.keymap.set('n', '<leader>vl', require('spectre').open_file_search, opt)
-      vim.keymap.set('n', '<leader>vw', function()
+      vim.keymap.set('n', '<leader>rr', require('spectre').open, opt)
+      vim.keymap.set('n', '<leader>rl', require('spectre').open_file_search, opt)
+      vim.keymap.set('n', '<leader>rw', function()
         require('spectre').open_visual({select_word=true})
       end, opt)
-      vim.keymap.set('v', '<leader>vw', require('spectre').open_visual, opt)
+      vim.keymap.set('v', '<leader>rw', require('spectre').open_visual, opt)
     end,
   })
 
