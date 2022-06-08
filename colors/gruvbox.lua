@@ -222,6 +222,11 @@ h("markdownLinkText", { fg = c.gray, gui = s.ul })
 h("markdownIdDeclaration", { link = "markdownLinkText" })
 h("markdownError", { fg = c.red })
 
+-- neovim health
+h("healthError", { fg = c.red })
+h("healthSuccess", { fg = c.aqua })
+h("healthWarning", { fg = c.yellow })
+
 ----------------
 -- plugins
 ----------------
@@ -248,6 +253,8 @@ h("DiagnosticSignError", { fg = c.red })
 h("DiagnosticSignWarn", { fg = c.yellow })
 h("DiagnosticSignInfo", { fg = c.aqua })
 h("DiagnosticSignHint", { fg = c.green })
+h("LspSignatureActiveParameter", { fg = c.yellow })
+h("LspCodeLens", { link = "Comment" })
 
 h("Jsj_LspDochighlight", { bg = c.bg2 })
 
@@ -279,11 +286,11 @@ h("TSFloat", { fg = c.purple })
 h("TSFunction", { fg = c.blue, gui = s.i })
 h("TSFuncBuiltin", { fg = c.blue })
 h("TSFuncMacro", { fg = c.yellow })
-h("TSParameter", { fg = c.aqua })
-h("TSParameterReference", { fg = c.aqua })
+h("TSParameter", { fg = c.fg1 })
+h("TSParameterReference", { fg = c.fg1 })
 h("TSMethod", { fg = c.blue, gui=s.i })
 h("TSField", { fg = c.red })
-h("TSProperty", { fg = c.yellow })
+h("TSProperty", { fg = c.orange })
 h("TSConstructor", { fg = c.aqua })
 h("TSAnnotation", { fg = c.yellow })
 h("TSAttribute", { fg = c.aqua })
