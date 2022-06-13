@@ -78,6 +78,14 @@ _M.get_fileinfo = function()
   }
 end
 
+_M.get_space_tab = function()
+  local sot = vim.bo.expandtab and "Space" or "Tab"
+  return {
+    state = is_active() and "space_or_tab" or "inactive",
+    text = is_active() and " " .. sot .. ":" .. vim.bo.tabstop .. " " or "",
+  }
+end
+
 _M.get_filetype = function()
   return {
     state = is_active() and "filetype" or "inactive",
@@ -103,14 +111,14 @@ end
 
 _M.get_lsp_information = function()
   return {
-    text = get_diagnostic("", dia_s.INFO),
+    text = get_diagnostic("כֿ", dia_s.INFO),
     state = "information",
   }
 end
 
 _M.get_lsp_hint = function()
   return {
-    text = get_diagnostic("", dia_s.HINT),
+    text = get_diagnostic("", dia_s.HINT),
     state = "hint",
   }
 end

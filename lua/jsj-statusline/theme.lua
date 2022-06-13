@@ -64,6 +64,12 @@ return {
   },
   file = {
     inactive = inactive,
+    space_or_tab = {
+      guifg = colors.yellow.gui,
+      guibg = colors.grey_cursor.gui,
+      gui = "italic,bold",
+      cterm = "NONE",
+    },
     filename = {
       guifg = colors.yellow.gui,
       guibg = colors.grey_cursor.gui,

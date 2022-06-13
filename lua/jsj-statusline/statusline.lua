@@ -15,7 +15,7 @@ local options = {
     { class = "git", item = misc.get_gitadd },
     { class = "git", item = misc.get_gitchange },
     { class = "git", item = misc.get_gitdel },
-    { class = "file", item = misc.get_filename },
+    { class = "file", item = misc.get_space_tab },
     { item = "%=" },
     { class = "lsp", item = misc.get_lsp_information },
     { class = "lsp", item = misc.get_lsp_hint },
