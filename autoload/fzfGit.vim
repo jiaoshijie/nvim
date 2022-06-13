@@ -1,6 +1,6 @@
 function! s:get_git_root()
-  let root = split(system('git rev-parse --show-toplevel'), '\n')[0]
-  return v:shell_error ? '' : root
+  let l:root = split(system('git rev-parse --show-toplevel'), '\n')[0]
+  return v:shell_error ? '' : l:root
 endfunction
 
 function! fzfGit#gitfiles(args)
@@ -14,7 +14,7 @@ function! fzfGit#gitfiles(args)
 
   return fzf#run(fzf#wrap('gfiles', {
   \ 'source':  l:source,
-  \ 'dir':     root,
+  \ 'dir':     l:root,
   \ 'options': '-m --prompt ' . l:prompt
   \}, 0))
 endfunction
