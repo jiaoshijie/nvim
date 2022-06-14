@@ -76,4 +76,4 @@ for lsp_name, file_name in pairs(lsp_using_list) do
   require("lspconfig")[lsp_name].setup(lspPconf)
 end
 
--- require('lsp.codeAction').setup()
+require('lsp.codeAction').setup()

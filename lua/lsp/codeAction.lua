@@ -84,7 +84,7 @@ _M.setup = function()
     vim.fn.sign_define("Jsj_codeAction", { text = "💡", linehl = false, numhl = false, texthl = "MoreMsg" })
   end
   local group = vim.api.nvim_create_augroup("lsp_codeAction", { clear = true })
-  vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+  vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
     group = group,
     callback = check,
   })
