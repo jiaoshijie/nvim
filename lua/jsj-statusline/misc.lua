@@ -3,6 +3,8 @@ local fn = vim.fn
 local dia, dia_s = vim.diagnostic, vim.diagnostic.severity
 local fmt = string.format
 local get_icon = require("nvim-web-devicons").get_icon
+local get_icon_by_filetype = require("nvim-web-devicons").get_icon_by_filetype
+local lsp_com = require("lsp.component").lsp_component
 
 local modes = {
   ["?"] = { text = "", state = "inactive" },
@@ -87,10 +89,11 @@ _M.get_space_tab = function()
 end
 
 _M.get_filetype = function()
+  local icon = get_icon_by_filetype(vim.bo.filetype, { default = true })
   return {
     state = is_active() and "filetype" or "inactive",
     -- text = is_active() and ' %Y ' or '',
-    text = is_active() and " %{&ft} " or "",
+    text = is_active() and " " .. icon .. " %{&ft}" or "",
   }
 end
 
@@ -107,6 +110,13 @@ local get_diagnostic = function(prefix, severity)
     return ""
   end
   return fmt(" %s:%d ", prefix, count)
+end
+
+_M.get_lsp_com = function()
+  return {
+    state = is_active() and "component" or "inactive",
+    text = is_active() and lsp_com() or "",
+  }
 end
 
 _M.get_lsp_information = function()

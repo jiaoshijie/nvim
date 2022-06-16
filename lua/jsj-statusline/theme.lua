@@ -96,6 +96,11 @@ return {
     },
   },
   lsp = {
+    component = {
+      guifg = colors.yellow.gui,
+      guibg = colors.grey_cursor.gui,
+      cterm = "NONE",
+    },
     information = {
       guifg = colors.blue.gui,
       guibg = colors.black.gui,

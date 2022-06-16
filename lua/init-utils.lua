@@ -108,4 +108,13 @@ _M.hl = function(group, style)
   end
 end
 
+_M.contains = function(tbl, val)
+  for _, value in ipairs(tbl) do
+    if value == val then
+      return true
+    end
+  end
+  return false
+end
+
 return _M

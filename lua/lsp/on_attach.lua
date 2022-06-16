@@ -1,3 +1,6 @@
+local symbols_com = require("lsp.component").on_attach
+local codeAction = require("lsp.codeAction").on_attach
+
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -9,7 +12,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts)
   vim.keymap.set("n", "<C-k>", vim.lsp.buf.hover, opts)
   vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
@@ -44,6 +46,15 @@ local on_attach = function(client, bufnr)
       group = group,
       callback = vim.lsp.buf.clear_references,
     })
+  end
+
+  if client.server_capabilities.codeActionProvider then
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+    codeAction(client, bufnr)
+  end
+
+  if client.server_capabilities.documentSymbolProvider then
+    symbols_com(client, bufnr)
   end
 
   -- NOTICE: Telescope plugin

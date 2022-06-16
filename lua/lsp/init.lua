@@ -65,15 +65,13 @@ local lsp_using_list = {
   clangd = "clangd-lsp", -- pacman: clang
   gopls = "go-lsp", -- pacman: gopls
   rust_analyzer = "rust-lsp", -- pacman: rust_analyzer
-  pylsp = "python-lsp", -- pipx install 'python-lsp-server[all]'
-  -- pyright = "python-lsp",  -- npm: pyright
-  -- jedi_language_server = "python-lsp",
+  pyright = "python-lsp",  -- npm or pacman: pyright
 }
+
+require('lsp.codeAction').setup()
 
 for lsp_name, file_name in pairs(lsp_using_list) do
   local lspPconf = require("lsp." .. file_name)
   lspPconf.on_attach = require("lsp.on_attach")
   require("lspconfig")[lsp_name].setup(lspPconf)
 end
-
-require('lsp.codeAction').setup()
