@@ -1,36 +1,36 @@
 vim.lsp.protocol.CompletionItemKind = {
-  "  (Text) ",
+  "  (Text) ",
   "  (Method)",
   "  (Function)",
-  "  (Constructor)",
-  " ﴲ (Field)",
-  "[](Variable)",
-  "  (Class)",
-  " ﰮ (Interface)",
-  "  (Module)",
-  " 襁(Property)",
-  "  (Unit)",
+  "  (Constructor)",
+  " ﰠ (Field)",
+  "  (Variable)",
+  " ﴯ (Class)",
+  "  (Interface)",
+  "  (Module)",
+  " ﰠ (Property)",
+  "  (Unit)",
   "  (Value)",
-  " 練(Enum)",
+  "  (Enum)",
   "  (Keyword)",
-  " ﬌ (Snippet)",
+  "  (Snippet)",
   "  (Color)",
-  "  (File)",
-  "  (Reference)",
+  "  (File)",
+  "  (Reference)",
   "  (Folder)",
   "  (EnumMember)",
-  " ﲀ (Constant)",
-  " ﳤ (Struct)",
+  "  (Constant)",
+  "  (Struct)",
   "  (Event)",
-  "  (Operator)",
+  "  (Operator)",
   "  (TypeParameter)",
 }
 
 local signs = {
   { name = "DiagnosticSignError", text = "✗" },
   { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
+  { name = "DiagnosticSignHint", text = "" },
+  { name = "DiagnosticSignInfo", text = "כֿ" },
 }
 
 for _, sign in ipairs(signs) do
@@ -65,10 +65,10 @@ local lsp_using_list = {
   clangd = "clangd-lsp", -- pacman: clang
   gopls = "go-lsp", -- pacman: gopls
   rust_analyzer = "rust-lsp", -- pacman: rust_analyzer
-  pyright = "python-lsp",  -- npm or pacman: pyright
+  pyright = "python-lsp", -- npm or pacman: pyright
 }
 
-require('lsp.codeAction').setup()
+require("lsp.codeAction").setup()
 
 for lsp_name, file_name in pairs(lsp_using_list) do
   local lspPconf = require("lsp." .. file_name)

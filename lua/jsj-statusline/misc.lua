@@ -81,10 +81,10 @@ _M.get_fileinfo = function()
 end
 
 _M.get_space_tab = function()
-  local sot = vim.bo.expandtab and "Space" or "Tab"
+  local sot = vim.bo.expandtab and " Space:" .. vim.bo.shiftwidth or " Tab:" .. vim.bo.tabstop
   return {
     state = is_active() and "space_or_tab" or "inactive",
-    text = is_active() and " " .. sot .. ":" .. vim.bo.tabstop .. " " or "",
+    text = is_active() and sot .. " " or "",
   }
 end
 

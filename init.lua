@@ -92,26 +92,30 @@ packer.startup(function(use)
   })
   -- }}}
 
-  use ({
-    'norcalli/nvim-colorizer.lua',
+  use({
+    "norcalli/nvim-colorizer.lua",
     config = function()
-      require('colorizer').setup({'!*'})
+      require("colorizer").setup({ "!*" })
     end,
   })
 
   use({
-    'nvim-pack/nvim-spectre',
+    "folke/tokyonight.nvim",
+  })
+
+  use({
+    "nvim-pack/nvim-spectre",
     requires = {
-      { 'nvim-lua/plenary.nvim' },
+      { "nvim-lua/plenary.nvim" },
     },
     config = function()
-      local opt = { silent=true, noremap=true }
-      vim.keymap.set('n', '<leader>rr', require('spectre').open, opt)
-      vim.keymap.set('n', '<leader>rl', require('spectre').open_file_search, opt)
-      vim.keymap.set('n', '<leader>rw', function()
-        require('spectre').open_visual({select_word=true})
+      local opt = { silent = true, noremap = true }
+      vim.keymap.set("n", "<leader>rr", require("spectre").open, opt)
+      vim.keymap.set("n", "<leader>rl", require("spectre").open_file_search, opt)
+      vim.keymap.set("n", "<leader>rw", function()
+        require("spectre").open_visual({ select_word = true })
       end, opt)
-      vim.keymap.set('v', '<leader>rw', require('spectre').open_visual, opt)
+      vim.keymap.set("v", "<leader>rw", require("spectre").open_visual, opt)
     end,
   })
 
