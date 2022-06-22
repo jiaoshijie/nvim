@@ -100,10 +100,6 @@ packer.startup(function(use)
   })
 
   use({
-    "folke/tokyonight.nvim",
-  })
-
-  use({
     "nvim-pack/nvim-spectre",
     requires = {
       { "nvim-lua/plenary.nvim" },

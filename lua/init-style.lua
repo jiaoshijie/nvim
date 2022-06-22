@@ -35,9 +35,6 @@ o.termguicolors = true
 
 o.background = "dark"
 
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_day_brightness = 0.1
-vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme gruvbox]])
 
 require("jsj-statusline")
