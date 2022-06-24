@@ -6,6 +6,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   group = group,
   pattern = "*",
   callback = function()
+    if JSJ_change_theme_alpha then
+      vim.cmd("highlight Normal guibg=NONE ctermbg=None")
+    end
     h("StatusLine", { bg = "#2c323c" })
     h("StatusLineNC", { bg = "#5c6370" })
     h("WinBar", { bg = "#2c323c" })

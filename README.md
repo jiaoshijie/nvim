@@ -12,4 +12,5 @@
 ## Requirements
 
 - nvim 0.8(nightly) or above
-- `sudo pcaman -S tree-sitter stylua`
+- `sudo pcaman -S tree-sitter`
+- `:sheckhealth` for more infomation.
