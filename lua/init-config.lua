@@ -47,16 +47,6 @@ autocmd("Syntax", {
     vim.fn.matchadd("Debug", "\\W\\zs\\(INFO\\|DONE\\|NOTICE\\)")
   end,
 })
-autocmd("BufReadPost", {
-  pattern = "*",
-  group = group,
-  command = [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]],
-})
-autocmd("TermOpen", {
-  pattern = "*",
-  group = group,
-  command = "setlocal nonumber norelativenumber",
-})
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   group = group,
