@@ -34,6 +34,18 @@ vim.g.netrw_list_hide = "\\(^\\|\\s\\s\\)\\zs\\.\\S\\+"
 -- vim.cmd[[let g:netrw_list_hide=netrw_gitignore#Hide()]]
 
 local group = api.nvim_create_augroup("Jsj_neovim_autocmd_misc", { clear = true })
+
+autocmd("BufReadPost", {
+  pattern = "*",
+  group = group,
+  once = true,
+  command = [[if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif]],
+})
+autocmd("TermOpen", {
+  pattern = "*",
+  group = group,
+  command = "setlocal nonumber norelativenumber",
+})
 autocmd("FileType", {
   pattern = "netrw",
   group = group,

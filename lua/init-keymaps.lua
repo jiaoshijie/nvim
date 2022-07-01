@@ -107,6 +107,3 @@ end, opts)
 map("n", "<leader>ql", function()
   require("init-utils").Jsj_ToggleList("loclist", "l")
 end, opts)
-
--- my plugins
-map("n", "<leader>u", ":UndotreeToggle<cr>", opts)

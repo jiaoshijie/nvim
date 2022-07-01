@@ -123,4 +123,5 @@ packer.startup(function(use)
   use({
     "godlygeek/tabular",
   })
+  require('jsj-undotree')
 end)
