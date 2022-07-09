@@ -83,9 +83,9 @@ nnoremap <silent> <leader>xr :%!xxd -r<CR>
 nnoremap <silent> <leader>eu :e ++enc=utf8<CR>
 nnoremap <silent> <leader>eg :e ++enc=gbk<CR>
 
-" 代码折叠自定义快捷键 for more ":h za zc zo zA zC zO zM zR"
+" 代码折叠自定义快捷键 for more `:h za zc zo zA zC zO zM zR`
 
-" For more details using ":h cs"
+" For more details using `:h cs`
 " find this C symbol
 nnoremap <silent> gC :cs find s <C-R>=expand("<cword>")<CR><CR> :botright copen<CR><CR>
 " Jump to references

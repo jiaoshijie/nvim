@@ -14,4 +14,3 @@ runtime! config/init_tabsize.vim
 runtime! config/init_style.vim
 runtime! config/init_keymaps.vim
 runtime! config/init_markdown.vim
-runtime! config/init_vim9script.vim
