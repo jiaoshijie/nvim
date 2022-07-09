@@ -92,7 +92,7 @@ require("telescope").load_extension("fzf")
 local opts = { noremap = true, silent = true }
 
 map("n", "<leader>fr", require("telescope.builtin").oldfiles, opts)
-map("n", "<leader>fg", require("telescope.builtin").git_files, opts)
+map("n", "<leader>fg", function() require("telescope.builtin").git_files({ show_untracked = true }) end, opts)
 
 map("n", "<C-p>", require("telescope.builtin").grep_string, opts)
 map("n", "<leader>s", require("telescope.builtin").current_buffer_fuzzy_find, { noremap = true, silent = true })

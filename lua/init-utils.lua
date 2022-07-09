@@ -94,16 +94,16 @@ _M.hl = function(group, style)
     vim.cmd("highlight! link " .. group .. " " .. style.link)
   else
     local hl = "highlight "
-      .. group
-      .. " cterm=NONE"
-      .. " guifg="
-      .. (style.fg and style.fg or "NONE")
-      .. " guibg="
-      .. (style.bg and style.bg or "NONE")
-      .. " guisp="
-      .. (style.sp and style.sp or "NONE")
-      .. " gui="
-      .. (style.gui and style.gui or "NONE")
+        .. group
+        .. " cterm=NONE"
+        .. " guifg="
+        .. (style.fg and style.fg or "NONE")
+        .. " guibg="
+        .. (style.bg and style.bg or "NONE")
+        .. " guisp="
+        .. (style.sp and style.sp or "NONE")
+        .. " gui="
+        .. (style.gui and style.gui or "NONE")
     vim.cmd(hl)
   end
 end

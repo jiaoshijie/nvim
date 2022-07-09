@@ -22,10 +22,10 @@ local on_attach = function(client, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, opts)
 
-  vim.keymap.set("n", "<leader>cee", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "<leader>cep", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "<leader>cen", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "<leader>ceq", vim.diagnostic.setloclist, opts)
+  vim.keymap.set("n", "<leader>ee", vim.diagnostic.open_float, opts)
+  vim.keymap.set("n", "<leader>ep", vim.diagnostic.goto_prev, opts)
+  vim.keymap.set("n", "<leader>en", vim.diagnostic.goto_next, opts)
+  vim.keymap.set("n", "<leader>eq", vim.diagnostic.setloclist, opts)
 
   if client.server_capabilities.documentFormattingProvider then
     vim.keymap.set("n", "<leader>c=", function()
