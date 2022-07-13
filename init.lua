@@ -25,18 +25,19 @@ packer.init({
   },
 })
 
+-- {{{ basic configs
+require("init-basic")
+require("init-config")
+require("init-tabsize")
+require("init-style")
+require("init-keymaps")
+require("init-mdSnippets")
+require('init-undotree')
+-- }}}
+
 packer.startup(function(use)
   -- {{{ Installer
   use({ "wbthomason/packer.nvim" })
-  -- }}}
-
-  -- {{{ basic configs
-  require("init-basic")
-  require("init-config")
-  require("init-tabsize")
-  require("init-style")
-  require("init-keymaps")
-  require("init-mdSnippets")
   -- }}}
 
   -- {{{ Lsp
@@ -51,6 +52,7 @@ packer.startup(function(use)
   -- {{{ Telescope
   use({
     "nvim-telescope/telescope.nvim",
+    branch = '0.1.x',
     config = function()
       require("jsj-telescope")
     end,
@@ -123,5 +125,4 @@ packer.startup(function(use)
   use({
     "godlygeek/tabular",
   })
-  require('jsj-undotree')
 end)
