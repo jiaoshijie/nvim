@@ -2,7 +2,7 @@
 " markdown代码片段
 "----------------------------------------------------------------------
 
-let g:markdown_fenced_languages=['c', 'cpp']
+" let g:markdown_fenced_languages=['c', 'cpp']
 
 augroup jsj_Markdown
   autocmd!

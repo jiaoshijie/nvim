@@ -125,9 +125,14 @@ set foldlevel=99
 " 补全选项, "menuone"只有一个时也展示一个菜单
 " set completeopt=menuone,noselect,preview
 set completeopt=menuone,noselect
+" for more detail ":h ins-completion", ":h 'complete'"
+set complete-=u
+set complete-=b
+
+" quicklist 配置, 跳到第一个搜索到的位置在当前窗口
+set switchbuf=useopen
 
 " 设置使用系统剪切板
-" set clipboard+=unnamedplus
 set clipboard=unnamedplus
 
 " 显示匹配的括号
@@ -189,19 +194,5 @@ set updatetime=300
 "----------------------------------------------------------------------
 set suffixes=.bak,~,.o,.h,.info,.swp,.obj,.pyc,.pyo,.egg-info,.class
 
-set wildignore=*.o,*.obj,*~,*.exe,*.a,*.pdb,*.lib "stuff to ignore when tab completing
-set wildignore+=*.so,*.dll,*.swp,*.egg,*.jar,*.class,*.pyc,*.pyo,*.bin,*.dex
-set wildignore+=*.zip,*.7z,*.rar,*.gz,*.tar,*.gzip,*.bz2,*.tgz,*.xz    " MacOSX/Linux
-set wildignore+=*DS_Store*,*.ipch
-set wildignore+=*.gem
-set wildignore+=*.png,*.jpg,*.gif,*.bmp,*.tga,*.pcx,*.ppm,*.img,*.iso
-set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/.rbenv/**
-set wildignore+=*/.nx/**,*.app,*.git,.git
-set wildignore+=*.wav,*.mp3,*.ogg,*.pcm
-set wildignore+=*.mht,*.suo,*.sdf,*.jnlp
-set wildignore+=*.chm,*.epub,*.pdf,*.mobi,*.ttf
-set wildignore+=*.mp4,*.avi,*.flv,*.mov,*.mkv,*.swf,*.swc
-set wildignore+=*.ppt,*.pptx,*.docx,*.xlt,*.xls,*.xlsx,*.odt,*.wps
-set wildignore+=*.msi,*.crx,*.deb,*.vfd,*.apk,*.ipa,*.bin,*.msu
-set wildignore+=*.gba,*.sfc,*.078,*.nds,*.smd,*.smc
-set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
+set wildignore=*.o,*obj,*~,*.exe,*.a,*.dll,*.swp,*.jar,*.class,*.pyc,*.pyo,*.bin
+set wildignore+=*/.Trash/**,*.dmg,*/.rbenv/**,*DS_Store*

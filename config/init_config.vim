@@ -2,12 +2,9 @@
 " 扩展基础配置
 "----------------------------------------------------------------------
 
-" set leader  = "Space"
 let mapleader=' '
-" set localleader = ","
 let maplocalleader=','
 
-" let g:python_host_prog='/usr/bin/python2'
 let g:loaded_python_provider=0
 let g:loaded_perl_provider=0
 let g:python3_host_prog='/usr/bin/python3'
@@ -25,7 +22,6 @@ let g:netrw_localcopycmd = 'cp -r'
 let g:netrw_keepdir      = 1
 let g:netrw_hide         = 1
 let g:netrw_list_hide    = '\(^\|\s\s\)\zs\.\S\+'
-" let g:netrw_list_hide.=netrw_gitignore#Hide()
 augroup Jsj_netrw_delete
   au!
   autocmd FileType netrw setl bufhidden=delete " or use :qa!
@@ -163,39 +159,3 @@ if has('unix')
     autocmd InsertLeave * call utils#Fcitx2en()
   augroup END
 endif
-
-"----------------------------------------------------------------------
-" ctags, cscope配置
-"----------------------------------------------------------------------
-
-" vim complete
-" for more detail ":h ins-completion", ":h 'complete'"
-set complete-=i
-set complete-=b
-set complete-=u
-
-set tags=./tags,tags
-
-" 指定cscope命令的路径
-set csprg=/usr/bin/cscope
-
-" 为1会先搜索tags文件如果没有找到再搜索cscope.out数据库, 为0则相反
-set csto=1
-
-" 使用cstag代替vim的默认行为
-set cst
-
-" add any database in current directory
-if filereadable("cscope.out")
-  set noautochdir
-  " 将数据库文件连接到vim, if don't have "silent", add database pointed to by environment
-  silent cs add cscope.out
-elseif $CSCOPE_DB != ""
-  silent cs add $CSCOPE_DB
-endif
-
-" + 将结果附加到quicklinst后面, - 清除quicklist上一次的结果, 0 不使用quicklist
-set cscopequickfix=s-,c-,d-,i-,t-,e-,a-
-
-" quicklist 配置, 跳到第一个搜索到的位置在当前窗口
-set switchbuf=useopen
