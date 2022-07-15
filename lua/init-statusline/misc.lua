@@ -2,8 +2,14 @@ local _M = {}
 local fn = vim.fn
 local dia, dia_s = vim.diagnostic, vim.diagnostic.severity
 local fmt = string.format
-local get_icon = require("nvim-web-devicons").get_icon
-local get_icon_by_filetype = require("nvim-web-devicons").get_icon_by_filetype
+local found, devicons = pcall(require, "nvim-web-devicons")
+if not found then
+  vim.api.nvim_err_writeln("nvim-web-devicons not found!!!")
+  return
+end
+local get_icon = devicons.get_icon
+local get_icon_by_filetype = devicons.get_icon_by_filetype
+
 local lsp_com = require("lsp.component").lsp_component
 
 local modes = {

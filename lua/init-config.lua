@@ -9,14 +9,9 @@ vim.g.loaded_python_provider = 0 -- To disable Python2 support
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0 -- To disable Perl support
 vim.g.loaded_ruby_provider = 0 -- To disable Ruby support
--- vim.g.python_host_prog = '/usr/bin/python2'
 vim.g.python3_host_prog = "/usr/bin/python3"
 
 -- for netrw
--- vim.g.loaded_netrw             = 1
--- vim.g.loaded_netrwPlugin       = 1
--- vim.g.loaded_netrwSettings     = 1
--- vim.g.loaded_netrwFileHandlers = 1
 -- https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
 vim.g.netrw_banner = 0 -- disable annoying banner
 vim.g.netrw_browse_split = 0
@@ -30,8 +25,6 @@ vim.g.netrw_hide = 1
 vim.g.netrw_keepdir = 1
 vim.g.netrw_localcopydircmd = "cp -r"
 vim.g.netrw_list_hide = "\\(^\\|\\s\\s\\)\\zs\\.\\S\\+"
--- vim.cmd[[let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+']]
--- vim.cmd[[let g:netrw_list_hide=netrw_gitignore#Hide()]]
 
 local group = api.nvim_create_augroup("Jsj_neovim_autocmd_misc", { clear = true })
 
@@ -101,18 +94,3 @@ end
 
 vim.cmd([[command! -nargs=0 CheckHlGroupUnderCursor :lua require("init-utils").Jsj_CheckHlGroup()]])
 vim.cmd([[command! -nargs=0 SF :lua require("init-utils").showFilePath()]])
-
---[[ ctags, cscope --]]
-o.tags = "./tags,tags"
-o.csprg = "/usr/bin/cscope"
-o.csto = 1
-o.cst = true
-o.switchbuf = "useopen"
-o.cscopequickfix = "s-,c-,d-,i-,t-,e-,a-"
-
-if vim.fn.filereadable("cscope.out") ~= 0 then
-  o.autochdir = false
-  vim.cmd([[silent cs add cscope.out]])
-elseif vim.fn.expand("$CSCOPE_DB") ~= "$CSCOPE_DB" then
-  vim.cmd([[silent cs add $CSCOPE_DB]])
-end

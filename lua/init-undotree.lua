@@ -1,4 +1,9 @@
-local undotree = require('undotree')
+local found, undotree = pcall(require, 'undotree')
+
+if not found then
+  vim.api.nvim_err_writeln("not found undotree plugin!!!")
+  return
+end
 
 undotree.setup({
   float_diff = true,  -- set this `true` will disable layout option

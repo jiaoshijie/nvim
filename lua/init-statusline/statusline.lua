@@ -1,10 +1,10 @@
 local _M = {}
 local fmt = string.format
 local o, wo = vim.o, vim.wo
-local misc = require("jsj-statusline.misc")
+local misc = require("init-statusline.misc")
 
 local options = {
-  colors = require("jsj-statusline.theme"),
+  colors = require("init-statusline.theme"),
   sections = {
     { class = "ArchIcon", item = misc.get_ArchIcon },
     { class = "mode", item = misc.get_mode },
@@ -74,12 +74,12 @@ end
 
 local set_statusline = function()
   o.showmode = false
-  o.statusline = [[%!luaeval('require("jsj-statusline.statusline").update_statusline()')]]
+  o.statusline = [[%!luaeval('require("init-statusline.statusline").update_statusline()')]]
   wo.statusline = o.statusline
 end
 
 local set_winbar = function()
-  o.winbar = [[%!luaeval('require("jsj-statusline.statusline").update_winbar()')]]
+  o.winbar = [[%!luaeval('require("init-statusline.statusline").update_winbar()')]]
   wo.winbar = o.winbar
 end
 

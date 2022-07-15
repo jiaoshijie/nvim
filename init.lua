@@ -25,20 +25,17 @@ packer.init({
   },
 })
 
--- {{{ basic configs
-require("init-basic")
-require("init-config")
-require("init-tabsize")
-require("init-style")
-require("init-keymaps")
-require("init-mdSnippets")
-require('init-undotree')
--- }}}
-
 packer.startup(function(use)
   -- {{{ Installer
   use({ "wbthomason/packer.nvim" })
   -- }}}
+
+  require("init-basic")
+  require("init-config")
+  require("init-tabsize")
+  require("init-keymaps")
+  require("init-mdSnippets")
+  require("init-style")
 
   -- {{{ Lsp
   use({
@@ -51,18 +48,18 @@ packer.startup(function(use)
 
   -- {{{ Telescope
   use({
+    "nvim-lua/plenary.nvim",
+    config = function()
+      vim.keymap.set("n", "<leader>T", "<Plug>PlenaryTestFile", { noremap = true, silent = true })
+    end,
+  })
+  use({
     "nvim-telescope/telescope.nvim",
     branch = '0.1.x',
     config = function()
       require("jsj-telescope")
     end,
     requires = {
-      {
-        "nvim-lua/plenary.nvim",
-        config = function()
-          vim.keymap.set("n", "<leader>T", "<Plug>PlenaryTestFile", { noremap = true, silent = true })
-        end,
-      },
       { "kyazdani42/nvim-web-devicons" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
     },
@@ -88,9 +85,6 @@ packer.startup(function(use)
     config = function()
       require("jsj-gitsigns")
     end,
-    requires = {
-      { "nvim-lua/plenary.nvim" },
-    },
   })
   -- }}}
 
@@ -103,9 +97,6 @@ packer.startup(function(use)
 
   use({
     "nvim-pack/nvim-spectre",
-    requires = {
-      { "nvim-lua/plenary.nvim" },
-    },
     config = function()
       local opt = { silent = true, noremap = true }
       vim.keymap.set("n", "<leader>rr", require("spectre").open, opt)
@@ -125,4 +116,7 @@ packer.startup(function(use)
   use({
     "godlygeek/tabular",
   })
+
+  require("init-statusline")
+  require('init-undotree')
 end)

@@ -39,5 +39,3 @@ o.termguicolors = true
 o.background = "dark"
 
 vim.cmd([[colorscheme gruvbox]])
-
-require("jsj-statusline")
