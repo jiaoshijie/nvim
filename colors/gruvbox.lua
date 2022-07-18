@@ -55,27 +55,6 @@ end
 c.statusline = "#2c323c"
 c.statuslineNC = "#5c6370"
 
--------------------------
--- Vim Terminal Colors --
--------------------------
-
-vim.g.terminal_color_0 = vim.o.background == "dark" and "#282828" or "#fbf1c7"
-vim.g.terminal_color_8 = "#928374"
-vim.g.terminal_color_1 = "#cc241d"
-vim.g.terminal_color_9 = vim.o.background == "dark" and "#fb4934" or "#9d0006"
-vim.g.terminal_color_2 = "#98971a"
-vim.g.terminal_color_10 = vim.o.background == "dark" and "#b8bb26" or "#79740e"
-vim.g.terminal_color_3 = "#d79921"
-vim.g.terminal_color_11 = vim.o.background == "dark" and "#fabd2f" or "#b57614"
-vim.g.terminal_color_4 = "#458588"
-vim.g.terminal_color_12 = vim.o.background == "dark" and "#83a598" or "#076678"
-vim.g.terminal_color_5 = "#b16286"
-vim.g.terminal_color_13 = vim.o.background == "dark" and "#d3869b" or "#8f3f71"
-vim.g.terminal_color_6 = "#689d6a"
-vim.g.terminal_color_14 = vim.o.background == "dark" and "#8ec07c" or "#427b58"
-vim.g.terminal_color_7 = "#d65d0e"
-vim.g.terminal_color_15 = vim.o.background == "dark" and "#f38018" or "#af3a03"
-
 h("Normal", { fg = c.fg1, bg = c.bg0 })
 h("CursorLine", { bg = c.bg1 })
 h("CursorColumn", { bg = c.bg1 })

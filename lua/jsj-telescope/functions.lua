@@ -60,7 +60,7 @@ _M.Jsj_open_Notes = function()
   require("telescope.builtin").find_files({
     prompt_title = "~ Notes ~",
     prompt_prefix = "Notes> ",
-    cwd = "~/Nutstore Files/Nutstore/MARKDOWN_NOTE",
+    cwd = "~/Downloads/GDrive/NOTE",
     file_ignore_patterns = {
       "%.bmp",
       "%.png",

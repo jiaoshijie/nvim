@@ -10,12 +10,6 @@ map("n", "S", "<Nop>", { noremap = true })
 map("n", "<Space>", "<NOP>", opts)
 
 --[[
--- F 区
---]]
-
-map("n", "<F12>", "<C-]>", opts)
-
---[[
 -- insert mode
 --]]
 
@@ -63,8 +57,6 @@ end, opts)
 
 map("n", "<leader>=", "mIgg=G'ImI", opts)
 map("n", "<leader>ps", ":setlocal spell! spelllang=en_us<CR>", opts)
-map("n", "<leader>xd", ":%!xxd<CR>", opts)
-map("n", "<leader>xr", ":%!xxd -r<CR>", opts)
 map("n", "<leader>eu", ":e ++enc=utf8<CR>", opts)
 map("n", "<leader>eg", ":e ++enc=gbk<CR>", opts)
 map("n", "Q", "q:", opts)
@@ -79,8 +71,6 @@ map("n", "<leader>tt", require("init-utils").Change_theme_alpha, opts)
 --[[
 -- window
 --]]
-map("n", "<leader>w/", "<C-w>v", opts)
-map("n", "<leader>w-", "<C-w>s", opts)
 map("n", "<m-H>", "<C-w>h", opts)
 map("n", "<m-L>", "<C-w>l", opts)
 map("n", "<m-J>", "<C-w>j", opts)

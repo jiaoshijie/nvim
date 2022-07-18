@@ -31,27 +31,6 @@ c.visual_green = "#2A3428" -- lsp virual text
 c.visual_cyan = "#282E34" -- lsp virual text
 
 -------------------------
--- Vim Terminal Colors --
--------------------------
-
-vim.g.terminal_color_0 = "#353a44"
-vim.g.terminal_color_8 = "#353a44"
-vim.g.terminal_color_1 = "#e88388"
-vim.g.terminal_color_9 = "#e88388"
-vim.g.terminal_color_2 = "#a7cc8c"
-vim.g.terminal_color_10 = "#a7cc8c"
-vim.g.terminal_color_3 = "#ebca8d"
-vim.g.terminal_color_11 = "#ebca8d"
-vim.g.terminal_color_4 = "#72bef2"
-vim.g.terminal_color_12 = "#72bef2"
-vim.g.terminal_color_5 = "#d291e4"
-vim.g.terminal_color_13 = "#d291e4"
-vim.g.terminal_color_6 = "#65c2cd"
-vim.g.terminal_color_14 = "#65c2cd"
-vim.g.terminal_color_7 = "#e3e5e9"
-vim.g.terminal_color_15 = "#e3e5e9"
-
--------------------------
 --  Vim Editor Colors  --
 -------------------------
 
