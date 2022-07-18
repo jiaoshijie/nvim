@@ -1,6 +1,3 @@
-" vim:fdm=marker
-" Initialization {{{
-
 highlight clear
 
 if exists("syntax_on")
@@ -10,19 +7,13 @@ endif
 let g:colors_name="onedark"
 
 function! s:h(group, style)
-  let s:highlight = a:style
-
   execute "highlight" a:group
-    \ "guifg="   (has_key(s:highlight, "fg")    ? s:highlight.fg.gui   : "NONE")
-    \ "guibg="   (has_key(s:highlight, "bg")    ? s:highlight.bg.gui   : "NONE")
-    \ "guisp="   (has_key(s:highlight, "sp")    ? s:highlight.sp.gui   : "NONE")
-    \ "gui="     (has_key(s:highlight, "gui")   ? s:highlight.gui      : "NONE")
-    \ "cterm=NONE"
+    \ "guifg="   (has_key(a:style, "fg")    ? a:style.fg.gui   : "NONE")
+    \ "guibg="   (has_key(a:style, "bg")    ? a:style.bg.gui   : "NONE")
+    \ "guisp="   (has_key(a:style, "sp")    ? a:style.sp.gui   : "NONE")
+    \ "gui="     (has_key(a:style, "gui")   ? a:style.gui      : "NONE")
+    \ "cterm="   (has_key(a:style, "gui")   ? a:style.gui      : "NONE")
 endfunction
-
-" }}}
-
-" Color Variables {{{
 
 let s:colors = onedark#GetColors()
 
@@ -45,128 +36,103 @@ let s:menu_grey = s:colors.menu_grey
 let s:special_grey = s:colors.special_grey
 let s:vertsplit = s:colors.vertsplit
 
-" }}}
-
-" Terminal Colors {{{
-
-let g:terminal_ansi_colors = [
-  \ s:black.gui, s:red.gui, s:green.gui, s:yellow.gui,
-  \ s:blue.gui, s:purple.gui, s:cyan.gui, s:white.gui,
-  \ s:visual_grey.gui, s:dark_red.gui, s:green.gui, s:dark_yellow.gui,
-  \ s:blue.gui, s:purple.gui, s:cyan.gui, s:comment_grey.gui
-\]
-
-" }}}
-
-" Syntax Groups (descriptions and ordering from `:h w18`) {{{
-
-call s:h("Comment", { "fg": s:comment_grey, "gui": "italic" }) " any comment
-call s:h("Constant", { "fg": s:cyan }) " any constant
-call s:h("String", { "fg": s:green }) " a string constant: `this is a string`
-call s:h("Character", { "fg": s:green }) " a character constant: 'c', '\n'
-call s:h("Number", { "fg": s:dark_yellow }) " a number constant: 234, 0xff
-call s:h("Boolean", { "fg": s:dark_yellow }) " a boolean constant: TRUE, false
-call s:h("Float", { "fg": s:dark_yellow }) " a floating point constant: 2.3e10
-call s:h("Identifier", { "fg": s:red }) " any variable name
-call s:h("Function", { "fg": s:blue }) " function name (also: methods for classes)
-call s:h("Statement", { "fg": s:purple }) " any statement
-call s:h("Conditional", { "fg": s:purple }) " if, then, else, endif, switch, etc.
-call s:h("Repeat", { "fg": s:purple }) " for, do, while, etc.
-call s:h("Label", { "fg": s:purple }) " case, default, etc.
-call s:h("Operator", { "fg": s:purple }) " `sizeof`, `+`, `*`, etc.
-call s:h("Keyword", { "fg": s:red }) " any other keyword
-call s:h("Exception", { "fg": s:purple }) " try, catch, throw
-call s:h("PreProc", { "fg": s:yellow }) " generic Preprocessor
-call s:h("Include", { "fg": s:blue }) " preprocessor #include
-call s:h("Define", { "fg": s:purple }) " preprocessor #define
-call s:h("Macro", { "fg": s:purple }) " same as Define
-call s:h("PreCondit", { "fg": s:yellow }) " preprocessor #if, #else, #endif, etc.
-call s:h("Type", { "fg": s:yellow }) " int, long, char, etc.
-call s:h("StorageClass", { "fg": s:yellow }) " static, register, volatile, etc.
-call s:h("Structure", { "fg": s:yellow }) " struct, union, enum, etc.
-call s:h("Typedef", { "fg": s:yellow }) " A typedef
-call s:h("Special", { "fg": s:blue }) " any special symbol
-call s:h("SpecialChar", { "fg": s:dark_yellow }) " special character in a constant
-call s:h("Tag", {}) " you can use CTRL-] on this
-call s:h("Delimiter", {}) " character that needs attention
-call s:h("SpecialComment", { "fg": s:comment_grey }) " special things inside a comment
-call s:h("Debug", { "fg": s:yellow, "gui": "bold,italic" }) " debugging statements
-call s:h("Underlined", { "gui": "underline" }) " text that stands out, HTML links
-call s:h("Ignore", {}) " left blank, hidden
-call s:h("Error", { "fg": s:red }) " any erroneous construct
-call s:h("Todo", { "fg": s:yellow, "bg": s:dark_red, "gui": "bold,italic" }) " anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+" Syntax Groups (descriptions and ordering from `:h w18`)
+call s:h("Comment", { "fg": s:comment_grey, "gui": "italic" })
+call s:h("Constant", { "fg": s:cyan })
+call s:h("String", { "fg": s:green })
+call s:h("Character", { "fg": s:green })
+call s:h("Number", { "fg": s:dark_yellow })
+call s:h("Boolean", { "fg": s:dark_yellow })
+call s:h("Float", { "fg": s:dark_yellow })
+call s:h("Identifier", { "fg": s:red })
+call s:h("Function", { "fg": s:blue })
+call s:h("Statement", { "fg": s:purple })
+call s:h("Conditional", { "fg": s:purple })
+call s:h("Repeat", { "fg": s:purple })
+call s:h("Label", { "fg": s:purple })
+call s:h("Operator", { "fg": s:purple })
+call s:h("Keyword", { "fg": s:red })
+call s:h("Exception", { "fg": s:purple })
+call s:h("PreProc", { "fg": s:yellow })
+call s:h("Include", { "fg": s:blue })
+call s:h("Define", { "fg": s:purple })
+call s:h("Macro", { "fg": s:purple })
+call s:h("PreCondit", { "fg": s:yellow })
+call s:h("Type", { "fg": s:yellow })
+call s:h("StorageClass", { "fg": s:yellow })
+call s:h("Structure", { "fg": s:yellow })
+call s:h("Typedef", { "fg": s:yellow })
+call s:h("Special", { "fg": s:blue })
+call s:h("SpecialChar", { "fg": s:dark_yellow })
+call s:h("Tag", {})
+call s:h("Delimiter", {})
+call s:h("SpecialComment", { "fg": s:comment_grey })
+call s:h("Debug", { "fg": s:yellow, "gui": "bold,italic" })
+call s:h("Underlined", { "gui": "underline" })
+call s:h("Ignore", {})
+call s:h("Error", { "fg": s:red })
+call s:h("Todo", { "fg": s:yellow, "bg": s:dark_red, "gui": "bold,italic" })
 
 " }}}
 
 " Highlighting Groups (descriptions and ordering from `:h highlight-groups`) {{{
-call s:h("ColorColumn", { "bg": s:cursor_grey }) " used for the columns set with 'colorcolumn'
-call s:h("Conceal", {}) " placeholder characters substituted for concealed text (see 'conceallevel')
-call s:h("Cursor", { "fg": s:black, "bg": s:blue }) " the character under the cursor
-call s:h("CursorIM", {}) " like Cursor, but used when in IME mode
-call s:h("CursorColumn", { "bg": s:cursor_grey }) " the screen column that the cursor is in when 'cursorcolumn' is set
+call s:h("ColorColumn", { "bg": s:cursor_grey })
+call s:h("Conceal", {})
+call s:h("Cursor", { "fg": s:black, "bg": s:blue })
+call s:h("CursorIM", {})
+call s:h("CursorColumn", { "bg": s:cursor_grey })
 if &diff
   " Don't change the background color in diff mode
-  call s:h("CursorLine", { "gui": "underline" }) " the screen line that the cursor is in when 'cursorline' is set
+  call s:h("CursorLine", { "gui": "underline" })
 else
-  call s:h("CursorLine", { "bg": s:cursor_grey }) " the screen line that the cursor is in when 'cursorline' is set
+  call s:h("CursorLine", { "bg": s:cursor_grey })
 endif
-call s:h("Directory", { "fg": s:blue }) " directory names (and other special names in listings)
-call s:h("DiffAdd", { "bg": s:green, "fg": s:black }) " diff mode: Added line
-call s:h("DiffChange", { "fg": s:yellow, "gui": "underline" }) " diff mode: Changed line
-call s:h("DiffDelete", { "bg": s:red, "fg": s:black }) " diff mode: Deleted line
-call s:h("DiffText", { "bg": s:yellow, "fg": s:black }) " diff mode: Changed text within a changed line
-call s:h("EndOfBuffer", { "fg": s:black }) " filler lines (~) after the last line in the buffer
-call s:h("ErrorMsg", { "fg": s:red }) " error messages on the command line
-call s:h("VertSplit", { "fg": s:vertsplit }) " the column separating vertically split windows
-call s:h("Folded", { "fg": s:comment_grey }) " line used for closed folds
-call s:h("FoldColumn", {}) " 'foldcolumn'
-call s:h("SignColumn", {}) " column where signs are displayed
-call s:h("IncSearch", { "fg": s:yellow, "bg": s:comment_grey }) " 'incsearch' highlighting; also used for the text replaced with `:s///c`
-call s:h("LineNr", { "fg": s:gutter_fg_grey, "gui": "bold" }) " Line number for `:number` and `:#` commands, and when 'number' or 'relativenumber' option is set.
-call s:h("CursorLineNr", { "fg": s:yellow, "gui": "bold", "bg": s:cursor_grey }) " Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-call s:h("MatchParen", { "fg": s:blue, "gui": "underline,bold" }) " The character under the cursor or just before it, if it is a paired bracket, and its match.
-call s:h("ModeMsg", {}) " 'showmode' message (e.g., `-- INSERT --`)
-call s:h("MoreMsg", {}) " more-prompt
-call s:h("NonText", { "fg": s:special_grey }) " '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., `>` displayed when a double-wide character doesn't fit at the end of the line).
-call s:h("Normal", { "fg": s:white, "bg": s:black }) " normal text
-" call s:h("Terminal", { "fg": s:white, "bg": s:black }) " terminal window (see terminal-size-color)
+call s:h("Directory", { "fg": s:blue })
+call s:h("DiffAdd", { "bg": s:green, "fg": s:black })
+call s:h("DiffChange", { "fg": s:yellow, "gui": "underline" })
+call s:h("DiffDelete", { "bg": s:red, "fg": s:black })
+call s:h("DiffText", { "bg": s:yellow, "fg": s:black })
+call s:h("EndOfBuffer", { "fg": s:black })
+call s:h("ErrorMsg", { "fg": s:red })
+call s:h("VertSplit", { "fg": s:vertsplit })
+call s:h("Folded", { "fg": s:comment_grey })
+call s:h("FoldColumn", {})
+call s:h("SignColumn", {})
+call s:h("IncSearch", { "fg": s:yellow, "bg": s:comment_grey })
+call s:h("LineNr", { "fg": s:gutter_fg_grey, "gui": "bold" })
+call s:h("CursorLineNr", { "fg": s:yellow, "gui": "bold", "bg": s:cursor_grey })
+call s:h("MatchParen", { "fg": s:blue, "gui": "underline,bold" })
+call s:h("ModeMsg", {})
+call s:h("MoreMsg", {})
+call s:h("NonText", { "fg": s:special_grey })
+call s:h("Normal", { "fg": s:white, "bg": s:black })
 hi link Normal Terminal
-call s:h("Pmenu", { "bg": s:menu_grey }) " Popup menu: normal item.
-call s:h("PmenuSel", { "fg": s:black, "bg": s:blue }) " Popup menu: selected item.
-call s:h("PmenuSbar", { "bg": s:special_grey }) " Popup menu: scrollbar.
-call s:h("PmenuThumb", { "bg": s:white }) " Popup menu: Thumb of the scrollbar.
-call s:h("Question", { "fg": s:purple }) " hit-enter prompt and yes/no questions
-call s:h("QuickFixLine", { "fg": s:yellow, "bg": s:gutter_fg_grey }) " Current quickfix item in the quickfix window.
-call s:h("Search", { "fg": s:black, "bg": s:yellow }) " Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
-call s:h("SpecialKey", { "fg": s:comment_grey }) " Meta and special keys listed with `:map`, also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
-call s:h("SpellBad", { "fg": s:red, "gui": "underline" }) " Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
-call s:h("SpellCap", { "fg": s:dark_yellow }) " Word that should start with a capital. This will be combined with the highlighting used otherwise.
-call s:h("SpellLocal", { "fg": s:dark_yellow }) " Word that is recognized by the spellchecker as one that is used in another region. This will be combined with the highlighting used otherwise.
-call s:h("SpellRare", { "fg": s:dark_yellow }) " Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
-call s:h("StatusLine", { "fg": s:white, "bg": s:cursor_grey }) " status line of current window
-call s:h("StatusLineNC", { "fg": s:cursor_grey, "bg": s:comment_grey }) " status lines of not-current windows Note: if this is equal to `StatusLine` Vim will use `^^^` in the status line of the current window.
-call s:h("StatusLineTerm", { "fg": s:white, "bg": s:cursor_grey }) " status line of current :terminal window
-call s:h("StatusLineTermNC", { "fg": s:comment_grey }) " status line of non-current :terminal window
-call s:h("TabLine", { "fg": s:white, "bg": s:menu_grey }) " tab pages line, not active tab page label
-call s:h("TabLineFill", { "bg": s:vertsplit }) " tab pages line, where there are no labels
-call s:h("TabLineSel", { "fg": s:yellow }) " tab pages line, active tab page label
-call s:h("Title", { "fg": s:green }) " titles for output from `:set all`, `:autocmd` etc.
-call s:h("Visual", { "fg": s:visual_black, "bg": s:visual_grey }) " Visual mode selection
-call s:h("VisualNOS", { "bg": s:visual_grey }) " Visual mode selection when vim is `Not Owning the Selection`. Only X11 Gui's gui-x11 and xterm-clipboard supports this.
-call s:h("WarningMsg", { "fg": s:yellow }) " warning messages
-call s:h("WildMenu", { "fg": s:black, "bg": s:blue }) " current match in 'wildmenu' completion
+call s:h("Pmenu", { "bg": s:menu_grey })
+call s:h("PmenuSel", { "fg": s:black, "bg": s:blue })
+call s:h("PmenuSbar", { "bg": s:special_grey })
+call s:h("PmenuThumb", { "bg": s:white })
+call s:h("Question", { "fg": s:purple })
+call s:h("QuickFixLine", { "fg": s:yellow, "bg": s:gutter_fg_grey })
+call s:h("Search", { "fg": s:black, "bg": s:yellow })
+call s:h("SpecialKey", { "fg": s:comment_grey })
+call s:h("SpellBad", { "fg": s:red, "gui": "underline" })
+call s:h("SpellCap", { "fg": s:dark_yellow })
+call s:h("SpellLocal", { "fg": s:dark_yellow })
+call s:h("SpellRare", { "fg": s:dark_yellow })
+call s:h("StatusLine", { "fg": s:white, "bg": s:cursor_grey })
+call s:h("StatusLineNC", { "fg": s:cursor_grey, "bg": s:comment_grey })
+call s:h("StatusLineTerm", { "fg": s:white, "bg": s:cursor_grey })
+call s:h("StatusLineTermNC", { "fg": s:comment_grey })
+call s:h("TabLine", { "fg": s:white, "bg": s:menu_grey })
+call s:h("TabLineFill", { "bg": s:vertsplit })
+call s:h("TabLineSel", { "fg": s:yellow })
+call s:h("Title", { "fg": s:green })
+call s:h("Visual", { "fg": s:visual_black, "bg": s:visual_grey })
+call s:h("VisualNOS", { "bg": s:visual_grey })
+call s:h("WarningMsg", { "fg": s:yellow })
+call s:h("WildMenu", { "fg": s:black, "bg": s:blue })
 
 " }}}
-
-" Termdebug highlighting for Vim 8.1+ {{{
-
-" See `:h hl-debugPC` and `:h hl-debugBreakpoint`.
-call s:h("debugPC", { "bg": s:special_grey }) " the current position
-call s:h("debugBreakpoint", { "fg": s:black, "bg": s:red }) " a breakpoint
-
-" }}}
-
-" Language-Specific Highlighting {{{
 
 " Markdown (keep consistent with HTML, above)
 call s:h("markdownBlockquote", { "fg": s:comment_grey })
@@ -192,8 +158,6 @@ call s:h("markdownListMarker", { "fg": s:red })
 call s:h("markdownOrderedListMarker", { "fg": s:red })
 call s:h("markdownRule", { "fg": s:comment_grey })
 call s:h("markdownUrl", { "fg": s:comment_grey, "gui": "underline" })
-
-" }}}
 
 " Must appear at the end of the file to work around this oddity:
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ

@@ -20,7 +20,15 @@ function! utils#Change_theme_alpha()
     highlight Normal guibg=NONE ctermbg=None
   else
     let s:jsj_change_theme_alpha = 0
-    highlight Normal guibg=#282C34 ctermbg=235
+    if g:colors_name == "gruvbox"
+      if &background == "light"
+        highlight Normal guibg=#FFFFFF
+      else
+        highlight Normal guibg=#1d2021
+      endif
+    else  " onedark bg color
+      highlight Normal guibg=#282C34
+    endif
   endif
   hi! link SignColumn LineNr
 endfunction

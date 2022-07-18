@@ -33,7 +33,7 @@ set background=dark
 set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
 set t_8b=[48;2;%lu;%lu;%lum        " set background color
 set termguicolors
-colorscheme onedark
+colorscheme gruvbox
 
 let &t_SI.="\e[5 q" "SI(start insert)
 let &t_SR.="\e[4 q" "SR(start replace)

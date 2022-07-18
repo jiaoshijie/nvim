@@ -23,7 +23,7 @@ function! s:DetectMinIndent(start, end)
   let l:min_indent = indent(a:start)
   let l:i = a:start + 1
   while l:i <= a:end
-    if l:min_indent > indent(l:i)
+    if l:min_indent > indent(l:i) && getline(l:i) != ""
       let l:min_indent = indent(l:i)
     endif
     let l:i += 1
