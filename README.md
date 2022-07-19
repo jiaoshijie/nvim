@@ -3,7 +3,6 @@
 ## some plugins are highly recommended
 
 - `mkdir -p ~/.vim/pack/github/start`
-- vim-fugitive: `git clone https://github.com/tpope/vim-fugitive.git ~/.vim/pack/github/start/vim-fugitive`
 - vim-surround: `git clone https://github.com/tpope/vim-surround.git ~/.vim/pack/github/start/vim-surround`
 - vim-repeat: `git clone https://github.com/tpope/vim-repeat.git ~/.vim/pack/github/start/vim-repeat`
 - tabular: `git clone https://github.com/godlygeek/tabular.git ~/.vim/pack/github/start/tabular`

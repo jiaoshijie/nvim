@@ -81,17 +81,8 @@ call s:h("Conceal", {})
 call s:h("Cursor", { "fg": s:black, "bg": s:blue })
 call s:h("CursorIM", {})
 call s:h("CursorColumn", { "bg": s:cursor_grey })
-if &diff
-  " Don't change the background color in diff mode
-  call s:h("CursorLine", { "gui": "underline" })
-else
-  call s:h("CursorLine", { "bg": s:cursor_grey })
-endif
+call s:h("CursorLine", { "bg": s:cursor_grey })
 call s:h("Directory", { "fg": s:blue })
-call s:h("DiffAdd", { "bg": s:green, "fg": s:black })
-call s:h("DiffChange", { "fg": s:yellow, "gui": "underline" })
-call s:h("DiffDelete", { "bg": s:red, "fg": s:black })
-call s:h("DiffText", { "bg": s:yellow, "fg": s:black })
 call s:h("EndOfBuffer", { "fg": s:black })
 call s:h("ErrorMsg", { "fg": s:red })
 call s:h("VertSplit", { "fg": s:vertsplit })
@@ -131,8 +122,21 @@ call s:h("Visual", { "fg": s:visual_black, "bg": s:visual_grey })
 call s:h("VisualNOS", { "bg": s:visual_grey })
 call s:h("WarningMsg", { "fg": s:yellow })
 call s:h("WildMenu", { "fg": s:black, "bg": s:blue })
+" diff mode 'vimdiff'
+call s:h("DiffAdd", { "fg": s:green, "bg": s:black, "gui": "reverse" })
+call s:h("DiffChange", { "fg": s:cyan, "bg": s:black, "gui": "reverse" })
+call s:h("DiffDelete", { "fg": s:red, "bg": s:black, "gui": "reverse" })
+call s:h("DiffText", { "fg": s:yellow, "bg": s:black, "gui": "reverse" })
 
 " }}}
+
+" diff file *.diff
+call s:h("diffAdded", { "fg" : s:green })
+call s:h("diffRemoved", { "fg" : s:red })
+call s:h("diffChanged", { "fg" : s:cyan })
+call s:h("diffFile", { "fg" : s:dark_yellow })
+call s:h("diffNewFile", { "fg" : s:yellow })
+call s:h("diffLine", { "fg" : s:blue })
 
 " Markdown (keep consistent with HTML, above)
 call s:h("markdownBlockquote", { "fg": s:comment_grey })

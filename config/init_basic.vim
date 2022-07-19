@@ -62,6 +62,8 @@ end
 " 总是显示左边的一列, 用于显示一些错误, 标签
 set signcolumn=auto
 
+set diffopt=vertical,filler,context:3,foldcolumn:1,internal,algorithm:histogram,indent-heuristic
+
 "----------------------------------------------------------------------
 " 搜索设置
 "----------------------------------------------------------------------

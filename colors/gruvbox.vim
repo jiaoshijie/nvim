@@ -109,7 +109,7 @@ call s:h("Pmenu", { "fg" : s:fg1, "bg" : s:bg2 })
 call s:h("PmenuSel", { "fg" : s:bg2, "bg" : s:blue, "gui" : "bold,italic" })
 call s:h("PmenuSbar", { "bg" : s:bg2 })
 call s:h("PmenuThumb", { "bg" : s:bg4 })
-" [[ Diffs ]]
+" [[ Diff mode 'vimdiff']]
 call s:h("DiffDelete", { "fg" : s:red, "bg" : s:bg0, "gui" : "reverse" })
 call s:h("DiffAdd", { "fg" : s:green, "bg" : s:bg0, "gui" : "reverse" })
 call s:h("DiffChange", { "fg" : s:aqua, "bg" : s:bg0, "gui" : "reverse" })
@@ -135,6 +135,7 @@ call s:h("netrwVersion", { "fg" : s:green })
 " FileType specific
 " -----------------
 
+" diff file *.diff
 call s:h("diffAdded", { "fg" : s:green })
 call s:h("diffRemoved", { "fg" : s:red })
 call s:h("diffChanged", { "fg" : s:aqua })

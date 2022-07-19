@@ -27,12 +27,6 @@ augroup Jsj_netrw_delete
   autocmd FileType netrw setl bufhidden=delete " or use :qa!
 augroup END
 
-" Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
-if &diff
-    highlight! link DiffText MatchParen
-    set diffopt=vertical,algorithm:histogram,indent-heuristic
-endif
-
 augroup jsj_color_warning
   autocmd!
   autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|BUG\|XXX\)')
@@ -44,6 +38,10 @@ augroup jsj_HLYnakedText
   au TextYankPost * call hlyankedtext#HLYankedText()
 augroup END
 
+if &diff
+  syntax off
+  setlocal nospell
+endif
 
 "----------------------------------------------------------------------
 " 备份配置
