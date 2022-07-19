@@ -98,20 +98,19 @@ h("helpSectionDelim", { fg = c.comment_gray })
 -----------------------
 -- Diff Highlighting --
 -----------------------
+-- diff mode 'nvim -d'
+h("DiffAdd", { fg = c.green, bg = c.black, gui = s.r })
+h("DiffChange", { fg = c.cyan, bg = c.black, gui = s.r })
+h("DiffDelete", { fg = c.red, bg = c.black, gui = s.r })
+h("DiffText", { fg = c.yellow, bg = c.black, gui = s.r })
 
-if vim.g.diff then
-  h("CursorLine", { gui = s.ul })
-end
-h("DiffAdd", { fg = c.black, bg = c.green })
-h("DiffChange", { fg = c.yellow, gui = s.ul })
-h("DiffDelete", { fg = c.black, bg = c.red })
-h("DiffText", { fg = c.black, bg = c.yellow })
-h("DiffFile", { fg = c.red, bg = c.menu_gray })
-h("DiffNewFile", { fg = c.green, bg = c.menu_gray })
-h("DiffLine", { fg = c.blue, bg = c.menu_gray })
-h("DiffRemoved", { fg = c.red })
-h("DiffAdded", { fg = c.green })
-h("DiffChanged", { fg = c.yellow })
+-- diff file *.diff
+h("diffAdded", { fg = c.green })
+h("diffRemoved", { fg = c.red })
+h("diffChanged", { fg = c.cyan })
+h("diffFile", { fg = c.dark_yellow })
+h("diffNewFile", { fg = c.yellow })
+h("diffLine", { fg = c.blue })
 
 -------------------------
 --  Vim Syntax Colors  --

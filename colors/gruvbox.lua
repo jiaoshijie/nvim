@@ -132,7 +132,7 @@ h("Pmenu", { fg = c.fg1, bg = c.bg2 })
 h("PmenuSel", { fg = c.bg2, bg = c.blue, gui = s.b .. "," .. s.i })
 h("PmenuSbar", { bg = c.bg2 })
 h("PmenuThumb", { bg = c.bg4 })
--- [[ Diffs ]]
+-- [[ Diff mode 'nvim -d']]
 h("DiffDelete", { fg = c.red, bg = c.bg0, gui = s.r })
 h("DiffAdd", { fg = c.green, bg = c.bg0, gui = s.r })
 h("DiffChange", { fg = c.aqua, bg = c.bg0, gui = s.r })
@@ -158,6 +158,7 @@ h("netrwVersion", { fg = c.green })
 -- FileType specific
 ---------------------
 
+-- diff file *.diff
 h("diffAdded", { fg = c.green })
 h("diffRemoved", { fg = c.red })
 h("diffChanged", { fg = c.aqua })

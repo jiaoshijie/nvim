@@ -95,7 +95,6 @@ _M.hl = function(group, style)
   else
     local hl = "highlight "
         .. group
-        .. " cterm=NONE"
         .. " guifg="
         .. (style.fg and style.fg or "NONE")
         .. " guibg="
@@ -103,6 +102,8 @@ _M.hl = function(group, style)
         .. " guisp="
         .. (style.sp and style.sp or "NONE")
         .. " gui="
+        .. (style.gui and style.gui or "NONE")
+        .. " cterm="
         .. (style.gui and style.gui or "NONE")
     vim.cmd(hl)
   end

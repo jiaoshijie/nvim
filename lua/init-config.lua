@@ -67,10 +67,6 @@ if vim.fn.has("unix") then
   })
 end
 
-if vim.wo.diff then
-  o.diffopt:append("vertical,algorithm:histogram,indent-heuristic")
-end
-
 o.backup = false
 o.writebackup = true
 o.backupext = ".bak"
