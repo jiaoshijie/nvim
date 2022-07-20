@@ -37,6 +37,16 @@ packer.startup(function(use)
   require("init-mdSnippets")
   require("init-style")
 
+  use({
+    "nvim-lua/plenary.nvim",
+    config = function()
+      vim.keymap.set("n", "<leader>T", "<Plug>PlenaryTestFile", { noremap = true, silent = true })
+    end,
+  })
+  use({
+    "kyazdani42/nvim-web-devicons",
+  })
+
   -- {{{ Lsp
   use({
     "neovim/nvim-lspconfig",
@@ -48,21 +58,11 @@ packer.startup(function(use)
 
   -- {{{ Telescope
   use({
-    "nvim-lua/plenary.nvim",
-    config = function()
-      vim.keymap.set("n", "<leader>T", "<Plug>PlenaryTestFile", { noremap = true, silent = true })
-    end,
-  })
-  use({
     "nvim-telescope/telescope.nvim",
     branch = '0.1.x',
     config = function()
       require("jsj-telescope")
     end,
-    requires = {
-      { "kyazdani42/nvim-web-devicons" },
-      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-    },
   })
   -- }}}
 
@@ -75,7 +75,6 @@ packer.startup(function(use)
     run = ":TSUpdate",
     requires = {
       { "nvim-treesitter/playground" },
-      { "nvim-treesitter/nvim-treesitter-textobjects" },
     },
   })
   -- }}}
@@ -92,9 +91,9 @@ packer.startup(function(use)
     config = function()
       require("jsj-neogit")
     end,
-    requires = {
-      { "sindrets/diffview.nvim" },
-    },
+  })
+  use({
+    "sindrets/diffview.nvim"
   })
   -- }}}
 
@@ -102,19 +101,6 @@ packer.startup(function(use)
     "norcalli/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup({ "!*" })
-    end,
-  })
-
-  use({
-    "nvim-pack/nvim-spectre",
-    config = function()
-      local opt = { silent = true, noremap = true }
-      vim.keymap.set("n", "<leader>rr", require("spectre").open, opt)
-      vim.keymap.set("n", "<leader>rl", require("spectre").open_file_search, opt)
-      vim.keymap.set("n", "<leader>rw", function()
-        require("spectre").open_visual({ select_word = true })
-      end, opt)
-      vim.keymap.set("v", "<leader>rw", require("spectre").open_visual, opt)
     end,
   })
 
