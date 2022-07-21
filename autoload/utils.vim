@@ -12,14 +12,18 @@ function! utils#error(message)
   return 0
 endfunction
 
+function! utils#Keep_theme_alpha()
+  if g:jsj_change_theme_alpha == 1
+    highlight Normal guibg=NONE ctermbg=None
+  endif
+endfunction
 
-let s:jsj_change_theme_alpha = 0
 function! utils#Change_theme_alpha()
-  if s:jsj_change_theme_alpha == 0
-    let s:jsj_change_theme_alpha = 1
+  if g:jsj_change_theme_alpha == 0
+    let g:jsj_change_theme_alpha = 1
     highlight Normal guibg=NONE ctermbg=None
   else
-    let s:jsj_change_theme_alpha = 0
+    let g:jsj_change_theme_alpha = 0
     if g:colors_name == "gruvbox"
       if &background == "light"
         highlight Normal guibg=#FFFFFF

@@ -130,11 +130,7 @@ call s:key_escape('<S-F12>', '[24;2~')
 
 augroup jsj_useful_settings
   autocmd!
-
-  " 打开到上次编辑的位置
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-  autocmd VimLeave *.tex !texclear %
-  autocmd ColorScheme * runtime! config/init_statusline.vim
+  autocmd BufReadPost * if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
 augroup END
 
 command! -nargs=0 CheckHlGroup call utils#Jsj_CheckHlGroup()

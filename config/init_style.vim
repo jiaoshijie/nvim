@@ -28,6 +28,14 @@ set listchars=trail:␣,tab:•,extends:»,precedes:« " ,eol:↲
 set splitright
 set splitbelow
 
+let g:jsj_change_theme_alpha = 1
+
+augroup jsj_colorscheme
+  autocmd!
+  autocmd ColorScheme * runtime! config/init_statusline.vim
+  autocmd ColorScheme * call utils#Keep_theme_alpha()
+augroup END
+
 set background=dark
 
 set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
