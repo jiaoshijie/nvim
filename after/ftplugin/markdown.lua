@@ -1,6 +1,6 @@
----------------
--- markdown snippets
----------------
+vim.opt_local.conceallevel = 1
+vim.opt_local.concealcursor = ""
+
 local l = "<localleader>"
 local mdlist = {
   { m = "n", slient = true, k = "f", e = '/<++><cr>:nohl<cr>"_c4l' },
@@ -26,19 +26,12 @@ local mdlist = {
   { k = "t4", e = [[|<++>|<++>|<++>|<++>|<cr>|----|----|----|----|<cr><Esc>2kyyj2p2ki<Esc>]] },
 }
 
-local group = vim.api.nvim_create_augroup("jsj_Markdown", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
-  group = group,
-  callback = function()
-    for _, i in ipairs(mdlist) do
-      local m = i.m == nil and "i" or i.m
-      local k = l .. i.k
-      local opts = { noremap = true }
-      if i.slient then
-        opts.silent = true
-      end
-      vim.api.nvim_buf_set_keymap(0, m, k, i.e, opts)
-    end
-  end,
-})
+for _, i in ipairs(mdlist) do
+  local m = i.m == nil and "i" or i.m
+  local k = l .. i.k
+  local opts = { noremap = true, buffer = true }
+  if i.slient then
+    opts.silent = true
+  end
+  vim.keymap.set(m, k, i.e, opts)
+end

@@ -34,7 +34,6 @@ packer.startup(function(use)
   require("init-config")
   require("init-tabsize")
   require("init-keymaps")
-  require("init-mdSnippets")
   require("init-style")
 
   use({
