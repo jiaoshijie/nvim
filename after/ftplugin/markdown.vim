@@ -1,7 +1,7 @@
 " let g:markdown_fenced_languages=['c', 'cpp']
 
-set conceallevel=1
-set concealcursor=
+setlocal conceallevel=1
+setlocal concealcursor=
 
 nnoremap <buffer> <silent> <localleader>f /<++><cr>:nohlsearch<cr>"_c4l
 inoremap <buffer> <localleader>f <Esc>/<++><cr>:nohlsearch<cr>"_c4l
