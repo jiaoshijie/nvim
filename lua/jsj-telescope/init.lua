@@ -12,11 +12,12 @@ require("telescope").setup({
     winblend = 0,
 
     layout_strategy = "flex",
+    -- preview = false,
     layout_config = {
       width = 0.95,
       height = 0.85,
       -- preview_cutoff = 120,
-      prompt_position = "bottom",
+      prompt_position = "top",
 
       horizontal = {
         -- width_padding = 0.1,
@@ -69,9 +70,9 @@ require("telescope").setup({
     },
     borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 
-    file_previewer = require("telescope.previewers").cat.new,
-    grep_previewer = require("telescope.previewers").vimgrep.new,
-    qflist_previewer = require("telescope.previewers").qflist.new,
+    file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+    grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+    qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 
     file_ignore_patterns = {},
   },

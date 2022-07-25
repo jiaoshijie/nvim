@@ -134,13 +134,15 @@ local function parse_dfs(symbols)
   local ret = {}
   for i, v in ipairs(symbols) do
     local curr_parsed_symbol = {}
-    if v.range ~= nil then
+    -- NOTICE: only need modify this position below, when lsp range is not corrent
+    local range = v.range or v.location.range  -- `v.location.range` for bashls
+    if range ~= nil then
 
       curr_parsed_symbol = {
         index = i,
         name = v.name,
         kind = v.kind,
-        range = v.range,
+        range = range,
       }
       if v.children then
         curr_parsed_symbol["children"] = parse_dfs(v.children)
@@ -245,7 +247,7 @@ function _M.on_attach(client, bufnr)
     group = statusline_lsp_augroup,
   })
 
-  -- TODO: BufEnter doesn't work
+  -- TODO: `BufEnter` doesn't work
   vim.api.nvim_create_autocmd({ "InsertLeave", "BufEnter" }, {
     group = statusline_lsp_augroup,
     buffer = bufnr,

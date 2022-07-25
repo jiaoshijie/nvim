@@ -52,7 +52,7 @@ o.ph = 15
 
 o.lazyredraw = true
 
-o.nrformats = "alpha,hex,octal"
+o.nrformats = ""
 
 o.shortmess:append("c")
 
