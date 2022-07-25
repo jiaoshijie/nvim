@@ -171,8 +171,8 @@ set wildoptions=pum
 " 延迟绘制(提升性能)
 set lazyredraw
 
-" 定义 <C-a> 和 <C-x> 加减数字的格式(10进制, 16进制, 8进制)
-set nrformats=alpha,hex,octal
+" 定义 <C-a> 和 <C-x> 加减数字的格式
+set nrformats=
 
 " 文件换行符，默认使用 unix 换行符
 set fileformats=unix,dos,mac
