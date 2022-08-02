@@ -9,7 +9,6 @@ if isdirectory('/usr/share/vim/vimfiles')
 endif
 
 runtime! config/init_basic.vim
-runtime! config/init_config.vim
 runtime! config/init_tabsize.vim
 runtime! config/init_style.vim
 runtime! config/init_keymaps.vim

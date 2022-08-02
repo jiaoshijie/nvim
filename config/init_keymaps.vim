@@ -1,6 +1,3 @@
-inoremap <C-j> <Esc>
-noremap <C-j> <Esc>
-
 " do nothing(normal visual select operator-wait)
 noremap s <Nop>
 noremap S <Nop>
@@ -8,17 +5,6 @@ nnoremap <Space> <Nop>
 
 nnoremap <silent> <leader>fo :call utils#Jsj_openFile('~/.vim', 'vimrc')<CR>
 
-"----------------------------------------------------------------------
-" Insert mode
-"----------------------------------------------------------------------
-" Recover from accidental Ctrl-U
-" http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
-inoremap <c-u> <c-g>u<c-u>
-inoremap <c-w> <c-g>u<c-w>
-inoremap , ,<c-g>u
-inoremap . .<c-g>u
-inoremap ! !<c-g>u
-inoremap ? ?<c-g>u
 "----------------------------------------------------------------------
 " Command mode
 "----------------------------------------------------------------------
@@ -36,14 +22,9 @@ cnoremap <m-f> <S-Right>
 xnoremap <  <gv
 xnoremap >  >gv
 
-
 "----------------------------------------------------------------------
 " 基本 Normal mode
 "----------------------------------------------------------------------
-
-" 滚动Speed up scrolling of the viewport slightly
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
 
 nnoremap <silent> <leader><cr> :nohl<cr>
 nnoremap <leader>/ /\<\><left><left>
@@ -51,13 +32,8 @@ nnoremap <silent> <leader>fm :call utils#Jsj_openFile(
       \ '~/Downloads/GDrive/NOTE', 'index.md')<cr>
 nnoremap <silent> <leader>ff :call utils#Jsj_openFile('.', '')<cr>
 nnoremap <silent> <leader>fg :call utils#fzfGit('')<cr>
-nnoremap <silent> <leader>= mIgg=G'ImI
 nnoremap <silent> Q q:
-nnoremap <silent> Y y$
-nnoremap <silent> n nzzzv
-nnoremap <silent> N Nzzzv
-nnoremap <silent> J mJJ`JmJ
-nnoremap <silent> gp `[v`]
+nnoremap Y y$
 
 nnoremap <silent> <leader>fc :call utils#JsjClearSE(0)<cr>
 nnoremap <silent> <leader>ft :call utils#JsjClearSE(1)<cr>
