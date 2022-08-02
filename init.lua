@@ -31,7 +31,6 @@ packer.startup(function(use)
   -- }}}
 
   require("init-basic")
-  require("init-config")
   require("init-tabsize")
   require("init-keymaps")
   require("init-style")

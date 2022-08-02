@@ -28,12 +28,12 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>eq", vim.diagnostic.setloclist, opts)
 
   if client.server_capabilities.documentFormattingProvider then
-    vim.keymap.set("n", "<leader>c=", function()
+    vim.keymap.set("n", "<leader>=", function()
       vim.lsp.buf.format({ async = true })
     end, opts)
   end
   if client.server_capabilities.documentRangeFormattingProvider then
-    vim.keymap.set("v", "<leader>c=", vim.lsp.buf.range_formatting, opts)
+    vim.keymap.set("v", "<leader>=", vim.lsp.buf.range_formatting, opts)
   end
 
   if client.server_capabilities.documentHighlightProvider then

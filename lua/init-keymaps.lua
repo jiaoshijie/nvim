@@ -1,26 +1,9 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- I hate escape
-map("i", "<C-j>", "<Esc>", opts)
-map("", "<C-j>", "<Esc>", opts)
-
 map("n", "s", "<Nop>", { noremap = true })
 map("n", "S", "<Nop>", { noremap = true })
 map("n", "<Space>", "<NOP>", opts)
-
---[[
--- insert mode
---]]
-
--- Recover from accidental Ctrl-U
--- http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
-map("i", "<C-u>", "<C-g>u<C-u>", opts)
-map("i", "<C-w>", "<C-g>u<C-w>", opts)
-map("i", ",", ",<c-g>u", opts)
-map("i", ".", ".<c-g>u", opts)
-map("i", "!", "!<c-g>u", opts)
-map("i", "?", "?<c-g>u", opts)
 
 --[[
 -- command mode
@@ -43,8 +26,6 @@ map("x", ">", ">gv", opts)
 -- normal mode
 --]]
 
-map("n", "<C-e>", "2<C-e>", opts)
-map("n", "<C-y>", "2<C-y>", opts)
 map("n", "<leader><cr>", ":nohl<cr>", opts)
 map("n", "<leader>/", "/\\<\\><left><left>", { noremap = true })
 
@@ -55,14 +36,10 @@ map("n", "<leader>fc", function()
   require("init-utils").JsjClearSE(true)
 end, opts)
 
-map("n", "<leader>=", "mIgg=G'ImI", opts)
 map("n", "<leader>ps", ":setlocal spell! spelllang=en_us<CR>", opts)
 map("n", "<leader>eu", ":e ++enc=utf8<CR>", opts)
 map("n", "<leader>eg", ":e ++enc=gbk<CR>", opts)
 map("n", "Q", "q:", opts)
-map("n", "n", "nzzzv", opts)
-map("n", "N", "Nzzzv", opts)
-map("n", "J", "mJJ`JmJ", opts)
 map("n", "gp", "`[v`]", opts)
 
 JSJ_change_theme_alpha = false
