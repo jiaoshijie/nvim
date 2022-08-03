@@ -1,6 +1,8 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+map({"", "i"}, "<C-j>", "<C-[>", opts)
+
 map("n", "s", "<Nop>", { noremap = true })
 map("n", "S", "<Nop>", { noremap = true })
 map("n", "<Space>", "<NOP>", opts)
