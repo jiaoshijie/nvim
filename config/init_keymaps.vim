@@ -1,3 +1,5 @@
+inoremap <C-j> <C-[>
+noremap <C-j> <C-[>
 " do nothing(normal visual select operator-wait)
 noremap s <Nop>
 noremap S <Nop>
