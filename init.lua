@@ -91,7 +91,10 @@ packer.startup(function(use)
     end,
   })
   use({
-    "sindrets/diffview.nvim"
+    "sindrets/diffview.nvim",
+    config = function()
+      require("diffview").setup()
+    end,
   })
   -- }}}
 
@@ -103,13 +106,14 @@ packer.startup(function(use)
   })
 
   use({
-    "tpope/vim-surround",
-    requires = { "tpope/vim-repeat" },
+    "kylechui/nvim-surround",
+    config = function()
+      require("nvim-surround").setup()
+    end,
   })
 
-  use({
-    "godlygeek/tabular",
-  })
+  -- using `column to align text`
+  -- https://stackoverflow.com/questions/8964953/align-text-on-an-equals-sign-in-vim
 
   require("init-statusline")
   require('init-undotree')
