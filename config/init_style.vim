@@ -28,7 +28,7 @@ set listchars=trail:␣,tab:•,extends:»,precedes:« " ,eol:↲
 set splitright
 set splitbelow
 
-let g:jsj_change_theme_alpha = 1
+let g:jsj_change_theme_alpha = 0
 
 augroup jsj_colorscheme
   autocmd!
@@ -41,7 +41,7 @@ set background=dark
 set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
 set t_8b=[48;2;%lu;%lu;%lum        " set background color
 set termguicolors
-colorscheme gruvbox
+colorscheme habamax
 
 let &t_SI.="\e[5 q" "SI(start insert)
 let &t_SR.="\e[4 q" "SR(start replace)
