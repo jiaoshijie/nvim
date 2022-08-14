@@ -1,38 +1,33 @@
 function! utils#warn(message)
   echohl WarningMsg
   echom a:message
-  echohl None
+  echohl NONE
   return 0
 endfunction
 
 function! utils#error(message)
   echohl ErrorMsg
   echom a:message
-  echohl None
+  echohl NONE
   return 0
 endfunction
 
 function! utils#Keep_theme_alpha()
+  " NOTICE: 51 is the Normal group synID
+  let g:jsj_normalbg = synIDattr(51, "bg", "gui")
   if g:jsj_change_theme_alpha == 1
-    highlight Normal guibg=NONE ctermbg=None
+    highlight Normal guibg=NONE ctermbg=NONE
   endif
 endfunction
 
 function! utils#Change_theme_alpha()
   if g:jsj_change_theme_alpha == 0
     let g:jsj_change_theme_alpha = 1
-    highlight Normal guibg=NONE ctermbg=None
+    let g:jsj_normalbg = synIDattr(51, "bg", "gui")
+    highlight Normal guibg=NONE ctermbg=NONE
   else
     let g:jsj_change_theme_alpha = 0
-    if g:colors_name == "gruvbox"
-      if &background == "light"
-        highlight Normal guibg=#FFFFFF
-      else
-        highlight Normal guibg=#1d2021
-      endif
-    else  " onedark bg color
-      highlight Normal guibg=#282C34
-    endif
+    execute "highlight Normal guibg=" g:jsj_normalbg
   endif
   hi! link SignColumn LineNr
 endfunction
