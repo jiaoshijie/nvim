@@ -1,13 +1,15 @@
 local o = vim.opt
 local h = require("init-utils").hl
+JSJ_normalbg = "NONE"
 
 local group = vim.api.nvim_create_augroup("Jsj_ColorScheme", { clear = true })
 vim.api.nvim_create_autocmd("ColorScheme", {
   group = group,
   pattern = "*",
   callback = function()
+    JSJ_normalbg = vim.fn.synIDattr(62, "bg", "gui")
     if JSJ_change_theme_alpha then
-      vim.cmd("highlight Normal guibg=NONE ctermbg=None")
+      vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
     end
     h("StatusLine", { bg = "#2c323c" })
     h("StatusLineNC", { bg = "#5c6370" })

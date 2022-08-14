@@ -21,14 +21,12 @@ end
 _M.Change_theme_alpha = function()
   if not JSJ_change_theme_alpha then
     JSJ_change_theme_alpha = true
-    vim.cmd("highlight Normal guibg=NONE ctermbg=None")
+    -- NOTICE: 62 is the Normal highlight group synID
+    JSJ_normalbg = vim.fn.synIDattr(62, "bg", "gui")
+    vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
   else
-    local color = "#282c34" -- onedark bg color
-    if vim.g.colors_name == "gruvbox" then
-      color = vim.o.background == "dark" and "#1d2021" or "#FFFFFF"
-    end
     JSJ_change_theme_alpha = false
-    vim.cmd("highlight! Normal guibg=" .. color)
+    vim.cmd("highlight! Normal guibg=" .. JSJ_normalbg)
   end
   vim.cmd("hi! link SignColumn LineNr")
 end
