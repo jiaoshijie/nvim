@@ -112,7 +112,7 @@ packer.startup(function(use)
     end,
   })
 
-  -- using `column to align text`
+  -- using `column` to align text
   -- https://stackoverflow.com/questions/8964953/align-text-on-an-equals-sign-in-vim
 
   require("init-statusline")

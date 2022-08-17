@@ -8,7 +8,7 @@ local autocmd = api.nvim_create_autocmd
 o.modeline = false
 o.modelines = 0
 
-o.mouse = "a"
+o.mouse = "nvi"
 o.mousemodel = "extend"
 o.title = true
 
