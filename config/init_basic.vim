@@ -45,7 +45,7 @@ set timeout
 set timeoutlen=500
 
 " 鼠标支持
-set mouse=a
+set mouse=nvi
 if has("mouse_sgr")
     set ttymouse=sgr
 else
