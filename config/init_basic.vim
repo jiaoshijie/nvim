@@ -165,6 +165,7 @@ set wildmenu
 " 设置wildmenu的补全方式
 set wildmode=full
 set wildoptions=pum
+set pumheight=15
 
 " 延迟绘制(提升性能)
 set lazyredraw
@@ -188,9 +189,6 @@ set cmdheight=1
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
-
-let mapleader=' '
-let maplocalleader=','
 
 let g:loaded_python_provider=0
 let g:loaded_perl_provider=0

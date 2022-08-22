@@ -1,3 +1,7 @@
+
+let mapleader=' '
+let maplocalleader=','
+
 inoremap <C-j> <C-[>
 noremap <C-j> <C-[>
 " do nothing(normal visual select operator-wait)
@@ -37,8 +41,7 @@ nnoremap <silent> <leader>fg :call utils#fzfGit('')<cr>
 nnoremap <silent> Q q:
 nnoremap Y y$
 
-nnoremap <silent> <leader>fc :call utils#JsjClearSE(0)<cr>
-nnoremap <silent> <leader>ft :call utils#JsjClearSE(1)<cr>
+nnoremap <silent> <leader>fc :call utils#JsjClearSE()<cr>
 
 " 打开语法检查
 nnoremap <silent> <leader>ps :setlocal spell! spelllang=en_us<CR>

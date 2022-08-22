@@ -32,19 +32,11 @@ function! utils#Change_theme_alpha()
   hi! link SignColumn LineNr
 endfunction
 
-function! utils#JsjClearSE(handle)
+function! utils#JsjClearSE()
     let l = line(".")
     let c = col(".")
-    if a:handle == 0
-      %s/\s\+$//ge
-      %s/\(\n\)\+\%$//ge
-    else
-      let l:sp = ''
-      for i in range(1, &softtabstop, 1)
-        let l:sp = l:sp . ' '
-      endfor
-      execute '%s/\t/' . l:sp . '/ge'
-    endif
+    %s/\s\+$//ge
+    %s/\(\n\)\+\%$//ge
     call cursor(l, c)
 endfunction
 
