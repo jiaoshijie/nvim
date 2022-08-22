@@ -1,6 +1,9 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
 map({"", "i"}, "<C-j>", "<C-[>", opts)
 
 map("n", "s", "<Nop>", { noremap = true })
@@ -31,11 +34,8 @@ map("x", ">", ">gv", opts)
 map("n", "<leader><cr>", ":nohl<cr>", opts)
 map("n", "<leader>/", "/\\<\\><left><left>", { noremap = true })
 
-map("n", "<leader>ft", function()
-  require("init-utils").JsjClearSE(false)
-end, opts)
 map("n", "<leader>fc", function()
-  require("init-utils").JsjClearSE(true)
+  require("init-utils").JsjClearSE()
 end, opts)
 
 map("n", "<leader>ps", ":setlocal spell! spelllang=en_us<CR>", opts)

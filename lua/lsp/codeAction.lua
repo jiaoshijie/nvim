@@ -53,7 +53,7 @@ end
 
 _M.setup = function()
   if vim.tbl_isempty(vim.fn.sign_getdefined("Jsj_codeAction")) then
-    vim.fn.sign_define("Jsj_codeAction", { text = "💡", linehl = false, numhl = false, texthl = "MoreMsg" })
+    vim.fn.sign_define("Jsj_codeAction", { text = "💡", texthl = "MoreMsg" })
   end
 end
 

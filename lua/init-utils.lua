@@ -1,19 +1,10 @@
 local _M = {}
 
-_M.JsjClearSE = function(var)
+_M.JsjClearSE = function()
   local l = vim.fn.line(".")
   local c = vim.fn.col(".")
-  if var then
-    vim.cmd([[%s/\s\+$//ge]])
-    vim.cmd([[%s/\(\n\)\+\%$//ge]])
-  else
-    local sp = ""
-    for _ = 1, vim.opt.softtabstop:get() do
-      sp = sp .. " "
-    end
-    local s = "%s/\t/" .. sp .. "/ge"
-    vim.cmd(s)
-  end
+  vim.cmd([[%s/\s\+$//ge]])
+  vim.cmd([[%s/\(\n\)\+\%$//ge]])
   vim.fn.cursor({ l, c })
   vim.cmd([[execute ":nohl"]])
 end
