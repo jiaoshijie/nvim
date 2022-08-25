@@ -2,9 +2,6 @@ local o = vim.opt
 local api = vim.api
 local autocmd = api.nvim_create_autocmd
 
--- [[
--- 读取文件配置
---]]
 o.modeline = false
 o.modelines = 0
 

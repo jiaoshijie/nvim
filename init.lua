@@ -117,4 +117,5 @@ packer.startup(function(use)
 
   require("init-statusline")
   require('init-undotree')
+  require("init-neovide")
 end)
