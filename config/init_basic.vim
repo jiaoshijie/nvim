@@ -207,10 +207,6 @@ let g:netrw_localcopycmd = 'cp -r'
 let g:netrw_keepdir      = 1
 let g:netrw_hide         = 1
 let g:netrw_list_hide    = '\(^\|\s\s\)\zs\.\S\+'
-augroup Jsj_netrw_delete
-  au!
-  autocmd FileType netrw setl bufhidden=delete
-augroup END
 
 augroup jsj_HLYnakedText
   au!

@@ -16,6 +16,7 @@
 | <kbd>\<leader\>tt</kbd> | 背景透明        |
 | <kbd>\<leader\>eu</kbd> | 切换编码为utf-8 |
 | <kbd>\<leader\>eg</kbd> | 切换编码为gbk   |
+
 ## LICENSE
 
 **MIT**
