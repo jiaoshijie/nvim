@@ -95,16 +95,6 @@ autocmd("BufReadPost", {
   once = true,
   command = [[if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif]],
 })
-autocmd("TermOpen", {
-  pattern = "*",
-  group = group,
-  command = "setlocal nonumber norelativenumber",
-})
-autocmd("FileType", {
-  pattern = "netrw",
-  group = group,
-  command = "setl bufhidden=delete",
-})
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   group = group,
