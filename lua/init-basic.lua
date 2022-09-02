@@ -1,6 +1,10 @@
 local o = vim.opt
+local ol = vim.opt_local
 local api = vim.api
 local autocmd = api.nvim_create_autocmd
+
+vim.g.do_filetype_lua = 1
+-- vim.g.did_load_filetypes = 0
 
 o.modeline = false
 o.modelines = 0
@@ -92,10 +96,18 @@ local group = api.nvim_create_augroup("Jsj_neovim_autocmd_misc", { clear = true 
 autocmd("BufReadPost", {
   pattern = "*",
   group = group,
-  once = true,
   command = [[if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif]],
 })
-vim.api.nvim_create_autocmd("TextYankPost", {
+autocmd("TermOpen", {
+  pattern = "*",
+  group = group,
+  callback = function()
+    ol.number = false
+    ol.relativenumber = false
+    ol.signcolumn = "no"
+  end,
+})
+autocmd("TextYankPost", {
   pattern = "*",
   group = group,
   callback = function()
@@ -133,3 +145,6 @@ end
 
 vim.cmd([[command! -nargs=0 CheckHlGroupUnderCursor :lua require("init-utils").Jsj_CheckHlGroup()]])
 vim.cmd([[command! -nargs=0 SF :lua require("init-utils").showFilePath()]])
+vim.cmd("command! -nargs=0 Vterm :vsplit term://" .. vim.fn.expand("$SHELL"))
+vim.cmd("command! -nargs=0 Hterm :split term://" .. vim.fn.expand("$SHELL"))
+vim.cmd("command! -nargs=0 Tterm :tabnew term://" .. vim.fn.expand("$SHELL"))
