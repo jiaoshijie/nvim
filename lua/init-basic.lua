@@ -2,6 +2,7 @@ local o = vim.opt
 local ol = vim.opt_local
 local api = vim.api
 local autocmd = api.nvim_create_autocmd
+local command = vim.api.nvim_create_user_command
 
 vim.g.do_filetype_lua = 1
 -- vim.g.did_load_filetypes = 0
@@ -143,8 +144,8 @@ if vim.fn.isdirectory(vim.fn.expand("/tmp/neovim_u/undodir")) ~= 1 then
   vim.cmd([[silent! call mkdir(expand('/tmp/neovim_u/undodir'), 'p', 0700)]])
 end
 
-vim.cmd([[command! -nargs=0 CheckHlGroupUnderCursor :lua require("init-utils").Jsj_CheckHlGroup()]])
-vim.cmd([[command! -nargs=0 SF :lua require("init-utils").showFilePath()]])
-vim.cmd("command! -nargs=0 Vterm :vsplit term://" .. vim.fn.expand("$SHELL"))
-vim.cmd("command! -nargs=0 Hterm :split term://" .. vim.fn.expand("$SHELL"))
-vim.cmd("command! -nargs=0 Tterm :tabnew term://" .. vim.fn.expand("$SHELL"))
+command("CheckHlGroupUnderCursor", require("init-utils").Jsj_CheckHlGroup, { nargs = 0 })
+command("SF", require("init-utils").showFilePath, { nargs = 0 })
+command("Vterm", "vsplit term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
+command("Hterm", "split term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
+command("Tterm", "tabnew term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })

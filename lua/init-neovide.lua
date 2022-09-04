@@ -1,4 +1,4 @@
-vim.cmd[[set guifont=JetBrains_Mono:h13]]
+vim.opt.guifont = { "JetBrains_Mono:h13" }
 
 if vim.g.neovide then
   vim.g.neovide_transparency = 0.95

@@ -93,8 +93,6 @@ map("n", "<leader>ct", require("telescope.builtin").tags, opts)
 map("n", "<leader>m", require("telescope.builtin").marks, opts)
 map("n", "<leader>h", require("telescope.builtin").help_tags, opts)
 
-vim.cmd([[command! -nargs=1 -complete=file TF :Telescope find_files cwd=<args>]])
-
 map("n", "<leader>fo", require("jsj-telescope.functions").Jsj_neovim_config, opts)
 map("n", "<leader>ff", require("jsj-telescope.functions").Jsj_search_all_files, opts)
 map("n", "<leader>fm", require("jsj-telescope.functions").Jsj_open_Notes, opts)
