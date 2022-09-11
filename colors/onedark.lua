@@ -34,9 +34,11 @@ c.visual_cyan = "#282E34" -- lsp virual text
 --  Vim Editor Colors  --
 -------------------------
 
+h("Cursor", { fg = "#000000", bg="#5588FF", gui = s.r })
+h("lCursor", { link = "Cursor" })
+
 h("ColorColumn", { bg = c.cursor_gray })
 h("Conceal", {})
-h("Cursor", { fg = c.black, bg = c.blue })
 h("CursorIM", {})
 h("CursorColumn", { bg = c.cursor_gray })
 h("CursorLine", { bg = c.cursor_gray })

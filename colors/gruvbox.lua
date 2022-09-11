@@ -55,6 +55,9 @@ end
 c.statusline = "#2c323c"
 c.statuslineNC = "#5c6370"
 
+h("Cursor", { fg = "#000000", bg="#5588FF", gui = s.r })
+h("lCursor", { link = "Cursor" })
+
 h("Normal", { fg = c.fg1, bg = c.bg0 })
 h("CursorLine", { bg = c.bg1 })
 h("CursorColumn", { bg = c.bg1 })
@@ -94,9 +97,6 @@ h("LineNr", { fg = c.bg4 })
 h("SignColumn", { link = "LineNr" })
 h("Folded", { fg = c.gray, bg = c.bg1, gui = s.i })
 h("FoldColumn", { fg = c.gray, bg = c.bg1 })
-h("Cursor", { gui = s.r })
-h("lCursor", { link = "Cursor" })
-
 -- highlight
 
 h("Special", { fg = c.orange })

@@ -126,23 +126,13 @@ end
 o.backup = false
 o.writebackup = true
 o.backupext = ".bak"
-o.backupdir = "~/.config/nvim/tmp/backup//,."
+o.backupdir = "~/.config/nvim/tmp/backup//"
 
 o.swapfile = false
-o.directory = "~/.config/nvim/tmp/swp//,."
+o.directory = "~/.config/nvim/tmp/swp//"
 
 o.undofile = true
-o.undodir = "/tmp/neovim_u/undodir//,."
-
-if vim.fn.isdirectory(vim.fn.expand("$HOME/.config/nvim/tmp/swp")) ~= 1 then
-  vim.cmd([[silent! call mkdir(expand('$HOME/.config/nvim/tmp/swp'), 'p', 0700)]])
-end
-if vim.fn.isdirectory(vim.fn.expand("$HOME/.config/nvim/tmp/backup")) ~= 1 then
-  vim.cmd([[silent! call mkdir(expand('$HOME/.config/nvim/tmp/backup'), 'p', 0700)]])
-end
-if vim.fn.isdirectory(vim.fn.expand("/tmp/neovim_u/undodir")) ~= 1 then
-  vim.cmd([[silent! call mkdir(expand('/tmp/neovim_u/undodir'), 'p', 0700)]])
-end
+o.undodir = "/tmp/jsj_neovim_u/undodir//"
 
 command("CheckHlGroupUnderCursor", require("init-utils").Jsj_CheckHlGroup, { nargs = 0 })
 command("SF", require("init-utils").showFilePath, { nargs = 0 })
