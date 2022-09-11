@@ -231,26 +231,15 @@ set nobackup
 set writebackup
 " 如果允许, 备份文件扩展名
 set backupext=.bak
-set backupdir=$HOME/.vim/tmp/backup//,.
+set backupdir=$HOME/.vim/tmp/backup//
 
 " 禁止交换文件
 set noswapfile
-set directory=$HOME/.vim/tmp/swp//,.
+set directory=$HOME/.vim/tmp/swp//
 
 " 允许undofile
 set undofile
-set undodir=/tmp/unpvim_u/undodir//,.
-
-" 创建各自的目录
-if ! isdirectory(expand('$HOME/.vim/tmp/swp'))
-  silent! call mkdir(expand('$HOME/.vim/tmp/swp'), 'p', 0700)
-endif
-if ! isdirectory(expand('$HOME/.vim/tmp/backup'))
-  silent! call mkdir(expand('$HOME/.vim/tmp/backup'), 'p', 0700)
-endif
-if ! isdirectory(expand('/tmp/unpvim_u/undodir'))
-  silent! call mkdir(expand('/tmp/unpvim_u/undodir'), 'p', 0700)
-endif
+set undodir=/tmp/jsj_vim_undo/undodir//
 
 "----------------------------------------------------------------------
 " 终端下允许 ALT，详见：http://www.skywind.me/blog/archives/2021
