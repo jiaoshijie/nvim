@@ -225,19 +225,10 @@ set wildignore+=*/.Trash/**,*.dmg,*/.rbenv/**,*DS_Store*
 " 备份配置
 "----------------------------------------------------------------------
 
-" 禁止备份
 set nobackup
-" 如果允许, 保存时备份
-set writebackup
-" 如果允许, 备份文件扩展名
-set backupext=.bak
-set backupdir=$HOME/.vim/tmp/backup//
-
-" 禁止交换文件
 set noswapfile
-set directory=$HOME/.vim/tmp/swp//
 
-" 允许undofile
+" set undofile
 set undofile
 set undodir=/tmp/jsj_vim_undo/undodir//
 
