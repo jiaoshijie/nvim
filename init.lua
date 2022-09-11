@@ -116,6 +116,7 @@ packer.startup(function(use)
 
   -- using `column` to align text
   -- https://stackoverflow.com/questions/8964953/align-text-on-an-equals-sign-in-vim
+  -- markdown table: `!column -t -s "|" -o "|"` `!column -t -s \| -o \|`
 
   require("init-statusline")
   require('init-undotree')

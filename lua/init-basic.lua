@@ -124,12 +124,7 @@ if vim.fn.has("unix") then
 end
 
 o.backup = false
-o.writebackup = true
-o.backupext = ".bak"
-o.backupdir = "~/.config/nvim/tmp/backup//"
-
 o.swapfile = false
-o.directory = "~/.config/nvim/tmp/swp//"
 
 o.undofile = true
 o.undodir = "/tmp/jsj_neovim_u/undodir//"
