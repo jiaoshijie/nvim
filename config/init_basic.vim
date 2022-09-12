@@ -126,8 +126,8 @@ set foldlevel=99
 " set completeopt=menuone,noselect,preview
 set completeopt=menuone,noselect
 " for more detail ":h ins-completion", ":h 'complete'"
-set complete-=u
-set complete-=b
+set dictionary=/usr/share/dict/words
+set complete=.,w,k
 
 " quicklist 配置, 跳到第一个搜索到的位置在当前窗口
 set switchbuf=useopen
