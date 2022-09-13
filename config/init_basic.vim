@@ -127,7 +127,7 @@ set foldlevel=99
 set completeopt=menuone,noselect
 " for more detail ":h ins-completion", ":h 'complete'"
 set dictionary=/usr/share/dict/words
-set complete=.,w,k
+set complete=.,w
 
 " quicklist 配置, 跳到第一个搜索到的位置在当前窗口
 set switchbuf=useopen
@@ -229,8 +229,9 @@ set nobackup
 set noswapfile
 
 " set undofile
+silent! call mkdir(expand('/tmp/jsj_vim_u/undodir'), 'p', 0700)
+set undodir=/tmp/jsj_vim_u/undodir//
 set undofile
-set undodir=/tmp/jsj_vim_undo/undodir//
 
 "----------------------------------------------------------------------
 " 终端下允许 ALT，详见：http://www.skywind.me/blog/archives/2021
