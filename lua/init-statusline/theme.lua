@@ -67,13 +67,13 @@ return {
     space_or_tab = {
       guifg = colors.yellow.gui,
       guibg = colors.grey_cursor.gui,
-      gui = "italic,bold",
+      gui = "bold",
       cterm = "NONE",
     },
     filename = {
       guifg = colors.yellow.gui,
       guibg = colors.grey_cursor.gui,
-      gui = "italic",
+      gui = "NONE",
       cterm = "NONE",
     },
     fileinfo = {
@@ -141,7 +141,7 @@ return {
     branch = {
       guifg = colors.white.gui,
       guibg = colors.grey_menu.gui,
-      gui = "bold,italic",
+      gui = "bold",
       cterm = "NONE",
     },
     added = {
