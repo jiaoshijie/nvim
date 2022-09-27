@@ -107,18 +107,15 @@ packer.startup(function(use)
     end,
   })
 
-  use({
-    "kylechui/nvim-surround",
-    config = function()
-      require("nvim-surround").setup()
-    end,
-  })
-
   -- using `column` to align text
   -- https://stackoverflow.com/questions/8964953/align-text-on-an-equals-sign-in-vim
   -- markdown table: `!column -t -s "|" -o "|"` `!column -t -s \| -o \|`
   use({
-    "godlygeek/tabular",
+    "echasnovski/mini.nvim",
+    config = function()
+      require('jsj-mini.surround')
+      require('jsj-mini.align')
+    end,
   })
 
   require("init-statusline")
