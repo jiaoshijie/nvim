@@ -11,23 +11,6 @@ map("n", "S", "<Nop>", { noremap = true })
 map("n", "<Space>", "<NOP>", opts)
 
 --[[
--- command mode
---]]
-
-map("c", "<C-b>", "<Left>", { noremap = true })
-map("c", "<C-f>", "<Right>", { noremap = true })
-map("c", "<C-a>", "<Home>", { noremap = true })
-map("c", "<m-b>", "<S-Left>", { noremap = true })
-map("c", "<m-f>", "<S-Right>", { noremap = true })
-
---[[
--- visual mode
---]]
-
-map("x", "<", "<gv", opts)
-map("x", ">", ">gv", opts)
-
---[[
 -- normal mode
 --]]
 
@@ -47,17 +30,6 @@ map("n", "gp", "`[v`]", opts)
 JSJ_change_theme_alpha = false
 map("n", "<leader>tt", require("init-utils").Change_theme_alpha, opts)
 
---[[
--- window
---]]
-map("n", "<m-H>", "<C-w>h", opts)
-map("n", "<m-L>", "<C-w>l", opts)
-map("n", "<m-J>", "<C-w>j", opts)
-map("n", "<m-K>", "<C-w>k", opts)
-map("t", "<m-H>", "<C-\\><C-n><C-w>h", opts)
-map("t", "<m-J>", "<C-\\><C-n><C-w>j", opts)
-map("t", "<m-K>", "<C-\\><C-n><C-w>k", opts)
-map("t", "<m-L>", "<C-\\><C-n><C-w>l", opts)
 map("t", "<Esc>", "<C-\\><C-n>", opts)
 
 --[[

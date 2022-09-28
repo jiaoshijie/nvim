@@ -111,11 +111,14 @@ packer.startup(function(use)
   -- https://stackoverflow.com/questions/8964953/align-text-on-an-equals-sign-in-vim
   -- markdown table: `!column -t -s "|" -o "|"` `!column -t -s \| -o \|`
   use({
-    "echasnovski/mini.nvim",
-    config = function()
-      require('jsj-mini.surround')
-      require('jsj-mini.align')
-    end,
+    "tpope/vim-surround",
+    requires = {
+      "tpope/vim-repeat",
+    },
+  })
+
+  use({
+    "godlygeek/tabular"
   })
 
   require("init-statusline")
