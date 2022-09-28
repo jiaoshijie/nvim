@@ -1,4 +1,3 @@
-
 let mapleader=' '
 let maplocalleader=','
 
@@ -12,24 +11,7 @@ nnoremap <Space> <Nop>
 nnoremap <silent> <leader>fo :call utils#Jsj_openFile('~/.vim', 'vimrc')<CR>
 
 "----------------------------------------------------------------------
-" Command mode
-"----------------------------------------------------------------------
-
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-cnoremap <C-a> <Home>
-cnoremap <m-b> <S-Left>
-cnoremap <m-f> <S-Right>
-
-"----------------------------------------------------------------------
-" Visual mode
-"----------------------------------------------------------------------
-
-xnoremap <  <gv
-xnoremap >  >gv
-
-"----------------------------------------------------------------------
-" 基本 Normal mode
+" Normal mode
 "----------------------------------------------------------------------
 
 nnoremap <silent> <leader><cr> :nohl<cr>
@@ -63,21 +45,6 @@ nnoremap <leader>S :grep
 nnoremap <silent> gc :<C-u>call sCommenter#Toggle_Comment(v:count1)<cr>
 vnoremap <silent> gc :<C-u>call sCommenter#Toggle_Comment(line("'>") - line("'<") + 1)<cr>
 
-"----------------------------------------------------------------------
-" window(窗口) 相关
-"----------------------------------------------------------------------
-
-" 改变选中的窗口
-noremap <m-H> <c-w>h
-noremap <m-L> <c-w>l
-noremap <m-J> <c-w>j
-noremap <m-K> <c-w>k
-
-set termwinkey=<c-_>
-tnoremap <m-H> <c-_>h
-tnoremap <m-L> <c-_>l
-tnoremap <m-J> <c-_>j
-tnoremap <m-K> <c-_>k
 tnoremap <Esc> <c-\><c-n>
 
 "----------------------------------------------------------------------
