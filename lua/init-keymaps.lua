@@ -14,7 +14,6 @@ map("n", "<Space>", "<NOP>", opts)
 -- normal mode
 --]]
 
-map("n", "<leader><cr>", ":nohl<cr>", opts)
 map("n", "<leader>/", "/\\<\\><left><left>", { noremap = true })
 
 map("n", "<leader>fc", function()

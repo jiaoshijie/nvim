@@ -4,9 +4,6 @@ local api = vim.api
 local autocmd = api.nvim_create_autocmd
 local command = vim.api.nvim_create_user_command
 
-vim.g.do_filetype_lua = 1
--- vim.g.did_load_filetypes = 0
-
 o.modeline = false
 o.modelines = 0
 

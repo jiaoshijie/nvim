@@ -24,11 +24,11 @@ end
 
 _M.Jsj_ToggleList = function(listname, perfix)
   if #vim.fn.filter(vim.fn.getwininfo(), "v:val." .. listname) == 0 then
-    xpcall(vim.cmd, function()
+    xpcall(vim.api.nvim_exec, function()
       vim.api.nvim_err_writeln("Location List is Empty.")
-    end, perfix .. "open")
+    end, perfix .. "open", false)
   else
-    vim.cmd(perfix .. "close")
+    vim.api.nvim_exec(perfix .. "close", false)
   end
 end
 

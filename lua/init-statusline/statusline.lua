@@ -11,10 +11,6 @@ local options = {
     { item = "%<" },
     { class = "info", item = misc.get_paste },
     { class = "info", item = misc.get_spell },
-    { class = "git", item = misc.get_gitb },
-    { class = "git", item = misc.get_gitadd },
-    { class = "git", item = misc.get_gitchange },
-    { class = "git", item = misc.get_gitdel },
     { class = "file", item = misc.get_filetype },
     { class = "lsp", item = misc.get_lsp_com },
     { item = "%=" },
@@ -42,11 +38,11 @@ local sethlgroups = function()
       for i, j in pairs(args) do
         table.insert(temp, fmt("%s=%s", i, j))
       end
-      temp = table.concat(temp, " ")
+      local com = table.concat(temp, " ")
       vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
         pattern = "*",
         group = group,
-        command = string.format("hi %s %s", hlgroup, temp),
+        command = string.format("hi %s %s", hlgroup, com),
       })
     end
   end

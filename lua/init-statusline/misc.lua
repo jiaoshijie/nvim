@@ -2,13 +2,13 @@ local _M = {}
 local fn = vim.fn
 local dia, dia_s = vim.diagnostic, vim.diagnostic.severity
 local fmt = string.format
-local found, devicons = pcall(require, "nvim-web-devicons")
-if not found then
-  vim.api.nvim_err_writeln("nvim-web-devicons not found!!!")
-  return
+
+local icon_found, devicons = pcall(require, "nvim-web-devicons")
+local get_icon, get_icon_by_filetype
+if icon_found then
+  get_icon = devicons.get_icon
+  get_icon_by_filetype = devicons.get_icon_by_filetype
 end
-local get_icon = devicons.get_icon
-local get_icon_by_filetype = devicons.get_icon_by_filetype
 
 local lsp_com = require("lsp.component").lsp_component
 
@@ -57,17 +57,17 @@ _M.get_spell = function()
 end
 
 _M.get_filename = function()
-  local icon = get_icon(fn.expand("%:t:r"), fn.expand("%:e"), { default = true })
+  local icon = icon_found and " " .. get_icon(fn.expand("%:t:r"), fn.expand("%:e"), { default = true }) or ""
   return {
-    text = is_active() and " " .. icon .. " %t " or " %F ",
+    text = is_active() and icon .. " %t " or " %F ",
     state = is_active() and "filename" or "inactive",
   }
 end
 
 _M.winbar_get_filename = function()
-  local icon = get_icon(fn.expand("%:t:r"), fn.expand("%:e"), { default = true })
+  local icon = icon_found and " " .. get_icon(fn.expand("%:t:r"), fn.expand("%:e"), { default = true }) or ""
   return {
-    text = is_active() and "▊ " .. icon .. " %f " or " %F ",
+    text = is_active() and "▊" .. icon .. " %f " or " %F ",
     state = is_active() and "filename" or "inactive",
   }
 end
@@ -95,11 +95,11 @@ _M.get_space_tab = function()
 end
 
 _M.get_filetype = function()
-  local icon = get_icon_by_filetype(vim.bo.filetype, { default = true })
+  local icon = icon_found and " " .. get_icon_by_filetype(vim.bo.filetype, { default = true }) or ""
   return {
     state = is_active() and "filetype" or "inactive",
     -- text = is_active() and ' %Y ' or '',
-    text = is_active() and " " .. icon .. " %{&ft}" or "",
+    text = is_active() and icon .. " %{&ft}" or "",
   }
 end
 
@@ -150,37 +150,6 @@ _M.get_lsp_error = function()
   return {
     text = get_diagnostic("✗", dia_s.ERROR),
     state = "error",
-  }
-end
-
-_M.get_gitb = function()
-  return {
-    text = (is_active() and vim.b.gitsigns_head) and "  " .. vim.b.gitsigns_head .. " " or "",
-    state = is_active() and "branch" or "inactive",
-  }
-end
-
-_M.get_gitadd = function()
-  local a = (is_active() and vim.b.gitsigns_status_dict) and vim.b.gitsigns_status_dict["added"] or 0
-  return {
-    text = a == 0 and "" or "+" .. a .. " ",
-    state = is_active() and "added" or "inactive",
-  }
-end
-
-_M.get_gitchange = function()
-  local c = (is_active() and vim.b.gitsigns_status_dict) and vim.b.gitsigns_status_dict["changed"] or 0
-  return {
-    text = c == 0 and "" or "~" .. c .. " ",
-    state = is_active() and "changed" or "inactive",
-  }
-end
-
-_M.get_gitdel = function()
-  local d = (is_active() and vim.b.gitsigns_status_dict) and vim.b.gitsigns_status_dict["removed"] or 0
-  return {
-    text = d == 0 and "" or "-" .. d .. " ",
-    state = is_active() and "removed" or "inactive",
   }
 end
 

@@ -33,7 +33,7 @@ local on_attach = function(client, bufnr)
     end, opts)
   end
   if client.server_capabilities.documentRangeFormattingProvider then
-    vim.keymap.set("v", "<leader>=", vim.lsp.buf.range_formatting, opts)
+    vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr(#{timeout_ms:250})')
   end
 
   if client.server_capabilities.documentHighlightProvider then

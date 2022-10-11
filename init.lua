@@ -25,15 +25,18 @@ packer.init({
   },
 })
 
+
+require("init-basic")
+require("init-tabsize")
+require("init-keymaps")
+require("init-style")
+require("init-statusline")
+require("init-neovide")
+
 packer.startup(function(use)
   -- {{{ Installer
   use({ "wbthomason/packer.nvim" })
   -- }}}
-
-  require("init-basic")
-  require("init-tabsize")
-  require("init-keymaps")
-  require("init-style")
 
   use({
     "nvim-lua/plenary.nvim",
@@ -77,36 +80,6 @@ packer.startup(function(use)
   })
   -- }}}
 
-  -- {{{ Git
-  use({
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require("jsj-gitsigns")
-    end,
-  })
-  use({
-    "TimUntersberger/neogit",
-    config = function()
-      require("jsj-neogit")
-    end,
-  })
-  use({
-    "sindrets/diffview.nvim",
-    config = function()
-      require("diffview").setup()
-    end,
-  })
-  -- }}}
-
-  use({
-    "NvChad/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup({
-        filetypes = { "!*" },
-      })
-    end,
-  })
-
   -- using `column` to align text
   -- https://stackoverflow.com/questions/8964953/align-text-on-an-equals-sign-in-vim
   -- markdown table: `!column -t -s "|" -o "|"` `!column -t -s \| -o \|`
@@ -121,7 +94,5 @@ packer.startup(function(use)
     "godlygeek/tabular"
   })
 
-  require("init-statusline")
   require('init-undotree')
-  require("init-neovide")
 end)
