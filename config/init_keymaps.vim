@@ -14,7 +14,7 @@ nnoremap <silent> <leader>fo :call utils#Jsj_openFile('~/.vim', 'vimrc')<CR>
 " Normal mode
 "----------------------------------------------------------------------
 
-nnoremap <silent> <leader><cr> :nohl<cr>
+nnoremap <silent> <C-l> :nohl<cr><C-l>
 nnoremap <leader>/ /\<\><left><left>
 nnoremap <silent> <leader>fm :call utils#Jsj_openFile(
       \ '~/Downloads/GDrive/NOTE', 'index.md')<cr>

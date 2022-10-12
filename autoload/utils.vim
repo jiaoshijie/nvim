@@ -69,19 +69,19 @@ endfunction
 
 function! utils#ChangeStatuslineColor()
   if (mode() =~# '\v(v|V|)')
-    exe 'hi! Jsj_SH_1 ctermbg=171 guibg=#D75FFF'
+    exe 'hi! Jsj_SH_1 guibg=#c678dd'
     return s:currentmode[mode()]
   elseif (mode() =~# 'i')
-    exe 'hi! Jsj_SH_1 ctermbg=75 guibg=#5FAFFF'
+    exe 'hi! Jsj_SH_1 guibg=#61afef'
     return s:currentmode[mode()]
   elseif (mode() =~# 'R')
-    exe 'hi! Jsj_SH_1 ctermbg=160 guibg=#D70000'
+    exe 'hi! Jsj_SH_1 guibg=#e06c75'
     return s:currentmode[mode()]
   elseif (mode() =~# '\v(c|t)')
-    exe 'hi! Jsj_SH_1 ctermbg=155 guibg=#AFFF5F'
+    exe 'hi! Jsj_SH_1 guibg=#98c379'
     return s:currentmode[mode()]
   else
-    exe 'hi! Jsj_SH_1 ctermbg=155 guibg=#AFFF5F'
+    exe 'hi! Jsj_SH_1 guibg=#98c379'
   endif
   return "NORMAL"
 endfunction

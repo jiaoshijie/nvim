@@ -21,6 +21,7 @@ set laststatus=2
 set showcmd
 
 " 显示一些不可见字符
+set display=lastline
 set list
 set listchars=trail:␣,tab:•,extends:»,precedes:« " ,eol:↲
 
