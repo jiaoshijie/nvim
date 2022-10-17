@@ -1,7 +1,6 @@
 local found, undotree = pcall(require, 'undotree')
 
 if not found then
-  vim.api.nvim_err_writeln("not found undotree plugin!!!")
   return
 end
 

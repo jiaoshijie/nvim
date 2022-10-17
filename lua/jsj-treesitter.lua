@@ -1,3 +1,4 @@
+-- sudo pacman -S treesitter
 require("nvim-treesitter.configs").setup({
   ensure_installed = { "c", "cpp", "python", "lua", "go", "rust", "comment" },
   highlight = {

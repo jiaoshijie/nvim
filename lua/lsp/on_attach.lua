@@ -1,5 +1,5 @@
 local symbols_com = require("lsp.component").on_attach
-local codeAction = require("lsp.codeAction").on_attach
+-- local codeAction = require("lsp.codeAction").on_attach
 
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
@@ -32,9 +32,6 @@ local on_attach = function(client, bufnr)
       vim.lsp.buf.format({ async = true })
     end, opts)
   end
-  if client.server_capabilities.documentRangeFormattingProvider then
-    vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr(#{timeout_ms:250})')
-  end
 
   if client.server_capabilities.documentHighlightProvider then
     local group = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
@@ -50,7 +47,7 @@ local on_attach = function(client, bufnr)
 
   if client.server_capabilities.codeActionProvider then
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-    codeAction(client, bufnr)
+    -- codeAction(client, bufnr)
   end
 
   if client.server_capabilities.documentSymbolProvider then

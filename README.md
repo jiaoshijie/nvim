@@ -12,5 +12,9 @@
 ## Requirements
 
 - nvim 0.8(nightly) or above
-- `sudo pcaman -S tree-sitter`
 - `:sheckhealth` for more infomation.
+
+## Ref
+
+- [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
+- [dokcerfile best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
