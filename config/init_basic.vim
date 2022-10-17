@@ -16,7 +16,7 @@ set linebreak
 set textwidth=78
 
 set fo-=t   " don't auto-wrap text using text width
-set fo+=c   " autowrap comments using textwidth with leader
+set fo-=c   " autowrap comments using textwidth with leader
 set fo-=r   " don't auto-insert comment leader on enter in insert
 set fo-=o   " don't auto-insert comment leader on o/O in normal
 set fo+=q   " allow formatting of comments with gq
