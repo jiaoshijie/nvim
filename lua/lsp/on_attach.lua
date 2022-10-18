@@ -1,5 +1,4 @@
 local symbols_com = require("lsp.component").on_attach
--- local codeAction = require("lsp.codeAction").on_attach
 
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
@@ -47,7 +46,6 @@ local on_attach = function(client, bufnr)
 
   if client.server_capabilities.codeActionProvider then
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-    -- codeAction(client, bufnr)
   end
 
   if client.server_capabilities.documentSymbolProvider then

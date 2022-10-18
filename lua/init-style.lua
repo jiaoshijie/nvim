@@ -1,6 +1,9 @@
 local o = vim.opt
-local h = require("init-utils").hl
 JSJ_normalbg = "NONE"
+
+local h = function(group, opts)
+  vim.api.nvim_set_hl(0, group, opts)
+end
 
 local group = vim.api.nvim_create_augroup("Jsj_ColorScheme", { clear = true })
 vim.api.nvim_create_autocmd("ColorScheme", {

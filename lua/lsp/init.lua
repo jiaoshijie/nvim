@@ -27,10 +27,10 @@ vim.lsp.protocol.CompletionItemKind = {
 }
 
 local signs = {
-  { name = "DiagnosticSignError", text = "✗" },
+  { name = "DiagnosticSignError", text = "X" },
   { name = "DiagnosticSignWarn", text = "" },
   { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "כֿ" },
+  { name = "DiagnosticSignInfo", text = "i" },
 }
 
 for _, sign in ipairs(signs) do
@@ -68,8 +68,6 @@ local lsp_using_list = {
   pyright = "python-lsp", -- npm or pacman: pyright
   bashls = "bash-lsp",  -- pacman: bash-language-server shellcheck
 }
-
-require("lsp.codeAction").setup()
 
 for lsp_name, file_name in pairs(lsp_using_list) do
   local lspPconf = require("lsp." .. file_name)

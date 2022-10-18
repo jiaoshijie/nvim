@@ -78,26 +78,6 @@ _M.showFilePath = function()
   print(vim.fn.expand("%:p"))
 end
 
-_M.hl = function(group, style)
-  if style.link then
-    vim.cmd("highlight! link " .. group .. " " .. style.link)
-  else
-    local hl = "highlight "
-        .. group
-        .. " guifg="
-        .. (style.fg and style.fg or "NONE")
-        .. " guibg="
-        .. (style.bg and style.bg or "NONE")
-        .. " guisp="
-        .. (style.sp and style.sp or "NONE")
-        .. " gui="
-        .. (style.gui and style.gui or "NONE")
-        .. " cterm="
-        .. (style.gui and style.gui or "NONE")
-    vim.cmd(hl)
-  end
-end
-
 _M.contains = function(tbl, val)
   for _, value in ipairs(tbl) do
     if value == val then

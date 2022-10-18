@@ -17,7 +17,7 @@ o.wrap = false
 o.linebreak = true
 o.textwidth = 0
 o.formatoptions:append("mB")
-o.formatoptions:remove({ "c", "t" })
+o.formatoptions:remove({ "c", "t", "r", "o" })
 
 o.timeoutlen = 500
 o.updatetime = 500

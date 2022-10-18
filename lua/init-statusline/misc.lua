@@ -127,7 +127,7 @@ end
 
 _M.get_lsp_information = function()
   return {
-    text = get_diagnostic("כֿ", dia_s.INFO),
+    text = get_diagnostic("i", dia_s.INFO),
     state = "information",
   }
 end
@@ -148,7 +148,7 @@ end
 
 _M.get_lsp_error = function()
   return {
-    text = get_diagnostic("✗", dia_s.ERROR),
+    text = get_diagnostic("X", dia_s.ERROR),
     state = "error",
   }
 end

@@ -1,8 +1,9 @@
-local h = require("init-utils").hl
+local h = function(group, opts)
+  vim.api.nvim_set_hl(0, group, opts)
+end
 
 vim.g.colors_name = "gruvbox"
 local c = {}
-local s = { b = "bold", ul = "underline", ull = "underlineline", uc = "undercurl", r = "reverse", i = "italic" }
 
 if vim.o.background == "dark" then
   c.bg0 = "#1d2021" -- hard: #1d2021, normal: #282828, soft: #32302f
@@ -55,93 +56,146 @@ end
 c.statusline = "#2c323c"
 c.statuslineNC = "#5c6370"
 
-h("Cursor", { fg = "#000000", bg="#5588FF", gui = s.r })
-h("lCursor", { link = "Cursor" })
-
-h("Normal", { fg = c.fg1, bg = c.bg0 })
-h("CursorLine", { bg = c.bg1 })
-h("CursorColumn", { bg = c.bg1 })
-h("MatchParen", { bg = c.bg3, gui = s.b })
+-- {{{ `h syntax.txt:5115`
 h("ColorColumn", { bg = c.bg1 })
 h("Conceal", { fg = c.blue })
-h("CursorLineNr", { fg = c.yellow, bg = c.bg1, gui = s.b })
+
+-- [[ cursor ]]
+h("CurSearch", { link = "IncSearch" })
+h("Cursor", { fg = "#000000", bg="#5588FF" })
+h("lCursor", { link = "Cursor" })
+h("CursorIM", { link = "Cursor" })
+h("CursorColumn", { bg = c.bg1 })
+h("CursorLine", { bg = c.bg1 })
+h("Directory", { fg = c.green, bold = true })
+
+-- [[ Diff mode 'nvim -d']]
+h("DiffAdd", { fg = c.green, bg = c.bg0, reverse = true })
+h("DiffChange", { fg = c.aqua, bg = c.bg0, reverse = true })
+h("DiffDelete", { fg = c.red, bg = c.bg0, reverse = true })
+h("DiffText", { fg = c.yellow, bg = c.bg0, reverse = true })
+
+h("EndOfBuffer", { link = "NonText" })
+
+-- [[ terminal Cursor ]]
+h("TermCursor", { link = "Cursor" })
+h("TermCursorNC", {})
+
+h("ErrorMsg", { fg = c.bg0, bg = c.red, bold = true })
+h("WinSeparator", { fg = c.bg3, bg = c.bg0 })
+h("Folded", { fg = c.gray, bg = c.bg1, italic = true })
+h("FoldColumn", { fg = c.gray, bg = c.bg1 })
+h("SignColumn", { link = "LineNr" })
+h("IncSearch", { fg = c.orange, bg = c.bg0, reverse = true })
+h("Substitute", { link = "Search" })
+
+h("LineNr", { fg = c.bg4 })
+h("LineNrAbove", { link = "LineNr" })
+h("LineNrBelow", { link = "LineNr" })
+h("CursorLineNr", { fg = c.yellow, bg = c.bg1, bold = true })
+h("CursorLineSign", { link = "SignColumn" })
+h("CursorLineFold", { link = "FoldColumn" })
+
+h("MatchParen", { bg = c.bg3, bold = true })
+h("ModeMsg", { fg = c.yellow, bold = true })
+h("MsgArea", {})
+h("MsgSeparator", { link = "StatusLine" })
+h("MoreMsg", { fg = c.yellow, bold = true })
 h("NonText", { fg = c.bg2 })
-h("Whitespace", { fg = c.bg3 })
-h("SpecialKey", { fg = c.bg2 })
-h("Visual", { bg = c.bg3, gui = s.r })
-h("VisualNOS", { link = "Visual" })
-h("Search", { fg = c.yellow, bg = c.bg0, gui = s.r })
-h("IncSearch", { fg = c.orange, bg = c.bg0, gui = s.r })
-h("Underlined", { fg = c.blue, gui = s.ul })
+h("Normal", { fg = c.fg1, bg = c.bg0 })
 h("NormalFloat", { link = "Normal" })
+h("NormalNC", { link = "Normal" })
+
+--[[ Pmenu ]]
+h("Pmenu", { fg = c.fg1, bg = c.bg2 })
+h("PmenuSel", { fg = c.bg2, bg = c.blue, bold = true, italic = true })
+h("PmenuSbar", { bg = c.bg2 })
+h("PmenuThumb", { bg = c.bg4 })
+
+h("Question", { fg = c.orange, bold = true })
+h("QuickFixLine", { link = "Search" })
+h("Search", { fg = c.yellow, bg = c.bg0, reverse = true })
+h("SpecialKey", { fg = c.bg2 })
+
+-- [[ Spelling ]]
+h("SpellBad", { undercurl = true, sp = c.blue })
+h("SpellCap", { undercurl = true, sp = c.red })
+h("SpellLocal", { undercurl = true, sp = c.aqua })
+h("SpellRare", { undercurl = true, sp = c.purple })
 
 h("StatusLine", { bg = c.statusline })
 h("StatusLineNC", { bg = c.statuslineNC })
-h("WinBar", { bg = c.statusline })
-h("WinBarNC", { bg = c.statuslineNC })
-h("TabLineFill", { fg = c.gray, bg = c.fg0 })
 h("TabLine", { link = "TabLineFill" })
+h("TabLineFill", { fg = c.gray, bg = c.fg0 })
 h("TabLineSel", { fg = c.green, bg = c.bg2 })
 
-h("VertSplit", { fg = c.bg3, bg = c.bg0 })
-h("WinSeparator", { fg = c.bg3, bg = c.bg0 })
-h("WildMenu", { fg = c.blue, bg = c.bg2, gui = s.b })
-h("Directory", { fg = c.green, gui = s.b })
-h("Title", { fg = c.green, gui = s.b })
-h("ErrorMsg", { fg = c.bg0, bg = c.red, gui = s.b })
-h("MoreMsg", { fg = c.yellow, gui = s.b })
-h("ModeMsg", { fg = c.yellow, gui = s.b })
-h("Question", { fg = c.orange, gui = s.b })
-h("WarningMsg", { fg = c.red, gui = s.b })
-h("LineNr", { fg = c.bg4 })
-h("SignColumn", { link = "LineNr" })
-h("Folded", { fg = c.gray, bg = c.bg1, gui = s.i })
-h("FoldColumn", { fg = c.gray, bg = c.bg1 })
--- highlight
+h("Title", { fg = c.green, bold = true })
+h("Visual", { bg = c.bg3, reverse = true })
+h("VisualNOS", { link = "Visual" })
+h("WarningMsg", { fg = c.red, bold = true })
+h("Whitespace", { fg = c.bg3 })
+h("WildMenu", { fg = c.blue, bg = c.bg2, bold = true })
 
-h("Special", { fg = c.orange })
-h("Comment", { fg = c.gray, gui = s.i })
-h("Todo", { fg = c.yellow, bg = c.bg0, gui = s.i .. "," .. s.b })
-h("Error", { fg = c.red, bg = c.bg0, gui = s.r .. "," .. s.b })
+h("WinBar", { bg = c.statusline })
+h("WinBarNC", { bg = c.statuslineNC })
+
+-- NOTE: deprecated `h deprecated.txt`
+-- h("VertSplit", { fg = c.bg3, bg = c.bg0 })  -- use hl-WinSeparator instead
+
+-- NOTE: for GUI
+-- h("Menu", {})
+-- h("Scrollbar", {})
+-- h("Tooltip", {})
+
+-- }}}
+
+-- {{{ `h syntax.txt:200`
+h("Comment", { fg = c.gray, italic = true })
+
+h("Constant", { fg = c.purple })
+h("String", { fg = c.green, italic = true })
+h("Character", { fg = c.purple })
+h("Number", { fg = c.purple })
+h("Boolean", { fg = c.purple })
+h("Float", { fg = c.purple })
+
+h("Identifier", { fg = c.blue })
+h("Function", { fg = c.green, bold = true })
+
 h("Statement", { fg = c.red })
 h("Conditional", { fg = c.red })
 h("Repeat", { fg = c.red })
 h("Label", { fg = c.red })
-h("Exception", { fg = c.red })
 h("Operator", { fg = c.fg1 })
 h("Keyword", { fg = c.red })
-h("Identifier", { fg = c.blue })
-h("Function", { fg = c.green, gui = s.b })
+h("Exception", { fg = c.red })
+
 h("PreProc", { fg = c.aqua })
 h("Include", { fg = c.aqua })
 h("Define", { fg = c.aqua })
 h("Macro", { fg = c.aqua })
 h("PreCondit", { fg = c.aqua })
-h("Constant", { fg = c.purple })
-h("Character", { fg = c.purple })
-h("String", { fg = c.green, gui = s.i })
-h("Boolean", { fg = c.purple })
-h("Number", { fg = c.purple })
-h("Float", { fg = c.purple })
+
 h("Type", { fg = c.yellow })
 h("StorageClass", { fg = c.orange })
 h("Structure", { fg = c.aqua })
 h("Typedef", { fg = c.yellow })
---[[ Completion Menu ]]
-h("Pmenu", { fg = c.fg1, bg = c.bg2 })
-h("PmenuSel", { fg = c.bg2, bg = c.blue, gui = s.b .. "," .. s.i })
-h("PmenuSbar", { bg = c.bg2 })
-h("PmenuThumb", { bg = c.bg4 })
--- [[ Diff mode 'nvim -d']]
-h("DiffDelete", { fg = c.red, bg = c.bg0, gui = s.r })
-h("DiffAdd", { fg = c.green, bg = c.bg0, gui = s.r })
-h("DiffChange", { fg = c.aqua, bg = c.bg0, gui = s.r })
-h("DiffText", { fg = c.yellow, bg = c.bg0, gui = s.r })
--- [[ Spelling ]]
-h("SpellCap", { gui = s.uc, sp = c.red })
-h("SpellBad", { gui = s.uc, sp = c.blue })
-h("SpellLocal", { gui = s.uc, sp = c.aqua })
-h("SpellRare", { gui = s.uc, sp = c.purple })
+
+h("Special"        ,{ fg = c.orange })
+h("SpecialChar"    ,{ link = "Special" })
+h("Tag"            ,{ link = "Special" })
+h("Delimiter"      ,{ link = "Special" })
+h("SpecialComment" ,{ link = "Special" })
+h("Debug"          ,{ link = "Special" })
+
+h("Underlined", { fg = c.blue, underline = true })
+h("Ignore", { link = "Conceal" })
+h("Error", { fg = c.red, bg = c.bg0, reverse = true, bold = true })
+h("Todo", { fg = c.yellow, bg = c.bg0, italic = true, bold = true })
+-- }}}
+
+-- {{{ FileType specific
+
 -- [[ Netrw ]]
 h("netrwDir", { fg = c.aqua })
 h("netrwClassify", { fg = c.aqua })
@@ -154,11 +208,7 @@ h("netrwHelpCmd", { fg = c.aqua })
 h("netrwCmdSep", { fg = c.fg3 })
 h("netrwVersion", { fg = c.green })
 
----------------------
--- FileType specific
----------------------
-
--- diff file *.diff
+-- [[ diff file *.diff ]]
 h("diffAdded", { fg = c.green })
 h("diffRemoved", { fg = c.red })
 h("diffChanged", { fg = c.aqua })
@@ -166,8 +216,8 @@ h("diffFile", { fg = c.orange })
 h("diffNewFile", { fg = c.yellow })
 h("diffLine", { fg = c.blue })
 
--- vim
-h("vimCommentTitle", { fg = c.fg4, gui = s.b .. "," .. s.i })
+-- [[ vim ]]
+h("vimCommentTitle", { fg = c.fg4, bold = true, italic = true })
 h("vimNotation", { fg = c.orange })
 h("vimBracket", { fg = c.orange })
 h("vimMapModKey", { fg = c.orange })
@@ -176,12 +226,12 @@ h("vimSetSep", { fg = c.fg3 })
 h("vimSep", { fg = c.fg3 })
 h("vimContinue", { fg = c.fg3 })
 
--- Markdown
-h("markdownItalic", { fg = c.fg3, gui = s.i })
-h("markdownH1", { fg = c.green, gui = s.b })
-h("markdownH2", { fg = c.green, gui = s.b })
-h("markdownH3", { fg = c.yellow, gui = s.b })
-h("markdownH4", { fg = c.yellow, gui = s.b })
+-- [[ Markdown ]]
+h("markdownItalic", { fg = c.fg3, italic = true })
+h("markdownH1", { fg = c.green, bold = true })
+h("markdownH2", { fg = c.green, bold = true })
+h("markdownH3", { fg = c.yellow, bold = true })
+h("markdownH4", { fg = c.yellow, bold = true })
 h("markdownH5", { fg = c.yellow })
 h("markdownH6", { fg = c.yellow })
 h("markdownCode", { fg = c.aqua })
@@ -198,148 +248,159 @@ h("markdownLinkTextDelimiter", { fg = c.fg3 })
 h("markdownHeadingDelimiter", { fg = c.orange })
 h("markdownUrl", { fg = c.purple })
 h("markdownUrlTitleDelimiter", { fg = c.green })
-h("markdownLinkText", { fg = c.gray, gui = s.ul })
+h("markdownLinkText", { fg = c.gray, underline = true })
 h("markdownIdDeclaration", { link = "markdownLinkText" })
 h("markdownError", { fg = c.red })
 
--- neovim health
+-- [[ neovim health ]]
 h("healthError", { fg = c.red })
 h("healthSuccess", { fg = c.aqua })
 h("healthWarning", { fg = c.yellow })
+-- }}}
 
-----------------
--- plugins
-----------------
+-- {{{ plugins
 
--- lsp highlighting
-
+-- [[ diagnostic highlights ]]  `h diagnostic.txt:192`
 h("DiagnosticError", { fg = c.red })
 h("DiagnosticWarn", { fg = c.yellow })
 h("DiagnosticInfo", { fg = c.aqua })
 h("DiagnosticHint", { fg = c.green })
-h("DiagnosticVirtualTextError", { fg = c.red, bg = c.visual_red, gui = s.i })
-h("DiagnosticVirtualTextWarn", { fg = c.yellow, bg = c.visual_yellow, gui = s.i })
-h("DiagnosticVirtualTextInfo", { fg = c.aqua, bg = c.visual_aqua, gui = s.i })
-h("DiagnosticVirtualTextHint", { fg = c.green, bg = c.visual_green, gui = s.i })
-h("DiagnosticUnderlineError", { gui = s.uc, sp = c.red })
-h("DiagnosticUnderlineWarn", { gui = s.uc, sp = c.yellow })
-h("DiagnosticUnderlineInfo", { gui = s.uc, sp = c.aqua })
-h("DiagnosticUnderlineHint", { gui = s.uc, sp = c.green })
-h("DiagnosticFloatingError", { fg = c.red, gui = s.ul })
-h("DiagnosticFloatingWarn", { fg = c.yellow, gui = s.ul })
-h("DiagnosticFloatingInfo", { fg = c.aqua, gui = s.ul })
-h("DiagnosticFloatingHint", { fg = c.green, gui = s.ul })
+h("DiagnosticVirtualTextError", { fg = c.red, bg = c.visual_red, italic = true })
+h("DiagnosticVirtualTextWarn", { fg = c.yellow, bg = c.visual_yellow, italic = true })
+h("DiagnosticVirtualTextInfo", { fg = c.aqua, bg = c.visual_aqua, italic = true })
+h("DiagnosticVirtualTextHint", { fg = c.green, bg = c.visual_green, italic = true })
+h("DiagnosticUnderlineError", { undercurl = true, sp = c.red })
+h("DiagnosticUnderlineWarn", { undercurl = true, sp = c.yellow })
+h("DiagnosticUnderlineInfo", { undercurl = true, sp = c.aqua })
+h("DiagnosticUnderlineHint", { undercurl = true, sp = c.green })
+h("DiagnosticFloatingError", { fg = c.red, underline = true })
+h("DiagnosticFloatingWarn", { fg = c.yellow, underline = true })
+h("DiagnosticFloatingInfo", { fg = c.aqua, underline = true })
+h("DiagnosticFloatingHint", { fg = c.green, underline = true })
 h("DiagnosticSignError", { fg = c.red })
 h("DiagnosticSignWarn", { fg = c.yellow })
 h("DiagnosticSignInfo", { fg = c.aqua })
 h("DiagnosticSignHint", { fg = c.green })
-h("LspSignatureActiveParameter", { fg = c.yellow })
+
+-- [[ lsp highlights ]] `h lsp.txt:446`
+h("LspReferenceText", { bg = c.bg2 })
+h("LspReferenceRead", { bg = c.bg2 })
+h("LspReferenceWrite", { bg = c.bg2 })
 h("LspCodeLens", { link = "Comment" })
+h("LspCodeLensSeparator", { link = "Comment" })
+h("LspSignatureActiveParameter", { fg = c.orange })
 
-h("Jsj_LspDochighlight", { bg = c.bg2 })
+-- [[ TreeSitter Highlighting ]] `h treesitter-highlight-groups`
+h("@comment", { link="Comment" })
+-- h("@error", { link = "error" })
+h("@none", { bg = "NONE", fg = "NONE" })
+h("@preproc", { fg = c.aqua, bold = true })
+h("@define", { link = "@preproc" })
+h("@operator", { fg = c.fg1 })
 
--- lsp document_highlight
-h("LspReferenceRead", { link = "Jsj_LspDochighlight" })
-h("LspReferenceText", { link = "Jsj_LspDochighlight" })
-h("LspReferenceWrite", { link = "Jsj_LspDochighlight" })
+-- Punctuation
+h("@punctuation.delimiter", { fg = c.fg0 })
+h('@punctuation.bracket', { fg = c.fg0 })
+h('@punctuation.special', { fg = c.fg0 })
 
--- TreeSitter Highlighting
+-- Literals
+h('@string', { fg = c.green })
+h('@string.regex', { fg = c.green })
+h('@string.escape', { fg = c.aqua })
+h('@string.special', {})
 
--- h("TSNone", {})
-h("TSPunctDelimiter", { fg = c.fg0 })
-h("TSPunctBracket", { fg = c.fg0 })
-h("TSPunctSpecial", { fg = c.fg0 })
+h('@character', { fg = c.green })
+h('@character.special', {})
 
-h("TSConstant", { fg = c.blue })
-h("TSConstBuiltin", { fg = c.yellow })
-h("TSConstMacro", { fg = c.aqua })
-h("TSString", { fg = c.green })
-h("TSStringRegex", { fg = c.green })
-h("TSStringEscape", { fg = c.aqua })
--- h("TSStringSpecial", {})
-h("TSCharacter", { fg = c.green })
--- h("TSCharacterSpecial", {})
-h("TSNumber", { fg = c.purple })
-h("TSBoolean", { fg = c.purple })
-h("TSFloat", { fg = c.purple })
+h('@boolean', { fg = c.purple })
+h('@number', { fg = c.purple })
+h('@float', { fg = c.purple })
 
-h("TSFunction", { fg = c.blue, gui = s.i })
-h("TSFuncBuiltin", { fg = c.blue })
-h("TSFuncMacro", { fg = c.yellow })
-h("TSParameter", { fg = c.fg1 })
-h("TSParameterReference", { fg = c.fg1 })
-h("TSMethod", { fg = c.blue, gui=s.i })
-h("TSField", { fg = c.red })
-h("TSProperty", { fg = c.orange })
-h("TSConstructor", { fg = c.aqua })
-h("TSAnnotation", { fg = c.yellow })
-h("TSAttribute", { fg = c.aqua })
-h("TSNamespace", { fg = c.purple })
--- h("TSSymbol", {})
+-- Functions
+h('@function', { fg = c.yellow, italic = true })
+h('@function.call', { fg = c.yellow })
+h('@function.builtin', { fg = c.yellow })
+h('@function.macro', { fg = c.blue })
 
-h("TSConditional", { fg = c.purple })
-h("TSRepeat", { fg = c.purple })
-h("TSLabel", { fg = c.blue })
-h("TSOperator", { fg = c.fg0 })
-h("TSKeyword", { fg = c.purple })
-h("TSKeywordFunction", { fg = c.purple })
-h("TSKeywordOperator", { fg = c.purple })
-h("TSKeywordReturn", { fg = c.red })
-h("TSException", { fg = c.purple })
--- h("TSDebug", {})
--- h("TSDefine", {})
--- h("TSPreProc", {})
--- h("TSStorageClass", {})
+h('@method', { fg = c.yellow, italic = true })
+h('@method.call', { fg = c.yellow })
 
--- h("TSTodo", {})
+h('@constructor', { fg = c.aqua })
+h('@parameter', { fg = c.fg1 })
 
-h("TSType", { fg = c.yellow })
-h("TSTypeBuiltin", { fg = c.purple })
--- h("TSTypeQualifier", {})
--- h("TSTypeDefinition", {})
+-- Keywords
+h('@keyword', { fg = c.purple })
+h('@keyword.function', { fg = c.purple })
+h('@keyword.operator', { fg = c.purple })
+h('@keyword.return', { fg = c.red })
 
-h("TSInclude", { fg = c.aqua, gui=s.b })
+h('@conditional', { fg = c.purple })
+h('@repeat', { fg = c.purple })
+h('@debug', {})
+h('@label', { fg = c.blue })
+h("@include", { link = "@preproc" })
+h('@exception', { fg = c.purple })
 
-h("TSVariable", { fg = c.fg1 })
-h("TSVariableBuiltin", { fg = c.yellow })
+-- Types
+h('@type', { fg = c.yellow })
+h('@type.builtin', { fg = c.yellow })
+h('@type.qualifier', {})
+h('@type.definition', {})
 
-h("TSText", { fg = c.yellow })
-h("TSStrong", { fg = c.yellow })
-h("TSEmphasis", { fg = c.yellow })
-h("TSUnderline", { fg = c.yellow })
--- h("TSStrike", {})
+h('@storageclass', {})
+h('@attribute', { fg = c.aqua })
+h('@field', { fg = c.red })
+h('@property', { fg = c.orange })
 
--- h("TSMath", {})
--- h("TSTextReference", {})
--- h("TSEnvironment", {})
--- h("TSEnvironmentName", {})
-h("TSTitle", { fg = c.yellow })
-h("TSLiteral", { fg = c.yellow })
-h("TSURI", { fg = c.yellow })
+-- Identifiers
+h('@variable', { fg = c.fg1 })
+h('@variable.builtin', { fg = c.yellow })
 
--- h("TSComment", {})
--- h("TSNote", {})
--- h("TSWarning", {})
--- h("TSDanger", {})
+h('@constant', { fg = c.blue })
+h('@constant.builtin', { fg = c.yellow })
+h('@constant.macro', { fg = c.aqua })
 
-h("TSTag", { fg = c.red })
-h("TSTagDelimiter", { fg = c.grey })
--- h("TSTagAttribute", {})
+h('@namespace', {link = '@include'})
+h('@symbol', {})
 
--- telescope
+-- Text
+h('@text', { fg = c.yellow })
+h('@text.strong', { fg = c.yellow })
+h('@text.emphasis', { fg = c.yellow })
+h('@text.underline', {underline = true})
+h('@text.strike', {strikethrough = true})
+h('@text.title', { fg = c.yellow })
+h('@text.literal', { fg = c.yellow })
+h('@text.uri', {link = 'Underlined'})
+h('@text.math', {})
+h('@text.environment', {})
+h('@text.environment.name', {})
+h('@text.reference', {})
 
+h('@text.todo', {link = 'Todo'})
+h('@text.note', {})
+h('@text.warning', {})
+h('@text.danger', {})
+
+-- Tags
+h('@tag', { fg = c.red })
+h('@tag.attribute', {})
+h('@tag.delimiter', { fg = c.grey })
+
+-- [[ telescope ]] `https://github.com/nvim-telescope/telescope.nvim/blob/master/plugin/telescope.lua`
 h("TelescopeNormal", { fg = c.fg0 })
-h("TelescopeSelection", { bg = c.bg4, gui = s.b })
+h("TelescopeSelection", { bg = c.bg4, bold = true })
 h("TelescopeSlectionCaret", { fg = c.red })
 h("TelescopeMultiSelection", { fg = c.grey })
 h("TelescopeBorder", { fg = c.yellow })
 h("TelescopePromptBorder", { fg = c.blue })
 h("TelescopeResultsBorder", { fg = c.yellow })
 h("TelescopePreviewBorder", { fg = c.purple })
-h("TelescopeMatching ", { fg = c.yellow, gui = s.b })
+h("TelescopeMatching", { fg = c.yellow, bold = true })
 h("TelescopePromptPrefix", { fg = c.red })
 
--- Undotree
+-- [[ Undotree ]] `https://github.com/jiaoshijie/undotree/blob/main/syntax/Undotree.vim`
 h("UndotreeDiffLine", { fg = c.aqua, bg = c.bg0 })
-h("UndotreeDiffAdded", { fg = c.green, bg = c.bg0, gui = s.r })
-h("UndotreeDiffRemoved", { fg = c.red, bg = c.bg0, gui = s.r })
+h("UndotreeDiffAdded", { fg = c.green, bg = c.bg0, reverse = true })
+h("UndotreeDiffRemoved", { fg = c.red, bg = c.bg0, reverse = true })
+-- }}}
