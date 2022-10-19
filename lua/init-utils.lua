@@ -87,4 +87,8 @@ _M.contains = function(tbl, val)
   return false
 end
 
+_M.global_hl = function(group, opts)
+  vim.api.nvim_set_hl(0, group, opts)
+end
+
 return _M

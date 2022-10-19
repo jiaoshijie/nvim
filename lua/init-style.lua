@@ -1,10 +1,6 @@
 local o = vim.opt
 JSJ_normalbg = "NONE"
 
-local h = function(group, opts)
-  vim.api.nvim_set_hl(0, group, opts)
-end
-
 local group = vim.api.nvim_create_augroup("Jsj_ColorScheme", { clear = true })
 vim.api.nvim_create_autocmd("ColorScheme", {
   group = group,
@@ -14,10 +10,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     if JSJ_change_theme_alpha then
       vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
     end
-    h("StatusLine", { bg = "#2c323c" })
-    h("StatusLineNC", { bg = "#5c6370" })
-    h("WinBar", { bg = "#2c323c" })
-    h("WinBarNC", { bg = "#5c6370" })
   end,
 })
 
@@ -28,11 +20,10 @@ o.colorcolumn = "79"
 o.scrolloff = 6
 o.list = true
 o.listchars = {
-  trail = "␣",
-  tab = "•",
-  extends = "»",
-  precedes = "«",
-  -- eol = '↲',
+  trail = "·",
+  tab = "» ",
+  extends = "…",
+  precedes = "…",
 }
 o.splitright = true
 o.splitbelow = true
@@ -60,4 +51,5 @@ vim.g.terminal_color_13 = '#a47de9'
 vim.g.terminal_color_14 = '#99faf2'
 vim.g.terminal_color_15 = '#ffffff'
 
+require('init-statusline').setup()
 vim.cmd([[colorscheme gruvbox]])

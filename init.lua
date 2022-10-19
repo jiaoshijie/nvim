@@ -30,7 +30,6 @@ require("init-basic")
 require("init-tabsize")
 require("init-keymaps")
 require("init-style")
-require("init-statusline")
 require("init-neovide")
 
 packer.startup(function(use)
@@ -79,6 +78,27 @@ packer.startup(function(use)
     },
   })
   -- }}}
+
+  use({
+    "toppair/peek.nvim",  -- pacman -S webkit2gtk
+    run = "deno task --quiet build:fast",
+    config = function()
+      require('peek').setup({
+        auto_load = false,
+        close_on_bdelete = false,
+        syntax = true,
+        theme = 'light', -- 'dark' or 'light'
+        update_on_change = false,
+      })
+      vim.api.nvim_create_user_command('PeekToggle', function()
+        if require('peek').is_open() then
+          require('peek').close()
+        else
+          require('peek').open()
+        end
+      end, {})
+    end,
+  })
 
   -- using `column` to align text
   -- https://stackoverflow.com/questions/8964953/align-text-on-an-equals-sign-in-vim

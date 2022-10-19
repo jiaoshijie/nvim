@@ -1,6 +1,4 @@
-local h = function(group, opts)
-  vim.api.nvim_set_hl(0, group, opts)
-end
+local h = require("init-utils").global_hl
 
 vim.g.colors_name = "gruvbox"
 local c = {}
@@ -136,8 +134,8 @@ h("WarningMsg", { fg = c.red, bold = true })
 h("Whitespace", { fg = c.bg3 })
 h("WildMenu", { fg = c.blue, bg = c.bg2, bold = true })
 
-h("WinBar", { bg = c.statusline })
-h("WinBarNC", { bg = c.statuslineNC })
+h("WinBar", { link = "StatusLine" })
+h("WinBarNC", { link = "StatusLineNC" })
 
 -- NOTE: deprecated `h deprecated.txt`
 -- h("VertSplit", { fg = c.bg3, bg = c.bg0 })  -- use hl-WinSeparator instead
