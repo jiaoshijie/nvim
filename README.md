@@ -11,7 +11,7 @@
 
 ## Requirements
 
-- nvim 0.8(nightly) or above
+- nvim 0.8 or above
 - `:sheckhealth` for more infomation.
 
 ## Ref
