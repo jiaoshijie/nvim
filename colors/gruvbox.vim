@@ -41,10 +41,10 @@ call s:h("ColorColumn", { "bg" : s:bg1 })
 call s:h("Conceal", { "fg" : s:blue })
 
 " [[ cursor ]]
-hi link IncSearch CurSearch
+hi! link CurSearch IncSearch
 call s:h("Cursor", { "gui" : "reverse" })
-hi link Cursor lCursor
-hi link Cursor CursorIM
+hi! link lCursor Cursor
+hi! link CursorIM Cursor
 call s:h("CursorColumn", { "bg" : s:bg1 })
 call s:h("CursorLine", { "bg" : s:bg1 })
 call s:h("Directory", { "fg" : s:green, "gui" : "bold" })
@@ -55,24 +55,24 @@ call s:h("DiffChange", { "fg" : s:aqua, "bg" : s:bg0, "gui" : "reverse" })
 call s:h("DiffDelete", { "fg" : s:red, "bg" : s:bg0, "gui" : "reverse" })
 call s:h("DiffText", { "fg" : s:yellow, "bg" : s:bg0, "gui" : "reverse" })
 
-hi link NonText EndOfBuffer
+hi! link EndOfBuffer NonText
 
 call s:h("ErrorMsg", { "fg" : s:bg0, "bg" : s:red, "gui" : "bold" })
 call s:h("VertSplit", { "fg" : s:bg3, "bg" : s:bg0 })
 call s:h("Folded", { "fg" : s:gray, "bg" : s:bg1, "gui" : "italic" })
 call s:h("FoldColumn", { "fg" : s:gray, "bg" : s:bg1 })
-hi link LineNr SignColumn
+hi! link SignColumn LineNr
 call s:h("IncSearch", { "fg" : s:orange, "bg" : s:bg0, "gui" : "reverse" })
 
 call s:h("LineNr", { "fg" : s:bg4 })
-hi link LineNr LineNrAbove
-hi link LineNr LineNrBelow
+hi! link LineNrAbove LineNr
+hi! link LineNrBelow LineNr
 call s:h("CursorLineNr", { "fg" : s:yellow, "bg" : s:bg1, "gui" : "bold" })
-hi link SignColumn CursorLineSign
-hi link FoldColumn CursorLineFold
+hi! link CursorLineSign SignColumn
+hi! link CursorLineFold FoldColumn
 
 call s:h("MatchParen", { "bg" : s:bg3, "gui" : "bold" })
-hi link WarningMsg MessageWindow
+hi! link MessageWindow WarningMsg
 call s:h("ModeMsg", { "fg" : s:yellow, "gui" : "bold" })
 call s:h("MoreMsg", { "fg" : s:yellow, "gui" : "bold" })
 call s:h("NonText", { "fg" : s:bg2 })
@@ -84,9 +84,9 @@ call s:h("PmenuSel", { "fg" : s:bg2, "bg" : s:blue, "gui" : "bold,italic" })
 call s:h("PmenuSbar", { "bg" : s:bg2 })
 call s:h("PmenuThumb", { "bg" : s:bg4 })
 
-hi link WarningMsg PopupNotification
+hi! link PopupNotification WarningMsg
 call s:h("Question", { "fg" : s:orange, "gui" : "bold" })
-hi link Search QuickFixLine
+hi! link QuickFixLine Search
 call s:h("Search", { "fg" : s:yellow, "bg" : s:bg0, "gui" : "reverse" })
 call s:h("SpecialKey", { "fg" : s:bg2 })
 
@@ -96,18 +96,18 @@ call s:h("SpellCap", { "gui" : "undercurl", "sp" : s:red })
 call s:h("SpellLocal", { "gui" : "undercurl", "sp" : s:aqua })
 call s:h("SpellRare", { "gui" : "undercurl", "sp" : s:purple })
 
-" call s:h("StatusLine", { "bg" : s:statusline })
-" call s:h("StatusLineNC", { "bg" : s:statuslineNC })
+" StatusLine
+" StatusLineNC
 " StatusLineTerm
 " StatusLineTermNC
 call s:h("TabLine", { "fg" : s:gray, "bg" : s:fg0 })
-hi link TabLine TabLineFill
+hi! link TabLineFill TabLine
 call s:h("TabLineSel", { "fg" : s:green, "bg" : s:bg2 })
 
 " Terminal
 call s:h("Title", { "fg" : s:green, "gui" : "bold" })
 call s:h("Visual", { "bg" : s:bg3, "gui" : "reverse" })
-hi link Visual VisualNOS
+hi! link VisualNOS Visual
 call s:h("WarningMsg", { "fg" : s:red, "gui" : "bold" })
 call s:h("WildMenu", { "fg" : s:blue, "bg" : s:bg2, "gui" : "bold" })
 " }}}
@@ -145,14 +145,14 @@ call s:h("Structure", { "fg" : s:aqua })
 call s:h("Typedef", { "fg" : s:yellow })
 
 call s:h("Special", { "fg" : s:orange })
-hi link Special SpecialChar
-hi link Special Tag
-hi link Special Delimiter
-hi link Special SpecialComment
-hi link Special Debug
+hi! link SpecialChar Special
+hi! link Tag Special
+hi! link Delimiter Special
+hi! link SpecialComment Special
+hi! link Debug Special
 
 call s:h("Underlined", { "fg" : s:blue, "gui" : "underline" })
-hi link Conceal Ignore
+hi! link Ignore Conceal
 call s:h("Error", { "fg" : s:red, "bg" : s:bg0, "gui" : "reverse,bold" })
 call s:h("Todo", { "fg" : s:yellow, "bg" : s:bg0, "gui" : "bold,italic" })
 " }}}
@@ -211,6 +211,6 @@ call s:h("markdownHeadingDelimiter", { "fg" : s:orange })
 call s:h("markdownUrl", { "fg" : s:purple })
 call s:h("markdownUrlTitleDelimiter", { "fg" : s:green })
 call s:h("markdownLinkText", { "fg" : s:gray, "gui" : "underline" })
-hi link markdownLinkText markdownIdDeclaration
+hi! link markdownIdDeclaration markdownLinkText
 call s:h("markdownError", { "fg" : s:red })
 " }}}
