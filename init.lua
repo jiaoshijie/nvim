@@ -79,6 +79,22 @@ packer.startup(function(use)
   })
   -- }}}
 
+  -- {{{ git
+  use({
+    "TimUntersberger/neogit",
+    config = function()
+      require("jsj-neogit")
+    end,
+  })
+  use({
+    "sindrets/diffview.nvim",
+    config = function()
+      require("diffview").setup()
+    end,
+  })
+  -- }}}
+
+  -- {{{ Markdown
   use({
     "toppair/peek.nvim",  -- pacman -S webkit2gtk
     run = "deno task --quiet build:fast",
@@ -99,6 +115,7 @@ packer.startup(function(use)
       end, {})
     end,
   })
+  --- }}}
 
   -- using `column` to align text
   -- https://stackoverflow.com/questions/8964953/align-text-on-an-equals-sign-in-vim
