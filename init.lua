@@ -73,9 +73,6 @@ packer.startup(function(use)
       require("jsj-treesitter")
     end,
     run = ":TSUpdate",
-    requires = {
-      { "nvim-treesitter/playground" },
-    },
   })
   -- }}}
 
@@ -84,12 +81,6 @@ packer.startup(function(use)
     "TimUntersberger/neogit",
     config = function()
       require("jsj-neogit")
-    end,
-  })
-  use({
-    "sindrets/diffview.nvim",
-    config = function()
-      require("diffview").setup()
     end,
   })
   -- }}}

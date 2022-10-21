@@ -129,6 +129,9 @@ o.undofile = true
 o.undodir = "/tmp/jsj_neovim_u/undodir//"
 
 command("CheckHlGroupUnderCursor", require("init-utils").Jsj_CheckHlGroup, { nargs = 0 })
+command("TSCheckHlGroupUnderCursor", function()
+  vim.pretty_print(vim.treesitter.get_captures_at_cursor(0))
+end, { nargs = 0 })
 command("SF", require("init-utils").showFilePath, { nargs = 0 })
 command("Vterm", "vsplit term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
 command("Hterm", "split term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })

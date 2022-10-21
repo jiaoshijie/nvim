@@ -28,7 +28,7 @@ neogit.setup {
     hunk = { "", "" },
   },
   integrations = {
-    diffview = true
+    diffview = false
   },
   -- Setting any section to `false` will make the section not render at all
   sections = {

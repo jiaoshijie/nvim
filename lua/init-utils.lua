@@ -1,11 +1,12 @@
 local _M = {}
+local vf = vim.fn
+local api = vim.api
 
 _M.JsjClearSE = function()
-  local l = vim.fn.line(".")
-  local c = vim.fn.col(".")
+  local l, c = vf.line("."), vf.col(".")
   vim.cmd([[%s/\s\+$//ge]])
   vim.cmd([[%s/\(\n\)\+\%$//ge]])
-  vim.fn.cursor({ l, c })
+  vf.cursor({ l, c })
   vim.cmd([[execute ":nohl"]])
 end
 
@@ -13,69 +14,51 @@ _M.Change_theme_alpha = function()
   if not JSJ_change_theme_alpha then
     JSJ_change_theme_alpha = true
     -- NOTICE: 62 is the Normal highlight group synID
-    JSJ_normalbg = vim.fn.synIDattr(62, "bg", "gui")
-    vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
+    JSJ_normalbg = vf.synIDattr(62, "bg", "gui")
+    _M.global_hl("Normal", { bg = "NONE" })
   else
     JSJ_change_theme_alpha = false
-    vim.cmd("highlight! Normal guibg=" .. JSJ_normalbg)
+    _M.global_hl("Normal", { bg = JSJ_normalbg })
   end
-  vim.cmd("hi! link SignColumn LineNr")
+  _M.global_hl("SignColumn", { link = "LineNr" })
 end
 
 _M.Jsj_ToggleList = function(listname, perfix)
-  if #vim.fn.filter(vim.fn.getwininfo(), "v:val." .. listname) == 0 then
-    xpcall(vim.api.nvim_exec, function()
-      vim.api.nvim_err_writeln("Location List is Empty.")
+  if #vf.filter(vf.getwininfo(), "v:val." .. listname) == 0 then
+    xpcall(api.nvim_exec, function()
+      api.nvim_err_writeln("Location List is Empty.")
     end, perfix .. "open", false)
   else
-    vim.api.nvim_exec(perfix .. "close", false)
+    api.nvim_exec(perfix .. "close", false)
   end
 end
 
+-- https://www.oasys.net/posts/writing-a-vim-syntax-plugin/
 _M.Jsj_CheckHlGroup = function()
-  local l = vim.fn.line(".")
-  local c = vim.fn.col(".")
-  local synIDf = vim.fn.synID(l, c, false)
-  local synIDt = vim.fn.synID(l, c, true)
-  local synIDattr = vim.fn.synIDattr
-  local synIDtrans = vim.fn.synIDtrans
-  local synName = synIDattr(synIDf, "name")
-  local synHlName = synIDattr(synIDt, "name")
-  local synTransHlName = synIDattr(synIDtrans(synIDt), "name")
-  local fg = synIDattr(synIDtrans(synIDt), "fg#")
-  local bg = synIDattr(synIDtrans(synIDt), "bg#")
-  local info = string.format("synName=`%s`", synName)
-
-  if synHlName ~= "" or synTransHlName ~= "" then
-    if synHlName == "" or synTransHlName == "" then
-      info = string.format("%s\nsynName=`%s`", info, synHlName == "" and synTransHlName or synHlName)
-    elseif synTransHlName == synHlName then
-      info = string.format("%s\nsynName=`%s`", info, synHlName)
-    else
-      info = string.format("%s\nsynHlName=`%s->%s`", info, synHlName, synTransHlName)
+  -- NOTE: don't need to know the transparent item.
+  -- print(vf.synIDattr(vf.synID(l, c, false), 'name'))
+  ---------------------------------------------------------------
+  local synid = vf.synID(vf.line('.'), vf.col('.'), true)
+  local synname = { vf.synIDattr(synid, 'name') }
+  while true do
+    synid = vf.synIDtrans(synid)
+    local temp = vf.synIDattr(synid, 'name')
+    if temp == synname[#synname] then
+      break
     end
+    table.insert(synname, temp)
   end
-  if fg ~= "" then
-    info = string.format("%s\nfg=`%s`", info, fg)
-  end
-  if bg ~= "" then
-    info = string.format("%s\nbg=`%s`", info, bg)
-  end
-  if info == "synName=``" then
-    vim.api.nvim_err_writeln("There is no syntex item.")
-  else
-    print(info)
-  end
+  vim.pretty_print(synname)
 end
 
 _M.fcitx2en = function()
-  if tonumber(vim.fn.system("fcitx5-remote")) == 2 then
-    vim.fn.system("fcitx5-remote -c")
+  if tonumber(vf.system("fcitx5-remote")) == 2 then
+    vf.system("fcitx5-remote -c")
   end
 end
 
 _M.showFilePath = function()
-  print(vim.fn.expand("%:p"))
+  print(vf.expand("%:p"))
 end
 
 _M.contains = function(tbl, val)
@@ -88,7 +71,8 @@ _M.contains = function(tbl, val)
 end
 
 _M.global_hl = function(group, opts)
-  vim.api.nvim_set_hl(0, group, opts)
+  opts.default = false
+  api.nvim_set_hl(0, group, opts)
 end
 
 return _M

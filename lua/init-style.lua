@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   callback = function()
     JSJ_normalbg = vim.fn.synIDattr(62, "bg", "gui")
     if JSJ_change_theme_alpha then
-      vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
+      require("init-utils").global_hl("Normal", { bg = "NONE" })
     end
   end,
 })
