@@ -214,7 +214,7 @@ augroup jsj_useful_settings
   autocmd BufReadPost * if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
 augroup END
 
-command! -nargs=0 CheckHlGroup call utils#Jsj_CheckHlGroup()
+command! -nargs=0 CheckHlGroupUnderCursor call utils#Jsj_CheckHlGroup()
 command! -nargs=0 SF call utils#showFilePath()
 command! -nargs=? -complete=dir GF call utils#fzfGit(<q-args>)
 

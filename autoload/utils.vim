@@ -94,31 +94,19 @@ function! utils#Jsj_openFile(dir, targetFile)
   endif
 endfunction
 
+" https://www.oasys.net/posts/writing-a-vim-syntax-plugin/
 function! utils#Jsj_CheckHlGroup()
-  let l:synName = synIDattr(synID(line('.'), col('.'), 0), 'name')
-  let l:synHlName = synIDattr(synID(line('.'), col('.'), 1), 'name')
-  let l:synTransHlName = synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
-  let l:fg = synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'fg')
-  let l:bg = synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'bg')
-  let l:info = printf("synName=`%s`", l:synName)
-  if !empty(l:synHlName) || !empty(l:synTransHlName)
-    if empty(l:synHlName) || empty(l:synTransHlName) || l:synHlName == l:synTransHlName
-      let l:info = printf("%s\nsynHlName=`%s`", l:info, empty(l:synHlName) ? l:synHlName : l:synTransHlName)
-    else
-      let l:info = printf("%s\nsynHlName=`%s->%s`", l:info, l:synHlName, l:synTransHlName)
+  let l:synid = synID(line('.'), col('.'), 1)
+  let l:synname = [ synIDattr(l:synid, 'name') ]
+  while 1
+    let l:synid = synIDtrans(l:synid)
+    let l:temp = synIDattr(l:synid, 'name')
+    if synname[-1] ==# l:temp
+      break
     endif
-  endif
-  if !empty(l:fg)
-    let l:info = printf("%s\nfg=`%s`", l:info, l:fg)
-  endif
-  if !empty(l:bg)
-    let l:info = printf("%s\nbg=`%s`", l:info, l:bg)
-  endif
-  if l:info == "synName=``"
-    return utils#error("There is no syntex item.")
-  else
-    echo l:info
-  endif
+    let l:synname = add(l:synname, l:temp)
+  endwhile
+  echo l:synname
 endfunction
 
 function! utils#showFilePath()
