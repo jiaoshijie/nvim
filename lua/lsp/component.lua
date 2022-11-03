@@ -120,8 +120,10 @@ local request_symbols = function(client_id, bufnr, handler)
     "textDocument/documentSymbol",
     { textDocument = vim.lsp.util.make_text_document_params() },
     function(responses)
-      if not responses[client_id].error
-          and responses[client_id].result ~= nil
+      if responses
+          and responses[client_id]
+          and not responses[client_id].error
+          and responses[client_id].result
           and not vim.tbl_isempty(responses[client_id].result)
       then
         handler(bufnr, responses[client_id].result)
@@ -135,7 +137,7 @@ local function parse_dfs(symbols)
   for i, v in ipairs(symbols) do
     local curr_parsed_symbol = {}
     -- NOTICE: only need modify this position below, when lsp range is not corrent
-    local range = v.range or v.location.range  -- `v.location.range` for bashls
+    local range = v.range or v.location.range -- `v.location.range` for bashls
     if range ~= nil then
 
       curr_parsed_symbol = {

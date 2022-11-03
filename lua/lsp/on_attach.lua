@@ -33,15 +33,8 @@ local on_attach = function(client, bufnr)
   end
 
   if client.server_capabilities.documentHighlightProvider then
-    local group = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-    vim.api.nvim_create_autocmd("CursorHold", {
-      group = group,
-      callback = vim.lsp.buf.document_highlight,
-    })
-    vim.api.nvim_create_autocmd("CursorMoved", {
-      group = group,
-      callback = vim.lsp.buf.clear_references,
-    })
+    vim.keymap.set("n", "<leader>ch", vim.lsp.buf.document_highlight, opts)
+    vim.keymap.set("n", "<leader>cl", vim.lsp.buf.clear_references, opts)
   end
 
   if client.server_capabilities.codeActionProvider then
