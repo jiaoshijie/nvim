@@ -65,7 +65,6 @@ local lsp_using_list = {
   clangd = "clangd-lsp", -- pacman: clang
   gopls = "go-lsp", -- pacman: gopls
   rust_analyzer = "rust-lsp", -- pacman: rust_analyzer
-  pyright = "python-lsp", -- npm or pacman: pyright
   bashls = "bash-lsp",  -- pacman: bash-language-server shellcheck
 }
 
