@@ -2,6 +2,7 @@ local _M = {}
 local fmt = string.format
 local o, wo = vim.o, vim.wo
 local funcs = require("init-statusline.functions")
+local git_branch = require("init-statusline.git_branch")
 local h = require("init-utils").global_hl
 
 local options = {
@@ -9,6 +10,7 @@ local options = {
   sections = {
     { class = "ArchIcon", item = funcs.get_ArchIcon },
     { class = "mode", item = funcs.get_mode },
+    { class = "git", item = funcs.git_branch },
     { item = "%<" },
     { class = "info", item = funcs.get_paste },
     { class = "info", item = funcs.get_spell },
@@ -89,6 +91,7 @@ _M.setup = function()
   sethlgroups()
   set_statusline()
   set_winbar()
+  git_branch.setup()
 end
 
 return _M

@@ -171,6 +171,7 @@ local update_context = function(bufnr)
 
   for _, context in ipairs(old) do
     if in_range(cursor_pos, context.range) == 0
+        and curr ~= nil
         and curr[context.index] ~= nil
         and context.name == curr[context.index].name
         and context.kind == curr[context.index].kind

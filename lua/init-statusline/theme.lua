@@ -120,4 +120,10 @@ return {
       bg = colors.dark_yellow,
     },
   },
+  git = {
+    branch = {
+      fg = colors.black,
+      bg = colors.yellow,
+    }
+  }
 }
