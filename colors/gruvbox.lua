@@ -342,7 +342,7 @@ h('@exception', { fg = c.purple })
 -- Types
 h('@type', { fg = c.yellow })
 h('@type.builtin', { fg = c.yellow })
-h('@type.qualifier', {})
+h('@type.qualifier', { fg = c.purple })
 h('@type.definition', {})
 
 h('@storageclass', {})
@@ -358,7 +358,7 @@ h('@constant', { fg = c.blue })
 h('@constant.builtin', { fg = c.yellow })
 h('@constant.macro', { fg = c.aqua })
 
-h('@namespace', { link = '@include' })
+h('@namespace', { link = '@type' })
 h('@symbol', {})
 
 -- Text
