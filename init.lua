@@ -76,15 +76,6 @@ packer.startup(function(use)
   })
   -- }}}
 
-  -- {{{ git
-  use({
-    "TimUntersberger/neogit",
-    config = function()
-      require("jsj-neogit")
-    end,
-  })
-  -- }}}
-
   -- {{{ Markdown
   use({
     "toppair/peek.nvim",  -- pacman -S webkit2gtk
