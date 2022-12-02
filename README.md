@@ -11,10 +11,16 @@
 
 ## Requirements
 
-- nvim 0.8 or above
+- nvim nightly version
 - `:sheckhealth` for more infomation.
+
+## Hints
+
+- using `column` to align text
+  * markdown table: `!column -t -s "|" -o "|"` or `!column -t -s \| -o \|`
 
 ## Ref
 
+- [align-text-on-an-equals-sign-in-vim](https://stackoverflow.com/questions/8964953/align-text-on-an-equals-sign-in-vim)
 - [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
 - [dokcerfile best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
