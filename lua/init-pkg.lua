@@ -82,10 +82,6 @@ _M.install = function()
     '--recursive',
   }
 
-  vim.cmd [[so ~/.config/nvim/lua/init-pkg.lua]]
-
-  vim.cmd 'helptags ALL'
-
   print 'Installing finished.'
 end
 
@@ -108,8 +104,6 @@ _M.update = function()
 
   print(output)
 
-  vim.cmd [[so ~/.config/nvim/lua/init-pkg.lua]]
-
   print 'Updating finished.'
 end
 
@@ -124,7 +118,7 @@ _M.clean = function()
       return pkg.plugin == name
     end, plugins) == 1
 
-    if not exist then
+    if not exist and string.sub(name, 1, 1) ~= '.' then
       local module_name = name
       print('Cleaning ' .. name .. ' package...')
 
@@ -175,8 +169,6 @@ _M.clean = function()
       print('Cleaning ' .. name .. ' package done!')
     end
   end
-
-  vim.cmd [[so ~/.config/nvim/lua/init-pkg.lua]]
 end
 
 command("PkgInstall", _M.install, copt)
