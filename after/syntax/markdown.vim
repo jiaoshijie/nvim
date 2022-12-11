@@ -9,9 +9,3 @@ syn region markdownLink matchgroup=markdownLinkDelimiter
       \ start="(" end=")"
       \ contains=markdownUrl keepend contained
       \ conceal
-
-" TODO
-" syn region markdownId matchgroup=markdownIdDelimiter
-"       \ start="\[" end="\]"
-"       \ keepend contained
-"       \ conceal

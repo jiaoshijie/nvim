@@ -315,9 +315,9 @@ h('@number', { fg = c.purple })
 h('@float', { fg = c.purple })
 
 -- Functions
-h('@function', { fg = c.yellow, italic = true })
+h('@function', { fg = c.orange, italic = true })
 h('@function.call', { fg = c.yellow })
-h('@function.builtin', { fg = c.yellow })
+h('@function.builtin', { fg = c.orange })
 h('@function.macro', { fg = c.blue })
 
 h('@method', { fg = c.yellow, italic = true })
@@ -353,6 +353,7 @@ h('@property', { fg = c.orange })
 -- Identifiers
 h('@variable', { fg = c.fg1 })
 h('@variable.builtin', { fg = c.yellow })
+h('@storageclass.lifetime', { fg = c.aqua })
 
 h('@constant', { fg = c.blue })
 h('@constant.builtin', { fg = c.yellow })

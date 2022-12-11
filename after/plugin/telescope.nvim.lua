@@ -79,21 +79,49 @@ require("telescope").setup({
 
 })
 
+local search_all_files = function()
+  require("telescope.builtin").find_files({
+    find_command = { "rg", "--no-ignore", "--files" },
+    file_ignore_patterns = {
+      "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",
+      "%.iso", "%.zip", "%.7z", "%.rar", "%.gz", "%.tar", "%.gzip", "%.bz2", "%.tgz", "%.xz",
+      "%.wav", "%.mp3",
+      "%.chm", "%.epub", "%.pdf", "%.mobi", "%.ttf",
+      "%.mp4", "%.avi", "%.flv", "%.mkv", "%.swf", "%.srt",
+      "%.mdd", "%.mdx",
+      "venv", "__pycache__",
+    },
+  })
+end
+
+local neovim_config = function()
+  require("telescope.builtin").find_files({
+    prompt_title = "~ neovim config ~",
+    prompt_prefix = "Nvim> ",
+    cwd = "~/.config/nvim",
+  })
+end
+
+local open_Notes = function()
+  require("telescope.builtin").find_files({
+    prompt_title = "~ Notes ~",
+    prompt_prefix = "Notes> ",
+    cwd = "~/Downloads/GDrive/NOTE",
+    file_ignore_patterns = {
+      "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",
+    },
+  })
+end
+
 local opts = { noremap = true, silent = true }
 
-map("n", "<leader>fr", require("telescope.builtin").oldfiles, opts)
 map("n", "<leader>fg", function() require("telescope.builtin").git_files({ show_untracked = true }) end, opts)
 
 map("n", "<C-p>", require("telescope.builtin").grep_string, opts)
 map("n", "<leader>s", require("telescope.builtin").current_buffer_fuzzy_find, { noremap = true, silent = true })
 map("n", "<leader>S", require("telescope.builtin").live_grep, opts)
-
-map("n", "<leader>bb", require("telescope.builtin").buffers, opts)
-map("n", "<leader>ct", require("telescope.builtin").tags, opts)
-map("n", "<leader>m", require("telescope.builtin").marks, opts)
 map("n", "<leader>h", require("telescope.builtin").help_tags, opts)
 
-map("n", "<leader>fo", require("jsj-telescope.functions").Jsj_neovim_config, opts)
-map("n", "<leader>ff", require("jsj-telescope.functions").Jsj_search_all_files, opts)
-map("n", "<leader>fm", require("jsj-telescope.functions").Jsj_open_Notes, opts)
-map("n", "<leader>pc", require("jsj-telescope.functions").Jsj_open_Code, opts)
+map("n", "<leader>fo", neovim_config, opts)
+map("n", "<leader>ff", search_all_files, opts)
+map("n", "<leader>fm", open_Notes, opts)

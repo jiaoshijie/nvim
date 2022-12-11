@@ -185,12 +185,11 @@ local setup = function()
 
   use "nvim-telescope/telescope.nvim"
 
+  use "toppair/peek.nvim"
+
   use "tpope/vim-surround"
   use "tpope/vim-repeat"
-
   use "godlygeek/tabular"
-
-  use "toppair/peek.nvim"
 end
 
 setup()

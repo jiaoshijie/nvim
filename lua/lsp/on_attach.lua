@@ -26,15 +26,30 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>en", vim.diagnostic.goto_next, opts)
   vim.keymap.set("n", "<leader>eq", vim.diagnostic.setloclist, opts)
 
+  local lsp_on_attach = vim.api.nvim_create_augroup("lsp_on_attach", { clear = true })
+
   if client.server_capabilities.documentFormattingProvider then
     vim.keymap.set("n", "<leader>=", function()
       vim.lsp.buf.format({ async = true })
     end, opts)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = lsp_on_attach,
+      buffer = bufnr,
+      callback = function() vim.lsp.buf.format({ async = false }) end,
+    })
   end
 
   if client.server_capabilities.documentHighlightProvider then
-    vim.keymap.set("n", "<leader>ch", vim.lsp.buf.document_highlight, opts)
-    vim.keymap.set("n", "<leader>cl", vim.lsp.buf.clear_references, opts)
+    vim.api.nvim_create_autocmd("CursorHold", {
+      group = lsp_on_attach,
+      buffer = bufnr,
+      callback = function() vim.lsp.buf.document_highlight() end,
+    })
+    vim.api.nvim_create_autocmd("CursorMoved", {
+      group = lsp_on_attach,
+      buffer = bufnr,
+      callback = function() vim.lsp.buf.clear_references() end,
+    })
   end
 
   if client.server_capabilities.codeActionProvider then
@@ -44,10 +59,6 @@ local on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     symbols_com(client, bufnr)
   end
-
-  -- NOTICE: Telescope plugin
-  vim.keymap.set("n", "<leader>cf", require("telescope.builtin").lsp_document_symbols, opts)
-  vim.keymap.set("n", "<leader>cF", require("telescope.builtin").lsp_dynamic_workspace_symbols, opts)
 end
 
 return on_attach
