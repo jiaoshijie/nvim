@@ -4,7 +4,7 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
-map({"", "i"}, "<C-j>", "<C-[>", opts)
+map({ "", "i" }, "<C-j>", "<C-[>", opts)
 
 map("n", "s", "<Nop>", { noremap = true })
 map("n", "S", "<Nop>", { noremap = true })

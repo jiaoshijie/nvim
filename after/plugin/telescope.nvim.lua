@@ -8,6 +8,8 @@ local map = vim.keymap.set
 
 local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
+local previewers = require("telescope.previewers")
+local builtin = require("telescope.builtin")
 
 telescope.setup({
   defaults = {
@@ -76,9 +78,9 @@ telescope.setup({
     },
     borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 
-    file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-    grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-    qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+    file_previewer = previewers.vim_buffer_cat.new,
+    grep_previewer = previewers.vim_buffer_vimgrep.new,
+    qflist_previewer = previewers.vim_buffer_qflist.new,
 
     file_ignore_patterns = {},
   },
@@ -86,7 +88,7 @@ telescope.setup({
 })
 
 local search_all_files = function()
-  require("telescope.builtin").find_files({
+  builtin.find_files({
     find_command = { "rg", "--no-ignore", "--files" },
     file_ignore_patterns = {
       "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",
@@ -101,7 +103,7 @@ local search_all_files = function()
 end
 
 local neovim_config = function()
-  require("telescope.builtin").find_files({
+  builtin.find_files({
     prompt_title = "~ neovim config ~",
     prompt_prefix = "Nvim> ",
     cwd = "~/.config/nvim",
@@ -109,7 +111,7 @@ local neovim_config = function()
 end
 
 local open_Notes = function()
-  require("telescope.builtin").find_files({
+  builtin.find_files({
     prompt_title = "~ Notes ~",
     prompt_prefix = "Notes> ",
     cwd = "~/Downloads/GDrive/NOTE",
@@ -121,12 +123,16 @@ end
 
 local opts = { noremap = true, silent = true }
 
-map("n", "<leader>fg", function() require("telescope.builtin").git_files({ show_untracked = true }) end, opts)
+map("n", "<leader>fg", function()
+  xpcall(builtin.git_files, function()
+    vim.api.nvim_err_writeln("Not in git repo!!!")
+  end, { show_untracked = true }, false)
+end, opts)
 
-map("n", "<C-p>", require("telescope.builtin").grep_string, opts)
-map("n", "<leader>s", require("telescope.builtin").current_buffer_fuzzy_find, { noremap = true, silent = true })
-map("n", "<leader>S", require("telescope.builtin").live_grep, opts)
-map("n", "<leader>h", require("telescope.builtin").help_tags, opts)
+map("n", "<C-p>", builtin.grep_string, opts)
+map("n", "<leader>s", builtin.current_buffer_fuzzy_find, { noremap = true, silent = true })
+map("n", "<leader>S", builtin.live_grep, opts)
+map("n", "<leader>h", builtin.help_tags, opts)
 
 map("n", "<leader>fo", neovim_config, opts)
 map("n", "<leader>ff", search_all_files, opts)

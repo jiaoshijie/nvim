@@ -13,7 +13,7 @@ end
 _M.Change_theme_alpha = function()
   if not JSJ_change_theme_alpha then
     JSJ_change_theme_alpha = true
-    -- NOTICE: 62 is the Normal highlight group synID
+    -- NOTE: 62 is the Normal highlight group synID
     JSJ_normalbg = vf.synIDattr(62, "bg", "gui")
     _M.global_hl("Normal", { bg = "NONE" })
   else

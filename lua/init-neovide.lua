@@ -16,7 +16,7 @@ if vim.g.neovide then
   end
   vim.keymap.set("n", "<C-=>", function() change_font_size(1.25) end,
     { noremap = true })
-  vim.keymap.set("n", "<C-->", function() change_font_size(1/1.25) end,
+  vim.keymap.set("n", "<C-->", function() change_font_size(1 / 1.25) end,
     { noremap = true })
 
   vim.keymap.set("n", "<leader>tt", function()

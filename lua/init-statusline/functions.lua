@@ -156,7 +156,7 @@ end
 _M.git_branch = function()
   local branch = vim.b.Jsj_git_branch and "  " .. vim.b.Jsj_git_branch .. " " or ""
   return {
-    text = is_active() and branch or "",  -- e0a0
+    text = is_active() and branch or "", -- e0a0
     state = "branch",
   }
 end
