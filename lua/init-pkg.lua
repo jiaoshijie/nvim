@@ -32,7 +32,7 @@ _M.install = function()
 
   if vim.v.shell_error ~= 0 then
     print('Initialing ' .. plugins_dir .. ' to git directory')
-    vim.fn.system {'mkdir', '-p', plugins_dir}
+    vim.fn.system { 'mkdir', '-p', plugins_dir }
     local output = vim.fn.system {
       'git',
       '-C',

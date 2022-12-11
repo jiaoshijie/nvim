@@ -1,5 +1,11 @@
 -- sudo pacman -S treesitter
-require("nvim-treesitter.configs").setup({
+local found, treesitter_configs = pcall(require, "nvim-treesitter.configs")
+
+if not found then
+  return
+end
+
+treesitter_configs.setup({
   ensure_installed = { "bash", "c", "comment", "cpp", "go", "python", "rust", "toml" },
   highlight = {
     enable = true,

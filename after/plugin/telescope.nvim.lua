@@ -1,9 +1,15 @@
+local found, telescope = pcall(require, "telescope")
+
+if not found then
+  return
+end
+
 local map = vim.keymap.set
 
 local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
 
-require("telescope").setup({
+telescope.setup({
   defaults = {
     prompt_prefix = "🔭 ",
     selection_caret = " ",

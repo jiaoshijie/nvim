@@ -1,4 +1,10 @@
-require('peek').setup({
+local found, peek = pcall(require, "peek")
+
+if not found then
+  return
+end
+
+peek.setup({
   auto_load = false,
   close_on_bdelete = false,
   syntax = true,
@@ -7,9 +13,9 @@ require('peek').setup({
 })
 
 vim.api.nvim_create_user_command('PeekToggle', function()
-  if require('peek').is_open() then
-    require('peek').close()
+  if peek.is_open() then
+    peek.close()
   else
-    require('peek').open()
+    peek.open()
   end
 end, {})
