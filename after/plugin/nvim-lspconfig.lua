@@ -72,7 +72,6 @@ local lsp_using_list = {
   gopls = "go-lsp", -- pacman: gopls
   rust_analyzer = "rust-lsp", -- pacman: rust_analyzer
   bashls = "bash-lsp", -- pacman: bash-language-server shellcheck
-  pyright = "python-lsp",
 }
 
 for lsp_name, file_name in pairs(lsp_using_list) do
