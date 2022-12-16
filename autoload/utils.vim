@@ -15,12 +15,16 @@ endfunction
 function! utils#Keep_theme_alpha()
   " NOTICE: 51 is the Normal group synID
   let g:jsj_normalbg = synIDattr(51, "bg", "gui")
-  if g:jsj_change_theme_alpha == 1
+  if g:jsj_change_theme_alpha == 1 && !has('gui_running')
     highlight Normal guibg=NONE ctermbg=NONE
   endif
 endfunction
 
 function! utils#Change_theme_alpha()
+  if has('gui_running')
+    call utils#warn("Gvim is not supported")
+    return
+  endif
   if g:jsj_change_theme_alpha == 0
     let g:jsj_change_theme_alpha = 1
     let g:jsj_normalbg = synIDattr(51, "bg", "gui")
