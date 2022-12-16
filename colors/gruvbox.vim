@@ -91,8 +91,8 @@ call s:h("Search", { "fg" : s:yellow, "bg" : s:bg0, "gui" : "reverse" })
 call s:h("SpecialKey", { "fg" : s:bg2 })
 
 " [[ Spelling ]]
-call s:h("SpellBad", { "gui" : "undercurl", "sp" : s:blue })
-call s:h("SpellCap", { "gui" : "undercurl", "sp" : s:red })
+call s:h("SpellBad", { "gui" : "undercurl", "sp" : s:red })
+call s:h("SpellCap", { "gui" : "undercurl", "sp" : s:blue })
 call s:h("SpellLocal", { "gui" : "undercurl", "sp" : s:aqua })
 call s:h("SpellRare", { "gui" : "undercurl", "sp" : s:purple })
 
@@ -213,4 +213,5 @@ call s:h("markdownUrlTitleDelimiter", { "fg" : s:green })
 call s:h("markdownLinkText", { "fg" : s:gray, "gui" : "underline" })
 hi! link markdownIdDeclaration markdownLinkText
 call s:h("markdownError", { "fg" : s:red })
+call s:h("markdownBold", { "fg" : s:orange, "gui" : "bold" })
 " }}}

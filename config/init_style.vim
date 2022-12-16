@@ -49,4 +49,4 @@ let &t_SI.="\e[5 q" "SI(start insert)
 let &t_SR.="\e[4 q" "SR(start replace)
 let &t_EI.="\e[1 q" "EI(end insert/replace)
 
-let g:markdown_recommanded_style=0
+let g:markdown_recommended_style=0
