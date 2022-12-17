@@ -7,7 +7,7 @@ _M.JsjClearSE = function()
   vim.cmd([[%s/\s\+$//ge]])
   vim.cmd([[%s/\(\n\)\+\%$//ge]])
   vf.cursor({ l, c })
-  vim.cmd([[execute ":nohl"]])
+  vim.cmd.nohlsearch()
 end
 
 _M.Change_theme_alpha = function()

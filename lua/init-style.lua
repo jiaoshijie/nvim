@@ -52,4 +52,6 @@ vim.g.terminal_color_14 = '#99faf2'
 vim.g.terminal_color_15 = '#ffffff'
 
 require('init-statusline').setup()
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd.colorscheme("gruvbox")
+
+vim.g.markdown_recommended_style = 0

@@ -116,8 +116,8 @@ h("Search", { fg = c.yellow, bg = c.bg0, reverse = true })
 h("SpecialKey", { fg = c.bg2 })
 
 -- [[ Spelling ]]
-h("SpellBad", { undercurl = true, sp = c.blue })
-h("SpellCap", { undercurl = true, sp = c.red })
+h("SpellBad", { undercurl = true, sp = c.red })
+h("SpellCap", { undercurl = true, sp = c.blue })
 h("SpellLocal", { undercurl = true, sp = c.aqua })
 h("SpellRare", { undercurl = true, sp = c.purple })
 
@@ -249,6 +249,7 @@ h("markdownUrlTitleDelimiter", { fg = c.green })
 h("markdownLinkText", { fg = c.gray, underline = true })
 h("markdownIdDeclaration", { link = "markdownLinkText" })
 h("markdownError", { fg = c.red })
+h("markdownBold", { fg = c.orange, bold = true })
 
 -- [[ neovim health ]]
 h("healthError", { fg = c.red })

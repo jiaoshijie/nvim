@@ -19,7 +19,7 @@ local use = function(uri)
     return
   end
 
-  vim.cmd('packadd ' .. plugin)
+  vim.cmd.packadd(plugin)
 end
 
 _M.install = function()
@@ -187,8 +187,10 @@ local setup = function()
 
   use "toppair/peek.nvim"
 
+  use "tpope/vim-fugitive"
   use "tpope/vim-surround"
   use "tpope/vim-repeat"
+
   use "godlygeek/tabular"
 end
 
