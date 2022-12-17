@@ -7,3 +7,6 @@
 [submodule "pack/github/start/tabular"]
 	path = pack/github/start/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule "pack/github/start/vim-fugitive"]
+	path = pack/github/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git

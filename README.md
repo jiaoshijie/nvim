@@ -2,8 +2,8 @@
 
 ## some plugins are highly recommended
 
-- use `git submodule update --init --recursive` to get some recommeded plugins(vim-surround, vim-repeat, tabular).
-- use `git submodule update --remote --merge` to update plugins.
+- use `git submodule update --init --depth 1 --recursive` to get some recommeded plugins(vim-surround, vim-repeat, tabular).
+- use `git submodule update -f --remote --init --depth 1 --recursive` to update plugins.
 
 ## some shortcuts
 
