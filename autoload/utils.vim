@@ -13,8 +13,7 @@ function! utils#error(message)
 endfunction
 
 function! utils#Keep_theme_alpha()
-  " NOTICE: 51 is the Normal group synID
-  let g:jsj_normalbg = synIDattr(51, "bg", "gui")
+  let g:jsj_normalbg = synIDattr(hlID('Normal'), "bg", "gui")
   if g:jsj_change_theme_alpha == 1 && !has('gui_running')
     highlight Normal guibg=NONE ctermbg=NONE
   endif
@@ -27,7 +26,7 @@ function! utils#Change_theme_alpha()
   endif
   if g:jsj_change_theme_alpha == 0
     let g:jsj_change_theme_alpha = 1
-    let g:jsj_normalbg = synIDattr(51, "bg", "gui")
+    let g:jsj_normalbg = synIDattr(hlID('Normal'), "bg", "gui")
     highlight Normal guibg=NONE ctermbg=NONE
   else
     let g:jsj_change_theme_alpha = 0
