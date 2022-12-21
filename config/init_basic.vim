@@ -13,10 +13,17 @@ set cindent  " for c, c++
 
 set nowrap
 set linebreak
-set textwidth=78
+set textwidth=0
 
-set fo-=tcrowan2vb]
-set fo+=qmMB1j
+set fo-=t
+set fo-=c
+set fo-=r
+set fo-=o
+set fo+=q
+set fo+=m
+set fo+=M
+set fo+=1
+set fo+=j
 
 set ttimeout
 set ttimeoutlen=50
