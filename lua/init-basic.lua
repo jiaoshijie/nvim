@@ -16,7 +16,7 @@ o.smartindent = true
 o.wrap = false
 o.linebreak = true
 o.textwidth = 0
-o.formatoptions:append("mB")
+o.formatoptions:append("qmM1j")
 o.formatoptions:remove({ "c", "t", "r", "o" })
 
 o.timeoutlen = 500

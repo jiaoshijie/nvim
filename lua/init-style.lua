@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   group = group,
   pattern = "*",
   callback = function()
-    JSJ_normalbg = vim.fn.synIDattr(62, "bg", "gui")
+    JSJ_normalbg = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg", "gui")
     if JSJ_change_theme_alpha then
       require("init-utils").global_hl("Normal", { bg = "NONE" })
     end
