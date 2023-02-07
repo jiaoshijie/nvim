@@ -8,11 +8,11 @@ let g:colors_name="gruvbox"
 
 function! s:h(group, style)
   execute "highlight" a:group
-    \ "guifg="   (has_key(a:style, "fg")    ? a:style.fg.gui   : "NONE")
-    \ "guibg="   (has_key(a:style, "bg")    ? a:style.bg.gui   : "NONE")
-    \ "guisp="   (has_key(a:style, "sp")    ? a:style.sp.gui   : "NONE")
-    \ "gui="     (has_key(a:style, "gui")   ? a:style.gui      : "NONE")
-    \ "cterm="   (has_key(a:style, "gui")   ? a:style.gui      : "NONE")
+    \ "guifg="   (has_key(a:style, "fg")    ? a:style.fg   : "NONE")
+    \ "guibg="   (has_key(a:style, "bg")    ? a:style.bg   : "NONE")
+    \ "guisp="   (has_key(a:style, "sp")    ? a:style.sp   : "NONE")
+    \ "gui="     (has_key(a:style, "gui")   ? a:style.gui  : "NONE")
+    \ "cterm="   (has_key(a:style, "gui")   ? a:style.gui  : "NONE")
 endfunction
 
 let s:colors = gruvbox#GetColors()
@@ -42,7 +42,7 @@ call s:h("Conceal", { "fg" : s:blue })
 
 " [[ cursor ]]
 hi! link CurSearch IncSearch
-call s:h("Cursor", { "gui" : "reverse" })
+call s:h("Cursor", { "fg" : "#000000", "bg" : "#5588FF" })
 hi! link lCursor Cursor
 hi! link CursorIM Cursor
 call s:h("CursorColumn", { "bg" : s:bg1 })

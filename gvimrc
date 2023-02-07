@@ -5,6 +5,8 @@ set guioptions-=L
 set guioptions+=d
 set guifont=JetBrains\ Mono\ 13
 set guiligatures=!\"#$%&()*+-./:<=>?@[]^_{\|~
+set guicursor=a:blinkon0
+
 
 nnoremap <silent> <c-s-+> :call JsjGui#Jsj_ChangeGuiFontSize(1)<cr>
 nnoremap <silent> <c-s-_> :call JsjGui#Jsj_ChangeGuiFontSize(-1)<cr>
