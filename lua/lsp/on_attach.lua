@@ -59,6 +59,9 @@ local on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     symbols_com(client, bufnr)
   end
+
+  -- NOTE: `h: vim.lsp.semantic_tokens.start`
+  client.server_capabilities.semanticTokensProvider = nil
 end
 
 return on_attach
