@@ -34,9 +34,9 @@ vim.lsp.protocol.CompletionItemKind = {
 
 local signs = {
   { name = "DiagnosticSignError", text = "X" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "i" },
+  { name = "DiagnosticSignWarn",  text = "" },
+  { name = "DiagnosticSignHint",  text = "" },
+  { name = "DiagnosticSignInfo",  text = "i" },
 }
 
 for _, sign in ipairs(signs) do
@@ -67,7 +67,7 @@ vim.diagnostic.config({
 })
 
 local lsp_using_list = {
-  sumneko_lua = "lua-lsp", -- pacman: lua-language-server
+  lua_ls = "lua-lsp", -- pacman: lua-language-server
   clangd = "clangd-lsp", -- pacman: clang
   gopls = "go-lsp", -- pacman: gopls
   rust_analyzer = "rust-lsp", -- pacman: rust_analyzer
