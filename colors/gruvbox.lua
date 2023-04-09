@@ -22,12 +22,12 @@ if vim.o.background == "dark" then
   c.purple = "#d3869b"
   c.aqua = "#8ec07c"
   c.orange = "#f38019"
-  c.visual_red = "#5D120A" -- lsp virual text
+  c.visual_red = "#5D120A"    -- lsp virual text
   c.visual_yellow = "#565303" -- lsp virual text
-  c.visual_green = "#165603" -- lsp virual text
-  c.visual_aqua = "#032C56" -- lsp virual text
+  c.visual_green = "#165603"  -- lsp virual text
+  c.visual_aqua = "#032C56"   -- lsp virual text
 else
-  c.bg0 = "#ffffff" -- hard: #f9f5d7, normal: #fbf1c7, soft: #f2e5bc
+  c.bg0 = "#ffffff"           -- hard: #f9f5d7, normal: #fbf1c7, soft: #f2e5bc
   c.bg1 = "#ebdbb2"
   c.bg2 = "#d5c4a1"
   c.bg3 = "#bdae93"
@@ -45,10 +45,10 @@ else
   c.purple = "#8f3f71"
   c.aqua = "#427b58"
   c.orange = "#af3a03"
-  c.visual_red = "#FBD1C7" -- lsp virual text
+  c.visual_red = "#FBD1C7"    -- lsp virual text
   c.visual_yellow = "#FBFBC7" -- lsp virual text
-  c.visual_green = "#C7FBD9" -- lsp virual text
-  c.visual_aqua = "#C7E9FB" -- lsp virual text
+  c.visual_green = "#C7FBD9"  -- lsp virual text
+  c.visual_aqua = "#C7E9FB"   -- lsp virual text
 end
 
 c.statusline = "#2c323c"

@@ -24,30 +24,12 @@ end
 
 _M.Jsj_ToggleList = function(listname, perfix)
   if #vf.filter(vf.getwininfo(), "v:val." .. listname) == 0 then
-    xpcall(api.nvim_exec, function()
+    xpcall(api.nvim_exec2, function()
       api.nvim_err_writeln("Location List is Empty.")
     end, perfix .. "open", false)
   else
-    api.nvim_exec(perfix .. "close", false)
+    api.nvim_exec2(perfix .. "close", false)
   end
-end
-
--- https://www.oasys.net/posts/writing-a-vim-syntax-plugin/
-_M.Jsj_CheckHlGroup = function()
-  -- NOTE: don't need to know the transparent item.
-  -- print(vf.synIDattr(vf.synID(l, c, false), 'name'))
-  ---------------------------------------------------------------
-  local synid = vf.synID(vf.line('.'), vf.col('.'), true)
-  local synname = { vf.synIDattr(synid, 'name') }
-  while true do
-    synid = vf.synIDtrans(synid)
-    local temp = vf.synIDattr(synid, 'name')
-    if temp == synname[#synname] then
-      break
-    end
-    table.insert(synname, temp)
-  end
-  vim.pretty_print(synname)
 end
 
 _M.fcitx2en = function()

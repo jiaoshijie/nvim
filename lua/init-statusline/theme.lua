@@ -1,4 +1,5 @@
-local colors = { -- onedark theme, only support gui colors
+local colors = {
+  -- onedark theme, only support gui colors
   black        = "#282C34",
   blue         = "#61AFEF",
   cyan         = "#56B6C2",
@@ -111,10 +112,10 @@ return {
     },
   },
   info = {
-    paste = {
-      fg = colors.black,
-      bg = colors.dark_red,
-    },
+    -- paste = {
+    --   fg = colors.black,
+    --   bg = colors.dark_red,
+    -- },
     spell = {
       fg = colors.black,
       bg = colors.dark_yellow,

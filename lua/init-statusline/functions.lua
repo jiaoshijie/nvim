@@ -42,12 +42,12 @@ _M.get_mode = function()
   return is_active() and modes[fn.mode()] or modes["?"]
 end
 
-_M.get_paste = function()
-  return {
-    text = vim.o.paste and " PASTE " or "",
-    state = "paste",
-  }
-end
+-- _M.get_paste = function()
+--   return {
+--     text = vim.o.paste and " PASTE " or "",
+--     state = "paste",
+--   }
+-- end
 
 _M.get_spell = function()
   return {

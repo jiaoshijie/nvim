@@ -60,7 +60,7 @@ local on_attach = function(client, bufnr)
     symbols_com(client, bufnr)
   end
 
-  -- NOTE: `h: vim.lsp.semantic_tokens.start`
+  -- NOTE: `:h vim.lsp.semantic_tokens.start` `:h lsp-semantic-highlight`
   client.server_capabilities.semanticTokensProvider = nil
 end
 

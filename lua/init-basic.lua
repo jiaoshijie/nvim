@@ -63,6 +63,7 @@ o.fsync = true
 
 o.switchbuf = "useopen"
 
+-- TODO: `:h diffopt` linematch
 o.diffopt = "vertical,filler,context:3,foldcolumn:1,internal,algorithm:histogram,indent-heuristic"
 
 o.suffixes = ".bak,~,.o,.h,.info,.swp,.obj,.pyc,.pyo,.egg-info,.class"
@@ -72,15 +73,15 @@ o.wildignore:append("*/.Trash/**,*.dmg,*/.rbenv/**,*DS_Store*")
 
 vim.g.loaded_python_provider = 0 -- To disable Python2 support
 vim.g.loaded_node_provider = 0
-vim.g.loaded_perl_provider = 0 -- To disable Perl support
-vim.g.loaded_ruby_provider = 0 -- To disable Ruby support
+vim.g.loaded_perl_provider = 0   -- To disable Perl support
+vim.g.loaded_ruby_provider = 0   -- To disable Ruby support
 vim.g.python3_host_prog = "/usr/bin/python3"
 
 -- for netrw
 -- https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
-vim.g.netrw_banner = 0 -- disable annoying banner
+vim.g.netrw_banner = 0    -- disable annoying banner
 vim.g.netrw_browse_split = 0
-vim.g.netrw_altv = 1 -- open splits to the right
+vim.g.netrw_altv = 1      -- open splits to the right
 vim.g.netrw_alto = 0
 vim.g.netrw_liststyle = 0 -- tree view
 vim.g.netrw_winsize = 25
@@ -90,6 +91,9 @@ vim.g.netrw_hide = 1
 vim.g.netrw_keepdir = 1
 vim.g.netrw_localcopydircmd = "cp -r"
 vim.g.netrw_list_hide = "\\(^\\|\\s\\s\\)\\zs\\.\\S\\+"
+
+-- EditorConfig
+vim.g.editorconfig = false
 
 local group = api.nvim_create_augroup("Jsj_neovim_autocmd_misc", { clear = true })
 
@@ -128,10 +132,6 @@ o.swapfile = false
 o.undofile = true
 o.undodir = "/tmp/jsj_neovim_u/undodir//"
 
-command("CheckHlGroupUnderCursor", require("init-utils").Jsj_CheckHlGroup, { nargs = 0 })
-command("TSCheckHlGroupUnderCursor", function()
-  vim.pretty_print(vim.treesitter.get_captures_at_cursor(0))
-end, { nargs = 0 })
 command("SF", require("init-utils").showFilePath, { nargs = 0 })
 command("Vterm", "vsplit term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
 command("Hterm", "split term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
