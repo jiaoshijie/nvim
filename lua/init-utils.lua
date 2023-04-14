@@ -26,9 +26,9 @@ _M.Jsj_ToggleList = function(listname, perfix)
   if #vf.filter(vf.getwininfo(), "v:val." .. listname) == 0 then
     xpcall(api.nvim_exec2, function()
       api.nvim_err_writeln("Location List is Empty.")
-    end, perfix .. "open", false)
+    end, perfix .. "open", { output = false })
   else
-    api.nvim_exec2(perfix .. "close", false)
+    api.nvim_exec2(perfix .. "close", { output = false })
   end
 end
 
