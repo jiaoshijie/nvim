@@ -139,7 +139,6 @@ local function parse_dfs(symbols)
     -- NOTICE: only need modify this position below, when lsp range is not corrent
     local range = v.range or v.location.range -- `v.location.range` for bashls
     if range ~= nil then
-
       curr_parsed_symbol = {
         index = i,
         name = v.name,
@@ -244,7 +243,7 @@ function _M.on_attach(client, bufnr)
     return
   end
   vim.b.statusline_lsp_client_id = client.id
-  local statusline_lsp_augroup = vim.api.nvim_create_augroup("statusline_lsp_component", { clear = false })
+  local statusline_lsp_augroup = vim.api.nvim_create_augroup("jsj_statusline_lsp_component_" .. bufnr, { clear = true })
   vim.api.nvim_clear_autocmds({
     buffer = bufnr,
     group = statusline_lsp_augroup,

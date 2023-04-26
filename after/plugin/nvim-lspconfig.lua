@@ -67,11 +67,11 @@ vim.diagnostic.config({
 })
 
 local lsp_using_list = {
-  lua_ls = "lua-lsp", -- pacman: lua-language-server
-  clangd = "clangd-lsp", -- pacman: clang
-  gopls = "go-lsp", -- pacman: gopls
-  rust_analyzer = "rust-lsp", -- pacman: rust_analyzer
-  bashls = "bash-lsp", -- pacman: bash-language-server shellcheck
+  lua_ls = "lua-lsp",         -- pacman: lua-language-server
+  clangd = "clangd-lsp",      -- pacman: clang
+  gopls = "go-lsp",           -- pacman: gopls
+  rust_analyzer = "rust-lsp", -- rustup: rust_analyzer
+  bashls = "bash-lsp",        -- pacman: bash-language-server shellcheck
 }
 
 for lsp_name, file_name in pairs(lsp_using_list) do

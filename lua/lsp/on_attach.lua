@@ -26,7 +26,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>en", vim.diagnostic.goto_next, opts)
   vim.keymap.set("n", "<leader>eq", vim.diagnostic.setloclist, opts)
 
-  local lsp_on_attach = vim.api.nvim_create_augroup("lsp_on_attach", { clear = true })
+  local lsp_on_attach = vim.api.nvim_create_augroup("jsj_lsp_on_attach_" .. bufnr, { clear = true })
 
   if client.server_capabilities.documentFormattingProvider then
     vim.keymap.set("n", "<leader>=", function()
