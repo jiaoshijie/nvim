@@ -185,9 +185,6 @@ local setup = function()
 
   use "nvim-telescope/telescope.nvim"
 
-  use "toppair/peek.nvim"
-
-  use "tpope/vim-fugitive"
   use "tpope/vim-surround"
   use "tpope/vim-repeat"
 
