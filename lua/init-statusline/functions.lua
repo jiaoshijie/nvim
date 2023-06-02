@@ -75,7 +75,7 @@ end
 _M.get_filepos = function()
   return {
     state = _M.get_mode().state,
-    text = is_active() and " %p%% 並%v:%l/%L " or " %v:%l/%L ",
+    text = is_active() and " %p%%  %v:%l/%L " or " %v:%l/%L ",
   }
 end
 
@@ -127,7 +127,7 @@ end
 
 _M.get_lsp_information = function()
   return {
-    text = get_diagnostic("i", dia_s.INFO),
+    text = get_diagnostic("󰋽", dia_s.INFO),
     state = "information",
   }
 end
@@ -141,14 +141,14 @@ end
 
 _M.get_lsp_warning = function()
   return {
-    text = get_diagnostic("", dia_s.WARN),
+    text = get_diagnostic("", dia_s.WARN),
     state = "warning",
   }
 end
 
 _M.get_lsp_error = function()
   return {
-    text = get_diagnostic("X", dia_s.ERROR),
+    text = get_diagnostic("", dia_s.ERROR),
     state = "error",
   }
 end
