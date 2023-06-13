@@ -59,3 +59,8 @@ nnoremap <m-j> :m .+1<cr>==
 nnoremap <m-k> :m .-2<cr>==
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d

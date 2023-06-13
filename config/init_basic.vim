@@ -68,7 +68,7 @@ set complete=.,w
 " quicklist
 set switchbuf=useopen
 
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 
 set showmatch
 set matchtime=2
