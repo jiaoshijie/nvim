@@ -47,3 +47,8 @@ end, opts)
 map("n", "<leader>ql", function()
   require("init-utils").Jsj_ToggleList("loclist", "l")
 end, opts)
+
+-- greatest remap ever : asbjornHaland
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])

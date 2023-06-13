@@ -36,7 +36,7 @@ o.completeopt = "menuone,noselect"
 o.dictionary = "/usr/share/dict/words"
 o.complete = ".,w"
 
-o.clipboard = "unnamedplus"
+-- o.clipboard = "unnamedplus"
 
 o.showmatch = true
 o.matchtime = 3
