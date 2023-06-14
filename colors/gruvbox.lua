@@ -346,7 +346,7 @@ h('@type.builtin', { fg = c.yellow })
 h('@type.qualifier', { fg = c.purple })
 h('@type.definition', {})
 
-h('@storageclass', {})
+h('@storageclass', { fg = c.purple })
 h('@attribute', { fg = c.aqua })
 h('@field', { fg = c.red })
 h('@property', { fg = c.orange })

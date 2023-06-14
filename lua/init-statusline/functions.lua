@@ -127,28 +127,28 @@ end
 
 _M.get_lsp_information = function()
   return {
-    text = get_diagnostic("󰋽", dia_s.INFO),
+    text = get_diagnostic("I", dia_s.INFO),
     state = "information",
   }
 end
 
 _M.get_lsp_hint = function()
   return {
-    text = get_diagnostic("", dia_s.HINT),
+    text = get_diagnostic("H", dia_s.HINT),
     state = "hint",
   }
 end
 
 _M.get_lsp_warning = function()
   return {
-    text = get_diagnostic("", dia_s.WARN),
+    text = get_diagnostic("W", dia_s.WARN),
     state = "warning",
   }
 end
 
 _M.get_lsp_error = function()
   return {
-    text = get_diagnostic("", dia_s.ERROR),
+    text = get_diagnostic("E", dia_s.ERROR),
     state = "error",
   }
 end
