@@ -27,13 +27,13 @@ local function find_git_dir()
       break
     end
     local git_path = root_dir .. '/.git'
-    local git_file_stat = vim.loop.fs_stat(git_path)
+    local git_file_stat = vim.uv.fs_stat(git_path)
     if git_file_stat then
       if git_file_stat.type == 'directory' then
         git_dir = git_path
       end
       if git_dir then
-        local head_file_stat = vim.loop.fs_stat(git_dir .. '/HEAD')
+        local head_file_stat = vim.uv.fs_stat(git_dir .. '/HEAD')
         if head_file_stat and head_file_stat.type == 'file' then
           break
         else
@@ -56,7 +56,7 @@ local function update_branch()
     if w then
       w:stop()
     else
-      fs_events[git_dir] = vim.loop.new_fs_event()
+      fs_events[git_dir] = vim.uv.new_fs_event()
       w = fs_events[git_dir]
     end
 
@@ -69,9 +69,12 @@ end
 function _M.setup()
   local jsj_git_branch_group = vim.api.nvim_create_augroup('jsj_git_branch_group', { clear = true })
 
-  vim.api.nvim_create_autocmd("BufRead", { group = jsj_git_branch_group, callback = function()
-    update_branch()
-  end })
+  vim.api.nvim_create_autocmd("BufRead", {
+    group = jsj_git_branch_group,
+    callback = function()
+      update_branch()
+    end
+  })
 end
 
 return _M

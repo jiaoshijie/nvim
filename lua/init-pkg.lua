@@ -14,7 +14,7 @@ local use = function(uri)
     plugin = plugin,
   })
 
-  local dir = vim.loop.fs_stat(plugins_dir .. plugin)
+  local dir = vim.uv.fs_stat(plugins_dir .. plugin)
   if not dir then
     return
   end
@@ -46,7 +46,7 @@ _M.install = function()
 
   for _, pkg in pairs(plugins) do
     local plugin, uri = pkg.plugin, pkg.uri
-    local dir = vim.loop.fs_stat(plugins_dir .. plugin)
+    local dir = vim.uv.fs_stat(plugins_dir .. plugin)
 
     if not dir then
       print('Installing ' .. uri .. '...')
@@ -108,9 +108,9 @@ _M.update = function()
 end
 
 _M.clean = function()
-  local handle = vim.loop.fs_scandir(plugins_dir)
+  local handle = vim.uv.fs_scandir(plugins_dir)
   local function iter()
-    return vim.loop.fs_scandir_next(handle)
+    return vim.uv.fs_scandir_next(handle)
   end
 
   for name, _ in iter do
