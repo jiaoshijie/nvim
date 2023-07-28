@@ -208,6 +208,7 @@ augroup END
 
 command! -nargs=0 CheckHlGroupUnderCursor call utils#Jsj_CheckHlGroup()
 command! -nargs=0 SF call utils#showFilePath()
+command! -nargs=0 Write2clipboard call utils#write2clipboard()
 command! -nargs=? -complete=dir GF call utils#fzfGit(<q-args>)
 
 " 提权保存

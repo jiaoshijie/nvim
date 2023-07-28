@@ -122,3 +122,16 @@ function! utils#fzfGit(args)
   endif
   return utils#error("`fzf` is not installed!!!")
 endfunction
+
+" copy register 0 content to system clipboard for X11 if doesn't have clipboard support
+function! utils#write2clipboard()
+  if executable('xsel')
+    let l:command = "xsel -ib"
+  elseif executable('xclip')
+    let l:command = "xclip"
+  else
+    call utils#error("no X11 clipboard program(xsel or xclip) available!!!")
+    return
+  endif
+  call system(l:command, @0)
+endfunction
