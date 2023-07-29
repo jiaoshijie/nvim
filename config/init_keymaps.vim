@@ -35,7 +35,6 @@ nnoremap <silent> <leader>tt :call utils#Change_theme_alpha()<CR>
 nnoremap <silent> <leader>eu :e ++enc=utf8<CR>
 nnoremap <silent> <leader>eg :e ++enc=gbk<CR>
 
-nnoremap <C-p> :grep <C-r><C-w><Cr>
 nnoremap <leader>s :lvimgrep  %<Left><Left>
 nnoremap <leader>S :grep 
 
