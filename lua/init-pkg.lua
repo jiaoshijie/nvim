@@ -176,7 +176,7 @@ command("PkgUpdate", _M.update, copt)
 command("PkgClean", _M.clean, copt)
 
 local setup = function()
-  use "kyazdani42/nvim-web-devicons"
+  use "nvim-tree/nvim-web-devicons"
   use "nvim-lua/plenary.nvim"
 
   use "neovim/nvim-lspconfig"

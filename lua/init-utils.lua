@@ -13,11 +13,14 @@ end
 _M.Change_theme_alpha = function()
   if not JSJ_change_theme_alpha then
     JSJ_change_theme_alpha = true
-    JSJ_normalbg = vf.synIDattr(vf.hlID("Normal"), "bg", "gui")
-    _M.global_hl("Normal", { bg = "NONE" })
+    JSJ_normal_hl = {
+      fg = vf.synIDattr(vf.hlID("Normal"), "fg", "gui"),
+      bg = vf.synIDattr(vf.hlID("Normal"), "bg", "gui")
+    }
+    _M.global_hl("Normal", { fg = JSJ_normal_hl.fg, bg = "NONE" })
   else
     JSJ_change_theme_alpha = false
-    _M.global_hl("Normal", { bg = JSJ_normalbg })
+    _M.global_hl("Normal", JSJ_normal_hl)
   end
   _M.global_hl("SignColumn", { link = "LineNr" })
 end
