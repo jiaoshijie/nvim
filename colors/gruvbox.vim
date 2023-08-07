@@ -13,6 +13,9 @@ function! s:h(group, style)
     \ "guisp="   (has_key(a:style, "sp")    ? a:style.sp   : "NONE")
     \ "gui="     (has_key(a:style, "gui")   ? a:style.gui  : "NONE")
     \ "cterm="   (has_key(a:style, "gui")   ? a:style.gui  : "NONE")
+    \ "ctermfg=None"
+    \ "ctermbg=None"
+    \ "ctermul=None"
 endfunction
 
 let s:colors = gruvbox#GetColors()
@@ -91,10 +94,10 @@ call s:h("Search", { "fg" : s:yellow, "bg" : s:bg0, "gui" : "reverse" })
 call s:h("SpecialKey", { "fg" : s:bg2 })
 
 " [[ Spelling ]]
-call s:h("SpellBad", { "gui" : "undercurl", "sp" : s:red })
-call s:h("SpellCap", { "gui" : "undercurl", "sp" : s:blue })
-call s:h("SpellLocal", { "gui" : "undercurl", "sp" : s:aqua })
-call s:h("SpellRare", { "gui" : "undercurl", "sp" : s:purple })
+call s:h("SpellBad", { "fg" : s:bg0, "bg" : s:red })
+call s:h("SpellCap", { "fg" : s:bg0, "bg" : s:blue })
+call s:h("SpellLocal", { "fg" : s:bg0, "bg" : s:aqua })
+call s:h("SpellRare", { "fg" : s:bg0, "bg" : s:purple })
 
 " StatusLine
 " StatusLineNC
