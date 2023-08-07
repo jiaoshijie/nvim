@@ -116,10 +116,10 @@ h("Search", { fg = c.yellow, bg = c.bg0, reverse = true })
 h("SpecialKey", { fg = c.bg2 })
 
 -- [[ Spelling ]]
-h("SpellBad", { undercurl = true, sp = c.red })
-h("SpellCap", { undercurl = true, sp = c.blue })
-h("SpellLocal", { undercurl = true, sp = c.aqua })
-h("SpellRare", { undercurl = true, sp = c.purple })
+h("SpellBad", { fg = c.bg0, bg = c.red })
+h("SpellCap", { fg = c.bg0, bg = c.blue })
+h("SpellLocal", { fg = c.bg0, bg = c.aqua })
+h("SpellRare", { fg = c.bg0, bg = c.purple })
 
 h("StatusLine", { bg = c.statusline })
 h("StatusLineNC", { bg = c.statuslineNC })
