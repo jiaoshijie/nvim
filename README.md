@@ -1,9 +1,9 @@
 # REALLY SIMPLE Vim CONFIG
 
-## some plugins are highly recommended
+## some plugins are highly recommended(vim-surround vim-repeat tabular)
 
-- use `git submodule update --init --depth 1 --recursive` to get some recommeded plugins(vim-surround, vim-repeat, tabular).
-- use `git submodule update -f --remote --init --depth 1 --recursive` to update plugins.
+- using `./pkg_update install` to install plugins.
+- just using `./pkg_update` to update plugins.
 
 ## some shortcuts
 

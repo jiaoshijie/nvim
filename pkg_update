@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ "$1" == "install" ]]; then
+  eval 'git submodule update --init --depth 1 --recursive'
+else
+  eval 'git submodule update -f --remote --init --depth 1 --recursive'
+fi
