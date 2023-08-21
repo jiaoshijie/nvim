@@ -71,11 +71,12 @@ o.suffixes = ".bak,~,.o,.h,.info,.swp,.obj,.pyc,.pyo,.egg-info,.class"
 o.wildignore:append("*.o,*obj,*~,*.exe,*.a,*.dll,*.swp,*.jar,*.class,*.pyc,*.pyo,*.bin")
 o.wildignore:append("*/.Trash/**,*.dmg,*/.rbenv/**,*DS_Store*")
 
-vim.g.loaded_python_provider = 0 -- To disable Python2 support
+vim.g.loaded_python_provider = 0  -- To disable Python2 support
 vim.g.loaded_node_provider = 0
-vim.g.loaded_perl_provider = 0   -- To disable Perl support
-vim.g.loaded_ruby_provider = 0   -- To disable Ruby support
-vim.g.python3_host_prog = "/usr/bin/python3"
+vim.g.loaded_perl_provider = 0    -- To disable Perl support
+vim.g.loaded_ruby_provider = 0    -- To disable Ruby support
+vim.g.loaded_python3_provider = 0 -- To disable Python3 support
+-- vim.g.python3_host_prog = "/usr/bin/python3"
 
 -- for netrw
 -- https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
