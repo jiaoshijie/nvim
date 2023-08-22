@@ -2,7 +2,7 @@ local symbols_com = require("lsp.component").on_attach
 
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
   -- Mappings.
   local opts = { noremap = true, silent = true, buffer = bufnr }

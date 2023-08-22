@@ -11,7 +11,7 @@
 
 ## Requirements
 
-- nvim nightly version
+- nvim lately(~~nightly~~) version
 - `:checkhealth` for more infomation.
 
 ## Hints

@@ -1,5 +1,6 @@
 local command = vim.api.nvim_create_user_command
 local copt = { nargs = 0 }
+local uv = vim.loop
 
 local _M = {}
 local plugins = {}
@@ -14,7 +15,7 @@ local use = function(uri)
     plugin = plugin,
   })
 
-  local dir = vim.uv.fs_stat(plugins_dir .. plugin)
+  local dir = uv.fs_stat(plugins_dir .. plugin)
   if not dir then
     return
   end
@@ -46,7 +47,7 @@ _M.install = function()
 
   for _, pkg in pairs(plugins) do
     local plugin, uri = pkg.plugin, pkg.uri
-    local dir = vim.uv.fs_stat(plugins_dir .. plugin)
+    local dir = uv.fs_stat(plugins_dir .. plugin)
 
     if not dir then
       print('Installing ' .. uri .. '...')
@@ -108,9 +109,9 @@ _M.update = function()
 end
 
 _M.clean = function()
-  local handle = vim.uv.fs_scandir(plugins_dir)
+  local handle = uv.fs_scandir(plugins_dir)
   local function iter()
-    return vim.uv.fs_scandir_next(handle)
+    return uv.fs_scandir_next(handle)
   end
 
   for name, _ in iter do
