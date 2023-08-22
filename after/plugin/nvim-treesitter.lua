@@ -7,7 +7,10 @@ if not found then
 end
 
 treesitter_configs.setup({
-  ensure_installed = { "bash", "c", "comment", "cpp", "go", "python", "rust", "toml" },
+  ensure_installed = {
+    "lua", "vim", "vimdoc", "markdown", "markdown_inline",
+    "bash", "c", "comment", "cpp", "go", "python", "rust", "toml",
+  },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
