@@ -121,15 +121,17 @@ local open_Notes = function()
   })
 end
 
-local opts = { noremap = true, silent = true }
-
-map("n", "<leader>fg", function()
+local pretty_git_files = function()
   xpcall(builtin.git_files, function()
     vim.api.nvim_err_writeln("Not in git repo!!!")
   end, { show_untracked = true }, false)
-end, opts)
+end
 
-map("n", "<C-p>", builtin.grep_string, opts)
+local opts = { noremap = true, silent = true }
+
+map("n", "<leader>fg", pretty_git_files, opts)
+map("n", "<C-p>", pretty_git_files, opts)
+
 map("n", "<leader>s", builtin.current_buffer_fuzzy_find, { noremap = true, silent = true })
 map("n", "<leader>S", builtin.live_grep, opts)
 map("n", "<leader>h", builtin.help_tags, opts)
