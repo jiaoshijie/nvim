@@ -14,12 +14,14 @@ nnoremap <silent> <leader>fo :call utils#Jsj_openFile('~/.vim', 'vimrc')<CR>
 " Normal mode
 "----------------------------------------------------------------------
 
+nnoremap <leader><leader> <C-^>
 nnoremap <silent> <C-l> :nohl<cr><C-l>
 nnoremap <leader>/ /\<\><left><left>
 nnoremap <silent> <leader>fm :call utils#Jsj_openFile(
       \ '~/Downloads/GDrive/NOTE', 'index.md')<cr>
 nnoremap <silent> <leader>ff :call utils#Jsj_openFile('.', '')<cr>
 nnoremap <silent> <leader>fg :call utils#fzfGit('')<cr>
+nnoremap <silent> <C-p> :call utils#fzfGit('')<cr>
 nnoremap <silent> Q q:
 nnoremap Y y$
 
