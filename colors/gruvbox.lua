@@ -377,10 +377,17 @@ h('@text.environment', {})
 h('@text.environment.name', {})
 h('@text.reference', {})
 
-h('@text.todo', { link = 'Todo' })
-h('@text.note', { fg = c.yellow, italic = true })
-h('@text.warning', { link = 'Todo' })
-h('@text.danger', { link = 'Error' })
+-- Old: for treesitter comment
+-- h('@text.todo', { link = 'Todo' })
+-- h('@text.note', { fg = c.yellow, italic = true })
+-- h('@text.warning', { link = 'Todo' })
+-- h('@text.danger', { link = 'Error' })
+
+-- New: for treesitter comment
+h('@comment.todo.comment', { link = 'Todo' })
+h('@comment.note.comment', { fg = c.yellow, italic = true })
+h('@comment.warning.comment', { link = 'Todo' })
+h('@comment.error.comment', { link = 'Error' })
 
 -- Tags
 h('@tag', { fg = c.red })

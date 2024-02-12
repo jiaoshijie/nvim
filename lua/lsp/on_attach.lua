@@ -27,11 +27,12 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>=", function()
       vim.lsp.buf.format({ async = true })
     end, opts)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = lsp_on_attach,
-      buffer = bufnr,
-      callback = function() vim.lsp.buf.format({ async = false }) end,
-    })
+    -- NOTE: don't auto format on save.
+    -- vim.api.nvim_create_autocmd("BufWritePre", {
+    --   group = lsp_on_attach,
+    --   buffer = bufnr,
+    --   callback = function() vim.lsp.buf.format({ async = false }) end,
+    -- })
   end
 
   if client.server_capabilities.documentHighlightProvider then

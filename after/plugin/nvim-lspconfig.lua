@@ -76,7 +76,8 @@ local lsp_using_list = {
 }
 
 for lsp_name, file_name in pairs(lsp_using_list) do
-  local lspPconf = require("lsp." .. file_name)
-  lspPconf.on_attach = require("lsp.on_attach")
-  lspconfig[lsp_name].setup(lspPconf)
+  local lsp_conf = require("lsp." .. file_name)
+  lsp_conf.on_attach = require("lsp.on_attach")
+  lsp_conf.autostart = false
+  lspconfig[lsp_name].setup(lsp_conf)
 end
