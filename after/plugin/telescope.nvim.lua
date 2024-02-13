@@ -10,6 +10,7 @@ local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
 local previewers = require("telescope.previewers")
 local builtin = require("telescope.builtin")
+-- local themes = require("telescope.themes")
 
 telescope.setup({
   defaults = {
@@ -25,7 +26,7 @@ telescope.setup({
       width = 0.95,
       height = 0.85,
       -- preview_cutoff = 120,
-      prompt_position = "top",
+      prompt_position = "bottom",
 
       horizontal = {
         -- width_padding = 0.1,
@@ -129,7 +130,6 @@ end
 
 local opts = { noremap = true, silent = true }
 
-map("n", "<leader>fg", pretty_git_files, opts)
 map("n", "<C-p>", pretty_git_files, opts)
 
 map("n", "<leader>s", builtin.current_buffer_fuzzy_find, { noremap = true, silent = true })
