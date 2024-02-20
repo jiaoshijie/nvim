@@ -29,7 +29,7 @@ set listchars=trail:·,tab:»\ ,extends:…,precedes:…
 set splitright
 set splitbelow
 
-let g:jsj_change_theme_alpha = 1
+let g:jsj_change_theme_alpha = 0
 let g:jsj_normalbg = "NONE"
 
 augroup jsj_colorscheme
