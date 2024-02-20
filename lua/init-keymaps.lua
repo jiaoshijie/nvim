@@ -27,7 +27,7 @@ map("n", "<leader>eg", ":e ++enc=gbk<CR>", opts)
 map("n", "Q", "q:", opts)
 map("n", "gp", "`[v`]", opts)
 
-JSJ_change_theme_alpha = false
+JSJ_change_theme_alpha = true
 map("n", "<leader>tt", require("init-utils").Change_theme_alpha, opts)
 
 map("t", "<Esc>", "<C-\\><C-n>", opts)

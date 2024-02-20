@@ -1,14 +1,16 @@
 local o = vim.opt
-JSJ_normalbg = "NONE"
 
 local group = vim.api.nvim_create_augroup("Jsj_ColorScheme", { clear = true })
 vim.api.nvim_create_autocmd("ColorScheme", {
   group = group,
   pattern = "*",
   callback = function()
-    JSJ_normalbg = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg", "gui")
+    JSJ_normal_hl = {
+      fg = vim.fn.synIDattr(vim.fn.hlID("Normal"), "fg", "gui"),
+      bg = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg", "gui")
+    }
     if JSJ_change_theme_alpha then
-      require("init-utils").global_hl("Normal", { bg = "NONE" })
+      require("init-utils").global_hl("Normal", { fg = JSJ_normal_hl.fg, bg = "NONE" })
     end
   end,
 })
