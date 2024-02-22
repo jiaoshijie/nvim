@@ -137,6 +137,12 @@ command("SF", require("init-utils").showFilePath, { nargs = 0 })
 command("Vterm", "vsplit term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
 command("Hterm", "split term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
 command("Tterm", "tabnew term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
-command("Glow", "tabnew term://glow %:p", { nargs = 0 })
 command("SudoWrite", require("init-sudo").sudo_write, { nargs = 0 })
 command("Todo", ":edit ~/Downloads/GDrive/todo.md", { nargs = 0 })
+command("Glow", function()
+  if vim.o.filetype == "markdown" then
+    vim.cmd("tabnew term://glow %:p -w " .. (vim.o.columns - 4))
+  else
+    api.nvim_err_writeln("ERROR: only support `markdown` file!!!")
+  end
+end, { nargs = 0 })
