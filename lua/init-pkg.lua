@@ -188,6 +188,7 @@ local setup = function()
 
   use "nvim-pack/nvim-spectre"
 
+  use "tpope/vim-fugitive"
   use "tpope/vim-surround"
   use "tpope/vim-repeat"
 
