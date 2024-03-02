@@ -39,5 +39,3 @@ Totally stole this from [kickstart.nvim](https://github.com/nvim-lua/kickstart.n
 ## Ref
 
 - [align-text-on-an-equals-sign-in-vim](https://stackoverflow.com/questions/8964953/align-text-on-an-equals-sign-in-vim)
-- [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
-- [dokcerfile best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
