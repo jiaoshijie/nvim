@@ -357,7 +357,7 @@ h('@variable.builtin', { fg = c.yellow })
 h('@storageclass.lifetime', { fg = c.aqua })
 
 h('@constant', { fg = c.blue })
-h('@constant.builtin', { fg = c.yellow })
+h('@constant.builtin', { fg = c.purple })
 h('@constant.macro', { fg = c.aqua })
 
 h('@namespace', { link = '@type' })
