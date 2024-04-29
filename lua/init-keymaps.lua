@@ -57,6 +57,6 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<leader>ee", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "<leader>ep", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "<leader>en", vim.diagnostic.goto_next, opts)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "<leader>eq", vim.diagnostic.setloclist, opts)

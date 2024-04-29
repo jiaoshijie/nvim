@@ -132,23 +132,16 @@ local opts = { noremap = true, silent = true }
 
 map("n", "<C-p>", pretty_git_files, opts)
 
-map("n", "<leader>s", builtin.current_buffer_fuzzy_find, opts)
+map("n", "<leader>bs", builtin.current_buffer_fuzzy_find, opts)
+map("n", "<leader>s", function()
+  builtin.grep_string({ search = vim.fn.expand("<cword>") })
+end)
 map("n", "<leader>S", function()
-  local word = vim.fn.input("Grep > ")
-  if word == "" then
-    builtin.live_grep()
-  else
+  local ok, word = pcall(vim.fn.input, "Grep > ")
+  if ok and word ~= "" then
     builtin.grep_string({ search = word })
   end
 end, opts)
-map("n", "<leader>fw", function()
-  local word = vim.fn.expand("<cword>")
-  builtin.grep_string({ search = word })
-end)
-map("n", "<leader>fW", function()
-  local word = vim.fn.expand("<cWORD>")
-  builtin.grep_string({ search = word })
-end)
 
 map("n", "<leader>h", builtin.help_tags, opts)
 
