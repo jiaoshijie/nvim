@@ -289,6 +289,9 @@ h("LspCodeLens", { link = "Comment" })
 h("LspCodeLensSeparator", { link = "Comment" })
 h("LspSignatureActiveParameter", { fg = c.orange })
 
+h("FloatBorder", { fg = c.bg3 })
+
+
 -- [[ TreeSitter Highlighting ]] `h treesitter-highlight-groups`
 h("@comment", { link = "Comment" })
 -- h("@error", { link = "error" })
