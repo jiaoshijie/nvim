@@ -16,7 +16,7 @@ telescope.setup({
   defaults = {
     prompt_prefix = "🔭 ",
     selection_caret = " ",
-    path_display = { "all" },
+    path_display = { "filename_first" },
 
     winblend = 0,
 
