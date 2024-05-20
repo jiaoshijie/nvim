@@ -4,4 +4,4 @@ ol.shiftwidth = 4
 ol.tabstop = 4
 ol.softtabstop = 4
 
-ol.commentstring = "# "
+ol.commentstring = "# %s"
