@@ -112,14 +112,18 @@ local neovim_config = function()
 end
 
 local open_Notes = function()
-  builtin.find_files({
-    prompt_title = "~ Notes ~",
-    prompt_prefix = "Notes> ",
-    cwd = "~/Downloads/GDrive/NOTE",
-    file_ignore_patterns = {
-      "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",
-    },
-  })
+  if vim.fn.isdirectory(vim.fn.expand("~/Downloads/GDrive/NOTE")) == 1 then
+    builtin.find_files({
+      prompt_title = "~ Notes ~",
+      prompt_prefix = "Notes> ",
+      cwd = "~/Downloads/GDrive/NOTE",
+      file_ignore_patterns = {
+        "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",
+      },
+    })
+  else
+    vim.api.nvim_err_writeln("Directory `~/Downloads/GDrive/NOTE` doesn't exist!!!")
+  end
 end
 
 local pretty_git_files = function()
