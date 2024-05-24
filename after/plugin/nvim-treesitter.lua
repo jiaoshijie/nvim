@@ -8,8 +8,7 @@ end
 
 treesitter_configs.setup({
   ensure_installed = {
-    "lua", "vim", "vimdoc", "markdown", "markdown_inline",
-    "bash", "c", "comment", "cpp", "go", "python", "rust", "toml",
+    "comment", "cpp", "go", "rust", "toml",
   },
   highlight = {
     enable = true,
