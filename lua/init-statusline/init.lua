@@ -8,7 +8,8 @@ local h = require("init-utils").global_hl
 local options = {
   colors = require("init-statusline.theme"),
   sections = {
-    -- { class = "ArchIcon", item = funcs.get_ArchIcon },
+    { class = "Icon", item = funcs.get_Block },
+    { class = "Icon", item = funcs.get_Icon },
     { class = "mode",     item = funcs.get_mode },
     { class = "git",      item = funcs.git_branch },
     { item = "%<" },

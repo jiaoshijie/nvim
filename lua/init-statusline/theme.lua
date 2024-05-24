@@ -24,9 +24,13 @@ local inactive = {
 }
 
 return {
-  ArchIcon = {
-    ArchIcon = {
+  Icon = {
+    Block = {
       fg = colors.blue,
+      bg = colors.grey_cursor,
+    },
+    Icon = {
+      fg = colors.green,
       bg = colors.grey_cursor,
     },
   },

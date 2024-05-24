@@ -31,12 +31,21 @@ local is_active = function()
   return vim.g.statusline_winid == fn.win_getid()
 end
 
-_M.get_ArchIcon = function()
+_M.get_Block = function()
   return {
-    text = is_active() and "▊  " or "",
-    state = is_active() and "ArchIcon" or "",
+    text = is_active() and "█" or "",
+    -- text = is_active() and "▊" or "",
+    state = is_active() and "Block" or "",
   }
 end
+
+_M.get_Icon = function()
+  return {
+    text = is_active() and "  " or "",
+    state = is_active() and "Icon" or "",
+  }
+end
+
 
 _M.get_mode = function()
   return is_active() and modes[fn.mode()] or modes["?"]
