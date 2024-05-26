@@ -151,7 +151,13 @@ command("Vterm", "vsplit term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
 command("Hterm", "split term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
 command("Tterm", "tabnew term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
 command("SudoWrite", require("init-sudo").sudo_write, { nargs = 0 })
-command("Todo", ":edit ~/Downloads/GDrive/todo.md", { nargs = 0 })
+command("Todo", function() 
+  if vim.fn.filereadable(vim.fn.expand("~/Downloads/GDrive/todo.md")) == 1 then
+    vim.cmd(":edit ~/Downloads/GDrive/todo.md")
+  else
+    vim.api.nvim_err_writeln("File `~/Downloads/GDrive/todo.md` doesn't exist or is not readable!!!")
+  end
+end, { nargs = 0 })
 command("Glow", function()
   if vim.o.filetype == "markdown" then
     vim.cmd("tabnew term://glow %:p -w " .. (vim.o.columns - 4))
