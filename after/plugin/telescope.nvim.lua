@@ -143,7 +143,10 @@ map("n", "<leader>s", function()
   end
 end, opts)
 map("n", "<leader>S", function()
-  builtin.grep_string({ search = vim.fn.expand("<cword>") })
+  local word = vim.fn.expand("<cword>")
+  if word ~= "" then
+    builtin.grep_string({ search = word })
+  end
 end)
 
 map("n", "<leader>h", builtin.help_tags, opts)

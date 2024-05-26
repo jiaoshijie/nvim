@@ -288,6 +288,7 @@ h("LspReferenceWrite", { bg = c.bg2 })
 h("LspCodeLens", { link = "Comment" })
 h("LspCodeLensSeparator", { link = "Comment" })
 h("LspSignatureActiveParameter", { fg = c.orange })
+h("LspInfoBorder", { fg = c.bg3 })
 
 h("FloatBorder", { fg = c.bg3 })
 

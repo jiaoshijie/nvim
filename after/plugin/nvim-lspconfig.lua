@@ -44,6 +44,8 @@ for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
+require('lspconfig.ui.windows').default_options.border = 'rounded'
+
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   -- Use a sharp border with `FloatBorder` highlights
   border = "rounded",
