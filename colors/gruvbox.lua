@@ -458,4 +458,19 @@ h("TelescopePromptPrefix", { fg = c.red })
 h("UndotreeDiffLine", { fg = c.aqua, bg = c.bg0 })
 h("UndotreeDiffAdded", { fg = c.green, bg = c.bg0, reverse = true })
 h("UndotreeDiffRemoved", { fg = c.red, bg = c.bg0, reverse = true })
+
+-- [[ grug-far.nvim ]] `https://github.com/MagicDuck/grug-far.nvim`
+h("GrugFarHelpHeader", { fg = c.yellow })
+h("GrugFarHelpHeaderKey", { fg = c.green })
+h("GrugFarInputLabel", { fg = c.red })
+h("GrugFarInputPlaceholder", { fg = c.yellow, bg = c.visual_yellow, italic = true })
+h("GrugFarResultsHeader", { link = "Comment" })
+h("GrugFarResultsStats", { link = "Comment" })
+h("GrugFarResultsActionMessage", { link = "ModeMsg" })
+h("GrugFarResultsMatch", { link = "DiffChange" })
+h("GrugFarResultsPath", { fg = c.blue, underline = true })
+h("GrugFarResultsLineNo", { link = "Number" })
+h("GrugFarResultsLineColumn", { link = "Number" })
+h("GrugFarResultsChangeIndicator", { fg = c.red })
 -- }}}
+
