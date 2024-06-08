@@ -186,7 +186,6 @@ local setup = function()
 
   use "nvim-telescope/telescope.nvim"
 
-  use "MagicDuck/grug-far.nvim"
   use "nvim-pack/nvim-spectre"
 
   use "tpope/vim-fugitive"
