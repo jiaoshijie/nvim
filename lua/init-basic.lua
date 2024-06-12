@@ -106,8 +106,8 @@ vim.g.netrw_localmovecmdopt = ""
 -- vim.g.netrw_localrmdiropt = "-r"
 
 
--- EditorConfig
-vim.g.editorconfig = false
+-- EditorConfig  `:h editorconfig`
+vim.g.editorconfig = true
 
 local group = api.nvim_create_augroup("Jsj_neovim_autocmd_misc", { clear = true })
 
