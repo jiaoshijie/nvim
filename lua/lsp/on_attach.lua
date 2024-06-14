@@ -3,10 +3,10 @@ local keymap = vim.keymap.set
 
 local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
+  -- TO GET ALL PROVIDERs that lsp support, using `lua =vim.lsp.get_clients()[1].server_capabilities`
   -- Completion
-  if client.supports_method('textDocument/completion') then
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+  if client.server_capabilities.completionProvider then
+    -- NOTE(lsp-default): omnifunc
     vim.lsp.completion.enable(true, client.id, bufnr, {autotrigger = false})
     keymap({'i', 's'}, '<C-l>', function()
       if vim.snippet.active({direction = 1}) then
@@ -21,14 +21,17 @@ local on_attach = function(client, bufnr)
   end
 
   -- Mappings.
-  keymap("n", "<leader>D", vim.lsp.buf.type_definition, opts)
-  keymap("n", "gd", vim.lsp.buf.definition, opts)
+  -- NOTE(lsp-default): tagfunc
+  -- NOTE(lsp-default): ctrl-] -> goto definition
+  keymap("n", "gd", vim.lsp.buf.type_definition, opts)
   keymap("n", "gD", vim.lsp.buf.declaration, opts)
-  keymap("n", "gr", vim.lsp.buf.references, opts)
-  keymap("n", "gi", vim.lsp.buf.implementation, opts)
-  keymap("n", "<leader>cr", vim.lsp.buf.rename, opts)
-  keymap("n", "<C-k>", vim.lsp.buf.hover, opts)
+  -- NOTE(lsp-default): grr -> references
+  keymap("n", "gri", vim.lsp.buf.implementation, opts)
+  -- NOTE(lsp-default): grn -> rename
+  -- NOTE(lsp-default): K -> hover
   keymap("i", "<C-k>", vim.lsp.buf.signature_help, opts)
+  -- NOTE(lsp-default): `gq` for format
+  -- NOTE(lsp-default): `gra` for code action
 
   keymap("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
   keymap("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
@@ -37,12 +40,6 @@ local on_attach = function(client, bufnr)
   end, opts)
 
   local lsp_on_attach = vim.api.nvim_create_augroup("jsj_lsp_on_attach_" .. bufnr, { clear = true })
-
-  if client.server_capabilities.documentFormattingProvider then
-    keymap("n", "<leader>=", function()
-      vim.lsp.buf.format({ async = true })
-    end, opts)
-  end
 
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_autocmd("CursorHold", {
@@ -57,11 +54,8 @@ local on_attach = function(client, bufnr)
     })
   end
 
-  if client.server_capabilities.codeActionProvider then
-    keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-  end
-
   if client.server_capabilities.documentSymbolProvider then
+    -- this is in my config files
     symbols_com(client, bufnr)
   end
 
