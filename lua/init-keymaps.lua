@@ -25,7 +25,6 @@ map("n", "<leader>ps", ":setlocal spell! spelllang=en_us<CR>", opts)
 map("n", "<leader>eu", ":e ++enc=utf8<CR>", opts)
 map("n", "<leader>eg", ":e ++enc=gbk<CR>", opts)
 map("n", "Q", "q:", opts)
-map("n", "gp", "`[v`]", opts)
 
 JSJ_change_theme_alpha = true
 map("n", "<leader>tt", require("init-utils").Change_theme_alpha, opts)
@@ -36,8 +35,6 @@ map("t", "<Esc>", "<C-\\><C-n>", opts)
 --  utils
 --]]
 -- move text
-map("n", "<m-j>", ":m .+1<cr>==", opts)
-map("n", "<m-k>", ":m .-2<cr>==", opts)
 map("v", "J", ":m '>+1<cr>gv=gv", opts)
 map("v", "K", ":m '<-2<cr>gv=gv", opts)
 
@@ -51,12 +48,9 @@ end, opts)
 
 -- greatest remap ever : asbjornHaland
 map({ "n", "v" }, "<leader>y", [["+y]])
-map("n", "<leader>Y", [["+y$]])
-
-map({ "n", "v" }, "<leader>d", [["_d]])
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-map("n", "<leader>ee", vim.diagnostic.open_float, opts)
-map("n", "[d", vim.diagnostic.goto_prev, opts)
-map("n", "]d", vim.diagnostic.goto_next, opts)
-map("n", "<leader>eq", vim.diagnostic.setloclist, opts)
+-- NOTE(0.10): ctrl-w_d for vim.diagnostic.open_float
+-- NOTE(0.10): [d for vim.diagnostic.goto_prev
+-- NOTE(0.10): ]d for vim.diagnostic.goto_next
+-- `vim.diagnostic.setloclist`: using telescope instead
