@@ -180,8 +180,6 @@ local setup = function()
   use "nvim-tree/nvim-web-devicons"
   use "nvim-lua/plenary.nvim"
 
-  use "neovim/nvim-lspconfig"
-
   use "nvim-treesitter/nvim-treesitter"
 
   use "nvim-telescope/telescope.nvim"

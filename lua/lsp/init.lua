@@ -1,8 +1,6 @@
-local found, lspconfig = pcall(require, 'lspconfig')
-
-if not found then
-  return
-end
+local command = vim.api.nvim_create_user_command
+local lsp_config = require("lsp.config")
+local api = vim.api
 
 -- https://code.visualstudio.com/api/references/icons-in-labels
 vim.lsp.protocol.CompletionItemKind = {
@@ -33,8 +31,6 @@ vim.lsp.protocol.CompletionItemKind = {
   "  (TypeParameter)",
 }
 
-require('lspconfig.ui.windows').default_options.border = 'rounded'
-
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   -- Use a sharp border with `FloatBorder` highlights
   border = "rounded",
@@ -63,17 +59,27 @@ vim.diagnostic.config({
   },
 })
 
-local lsp_using_list = {
-  lua_ls = "lua-lsp",         -- pacman: lua-language-server
-  clangd = "clangd-lsp",      -- pacman: clang
-  gopls = "go-lsp",           -- pacman: gopls
-  rust_analyzer = "rust-lsp", -- rustup: rust_analyzer
-  bashls = "bash-lsp",        -- pacman: bash-language-server shellcheck
-}
+command("LspStart", function()
+  local ft = vim.bo.filetype
+  local config = lsp_config[ft]
+  if  config ~= nil then
+    if vim.fn.executable(config.cmd[1]) ~= 0 then
+      -- NOTE: need to reopen the already opened files, using `:e`
+      local group = vim.api.nvim_create_augroup("UserLspStart_" .. ft, { clear = true })
+      vim.api.nvim_create_autocmd("FileType", {
+        group = group,
+        pattern = { ft },
+        callback = function(_)
+          vim.lsp.start(config)
+        end,
+      })
+    else
+      api.nvim_err_writeln("ERROR: `" .. config.cmd[1] .. "` is not executable!!!")
+    end
+  else
+    api.nvim_err_writeln("ERROR: This file type `" .. vim.bo.filetype .. "` doesn't support lsp")
+  end
+end, { nargs = 0 })
 
-for lsp_name, file_name in pairs(lsp_using_list) do
-  local lsp_conf = require("lsp." .. file_name)
-  lsp_conf.on_attach = require("lsp.on_attach")
-  lsp_conf.autostart = false
-  lspconfig[lsp_name].setup(lsp_conf)
-end
+-- NOTE: if want to Stop the Lsp, then just `:mksession` and quit vim
+-- and open vim and using `:source Session.vim`
