@@ -21,16 +21,6 @@ treesitter_configs.setup({
       end
     end,
   },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "<C-n>",
-      node_incremental = "<C-n>",
-      scope_incremental = "<C-m>",
-      node_decremental = "<C-p>",
-    },
-  },
-  indent = {
-    enable = false,
-  },
+  incremental_selection = { enable = false },
+  indent = { enable = false },
 })
