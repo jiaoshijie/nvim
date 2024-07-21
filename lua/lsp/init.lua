@@ -59,16 +59,16 @@ vim.diagnostic.config({
   },
 })
 
-command("LspStart", function()
-  local ft = vim.bo.filetype
-  local config = lsp_config[ft]
+command("LspStart", function(opts)
+  local server_name = opts.args  -- NOTE: or `opts.fargs`, maybe it doesn't matter at all.
+  local config = lsp_config[server_name]
   if  config ~= nil then
     if vim.fn.executable(config.cmd[1]) ~= 0 then
       -- NOTE: need to reopen the already opened files, using `:e`
-      local group = vim.api.nvim_create_augroup("UserLspStart_" .. ft, { clear = true })
+      local group = vim.api.nvim_create_augroup("UserLspStart_" .. server_name, { clear = true })
       vim.api.nvim_create_autocmd("FileType", {
         group = group,
-        pattern = { ft },
+        pattern = config.filetypes,
         callback = function(_)
           vim.lsp.start(config)
         end,
@@ -77,9 +77,19 @@ command("LspStart", function()
       api.nvim_err_writeln("ERROR: `" .. config.cmd[1] .. "` is not executable!!!")
     end
   else
-    api.nvim_err_writeln("ERROR: This file type `" .. vim.bo.filetype .. "` doesn't support lsp")
+    api.nvim_err_writeln("ERROR: This file type `" .. server_name .. "` doesn't support lsp")
   end
-end, { nargs = 0 })
+end, {
+  nargs = 1,
+  complete = function()
+    local keys = {}
+    -- TODO: now it only have few lsp server, so it's ok to not filter the server names.
+    for k, _ in pairs(lsp_config) do
+      table.insert(keys, k)
+    end
+    return keys
+  end,
+})
 
 -- NOTE: if want to Stop the Lsp, then just `:mksession` and quit vim
 -- and open vim and using `:source Session.vim`

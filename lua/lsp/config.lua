@@ -7,6 +7,7 @@ local rust_config = {
   cmd = { "rustup", "run", "nightly", "rust-analyzer" },
   root_dir = vim.fs.root(0, {"Cargo.toml", "rust-project.json", ".git"}),
   on_attach = require("lsp.on_attach"),
+  filetypes = { "rust" },
 }
 
 -- 1. pacman -S lua-language-server
@@ -16,6 +17,7 @@ local lua_config = {
   cmd = { "lua-language-server" },
   root_dir = vim.fs.root(0, { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git"}),
   on_attach = require("lsp.on_attach"),
+  filetypes = { "lua" },
   settings = {
     Lua = {
       runtime = {
@@ -47,6 +49,7 @@ local bash_config = {
   name = "bash language server",
   cmd = { 'bash-language-server', 'start' },
   on_attach = require("lsp.on_attach"),
+  filetypes = { "sh" },
   single_file_support = true,
   settings = {
     bashIde = {
