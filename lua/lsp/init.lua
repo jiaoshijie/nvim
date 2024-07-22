@@ -81,15 +81,22 @@ command("LspStart", function(opts)
   end
 end, {
   nargs = 1,
-  complete = function()
+  complete = function(_, line)
+    local pre_input = vim.split(line, "%s+")[2]
     local keys = {}
-    -- TODO: now it only have few lsp server, so it's ok to not filter the server names.
     for k, _ in pairs(lsp_config) do
       table.insert(keys, k)
+    end
+    table.sort(keys)
+
+    if pre_input ~= 0 then
+      return vim.tbl_filter(function(val)
+        return vim.startswith(val, pre_input)
+      end, keys)
     end
     return keys
   end,
 })
 
--- NOTE: if want to Stop the Lsp, then just `:mksession` and quit vim
--- and open vim and using `:source Session.vim`
+-- NOTE: if want to Stop the Lsp, then just `:mksession` and quit and reopen
+-- and `:source Session.vim`
