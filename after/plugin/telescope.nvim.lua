@@ -90,6 +90,7 @@ telescope.setup({
 
 local search_all_files = function()
   builtin.find_files({
+    prompt_title = "~ find files ~",
     find_command = { "rg", "--no-ignore", "--files" },
     file_ignore_patterns = {
       "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",
@@ -99,6 +100,22 @@ local search_all_files = function()
       "%.mp4", "%.avi", "%.flv", "%.mkv", "%.swf", "%.srt",
       "%.mdd", "%.mdx",
       "venv", "__pycache__",
+    },
+  })
+end
+
+local search_all_files_include_hiddens = function()
+  builtin.find_files({
+    prompt_title = "~ find files with hiddens ~",
+    find_command = { "rg", "--no-ignore", "--files", "--hidden" },
+    file_ignore_patterns = {
+      "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",
+      "%.iso", "%.zip", "%.7z", "%.rar", "%.gz", "%.tar", "%.gzip", "%.bz2", "%.tgz", "%.xz",
+      "%.wav", "%.mp3",
+      "%.chm", "%.epub", "%.pdf", "%.mobi", "%.ttf",
+      "%.mp4", "%.avi", "%.flv", "%.mkv", "%.swf", "%.srt",
+      "%.mdd", "%.mdx",
+      "venv", "__pycache__", ".git",
     },
   })
 end
@@ -139,13 +156,13 @@ map("n", "<C-p>", pretty_git_files, opts)
 map("n", "<leader>s", function()
   local ok, word = pcall(vim.fn.input, "Grep > ")
   if ok and word ~= "" then
-    builtin.grep_string({ search = word })
+    builtin.grep_string({ search = word, additional_args = { "--hidden" } })
   end
 end, opts)
 map("n", "<leader>S", function()
   local word = vim.fn.expand("<cword>")
   if word ~= "" then
-    builtin.grep_string({ search = word })
+    builtin.grep_string({ search = word, additional_args = { "--hidden" } })
   end
 end)
 
@@ -153,4 +170,5 @@ map("n", "<leader>h", builtin.help_tags, opts)
 
 map("n", "<leader>fo", neovim_config, opts)
 map("n", "<leader>ff", search_all_files, opts)
+map("n", "<leader>fa", search_all_files_include_hiddens, opts)
 map("n", "<leader>fm", open_Notes, opts)
