@@ -34,7 +34,7 @@ o.fdl = 99
 -- o.completeopt = "menuone,noselect,preview"
 o.completeopt = "menuone,noselect"
 o.dictionary = "/usr/share/dict/words"
-o.complete = ".,w"
+o.complete = ".,w,b"
 
 -- o.clipboard = "unnamedplus"
 

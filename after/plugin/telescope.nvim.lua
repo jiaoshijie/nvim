@@ -91,7 +91,7 @@ telescope.setup({
 local search_all_files = function()
   builtin.find_files({
     prompt_title = "~ find files ~",
-    find_command = { "rg", "--no-ignore", "--files" },
+    find_command = { "rg", "--files" },
     file_ignore_patterns = {
       "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",
       "%.iso", "%.zip", "%.7z", "%.rar", "%.gz", "%.tar", "%.gzip", "%.bz2", "%.tgz", "%.xz",
@@ -107,7 +107,7 @@ end
 local search_all_files_include_hiddens = function()
   builtin.find_files({
     prompt_title = "~ find files with hiddens ~",
-    find_command = { "rg", "--no-ignore", "--files", "--hidden" },
+    find_command = { "rg", "--files", "--hidden", "--no-ignore" },
     file_ignore_patterns = {
       "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",
       "%.iso", "%.zip", "%.7z", "%.rar", "%.gz", "%.tar", "%.gzip", "%.bz2", "%.tgz", "%.xz",
@@ -117,6 +117,45 @@ local search_all_files_include_hiddens = function()
       "%.mdd", "%.mdx",
       "venv", "__pycache__", ".git",
     },
+  })
+end
+
+local jsj_search_file_pattern = nil  -- NOTE: case sensitive and insensitive both use this variable to do previous search
+local search_files_with_pattern = function(case_insensitive)
+  local ok, pattern = pcall(vim.fn.input, string.format("%s", jsj_search_file_pattern ~= nil and "Pattern(" .. jsj_search_file_pattern .. ") > " or "Pattern > "))
+  if not ok then
+    vim.api.nvim_err_writeln("Search Files With Pattern Are Canceled!!!")
+    return
+  end
+
+  pattern = vim.fn.trim(pattern)
+  if string.len(pattern) == 0 then
+    if jsj_search_file_pattern == nil then
+      vim.api.nvim_err_writeln("No Pattern Provided")
+      return
+    end
+    pattern = jsj_search_file_pattern
+  else
+    jsj_search_file_pattern = pattern
+  end
+
+  pattern = vim.fn.split(pattern)
+  command = { "rg", "--files", "--hidden", "--no-ignore" }
+
+  local c = "c"
+  if case_insensitive == true then
+    table.insert(command, "--glob-case-insensitive")
+    c = "i"
+  end
+
+  for _, p in ipairs(pattern) do
+    table.insert(command, "-g")
+    table.insert(command, p)
+  end
+
+  builtin.find_files({
+    prompt_title = string.format("~ P(%s): [%s] ~", c, jsj_search_file_pattern),
+    find_command = command,
   })
 end
 
@@ -149,9 +188,9 @@ local pretty_git_files = function()
   end, { show_untracked = true }, false)
 end
 
-local opts = { noremap = true, silent = true }
+---------------------------- NOTE: keymaps below ------------------------------
 
-map("n", "<C-p>", pretty_git_files, opts)
+local opts = { noremap = true, silent = true }
 
 map("n", "<leader>s", function()
   local ok, word = pcall(vim.fn.input, "Grep > ")
@@ -169,6 +208,10 @@ end)
 map("n", "<leader>h", builtin.help_tags, opts)
 
 map("n", "<leader>fo", neovim_config, opts)
-map("n", "<leader>ff", search_all_files, opts)
-map("n", "<leader>fa", search_all_files_include_hiddens, opts)
 map("n", "<leader>fm", open_Notes, opts)
+
+map("n", "<C-p>", pretty_git_files, opts)
+map("n", "<leader>ff", search_all_files, opts)
+map("n", "<leader>fF", search_all_files_include_hiddens, opts)
+map("n", "<leader>fp", function() search_files_with_pattern(false) end, opts)  -- case sensitive
+map("n", "<leader>fP", function() search_files_with_pattern(true) end, opts)   -- case insensitive
