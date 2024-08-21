@@ -147,12 +147,14 @@ o.undofile = true
 o.undodir = "/tmp/jsj_neovim_u/undodir//"
 
 command("AI", [[echo "I want AI to do my laundry and dishes so that I can do art and writing, not for AI to do my art and writing so that I can do my laundry and dishes."]], { nargs = 0 })
-command("SF", require("init-utils").showFilePath, { nargs = 0 })
+command("Yp", function() require("init-utils").copyFilePath(true) end, { nargs = 0 })
+command("Yf", function() require("init-utils").copyFilePath(false) end, { nargs = 0 })
+command("Cc", require("init-utils").write2Clipboard, { nargs = 0 })
 command("Vterm", "vsplit term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
 command("Hterm", "split term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
 command("Tterm", "tabnew term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
 command("SudoWrite", require("init-sudo").sudo_write, { nargs = 0 })
-command("Todo", function() 
+command("Todo", function()
   if vim.fn.filereadable(vim.fn.expand("~/Downloads/GDrive/todo.md")) == 1 then
     vim.cmd(":edit ~/Downloads/GDrive/todo.md")
   else

@@ -46,9 +46,6 @@ map("n", "<leader>ql", function()
   require("init-utils").Jsj_ToggleList("loclist", "l")
 end, opts)
 
--- greatest remap ever : asbjornHaland
-map({ "n", "v" }, "<leader>y", [["+y]])
-
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 -- NOTE(0.10): ctrl-w_d for vim.diagnostic.open_float
 -- NOTE(0.10): [d for vim.diagnostic.goto_prev

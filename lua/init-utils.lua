@@ -41,8 +41,18 @@ _M.fcitx2en = function()
   end
 end
 
-_M.showFilePath = function()
-  print(vf.expand("%:p"))
+_M.copyFilePath = function(full_path)
+  local path = full_path and vf.expand("%:p") or vf.expand("%:t")
+  if #path ~= 0 then
+    vf.setreg('+', path)
+    print("File Path Copied: " .. path)
+  else
+    api.nvim_err_writeln("No file opened in this buffer!!!")
+  end
+end
+
+_M.write2Clipboard = function()
+  vf.setreg('+', vf.getreg('0'))
 end
 
 _M.contains = function(tbl, val)
