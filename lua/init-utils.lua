@@ -35,12 +35,6 @@ _M.Jsj_ToggleList = function(listname, perfix)
   end
 end
 
-_M.fcitx2en = function()
-  if tonumber(vf.system("fcitx5-remote")) == 2 then
-    vf.system("fcitx5-remote -c")
-  end
-end
-
 _M.copyFilePath = function(full_path)
   local path = full_path and vf.expand("%:p") or vf.expand("%:t")
   if #path ~= 0 then

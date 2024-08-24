@@ -105,7 +105,6 @@ vim.g.netrw_localmovecmdopt = ""
 -- vim.g.netrw_localrmdir = "rm"
 -- vim.g.netrw_localrmdiropt = "-r"
 
-
 -- EditorConfig  `:h editorconfig`
 vim.g.editorconfig = true
 
@@ -116,15 +115,7 @@ autocmd("BufReadPost", {
   group = group,
   command = [[if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif]],
 })
-autocmd("TermOpen", {
-  pattern = "*",
-  group = group,
-  callback = function()
-    ol.number = false
-    ol.relativenumber = false
-    ol.signcolumn = "no"
-  end,
-})
+
 autocmd("TextYankPost", {
   pattern = "*",
   group = group,
@@ -132,13 +123,6 @@ autocmd("TextYankPost", {
     vim.highlight.on_yank({ higourp = "IncSearch", timeout = 300 })
   end,
 })
-if vim.fn.has("unix") then
-  autocmd("InsertLeave", {
-    pattern = "*",
-    group = group,
-    callback = require("init-utils").fcitx2en,
-  })
-end
 
 o.backup = false
 o.swapfile = false

@@ -15,8 +15,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
-o.number = true
-o.signcolumn = "yes"
+o.number = false
+o.relativenumber = false
+o.signcolumn = "no"
+
 o.cursorline = true
 o.colorcolumn = "79"
 o.scrolloff = 6
