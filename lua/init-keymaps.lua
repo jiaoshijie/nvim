@@ -31,6 +31,8 @@ map("n", "<leader>tt", require("init-utils").Change_theme_alpha, opts)
 
 map("t", "<Esc>", "<C-\\><C-n>", opts)
 
+map("n", "gp", "`[v`]", opts)
+
 --[[
 --  utils
 --]]
