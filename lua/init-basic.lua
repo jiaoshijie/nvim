@@ -115,7 +115,15 @@ autocmd("BufReadPost", {
   group = group,
   command = [[if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif]],
 })
-
+autocmd("TermOpen", {
+  pattern = "*",
+  group = group,
+  callback = function()
+    ol.number = false
+    ol.relativenumber = false
+    ol.signcolumn = "no"
+  end,
+})
 autocmd("TextYankPost", {
   pattern = "*",
   group = group,
@@ -134,9 +142,9 @@ command("AI", [[echo "I want AI to do my laundry and dishes so that I can do art
 command("Yp", function() require("init-utils").copyFilePath(true) end, { nargs = 0 })
 command("Yf", function() require("init-utils").copyFilePath(false) end, { nargs = 0 })
 command("Cc", require("init-utils").write2Clipboard, { nargs = 0 })
-command("Vterm", "vsplit term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
-command("Hterm", "split term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
-command("Tterm", "tabnew term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
+-- command("Vterm", "vsplit term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
+-- command("Hterm", "split term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
+-- command("Tterm", "tabnew term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
 command("SudoWrite", require("init-sudo").sudo_write, { nargs = 0 })
 command("Todo", function()
   if vim.fn.filereadable(vim.fn.expand("~/Downloads/GDrive/todo.md")) == 1 then
@@ -147,7 +155,11 @@ command("Todo", function()
 end, { nargs = 0 })
 command("Glow", function()
   if vim.o.filetype == "markdown" then
-    vim.cmd("tabnew term://glow %:p -w " .. (vim.o.columns - 4))
+    if vim.fn.executable('glow') == 1 then
+      vim.cmd("tabnew term://glow %:p -w " .. (vim.o.columns - 4))
+    else
+      api.nvim_err_writeln("ERROR: `glow` is not executable!!!")
+    end
   else
     api.nvim_err_writeln("ERROR: only support `markdown` file!!!")
   end
