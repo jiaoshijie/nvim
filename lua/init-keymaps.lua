@@ -8,13 +8,15 @@ map({ "", "i" }, "<C-j>", "<C-[>", opts)
 
 map("n", "s", "<Nop>", { noremap = true })
 map("n", "S", "<Nop>", { noremap = true })
-map("n", "<Space>", "<NOP>", opts)
+map("n", "C", "<Nop>", { noremap = true })
+map({"n", "v"}, "<Space>", "<NOP>", opts)
 
 --[[
 -- normal mode
 --]]
 
 map("n", "<leader><leader>", "<C-^>", opts)
+-- NOTE: `:h pattern.txt{magic}` `:h :substitute`
 map("n", "<leader>/", "/\\<\\><left><left>", { noremap = true })
 
 map("n", "<leader>fc", function()
@@ -31,7 +33,7 @@ map("n", "<leader>tt", require("init-utils").Change_theme_alpha, opts)
 
 map("t", "<Esc>", "<C-\\><C-n>", opts)
 
-map("n", "gp", "`[v`]", opts)
+-- map("n", "gp", "`[v`]", opts)  -- TODO: this keymap isn't practical
 
 --[[
 --  utils
