@@ -24,16 +24,12 @@ map("n", "<leader>fc", function()
 end, opts)
 
 map("n", "<leader>ps", ":setlocal spell! spelllang=en_us<CR>", opts)
-map("n", "<leader>eu", ":e ++enc=utf8<CR>", opts)
-map("n", "<leader>eg", ":e ++enc=gbk<CR>", opts)
 map("n", "Q", "q:", opts)
 
-JSJ_change_theme_alpha = true
+JSJ_change_theme_alpha = false  -- NOTE: global variable
 map("n", "<leader>tt", require("init-utils").Change_theme_alpha, opts)
 
 map("t", "<Esc>", "<C-\\><C-n>", opts)
-
--- map("n", "gp", "`[v`]", opts)  -- TODO: this keymap isn't practical
 
 --[[
 --  utils

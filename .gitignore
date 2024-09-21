@@ -4,3 +4,4 @@ spell/
 pack/
 plugin/
 !after/plugin
+.nvimrc
