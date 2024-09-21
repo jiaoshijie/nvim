@@ -27,7 +27,7 @@ if vim.o.background == "dark" then
   c.visual_green = "#165603"  -- lsp virual text
   c.visual_aqua = "#032C56"   -- lsp virual text
 else
-  c.bg0 = "#ffffff"           -- hard: #f9f5d7, normal: #fbf1c7, soft: #f2e5bc
+  c.bg0 = "#f2e5bc"           -- hard: #f9f5d7, normal: #fbf1c7, soft: #f2e5bc, full-white: #ffffff
   c.bg1 = "#ebdbb2"
   c.bg2 = "#d5c4a1"
   c.bg3 = "#bdae93"
