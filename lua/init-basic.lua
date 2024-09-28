@@ -139,8 +139,9 @@ o.undofile = true
 o.undodir = "/tmp/jsj_neovim_u/undodir//"
 
 command("AI", [[echo "I want AI to do my laundry and dishes so that I can do art and writing, not for AI to do my art and writing so that I can do my laundry and dishes."]], { nargs = 0 })
-command("Yp", function() require("init-utils").copyFilePath(true) end, { nargs = 0 })
-command("Yf", function() require("init-utils").copyFilePath(false) end, { nargs = 0 })
+command("Yf", function() require("init-utils").copyFilePath("t") end, { nargs = 0 })
+command("Yr", function() require("init-utils").copyFilePath(nil) end, { nargs = 0 })
+command("Yp", function() require("init-utils").copyFilePath("p") end, { nargs = 0 })
 command("Cc", require("init-utils").write2Clipboard, { nargs = 0 })
 -- command("Vterm", "vsplit term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
 -- command("Hterm", "split term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })

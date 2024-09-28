@@ -177,14 +177,10 @@ command("PkgUpdate", _M.update, copt)
 command("PkgClean", _M.clean, copt)
 
 local setup = function()
-  use "nvim-tree/nvim-web-devicons"
   use "nvim-lua/plenary.nvim"
 
   use "nvim-treesitter/nvim-treesitter"
-
   use "nvim-telescope/telescope.nvim"
-
-  use "nvim-pack/nvim-spectre"
 
   use "tpope/vim-fugitive"
   use "tpope/vim-surround"

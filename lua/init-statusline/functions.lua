@@ -3,13 +3,6 @@ local fn = vim.fn
 local dia, dia_s = vim.diagnostic, vim.diagnostic.severity
 local fmt = string.format
 
-local icon_found, devicons = pcall(require, "nvim-web-devicons")
-local get_icon, get_icon_by_filetype
-if icon_found then
-  get_icon = devicons.get_icon
-  get_icon_by_filetype = devicons.get_icon_by_filetype
-end
-
 local lsp_com = require("lsp.component").lsp_component
 
 local modes = {
@@ -66,17 +59,15 @@ _M.get_spell = function()
 end
 
 _M.get_filename = function()
-  local icon = icon_found and " " .. get_icon(fn.expand("%:t:r"), fn.expand("%:e"), { default = true }) or ""
   return {
-    text = is_active() and icon .. " %t " or " %F ",
+    text = is_active() and " %t " or " %F ",
     state = is_active() and "filename" or "inactive",
   }
 end
 
 _M.winbar_get_filename = function()
-  local icon = icon_found and " " .. get_icon(fn.expand("%:t:r"), fn.expand("%:e"), { default = true }) or ""
   return {
-    text = is_active() and "▊" .. icon .. " %f " or " %F ",
+    text = is_active() and "▊" .. " %f " or " %F ",
     state = is_active() and "filename" or "inactive",
   }
 end
@@ -104,11 +95,10 @@ _M.get_space_tab = function()
 end
 
 _M.get_filetype = function()
-  local icon = icon_found and " " .. get_icon_by_filetype(vim.bo.filetype, { default = true }) or ""
   return {
     state = is_active() and "filetype" or "inactive",
     -- text = is_active() and ' %Y ' or '',
-    text = is_active() and icon .. " %{&ft}" or "",
+    text = is_active() and " %{&ft}" or "",
   }
 end
 

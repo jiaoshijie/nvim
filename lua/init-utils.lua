@@ -35,8 +35,13 @@ _M.Jsj_ToggleList = function(listname, perfix)
   end
 end
 
-_M.copyFilePath = function(full_path)
-  local path = full_path and vf.expand("%:p") or vf.expand("%:t")
+-- flag:
+--    't' : only file name
+--    nil : relative file path
+--    'p' : absoulte file path
+--    other: Error but no checking
+_M.copyFilePath = function(flag)
+  local path = flag and vf.expand("%:" .. flag) or vf.expand("%")
   if #path ~= 0 then
     vf.setreg('+', path)
     print("File Path Copied: " .. path)
