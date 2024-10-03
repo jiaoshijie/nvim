@@ -1,7 +1,7 @@
 local found, spectre = pcall(require, "spectre")
 
 if not found then
-  return
+    return
 end
 
 local command = vim.api.nvim_create_user_command
