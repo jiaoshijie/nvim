@@ -167,17 +167,17 @@ local neovim_config = function()
 end
 
 local open_Notes = function()
-    if vim.fn.isdirectory(vim.fn.expand("~/Downloads/GDrive/NOTE")) == 1 then
+    if vim.fn.isdirectory(vim.fn.expand("~/GDrive/NOTE")) == 1 then
         builtin.find_files({
             prompt_title = "~ Notes ~",
             prompt_prefix = "Notes> ",
-            cwd = "~/Downloads/GDrive/NOTE",
+            cwd = "~/GDrive/NOTE",
             file_ignore_patterns = {
                 "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",
             },
         })
     else
-        vim.api.nvim_err_writeln("Directory `~/Downloads/GDrive/NOTE` doesn't exist!!!")
+        vim.api.nvim_err_writeln("Directory `~/GDrive/NOTE` doesn't exist!!!")
     end
 end
 

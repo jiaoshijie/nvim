@@ -199,10 +199,10 @@ command("Yf", function() copy_file_path("t") end, { nargs = 0 })
 command("Yr", function() copy_file_path(nil) end, { nargs = 0 })
 command("Yp", function() copy_file_path("p") end, { nargs = 0 })
 command("Todo", function()
-    if vim.fn.filereadable(vim.fn.expand("~/Downloads/GDrive/todo.md")) == 1 then
-        vim.cmd(":edit ~/Downloads/GDrive/todo.md")
+    if vim.fn.filereadable(vim.fn.expand("~/GDrive/todo.md")) == 1 then
+        vim.cmd(":edit ~/GDrive/todo.md")
     else
-        vim.api.nvim_err_writeln("File `~/Downloads/GDrive/todo.md` doesn't exist or is not readable!!!")
+        vim.api.nvim_err_writeln("File `~/GDrive/todo.md` doesn't exist or is not readable!!!")
     end
 end, { nargs = 0 })
 command("Glow", function()
