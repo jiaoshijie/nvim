@@ -14,8 +14,8 @@ local builtin = require("telescope.builtin")
 
 telescope.setup({
     defaults = {
-        prompt_prefix = "🔭 ",
-        selection_caret = " ",
+        prompt_prefix = "☆ ",
+        selection_caret = "★ ",
         path_display = { "filename_first" },
 
         winblend = 0,

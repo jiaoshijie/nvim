@@ -69,7 +69,7 @@ end
 _M.get_filepos = function()
     return {
         state = _M.get_mode().state,
-        text = is_active() and " %p%%  %v:%l/%L " or " %v:%l/%L ",
+        text = is_active() and " %p%% ≡ %v:%l/%L " or " %v:%l/%L ",
     }
 end
 
