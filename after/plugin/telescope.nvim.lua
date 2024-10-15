@@ -87,19 +87,22 @@ telescope.setup({
 
 })
 
+local file_ignore_patterns = {
+    "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",  -- images
+    "%.iso", "%.zip", "%.7z", "%.rar", "%.gz", "%.tar", "%.gzip", "%.bz2", "%.tgz", "%.xz",  -- extract files
+    "%.wav", "%.mp3",  -- audio files
+    "%.mp4", "%.avi", "%.flv", "%.mkv", "%.swf", "%.srt",  -- video files
+    "%.chm", "%.epub", "%.pdf", "%.mobi", "%.ttf",  -- binary text files
+    "%.mdd", "%.mdx",  -- binary dictionary files
+    "venv", "__pycache__", ".git",  -- directories
+    "tags",  -- `ctags` generated file
+}
+
 local search_all_files = function()
     builtin.find_files({
         prompt_title = "~ find files ~",
         find_command = { "rg", "--files" },
-        file_ignore_patterns = {
-            "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",
-            "%.iso", "%.zip", "%.7z", "%.rar", "%.gz", "%.tar", "%.gzip", "%.bz2", "%.tgz", "%.xz",
-            "%.wav", "%.mp3",
-            "%.chm", "%.epub", "%.pdf", "%.mobi", "%.ttf",
-            "%.mp4", "%.avi", "%.flv", "%.mkv", "%.swf", "%.srt",
-            "%.mdd", "%.mdx",
-            "venv", "__pycache__",
-        },
+        file_ignore_patterns = file_ignore_patterns,
     })
 end
 
@@ -107,15 +110,7 @@ local search_all_files_include_hiddens = function()
     builtin.find_files({
         prompt_title = "~ find files with hiddens ~",
         find_command = { "rg", "--files", "--hidden", "--no-ignore" },
-        file_ignore_patterns = {
-            "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",
-            "%.iso", "%.zip", "%.7z", "%.rar", "%.gz", "%.tar", "%.gzip", "%.bz2", "%.tgz", "%.xz",
-            "%.wav", "%.mp3",
-            "%.chm", "%.epub", "%.pdf", "%.mobi", "%.ttf",
-            "%.mp4", "%.avi", "%.flv", "%.mkv", "%.swf", "%.srt",
-            "%.mdd", "%.mdx",
-            "venv", "__pycache__", ".git",
-        },
+        file_ignore_patterns = file_ignore_patterns,
     })
 end
 

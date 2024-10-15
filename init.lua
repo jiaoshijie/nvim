@@ -83,7 +83,7 @@ o.path:append("**")
 o.pumblend = 30
 o.ph = 15
 o.shortmess:append("c")
-o.wildignore:append("*.o,*.a,*.so")
+o.wildignore:append("*.o,*.a,*.so,tags")
 
 -- NOTE: search
 o.ignorecase = true
@@ -102,7 +102,7 @@ o.shiftround = true  -- for `<<` and `>>` in normal mode
 o.inccommand = "split"
 
 -- NOTE: quickfix
-o.switchbuf = "useopen"
+o.switchbuf = "uselast"
 
 -- NOTE: only use undofile
 o.backup = false
