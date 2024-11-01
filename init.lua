@@ -119,7 +119,6 @@ o.termguicolors = true
 o.background = "dark"
 local jsj_colorscheme_autogroup = api.nvim_create_augroup("JSJ_colorscheme_autogroup", { clear = true })
 local jsj_normal_hl = {}  -- after nvim startup, this variable will not be empty anymore
-local jsj_change_theme_alpha = false
 vim.api.nvim_create_autocmd("ColorScheme", {
     group = jsj_colorscheme_autogroup,
     pattern = "*",
@@ -129,14 +128,14 @@ vim.api.nvim_create_autocmd("ColorScheme", {
             bg = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg", "gui"),
             default = false,
         }
-        if jsj_change_theme_alpha then
+        if JSJ_change_theme_alpha then
             api.nvim_set_hl(0, "Normal", { fg = jsj_normal_hl.fg, bg = "NONE", default = false })
         end
     end,
 })
 keymap("n", "<leader>tt", function()
-    if not jsj_change_theme_alpha then
-        jsj_change_theme_alpha = true
+    if not JSJ_change_theme_alpha then
+        JSJ_change_theme_alpha = true
         jsj_normal_hl = {
             fg = vf.synIDattr(vf.hlID("Normal"), "fg", "gui"),
             bg = vf.synIDattr(vf.hlID("Normal"), "bg", "gui"),
@@ -150,6 +149,8 @@ keymap("n", "<leader>tt", function()
     api.nvim_set_hl(0, "SignColumn", { link = "LineNr", default = false })
 end, keymap_opts)
 require('statusline').setup()
+
+JSJ_change_theme_alpha = false
 vim.cmd.colorscheme("gruvbox")
 
 -- NOTE: autogroups
