@@ -99,7 +99,7 @@ end
 _M.get_fileformat = function()
     return {
         state = is_active() and "fileformat" or "inactive",
-        text = is_active() and " %{&fenc?&fenc:&enc}[%{&ff}] " or "",
+        text = is_active() and " %{&fenc!=''?&fenc:&enc}[%{&ff}] " or "",
     }
 end
 
