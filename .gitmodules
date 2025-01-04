@@ -1,0 +1,6 @@
+[submodule "pack/my/start/undotree"]
+	path = pack/my/start/undotree
+	url = https://github.com/jiaoshijie/undotree.git
+[submodule "pack/my/start/onlysearch"]
+	path = pack/my/start/onlysearch
+	url = https://github.com/jiaoshijie/onlysearch.git

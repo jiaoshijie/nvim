@@ -479,3 +479,15 @@ h("UndotreeDiffLine", { fg = c.aqua, bg = c.bg0 })
 h("UndotreeDiffAdded", { fg = c.green, bg = c.bg0, reverse = true })
 h("UndotreeDiffRemoved", { fg = c.red, bg = c.bg0, reverse = true })
 -- }}}
+
+-- [[ onlysearch ]]
+h("OnlysearchHeaderSearch", { fg = c.green, bg = c.visual_green, italic = true })
+h("OnlysearchHeaderPaths", { fg = c.aqua, bg = c.visual_aqua, italic = true })
+h("OnlysearchHeaderFlags", { fg = c.yellow, bg = c.visual_yellow, italic = true })
+h("OnlysearchHeaderFilters", { fg = c.red, bg = c.visual_red, italic = true })
+h("OnlysearchFilename", { fg = c.green, underline = true })
+h("OnlysearchMatchLNum", { fg = c.yellow, bold = true })
+h("OnlysearchMatchCtx", { fg = c.red, bold = true })
+h("OnlysearchError", { fg = c.red, bold = true })
+h("OnlysearchSep", { fg = c.gray })
+h("OnlysearchSepErr", { fg = c.red })
