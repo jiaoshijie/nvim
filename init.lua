@@ -257,14 +257,10 @@ require("pkg")
 
 -- GNU `global` tool
 -- https://www.gnu.org/software/global/globaldoc_toc.html#Vim-editor
-local jsj_gnu_global_plugin_path = nil
 if vim.fn.filereadable("/usr/share/gtags/gtags.vim") == 1 then  -- for void linux
-    jsj_gnu_global_plugin_path = "/usr/share/gtags/gtags.vim"
+    vim.cmd('so /usr/share/gtags/gtags.vim')
 elseif vim.fn.filereadable("/usr/share/vim/addons/plugin/gtags.vim") == 1 then  -- for debian-based
-    jsj_gnu_global_plugin_path = "/usr/share/vim/addons/plugin/gtags.vim"
-end
-if jsj_gnu_global_plugin_path ~= nil then
-    vim.cmd('so ' .. jsj_gnu_global_plugin_path)
+    vim.cmd('so /usr/share/vim/addons/plugin/gtags.vim')
 end
 
 -------------------------------------------------------------------------------
