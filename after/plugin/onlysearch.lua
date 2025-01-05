@@ -4,7 +4,17 @@ if not found then
     return
 end
 
-onlysearch.setup()
+local engine = 'rg'
+
+if vim.fn.executable(engine) ~= 1 then
+    engine = 'grep'
+end
+
+onlysearch.setup({
+    engine = engine,
+    engine_config = {},
+    open_cmd = "vnew",
+})
 
 -- vim.api.nvim_create_user_command("Os", function()
 --     onlysearch.toggle()
