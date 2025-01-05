@@ -29,7 +29,7 @@ keymap("v", "J", ":m '>+1<cr>gv=gv", keymap_opts)
 keymap("v", "K", ":m '<-2<cr>gv=gv", keymap_opts)
 keymap("n", "<leader><leader>", "<C-^>", keymap_opts)
 keymap("n", "<leader>/", "/\\<\\><left><left>", { noremap = true })  -- NOTE: `:h pattern.txt{magic}` `:h :substitute`
-keymap("n", "<leader>ps", ":setlocal spell! spelllang=en_us<CR>", keymap_opts)
+keymap("n", "<leader>ps", "<Cmd>setlocal spell! spelllang=en_us<CR>", keymap_opts)
 keymap("n", "Q", "q:", keymap_opts)
 keymap("t", "<Esc>", "<C-\\><C-n>", keymap_opts)
 
@@ -261,6 +261,9 @@ if vim.fn.filereadable("/usr/share/gtags/gtags.vim") == 1 then  -- for void linu
     vim.cmd('so /usr/share/gtags/gtags.vim')
 elseif vim.fn.filereadable("/usr/share/vim/addons/plugin/gtags.vim") == 1 then  -- for debian-based
     vim.cmd('so /usr/share/vim/addons/plugin/gtags.vim')
+end
+if vim.fn.exists("loaded_gtags") == 1 then
+    vim.keymap.set('n', '<C-g>', "<cmd>GtagsCursor<cr>", { silent = true, noremap = true })
 end
 
 -------------------------------------------------------------------------------
