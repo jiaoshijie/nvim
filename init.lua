@@ -75,6 +75,7 @@ o.splitright = true
 o.splitbelow = true
 o.laststatus = 3
 o.fileencodings = "ucs-bom,utf-8,cp936,default,latin1"  -- NOTE: cp936 is a superset of gbk
+o.foldenable = false
 
 -- NOTE: completion
 o.completeopt = "menuone,noselect"
