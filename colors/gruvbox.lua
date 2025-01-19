@@ -474,13 +474,13 @@ h("TelescopePreviewBorder", { fg = c.purple })
 h("TelescopeMatching", { fg = c.yellow, bold = true })
 h("TelescopePromptPrefix", { fg = c.red })
 
--- [[ Undotree ]] `https://github.com/jiaoshijie/undotree/blob/main/syntax/Undotree.vim`
+-- [[ Undotree ]] `https://github.com/jiaoshijie/undotree/blob/main/plugin/undotree.lua`
 h("UndotreeDiffLine", { fg = c.aqua, bg = c.bg0 })
 h("UndotreeDiffAdded", { fg = c.green, bg = c.bg0, reverse = true })
 h("UndotreeDiffRemoved", { fg = c.red, bg = c.bg0, reverse = true })
 -- }}}
 
--- [[ onlysearch ]]
+-- [[ onlysearch ]] `https://github.com/jiaoshijie/onlysearch/blob/main/plugin/onlysearch.lua`
 h("OnlysearchHeaderSearch", { fg = c.green, bg = c.visual_green, italic = true })
 h("OnlysearchHeaderPaths", { fg = c.aqua, bg = c.visual_aqua, italic = true })
 h("OnlysearchHeaderFlags", { fg = c.yellow, bg = c.visual_yellow, italic = true })
