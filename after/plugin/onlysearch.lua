@@ -33,6 +33,14 @@ local complete = {
         word = '-v',
         kind = ' [V] Invert Match',
     },
+    {
+        word = '--no-ignore',
+        kind = ' [NI] Not Respect Ignore Files, e.g. .gitignore, .ignore',
+    },
+    {
+        word = '--ignore',
+        kind = ' [IG] Respect Ignore Files',
+    },
 }
 
 if vim.fn.executable(engine) ~= 1 then
@@ -60,6 +68,7 @@ onlysearch.setup({
         args = args,
         complete = complete,
     },
+    keyword = "48-57,-,a-z,A-Z,.,_,=",
     open_cmd = 'vnew',
     search_leave_insert = true,
     keymaps = {
