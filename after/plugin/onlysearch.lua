@@ -41,6 +41,10 @@ local complete = {
         word = '--ignore',
         kind = ' [IG] Respect Ignore Files',
     },
+    {
+        word = '-E',
+        kind = ' [E] Specify the text encoding'
+    },
 }
 
 if vim.fn.executable(engine) ~= 1 then
