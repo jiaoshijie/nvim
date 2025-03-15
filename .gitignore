@@ -2,7 +2,7 @@ tmp/
 .netrwhist
 spell/
 pack/
-!pack/my/
+!pack/my/*
 plugin/
 !after/plugin
 .nvimrc
