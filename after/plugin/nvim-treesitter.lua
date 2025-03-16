@@ -8,7 +8,8 @@ end
 
 treesitter_configs.setup({
     ensure_installed = {
-        "comment", "cpp", "go", "rust", "toml",
+        "comment", "cpp", "go", "rust", "toml", "vimdoc",
+        "query",  -- For .scm file
     },
     highlight = {
         enable = true,

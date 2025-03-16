@@ -1,200 +1,133 @@
 local command = vim.api.nvim_create_user_command
-local copt = { nargs = 0 }
+local system = vim.fn.system
 local uv = vim.loop
 
-local _M = {}
-local plugins = {}
+-- Add help file: https://neovim.io/doc/user/usr_05.html#05.6
 
-local plugins_dir = vim.fn.stdpath('data') .. '/site/pack/plugins/opt/'
+local _plugin_dir = vim.fn.stdpath('data') .. '/site/pack/plugins/start/'
+local _plugin_doc_dir = vim.fn.stdpath('data') .. '/site/doc/'
+local _plugins = {
+    "nvim-lua/plenary.nvim",
 
-local use = function(uri)
-    local plugin = string.match(uri, '[^/]+$')
+    { uri = "nvim-treesitter/nvim-treesitter", doc = "nvim-treesitter.txt" },
+    { uri = "nvim-telescope/telescope.nvim", doc = "telescope.txt" },
 
-    table.insert(plugins, {
-        uri = uri,
-        plugin = plugin,
-    })
+    { uri = "tpope/vim-fugitive", doc = "fugitive.txt" },
+    { uri = "tpope/vim-surround", doc = "surround.txt" },
+    "tpope/vim-repeat",
 
-    local dir = uv.fs_stat(plugins_dir .. plugin)
-    if not dir then
-        return
+    { uri = "godlygeek/tabular", doc = "Tabular.txt" },
+}
+
+local parse_plugin = function(plugin)
+    local uri, doc = nil, nil
+    if type(plugin) == "string" then
+        uri = plugin
+    else
+        uri = plugin.uri
+        doc = plugin.doc
     end
 
-    vim.cmd.packadd(plugin)
+    local plugin_name = string.match(uri,  '[^/]+$')
+    return 'https://github.com/' .. uri, plugin_name, doc
 end
 
-_M.install = function()
-    vim.fn.system {
-        'git',
-        '-C',
-        plugins_dir,
-        'rev-parse'
-    }
+local install_plugins = function()
+    -- Check whether the target directory has been already be a git directory
+    system({ 'git', '-C', _plugin_dir, 'rev-parse' })
 
     if vim.v.shell_error ~= 0 then
-        print('Initialing ' .. plugins_dir .. ' to git directory')
-        vim.fn.system { 'mkdir', '-p', plugins_dir }
-        local output = vim.fn.system {
-            'git',
-            '-C',
-            plugins_dir,
-            'init'
-        }
-        print(output)
+        print('Making ' .. _plugin_dir .. ' to git directory')
+        system({ 'mkdir', '-p', _plugin_dir })
+        system({ 'mkdir', '-p', _plugin_doc_dir })
+        print(system({ 'git', '-C', _plugin_dir, 'init' }))
     end
 
-    print 'Installing packages...'
-
-    for _, pkg in pairs(plugins) do
-        local plugin, uri = pkg.plugin, pkg.uri
-        local dir = uv.fs_stat(plugins_dir .. plugin)
-
+    for _, plugin in ipairs(_plugins) do
+        local url, name, doc = parse_plugin(plugin)
+        local dir = uv.fs_stat(_plugin_dir .. name)
         if not dir then
-            print('Installing ' .. uri .. '...')
+            print('Installing ' .. url .. '...')
+            print(system({
+                'git', '-C', _plugin_dir,
+                'submodule', 'add', '-f', '--depth', 1,
+                url, './' .. name
+            }))
 
-            local git_uri = 'https://github.com/' .. uri
-
-            local output = vim.fn.system {
-                'git',
-                '-C',
-                plugins_dir,
-                'submodule',
-                'add',
-                '-f',
-                '--depth',
-                1,
-                git_uri,
-                string.format('./%s', plugin),
-            }
-
-            print(output)
+            if doc then
+                local dst_doc = _plugin_doc_dir .. doc
+                local src_doc = _plugin_dir .. name .. '/doc/' .. doc
+                system({ 'ln', '-sf', src_doc, dst_doc })
+            end
         end
     end
 
-    vim.fn.system {
-        'git',
-        '-C',
-        plugins_dir,
-        'submodule',
-        'update',
-        '--init',
-        '--depth',
-        1,
-        '--recursive',
-    }
-
-    print 'Installing finished.'
+    print(system({
+        'git', '-C', _plugin_dir,
+        'submodule', 'update', '--init', '--depth', 1, '--recursive'
+    }))
+    vim.cmd('helptags ' .. _plugin_doc_dir)
+    print("Plugins install finished, Restart NeoVim to Enable All Plugins.")
 end
 
-_M.update = function()
-    print 'Updating packages...'
-
-    local output = vim.fn.system {
-        'git',
-        '-C',
-        plugins_dir,
-        'submodule',
-        'update',
-        '-f',
-        '--remote',
-        '--init',
-        '--depth',
-        1,
-        '--recursive',
-    }
-
-    print(output)
-
-    print 'Updating finished.'
+local update_plugins = function()
+    print('Upadting plugins ...')
+    print(system({
+        'git', '-C', _plugin_dir,
+        'submodule', 'update', '--init', '--depth', 1, '--recursive',
+        '-f', '--remote',
+    }))
+    print('Plugins update finished, Restart NeoVim to Reload Plugins.')
 end
 
-_M.clean = function()
-    local handle = uv.fs_scandir(plugins_dir)
-    local function iter()
-        return uv.fs_scandir_next(handle)
-    end
+local clean_plugins = function()
+    local plugin_dir_iter = uv.fs_scandir(_plugin_dir)
+    local dir_next = function() return uv.fs_scandir_next(plugin_dir_iter) end
 
-    for name, _ in iter do
-        local exist = #vim.tbl_filter(function(pkg)
-            return pkg.plugin == name
-        end, plugins) == 1
+    for dir_name, _ in dir_next do
+        if string.sub(dir_name, 1, 1) ~= '.' then
+            local exist = #vim.tbl_filter(function(uri)
+                local _, name, doc = parse_plugin(uri)
+                return name == dir_name
+            end, _plugins) == 1
 
-        if not exist and string.sub(name, 1, 1) ~= '.' then
-            local module_name = name
-            print('Cleaning ' .. name .. ' package...')
+            if not exist then
+                print('Cleaning ' .. dir_name .. ' package...')
+                system({
+                    'git', '-C', _plugin_dir,
+                    'submodule', 'deinit', '-f', dir_name,
+                })
+                system({
+                    'git', '-C', _plugin_dir,
+                    'rm', '--cached', dir_name,
+                })
+                system({
+                    'git', '-C', _plugin_dir,
+                    'config', '-f', '.gitmodules', '--remove-section',
+                    'submodule.' .. dir_name,
+                })
+                system({
+                    'git', '-C', _plugin_dir,
+                    'add', '-A',
+                })
+                system({ 'rm', '-rf', _plugin_dir .. dir_name })
+                system({ 'rm', '-rf', _plugin_dir .. '.git/modules/' .. dir_name  })
 
-            vim.fn.system {
-                'git',
-                '-C',
-                plugins_dir,
-                'submodule',
-                'deinit',
-                '-f',
-                module_name,
-            }
+                package.loaded[dir_name] = nil
 
-            vim.fn.system {
-                'git',
-                '-C',
-                plugins_dir,
-                'rm',
-                '--cached',
-                module_name,
-            }
+                -- Always try to remove broken symbol link
+                system({
+                    'find', '-L', _plugin_doc_dir, '-type', 'l',
+                    '-exec', 'rm {};',
+                })
+                vim.cmd('helptags ' .. _plugin_doc_dir)
 
-            vim.fn.system {
-                'git',
-                '-C',
-                plugins_dir,
-                'config',
-                '-f',
-                '.gitmodules',
-                '--remove-section',
-                string.format('submodule.%s', module_name),
-            }
-
-            vim.fn.system {
-                'git',
-                '-C',
-                plugins_dir,
-                'add',
-                '-A',
-            }
-
-            vim.fn.system {
-                'rm',
-                '-rf',
-                string.format('%s/%s', plugins_dir, module_name),
-            }
-
-            vim.fn.system {
-                'rm',
-                '-r',
-                string.format('%s/.git/modules/%s', plugins_dir, module_name),
-            }
-
-            package.loaded[name] = nil
-
-            print('Cleaning ' .. name .. ' package done!')
+                print('Plugins clean finished.')
+            end
         end
     end
 end
 
-command("PkgInstall", _M.install, copt)
-command("PkgUpdate", _M.update, copt)
-command("PkgClean", _M.clean, copt)
-
-local setup = function()
-    use "nvim-lua/plenary.nvim"
-
-    use "nvim-treesitter/nvim-treesitter"
-    use "nvim-telescope/telescope.nvim"
-
-    use "tpope/vim-fugitive"
-    use "tpope/vim-surround"
-    use "tpope/vim-repeat"
-
-    use "godlygeek/tabular"
-end
-
-setup()
+command("PkgInstall", install_plugins, { nargs = 0 })
+command("PkgUpdate", update_plugins, { nargs = 0 })
+command("PkgClean", clean_plugins, { nargs = 0 })
