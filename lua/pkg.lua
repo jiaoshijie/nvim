@@ -77,6 +77,7 @@ local update_plugins = function()
         'submodule', 'update', '--init', '--depth', 1, '--recursive',
         '-f', '--remote',
     }))
+    vim.cmd('helptags ' .. _plugin_doc_dir)
     print('Plugins update finished, Restart NeoVim to Reload Plugins.')
 end
 
