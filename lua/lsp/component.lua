@@ -94,7 +94,7 @@ local request_symbols = function(client_id, bufnr, handler)
     function(responses)
         if responses
             and responses[client_id]
-            and not responses[client_id].error
+            and not responses[client_id].err
             and responses[client_id].result
             and not vim.tbl_isempty(responses[client_id].result)
         then

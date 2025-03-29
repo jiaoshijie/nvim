@@ -97,7 +97,7 @@ h("EndOfBuffer", { link = "NonText" })
 
 -- [[ terminal Cursor ]]
 h("TermCursor", { link = "Cursor" })
-h("TermCursorNC", {})
+-- h("TermCursorNC", {})   -- remove from nvim 0.11
 
 h("ErrorMsg", { fg = c.bg0, bg = c.red, bold = true })
 h("WinSeparator", { fg = c.bg3, bg = c.bg0 })

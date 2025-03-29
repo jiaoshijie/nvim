@@ -7,6 +7,11 @@ local command = vim.api.nvim_create_user_command
 local keymap = vim.keymap.set
 local keymap_opts = { noremap = true, silent = true }
 
+_JSJ_G = {}
+_JSJ_G.echo_err_msg = function(msg)
+    vim.api.nvim_echo({ { msg } }, true, { err = true })
+end
+
 o.modeline = false
 o.modelines = 0
 
@@ -76,6 +81,7 @@ o.splitbelow = true
 o.laststatus = 3
 o.fileencodings = "ucs-bom,utf-8,cp936,default,latin1"  -- NOTE: cp936 is a superset of gbk
 o.foldenable = false
+-- o.winborder = 'rounded'
 
 -- NOTE: completion
 o.completeopt = "menuone,noselect"
@@ -162,15 +168,6 @@ autocmd("BufReadPost", {
     group = JSJ_useful_autogroup,
     command = [[if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif]],
 })
-autocmd("TermOpen", {
-    pattern = "*",
-    group = JSJ_useful_autogroup,
-    callback = function()
-        ol.number = false
-        ol.relativenumber = false
-        ol.signcolumn = "no"
-    end,
-})
 autocmd("TextYankPost", {
     pattern = "*",
     group = JSJ_useful_autogroup,
@@ -195,7 +192,7 @@ local copy_file_path = function(flag)
         vf.setreg('+', path)
         print("File Path Copied: " .. path)
     else
-        api.nvim_err_writeln("No file opened in this buffer!!!")
+        _JSJ_G.echo_err_msg("No file opened in this buffer!!!")
     end
 end
 command("Yf", function() copy_file_path("t") end, { nargs = 0 })
@@ -205,7 +202,7 @@ command("Todo", function()
     if vim.fn.filereadable(vim.fn.expand("~/GDrive/todo.md")) == 1 then
         vim.cmd(":edit ~/GDrive/todo.md")
     else
-        vim.api.nvim_err_writeln("File `~/GDrive/todo.md` doesn't exist or is not readable!!!")
+        _JSJ_G.echo_err_msg("File `~/GDrive/todo.md` doesn't exist or is not readable!!!")
     end
 end, { nargs = 0 })
 command("Glow", function()
@@ -213,10 +210,10 @@ command("Glow", function()
         if vim.fn.executable('glow') == 1 then
             vim.cmd("tabnew term://glow %:p -w " .. (vim.o.columns - 4))
         else
-            api.nvim_err_writeln("ERROR: `glow` is not executable!!!")
+            _JSJ_G.echo_err_msg("ERROR: `glow` is not executable!!!")
         end
     else
-        api.nvim_err_writeln("ERROR: only support `markdown` file!!!")
+        _JSJ_G.echo_err_msg("ERROR: only support `markdown` file!!!")
     end
 end, { nargs = 0 })
 -- command("Vterm", "vsplit term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
@@ -236,7 +233,7 @@ end, keymap_opts)
 local toggle_list = function(listname, perfix)
     if #vf.filter(vf.getwininfo(), "v:val." .. listname) == 0 then
         xpcall(api.nvim_exec2, function()
-            api.nvim_err_writeln("Location List is Empty.")
+            _JSJ_G.echo_err_msg("Location List is Empty.")
         end, perfix .. "open", { output = false })
     else
         api.nvim_exec2(perfix .. "close", { output = false })

@@ -10,16 +10,22 @@ local on_attach = function(client, bufnr)
     -- NOTE(0.10): ]d for vim.diagnostic.goto_next
     -- `vim.diagnostic.setloclist`: using telescope instead
 
-    -- Mappings.
+    -- Mappings: h lsp-default
     -- NOTE(lsp-default): tagfunc
     -- NOTE(lsp-default): ctrl-] -> goto definition
     vim.keymap.set("n", "gd", vim.lsp.buf.type_definition, opts)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-    vim.keymap.set("n", "grr", vim.lsp.buf.references, opts)
-    vim.keymap.set("n", "gri", vim.lsp.buf.implementation, opts)
-    vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts)
+    -- NOTE(lsp-default): grr -> references
+    -- NOTE(lsp-default): gri -> implementation
+    -- NOTE(lsp-default): grn -> rename
+    -- NOTE(lsp-default): gra -> code_action
     -- NOTE(lsp-default): K -> hover
-    vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover({
+        border = "rounded"
+    }) end, opts)
+    vim.keymap.set("i", "<C-k>", function() vim.lsp.buf.signature_help({
+        border = "rounded"
+    }) end, opts)
     -- NOTE(lsp-default): `gq` for format
 
     vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
@@ -43,12 +49,12 @@ local on_attach = function(client, bufnr)
         })
     end
 
-    if client.server_capabilities.codeActionProvider then
-        vim.keymap.set("n", "gra", vim.lsp.buf.code_action, opts)
-    end
-
     if client.server_capabilities.documentSymbolProvider then
         symbols_com(client, bufnr)
+    end
+
+    if client.server_capabilities.completionProvider then
+        vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = false })
     end
 
     -- NOTE: `:h vim.lsp.semantic_tokens.start` `:h lsp-semantic-highlight`

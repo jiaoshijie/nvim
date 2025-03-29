@@ -1,7 +1,6 @@
 local _M = {}
 local vf = vim.fn
 local api = vim.api
-local command = vim.api.nvim_create_user_command
 
 -- NOTE: args
 --   cmd: the command that need to be execute as root user.
@@ -13,7 +12,7 @@ _M.sudo_exec = function(cmd, verbose)
     vf.inputrestore()
 
     if not password or #password == 0 then
-        api.nvim_err_writeln("Invaild password, sudo aborted")
+        _JSJ_G.echo_err_msg("Invaild password, sudo aborted")
         return false
     end
 
@@ -22,7 +21,7 @@ _M.sudo_exec = function(cmd, verbose)
     --   -S: read the password from stdin and write the prompt to stderr instead of stdout
     local out = vf.system(string.format("sudo -p '' -S %s", cmd), password)
     if vim.v.shell_error ~= 0 then
-        api.nvim_err_writeln(out)
+        _JSJ_G.echo_err_msg(out)
         return false
     end
 
@@ -36,7 +35,7 @@ _M.sudo_write = function()
     local filepath = vf.expand('%')
 
     if not filepath or #filepath == 0 then
-        api.nvim_err_writeln("E32: No file name")
+        _JSJ_G.echo_err_msg("E32: No file name")
         return
     end
 

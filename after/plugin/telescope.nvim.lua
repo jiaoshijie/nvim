@@ -96,6 +96,7 @@ local file_ignore_patterns = {
     "%.mdd", "%.mdx",  -- binary dictionary files
     "venv", "__pycache__", ".git",  -- directories
     "tags",  -- `ctags` generated file
+    "GPATH", "GRTAGS", "GTAGS",  -- `GNU global` generated files
 }
 
 local search_all_files = function()
@@ -118,14 +119,14 @@ local jsj_search_file_pattern = nil  -- NOTE: case sensitive and insensitive bot
 local search_files_with_pattern = function(case_insensitive)
     local ok, pattern = pcall(vim.fn.input, string.format("%s", jsj_search_file_pattern ~= nil and "Pattern(" .. jsj_search_file_pattern .. ") > " or "Pattern > "))
     if not ok then
-        vim.api.nvim_err_writeln("Search Files With Pattern Are Canceled!!!")
+        _JSJ_G.echo_err_msg("Search Files With Pattern Are Canceled!!!")
         return
     end
 
     pattern = vim.fn.trim(pattern)
     if string.len(pattern) == 0 then
         if jsj_search_file_pattern == nil then
-            vim.api.nvim_err_writeln("No Pattern Provided")
+            _JSJ_G.echo_err_msg("No Pattern Provided")
             return
         end
         pattern = jsj_search_file_pattern
@@ -133,7 +134,7 @@ local search_files_with_pattern = function(case_insensitive)
         jsj_search_file_pattern = pattern
     end
 
-    pattern = vim.fn.split(pattern)
+    local patterns = vim.fn.split(pattern)
     local command = { "rg", "--files", "--hidden", "--no-ignore" }
 
     local c = "c"
@@ -142,7 +143,7 @@ local search_files_with_pattern = function(case_insensitive)
         c = "i"
     end
 
-    for _, p in ipairs(pattern) do
+    for _, p in ipairs(patterns) do
         table.insert(command, "-g")
         table.insert(command, p)
     end
@@ -172,13 +173,13 @@ local open_Notes = function()
             },
         })
     else
-        vim.api.nvim_err_writeln("Directory `~/GDrive/NOTE` doesn't exist!!!")
+        _JSJ_G.echo_err_msg("Directory `~/GDrive/NOTE` doesn't exist!!!")
     end
 end
 
 local pretty_git_files = function()
     xpcall(builtin.git_files, function()
-        vim.api.nvim_err_writeln("Not in git repo!!!")
+        _JSJ_G.echo_err_msg("Not in git repo!!!")
     end, { show_untracked = true }, false)
 end
 

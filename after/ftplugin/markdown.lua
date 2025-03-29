@@ -1,5 +1,4 @@
 local vf = vim.fn
-local api = vim.api
 
 vim.opt_local.conceallevel = 3
 vim.opt_local.concealcursor = ""
@@ -24,7 +23,7 @@ local insert_table = function()
     vim.cmd("echo '' | redraw")  -- clear the cmd line
 
     if cols == nil then
-        api.nvim_err_writeln("The input must be a number!!!")
+        _JSJ_G.echo_err_msg("The input must be a number!!!")
         return
     end
 

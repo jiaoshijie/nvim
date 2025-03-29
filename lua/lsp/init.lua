@@ -1,6 +1,4 @@
 local command = vim.api.nvim_create_user_command
-local lsp_config = require("lsp.config")
-local api = vim.api
 
 -- https://code.visualstudio.com/api/references/icons-in-labels
 vim.lsp.protocol.CompletionItemKind = {
@@ -31,18 +29,9 @@ vim.lsp.protocol.CompletionItemKind = {
     "  (TypeParameter)",
 }
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    -- Use a sharp border with `FloatBorder` highlights
-    border = "rounded",
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    -- Use a sharp border with `FloatBorder` highlights
-    border = "rounded",
-})
-
 vim.diagnostic.config({
     virtual_text = true,
+    virtual_lines = false,
     signs = {
         text = {
             [vim.diagnostic.severity.ERROR] = "",
@@ -59,32 +48,19 @@ vim.diagnostic.config({
     },
 })
 
-command("LspStart", function(opts)
+-- NOTE: manually update this variable, if adding new lsp server
+local configured_lsp_server = {'rust', 'lua', 'sh'}
+vim.lsp.enable({ 'lua' })
+
+command("LspEnable", function(opts)
     local server_name = opts.args  -- NOTE: or `opts.fargs`, maybe it doesn't matter at all.
-    local config = lsp_config[server_name]
-    if  config ~= nil then
-        if vim.fn.executable(config.cmd[1]) ~= 0 then
-            -- NOTE: need to reopen the already opened files, using `:e`
-            local group = vim.api.nvim_create_augroup("UserLspStart_" .. server_name, { clear = true })
-            vim.api.nvim_create_autocmd("FileType", {
-                group = group,
-                pattern = config.filetypes,
-                callback = function(_)
-                    vim.lsp.start(config)
-                end,
-            })
-        else
-            api.nvim_err_writeln("ERROR: `" .. config.cmd[1] .. "` is not executable!!!")
-        end
-    else
-        api.nvim_err_writeln("ERROR: This file type `" .. server_name .. "` doesn't support lsp")
-    end
+    vim.lsp.enable(server_name, true)
 end, {
 nargs = 1,
 complete = function(_, line)
     local pre_input = vim.split(line, "%s+")[2]
     local keys = {}
-    for k, _ in pairs(lsp_config) do
+    for _, k in ipairs(configured_lsp_server) do
         table.insert(keys, k)
     end
     table.sort(keys)
@@ -97,6 +73,3 @@ complete = function(_, line)
     return keys
 end,
 })
-
--- NOTE: if want to Stop the Lsp, then just `:mksession` and quit and reopen
--- and `:source Session.vim`
