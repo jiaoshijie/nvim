@@ -1,5 +1,4 @@
 local o = vim.opt
-local ol = vim.opt_local
 local vf = vim.fn
 local api = vim.api
 local autocmd = api.nvim_create_autocmd
@@ -10,6 +9,12 @@ local keymap_opts = { noremap = true, silent = true }
 _JSJ_G = {}
 _JSJ_G.echo_err_msg = function(msg)
     vim.api.nvim_echo({ { msg } }, true, { err = true })
+end
+_JSJ_G.set_indentation = function(is_space, width)
+    o.expandtab = is_space  -- When expandtab is on, how many space a tab should represent
+    o.shiftwidth = width  -- set the indent width
+    o.tabstop = width  -- A single <tab> character '\t' should take how many normal character length
+    o.softtabstop = width  -- When on, a <tab> press in the begin of the line is base on `shiftwidth`, not `tabstop` or `softtabstop`
 end
 
 o.modeline = false
@@ -98,12 +103,12 @@ o.ignorecase = true
 o.smartcase = true
 
 -- NOTE: indent
-o.smartindent = true
-o.smarttab = true
+o.expandtab = true  -- When expandtab is on, how many space a tab should represent
 o.shiftwidth = 4  -- set the indent width
 o.tabstop = 4  -- A single <tab> character '\t' should take how many normal character length
-o.expandtab = true  -- When expandtab is on, how many space a tab should represent
 o.softtabstop = 4  -- When on, a <tab> press in the begin of the line is base on `shiftwidth`, not `tabstop` or `softtabstop`
+o.smartindent = true
+o.smarttab = true
 o.shiftround = true  -- for `<<` and `>>` in normal mode
 
 -- NOTE: substitute

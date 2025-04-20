@@ -7,8 +7,12 @@ if not found then
 end
 
 treesitter_configs.setup({
+    sync_install = false,
+    auto_install = false,
+    ignore_install = {},
     ensure_installed = {
-        "comment", "cpp", "go", "rust", "toml", "vimdoc",
+        "lua", "luadoc", "vim", "markdown", "markdown_inline",
+        "comment", "c", "cpp", "go", "rust", "toml", "vimdoc",
         "query",  -- For .scm file
     },
     highlight = {
