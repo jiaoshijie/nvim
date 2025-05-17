@@ -186,13 +186,16 @@ autocmd("TextYankPost", {
 command("AI", [[echo "I want AI to do my laundry and dishes so that I can do art and writing, not for AI to do my art and writing so that I can do my laundry and dishes."]], { nargs = 0 })
 command("Cc", function() vf.setreg('+', vf.getreg('0')) end, { nargs = 0 })
 command("SudoWrite", require("sudo").sudo_write, { nargs = 0 })
-local copy_file_path = function(flag)
+local copy_file_path = function(flag, line)
     -- flag:
     --    't' : only file name
     --    nil : relative file path
     --    'p' : absoulte file path
     --    other: Error but no checking
     local path = flag and vf.expand("%:" .. flag) or vf.expand("%")
+    if line then
+        path = path .. ':' .. vim.fn.line('.')
+    end
     if #path ~= 0 then
         vf.setreg('+', path)
         print("File Path Copied: " .. path)
@@ -203,6 +206,8 @@ end
 command("Yf", function() copy_file_path("t") end, { nargs = 0 })
 command("Yr", function() copy_file_path(nil) end, { nargs = 0 })
 command("Yp", function() copy_file_path("p") end, { nargs = 0 })
+command("Df", function() copy_file_path("t", true) end, { nargs = 0 })
+command("Dr", function() copy_file_path(nil, true) end, { nargs = 0 })
 command("Todo", function()
     if vim.fn.filereadable(vim.fn.expand("~/GDrive/todo.md")) == 1 then
         vim.cmd(":edit ~/GDrive/todo.md")
