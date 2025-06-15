@@ -42,6 +42,9 @@ keymap("n", "<leader>/", "/\\<\\><left><left>", { noremap = true })  -- NOTE: `:
 keymap("n", "<leader>ps", "<Cmd>setlocal spell! spelllang=en_us<CR>", keymap_opts)
 keymap("n", "Q", "q:", keymap_opts)
 keymap("t", "<Esc>", "<C-\\><C-n>", keymap_opts)
+-- https://www.reddit.com/r/neovim/comments/1kv7som/search_within_selection_in_neovim/
+keymap('x', '/', '<C-\\><C-n>`</\\%V', { desc = 'Search forward within visual selection' })
+keymap('x', '?', '<C-\\><C-n>`>?\\%V', { desc = 'Search backward within visual selection' })
 
 -- NOTE: netrw
 -- https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
