@@ -9,7 +9,7 @@ local _plugin_doc_dir = vim.fn.stdpath('data') .. '/site/doc/'
 local _plugins = {
     "nvim-lua/plenary.nvim",
 
-    { uri = "nvim-treesitter/nvim-treesitter", doc = "nvim-treesitter.txt" },
+    { uri = "nvim-treesitter/nvim-treesitter", doc = "nvim-treesitter.txt", branch = "main" },
     { uri = "nvim-telescope/telescope.nvim", doc = "telescope.txt" },
 
     { uri = "tpope/vim-fugitive", doc = "fugitive.txt" },
@@ -20,16 +20,17 @@ local _plugins = {
 }
 
 local parse_plugin = function(plugin)
-    local uri, doc = nil, nil
+    local uri, extra = nil, {}
     if type(plugin) == "string" then
         uri = plugin
     else
         uri = plugin.uri
-        doc = plugin.doc
+        extra.doc = plugin.doc
+        extra.branch = plugin.branch
     end
 
     local plugin_name = string.match(uri,  '[^/]+$')
-    return 'https://github.com/' .. uri, plugin_name, doc
+    return 'https://github.com/' .. uri, plugin_name, extra
 end
 
 local install_plugins = function()
@@ -44,19 +45,24 @@ local install_plugins = function()
     end
 
     for _, plugin in ipairs(_plugins) do
-        local url, name, doc = parse_plugin(plugin)
+        local url, name, extra_flags = parse_plugin(plugin)
         local dir = uv.fs_stat(_plugin_dir .. name)
         if not dir then
             print('Installing ' .. url .. '...')
-            print(system({
-                'git', '-C', _plugin_dir,
-                'submodule', 'add', '-f', '--depth', 1,
-                url, './' .. name
-            }))
 
-            if doc then
-                local dst_doc = _plugin_doc_dir .. doc
-                local src_doc = _plugin_dir .. name .. '/doc/' .. doc
+            local cmd = { 'git', '-C', _plugin_dir, 'submodule', 'add', '-f' }
+            if extra_flags.branch then
+                table.insert(cmd, '-b')
+                table.insert(cmd, extra_flags.branch)
+            end
+            table.insert(cmd, url)
+            table.insert(cmd, './' .. name)
+
+            print(system(cmd))
+
+            if extra_flags.doc then
+                local dst_doc = _plugin_doc_dir .. extra_flags.doc
+                local src_doc = _plugin_dir .. name .. '/doc/' .. extra_flags.doc
                 system({ 'ln', '-sf', src_doc, dst_doc })
             end
         end
@@ -64,7 +70,7 @@ local install_plugins = function()
 
     print(system({
         'git', '-C', _plugin_dir,
-        'submodule', 'update', '--init', '--depth', 1, '--recursive'
+        'submodule', 'update', '--init', '--recursive'
     }))
     vim.cmd('helptags ' .. _plugin_doc_dir)
     print("Plugins install finished, Restart NeoVim to Enable All Plugins.")
@@ -74,7 +80,7 @@ local update_plugins = function()
     print('Upadting plugins ...')
     print(system({
         'git', '-C', _plugin_dir,
-        'submodule', 'update', '--init', '--depth', 1, '--recursive',
+        'submodule', 'update', '--init', '--recursive',
         '-f', '--remote',
     }))
     vim.cmd('helptags ' .. _plugin_doc_dir)
@@ -88,7 +94,7 @@ local clean_plugins = function()
     for dir_name, _ in dir_next do
         if string.sub(dir_name, 1, 1) ~= '.' then
             local exist = #vim.tbl_filter(function(uri)
-                local _, name, doc = parse_plugin(uri)
+                local _, name, _ = parse_plugin(uri)
                 return name == dir_name
             end, _plugins) == 1
 
