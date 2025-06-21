@@ -1,4 +1,5 @@
 local vf = vim.fn
+local kit = require('kit')
 
 vim.opt_local.conceallevel = 3
 vim.opt_local.concealcursor = ""
@@ -23,7 +24,7 @@ local insert_table = function()
     vim.cmd("echo '' | redraw")  -- clear the cmd line
 
     if cols == nil then
-        _JSJ_G.echo_err_msg("The input must be a number!!!")
+        kit.echo_err_msg("The input must be a number!!!")
         return
     end
 
@@ -43,3 +44,4 @@ for _, i in ipairs(mdlist) do
 end
 
 vim.keymap.set('i', '<localleader>t', insert_table, { noremap = true, buffer = true, expr = true })
+vim.treesitter.start()

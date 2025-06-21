@@ -5,3 +5,5 @@ ol.commentstring = "# %s"
 ol.shiftwidth = 2
 ol.tabstop = 2
 ol.softtabstop = 2
+
+require('kit').ts_enable('bash')

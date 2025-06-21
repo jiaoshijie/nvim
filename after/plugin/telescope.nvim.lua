@@ -1,3 +1,4 @@
+local kit = require('kit')
 local found, telescope = pcall(require, "telescope")
 
 if not found then
@@ -119,14 +120,14 @@ local jsj_search_file_pattern = nil  -- NOTE: case sensitive and insensitive bot
 local search_files_with_pattern = function(case_insensitive)
     local ok, pattern = pcall(vim.fn.input, string.format("%s", jsj_search_file_pattern ~= nil and "Pattern(" .. jsj_search_file_pattern .. ") > " or "Pattern > "))
     if not ok then
-        _JSJ_G.echo_err_msg("Search Files With Pattern Are Canceled!!!")
+        kit.echo_err_msg("Search Files With Pattern Are Canceled!!!")
         return
     end
 
     pattern = vim.fn.trim(pattern)
     if string.len(pattern) == 0 then
         if jsj_search_file_pattern == nil then
-            _JSJ_G.echo_err_msg("No Pattern Provided")
+            kit.echo_err_msg("No Pattern Provided")
             return
         end
         pattern = jsj_search_file_pattern
@@ -173,13 +174,13 @@ local open_Notes = function()
             },
         })
     else
-        _JSJ_G.echo_err_msg("Directory `~/GDrive/NOTE` doesn't exist!!!")
+        kit.echo_err_msg("Directory `~/GDrive/NOTE` doesn't exist!!!")
     end
 end
 
 local pretty_git_files = function()
     xpcall(builtin.git_files, function()
-        _JSJ_G.echo_err_msg("Not in git repo!!!")
+        kit.echo_err_msg("Not in git repo!!!")
     end, { show_untracked = true }, false)
 end
 

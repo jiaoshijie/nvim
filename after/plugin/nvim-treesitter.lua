@@ -1,31 +1,16 @@
 -- sudo pacman -S treesitter
-local found, treesitter_configs = pcall(require, "nvim-treesitter.configs")
-local uv = vim.loop
+local found, treesitter = pcall(require, "nvim-treesitter")
 
 if not found then
     return
 end
 
-treesitter_configs.setup({
-    sync_install = false,
-    auto_install = false,
-    ignore_install = {},
-    ensure_installed = {
-        "lua", "luadoc", "vim", "markdown", "markdown_inline",
-        "comment", "c", "cpp", "go", "rust", "toml", "vimdoc",
-        "query",  -- For .scm file
-    },
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-        disable = function(_, buf)        -- (lang, buf)
-            local max_filesize = 100 * 1024 -- 100 KB
-            local ok, stats = pcall(uv.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > max_filesize then
-                return true
-            end
-        end,
-    },
-    incremental_selection = { enable = false },
-    indent = { enable = false },
+-- HINT: `query` is for .scm files
+treesitter.install({
+    -- NOTE: nvim builtin parsers
+    -- "c", "lua", "markdown", "markdown_inline", "query", "vim", "vimdoc",
+
+    -- NOTE: nvim not builtin parsers
+    "cpp", "rust", "bash", "python", "go",
+    "comment", "luadoc", "toml",
 })
