@@ -167,8 +167,8 @@ command("Glow", kit.markdown_glow_render, { nargs = 0 })
 
 -- NOTE: keymaps
 keymap("n", "<leader>fc", kit.clean_trailing_spaces_and_lines, keymap_opts)
-keymap("n", "<leader>qq", function() kit.toggle_list("quickfix", "c") end, keymap_opts)
-keymap("n", "<leader>ql", function() kit.toggle_list("loclist", "l") end, keymap_opts)
+keymap("n", "<leader>qq", function() kit.toggle_qf_list("quickfix", "c") end, keymap_opts)
+keymap("n", "<leader>ql", function() kit.toggle_qf_list("loclist", "l") end, keymap_opts)
 
 -------------------------------------------------------------------------------
 
