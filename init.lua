@@ -187,6 +187,11 @@ elseif vim.fn.filereadable("/usr/share/vim/addons/plugin/gtags.vim") == 1 then  
 end
 if vim.fn.exists("loaded_gtags") == 1 then
     vim.keymap.set('n', '<C-g>', "<cmd>GtagsCursor<cr>", { silent = true, noremap = true })
+    vim.keymap.set('n', '<leader>gl', function()
+        local win_pos = vim.api.nvim_win_get_cursor(0)
+        vim.cmd([[Gtags -f %]])
+        vim.api.nvim_win_set_cursor(0, win_pos)
+    end, { silent = true, noremap = true })
 end
 
 -------------------------------------------------------------------------------
