@@ -300,6 +300,7 @@ h("DiagnosticSignError", { fg = c.red })
 h("DiagnosticSignWarn", { fg = c.yellow })
 h("DiagnosticSignInfo", { fg = c.aqua })
 h("DiagnosticSignHint", { fg = c.green })
+h("DiagnosticUnnecessary", { undercurl = true, sp = c.gray })
 
 -- [[ lsp highlights ]] `h lsp.txt:446`
 h("LspReferenceText", { bg = c.bg2 })
