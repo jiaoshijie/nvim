@@ -139,7 +139,13 @@ local JSJ_useful_autogroup = api.nvim_create_augroup("JSJ_useful_autogroup", { c
 autocmd("BufReadPost", {
     pattern = "*",
     group = JSJ_useful_autogroup,
-    command = [[if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif]],
+    callback = function()
+        local r_c = vim.api.nvim_buf_get_mark(0, '"')
+        local max_lnum = vim.api.nvim_buf_line_count(0)
+        if r_c[1] > 0 and r_c[1] < max_lnum then
+            pcall(vim.api.nvim_win_set_cursor, 0, r_c)
+        end
+    end
 })
 autocmd("TextYankPost", {
     pattern = "*",
