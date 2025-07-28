@@ -1,7 +1,7 @@
 local _M = {}
 local fs_events = {}
 local git_dir_cache = {}
-local uv = vim.loop
+local uv = vim.uv
 
 local function get_git_head(bufnr, head_file)
     local f_head = io.open(head_file)

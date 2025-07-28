@@ -1,6 +1,6 @@
 local command = vim.api.nvim_create_user_command
 local system = vim.fn.system
-local uv = vim.loop
+local uv = vim.uv
 
 -- Add help file: https://neovim.io/doc/user/usr_05.html#05.6
 
