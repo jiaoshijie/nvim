@@ -91,6 +91,7 @@ onlysearch.setup({
             ['='] = 'toggle_lines',
         },
     },
+    handle_sys_clipboard_paste = true,
 })
 
 vim.api.nvim_create_user_command('Os', function()
