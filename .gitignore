@@ -2,7 +2,8 @@ tmp/
 .netrwhist
 spell/
 pack/
-!pack/my/*
+!pack/my/start/undotree
+!pack/my/start/onlysearch/
 plugin/
 !after/plugin
 .nvimrc

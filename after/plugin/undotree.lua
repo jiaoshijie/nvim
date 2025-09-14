@@ -8,7 +8,7 @@ undotree.setup({
     float_diff = true,      -- set this `true` will disable layout option
     layout = "left_bottom", -- "left_bottom", "left_left_bottom"
     position = "left",
-    ignore_filetype = { 'Undotree', 'UndotreeDiff', 'qf', 'TelescopePrompt', 'spectre_panel', 'tsplayground' },
+    ignore_filetype = { 'Undotree', 'UndotreeDiff', 'qf', 'TelescopePrompt', 'tsplayground' },
     window = {
         winblend = 30,
     },
@@ -23,6 +23,6 @@ undotree.setup({
     },
 })
 
--- vim.keymap.set('n', '<leader>uo', undotree.open, { noremap = true, silent = true })
--- vim.keymap.set('n', '<leader>uc', undotree.close, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>u', undotree.toggle, { noremap = true, silent = true })
+vim.api.nvim_create_user_command('Undotree', function()
+    undotree.toggle()
+end, { nargs = 0 })
