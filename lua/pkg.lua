@@ -7,10 +7,10 @@ local uv = vim.uv
 local _plugin_dir = vim.fn.stdpath('data') .. '/site/pack/plugins/start/'
 local _plugin_doc_dir = vim.fn.stdpath('data') .. '/site/doc/'
 local _plugins = {
-    "nvim-lua/plenary.nvim",
+    "nvim-lua/plenary.nvim",  -- TODO(jsj): Remove this dependency
 
     { uri = "nvim-treesitter/nvim-treesitter", doc = "nvim-treesitter.txt", branch = "main" },
-    { uri = "nvim-telescope/telescope.nvim", doc = "telescope.txt" },
+    { uri = "ibhagwan/fzf-lua", doc = { "fzf-lua-opts.txt", "fzf-lua.txt" } },
 
     { uri = "tpope/vim-fugitive", doc = "fugitive.txt" },
     { uri = "tpope/vim-surround", doc = "surround.txt" },
@@ -61,9 +61,17 @@ local install_plugins = function()
             print(system(cmd))
 
             if extra_flags.doc then
-                local dst_doc = _plugin_doc_dir .. extra_flags.doc
-                local src_doc = _plugin_dir .. name .. '/doc/' .. extra_flags.doc
-                system({ 'ln', '-sf', src_doc, dst_doc })
+                if type(extra_flags.doc) == "string" then
+                    local dst_doc = _plugin_doc_dir .. extra_flags.doc
+                    local src_doc = _plugin_dir .. name .. '/doc/' .. extra_flags.doc
+                    system({ 'ln', '-sf', src_doc, dst_doc })
+                elseif type(extra_flags.doc) == "table" then
+                    for _, doc in ipairs(extra_flags.doc) do
+                        local dst_doc = _plugin_doc_dir .. doc
+                        local src_doc = _plugin_dir .. name .. '/doc/' .. doc
+                        system({ 'ln', '-sf', src_doc, dst_doc })
+                    end
+                end
             end
         end
     end

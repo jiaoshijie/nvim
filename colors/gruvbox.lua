@@ -463,17 +463,13 @@ h('@lsp.type.type', { link = "@type" })
 h('@lsp.type.typeParameter', { link = "@type.definition" })
 h('@lsp.type.variable', { link = "@variable" })
 
--- [[ telescope ]] `https://github.com/nvim-telescope/telescope.nvim/blob/master/plugin/telescope.lua`
-h("TelescopeNormal", { fg = c.fg0 })
-h("TelescopeSelection", { bg = c.bg4, bold = true })
-h("TelescopeSlectionCaret", { fg = c.red })
-h("TelescopeMultiSelection", { fg = c.grey })
-h("TelescopeBorder", { fg = c.yellow })
-h("TelescopePromptBorder", { fg = c.blue })
-h("TelescopeResultsBorder", { fg = c.yellow })
-h("TelescopePreviewBorder", { fg = c.purple })
-h("TelescopeMatching", { fg = c.yellow, bold = true })
-h("TelescopePromptPrefix", { fg = c.red })
+-- [[ fzf-lua ]] `https://github.com/ibhagwan/fzf-lua?tab=readme-ov-file#highlight-groups`
+h("FzfLuaNormal", { fg = c.fg0 })
+h("FzfLuaBorder", { fg = c.purple })
+h("FzfLuaTitleFlags", { fg = c.yellow, bg = c.bg2, bold = true })
+h("FzfLuaPreviewBorder", { fg = c.yellow })
+h("FzfLuaScrollBorderEmpty", { fg = c.blue })
+h("FzfLuaScrollBorderFull", { fg = c.blue })
 
 -- [[ Undotree ]] `https://github.com/jiaoshijie/undotree/blob/main/plugin/undotree.lua`
 h("UndotreeDiffLine", { fg = c.aqua, bg = c.bg0 })
