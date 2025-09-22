@@ -8,7 +8,7 @@ undotree.setup({
     float_diff = true,      -- set this `true` will disable layout option
     layout = "left_bottom", -- "left_bottom", "left_left_bottom"
     position = "left",
-    ignore_filetype = { 'Undotree', 'UndotreeDiff', 'qf', 'TelescopePrompt', 'tsplayground' },
+    ignore_filetype = { 'Undotree', 'UndotreeDiff', 'qf', 'query' },
     window = {
         winblend = 30,
     },

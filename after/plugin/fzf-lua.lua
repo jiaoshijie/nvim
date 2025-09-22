@@ -10,7 +10,7 @@ fzf_lua.setup({
     defaults = {
         file_icons = false,
         winopts = {
-            col = 0.45,
+            col = 0.50,
             row = 0.35,
             width = 0.90,
             height = 0.85,
@@ -32,19 +32,7 @@ fzf_lua.setup({
         formatter = "path.filename_first",
         cwd_prompt = false,
     },
-    actions = {
-        files = {
-            ["enter"]       = actions.file_edit_or_qf,
-            ["ctrl-s"]      = actions.file_split,
-            ["ctrl-v"]      = actions.file_vsplit,
-            ["ctrl-t"]      = actions.file_tabedit,
-            ["alt-q"]       = actions.file_sel_to_qf,
-            ["alt-Q"]       = actions.file_sel_to_ll,
-            ["alt-i"]       = actions.toggle_ignore,
-            ["alt-h"]       = actions.toggle_hidden,
-            ["alt-f"]       = actions.toggle_follow,
-        },
-    },
+    fzf_colors = true,
 })
 
 local map = vim.keymap.set
@@ -62,7 +50,7 @@ local exclusive_file_patterns = {
 }
 
 local gen_cmd_with_efp = function()
-    -- NOTE: Assuming that riggrep must be installed
+    -- NOTE: Assuming that `riggrep` must have been installed
     local cmd = {}
 
     if vim.fn.executable("fd") == 1 then

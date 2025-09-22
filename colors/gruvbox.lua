@@ -470,6 +470,13 @@ h("FzfLuaTitleFlags", { fg = c.yellow, bg = c.bg2, bold = true })
 h("FzfLuaPreviewBorder", { fg = c.yellow })
 h("FzfLuaScrollBorderEmpty", { fg = c.blue })
 h("FzfLuaScrollBorderFull", { fg = c.blue })
+h("FzfLuaFzfMatch", { fg = c.yellow, bold = true })
+h("FzfLuaFzfPrompt", { fg = c.red })
+h("FzfLuaFzfBorder", { fg = c.aqua })
+h("FzfLuaFzfScrollbar", { fg = c.blue })
+h("FzfLuaFzfHeader", { fg = c.gray })
+h("FzfLuaFzfMarker", { fg = c.red })
+h("FzfLuaFzfPointer", { fg = c.yellow })
 
 -- [[ Undotree ]] `https://github.com/jiaoshijie/undotree/blob/main/plugin/undotree.lua`
 h("UndotreeDiffLine", { fg = c.aqua, bg = c.bg0 })
