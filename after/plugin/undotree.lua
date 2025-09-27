@@ -10,7 +10,8 @@ undotree.setup({
     position = "left",
     ignore_filetype = { 'Undotree', 'UndotreeDiff', 'qf', 'query' },
     window = {
-        winblend = 30,
+        winblend = 10,
+        border = "rounded",
     },
     keymaps = {
         ['j'] = "move_next",
