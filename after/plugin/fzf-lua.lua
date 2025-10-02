@@ -4,8 +4,6 @@ if not found then
     return
 end
 
-local actions = fzf_lua.actions
-
 fzf_lua.setup({
     defaults = {
         file_icons = false,
