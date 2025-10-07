@@ -126,10 +126,10 @@ _M.copy_file_path_lnum = function(flag, line)
 end
 
 _M.edit_my_todolist = function()
-    if vim.fn.filereadable(vim.fn.expand("~/GDrive/todo.md")) == 1 then
-        vim.cmd(":edit ~/GDrive/todo.md")
+    if vim.fn.filereadable(vim.fn.expand("~/media/GDrive/todo.md")) == 1 then
+        vim.cmd(":edit ~/media/GDrive/todo.md")
     else
-        _M.echo_err_msg("File `~/GDrive/todo.md` doesn't exist or is not readable!!!")
+        _M.echo_err_msg("File `~/media/GDrive/todo.md` doesn't exist or is not readable!!!")
     end
 end
 
