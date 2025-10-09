@@ -30,6 +30,11 @@ fzf_lua.setup({
         formatter = "path.filename_first",
         cwd_prompt = false,
     },
+    git = {
+        files = {
+            cmd = "git ls-files --others --exclude-standard --cached | uniq",
+        },
+    },
     fzf_colors = true,
 })
 
@@ -93,8 +98,6 @@ local neovim_config = function()
         cwd_header = false,
     })
 end
-
----------------------------- NOTE: keymaps below ------------------------------
 
 local opts = { noremap = true, silent = true }
 map("n", "<leader>ff", search_all_files, opts)
