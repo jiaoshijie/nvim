@@ -41,12 +41,12 @@ fzf_lua.setup({
 local map = vim.keymap.set
 
 local exclusive_file_patterns = {
-    "%.bmp", "%.png", "%.jpg", "%.gif", "%.img",  -- images
-    "%.iso", "%.zip", "%.7z", "%.rar", "%.gz", "%.tar", "%.gzip", "%.bz2", "%.tgz", "%.xz",  -- extract files
-    "%.wav", "%.mp3",  -- audio files
-    "%.mp4", "%.avi", "%.flv", "%.mkv", "%.swf", "%.srt",  -- video files
-    "%.chm", "%.epub", "%.pdf", "%.mobi", "%.ttf",  -- binary text files
-    "%.mdd", "%.mdx",  -- binary dictionary files
+    "*.bmp", "*.png", "*.jpg", "*.gif", "*.img",  -- images
+    "*.iso", "*.zip", "*.7z", "*.rar", "*.gz", "*.tar", "*.gzip", "*.bz2", "*.tgz", "*.xz",  -- extract files
+    "*.wav", "*.mp3",  -- audio files
+    "*.mp4", "*.avi", "*.flv", "*.mkv", "*.swf", "*.srt",  -- video files
+    "*.chm", "*.epub", "*.pdf", "*.mobi", "*.ttf",  -- binary text files
+    "*.mdd", "*.mdx",  -- binary dictionary files
     "venv", "__pycache__", ".git",  -- directories
     "tags",  -- `ctags` generated file
     "GPATH", "GRTAGS", "GTAGS",  -- `GNU global` generated files
