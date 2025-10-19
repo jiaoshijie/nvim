@@ -1,3 +1,5 @@
+-- https://tonsky.me/blog/syntax-highlighting/
+-- TODO(rethink about this colorscheme):
 local h = function(group, opts)
     opts.default = false
     vim.api.nvim_set_hl(0, group, opts)
@@ -74,7 +76,7 @@ vim.g.terminal_color_15 = '#ffffff'
 c.statusline = "#2c323c"
 c.statuslineNC = "#5c6370"
 
--- {{{ `h syntax.txt:5115`
+-- {{{ `h syntax.txt:5151`
 h("ColorColumn", { bg = c.bg1 })
 h("Conceal", { fg = c.blue })
 
@@ -111,8 +113,8 @@ h("LineNr", { fg = c.bg4 })
 h("LineNrAbove", { link = "LineNr" })
 h("LineNrBelow", { link = "LineNr" })
 h("CursorLineNr", { fg = c.yellow, bg = c.bg1, bold = true })
-h("CursorLineSign", { link = "SignColumn" })
 h("CursorLineFold", { link = "FoldColumn" })
+h("CursorLineSign", { link = "SignColumn" })
 
 h("MatchParen", { bg = c.bg3, bold = true })
 h("ModeMsg", { fg = c.yellow, bold = true })
@@ -122,17 +124,28 @@ h("MoreMsg", { fg = c.yellow, bold = true })
 h("NonText", { fg = c.bg2 })
 h("Normal", { fg = c.fg1, bg = c.bg0 })
 h("NormalFloat", { link = "Normal" })
+h("FloatBorder", { fg = c.bg2 })
+h("FloatTitle", { fg = c.green })
+h("FloatFooter", { fg = c.green })
 h("NormalNC", { link = "Normal" })
 
 --[[ Pmenu ]]
 h("Pmenu", { fg = c.fg1, bg = c.bg2 })
 h("PmenuSel", { fg = c.bg2, bg = c.blue, bold = true, italic = true })
+h("PmenuKind", {  link = "Pmenu" })
+h("PmenuKindSel", { link = "PmenuSel" })
+h("PmenuExtra", {  link = "Pmenu" })
+h("PmenuExtraSel", { link = "PmenuSel" })
 h("PmenuSbar", { bg = c.bg2 })
 h("PmenuThumb", { bg = c.bg4 })
+h("PmenuMatch", { fg = c.fg1, bold = true })
+h("PmenuMatchSel", { fg = c.fg1, bold = true })
+h("ComplMatchIns", { fg = c.fg1 })
 
 h("Question", { fg = c.orange, bold = true })
 h("QuickFixLine", { link = "Search" })
 h("Search", { fg = c.yellow, bg = c.bg0, reverse = true })
+-- SnippetTabstop
 h("SpecialKey", { fg = c.bg2 })
 
 -- [[ Spelling ]]
@@ -143,6 +156,8 @@ h("SpellRare", { fg = c.bg0, bg = c.purple })
 
 h("StatusLine", { bg = c.statusline })
 h("StatusLineNC", { bg = c.statuslineNC })
+h("StatusLineTerm", { link = "StatusLine" })
+h("StatusLineTermNC", { link = "StatusLineNC" })
 h("TabLine", { link = "TabLineFill" })
 h("TabLineFill", { fg = c.gray, bg = c.fg0 })
 h("TabLineSel", { fg = c.green, bg = c.bg2 })
@@ -167,7 +182,7 @@ h("WinBarNC", { link = "StatusLineNC" })
 
 -- }}}
 
--- {{{ `h syntax.txt:200`
+-- {{{ `h syntax.txt:198`
 h("Comment", { fg = c.gray, italic = true })
 
 h("Constant", { fg = c.purple })
@@ -210,6 +225,9 @@ h("Underlined", { fg = c.blue, underline = true })
 h("Ignore", { link = "Conceal" })
 h("Error", { fg = c.red, bg = c.bg0, reverse = true, bold = true })
 h("Todo", { fg = c.yellow, bg = c.bg0, reverse = true, bold = true })
+h("Added", { fg = c.green })
+h("Changed", { fg = c.orange })
+h("Removed", { fg = c.red })
 -- }}}
 
 -- {{{ FileType specific
@@ -279,15 +297,17 @@ h("healthWarning", { fg = c.yellow })
 
 -- {{{ plugins
 
--- [[ diagnostic highlights ]]  `h diagnostic.txt:192`
+-- [[ diagnostic highlights ]]  `h diagnostic.txt:237`
 h("DiagnosticError", { fg = c.red })
 h("DiagnosticWarn", { fg = c.yellow })
 h("DiagnosticInfo", { fg = c.aqua })
 h("DiagnosticHint", { fg = c.green })
+h("DiagnosticOk", { fg = c.blue })
 h("DiagnosticVirtualTextError", { fg = c.red, bg = c.visual_red, italic = true })
 h("DiagnosticVirtualTextWarn", { fg = c.yellow, bg = c.visual_yellow, italic = true })
 h("DiagnosticVirtualTextInfo", { fg = c.aqua, bg = c.visual_aqua, italic = true })
 h("DiagnosticVirtualTextHint", { fg = c.green, bg = c.visual_green, italic = true })
+h("DiagnosticVirtualTextOk", { fg = c.fg1, bg = c.visual_green, italic = true })
 h("DiagnosticUnderlineError", { undercurl = true, sp = c.red })
 h("DiagnosticUnderlineWarn", { undercurl = true, sp = c.yellow })
 h("DiagnosticUnderlineInfo", { undercurl = true, sp = c.aqua })
@@ -342,12 +362,12 @@ h('@float', { fg = c.purple })
 
 -- Functions
 h('@function', { fg = c.orange, italic = true })
-h('@function.call', { fg = c.yellow })
+h('@function.call', { link = 'Normal' })
 h('@function.builtin', { fg = c.orange })
 h('@function.macro', { fg = c.blue })
 
 h('@method', { fg = c.yellow, italic = true })
-h('@method.call', { fg = c.yellow })
+h('@method.call', { link = 'Normal' })
 
 h('@constructor', { fg = c.aqua })
 h('@parameter', { fg = c.fg1 })
