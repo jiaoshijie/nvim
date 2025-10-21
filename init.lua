@@ -24,6 +24,8 @@ keymap({ "", "i" }, "<C-j>", "<C-[>", keymap_opts)
 keymap("n", "s", "<Nop>", { noremap = true })
 keymap("n", "S", "<Nop>", { noremap = true })
 keymap("n", "C", "<Nop>", { noremap = true })
+keymap("n", "<C-f>", "<Nop>", { noremap = true })  -- only use <C-u>
+keymap("n", "<C-b>", "<Nop>", { noremap = true })  -- only use <C-d>
 keymap({"n", "v"}, "<Space>", "<NOP>", keymap_opts)
 keymap("v", "J", ":m '>+1<cr>gv=gv", keymap_opts)
 keymap("v", "K", ":m '<-2<cr>gv=gv", keymap_opts)
