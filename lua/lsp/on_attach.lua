@@ -34,21 +34,6 @@ local on_attach = function(client, bufnr)
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, opts)
 
-    local lsp_on_attach = vim.api.nvim_create_augroup("jsj_lsp_on_attach_" .. bufnr, { clear = true })
-
-    if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_create_autocmd("CursorHold", {
-            group = lsp_on_attach,
-            buffer = bufnr,
-            callback = function() vim.lsp.buf.document_highlight() end,
-        })
-        vim.api.nvim_create_autocmd("CursorMoved", {
-            group = lsp_on_attach,
-            buffer = bufnr,
-            callback = function() vim.lsp.buf.clear_references() end,
-        })
-    end
-
     if client.server_capabilities.documentSymbolProvider then
         symbols_com(client, bufnr)
     end
@@ -59,6 +44,7 @@ local on_attach = function(client, bufnr)
 
     -- NOTE: `:h vim.lsp.semantic_tokens.start` `:h lsp-semantic-highlight`
     client.server_capabilities.semanticTokensProvider = nil
+    client.server_capabilities.documentHighlightProvider = nil
 end
 
 return on_attach

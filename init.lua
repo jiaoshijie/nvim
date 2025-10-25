@@ -134,7 +134,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 })
 keymap("n", "<leader>tt", kit.theme_alpha_switch, keymap_opts)
 require('statusline').setup()
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("jsj")
 
 -- NOTE: autogroups
 local JSJ_useful_autogroup = api.nvim_create_augroup("JSJ_useful_autogroup", { clear = true })
@@ -153,7 +153,7 @@ autocmd("TextYankPost", {
     pattern = "*",
     group = JSJ_useful_autogroup,
     callback = function()
-        vim.highlight.on_yank({ higourp = "IncSearch", timeout = 300 })
+        vim.hl.on_yank({ higourp = "IncSearch", timeout = 300 })
     end,
 })
 

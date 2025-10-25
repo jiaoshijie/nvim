@@ -7,3 +7,4 @@ pack/
 plugin/
 !after/plugin
 .nvimrc
+Session.vim
