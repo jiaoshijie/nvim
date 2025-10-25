@@ -42,26 +42,10 @@ keymap('x', '?', '<C-\\><C-n>`>?\\%V', { desc = 'Search backward within visual s
 -- https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
 vim.g.netrw_banner = 0    -- disable annoying banner
 vim.g.netrw_browse_split = 0
-vim.g.netrw_altv = 1      -- open splits to the right
-vim.g.netrw_alto = 0
 vim.g.netrw_liststyle = 0 -- tree view
-vim.g.netrw_winsize = 25
-vim.g.netrw_preview = 1
-vim.g.netrw_hide = 1
 vim.g.netrw_keepdir = 1
+vim.g.netrw_hide = 1
 vim.g.netrw_list_hide = "\\(^\\|\\s\\s\\)\\zs\\.\\S\\+"
-vim.g.netrw_localcopycmd = "cp"
-vim.g.netrw_localcopycmdopt = ""
-vim.g.netrw_localcopydircmd = "cp"
-vim.g.netrw_localcopydircmdopt = "-r"
-vim.g.netrw_localmkdir = "mkdir"
-vim.g.netrw_localmkdiropt = ""
-vim.g.netrw_localmovecmd = "mv"
-vim.g.netrw_localmovecmdopt = ""
--- NOTE: the `g:netrw_localrmdir` is no longer used, use vim's delete() function instead
--- NOTE: :h netrw
--- vim.g.netrw_localrmdir = "rm"
--- vim.g.netrw_localrmdiropt = "-r"
 
 -- misc
 o.mousemodel = "extend"
