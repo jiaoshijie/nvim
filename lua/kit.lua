@@ -3,6 +3,18 @@ local o = vim.opt
 local vf = vim.fn
 local api = vim.api
 
+local ignore_patterns = {
+    "*.bmp", "*.png", "*.jpg", "*.gif", "*.img",  -- images
+    "*.iso", "*.zip", "*.7z", "*.rar", "*.gz", "*.tar", "*.gzip", "*.bz2", "*.tgz", "*.xz",  -- extract files
+    "*.wav", "*.mp3",  -- audio files
+    "*.mp4", "*.avi", "*.flv", "*.mkv", "*.swf", "*.srt",  -- video files
+    "*.chm", "*.epub", "*.pdf", "*.mobi", "*.ttf",  -- binary text files
+    "*.mdd", "*.mdx",  -- binary dictionary files
+    "venv", "__pycache__", ".git",  -- directories
+    "tags",  -- `ctags` generated file
+    "GPATH", "GRTAGS", "GTAGS",  -- `GNU global` generated files
+}
+
 _M.v = {
     theme_transparent = true,
 }
@@ -162,6 +174,37 @@ _M.toggle_qf_list = function(listname, perfix)
     else
         api.nvim_exec2(perfix .. "close", { output = false })
     end
+end
+
+--- @param arg table { find_files_cmd = nil, ignore_patterns = {} }
+_M.find_files_cmd = function(arg)
+    if type(arg) ~= "table" then
+        print("WARN: kit.find_files_cmd `arg` is not a table!")
+        return nil
+    end
+    -- NOTE: Assuming that `riggrep` have been installed
+    if not arg.find_files_cmd then
+        local cmd, ff
+        if vim.fn.executable("fd") == 1 then
+            cmd, ff = { "fd --color=never --type f --type l" }, "--exclude %s"
+        else
+            cmd, ff = { "rg --color=never --files" }, "-g '!%s'"
+        end
+
+        for _, val in ipairs(ignore_patterns) do
+            table.insert(cmd, string.format(ff, val))
+        end
+
+        if type(arg.ignore_patterns) == "table" then
+            for _, val in ipairs(arg.ignore_patterns) do
+                table.insert(cmd, string.format(ff, val))
+            end
+        end
+
+        arg.find_files_cmd = table.concat(cmd, ' ')
+    end
+
+    return arg.find_files_cmd
 end
 
 return _M
