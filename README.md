@@ -38,12 +38,12 @@ Totally stole this from [kickstart.nvim](https://github.com/nvim-lua/kickstart.n
 
 ## treesitter queries
 
-##### queries/markdown/highlights.scm
-
-
 > [!NOTE]
 > [How to disable conceal highlight?](https://github.com/nvim-treesitter/nvim-treesitter/discussions/6208)
+>
 > I want to disable code block concealing, but I haven’t found a good way to do it yet.
+
+##### queries/markdown/highlights.scm
 
 ```diff
  (fenced_code_block
