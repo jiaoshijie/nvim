@@ -97,7 +97,7 @@ hl("LineNrBelow", { link = "LineNr" })
 hl("CursorLineNr", { fg = c.yellow, bg = c.cursor_line_bg, bold = true })
 hl("CursorLineFold", { link = "FoldColumn" })
 hl("CursorLineSign", { link = "SignColumn" })
-hl("MatchParen", { fg = c.orange, bg = c.gray_bg, bold = true })  -- matched () {} []
+hl("MatchParen", { fg = c.cursor_bg, bg = c.gray_bg, bold = true })  -- matched () {} []
 hl("ModeMsg", { fg = c.yellow })
 hl("MsgArea", { fg = c.fg })
 hl("MsgSeparator", { link = "StatusLine" })
@@ -299,7 +299,7 @@ hl("LspCodeLensSeparator", { link = "NonText" })
 hl("LspSignatureActiveParameter", { fg = c.yellow, bg = c.gray_bg })
 
 -- `h lsp.txt:524`
--- NOTE: I don't use lsp semantic highlights
+-- NOTE: Using neovim's default highlight link mapping
 -- hl("@lsp.type.class", {})
 -- hl("@lsp.type.comment", {})
 -- hl("@lsp.type.decorator", {})
@@ -394,9 +394,9 @@ hl("@punctuation.bracket", { fg = c.gray_fg })
 hl("@punctuation.special", { fg = c.gray_fg })
 hl("@comment", { fg = c.gray, italic = true })
 hl("@comment.documentation", { fg = c.orange })
-hl("@comment.error", { fg = c.red, bg = c.bg, reverse = true })
-hl("@comment.warning", { fg = c.yellow, bg = c.bg, reverse = true })
-hl("@comment.todo", { fg = c.yellow, bg = c.bg, reverse = true })
+hl("@comment.error", { fg = c.bg, bg = c.red, bold = true })
+hl("@comment.warning", { fg = c.bg, bg = c.yellow, bold = true })
+hl("@comment.todo", { link = "@comment.warning" })
 hl("@comment.note", { fg = c.yellow })
 hl("@markup.strong", { fg = c.orange, bold = true })
 hl("@markup.italic", { fg = c.gray_fg, italic = true })
@@ -427,7 +427,7 @@ hl("@tag.builtin", { fg = c.aqua })
 hl("@tag.attribute", { fg = c.yellow })
 hl("@tag.delimiter", { fg = c.gray })
 
--- markdown treesitter
+-- filetype specific
 hl("@string.escape.markdown_inline", { fg = c.gray })
 
 ----------------------------------> plugins <---------------------------------

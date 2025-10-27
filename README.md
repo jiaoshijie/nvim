@@ -24,7 +24,7 @@ Totally stole this from [kickstart.nvim](https://github.com/nvim-lua/kickstart.n
 
 ## Requirements
 
-- nvim lately(~~nightly~~) version
+- nvim **lately**(~~nightly~~) version
 - `:checkhealth` for more infomation.
 
 ## Hints
@@ -36,6 +36,56 @@ Totally stole this from [kickstart.nvim](https://github.com/nvim-lua/kickstart.n
   * `args */**.lua` `argdo`
   * `bufdo`
 
-## Ref
+## treesitter queries
 
-- [align-text-on-an-equals-sign-in-vim](https://stackoverflow.com/questions/8964953/align-text-on-an-equals-sign-in-vim)
+##### queries/markdown/highlights.scm
+
+
+> [!NOTE]
+> [How to disable conceal highlight?](https://github.com/nvim-treesitter/nvim-treesitter/discussions/6208)
+> I want to disable code block concealing, but I haven’t found a good way to do it yet.
+
+```diff
+ (fenced_code_block
+-  (fenced_code_block_delimiter) @markup.raw.block
+-  (#set! conceal "")
+-  (#set! conceal_lines ""))
++  (fenced_code_block_delimiter) @markup.raw.block)
+
+ (fenced_code_block
+   (info_string
+-    (language) @label
+-    (#set! conceal "")
+-    (#set! conceal_lines "")))
++    (language) @label))
+```
+
+##### queries/markdown_inline/highlights.scm
+
+```diff
+ ; Conceal codeblock and text style markers
+ ([
+-  (code_span_delimiter)
++;  (code_span_delimiter)
+   (emphasis_delimiter)
+ ] @conceal
+   (#set! conceal ""))
+```
+
+##### queries/json/highlights.scm
+
+```diff
+-("\"" @conceal
+-  (#set! conceal ""))
++; ("\"" @conceal
++;   (#set! conceal ""))
+
+ (escape_sequence) @string.escape
+
+-((escape_sequence) @conceal
+-  (#eq? @conceal "\\\"")
+-  (#set! conceal "\""))
++; ((escape_sequence) @conceal
++;   (#eq? @conceal "\\\"")
++;   (#set! conceal "\""))
+```

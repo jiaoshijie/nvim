@@ -1,9 +1,3 @@
-; TODO: https://github.com/nvim-treesitter/nvim-treesitter/discussions/6208
-; This file is almost a copy from treesitter/queries/markdown_inline/highligts.scm
-; Because I want to disable code block concealing,
-; I can't find a better way to achieve this.
-; ------------------------------------------------------------------
-
 ; From MDeiml/tree-sitter-markdown
 (code_span) @markup.raw @nospell
 
