@@ -1,6 +1,4 @@
-local symbols_com = require("lsp.component").on_attach
-
-local on_attach = function(client, bufnr)
+return function(client, bufnr)
     local opts = { noremap = true, silent = true, buffer = bufnr }
     -- NOTE(lsp-default): omnifunc
 
@@ -35,16 +33,18 @@ local on_attach = function(client, bufnr)
     end, opts)
 
     if client.server_capabilities.documentSymbolProvider then
-        symbols_com(client, bufnr)
+        require("lsp.statusline").on_attach(client.id, bufnr)
     end
 
     if client.server_capabilities.completionProvider then
         vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = false })
     end
 
+    if client.server_capabilities.documentHighlightProvider then
+        vim.keymap.set("n", "<leader>n", vim.lsp.buf.document_highlight)
+        vim.keymap.set("n", "<leader>N", vim.lsp.buf.clear_references)
+    end
+
     -- NOTE: `:h vim.lsp.semantic_tokens.start` `:h lsp-semantic-highlight`
     client.server_capabilities.semanticTokensProvider = nil
-    client.server_capabilities.documentHighlightProvider = nil
 end
-
-return on_attach

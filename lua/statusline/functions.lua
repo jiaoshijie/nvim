@@ -3,7 +3,7 @@ local fn = vim.fn
 local dia, dia_s = vim.diagnostic, vim.diagnostic.severity
 local fmt = string.format
 
-local lsp_com = require("lsp.component").lsp_component
+local lsp_statusline = require("lsp.statusline").statusline
 
 local modes = {
     ["?"] = { text = "", state = "inactive" },
@@ -114,7 +114,7 @@ end
 _M.get_lsp_com = function()
     return {
         state = is_active() and "component" or "inactive",
-        text = is_active() and lsp_com() or "",
+        text = is_active() and lsp_statusline() or "",
     }
 end
 
@@ -149,7 +149,7 @@ end
 local git_branch = function()
     if not is_active() or vim.g.loaded_fugitive ~= 1 then return "" end
     local branch = vim.fn['FugitiveStatusline']()
-    return #branch > 0 and fmt("  %s ", branch:sub(6, -3)) or ""
+    return #branch > 0 and fmt("  %s ", branch:sub(6, -3)) or ""
 end
 
 _M.git_branch = function()

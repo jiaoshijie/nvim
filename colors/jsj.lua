@@ -289,7 +289,7 @@ hl("DiagnosticUnnecessary", { sp = c.gray, undercurl = true })
 
 ----------------------------------> lsp <-------------------------------------
 -- `h lsp.txt:440`
-hl("LspReferenceText", { bg = c.gray_bg })
+hl("LspReferenceText", { bg = c.gray })
 hl("LspReferenceRead", { link = "LspReferenceText" })
 hl("LspReferenceWrite", { link = "LspReferenceText" })
 hl("LspReferenceTarget", { link = "LspReferenceText" })

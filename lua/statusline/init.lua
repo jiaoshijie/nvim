@@ -68,7 +68,12 @@ local highlight_section = function(section)
 end
 
 local highlight_sections = function(sections)
-    return vim.tbl_map(highlight_section, sections)
+    local ret = {}
+    for _, v in ipairs(sections) do
+        table.insert(ret, highlight_section(v))
+    end
+    return ret
+    -- return vim.tbl_map(highlight_section, sections)
 end
 
 _M.update_statusline = function()
