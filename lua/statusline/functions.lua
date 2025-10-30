@@ -146,10 +146,15 @@ _M.get_lsp_error = function()
     }
 end
 
+local git_branch = function()
+    if not is_active() or vim.g.loaded_fugitive ~= 1 then return "" end
+    local branch = vim.fn['FugitiveStatusline']()
+    return #branch > 0 and fmt("  %s ", branch:sub(6, -3)) or ""
+end
+
 _M.git_branch = function()
-    local branch = vim.b.Jsj_git_branch and "  " .. vim.b.Jsj_git_branch .. " " or ""
     return {
-        text = is_active() and branch or "", -- e0a0
+        text = git_branch(),
         state = "branch",
     }
 end

@@ -3,7 +3,6 @@ local fmt = string.format
 local api = vim.api
 local o, wo = vim.o, vim.wo
 local funcs = require("statusline.functions")
-local git_branch = require("statusline.git_branch")
 local h = function(group, opts)
     opts.default = false
     api.nvim_set_hl(0, group, opts)
@@ -95,7 +94,6 @@ _M.setup = function()
     sethlgroups()
     set_statusline()
     set_winbar()
-    git_branch.setup()
 end
 
 return _M
