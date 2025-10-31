@@ -100,7 +100,7 @@ local hls = {
             bg = c.bg,
         },
         info = {
-            fg = c.blue,
+            fg = c.green,
             bg = c.black,
             bold = true,
         },

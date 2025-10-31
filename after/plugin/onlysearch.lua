@@ -10,6 +10,14 @@ local args = {
 }
 local complete = {
     {
+        word = '-u',
+        kind = ' [U] --no-ignore',
+    },
+    {
+        word = '-uu',
+        kind = ' [UU] --no-ignore --hidden',
+    },
+    {
         word = '-w',
         kind = ' [W] Match Whole Word',
     },

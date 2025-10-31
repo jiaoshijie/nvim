@@ -68,6 +68,7 @@ o.foldenable = false
 o.updatetime = 500   -- 1. CursorHold event 2. write back swap file(not used) to disk
 o.exrc = true
 o.secure = true
+o.sessionoptions:append('localoptions')
 
 -- NOTE: completion
 o.completeopt = "menuone,noselect"

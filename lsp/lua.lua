@@ -1,5 +1,3 @@
--- 1. pacman -S lua-language-server
--- 2. install from github release page
 return {
     name = "lua language server",
     cmd = { "lua-language-server" },

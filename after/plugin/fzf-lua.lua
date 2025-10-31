@@ -33,6 +33,7 @@ fzf_lua.setup({
     },
     git = {
         files = {
+            formatter = "path.filename_first",
             cmd = "git ls-files --others --exclude-standard --cached | uniq",
         },
     },

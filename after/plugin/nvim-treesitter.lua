@@ -1,4 +1,3 @@
--- sudo pacman -S treesitter
 local found, treesitter = pcall(require, "nvim-treesitter")
 
 if not found then
