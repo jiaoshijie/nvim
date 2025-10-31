@@ -149,7 +149,7 @@ end
 _M.on_attach = function(client_id, bufnr)
     if doc_syms_map[bufnr] then return end
 
-    local lsp_statusline_augroup = vim.api.nvim_create_augroup("jsj_lsp_statusline_" .. bufnr, { clear = true })
+    local lsp_statusline_augroup = vim.api.nvim_create_augroup("JSJ_lsp_statusline_" .. bufnr, { clear = true })
 
     vim.api.nvim_create_autocmd({ "InsertLeave" }, {
         group = lsp_statusline_augroup,

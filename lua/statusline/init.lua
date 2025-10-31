@@ -1,104 +1,58 @@
 local _M = {}
 local fmt = string.format
-local api = vim.api
-local o, wo = vim.o, vim.wo
-local funcs = require("statusline.functions")
-local h = function(group, opts)
-    opts.default = false
-    api.nvim_set_hl(0, group, opts)
-end
+local kit = require("statusline.kit")
 
-local options = {
-    colors = require("statusline.theme"),
-    sections = {
-        { class = "Icon", item = funcs.get_Block },
-        { class = "Icon", item = funcs.get_Icon },
-        { class = "mode", item = funcs.get_mode },
-        { class = "git",  item = funcs.git_branch },
-        { item = "%<" },
-        { class = "info", item = funcs.get_spell },
-        { class = "file", item = funcs.get_filetype },
-        { class = "lsp", item = funcs.get_lsp_com },
-        { item = "%=" },
-        { class = "lsp", item = funcs.get_lsp_information },
-        { class = "lsp", item = funcs.get_lsp_hint },
-        { class = "lsp", item = funcs.get_lsp_warning },
-        { class = "lsp", item = funcs.get_lsp_error },
-        { class = "file", item = funcs.get_space_tab },
-        { class = "file", item = funcs.get_fileformat },
-        { class = "mode", item = funcs.get_filepos },
+local opt = {
+    statusline = {
+        [1] = kit.icon_block,
+        [2] = kit.icon_neovim,
+        [3] = kit.mode,
+        [4] = kit.git_branch,
+        [5] = kit.opt_spell,
+        [6] = kit.file_type,
+        [7] = "%<",
+        [8] = kit.lsp_symbols,
+        [9] = "%=",
+        [10] = kit.lsp_info,
+        [11] = kit.lsp_warn,
+        [12] = kit.lsp_error,
+        [13] = kit.file_indent,
+        [14] = kit.file_format,
+        [15] = kit.file_pos,
     },
-    winbar_sections = {
-        { item = "%<" },
-        { class = "file", item = funcs.winbar_get_filename },
-        { class = "file", item = funcs.get_fileinfo },
-    },
+    winbar = {
+        [1] = "%<",
+        [2] = kit.file_name,
+        [3] = kit.file_info,
+    }
 }
 
-local sethlgroups = function()
-    local group = vim.api.nvim_create_augroup("Jsj_Statusline_Colors", { clear = true })
-    vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
-        pattern = "*",
-        group = group,
-        callback = function()
-            h("StatusLine", { bg = "#2c323c" })
-            h("StatusLineNC", { bg = "#5c6370" })
-            h("WinBar", { link = "StatusLine" })
-            h("WinBarNC", { link = "StatusLineNC" })
-        end,
-    })
-    for class, attr in pairs(options.colors) do
-        for state, args in pairs(attr) do
-            local hlgroup = fmt("Statusline_%s_%s", class, state)
-            vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
-                pattern = "*",
-                group = group,
-                callback = function() h(hlgroup, args) end,
-            })
-        end
+local hl_cb = function(item)
+    if type(item) == "string" then
+        return item
     end
+    local item_obj = item()
+    local hl_group = fmt("JSJ_statusline_%s", item_obj.hlname)
+    return fmt("%%#%s#%s%%*", hl_group, item_obj.text)
 end
 
-local highlight_section = function(section)
-    if type(section.item) == "string" then
-        return section.item
-    end
-    local hg = fmt("Statusline_%s_%s", section.class, section.item().state)
-    return fmt("%%#%s#%s%%*", hg, section.item().text)
+_M.statusline = function()
+    return table.concat(vim.tbl_map(hl_cb, opt.statusline))
 end
 
-local highlight_sections = function(sections)
-    local ret = {}
-    for _, v in ipairs(sections) do
-        table.insert(ret, highlight_section(v))
-    end
-    return ret
-    -- return vim.tbl_map(highlight_section, sections)
-end
-
-_M.update_statusline = function()
-    return table.concat(highlight_sections(options.sections))
-end
-
-_M.update_winbar = function()
-    return table.concat(highlight_sections(options.winbar_sections))
-end
-
-local set_statusline = function()
-    o.showmode = false
-    o.statusline = [[%!luaeval('require("statusline").update_statusline()')]]
-    wo.statusline = o.statusline
-end
-
-local set_winbar = function()
-    o.winbar = [[%!luaeval('require("statusline").update_winbar()')]]
-    wo.winbar = o.winbar
+_M.winbar = function()
+    return table.concat(vim.tbl_map(hl_cb, opt.winbar))
 end
 
 _M.setup = function()
-    sethlgroups()
-    set_statusline()
-    set_winbar()
+    require("statusline.colors").setup_statusline_hl_groups()
+
+    vim.o.showmode = false  -- disable showing -- INSERT --, etc.
+    vim.o.statusline = [[%!luaeval('require("statusline").statusline()')]]
+    vim.wo.statusline = vim.o.statusline
+
+    vim.o.winbar = [[%!luaeval('require("statusline").winbar()')]]
+    vim.wo.winbar = vim.o.winbar
 end
 
 return _M

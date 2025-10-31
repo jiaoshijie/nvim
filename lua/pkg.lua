@@ -1,6 +1,7 @@
 local command = vim.api.nvim_create_user_command
 local system = vim.fn.system
 local uv = vim.uv
+local _M = {}
 
 -- Add help file: https://neovim.io/doc/user/usr_05.html#05.6
 
@@ -141,6 +142,10 @@ local clean_plugins = function()
     end
 end
 
-command("PkgInstall", install_plugins, { nargs = 0 })
-command("PkgUpdate", update_plugins, { nargs = 0 })
-command("PkgClean", clean_plugins, { nargs = 0 })
+_M.setup = function()
+    command("PkgInstall", install_plugins, { nargs = 0 })
+    command("PkgUpdate", update_plugins, { nargs = 0 })
+    command("PkgClean", clean_plugins, { nargs = 0 })
+end
+
+return _M

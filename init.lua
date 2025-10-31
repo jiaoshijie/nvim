@@ -111,7 +111,7 @@ o.list = true
 o.listchars = { trail = "·", tab = "» ", extends = "…", precedes = "…" }
 o.termguicolors = true
 o.background = "dark"
-local jsj_colorscheme_autogroup = api.nvim_create_augroup("JSJ_colorscheme_autogroup", { clear = true })
+local jsj_colorscheme_autogroup = api.nvim_create_augroup("JSJ_colorscheme_augroup", { clear = true })
 vim.api.nvim_create_autocmd("ColorScheme", {
     group = jsj_colorscheme_autogroup,
     pattern = "*",
@@ -122,7 +122,7 @@ require('statusline').setup()
 vim.cmd.colorscheme("jsj")
 
 -- NOTE: autogroups
-local JSJ_useful_autogroup = api.nvim_create_augroup("JSJ_useful_autogroup", { clear = true })
+local JSJ_useful_autogroup = api.nvim_create_augroup("JSJ_useful_augroup", { clear = true })
 autocmd("BufReadPost", {
     pattern = "*",
     group = JSJ_useful_autogroup,
@@ -164,8 +164,8 @@ vim.diagnostic.config({
     virtual_lines = false,
     signs = {
         text = {
-            [vim.diagnostic.severity.ERROR] = "",
-            [vim.diagnostic.severity.WARN]  = "",
+            [vim.diagnostic.severity.ERROR] = "E",
+            [vim.diagnostic.severity.WARN]  = "W",
             [vim.diagnostic.severity.HINT] = "",
             [vim.diagnostic.severity.INFO] = "",
         }
@@ -215,7 +215,7 @@ vim.lsp.enable({ "lua" })
 
 ------------------------------> load pkg <-------------------------------------
 
-require("pkg")
+require("pkg").setup()
 
 --------------------------> gnu global tool <----------------------------------
 
