@@ -66,7 +66,8 @@ o.laststatus = 3
 o.fileencodings = "ucs-bom,utf-8,cp936,default,latin1"  -- NOTE: cp936 is a superset of gbk
 o.foldenable = false
 o.updatetime = 500   -- 1. CursorHold event 2. write back swap file(not used) to disk
--- o.winborder = 'rounded'
+o.exrc = true
+o.secure = true
 
 -- NOTE: completion
 o.completeopt = "menuone,noselect"
@@ -141,7 +142,6 @@ autocmd("TextYankPost", {
     end,
 })
 
-
 -- NOTE: commands
 command("AI", [[echo "I want AI to do my laundry and dishes so that I can do art and writing, not for AI to do my art and writing so that I can do my laundry and dishes."]], { nargs = 0 })
 command("Cc", function() vf.setreg('+', vf.getreg('0')) end, { nargs = 0 })
@@ -152,23 +152,72 @@ command("Yp", function() kit.copy_file_path_lnum("p") end, { nargs = 0 })
 command("Df", function() kit.copy_file_path_lnum("t", true) end, { nargs = 0 })
 command("Dr", function() kit.copy_file_path_lnum(nil, true) end, { nargs = 0 })
 command("Todo", kit.edit_my_todolist, { nargs = 0 })
-command("Glow", kit.markdown_glow_render, { nargs = 0 })
--- command("Vterm", "vsplit term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
--- command("Hterm", "split term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
--- command("Tterm", "tabnew term://" .. vim.fn.expand("$SHELL"), { nargs = 0 })
-
 
 -- NOTE: keymaps
 keymap("n", "<leader>fc", kit.clean_trailing_spaces_and_lines, keymap_opts)
 keymap("n", "<leader>qq", function() kit.toggle_qf_list("quickfix", "c") end, keymap_opts)
 keymap("n", "<leader>ql", function() kit.toggle_qf_list("loclist", "l") end, keymap_opts)
 
--------------------------------------------------------------------------------
+-----------------------------> diagnostic <------------------------------------
+vim.diagnostic.config({
+    virtual_text = true,
+    virtual_lines = false,
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN]  = "",
+            [vim.diagnostic.severity.HINT] = "",
+            [vim.diagnostic.severity.INFO] = "",
+        }
+    },
+    update_in_insert = false,
+    underline = true,
+    severity_sort = true,
+    float = {
+        border = "rounded",
+    },
+})
 
-require("lsp")
+--------------------------------> lsp <----------------------------------------
+
+-- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#completionItemKind
+-- https://code.visualstudio.com/api/references/icons-in-labels
+vim.lsp.protocol.CompletionItemKind = {
+    [1]  = "  (Text) ",
+    [2]  = "  (Method)",
+    [3]  = "  (Function)",
+    [4]  = "  (Constructor)",
+    [5]  = "  (Field)",
+    [6]  = "  (Variable)",
+    [7]  = "  (Class)",
+    [8]  = "  (Interface)",
+    [9]  = "  (Module)",
+    [10] = "  (Property)",
+    [11] = "  (Unit)",
+    [12] = "  (Value)",
+    [13] = "  (Enum)",
+    [14] = "  (Keyword)",
+    [15] = "  (Snippet)",
+    [16] = "  (Color)",
+    [17] = "  (File)",
+    [18] = "  (Reference)",
+    [19] = "  (Folder)",
+    [20] = "  (EnumMember)",
+    [21] = "  (Constant)",
+    [22] = "  (Struct)",
+    [23] = "  (Event)",
+    [24] = "  (Operator)",
+    [25] = "  (TypeParameter)",
+}
+-- NOTE: using `exrc` to auto enable other configured lsps
+-- `shellcheck` is more useful than lsp for shell
+vim.lsp.enable({ "lua" })
+
+------------------------------> load pkg <-------------------------------------
+
 require("pkg")
 
--------------------------------------------------------------------------------
+--------------------------> gnu global tool <----------------------------------
 
 -- GNU `global` tool
 -- https://www.gnu.org/software/global/globaldoc_toc.html#Vim-editor
@@ -184,15 +233,4 @@ if vim.fn.exists("loaded_gtags") == 1 then
         vim.cmd([[Gtags -f %]])
         vim.api.nvim_win_set_cursor(0, win_pos)
     end, { silent = true, noremap = true })
-end
-
--------------------------------------------------------------------------------
-
-if vim.fn.filereadable(vim.fn.expand('~/.nvimrc')) == 1 then
-    vim.cmd('so ~/.nvimrc')
-end
-
-if vim.fn.getcwd() ~= vim.fn.expand('~')
-    and vim.fn.filereadable('./.nvimrc') == 1 then
-    vim.cmd('so ./.nvimrc')
 end

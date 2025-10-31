@@ -145,18 +145,6 @@ _M.edit_my_todolist = function()
     end
 end
 
-_M.markdown_glow_render = function()
-    if vim.o.filetype == "markdown" then
-        if vim.fn.executable('glow') == 1 then
-            vim.cmd("tabnew term://glow %:p -w " .. (vim.o.columns - 4))
-        else
-            _M.echo_err_msg("ERROR: `glow` is not executable!!!")
-        end
-    else
-        _M.echo_err_msg("ERROR: only support `markdown` file!!!")
-    end
-end
-
 _M.clean_trailing_spaces_and_lines = function()
     local l, c = vf.line("."), vf.col(".")
     vim.cmd([[%s/\s\+$//ge]])

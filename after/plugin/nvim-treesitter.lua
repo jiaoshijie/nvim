@@ -12,5 +12,5 @@ treesitter.install({
 
     -- NOTE: nvim not builtin parsers
     "cpp", "rust", "bash", "python", "go",
-    "comment", "luadoc", "toml", "json", "jsonc",
+    "comment", "luadoc", "toml", "json", "jsonc", "diff",
 })
