@@ -4,3 +4,6 @@
 [submodule "pack/my/start/onlysearch"]
 	path = pack/my/start/onlysearch
 	url = https://github.com/jiaoshijie/onlysearch.git
+[submodule "pack/my/start/ffmk"]
+	path = pack/my/start/ffmk
+	url = https://github.com/jiaoshijie/ffmk.git

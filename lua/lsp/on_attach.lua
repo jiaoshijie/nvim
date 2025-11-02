@@ -6,7 +6,7 @@ return function(client, bufnr)
     -- NOTE(0.10): ctrl-w_d for vim.diagnostic.open_float
     -- NOTE(0.10): [d for vim.diagnostic.goto_prev
     -- NOTE(0.10): ]d for vim.diagnostic.goto_next
-    -- `vim.diagnostic.setloclist`: using fzf-lua instead
+    -- `vim.diagnostic.setloclist` or `vim.diagnostic.setqflist`
 
     -- Mappings: h lsp-default
     -- NOTE(lsp-default): tagfunc
