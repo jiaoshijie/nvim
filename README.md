@@ -29,8 +29,6 @@ Totally stole this from [kickstart.nvim](https://github.com/nvim-lua/kickstart.n
 
 ## Hints
 
-- using `column` to align text
-  * markdown table: `!column -t -s "|" -o "|"` or `!column -t -s \| -o \|`
 - vim search/replace
   * using tools(rg, grep) search text, and moving the result to quickfix, then do `cdo` for line and `cfdo` for file.
   * `args */**.lua` `argdo`

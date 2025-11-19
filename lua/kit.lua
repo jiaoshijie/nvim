@@ -174,7 +174,7 @@ _M.find_files_cmd = function(arg)
     if not arg.find_files_cmd then
         local cmd, ff
         if vim.fn.executable("fd") == 1 then
-            cmd, ff = { "fd --color=never --type f --type l" }, "--exclude %s"
+            cmd, ff = { "fd --color=never --type f --type l" }, "--exclude '%s'"
         else
             cmd, ff = { "rg --color=never --files" }, "-g '!%s'"
         end

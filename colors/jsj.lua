@@ -431,20 +431,12 @@ hl("@tag.delimiter", { fg = c.gray })
 hl("@string.escape.markdown_inline", { fg = c.gray })
 
 ----------------------------------> plugins <---------------------------------
--- [[ fzf-lua ]] `https://github.com/ibhagwan/fzf-lua?tab=readme-ov-file#highlight-groups`
-hl("FzfLuaNormal", { fg = c.fg })
-hl("FzfLuaBorder", { fg = c.purple })
-hl("FzfLuaTitleFlags", { fg = c.yellow, bg = c.gray_bg, bold = true })
-hl("FzfLuaPreviewBorder", { fg = c.yellow })
-hl("FzfLuaScrollBorderEmpty", { fg = c.blue })
-hl("FzfLuaScrollBorderFull", { fg = c.blue })
-hl("FzfLuaFzfMatch", { fg = c.yellow, bold = true })
-hl("FzfLuaFzfPrompt", { fg = c.red })
-hl("FzfLuaFzfBorder", { fg = c.aqua })
-hl("FzfLuaFzfScrollbar", { fg = c.blue })
-hl("FzfLuaFzfHeader", { fg = c.gray })
-hl("FzfLuaFzfMarker", { fg = c.red })
-hl("FzfLuaFzfPointer", { fg = c.yellow })
+-- [[ ffmk ]]
+hl("FFMKNormal", { fg = c.fg })
+hl("FFMKBorder", { fg = c.purple })
+hl("FFMKPreviewBorder", { fg = c.yellow })
+hl("FFMKTitleFlags", { fg = c.yellow, bg = c.gray_bg, bold = true })
+hl("FFMKWarnMsg", { fg = c.bg, bg = c.fg, italic = true })
 
 -- [[ Undotree ]] `https://github.com/jiaoshijie/undotree/blob/main/plugin/undotree.lua`
 hl("UndotreeDiffLine", { fg = c.aqua })

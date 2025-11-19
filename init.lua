@@ -94,7 +94,7 @@ o.smarttab = true
 o.shiftround = true  -- for `<<` and `>>` in normal mode
 
 -- NOTE: substitute
-o.inccommand = "split"
+o.inccommand = "nosplit"  -- explicitly disable this
 
 -- NOTE: quickfix
 o.switchbuf = "uselast"

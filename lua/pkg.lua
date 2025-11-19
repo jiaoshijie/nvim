@@ -9,7 +9,6 @@ local _plugin_dir = vim.fn.stdpath('data') .. '/site/pack/plugins/start/'
 local _plugin_doc_dir = vim.fn.stdpath('data') .. '/site/doc/'
 local _plugins = {
     { uri = "nvim-treesitter/nvim-treesitter", doc = "nvim-treesitter.txt", branch = "main" },
-    { uri = "ibhagwan/fzf-lua", doc = { "fzf-lua-opts.txt", "fzf-lua.txt" } },
 
     { uri = "tpope/vim-fugitive", doc = "fugitive.txt" },
     { uri = "tpope/vim-surround", doc = "surround.txt" },
