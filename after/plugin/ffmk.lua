@@ -55,6 +55,7 @@ local git_files = function()
     ffmk.files({
         ui = { preview = false },
         cmd = {
+            prompt = "GitFiles❯ ",
             cmd = "git ls-files --others --exclude-standard --cached | uniq",
             cwd = cwd,
         }
@@ -89,10 +90,10 @@ map("n", "<leader>S", function()
             ui = { preview = true },
             cmd = {
                 prompt = word .. "❯ ",
-                query = word,
+                query = string.format("\\b%s\\b", word),
                 hidden = true,
                 smart_case = true,
-                fixed_string = true,
+                fixed_string = false,
             }
         })
     end
