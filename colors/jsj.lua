@@ -437,6 +437,7 @@ hl("FFMKBorder", { fg = c.purple })
 hl("FFMKPreviewBorder", { fg = c.yellow })
 hl("FFMKTitleFlags", { fg = c.yellow, bg = c.gray_bg, bold = true })
 hl("FFMKWarnMsg", { fg = c.bg, bg = c.fg, italic = true })
+hl("FFMKPreviewCursor", { link = "Cursor" })
 
 -- [[ Undotree ]] `https://github.com/jiaoshijie/undotree/blob/main/plugin/undotree.lua`
 hl("UndotreeDiffLine", { fg = c.aqua })

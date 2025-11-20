@@ -66,7 +66,7 @@ local opts = { noremap = true, silent = true }
 map("n", "<leader>ff", search_all_files, opts)
 map("n", "<leader>fF", search_all_files_include_hiddens, opts)
 map("n", "<leader>fo", neovim_config, opts)
-map("n", "<leader>h", ":echo Not implemented yet!:(", opts)
+map("n", "<leader>h", function() print('helptags not implemented yet! :(') end, opts)
 map("n", "<C-p>", git_files, opts)
 map("n", "<leader>s", function()
     local ok, word = pcall(vim.fn.input, "Grep > ")
@@ -74,10 +74,8 @@ map("n", "<leader>s", function()
         ffmk.grep({
             ui = { preview = true },
             cmd = {
-                prompt = word .. "❯ ",
                 query = word,
                 hidden = true,
-                smart_case = true,
                 fixed_string = true,
             }
         })
@@ -89,11 +87,10 @@ map("n", "<leader>S", function()
         ffmk.grep({
             ui = { preview = true },
             cmd = {
-                prompt = word .. "❯ ",
-                query = string.format("\\b%s\\b", word),
+                query = word,
+                whole_word = true,
                 hidden = true,
-                smart_case = true,
-                fixed_string = false,
+                fixed_string = true,
             }
         })
     end
