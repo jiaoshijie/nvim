@@ -79,6 +79,7 @@ map("n", "<leader>s", function()
                 query = word,
                 hidden = true,
                 fixed_string = true,
+                extra_options = { "-g '!.git'" },
             }
         })
     end
@@ -93,6 +94,7 @@ map("n", "<leader>S", function()
                 whole_word = true,
                 hidden = true,
                 fixed_string = true,
+                extra_options = { "-g '!.git'" },
             }
         })
     end
