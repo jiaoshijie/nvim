@@ -85,17 +85,83 @@ map("n", "<leader>s", function()
     end
 end, opts)
 map("n", "<leader>S", function()
-    local word = vim.fn.expand("<cword>")
-    if word ~= "" then
-        ffmk.grep({
+    ffmk.grep({
+        ui = { preview = true },
+        cmd = {
+            query = vim.fn.expand("<cword>"),
+            whole_word = true,
+            hidden = true,
+            fixed_string = true,
+            extra_options = { "-g '!.git'" },
+        }
+    })
+end)
+vim.api.nvim_create_user_command("Ctags", function()
+    require('ffmk').ctags({
+        ui = { preview = true },
+        cmd = { options = { "--kinds-c=-e" } },
+    })
+end, { nargs = 0 })
+
+if vim.fn.executable("global") == 1 then
+    vim.api.nvim_create_user_command("Gtags", function(args)
+        local arg = args.args
+        local feats = require('ffmk.config').gnu_global_feats
+        local feat = nil
+
+        if arg == "f" then
+            feat = feats.file_symbols
+        elseif arg == "r" then
+            feat = feats.reference
+        elseif arg == "s" then
+            feat = feats.other_symbols
+        elseif arg == "g" then
+            feat = feats.grep_symbols
+        else
+            print("WARNING: Invalid arg")
+            return
+        end
+
+        ffmk.gnu_global({
             ui = { preview = true },
             cmd = {
-                query = word,
-                whole_word = true,
-                hidden = true,
-                fixed_string = true,
-                extra_options = { "-g '!.git'" },
-            }
+                query = arg ~= "f" and vim.fn.expand("<cword>"),
+                feat = feat,
+            },
         })
-    end
-end)
+    end, {
+        nargs = 1,
+        complete = function(_, _, _)
+            return { "r", "f", "g", "s" }
+        end
+    })
+
+    vim.api.nvim_create_user_command("Gtagsd", function(args)
+        local query = args.args
+        if #query == 0 then
+            query = vim.fn.expand("<cword>")
+        end
+
+        ffmk.gnu_global({
+            ui = { preview = true },
+            cmd = {
+                query = query,
+                feat = require('ffmk.config').gnu_global_feats.definition,
+            },
+        })
+    end, {
+        nargs = '?',
+        complete = function(lead, _, _)
+            return vim.fn.systemlist("global -cd " .. lead)
+        end
+    })
+    map("n", "<C-g>", function()
+        ffmk.gnu_global({
+            ui = { preview = true },
+            cmd = {
+                query = vim.fn.expand("<cword>"),
+                feat = require('ffmk.config').gnu_global_feats.definition,
+            },
+        })
+    end, opts)
+end

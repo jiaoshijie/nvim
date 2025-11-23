@@ -217,21 +217,3 @@ vim.lsp.enable({ "lua" })
 ------------------------------> load pkg <-------------------------------------
 
 require("pkg").setup()
-
---------------------------> gnu global tool <----------------------------------
-
--- GNU `global` tool
--- https://www.gnu.org/software/global/globaldoc_toc.html#Vim-editor
-if vim.fn.filereadable("/usr/share/gtags/gtags.vim") == 1 then  -- for void linux
-    vim.cmd('so /usr/share/gtags/gtags.vim')
-elseif vim.fn.filereadable("/usr/share/vim/addons/plugin/gtags.vim") == 1 then  -- for debian-based
-    vim.cmd('so /usr/share/vim/addons/plugin/gtags.vim')
-end
-if vim.fn.exists("loaded_gtags") == 1 then
-    vim.keymap.set('n', '<C-g>', "<cmd>GtagsCursor<cr>", { silent = true, noremap = true })
-    vim.keymap.set('n', '<leader>gl', function()
-        local win_pos = vim.api.nvim_win_get_cursor(0)
-        vim.cmd([[Gtags -f %]])
-        vim.api.nvim_win_set_cursor(0, win_pos)
-    end, { silent = true, noremap = true })
-end
