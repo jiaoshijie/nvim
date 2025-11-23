@@ -99,7 +99,7 @@ end)
 vim.api.nvim_create_user_command("Ctags", function()
     require('ffmk').ctags({
         ui = { preview = true },
-        cmd = { options = { "--kinds-c=-e" } },
+        cmd = { options = { "--kinds-c=-e-m" } },
     })
 end, { nargs = 0 })
 
