@@ -8,3 +8,4 @@ plugin/
 !after/plugin
 .nvimrc
 Session.vim
+nvim-pack-lock.json
