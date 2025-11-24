@@ -155,7 +155,7 @@ if vim.fn.executable("global") == 1 then
             return vim.fn.systemlist("global -cd " .. lead)
         end
     })
-    map("n", "<C-g>", function()
+    map("n", "gd", function()
         ffmk.gnu_global({
             ui = { preview = true },
             cmd = {
