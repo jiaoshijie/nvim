@@ -24,7 +24,7 @@ Totally stole this from [kickstart.nvim](https://github.com/nvim-lua/kickstart.n
 
 ## Requirements
 
-- nvim **lately**(~~nightly~~) version
+- nvim **nightly**(~~lately~~) version
 - `:checkhealth` for more infomation.
 
 ## Hints
