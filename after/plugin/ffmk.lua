@@ -136,9 +136,10 @@ if vim.fn.executable("global") == 1 then
         end
     })
 
+    -- NOTE: this command is ugly, but it works
     vim.api.nvim_create_user_command("Gtagsd", function(args)
-        local query = args.args
-        if #query == 0 then
+        local query = args.fargs[#args.fargs]
+        if not query then
             query = vim.fn.expand("<cword>")
         end
 
@@ -150,12 +151,14 @@ if vim.fn.executable("global") == 1 then
             },
         })
     end, {
-        nargs = '?',
-        complete = function(lead, _, _)
-            if lead == "" then
+        nargs = '*',
+        complete = function(_, cmdline, _)
+            local _, e = cmdline:find("Gtagsd%s+")
+            local pattern = cmdline:sub(e + 1)
+            if pattern == "" then
                 return vim.fn.systemlist("global -cd")
             end
-            return vim.fn.matchfuzzy(vim.fn.systemlist("global -cd"), lead)
+            return vim.fn.matchfuzzy(vim.fn.systemlist("global -cd"), pattern)
         end
     })
     map("n", "gd", function()
