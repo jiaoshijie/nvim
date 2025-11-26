@@ -152,7 +152,10 @@ if vim.fn.executable("global") == 1 then
     end, {
         nargs = '?',
         complete = function(lead, _, _)
-            return vim.fn.systemlist("global -cd " .. lead)
+            if lead == "" then
+                return vim.fn.systemlist("global -cd")
+            end
+            return vim.fn.matchfuzzy(vim.fn.systemlist("global -cd"), lead)
         end
     })
     map("n", "gd", function()
