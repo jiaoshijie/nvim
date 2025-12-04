@@ -62,6 +62,8 @@ local git_files = function()
     })
 end
 
+pcall(map, "n", "<C-p>", git_files, { noremap = true, silent = true, unique = true })
+
 local opts = { noremap = true, silent = true }
 map("n", "<leader>ff", search_all_files, opts)
 map("n", "<leader>fF", search_all_files_include_hiddens, opts)
@@ -69,7 +71,6 @@ map("n", "<leader>fo", neovim_config, opts)
 map("n", "<leader>h", function()
     ffmk.helptags({ ui = { preview = true } })
 end, opts)
-map("n", "<C-p>", git_files, opts)
 map("n", "<leader>s", function()
     local ok, word = pcall(vim.fn.input, "Grep > ")
     if ok and word ~= "" then
@@ -99,7 +100,7 @@ end)
 vim.api.nvim_create_user_command("Ctags", function()
     require('ffmk').ctags({
         ui = { preview = true },
-        cmd = { options = { "--kinds-c=-e-m" } },
+        cmd = { options = { "--kinds-c=-e-m+p" } },
     })
 end, { nargs = 0 })
 
