@@ -11,13 +11,15 @@ return {
                 -- (most likely LuaJIT in the case of Neovim)
                 version = 'LuaJIT',
             },
+            diagnostics = {
+                -- https://vi.stackexchange.com/questions/46485/how-to-fix-undefined-field-fs-stat-warning-in-lua-language-server-for-neovim-0
+                -- disable the annoying warnings for vim.uv
+                unusedLocalExclude = { 'vim.uv.*' },
+            },
             workspace = {
                 checkThirdParty = false,
                 library = {
                     vim.env.VIMRUNTIME,
-                    -- Depending on the usage, you might want to add additional paths here.
-                    "${3rd}/luv/library",
-                    -- "${3rd}/busted/library",
                 }
             },
             -- Do not send telemetry data containing a randomized but unique identifier
