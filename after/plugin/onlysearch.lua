@@ -75,14 +75,12 @@ if vim.fn.executable(engine) ~= 1 then
 end
 
 onlysearch.setup({
-    engine = engine,
-    engine_config = {
-        args = args,
-        complete = complete,
+    common = {
+        engine = engine,
+        search_leave_insert = true,
+        keyword = "48-57,-,a-z,A-Z,.,_,=",
+        handle_sys_clipboard_paste = true,
     },
-    keyword = "48-57,-,a-z,A-Z,.,_,=",
-    open_cmd = 'vnew',
-    search_leave_insert = true,
     keymaps = {
         normal = {
             ['<cr>'] = 'select_entry',
@@ -99,9 +97,15 @@ onlysearch.setup({
             ['='] = 'toggle_lines',
         },
     },
-    handle_sys_clipboard_paste = true,
+    engine = {
+        cmd = engine,
+        args = args,
+        complete = complete,
+    }
 })
 
-vim.api.nvim_create_user_command('Os', function()
-    onlysearch.toggle()
+-- :Os | :horizontal Os | :vertical Os | :tab OS
+vim.api.nvim_create_user_command('Os', function(opt)
+    local open_cmd = #opt.mods ~= 0 and opt.mods .. ' new' or nil
+    onlysearch.toggle(open_cmd)
 end, { nargs = 0 })
