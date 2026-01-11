@@ -78,6 +78,7 @@ onlysearch.setup({
     common = {
         engine = engine,
         search_leave_insert = true,
+        query_history_size = 20,
         keyword = "48-57,-,a-z,A-Z,.,_,=",
         handle_sys_clipboard_paste = true,
     },
@@ -87,18 +88,18 @@ onlysearch.setup({
             ['='] = 'toggle_lines',
             ['<leader>='] = 'clear_all_selected_items',
             ['Q'] = 'send2qf',
-            ['<leader>r'] = 'resume_last_query',
             ['S'] = 'search',
-        },
-        insert = {
-            ['<C-f>'] = 'omnifunc',
+            ['<leader>qo'] = 'query_hist_open',
+            ['<leader>qa'] = 'query_hist_add',
+            ['<leader>qc'] = 'query_hist_close',
+            ['<leader>qw'] = 'query_hist_win_switch',
         },
         visual = {
             ['='] = 'toggle_lines',
         },
     },
     engine = {
-        cmd = engine,
+        cmd = engine,  -- NOTE: can be an absolute path, like `/usr/bin/rg`
         args = args,
         complete = complete,
     }
