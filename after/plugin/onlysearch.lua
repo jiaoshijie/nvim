@@ -54,6 +54,7 @@ local complete = {
         kind = ' [E] Specify the text encoding'
     },
 }
+local query = nil
 
 if vim.fn.executable(engine) ~= 1 then
     engine = 'grep'
@@ -72,6 +73,7 @@ if vim.fn.executable(engine) ~= 1 then
             kind = ' [V] Invert Match',
         },
     }
+    query = { filters = "!.git/" }
 end
 
 onlysearch.setup({
@@ -108,5 +110,11 @@ onlysearch.setup({
 -- :Os | :horizontal Os | :vertical Os | :tab OS
 vim.api.nvim_create_user_command('Os', function(opt)
     local open_cmd = #opt.mods ~= 0 and opt.mods .. ' new' or nil
-    onlysearch.toggle(open_cmd)
+    onlysearch.toggle(open_cmd, query)
+end, { nargs = 0 })
+
+vim.api.nvim_create_user_command('Ow', function(opt)
+    local open_cmd = #opt.mods ~= 0 and opt.mods .. ' new' or nil
+    local text = vim.fn.expand("<cword>")
+    onlysearch.toggle(open_cmd, vim.tbl_extend("force", query or {}, { text = text }))
 end, { nargs = 0 })
