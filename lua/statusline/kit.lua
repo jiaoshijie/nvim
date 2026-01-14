@@ -66,10 +66,14 @@ _M.file_pos = function()
     }
 end
 
+function _G.jsj_statusline_winfixbuf()
+  return vim.wo.winfixbuf and "[WFB]" or ""
+end
+
 _M.file_info = function()
     return {
         hlname = "file_info",
-        text = "%m%h%r",
+        text = "%m%h%r%{v:lua.jsj_statusline_winfixbuf()}",
     }
 end
 
