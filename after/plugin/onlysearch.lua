@@ -54,6 +54,7 @@ local complete = {
         kind = ' [E] Specify the text encoding'
     },
 }
+
 local query = {}
 
 if vim.fn.executable(engine) ~= 1 then
@@ -115,7 +116,8 @@ end, { nargs = 0 })
 
 vim.api.nvim_create_user_command('Ow', function(opt)
     local open_cmd = #opt.mods ~= 0 and opt.mods .. ' new' or nil
-    query.text = vim.fn.expand("<cword>")
-    query.flags = "-w"
-    onlysearch.toggle(open_cmd, query)
+    onlysearch.toggle(open_cmd, vim.tbl_extend("force", query, {
+        text = vim.fn.expand("<cword>"),
+        flags = "-w",
+    }))
 end, { nargs = 0 })
