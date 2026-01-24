@@ -27,9 +27,9 @@ end
 --   cmd: the command that need to be execute as root user.
 --   verbose: if true, print the `cmd` output, if false, ignore the `cmd` output
 _M.sudo_exec = function(cmd, verbose)
-    vf.inputsave()  -- TODO: I don't know if this input[save/restore] pair is needed.
+    vf.inputsave() -- `:h input()`
     local password = vf.inputsecret("Password: ")
-    vim.cmd("echo '' | redraw")  -- clear the cmd line
+    vim.cmd("redraw")  -- clear the cmd line
     vf.inputrestore()
 
     if not password or #password == 0 then
@@ -71,7 +71,7 @@ _M.sudo_write = function()
     api.nvim_exec2(string.format("silent write! %s", tempfile), { output = false })
     if _M.sudo_exec(cmd) then
         api.nvim_echo({{string.format([["%s" written]], filepath)}}, true, { verbose = false })
-        vim.cmd("e!")
+        vim.cmd("silent! edit!")
     end
     vf.delete(tempfile)
 end

@@ -46,6 +46,7 @@ vim.g.netrw_liststyle = 0 -- tree view
 vim.g.netrw_keepdir = 1
 vim.g.netrw_hide = 1
 vim.g.netrw_list_hide = "\\(^\\|\\s\\s\\)\\zs\\.\\S\\+"
+vim.g.netrw_dirhistmax = 0  -- disable history (unfortunately, bookmark also being disable)
 
 -- misc
 o.mousemodel = "extend"
