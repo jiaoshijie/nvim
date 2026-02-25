@@ -131,7 +131,7 @@ autocmd("BufReadPost", {
     callback = function()
         local r_c = vim.api.nvim_buf_get_mark(0, '"')
         local max_lnum = vim.api.nvim_buf_line_count(0)
-        if r_c[1] > 0 and r_c[1] < max_lnum then
+        if r_c[1] > 0 and r_c[1] <= max_lnum then
             pcall(vim.api.nvim_win_set_cursor, 0, r_c)
         end
     end
@@ -140,7 +140,7 @@ autocmd("TextYankPost", {
     pattern = "*",
     group = JSJ_useful_autogroup,
     callback = function()
-        vim.hl.on_yank({ higourp = "IncSearch", timeout = 300 })
+        vim.hl.on_yank({ higroup = "IncSearch", timeout = 300 })
     end,
 })
 

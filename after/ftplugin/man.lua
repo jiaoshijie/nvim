@@ -1,1 +1,1 @@
-vim.opt.signcolumn = "no"
+vim.opt_local.signcolumn = "no"

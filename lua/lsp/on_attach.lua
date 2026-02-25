@@ -41,8 +41,8 @@ return function(client, bufnr)
     end
 
     if client.server_capabilities.documentHighlightProvider then
-        vim.keymap.set("n", "<leader>n", vim.lsp.buf.document_highlight)
-        vim.keymap.set("n", "<leader>N", vim.lsp.buf.clear_references)
+        vim.keymap.set("n", "<leader>n", vim.lsp.buf.document_highlight, opts)
+        vim.keymap.set("n", "<leader>N", vim.lsp.buf.clear_references, opts)
     end
 
     -- NOTE: `:h vim.lsp.semantic_tokens.start` `:h lsp-semantic-highlight`

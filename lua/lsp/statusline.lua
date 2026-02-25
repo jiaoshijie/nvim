@@ -90,7 +90,7 @@ local document_symbol_cb = function(bufnr, doc_syms)
 end
 
 local document_symbol_request = function(client_id, bufnr)
-    vim.lsp.buf_request_all(vim.fn.bufnr(), "textDocument/documentSymbol", {
+    vim.lsp.buf_request_all(bufnr, "textDocument/documentSymbol", {
         textDocument =  vim.lsp.util.make_text_document_params()
     }, function(resp)
         if resp and resp[client_id] and resp[client_id].result
@@ -186,7 +186,8 @@ _M.statusline = function()
     local text = ""
 
     for _, v in ipairs(ctx) do
-        text = text .. '  ' .. symbol_kind2icon[v.kind] .. v.name
+        local icon = symbol_kind2icon[v.kind] or ""
+        text = text .. '  ' .. icon .. v.name
     end
 
     return text
