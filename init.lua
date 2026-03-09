@@ -76,7 +76,8 @@ o.completeopt = "menuone,noselect"
 o.dictionary = "/usr/share/dict/words"
 o.complete = ".,w,b"
 o.path:append("**")
-o.pumblend = 30
+o.pumblend = 7
+o.pumborder = "bold"
 o.ph = 15
 o.shortmess:append("c")
 o.wildignore:append("*.o,*.a,*.so,tags")
