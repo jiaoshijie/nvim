@@ -154,6 +154,7 @@ command("Yr", function() kit.copy_file_path_lnum(nil) end, { nargs = 0 })
 command("Yp", function() kit.copy_file_path_lnum("p") end, { nargs = 0 })
 command("Df", function() kit.copy_file_path_lnum("t", true) end, { nargs = 0 })
 command("Dr", function() kit.copy_file_path_lnum(nil, true) end, { nargs = 0 })
+command("E", [[e %:h]], { nargs = 0 })
 command("Todo", kit.edit_my_todolist, { nargs = 0 })
 
 -- NOTE: keymaps
