@@ -13,4 +13,4 @@ vim.keymap.set("n", "r", "<Nop>", opts)
 vim.keymap.set("n", "Tb", "<Nop>", opts)
 vim.keymap.set("n", "Th", "<Nop>", opts)
 
-vim.keymap.del("n", "v", opts)
+pcall(vim.keymap.del, "n", "v", opts)
