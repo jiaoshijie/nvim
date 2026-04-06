@@ -154,7 +154,7 @@ if vim.fn.executable("global") == 1 then
     end, {
         nargs = '*',
         complete = function(_, cmdline, _)
-            local _, e = cmdline:find("Gtagsd%s+")
+            local _, e = cmdline:find("Gd%s+")
             local pattern = cmdline:sub(e + 1)
             if pattern == "" then
                 return vim.fn.systemlist("global -cd")
