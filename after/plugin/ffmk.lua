@@ -138,7 +138,7 @@ if vim.fn.executable("global") == 1 then
     })
 
     -- NOTE: this command is ugly, but it works
-    vim.api.nvim_create_user_command("Gtagsd", function(args)
+    vim.api.nvim_create_user_command("Gd", function(args)
         local query = args.fargs[#args.fargs]
         if not query then
             query = vim.fn.expand("<cword>")
