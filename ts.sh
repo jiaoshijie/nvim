@@ -1,11 +1,41 @@
+#!/usr/bin/env bash
+
+set -ex
+TS_target_dir=$(pwd)/parser/
+
+# https://www.reddit.com/r/neovim/comments/1sj1ggo/treesitter_without_nvimtreesitter_a_guide/
+
+ts() {
+  TS_name=$1
+  TS_url=$2
+  TS_lang=$3
+  TMP_DIR=/tmp/nvim_ts/
+
+  mkdir -p $TMP_DIR
+  cd $TMP_DIR
+
+  git clone --depth 1 $TS_url $TS_name
+  cd $TS_name
+
+  tree-sitter generate
+  tree-sitter build
+
+  cp ${TS_lang}.so $TS_target_dir
+
+  cd ..
+}
+
 # https://github.com/tree-sitter/tree-sitter-cpp.git
-# https://github.com/tree-sitter/tree-sitter-rust.git
-# https://github.com/tree-sitter/tree-sitter-bash.git
-# https://github.com/tree-sitter/tree-sitter-python.git
-# https://github.com/tree-sitter/tree-sitter-go.git
-# https://github.com/tree-sitter/tree-sitter-json.git
+#   https://github.com/tree-sitter/tree-sitter-c.git
+#   put the `tree-sitter-c` to `node_modules`
 
-# https://github.com/tree-sitter-grammars/tree-sitter-luadoc.git
-# https://github.com/tree-sitter-grammars/tree-sitter-diff.git
+ts 'tree-sitter-rust' 'https://github.com/tree-sitter/tree-sitter-rust.git' 'rust'
+ts 'tree-sitter-go' 'https://github.com/tree-sitter/tree-sitter-go.git' 'go'
+ts 'tree-sitter-python' 'https://github.com/tree-sitter/tree-sitter-python.git' 'python'
+ts 'tree-sitter-bash' 'https://github.com/tree-sitter/tree-sitter-bash.git' 'bash'
+ts 'tree-sitter-json' 'https://github.com/tree-sitter/tree-sitter-json.git' 'json'
 
-# https://github.com/stsewd/tree-sitter-comment.git
+ts 'tree-sitter-luadoc' 'https://github.com/tree-sitter-grammars/tree-sitter-luadoc.git' 'luadoc'
+ts 'tree-sitter-diff' 'https://github.com/tree-sitter-grammars/tree-sitter-diff.git' 'diff'
+
+ts 'tree-sitter-comment' 'https://github.com/stsewd/tree-sitter-comment.git' 'comment'

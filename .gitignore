@@ -9,3 +9,4 @@ plugin/
 .nvimrc
 Session.vim
 nvim-pack-lock.json
+parser/
