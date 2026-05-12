@@ -17,6 +17,7 @@ local ignore_patterns = {
 
 _M.v = {
     theme_transparent = true,
+    ffmk_ctrlp_func = nil,  --- @type fun(nil): nil
 }
 
 _M.echo_err_msg = function(msg)

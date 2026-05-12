@@ -62,9 +62,16 @@ local git_files = function()
     })
 end
 
-pcall(map, "n", "<C-p>", git_files, { noremap = true, silent = true, unique = true })
+local ctrlp = function()
+    if type(kit.v.ffmk_ctrlp_func) == "function" then
+        kit.v.ffmk_ctrlp_func()
+    else
+        git_files()
+    end
+end
 
 local opts = { noremap = true, silent = true }
+pcall(map, "n", "<C-p>", ctrlp, opts)
 map("n", "<leader>ff", search_all_files, opts)
 map("n", "<leader>fF", search_all_files_include_hiddens, opts)
 map("n", "<leader>fo", neovim_config, opts)
