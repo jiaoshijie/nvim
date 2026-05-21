@@ -105,7 +105,7 @@ o.switchbuf = "uselast"
 o.backup = false
 o.swapfile = false
 o.undofile = true
-o.undodir = "/tmp/jsj_neovim_u/undodir//"
+o.undodir = string.format("/tmp/%s_neovim_u/undodir//", vim.fn.getenv("USER") or "jsj")
 
 -- NOTE: colorscheme
 o.signcolumn = "no"
