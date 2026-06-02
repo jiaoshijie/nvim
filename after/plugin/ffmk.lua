@@ -8,6 +8,11 @@ end
 local map = vim.keymap.set
 
 local files_cmd = {}
+local neovim_config_cmd = {
+    ignore_patterns = {
+        "queries/", "after/ftplugin/",
+    },
+}
 
 local search_all_files = function()
     ffmk.files({
@@ -40,6 +45,7 @@ local neovim_config = function()
         ui = { preview = false },
         cmd = {
             prompt = "NvimConfig❯ ",
+            cmd = kit.find_files_cmd(neovim_config_cmd),
             cwd = "~/.config/nvim",
             hidden = true,
         }
