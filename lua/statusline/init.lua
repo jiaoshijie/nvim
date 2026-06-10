@@ -49,10 +49,8 @@ _M.setup = function()
 
     vim.o.showmode = false  -- disable showing -- INSERT --, etc.
     vim.o.statusline = [[%!luaeval('require("statusline").statusline()')]]
-    vim.wo.statusline = vim.o.statusline
 
     vim.o.winbar = [[%!luaeval('require("statusline").winbar()')]]
-    vim.wo.winbar = vim.o.winbar
 end
 
 return _M
