@@ -147,7 +147,7 @@ autocmd("TextYankPost", {
 
 -- NOTE: commands
 command("AI", [[echo "I want AI to do my laundry and dishes so that I can do art and writing, not for AI to do my art and writing so that I can do my laundry and dishes."]], { nargs = 0 })
-command("Cc", function() vf.setreg('+', vf.getreg('0')) end, { nargs = 0 })
+command("Cc", function(args) vf.setreg('+', vf.getreg(args.reg == "" and "0" or args.reg)) end, { nargs = 0, register = true })
 command("SudoWrite", kit.sudo_write, { nargs = 0 })
 command("Yf", function() kit.copy_file_path_lnum("t") end, { nargs = 0 })
 command("Yr", function() kit.copy_file_path_lnum(nil) end, { nargs = 0 })
