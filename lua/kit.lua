@@ -17,7 +17,14 @@ local ignore_patterns = {
 
 _M.v = {
     theme_transparent = true,
+
+    -- ffmk plugin
     ffmk_ctrlp_func = nil,  --- @type fun(nil): nil
+    ffmk_grep_word_func = nil,  --- @type fun(string): nil
+    ffmk_grep_func = nil, --- @type fun(string): nil
+    ffmk_ctags_func = nil,  --- @type fun(nil): nil
+
+    -- onlysearch plugin
     onlysearch_query_arg = nil,  --- @type table
 }
 

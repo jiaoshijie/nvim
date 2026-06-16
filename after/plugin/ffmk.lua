@@ -5,9 +5,8 @@ if not found then
 end
 
 local kit = require('kit')
-
 local map = vim.keymap.set
-
+local map_opts = { noremap = true, silent = true }
 local files_cmd = {}
 local neovim_config_cmd = {
     ignore_patterns = {
@@ -15,7 +14,7 @@ local neovim_config_cmd = {
     },
 }
 
-local search_all_files = function()
+local files = function()
     ffmk.files({
         ui = { preview = false },
         cmd = {
@@ -28,7 +27,7 @@ local search_all_files = function()
     })
 end
 
-local search_all_files_include_hiddens = function()
+local all_files = function()
     ffmk.files({
         ui = { preview = false },
         cmd = {
@@ -41,11 +40,11 @@ local search_all_files_include_hiddens = function()
     })
 end
 
-local neovim_config = function()
+local conf_files = function()
     ffmk.files({
         ui = { preview = false },
         cmd = {
-            prompt = "NvimConfig❯ ",
+            prompt = "NvimConf❯ ",
             cmd = kit.find_files_cmd(neovim_config_cmd),
             cwd = "~/.config/nvim",
             hidden = true,
@@ -77,17 +76,34 @@ local ctrlp = function()
     end
 end
 
-local opts = { noremap = true, silent = true }
-map("n", "<C-p>", ctrlp, opts)
-map("n", "<leader>ff", search_all_files, opts)
-map("n", "<leader>fF", search_all_files_include_hiddens, opts)
-map("n", "<leader>fo", neovim_config, opts)
-map("n", "<leader>h", function()
-    ffmk.helptags({ ui = { preview = true } })
-end, opts)
-map("n", "<leader>s", function()
-    local ok, word = pcall(vim.fn.input, "Grep > ")
-    if ok and word ~= "" then
+local grep_word = function()
+    local word = vim.fn.expand("<cword>")
+
+    if type(kit.v.ffmk_grep_word_func) == "function" then
+        kit.v.ffmk_grep_word_func(word)
+    else
+        ffmk.grep({
+            ui = { preview = true },
+            cmd = {
+                query = word,
+                whole_word = true,
+                hidden = true,
+                fixed_string = true,
+                extra_options = { "-g '!.git'" },
+            }
+        })
+    end
+end
+
+local grep = function()
+    local ok, word = pcall(vim.fn.input, "Grep> ")
+    if not ok or word == "" then
+        return
+    end
+
+    if type(kit.v.ffmk_grep_func) == "function" then
+        kit.v.ffmk_grep_func(word)
+    else
         ffmk.grep({
             ui = { preview = true },
             cmd = {
@@ -98,91 +114,96 @@ map("n", "<leader>s", function()
             }
         })
     end
-end, opts)
-map("n", "<leader>S", function()
-    ffmk.grep({
+end
+
+local ctags = function()
+    if type(kit.v.ffmk_ctags_func) == "function" then
+        kit.v.ffmk_ctags_func()
+    else
+        ffmk.ctags({
+            ui = { preview = true },
+            cmd = { options = { "--kinds-c=-e-m+p" } },
+        })
+    end
+end
+
+map("n", "<C-p>", ctrlp, map_opts)
+map("n", "<leader>ff", files, map_opts)
+map("n", "<leader>fF", all_files, map_opts)
+map("n", "<leader>fo", conf_files, map_opts)
+map("n", "<leader>h", function() ffmk.helptags({ ui = { preview = true } }) end, map_opts)
+map("n", "<leader>s", grep, map_opts)
+map("n", "<leader>S", grep_word, map_opts)
+
+vim.api.nvim_create_user_command("Ctags", ctags, { nargs = 0 })
+
+---------------------------- GNU global stuffs -------------------------------
+local gtags_cmd = function(args)
+    local arg = args.args
+    local feats = require('ffmk.config').gnu_global_feats
+    local feat = nil
+
+    if arg == "f" then
+        feat = feats.file_symbols
+    elseif arg == "r" then
+        feat = feats.reference
+    elseif arg == "s" then
+        feat = feats.other_symbols
+    elseif arg == "g" then
+        feat = feats.grep_symbols
+    else
+        print("WARNING: Invalid arg")
+        return
+    end
+
+    ffmk.gnu_global({
+        ui = { preview = true },
+        cmd = {
+            query = arg ~= "f" and vim.fn.expand("<cword>"),
+            feat = feat,
+        },
+    })
+end
+local gtags_comp = function(_, _, _)
+    return { "r", "f", "g", "s" }
+end
+
+local gtags_gd_cmd = function(args)
+    local query = args.fargs[#args.fargs]
+    if not query then
+        query = vim.fn.expand("<cword>")
+    end
+
+    ffmk.gnu_global({
+        ui = { preview = true },
+        cmd = {
+            query = query,
+            feat = require('ffmk.config').gnu_global_feats.definition,
+        },
+    })
+end
+local gtags_gd_comp = function(_, cmdline, _)
+    -- NOTE: this implemetation is ugly, but it works
+    local _, e = cmdline:find("Gd%s+")
+    local pattern = cmdline:sub(e + 1)
+    if pattern == "" then
+        return vim.fn.systemlist("global -cd")
+    end
+    return vim.fn.matchfuzzy(vim.fn.systemlist("global -cd"), pattern)
+end
+local gtags_gd = function()
+    ffmk.gnu_global({
         ui = { preview = true },
         cmd = {
             query = vim.fn.expand("<cword>"),
-            whole_word = true,
-            hidden = true,
-            fixed_string = true,
-            extra_options = { "-g '!.git'" },
-        }
+            feat = require('ffmk.config').gnu_global_feats.definition,
+        },
     })
-end)
-vim.api.nvim_create_user_command("Ctags", function()
-    require('ffmk').ctags({
-        ui = { preview = true },
-        cmd = { options = { "--kinds-c=-e-m+p" } },
-    })
-end, { nargs = 0 })
+end
 
 if vim.fn.executable("global") == 1 then
-    vim.api.nvim_create_user_command("Gtags", function(args)
-        local arg = args.args
-        local feats = require('ffmk.config').gnu_global_feats
-        local feat = nil
+    map("n", "gd", gtags_gd, map_opts)
 
-        if arg == "f" then
-            feat = feats.file_symbols
-        elseif arg == "r" then
-            feat = feats.reference
-        elseif arg == "s" then
-            feat = feats.other_symbols
-        elseif arg == "g" then
-            feat = feats.grep_symbols
-        else
-            print("WARNING: Invalid arg")
-            return
-        end
-
-        ffmk.gnu_global({
-            ui = { preview = true },
-            cmd = {
-                query = arg ~= "f" and vim.fn.expand("<cword>"),
-                feat = feat,
-            },
-        })
-    end, {
-        nargs = 1,
-        complete = function(_, _, _)
-            return { "r", "f", "g", "s" }
-        end
-    })
-
-    -- NOTE: this command is ugly, but it works
-    vim.api.nvim_create_user_command("Gd", function(args)
-        local query = args.fargs[#args.fargs]
-        if not query then
-            query = vim.fn.expand("<cword>")
-        end
-
-        ffmk.gnu_global({
-            ui = { preview = true },
-            cmd = {
-                query = query,
-                feat = require('ffmk.config').gnu_global_feats.definition,
-            },
-        })
-    end, {
-        nargs = '*',
-        complete = function(_, cmdline, _)
-            local _, e = cmdline:find("Gd%s+")
-            local pattern = cmdline:sub(e + 1)
-            if pattern == "" then
-                return vim.fn.systemlist("global -cd")
-            end
-            return vim.fn.matchfuzzy(vim.fn.systemlist("global -cd"), pattern)
-        end
-    })
-    map("n", "gd", function()
-        ffmk.gnu_global({
-            ui = { preview = true },
-            cmd = {
-                query = vim.fn.expand("<cword>"),
-                feat = require('ffmk.config').gnu_global_feats.definition,
-            },
-        })
-    end, opts)
+    vim.api.nvim_create_user_command("Gtags", gtags_cmd, { nargs = 1, complete = gtags_comp })
+    vim.api.nvim_create_user_command("Gd", gtags_gd_cmd, { nargs = '*', complete = gtags_gd_comp })
 end
