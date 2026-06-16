@@ -1,9 +1,10 @@
 local found, ffmk = pcall(require, "ffmk")
-local kit = require('kit')
 
 if not found then
     return
 end
+
+local kit = require('kit')
 
 local map = vim.keymap.set
 

@@ -4,6 +4,8 @@ if not found then
     return
 end
 
+local kit = require("kit")
+
 local engine = 'rg'
 local args = {
     '-S',  -- '--smart-case'
@@ -111,12 +113,13 @@ onlysearch.setup({
 -- :Os | :horizontal Os | :vertical Os | :tab OS
 vim.api.nvim_create_user_command('Os', function(opt)
     local open_cmd = #opt.mods ~= 0 and opt.mods .. ' new' or nil
-    onlysearch.toggle(open_cmd, query)
+    onlysearch.toggle(open_cmd, kit.v.onlysearch_query_arg or query)
 end, { nargs = 0 })
 
 vim.api.nvim_create_user_command('Ow', function(opt)
     local open_cmd = #opt.mods ~= 0 and opt.mods .. ' new' or nil
-    onlysearch.toggle(open_cmd, vim.tbl_extend("force", query, {
+    onlysearch.toggle(open_cmd, vim.tbl_extend("force",
+    kit.v.onlysearch_query_arg or query, {
         text = vim.fn.expand("<cword>"),
         flags = "-w",
     }))
