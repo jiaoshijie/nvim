@@ -5,6 +5,7 @@ ol.bufhidden = "delete"
 local opts = { buffer = true }
 vim.keymap.set("n", "i", "<Nop>", opts)
 vim.keymap.set("n", "s", "<Nop>", opts)
+vim.keymap.set("n", "S", "<Nop>", opts)
 vim.keymap.set("n", "x", "<Nop>", opts)
 vim.keymap.set("n", "p", "<Nop>", opts)
 vim.keymap.set("n", "o", "<Nop>", opts)

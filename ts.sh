@@ -5,30 +5,37 @@ TS_target_dir=$(pwd)/parser/
 
 # https://www.reddit.com/r/neovim/comments/1sj1ggo/treesitter_without_nvimtreesitter_a_guide/
 
+mkdir -p "${TS_target_dir}"
+
 ts() {
   TS_name=$1
   TS_url=$2
   TS_lang=$3
+  TS_dep_url=$4
   TMP_DIR=/tmp/nvim_ts/
 
   mkdir -p $TMP_DIR
   cd $TMP_DIR
 
-  git clone --depth 1 $TS_url $TS_name
-  cd $TS_name
+  git clone --depth 1 "$TS_url" "$TS_name"
+  cd "$TS_name"
+
+  if [[ -n "$TS_dep_url" ]]; then
+    mkdir -p node_modules
+    cd node_modules
+    git clone --depth 1 "$TS_dep_url"
+    cd -
+  fi
 
   tree-sitter generate
   tree-sitter build
 
-  cp ${TS_lang}.so $TS_target_dir
+  cp $TS_lang.so "$TS_target_dir"
 
   cd ..
 }
 
-# https://github.com/tree-sitter/tree-sitter-cpp.git
-#   https://github.com/tree-sitter/tree-sitter-c.git
-#   put the `tree-sitter-c` to `node_modules`
-
+ts 'tree-sitter-cpp' 'https://github.com/tree-sitter/tree-sitter-cpp.git' 'cpp' 'https://github.com/tree-sitter/tree-sitter-c.git'
 ts 'tree-sitter-rust' 'https://github.com/tree-sitter/tree-sitter-rust.git' 'rust'
 ts 'tree-sitter-go' 'https://github.com/tree-sitter/tree-sitter-go.git' 'go'
 ts 'tree-sitter-python' 'https://github.com/tree-sitter/tree-sitter-python.git' 'python'
