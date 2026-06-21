@@ -301,28 +301,6 @@
 (parameter_declaration
   declarator: (pointer_declarator) @variable.parameter)
 
-; K&R functions
-; To enable support for K&R functions,
-; add the following lines to your own query config and uncomment them.
-; They are commented out as they'll conflict with C++
-; Note that you'll need to have `; extends` at the top of your query file.
-;
-; (parameter_list (identifier) @variable.parameter)
-;
-; (function_definition
-;   declarator: _
-;   (declaration
-;     declarator: (identifier) @variable.parameter))
-;
-; (function_definition
-;   declarator: _
-;   (declaration
-;     declarator: (array_declarator) @variable.parameter))
-;
-; (function_definition
-;   declarator: _
-;   (declaration
-;     declarator: (pointer_declarator) @variable.parameter))
 (preproc_params
   (identifier) @variable.parameter)
 
