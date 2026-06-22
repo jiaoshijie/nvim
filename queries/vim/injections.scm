@@ -8,3 +8,8 @@
     "includeexpr" "inex" "printexpr" "pexpr" "formatexpr" "fex" "indentexpr" "inde" "foldtext" "fdt"
     "foldexpr" "fde" "diffexpr" "dex" "patchexpr" "pex" "charconvert" "ccv")
   (#set! injection.language "vim"))
+
+(lua_statement
+  (script
+    (body) @injection.content
+    (#set! injection.language "lua")))
