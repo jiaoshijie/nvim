@@ -25,11 +25,3 @@ Totally stole this from [kickstart.nvim](https://github.com/nvim-lua/kickstart.n
 ## Requirements
 
 - nvim **lately**(~~nightly~~) version
-- `:checkhealth` for more infomation.
-
-## Hints
-
-- vim search/replace
-  * using tools(rg, grep) search text, and moving the result to quickfix, then do `cdo` for line and `cfdo` for file.
-  * `args */**.lua` `argdo`
-  * `bufdo`

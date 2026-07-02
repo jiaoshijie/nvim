@@ -216,12 +216,3 @@ vim.lsp.protocol.CompletionItemKind = {
 -- NOTE: using `exrc` to auto enable other configured lsps
 -- `shellcheck` is more useful than lsp for shell
 vim.lsp.enable({ "lua" })
-
-------------------------------> plugins <-------------------------------------
-
-vim.pack.add({
-    "https://github.com/tpope/vim-fugitive",
-    "https://github.com/tpope/vim-surround",
-    "https://github.com/tpope/vim-repeat",
-    "https://github.com/godlygeek/tabular",
-})
