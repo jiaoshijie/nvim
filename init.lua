@@ -30,13 +30,13 @@ keymap({"n", "v"}, "<Space>", "<NOP>", keymap_opts)
 keymap("v", "J", ":m '>+1<cr>gv=gv", keymap_opts)
 keymap("v", "K", ":m '<-2<cr>gv=gv", keymap_opts)
 keymap("n", "<leader><leader>", "<C-^>", keymap_opts)
-keymap("n", "<leader>/", "/\\<\\><left><left>", { noremap = true })  -- NOTE: `:h pattern.txt{magic}` `:h :substitute`
+keymap("n", "<leader>/", [[/\<\><left><left>]], { noremap = true })  -- NOTE: `:h pattern.txt{magic}` `:h :substitute`
 keymap("n", "<leader>ps", "<Cmd>setlocal spell! spelllang=en_us<CR>", keymap_opts)
 keymap("n", "Q", "q:", keymap_opts)
-keymap("t", "<Esc>", "<C-\\><C-n>", keymap_opts)
+keymap("t", "<Esc>", [[<C-\><C-n>]], keymap_opts)
 -- https://www.reddit.com/r/neovim/comments/1kv7som/search_within_selection_in_neovim/
-keymap('x', '/', '<C-\\><C-n>`</\\%V', { desc = 'Search forward within visual selection' })
-keymap('x', '?', '<C-\\><C-n>`>?\\%V', { desc = 'Search backward within visual selection' })
+keymap('x', '/', [[<C-\><C-n>`</\%V]], { desc = 'Search forward within visual selection' })
+keymap('x', '?', [[<C-\><C-n>`>?\%V]], { desc = 'Search backward within visual selection' })
 
 -- NOTE: netrw
 -- https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
@@ -45,7 +45,7 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_liststyle = 0 -- tree view
 vim.g.netrw_keepdir = 1
 vim.g.netrw_hide = 1
-vim.g.netrw_list_hide = "\\(^\\|\\s\\s\\)\\zs\\.\\S\\+"
+vim.g.netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+]]
 vim.g.netrw_dirhistmax = 0  -- disable history (unfortunately, bookmark also being disable)
 
 -- misc
