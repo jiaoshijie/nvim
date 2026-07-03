@@ -15,3 +15,4 @@ vim.keymap.set("n", "Tb", "<Nop>", opts)
 vim.keymap.set("n", "Th", "<Nop>", opts)
 
 pcall(vim.keymap.del, "n", "v", opts)
+pcall(vim.keymap.del, "n", "<C-l>", opts)
