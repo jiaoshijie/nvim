@@ -15,6 +15,7 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0    -- To disable Perl support
 vim.g.loaded_ruby_provider = 0    -- To disable Ruby support
 vim.g.loaded_python3_provider = 0 -- To disable Python3 support
+vim.g.loaded_nvim_dir_plugin = 1  -- To disable the lua.dir plugin, it sucks
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
