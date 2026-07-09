@@ -204,14 +204,4 @@ _M.find_files_cmd = function(arg)
     return arg.find_files_cmd
 end
 
-_M.get_username = function()
-    local username = vim.fn.getenv("USER")
-
-    if username == vim.NIL or #username == 0 then
-        return "jsj"
-    end
-
-    return username
-end
-
 return _M

@@ -106,7 +106,7 @@ o.switchbuf = "uselast"
 o.backup = false
 o.swapfile = false
 o.undofile = true
-o.undodir = string.format("/tmp/%s_neovim_u/undodir//", kit.get_username())
+o.undodir = string.format("/tmp/.nvim-%d-undodir", vim.uv.getuid())
 
 -- NOTE: colorscheme
 o.signcolumn = "no"
