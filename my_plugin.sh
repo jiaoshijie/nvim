@@ -4,6 +4,7 @@ OPT="$1"
 
 MY_PLUGIN_DIR="$HOME/.config/nvim/pack/my/start"
 EXT_PLUGIN_DIR="$HOME/.config/nvim/pack/ext/start"
+TEMP_PLUGIN_DIR="$HOME/.config/nvim/pack/tmp/opt"
 NVIM_CMD="${JSJ_NEOVIM_BIN:-nvim}"
 NVIM_FLAGS="--headless --clean -u NONE"
 
@@ -11,6 +12,7 @@ NVIM_FLAGS="--headless --clean -u NONE"
 
 mkdir -p "$MY_PLUGIN_DIR"
 mkdir -p "$EXT_PLUGIN_DIR"
+mkdir -p "$TEMP_PLUGIN_DIR"
 
 git_sync() {
   [[ -d "$1" ]] && git -C "$1" pull || git clone "$2" "$1"
