@@ -72,8 +72,24 @@ if vim.fn.executable(engine) ~= 1 then
             kind = ' [I] Ignore Case',
         },
         {
+            word = '--no-ignore-case',
+            kind = ' [I] Do not ignore Case(default)',
+        },
+        {
             word = '-v',
             kind = ' [V] Invert Match',
+        },
+        {
+            word = '-F',
+            kind = ' [R] Raw String, Disable RegExp',
+        },
+        {
+            word = '-E',
+            kind = ' [E] Extended RegExp',
+        },
+        {
+            word = '-G',
+            kind = ' [G] Basic RegExp(default)',
         },
     }
     query.filters = "!.git/"
@@ -86,6 +102,10 @@ onlysearch.setup({
         query_history_size = 20,
         keyword = "48-57,-,a-z,A-Z,.,_,=",
         handle_sys_clipboard_paste = true,
+        match_result_limit = 20000,
+        chunk_process_output = {
+            enabled = engine == "grep",
+        },
     },
     keymaps = {
         normal = {
@@ -94,6 +114,9 @@ onlysearch.setup({
             ['<leader>='] = 'clear_all_selected_items',
             ['Q'] = 'send2qf',
             ['S'] = 'search',
+            ['<C-M-s>'] = 'search_ignore_limit',
+            ['<C-c>'] = 'stop_search',
+            ['<C-M-r>'] = 'recover_os_view',
             ['<leader>qo'] = 'query_hist_open',
             ['<leader>qa'] = 'query_hist_add',
             ['<leader>qc'] = 'query_hist_close',
