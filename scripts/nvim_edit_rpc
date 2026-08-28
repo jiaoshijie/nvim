@@ -1,0 +1,16 @@
+local filepath = _G.arg[1]
+
+if not filepath and #filepath == 0 then
+    error("Error from nvim rpc: filepath is require")
+end
+
+local chan_id = vim.fn.sockconnect("pipe", vim.env.NVIM, { rpc = true })
+
+if chan_id == 0 then
+    error("Error from nvim rpc: open rpc socket failed")
+end
+
+vim.rpcrequest(chan_id, "nvim_exec_lua",
+      string.format("return vim.cmd.tabedit('%s')", vim.fn.fnameescape(filepath)), {})
+
+vim.fn.chanclose(chan_id)
