@@ -443,7 +443,6 @@ hl("FFMKPreviewCursor", { link = "Cursor" })
 hl("UndotreeDiffLine", { fg = c.aqua })
 hl("UndotreeDiffAdded", { fg = c.green })
 hl("UndotreeDiffRemoved", { fg = c.red })
--- }}}
 
 -- [[ onlysearch ]] `https://github.com/jiaoshijie/onlysearch/blob/main/plugin/onlysearch.lua`
 hl("OnlysearchHeaderSearch", { fg = c.yellow, bg = c.v_yellow })
@@ -458,3 +457,13 @@ hl("OnlysearchSep", { fg = c.gray })
 hl("OnlysearchSepErr", { fg = c.red })
 hl("OnlysearchSepSigint", { fg = c.yellow })
 hl("OnlysearchSelectedLine", { reverse = true })
+
+-- [[ compile.lua ]]
+hl("CompileLuaSep", { fg = c.gray })
+hl("CompileLuaHint", { fg = c.blue })
+hl("CompileLuaInfo", { fg = c.green })
+hl("CompileLuaWarning", { fg = c.yellow })
+hl("CompileLuaError", { fg = c.red })
+hl("CompileLuaLnum", { fg = c.orange })
+hl("CompileLuaCol", { fg = c.aqua })
+hl("CompileLuaLink", { underline = true })
