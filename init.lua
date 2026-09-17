@@ -4,7 +4,7 @@ local api = vim.api
 local autocmd = api.nvim_create_autocmd
 local command = vim.api.nvim_create_user_command
 local keymap = vim.keymap.set
-local keymap_opts = { noremap = true, silent = true }
+local keymap_opts = { silent = true }
 local kit = require('kit')
 
 o.modeline = false
@@ -22,16 +22,16 @@ vim.g.maplocalleader = ","
 
 -- NOTE: basic keymaps
 keymap({ "", "i" }, "<C-j>", "<C-[>", keymap_opts)
-keymap("n", "s", "<Nop>", { noremap = true })
-keymap("n", "S", "<Nop>", { noremap = true })
-keymap("n", "C", "<Nop>", { noremap = true })
-keymap("n", "<C-f>", "<Nop>", { noremap = true })  -- only use <C-u>
-keymap("n", "<C-b>", "<Nop>", { noremap = true })  -- only use <C-d>
+keymap("n", "s", "<Nop>")
+keymap("n", "S", "<Nop>")
+keymap("n", "C", "<Nop>")
+keymap("n", "<C-f>", "<Nop>")  -- only use <C-u>
+keymap("n", "<C-b>", "<Nop>")  -- only use <C-d>
 keymap({"n", "v"}, "<Space>", "<NOP>", keymap_opts)
 keymap("v", "J", ":m '>+1<cr>gv=gv", keymap_opts)
 keymap("v", "K", ":m '<-2<cr>gv=gv", keymap_opts)
 keymap("n", "<leader><leader>", "<C-^>", keymap_opts)
-keymap("n", "<leader>/", [[/\<\><left><left>]], { noremap = true })  -- NOTE: `:h pattern.txt{magic}` `:h :substitute`
+keymap("n", "<leader>/", [[/\<\><left><left>]])  -- NOTE: `:h pattern.txt{magic}` `:h :substitute`
 keymap("n", "<leader>ps", "<Cmd>setlocal spell! spelllang=en_us<CR>", keymap_opts)
 keymap("n", "Q", "q:", keymap_opts)
 keymap("t", "<Esc>", [[<C-\><C-n>]], keymap_opts)

@@ -1,5 +1,5 @@
 return function(client, bufnr)
-    local opts = { noremap = true, silent = true, buffer = bufnr }
+    local opts = { silent = true, buffer = bufnr }
     -- NOTE(lsp-default): omnifunc
 
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions

@@ -8,8 +8,8 @@ vim.opt_local.shiftwidth = 2
 vim.opt_local.tabstop = 2
 vim.opt_local.softtabstop = 2
 
-map('n', '<localleader>f', '/<++><cr>:nohl<cr>"_c4l', { noremap = true, buffer = true, silent = true })
-map('i', '<localleader>f', '<Esc>/<++><cr>:nohl<cr>"_c4l', { noremap = true, buffer = true })
+map('n', '<localleader>f', '/<++><cr>:nohl<cr>"_c4l', { buffer = true, silent = true })
+map('i', '<localleader>f', '<Esc>/<++><cr>:nohl<cr>"_c4l', { buffer = true })
 
 local table_insert = function(args)
     local cols = tonumber(args.args)

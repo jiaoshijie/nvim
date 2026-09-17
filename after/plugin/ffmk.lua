@@ -6,7 +6,7 @@ end
 
 local kit = require('kit')
 local map = vim.keymap.set
-local map_opts = { noremap = true, silent = true }
+local map_opts = { silent = true }
 local files_cmd = {}
 local neovim_config_cmd = {
     ignore_patterns = {
