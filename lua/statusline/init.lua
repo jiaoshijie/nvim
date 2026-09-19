@@ -24,6 +24,7 @@ local opt = {
         [1] = "%<",
         [2] = kit.file_name,
         [3] = kit.file_info,
+        [4] = kit.compilation_info,
     }
 }
 
@@ -32,8 +33,12 @@ local hl_cb = function(item)
         return item
     end
     local item_obj = item()
-    local hl_group = fmt("JSJ_statusline_%s", item_obj.hlname)
-    return fmt("%%#%s#%s%%*", hl_group, item_obj.text)
+    if type(item_obj) == "string" then
+        return item_obj
+    else
+        local hl_group = fmt("JSJ_statusline_%s", item_obj.hlname)
+        return fmt("%%#%s#%s%%*", hl_group, item_obj.text)
+    end
 end
 
 _M.statusline = function()
