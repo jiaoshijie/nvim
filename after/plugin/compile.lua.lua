@@ -4,9 +4,9 @@ if not found then
     return
 end
 
-vim.api.nvim_create_user_command("Ls", function()
-    com.ls(true)
-end, { nargs = 0 })
+vim.api.nvim_create_user_command("Ls", function(args)
+    com.ls(args.bang)
+end, { nargs = 0, bang = true })
 
 vim.api.nvim_create_user_command("ComNormRO", function()
     com.norm_ro(vim.api.nvim_get_current_buf(), {})
