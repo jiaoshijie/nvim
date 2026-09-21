@@ -183,14 +183,18 @@ local gtags_gd_cmd = function(args)
     })
 end
 local gtags_gd_comp = function(_, cmdline, _)
-    -- NOTE: this implemetation is ugly, but it works
-    local _, e = cmdline:find("Gd%s+")
-    local pattern = cmdline:sub(e + 1)
+    local _, e = cmdline:find("Gd!?")
+    local pattern = vim.trim(cmdline:sub(e + 1))
     if pattern == "" then
         return vim.fn.systemlist("global -cd")
     end
-    return vim.fn.matchfuzzy(vim.fn.systemlist("global -cd"), pattern)
+    if e >= 3 then
+        return vim.fn.systemlist(string.format("global -cd '%s'", vim.fn.shellescape(pattern)))
+    else
+        return vim.fn.matchfuzzy(vim.fn.systemlist("global -cd"), pattern)
+    end
 end
+
 local gtags_gd = function()
     ffmk.gnu_global({
         ui = { preview = true },
@@ -205,5 +209,5 @@ if vim.fn.executable("global") == 1 then
     map("n", "gd", gtags_gd, map_opts)
 
     vim.api.nvim_create_user_command("Gtags", gtags_cmd, { nargs = 1, complete = gtags_comp })
-    vim.api.nvim_create_user_command("Gd", gtags_gd_cmd, { nargs = '*', complete = gtags_gd_comp })
+    vim.api.nvim_create_user_command("Gd", gtags_gd_cmd, { nargs = '*', bang = true , complete = gtags_gd_comp })
 end
