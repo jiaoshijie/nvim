@@ -6,12 +6,10 @@ local fmt = string.format
 local lsp_statusline = require("lsp.statusline").statusline
 local nc_hl = "NC_inactive"
 
-local com_statusline, com_severity, signal_msg = nil, nil, nil
-local com_ok, com = pcall(require, "compile")
-if com_ok then
-    com_statusline = com.statusline
-    com_severity = require("compile.defs").Severity
-    signal_msg = require("compile.defs").signal_msg
+local constants = nil
+local compile_ok, compile = pcall(require, "compile")
+if compile_ok then
+    constants = require("compile.constants")
 end
 
 local modes = {
@@ -162,8 +160,7 @@ end
 
 local compilation_state = function(ret_code)
     if ret_code == false then return "" end
-
-    assert(signal_msg)
+    assert(constants)
 
     if ret_code == nil then
         return fmt("%%#CompileLuaWarning#run%%* ")
@@ -174,7 +171,7 @@ local compilation_state = function(ret_code)
     end
 
     local msg = "exit"
-    if ret_code > 128 and signal_msg[ret_code - 128] then
+    if ret_code > 128 and constants.get_signal_str(ret_code - 128) then
         msg = "signal"
         ret_code = ret_code - 128
     end
@@ -183,18 +180,19 @@ local compilation_state = function(ret_code)
 end
 
 _M.compilation_info = function()
-    if not com_statusline or not com_severity then return "" end
+    if not compile_ok then return "" end
+    assert(constants)
 
-    local stat = com_statusline(vim.g.statusline_winid)
+    local stat = compile.statusline(vim.g.statusline_winid)
     if not stat then return "" end
 
     local state = compilation_state(stat.ret_code)
 
     return fmt(" [%s%%#%s#%d%%* %%#%s#%d%%* %%#%s#%d%%* %%#%s#%d%%*] ", state,
-        "CompileLuaError", stat[com_severity.ERROR],
-        "CompileLuaWarning", stat[com_severity.WARNING],
-        "CompileLuaInfo", stat[com_severity.INFO],
-        "CompileLuaHint", stat[com_severity.HINT])
+        "CompileLuaError", stat[constants.Severity.ERROR],
+        "CompileLuaWarning", stat[constants.Severity.WARNING],
+        "CompileLuaInfo", stat[constants.Severity.INFO],
+        "CompileLuaHint", stat[constants.Severity.HINT])
 end
 
 return _M
