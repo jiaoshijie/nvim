@@ -18,24 +18,22 @@ vim.api.nvim_create_user_command("C", function(args)
     })
 end, { nargs = "+", complete = "shellcmdline", bang = true })
 
-vim.api.nvim_create_user_command("CNorm", function(args)
-    local norm = args.bang and compile.norm_rw or compile.norm_ro
+vim.api.nvim_create_user_command("Cnorm", function(args)
     local cwd = nil
-
     local stat = vim.uv.fs_stat(args.args)
-
     if stat and stat.type == "directory" then
         cwd = vim.fs.abspath(args.args)
     end
 
     local bufnr = vim.api.nvim_get_current_buf()
-
-    norm(bufnr, {
-        debug = vim.b[bufnr].compile_plugin_debug,
-        cwd = cwd,
-    })
+    local lcfg = { debug = args.bang, cwd = cwd }
+    if vim.b[bufnr].compile_modifiable then
+        compile.norm_rw(bufnr, lcfg)
+    else
+        compile.norm_ro(bufnr, lcfg)
+    end
 end, { nargs = "?", bang = true, complete = "dir" })
 
-require("compile.tools.grep").setup()
-require("compile.tools.git_grep").setup()
-require("compile.tools.rg").setup()
+require("compile.tools.grep").create_user_command("Grep")
+require("compile.tools.git_grep").create_user_command("GGrep")
+require("compile.tools.rg").create_user_command("Rg")
