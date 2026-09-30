@@ -27,15 +27,16 @@ ext_plugin() {
   URI="$1"
   NAME="${URI#*/}"
   DIR="${2:-${EXT_PLUGIN_DIR}}/$NAME"
+  MAKE="${3:-}"
 
   echo "---------------------------- SYNC ${NAME} ----------------------------"
   git_sync "$DIR" "https://github.com/${URI}.git"
   helptags "$DIR"
-  [[ -f "$DIR/Makefile" ]] && make -C "$DIR"
+  [[ -f "$DIR/Makefile" && -n "$MAKE" ]] && make -C "$DIR"
 }
 
 my_plugin() {
-  [[ -z "$OPT" ]] || ext_plugin "jiaoshijie/${1}" "$MY_PLUGIN_DIR"
+  [[ -z "$OPT" ]] || ext_plugin "jiaoshijie/${1}" "$MY_PLUGIN_DIR" "make"
 }
 
 # -----------------------------------------------------------------------------
@@ -44,6 +45,7 @@ ext_plugin "tpope/vim-fugitive"
 ext_plugin "tpope/vim-surround"
 ext_plugin "tpope/vim-repeat"
 ext_plugin "godlygeek/tabular"
+ext_plugin "nvim-treesitter/nvim-treesitter"
 
 my_plugin "undotree"
 my_plugin "onlysearch"
