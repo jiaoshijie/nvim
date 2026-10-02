@@ -28,6 +28,10 @@ _M.v = {
     onlysearch_query_arg = nil,  --- @type table
 }
 
+_M.echo_info_msg = function(msg)
+    vim.api.nvim_echo({ { msg } }, true, { err = false })
+end
+
 _M.echo_err_msg = function(msg)
     vim.api.nvim_echo({ { msg } }, true, { err = true })
 end
@@ -102,7 +106,7 @@ _M.ts_enable = function(lang, regexp_syntax)
 end
 
 local jsj_normal_hl = {}  -- after nvim startup, this variable will not be empty anymore
-_M.theme_alpha_init = function()
+local theme_transparent_backup = function()
     jsj_normal_hl = {
         fg = vim.fn.synIDattr(vim.fn.hlID("Normal"), "fg", "gui"),
         bg = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg", "gui"),
@@ -112,7 +116,29 @@ _M.theme_alpha_init = function()
         api.nvim_set_hl(0, "Normal", { fg = jsj_normal_hl.fg, bg = "NONE", default = false })
     end
 end
-_M.theme_alpha_switch = function()
+_M.colorscheme_change_cb = function()
+    theme_transparent_backup()
+
+    if vim.g.colors_name == "jsj" then
+        return
+    end
+    local link_t = {
+        SignColumn = "LineNr",
+        ColorColumn = "CursorLine",
+        NormalFloat = "Normal",
+        FloatBorder = "NonText",
+        WinSeparator = "EndOfBuffer",
+    }
+    for k, v in pairs(link_t) do
+        api.nvim_set_hl(0, k, { link = v, default = false })
+    end
+end
+_M.toggle_theme_transparent = function()
+    if vim.api.nvim_get_option_value("background", { scope = "global" }) ~= "dark" then
+        _M.echo_info_msg("Only dark theme is supported to toggle theme transparent")
+        return
+    end
+
     if not _M.v.theme_transparent then
         _M.v.theme_transparent = true
         jsj_normal_hl = {
@@ -125,7 +151,11 @@ _M.theme_alpha_switch = function()
         _M.v.theme_transparent = false
         api.nvim_set_hl(0, "Normal", jsj_normal_hl)
     end
-    api.nvim_set_hl(0, "SignColumn", { link = "LineNr", default = false })
+end
+_M.use_light_theme = function()
+    _M.v.theme_transparent = false
+    vim.opt.background = "light"
+    vim.cmd.colorscheme("lunaperche")
 end
 
 _M.copy_file_path_lnum = function(flag, line)

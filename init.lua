@@ -119,9 +119,9 @@ local jsj_colorscheme_autogroup = api.nvim_create_augroup("JSJ_colorscheme_augro
 vim.api.nvim_create_autocmd("ColorScheme", {
     group = jsj_colorscheme_autogroup,
     pattern = "*",
-    callback = kit.theme_alpha_init,
+    callback = kit.colorscheme_change_cb,
 })
-keymap("n", "<leader>tt", kit.theme_alpha_switch, keymap_opts)
+keymap("n", "<leader>tt", kit.toggle_theme_transparent, keymap_opts)
 require('statusline').setup()
 vim.cmd.colorscheme("jsj")
 
