@@ -6,11 +6,7 @@ local fmt = string.format
 local lsp_statusline = require("lsp.statusline").statusline
 local nc_hl = "NC_inactive"
 
-local constants = nil
 local compile_ok, compile = pcall(require, "compile")
-if compile_ok then
-    constants = require("compile.constants")
-end
 
 local modes = {
     ["?"] = { text = "", hlname = nc_hl },
@@ -158,41 +154,8 @@ _M.git_branch = function()
     }
 end
 
-local compilation_state = function(ret_code)
-    if ret_code == false then return "" end
-    assert(constants)
-
-    if ret_code == nil then
-        return fmt("%%#CompileLuaWarning#run%%* ")
-    end
-
-    if ret_code == 0 then
-        return fmt("%%#CompileLuaInfo#exit(0)%%* ")
-    end
-
-    local msg = "exit"
-    if ret_code > 128 and constants.get_signal_str(ret_code - 128) then
-        msg = "signal"
-        ret_code = ret_code - 128
-    end
-
-    return fmt("%%#CompileLuaError#%s(%d)%%* ", msg, ret_code)
-end
-
 _M.compilation_info = function()
-    if not compile_ok then return "" end
-    assert(constants)
-
-    local stat = compile.statusline(vim.g.statusline_winid)
-    if not stat then return "" end
-
-    local state = compilation_state(stat.ret_code)
-
-    return fmt(" [%s%%#%s#%d%%* %%#%s#%d%%* %%#%s#%d%%* %%#%s#%d%%*] ", state,
-        "CompileLuaError", stat[constants.Severity.ERROR],
-        "CompileLuaWarning", stat[constants.Severity.WARNING],
-        "CompileLuaInfo", stat[constants.Severity.INFO],
-        "CompileLuaHint", stat[constants.Severity.HINT])
+    return compile_ok and compile.statusline_str(vim.g.statusline_winid) or ""
 end
 
 return _M
