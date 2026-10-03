@@ -6,17 +6,21 @@ end
 
 vim.api.nvim_create_user_command("Ls", compile.ls, { nargs = 0 })
 
+local C_lcfg = {
+    on_output_hook_fn = function(_, _, lines)
+        return vim.tbl_map(function(line)
+            -- strip common ansi escape codes
+            return line:gsub('\27%[[0-9;]-[mK]', '')
+        end, lines)
+    end,
+}
+
 vim.api.nvim_create_user_command("C", function(args)
-    compile.compile(args.args, nil, {
-        debug = args.bang,
-        on_output_hook_fn = function(_, _, lines)
-            return vim.tbl_map(function(line)
-                -- strip common ansi escape codes
-                return line:gsub('\27%[[0-9;]-[mK]', '')
-            end, lines)
-        end,
-    })
+    C_lcfg.debug = args.bang
+    compile.compile(args.args, nil, C_lcfg)
 end, { nargs = "+", complete = "shellcmdline", bang = true })
+
+local Cnorm_lcfg = {}
 
 vim.api.nvim_create_user_command("Cnorm", function(args)
     local cwd = nil
@@ -26,11 +30,12 @@ vim.api.nvim_create_user_command("Cnorm", function(args)
     end
 
     local bufnr = vim.api.nvim_get_current_buf()
-    local lcfg = { debug = args.bang, cwd = cwd }
+    Cnorm_lcfg.debug = args.bang
+    Cnorm_lcfg.cwd = cwd
     if vim.b[bufnr].compile_modifiable then
-        compile.norm_rw(bufnr, lcfg)
+        compile.norm_rw(bufnr, Cnorm_lcfg)
     else
-        compile.norm_ro(bufnr, lcfg)
+        compile.norm_ro(bufnr, Cnorm_lcfg)
     end
 end, { nargs = "?", bang = true, complete = "dir" })
 
