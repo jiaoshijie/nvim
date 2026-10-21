@@ -4,20 +4,45 @@ if not found then
     return
 end
 
+local kit = require("kit")
+local fmt = string.format
+
+local general_output_hook = function(_, _, lines)
+    return vim.tbl_map(function(line)
+        -- strip common ansi escape codes
+        return line:gsub('\27%[[0-9;]-[mK]', '')
+    end, lines)
+end
+
 vim.api.nvim_create_user_command("Ls", compile.ls, { nargs = 0 })
 
 local C_lcfg = {
-    on_output_hook_fn = function(_, _, lines)
-        return vim.tbl_map(function(line)
-            -- strip common ansi escape codes
-            return line:gsub('\27%[[0-9;]-[mK]', '')
-        end, lines)
-    end,
+    on_output_hook_fn = general_output_hook,
 }
 
 vim.api.nvim_create_user_command("C", function(args)
     C_lcfg.debug = args.bang
     compile.compile(args.args, nil, C_lcfg)
+end, { nargs = "+", complete = "shellcmdline", bang = true })
+
+local Cb_lcfg = {
+    background = true,
+    close_stdin = true,
+    on_output_hook_fn = general_output_hook,
+    on_job_finished_hook_fn = function(ret_code)
+        local constants = require("compile.constants")
+        if ret_code == 0 then
+            kit.echo_info_msg_no_hist("[compile]: background job finished.")
+        else
+            kit.echo_info_msg(fmt("[compile]: background job %s.",
+                constants.get_err_msg(ret_code)))
+        end
+    end,
+}
+
+vim.api.nvim_create_user_command("Cb", function(args)
+    Cb_lcfg.debug = args.bang
+    compile.compile(args.args, nil, Cb_lcfg)
 end, { nargs = "+", complete = "shellcmdline", bang = true })
 
 local Cnorm_lcfg = {}

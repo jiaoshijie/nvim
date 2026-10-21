@@ -252,6 +252,9 @@ hl("markdownCodeBlock", { fg = c.aqua })
 hl("markdownLinkDelimiter", { fg = c.gray })  -- (url)
 hl("markdownLinkTextDelimiter", { fg = c.gray_fg })  -- ![link text]
 
+-- [[directory]]
+hl("directoryDirectory", { fg = c.green })
+
 -------------------------------> diagnostic <---------------------------------
 -- `h diagnostic.txt:237`
 hl("DiagnosticError", { fg = c.red })

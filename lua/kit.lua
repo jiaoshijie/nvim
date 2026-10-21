@@ -28,6 +28,10 @@ _M.v = {
     onlysearch_query_arg = nil,  --- @type table
 }
 
+_M.echo_info_msg_no_hist = function(msg)
+    vim.api.nvim_echo({ { msg } }, false, { err = false })
+end
+
 _M.echo_info_msg = function(msg)
     vim.api.nvim_echo({ { msg } }, true, { err = false })
 end
