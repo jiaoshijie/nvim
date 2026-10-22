@@ -6,6 +6,7 @@ local command = vim.api.nvim_create_user_command
 local keymap = vim.keymap.set
 local keymap_opts = { silent = true }
 local kit = require('kit')
+local fmt = string.format
 
 o.modeline = false
 o.modelines = 0
@@ -216,3 +217,54 @@ vim.lsp.protocol.CompletionItemKind = {
 -- NOTE: using `exrc` to auto enable other configured lsps
 -- `shellcheck` is more useful than lsp for shell
 vim.lsp.enable({ "lua" })
+
+-----------------------------> dir <------------------------------------------
+
+vim.api.nvim_create_autocmd('User', {
+    pattern = 'DirReadPost',
+    callback = function(_)
+        if not kit.v.dir_show_hidden then
+            vim.cmd([[silent keeppatterns g/^\./d _]])
+        end
+    end,
+})
+
+local jsj_dir_ns = vim.api.nvim_create_namespace('jsj.built-in.dir.decoration_ns')
+vim.api.nvim_set_decoration_provider(jsj_dir_ns, {
+    on_win = function(_, _, buf)
+        return vim.bo[buf].filetype == 'directory'
+    end,
+    on_range = function(_, _, buf, row)
+        local dir = vim.api.nvim_buf_get_name(buf)
+        local name = vim.api.nvim_buf_get_lines(buf, row, row + 1, true)[1]
+        local path = vim.fs.joinpath(dir, (name:gsub('/$', '')))
+        local stat = vim.uv.fs_lstat(path) or {}
+        if stat.type == 'file'
+            and bit.band(stat.mode, tonumber('111', 8)) ~= 0 then
+            vim.api.nvim_buf_set_extmark(buf, jsj_dir_ns, row, 0, {
+                hl_group = "netrwExe",
+                end_col = -1,
+                ephemeral = true,
+            })
+        end
+        if stat.type == 'link' then
+            local target = vim.uv.fs_readlink(path)
+            local hl_group = target and 'netrwSymLink' or "Error"
+
+            if target then
+                local lpath = target:sub(1, 1) == "/" and target or vim.fs.joinpath(dir, (target:gsub('/$', '')))
+                if not vim.uv.fs_stat(lpath) then
+                    hl_group = "Removed"
+                end
+            end
+
+            vim.api.nvim_buf_set_extmark(buf, jsj_dir_ns, row, 0, {
+                virt_text = { { fmt('-> %s', target or "???"), hl_group } },
+                virt_text_pos = 'eol',
+                ephemeral = true,
+            })
+        end
+        --- @diagnostic disable-next-line: return-type-mismatch
+        return row + 1
+    end,
+})

@@ -26,6 +26,10 @@ _M.v = {
 
     -- onlysearch plugin
     onlysearch_query_arg = nil,  --- @type table
+
+    -- built-in directory plugin
+    dir_reload_keys = vim.api.nvim_replace_termcodes("<Plug>(nvim-dir-reload)", true, false, true),
+    dir_show_hidden = false,
 }
 
 _M.echo_info_msg_no_hist = function(msg)

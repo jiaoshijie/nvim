@@ -253,7 +253,7 @@ hl("markdownLinkDelimiter", { fg = c.gray })  -- (url)
 hl("markdownLinkTextDelimiter", { fg = c.gray_fg })  -- ![link text]
 
 -- [[directory]]
-hl("directoryDirectory", { fg = c.green })
+hl("directoryDirectory", { fg = "#8ec07c" })
 
 -------------------------------> diagnostic <---------------------------------
 -- `h diagnostic.txt:237`
