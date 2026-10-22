@@ -25,6 +25,7 @@ vim.api.nvim_create_user_command("C", function(args)
     compile.compile(args.args, nil, C_lcfg)
 end, { nargs = "+", complete = "shellcmdline", bang = true })
 
+local keys = vim.api.nvim_replace_termcodes("<Plug>(nvim-dir-reload)", true, false, true)
 local Cb_lcfg = {
     background = true,
     close_stdin = true,
@@ -33,6 +34,9 @@ local Cb_lcfg = {
         local constants = require("compile.constants")
         if ret_code == 0 then
             kit.echo_info_msg_no_hist("[compile]: background job finished.")
+            if vim.bo.filetype == "directory" then
+                vim.api.nvim_feedkeys(keys, "m", false)
+            end
         else
             kit.echo_info_msg(fmt("[compile]: background job %s.",
                 constants.get_err_msg(ret_code)))

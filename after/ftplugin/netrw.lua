@@ -1,6 +1,7 @@
 local ol = vim.opt_local
 
 ol.bufhidden = "delete"
+ol.undolevels = -1
 
 local opts = { buffer = true }
 vim.keymap.set("n", "i", "<Nop>", opts)
